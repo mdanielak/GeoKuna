@@ -1,0 +1,30 @@
+# Backlog
+
+- GK-001: szkielet Flutter, nawigacja, motyw, SQLite, dokumentacja.
+- GK-002: mapa offline 51 państw Europy, zoom/pan, wybór i małe państwa — wdrożone.
+- GK-004a: 10 pytań o lokalizację, ocena, zapis/wznowienie, podsumowanie.
+- GK-007a: analiza statyczna, testy logiki/widgetów/bazy, walidator geometrii.
+- GK-007b (później, gdy potrzebne): toolchain/APK i test na fizycznym telefonie Android w trybie samolotowym; bez emulatora.
+- GK-003a: zweryfikowane stolice 51 państw, źródła, aliasy i walidator — wdrożone.
+- GK-003b: zweryfikowane waluty i języki urzędowe — do realizacji.
+- GK-004b: stolice: A–D, pierwsza litera, samodzielne pisanie i jedna literówka — wdrożone.
+- GK-005a: adapter FSRS, niezależne karty, Dziś, dobór sesji i migracja — wdrożone.
+- GK-005b: czytelne postępy, słabe punkty i walidacja długoterminowego harmonogramu.
+- GK-006: pełne Dziś/Atlas/Powtórki/Postępy oraz ustawienia.
+- GK-007: stabilizacja, pełne testy offline, wydanie MVP.
+
+Status i wyniki bieżącego przyrostu: `docs/STATUS.md`.
+
+## Planowane po 0.4 — osobne przyrosty
+
+- GK-008: postępy i opcjonalna diagnoza, bez przenoszenia sukcesu A–D na pisanie.
+- GK-009: wybór zakresu na Dziś, globalny budżet i migawka zakresu sesji.
+- GK-010: typowane encje i bezpieczny adapter ID, paczka województw Polski.
+- GK-011: flagi Europy w obu kierunkach, lokalne assety i niezależne karty.
+- GK-012: jeden kolejny kontynent; potem pozostałe paczki w małych etapach.
+- GK-013: miasta wojewódzkie, parki, rzeki i góry Polski — osobne paczki.
+- GK-014: mały zweryfikowany katalog głównych rzek i gór świata.
+- GK-AUDIT: dostępna alternatywa mapy, zgodność aktualizacji paczek,
+  niezależna nawigacja przy błędzie Dziś i pomiar kosztu planowania.
+
+Szczegóły, źródła do paczek i kryteria: `EXPANSION_ROADMAP.md`, `LEARNING_REVIEW.md`, `CODE_REVIEW.md`.

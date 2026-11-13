@@ -1,0 +1,7 @@
+{
+  "source_sha256": "0ae270339e81939708fea46130f1579ca2dd443524dc9c4d25dc9d14f551b60a",
+  "files": {
+    "assets/content/capitals.json": "d7162f0c11d67957304e7d551a9aaa2b342e0428435efb60632e4aa18a15e10b",
+    "tools/data_pipeline/capitals_curated.json": "d7162f0c11d67957304e7d551a9aaa2b342e0428435efb60632e4aa18a15e10b"
+  }
+}

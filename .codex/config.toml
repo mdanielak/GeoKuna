@@ -1,0 +1,19 @@
+# Runtime/visual policy: Flutter Web in Chrome. Never install or launch Android emulators.
+# This policy is enforced through AGENTS.md and role instructions, not a Codex runtime flag.
+# GeoKuna only. Global Codex configuration and installed plugins are unchanged.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 2
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "high"
+
+# The official plugin already declares this server as `dart mcp-server`.
+# Override that same server locally: dart/flutter are not on this host's PATH.
+# If moving the checkout, update these two SDK paths to the existing SDK.
+[mcp_servers.dart-mcp-server]
+command = "/home/danim/.local/share/geokuna/flutter/bin/dart"
+args = ["mcp-server", "--flutter-sdk", "/home/danim/.local/share/geokuna/flutter"]
+env = { AGENT_PLUGIN = "codex" }

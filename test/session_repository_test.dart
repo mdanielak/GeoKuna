@@ -1,0 +1,148 @@
+import 'dart:io';
+import 'dart:math';
+
+import 'package:drift/native.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:geokuna/core/database/database.dart';
+import 'package:geokuna/features/learning/session_repository.dart';
+
+void main() {
+  const ids = [
+    'POL',
+    'DEU',
+    'CZE',
+    'SVK',
+    'AUT',
+    'HUN',
+    'SVN',
+    'HRV',
+    'ITA',
+    'CHE',
+    'FRA',
+    'BEL',
+    'NLD',
+    'LUX',
+    'LIE',
+  ];
+  late AppDatabase db;
+  var defaultDbClosed = false;
+  late SessionRepository repository;
+  setUp(() {
+    defaultDbClosed = false;
+    db = AppDatabase(NativeDatabase.memory());
+    repository = SessionRepository(db);
+  });
+  tearDown(() async {
+    if (!defaultDbClosed) await db.close();
+  });
+
+  test('starts ten distinct questions and resumes the same session', () async {
+    final session = await repository.start(ids, random: Random(7));
+    expect(session.countryIds.toSet(), hasLength(10));
+    final resumed = await repository.start(ids);
+    expect(resumed.row.id, session.row.id);
+    expect(resumed.countryIds, session.countryIds);
+    expect(await repository.history(), isEmpty);
+  });
+
+  test(
+    'scores correct and incorrect answers, duplicate writes do not overwrite',
+    () async {
+      final session = await repository.start(ids);
+      final first = await repository.answer(
+        session.row.id,
+        0,
+        session.targetId,
+        ids.toSet(),
+      );
+      expect(first.currentAttempt!.correct, isTrue);
+      final wrong = ids.firstWhere((id) => id != session.targetId);
+      await repository.answer(session.row.id, 0, wrong, ids.toSet());
+      expect(await repository.history(), hasLength(1));
+      final second = await repository.advance(session.row.id, 0);
+      final missed = await repository.answer(
+        second.row.id,
+        1,
+        ids.firstWhere((id) => id != second.targetId),
+        ids.toSet(),
+      );
+      expect(missed.currentAttempt!.correct, isFalse);
+      expect(missed.correctCount, 1);
+    },
+  );
+
+  test(
+    'cannot advance unanswered questions or write unknown/stale selections',
+    () async {
+      final session = await repository.start(ids);
+      await expectLater(
+        repository.advance(session.row.id, 0),
+        throwsStateError,
+      );
+      await expectLater(
+        repository.answer(session.row.id, 0, 'UNKNOWN', ids.toSet()),
+        throwsArgumentError,
+      );
+      await repository.answer(session.row.id, 0, session.targetId, ids.toSet());
+      await repository.advance(session.row.id, 0);
+      await expectLater(
+        repository.answer(session.row.id, 0, 'POL', ids.toSet()),
+        throwsStateError,
+      );
+      final duplicateAdvance = await repository.advance(session.row.id, 0);
+      expect(duplicateAdvance.index, 1);
+    },
+  );
+
+  test('finishes all ten questions and starts a fresh session without deleting history', () async {
+    var session = await repository.start(ids);
+    for (var i = 0; i < 10; i++) {
+      session = await repository.answer(
+        session.row.id,
+        i,
+        session.targetId,
+        ids.toSet(),
+      );
+      session = await repository.advance(session.row.id, i);
+    }
+    expect(session.completed, isTrue);
+    expect(session.correctCount, 10);
+    expect(await repository.active(), isNull);
+    expect(await repository.history(), hasLength(10));
+    expect((await repository.start(ids)).row.id, isNot(session.row.id));
+  });
+
+  test(
+    'reopens file database with feedback, order and history intact',
+    () async {
+      await db.close();
+      defaultDbClosed = true;
+      final directory = await Directory.systemTemp.createTemp('geokuna_test_');
+      final path = File('${directory.path}/progress.sqlite');
+      final firstDb = AppDatabase(NativeDatabase(path));
+      final firstRepository = SessionRepository(firstDb);
+      try {
+        final first = await firstRepository.start(ids, random: Random(1));
+        await firstRepository.answer(
+          first.row.id,
+          0,
+          first.targetId,
+          ids.toSet(),
+        );
+        await firstDb.close();
+        final reopened = AppDatabase(NativeDatabase(path));
+        try {
+          final restored = (await SessionRepository(reopened).active())!;
+          expect(restored.row.id, first.row.id);
+          expect(restored.countryIds, first.countryIds);
+          expect(restored.index, 0);
+          expect(restored.currentAttempt!.correct, isTrue);
+        } finally {
+          await reopened.close();
+        }
+      } finally {
+        await directory.delete(recursive: true);
+      }
+    },
+  );
+}

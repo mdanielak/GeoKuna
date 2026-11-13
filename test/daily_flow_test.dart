@@ -1,0 +1,182 @@
+import 'dart:convert';
+import 'dart:math';
+
+import 'package:drift/drift.dart' show Value;
+import 'package:drift/native.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:geokuna/app/app.dart';
+import 'package:geokuna/app/providers.dart';
+import 'package:geokuna/core/database/database.dart';
+import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/learning/capitals.dart';
+import 'package:material_ui/material_ui.dart';
+
+void main() {
+  testWidgets('Dziś oferuje trzy nowe pytania i uruchamia wyprawę', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final data = (await tester.runAsync(
+      () async => (await Catalog.load(), await CapitalCatalog.load()),
+    ))!;
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox());
+      await db.close();
+    });
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          catalogProvider.overrideWith((ref) async => data.$1),
+          capitalsProvider.overrideWith((ref) async => data.$2),
+        ],
+        child: const GeoKunaApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('3 pytania w dzisiejszej serii'), findsOneWidget);
+    expect(find.text('0 powtórek · 3 nowych w serii'), findsOneWidget);
+    await tester.tap(find.text('Rozpocznij dzisiejszą wyprawę'));
+    await tester.pumpAndSettle();
+    expect(find.text('PYTANIE 1 Z 3'), findsOneWidget);
+    expect(await db.select(db.attempts).get(), isEmpty);
+    expect(await db.select(db.memoryReviews).get(), isEmpty);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Dziś: mały telefon i tekst 200% zachowują dostęp do CTA', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320, 640);
+    tester.view.devicePixelRatio = 1;
+    tester.platformDispatcher.textScaleFactorTestValue = 2;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final data = (await tester.runAsync(
+      () async => (await Catalog.load(), await CapitalCatalog.load()),
+    ))!;
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox());
+      await db.close();
+    });
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          catalogProvider.overrideWith((ref) async => data.$1),
+          capitalsProvider.overrideWith((ref) async => data.$2),
+        ],
+        child: const GeoKunaApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('3 pytania w dzisiejszej serii'),
+      150,
+    );
+    expect(find.text('3 pytania w dzisiejszej serii'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('0 powtórek · 3 nowych w serii'),
+      150,
+    );
+    expect(find.text('0 powtórek · 3 nowych w serii'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Rozpocznij dzisiejszą wyprawę'),
+      150,
+    );
+    await tester.ensureVisible(find.text('Rozpocznij dzisiejszą wyprawę'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Rozpocznij dzisiejszą wyprawę'));
+    await tester.pumpAndSettle();
+    expect(find.text('PYTANIE 1 Z 3'), findsOneWidget);
+    expect(await db.select(db.attempts).get(), isEmpty);
+    expect(await db.select(db.memoryReviews).get(), isEmpty);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'mieszana wyprawa zapisuje dopiero po zatwierdzeniu i wznawia feedback',
+    (tester) async {
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final data = (await tester.runAsync(
+        () async => (await Catalog.load(), await CapitalCatalog.load()),
+      ))!;
+      final question = data.$2.questions(['POL'], Random(3)).single;
+      final db = AppDatabase(NativeDatabase.memory());
+      addTearDown(() async {
+        await tester.pumpWidget(const SizedBox());
+        await db.close();
+      });
+      await db
+          .into(db.sessions)
+          .insert(
+            SessionsCompanion.insert(
+              id: 'daily-flow',
+              countryIds: '["POL","DEU"]',
+              createdAt: DateTime.now(),
+              topic: const Value('daily'),
+              difficulty: const Value('mixed'),
+              questionData: Value(
+                jsonEncode([
+                  {
+                    ...question.toJson(),
+                    'topic': 'capitals',
+                    'difficulty': 'write',
+                    'skill_id': 'capitals:POL:write',
+                    'country_id': 'POL',
+                  },
+                  {
+                    'topic': 'map',
+                    'difficulty': 'map',
+                    'skill_id': 'map:DEU:map',
+                    'country_id': 'DEU',
+                  },
+                ]),
+              ),
+            ),
+          );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            databaseProvider.overrideWithValue(db),
+            catalogProvider.overrideWith((ref) async => data.$1),
+            capitalsProvider.overrideWith((ref) async => data.$2),
+          ],
+          child: const GeoKunaApp(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Wznów dzisiejszą wyprawę'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextFormField), 'Warszawa');
+      await tester.pump();
+      expect(await db.select(db.memoryReviews).get(), isEmpty);
+      await tester.ensureVisible(find.text('Sprawdź odpowiedź'));
+      await tester.tap(find.text('Sprawdź odpowiedź'));
+      await tester.pumpAndSettle();
+      expect(await db.select(db.memoryReviews).get(), hasLength(1));
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Wznów dzisiejszą wyprawę'));
+      await tester.pumpAndSettle();
+      expect(find.text('Następne pytanie'), findsOneWidget);
+      expect(await db.select(db.memoryReviews).get(), hasLength(1));
+      await tester.ensureVisible(find.text('Następne pytanie'));
+      await tester.tap(find.text('Następne pytanie'));
+      await tester.pumpAndSettle();
+      expect(find.text('PYTANIE 2 Z 2'), findsOneWidget);
+      expect(find.text('Gdzie leżą Niemcy?'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
+}

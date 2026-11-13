@@ -1,0 +1,4 @@
+interface:
+  display_name: "GeoKuna Learning Design"
+  short_description: "Mechaniki quizów, przypominania i powtórek GeoKuny"
+  default_prompt: "Użyj $geokuna-learning-design do zaprojektowania mechaniki nauki GeoKuny z zasadami oceniania, feedbackiem i kryteriami weryfikacji."
