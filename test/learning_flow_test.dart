@@ -44,18 +44,12 @@ void main() {
       expect(find.text('Gdzie leży Liechtenstein?'), findsOneWidget);
       expect(find.text('Potwierdź'), findsNothing);
       await selectMarker(tester, 'LIE');
-      await tester.ensureVisible(find.text('Potwierdź'));
-      await tester.tap(find.text('Potwierdź'));
-      await tester.pumpAndSettle();
       expect(find.text('Dobrze! To Liechtenstein.'), findsOneWidget);
       expect(await db.select(db.attempts).get(), hasLength(1));
       await tester.ensureVisible(find.text('Następne pytanie'));
       await tester.tap(find.text('Następne pytanie'));
       await tester.pumpAndSettle();
       await selectMarker(tester, 'LUX');
-      await tester.ensureVisible(find.text('Potwierdź'));
-      await tester.tap(find.text('Potwierdź'));
-      await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('Zobacz wynik'));
       await tester.tap(find.text('Zobacz wynik'));
       await tester.pumpAndSettle();
@@ -75,7 +69,10 @@ Future<void> selectMarker(WidgetTester tester, String id) async {
     // Several markers can initially cover this location; the first tap zooms the cluster.
     await tester.tapAt(tester.getCenter(marker));
     await tester.pump(const Duration(milliseconds: 400));
-    if (find.text('Potwierdź').evaluate().isNotEmpty) return;
+    if (find.text('Następne pytanie').evaluate().isNotEmpty ||
+        find.text('Zobacz wynik').evaluate().isNotEmpty) {
+      return;
+    }
   }
   fail('Small-country marker did not become selectable: $id');
 }

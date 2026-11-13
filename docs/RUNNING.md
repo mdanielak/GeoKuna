@@ -17,6 +17,26 @@ bieżącemu rozwojowi; jego baza jest oddzielna od bazy Androida i może podlega
 ograniczeniom magazynu przeglądarki. Nie zakładaj uruchomienia Web offline po
 zamknięciu przeglądarki. Zakres kontroli: [TESTING.md](TESTING.md).
 
+## Codzienna praca
+
+Na Dziś rozpocznij lub wznów dzienną wyprawę. Niżej wybierz ręczny trening
+mapy, stolic lub flag, atlas i postępy. Na mapie dotknięcie państwa od razu
+zapisuje próbę; w quizach tekstowych użyj „Sprawdź odpowiedź” lub Enter.
+Przycisk X kończy quiz po potwierdzeniu, Wstecz pozostawia go do wznowienia.
+
+Po zmianie kodu w terminalu `flutter run`: `r` wykonuje hot reload, `R` pełny
+restart, `q` kończy uruchomienie. Nie czyść danych przeglądarki, jeśli chcesz
+zachować postęp. Dla stałego adresu podczas rozwoju możesz użyć:
+
+```bash
+flutter run -d chrome --web-port=8766
+```
+
+Baza Web należy do profilu i adresu przeglądarki; inny port lub profil może
+pokazać osobny magazyn. Nie ma jeszcze eksportu/importu ani synchronizacji
+z telefonem. Kontrole przed commitem: komendy z [TESTING.md](TESTING.md)
+i [AGENTS.md](../AGENTS.md).
+
 ## Później: fizyczny telefon Android
 
 To opcjonalny przyszły etap. Nie wymaga emulatora. Do zbudowania i uruchomienia

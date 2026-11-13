@@ -1,5 +1,9 @@
 # Quizy na telefonie — korekta po opinii użytkownika
 
+> Plan historyczny: przepływ potwierdzania mapy zastąpiono trzema bezpośrednimi
+> próbami. Aktualny kontrakt: [plan prób i flag](2026-11-13-map-retries-flags.md).
+
+
 ## Problem i krótki brainstorming
 
 Mapa zajmuje około 43% wysokości, a długie instrukcje i przycisk bez wybranej

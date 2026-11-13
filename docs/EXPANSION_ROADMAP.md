@@ -1,5 +1,10 @@
 # Rozwój GeoKuny — zakresy, flagi, Polska i świat
 
+Stan po przyroście flag: flaga → państwo w trzech poziomach oraz flaga → mapa
+są wdrożone. Odwrotny kierunek państwo → flaga, wybór zakresu, Polska
+i kolejne kontynenty pozostają planem. Szczegóły wykonania: [FLAGS.md](FLAGS.md).
+
+
 Status: propozycja do kolejnych przyrostów, nie funkcje wdrożone w 0.4.
 Cel: poszerzać geografię bez rozbijania istniejących postępów i bez rozbudowanego
 menu przed każdą krótką sesją. Rekomendację mechaniki nauki opisuje

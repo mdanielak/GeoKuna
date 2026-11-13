@@ -8,18 +8,19 @@ Drift/SQLite. Geometria GeoJSON w assets; bez warstwy kafelkowej.
 `features/atlas/` — katalog, parser GeoJSON, widget mapy.
 `features/learning/` — model sesji, repozytorium, kontroler i ekran.
 `features/home/` — ekran Dziś i atlas.
+`features/progress/` — filtrowane postępy według umiejętności.
 
 UI → kontroler → repozytorium → Drift. Odpowiedź ma klucz
 `(session_id, question_index)`; zapis i postęp sesji są transakcją.
 Zablokowany przycisk w UI oraz unikalność w bazie chronią przed podwójnym zapisem.
 Stan po ocenie pozostaje zapisany, dopóki użytkownik nie wybierze „Dalej”.
 
-Katalog jest ładowany z assets przed uruchomieniem UI. Błąd inicjalizacji
-ma ekran z ponowieniem. Repozytorium nie zastępuje uszkodzonej bazy pustą.
+Katalogi są ładowane asynchronicznie z assets. Błąd dziennej wyprawy
+ma lokalny komunikat z ponowieniem i nie ukrywa niezależnej nawigacji. Repozytorium nie zastępuje uszkodzonej bazy pustą.
 
 ## Decyzje
 
-- 0.4 obejmuje mapę i stolice 51 państw oraz niezależną pamięć FSRS.
+- 0.4 obejmuje mapę, stolice i flagi 51 państw oraz niezależną pamięć FSRS.
 - `memory.dart`: czysty adapter dart-fsrs i zapis dziennika. Repozytorium
   transakcyjnie łączy ocenę z harmonogramem, wybiera kolejkę i importuje historię.
   UI otrzymuje stan przez Riverpod; reguły nauki są niezależne od widgetów.
@@ -31,13 +32,15 @@ ma ekran z ponowieniem. Repozytorium nie zastępuje uszkodzonej bazy pustą.
   przybliżają mapę. `focusId` atlasu centruje wybrane państwo.
 - `Country.plural` jest metadaną językową; `locationQuestion` dobiera
   „leży” / „leżą”. Nie wnioskujemy liczby gramatycznej z końcówki nazwy.
-- Pytanie mapowe startuje w przybliżeniu regionu: środek zaokrąglony do 5°,
-  okno ±10° szerokości geograficznej i ±16° długości. Nie zaznacza celu.
+- Pytanie mapowe startuje w przybliżeniu regionu: środek przesunięty losowo
+  o 1,5–3,5° szerokości i 2,5–5,5° długości w obu kierunkach;
+  okno ±10° szerokości geograficznej i ±16° długości.
+  Seed sesji i indeksu pytania utrzymuje kadr przy zaznaczaniu i wznowieniu. Nie zaznacza celu.
   Reset przywraca całą Europę, a atlas zachowuje ogólny widok początkowy.
 - Stolice: trzy poziomy; migawka pytań w sesji; osobna aktywna sesja dla
   każdego poziomu. Ocenianie tekstu jest czystą funkcją z tolerancją jednego
   błędu edycyjnego. Próby przechowują poziom oraz zaakceptowanie literówki.
-- SQLite v3: migracje zachowują dane mapowe i stolic. Szczegóły w DATA_MODEL.md.
+- SQLite v4: migracje zachowują dane mapowe i stolic. Szczegóły w DATA_MODEL.md.
 - Wybrana maskotka: `assets/mascot/kuna-globe.png`; oryginał i prompty
   pozostają w `output/imagegen/kuna-options/`.
 - Android jest celem wydania. Flutter Web w Chrome jest domyślnym środowiskiem
@@ -50,3 +53,6 @@ ma ekran z ponowieniem. Repozytorium nie zastępuje uszkodzonej bazy pustą.
 
 Rozwijać postępy i słabe punkty na podstawie osobnych kart umiejętności.
 Wersjonowane fakty, adapter FSRS i dziennik powtórek są już częścią aplikacji. Nie wyciągać ogólnego „opanowania państwa” z jednego trafienia.
+
+Flagi są osobnym formatem pytań; obrazy PNG lokalne. Szczegóły: FLAGS.md.
+Trzy próby mapy są transakcjami repozytorium, nie wyłącznie stanem widgetu.

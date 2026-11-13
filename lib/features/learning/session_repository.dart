@@ -6,17 +6,46 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/database/database.dart';
 import 'capitals.dart';
+import 'flags.dart';
 import 'memory.dart';
+import 'learning_progress.dart';
 import '../atlas/catalog.dart';
 
 class LearningSession {
-  const LearningSession(this.row, this.countryIds, this.attempts);
+  const LearningSession(
+    this.row,
+    this.countryIds,
+    this.attempts, {
+    Set<int> assistedIndices = const {},
+    this.mapGuesses = const [],
+    // Preserve the public argument while exposing combined assistance evidence.
+    // ignore: prefer_initializing_formals
+  }) : _assistedIndices = assistedIndices;
+  final Set<int> _assistedIndices;
+  final List<MapGuess> mapGuesses;
+  Set<int> get assistedIndices => {
+    ..._assistedIndices,
+    ...mapGuesses.where((g) => g.assisted).map((g) => g.questionIndex),
+  };
+  List<MapGuess> get currentMapGuesses =>
+      mapGuesses.where((g) => g.questionIndex == index).toList();
   final Session row;
   final List<String> countryIds;
   final List<Attempt> attempts;
   bool get completed => row.completedAt != null;
   int get index => row.currentIndex;
   bool get isDaily => row.topic == 'daily';
+  String topicAt(int i) =>
+      isDaily ? _questions[i]['topic'] as String : row.topic;
+  String difficultyNameAt(int i) =>
+      isDaily ? _questions[i]['difficulty'] as String : row.difficulty;
+  bool isFlagAt(int i) => topicAt(i) == 'flags';
+  bool isMapAt(int i) =>
+      topicAt(i) == 'map' || (isFlagAt(i) && difficultyNameAt(i) == 'map');
+  FlagDifficulty get flagDifficulty =>
+      FlagDifficulty.values.byName(difficultyNameAt(index));
+  FlagQuestion flagQuestionAt(int i) =>
+      FlagQuestion.fromJson(_questions[i] as Map<String, dynamic>);
   List<dynamic> get _questions => jsonDecode(row.questionData) as List;
   bool isCapitalAt(int i) =>
       isDaily ? _questions[i]['topic'] == 'capitals' : row.topic == 'capitals';
@@ -56,6 +85,22 @@ class SessionRepository {
     await (db.select(
       db.attempts,
     )..where((a) => a.sessionId.equals(row.id))).get(),
+    assistedIndices:
+        (await (db.select(db.memoryReviews)..where(
+                  (r) =>
+                      r.sessionId.equals(row.id) & r.origin.equals('assisted'),
+                ))
+                .get())
+            .map((r) => r.questionIndex)
+            .toSet(),
+    mapGuesses:
+        await (db.select(db.mapGuesses)
+              ..where((g) => g.sessionId.equals(row.id))
+              ..orderBy([
+                (g) => OrderingTerm.asc(g.questionIndex),
+                (g) => OrderingTerm.asc(g.guessIndex),
+              ]))
+            .get(),
   );
 
   Future<LearningSession?> active({
@@ -139,18 +184,189 @@ class SessionRepository {
     return byId(id);
   });
 
+  Future<List<LearningSession>> activeFlags() async {
+    final rows = await (db.select(
+      db.sessions,
+    )..where((s) => s.completedAt.isNull() & s.topic.equals('flags'))).get();
+    return Future.wait(rows.map(_load));
+  }
+
+  Future<LearningSession> startFlags(
+    FlagCatalog catalog,
+    FlagDifficulty difficulty, {
+    Random? random,
+  }) => db.transaction(() async {
+    final existing = await active(topic: 'flags', difficulty: difficulty.name);
+    if (existing != null) return existing;
+    final rng = random ?? Random();
+    final ids = catalog.facts.map((f) => f.countryId).toList()..shuffle(rng);
+    final questions = catalog.questions(ids.take(10).toList(), rng);
+    final id = const Uuid().v4();
+    await db
+        .into(db.sessions)
+        .insert(
+          SessionsCompanion.insert(
+            id: id,
+            countryIds: jsonEncode(questions.map((q) => q.countryId).toList()),
+            createdAt: _clock().toUtc(),
+            topic: const Value('flags'),
+            difficulty: Value(difficulty.name),
+            contentVersion: Value(catalog.version),
+            questionData: Value(
+              jsonEncode(questions.map((q) => q.toJson()).toList()),
+            ),
+          ),
+        );
+    return byId(id);
+  });
+
+  Future<LearningSession> answerFlag(String id, int index, String input) =>
+      db.transaction(() async {
+        final session = await byId(id);
+        if (session.completed ||
+            session.index != index ||
+            !session.isFlagAt(index) ||
+            session.isMapAt(index)) {
+          throw StateError('Nieaktualne pytanie o flagę');
+        }
+        if (session.currentAttempt != null) return session;
+        if (input.trim().isEmpty || input.length > 100) {
+          throw ArgumentError('Pusta lub zbyt długa odpowiedź');
+        }
+        final question = session.flagQuestionAt(index);
+        final difficulty = session.flagDifficulty;
+        if (difficulty == FlagDifficulty.choice &&
+            !question.options.contains(input)) {
+          throw ArgumentError('Odpowiedź spoza listy');
+        }
+        final answer = difficulty == FlagDifficulty.firstLetter
+            ? question.firstLetter + input.trim()
+            : input.trim();
+        final evaluation = difficulty == FlagDifficulty.choice
+            ? AnswerEvaluation(answer == question.countryName)
+            : evaluateFlagAnswer(answer, question);
+        await _memory.importHistoryOnce();
+        await db
+            .into(db.attempts)
+            .insert(
+              AttemptsCompanion.insert(
+                sessionId: id,
+                questionIndex: index,
+                countryId: session.targetId,
+                answer: answer,
+                correct: evaluation.correct,
+                typoAccepted: Value(evaluation.typoAccepted),
+                answeredAt: _clock().toUtc(),
+                topic: const Value('flags'),
+                difficulty: Value(difficulty.name),
+              ),
+            );
+        final answered = await byId(id);
+        await _memory.record(
+          answered.currentAttempt!,
+          origin: session.isDaily ? 'daily' : 'manual',
+        );
+        return byId(id);
+      });
+
+  Future<LearningSession> guessMap(
+    String id,
+    int index,
+    String selected,
+    Set<String> allowed, {
+    required int expectedGuessIndex,
+    bool assisted = false,
+  }) => db.transaction(() async {
+    final session = await byId(id);
+    if (session.completed ||
+        session.index != index ||
+        !session.isMapAt(index)) {
+      throw StateError('Nieaktualne pytanie mapowe');
+    }
+    if (session.currentAttempt != null) return session;
+    final guesses = session.currentMapGuesses;
+    if (expectedGuessIndex < guesses.length) return session;
+    if (expectedGuessIndex != guesses.length || guesses.length >= 3) {
+      throw StateError('Nieaktualna próba');
+    }
+    if (!allowed.contains(selected)) throw ArgumentError('Nieznane państwo');
+    if (guesses.any((g) => g.selectedCountryId == selected)) return session;
+    await _memory.importHistoryOnce();
+    final now = _clock().toUtc();
+    final withHelp = assisted || guesses.any((g) => g.assisted);
+    final correct = selected == session.targetId;
+    await db
+        .into(db.mapGuesses)
+        .insert(
+          MapGuessesCompanion.insert(
+            sessionId: id,
+            questionIndex: index,
+            guessIndex: guesses.length,
+            selectedCountryId: selected,
+            correct: correct,
+            assisted: Value(withHelp),
+            guessedAt: now,
+          ),
+        );
+    if (guesses.isEmpty) {
+      await _memory.record(
+        Attempt(
+          sessionId: id,
+          questionIndex: index,
+          countryId: session.targetId,
+          answer: selected,
+          correct: correct,
+          answeredAt: now,
+          typoAccepted: false,
+          topic: session.topicAt(index),
+          difficulty: session.difficultyNameAt(index),
+        ),
+        origin: withHelp
+            ? 'assisted'
+            : session.isDaily
+            ? 'daily'
+            : 'manual',
+      );
+    }
+    if (correct || guesses.length == 2) {
+      await _completeMapQuestion(session, selected, correct, now);
+    }
+    return byId(id);
+  });
+
+  Future<void> _completeMapQuestion(
+    LearningSession session,
+    String answer,
+    bool correct,
+    DateTime time,
+  ) => db
+      .into(db.attempts)
+      .insert(
+        AttemptsCompanion.insert(
+          sessionId: session.row.id,
+          questionIndex: session.index,
+          countryId: session.targetId,
+          answer: answer,
+          correct: correct,
+          answeredAt: time,
+          topic: Value(session.topicAt(session.index)),
+          difficulty: Value(session.difficultyNameAt(session.index)),
+        ),
+      );
+
   Future<LearningSession> answer(
     String id,
     int index,
     String selected,
-    Set<String> allowed,
-  ) => db.transaction(() async {
+    Set<String> allowed, {
+    bool assisted = false,
+  }) => db.transaction(() async {
     final session = await byId(id);
     if (session.completed || session.index != index) {
       throw StateError('Nieaktualne pytanie');
     }
     if (session.currentAttempt != null) return session;
-    if (session.isCapital) throw StateError('To nie jest pytanie mapowe');
+    if (!session.isMapAt(index)) throw StateError('To nie jest pytanie mapowe');
     if (!allowed.contains(selected)) throw ArgumentError('Nieznane państwo');
     await _memory.importHistoryOnce();
     await db
@@ -162,15 +378,21 @@ class SessionRepository {
             countryId: session.targetId,
             answer: selected,
             correct: selected == session.targetId,
+            topic: Value(session.topicAt(index)),
+            difficulty: Value(session.difficultyNameAt(index)),
             answeredAt: _clock().toUtc(),
           ),
         );
     final answered = await byId(id);
     await _memory.record(
       answered.currentAttempt!,
-      origin: session.isDaily ? 'daily' : 'manual',
+      origin: assisted
+          ? 'assisted'
+          : session.isDaily
+          ? 'daily'
+          : 'manual',
     );
-    return answered;
+    return byId(id);
   });
 
   Future<LearningSession> answerCapital(String id, int index, String input) =>
@@ -218,6 +440,25 @@ class SessionRepository {
         return answered;
       });
 
+  Future<LearningSession> finish(String id) => db.transaction(() async {
+    final session = await byId(id);
+    if (session.completed) return session;
+    if (session.currentAttempt == null &&
+        session.currentMapGuesses.isNotEmpty) {
+      final last = session.currentMapGuesses.last;
+      await _completeMapQuestion(
+        session,
+        last.selectedCountryId,
+        last.correct,
+        last.guessedAt,
+      );
+    }
+    await (db.update(db.sessions)..where((s) => s.id.equals(id))).write(
+      SessionsCompanion(completedAt: Value(_clock().toUtc())),
+    );
+    return byId(id);
+  });
+
   Future<LearningSession> advance(String id, int expectedIndex) =>
       db.transaction(() async {
         final session = await byId(id);
@@ -235,11 +476,69 @@ class SessionRepository {
         return byId(id);
       });
 
+  Future<List<LearningProgressEntry>> learningProgress(
+    Catalog catalog, {
+    FlagCatalog? flags,
+  }) => db.transaction(() async {
+    await _memory.importHistoryOnce();
+    final cards = {
+      for (final card in await db.select(db.memoryCards).get()) card.id: card,
+    };
+    final logs =
+        await (db.select(db.memoryReviews)
+              ..where((r) => r.applied.equals(true))
+              ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
+            .get();
+    final latest = <String, MemoryReview>{};
+    for (final log in logs) {
+      latest[log.skillId] = log;
+    }
+    final now = _clock().toUtc();
+    return [
+      for (final country in catalog.countries)
+        for (final spec in [
+          ('map', 'map'),
+          ('capitals', 'choice'),
+          ('capitals', 'firstLetter'),
+          ('capitals', 'write'),
+          if (flags != null) ...[
+            ('flags', 'choice'),
+            ('flags', 'firstLetter'),
+            ('flags', 'write'),
+            ('flags', 'map'),
+          ],
+        ])
+          (() {
+            final (topic, difficulty) = spec;
+            final id = '$topic:${country.id}:$difficulty';
+            final card = cards[id];
+            final log = latest[id];
+            final status = card?.state == null || log == null
+                ? LearningProgressStatus.insufficient
+                : log.rating == 1 ||
+                      (card!.due != null && !card.due!.isAfter(now))
+                ? LearningProgressStatus.review
+                : LearningProgressStatus.practising;
+            return LearningProgressEntry(
+              id: id,
+              country: country,
+              topic: topic,
+              difficulty: difficulty,
+              status: status,
+              reviewCount: card?.reviewCount ?? 0,
+              due: card?.due,
+              lastReview: log?.reviewedAt,
+            );
+          })(),
+    ];
+  });
+
   Future<MemoryOverview> memoryOverview(
     Catalog catalog,
-    CapitalCatalog capitals,
-  ) => db.transaction(() async {
-    final plan = await _plan(catalog, capitals);
+    CapitalCatalog capitals, {
+    FlagCatalog? flags,
+  }) => db.transaction(() async {
+    final plan = await _plan(catalog, capitals, flags: flags);
     return MemoryOverview(
       dueCount: plan.dueCount,
       newAvailable: plan.newAvailable,
@@ -252,16 +551,41 @@ class SessionRepository {
     );
   });
 
-  Future<_MemoryPlan> _plan(Catalog catalog, CapitalCatalog capitals) async {
+  Future<_MemoryPlan> _plan(
+    Catalog catalog,
+    CapitalCatalog capitals, {
+    FlagCatalog? flags,
+  }) async {
     await _memory.importHistoryOnce();
-    for (final country in catalog.countries) {
-      await _memory.ensureCard(country.id, 'map', 'map');
-      if (capitals.facts.any((f) => f.countryId == country.id)) {
-        for (final mode in CapitalDifficulty.values) {
-          await _memory.ensureCard(country.id, 'capitals', mode.name);
-        }
-      }
-    }
+    await db.batch(
+      (batch) => batch.insertAll(db.memoryCards, [
+        for (final country in catalog.countries) ...[
+          MemoryCardsCompanion.insert(
+            id: 'map:${country.id}:map',
+            countryId: country.id,
+            topic: 'map',
+            difficulty: 'map',
+          ),
+          if (capitals.facts.any((f) => f.countryId == country.id))
+            for (final mode in CapitalDifficulty.values)
+              MemoryCardsCompanion.insert(
+                id: 'capitals:${country.id}:${mode.name}',
+                countryId: country.id,
+                topic: 'capitals',
+                difficulty: mode.name,
+              ),
+        ],
+        if (flags != null)
+          for (final fact in flags.facts)
+            for (final mode in FlagDifficulty.values)
+              MemoryCardsCompanion.insert(
+                id: 'flags:${fact.countryId}:${mode.name}',
+                countryId: fact.countryId,
+                topic: 'flags',
+                difficulty: mode.name,
+              ),
+      ], mode: InsertMode.insertOrIgnore),
+    );
     final now = _clock();
     final start = DateTime(now.year, now.month, now.day).toUtc();
     final end = DateTime(now.year, now.month, now.day + 1).toUtc();
@@ -278,7 +602,11 @@ class SessionRepository {
     );
     final known = catalog.countries.map((c) => c.id).toSet();
     final cards = (await db.select(db.memoryCards).get())
-        .where((c) => known.contains(c.countryId))
+        .where(
+          (c) =>
+              known.contains(c.countryId) &&
+              (c.topic != 'flags' || flags != null),
+        )
         .toList();
     final due =
         cards
@@ -335,17 +663,20 @@ class SessionRepository {
 
   Future<LearningSession?> startDaily(
     Catalog catalog,
-    CapitalCatalog capitals,
-  ) => db.transaction(() async {
+    CapitalCatalog capitals, {
+    FlagCatalog? flags,
+  }) => db.transaction(() async {
     final existing = await active(topic: 'daily');
     if (existing != null) return existing;
-    final plan = await _plan(catalog, capitals);
+    final plan = await _plan(catalog, capitals, flags: flags);
     if (plan.cards.isEmpty) return null;
     final questions = plan.cards
         .map(
           (c) => <String, dynamic>{
             if (c.topic == 'capitals')
               ...capitals.questions([c.countryId], Random()).single.toJson(),
+            if (c.topic == 'flags')
+              ...flags!.questions([c.countryId], Random()).single.toJson(),
             'topic': c.topic,
             'difficulty': c.difficulty,
             'skill_id': c.id,

@@ -112,6 +112,39 @@ void main() {
     expect((await repository.start(ids)).row.id, isNot(session.row.id));
   });
 
+  test('early finish preserves answers and memory and is idempotent', () async {
+    var now = DateTime.utc(2026, 1, 1);
+    repository = SessionRepository(db, clock: () => now);
+    var session = await repository.start(ids, random: Random(7));
+    session = await repository.answer(
+      session.row.id,
+      0,
+      session.targetId,
+      ids.toSet(),
+    );
+    session = await repository.advance(session.row.id, 0);
+    final attempts = await repository.history();
+    final cards = await db.select(db.memoryCards).get();
+    final reviews = await db.select(db.memoryReviews).get();
+    final finished = await repository.finish(session.row.id);
+    expect(finished.completed, isTrue);
+    expect(finished.attempts, attempts);
+    expect(finished.attempts, hasLength(1));
+    expect(await db.select(db.memoryCards).get(), cards);
+    expect(await db.select(db.memoryReviews).get(), reviews);
+    expect(await repository.active(), isNull);
+    await expectLater(
+      repository.answer(session.row.id, 1, session.targetId, ids.toSet()),
+      throwsStateError,
+    );
+    now = now.add(const Duration(days: 1));
+    expect(
+      (await repository.finish(session.row.id)).row.completedAt,
+      finished.row.completedAt,
+    );
+    expect((await repository.start(ids)).row.id, isNot(session.row.id));
+  });
+
   test(
     'reopens file database with feedback, order and history intact',
     () async {

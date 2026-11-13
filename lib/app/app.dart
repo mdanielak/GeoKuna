@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 
 import '../features/home/home_screen.dart';
 import '../features/home/atlas_screen.dart';
+import '../features/progress/progress_screen.dart';
 import '../features/learning/learning_screen.dart';
 import '../features/learning/capital_setup_screen.dart';
 import '../features/learning/capitals.dart';
+import '../features/learning/flags.dart';
+import '../features/learning/flags_setup_screen.dart';
 
 GoRouter _createRouter() => GoRouter(
   routes: [
@@ -14,12 +17,22 @@ GoRouter _createRouter() => GoRouter(
       path: '/daily',
       builder: (_, _) => const LearningScreen(daily: true),
     ),
+    GoRoute(path: '/progress', builder: (_, _) => const ProgressScreen()),
+    GoRoute(path: '/flags', builder: (_, _) => const FlagsSetupScreen()),
     GoRoute(path: '/atlas', builder: (_, _) => const AtlasScreen()),
     GoRoute(path: '/capitals', builder: (_, _) => const CapitalSetupScreen()),
     GoRoute(
       path: '/learn',
       builder: (_, state) => LearningScreen(
         key: ValueKey(state.uri.toString()),
+        flagDifficulty: state.uri.queryParameters['topic'] == 'flags'
+            ? FlagDifficulty.values
+                      .where(
+                        (d) => d.name == state.uri.queryParameters['level'],
+                      )
+                      .firstOrNull ??
+                  FlagDifficulty.choice
+            : null,
         capitalDifficulty: state.uri.queryParameters['topic'] != 'capitals'
             ? null
             : CapitalDifficulty.values

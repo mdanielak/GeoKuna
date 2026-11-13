@@ -1,9 +1,9 @@
 # Model danych — 0.4
 
-Schemat SQLite w wersji 3. Stabilne identyfikatory państw nie uległy zmianie.
+Schemat SQLite w wersji 4. Stabilne identyfikatory państw nie uległy zmianie.
 
 `sessions`: id (UUID), country_ids (JSON, ustalona kolejność), current_index,
-created_at, completed_at (nullable), topic (`map` / `capitals` / `daily`), difficulty
+created_at, completed_at (nullable), topic (`map` / `capitals` / `flags` / `daily`), difficulty
 (`map` / `choice` / `firstLetter` / `write`), question_data (JSON), content_version.
 
 `attempts`: session_id + question_index (złożony klucz główny), country_id,
@@ -14,7 +14,7 @@ złożoną odpowiedzią tekstową (w średnim trybie zawiera też zadaną liter�
 Zapis odpowiedzi nie przesuwa pytania. Osobna operacja „Dalej” przesuwa
 indeks i kończy sesję po ostatniej odpowiedzi. Restart odtwarza informację zwrotną.
 Tworzenie/wznowienie i zapis odbywają się transakcyjnie. Jedna aktywna sesja
-mapowa oraz po jednej dla każdego poziomu stolic. Rozmiar sesji domyślnie 10.
+mapowa oraz po jednej dla każdego poziomu stolic i flag. Rozmiar sesji domyślnie 10.
 
 `question_data` dla stolic zawiera migawkę faktów, aliasów, pytań, uwag,
 stron źródła i opcji odpowiedzi w ustalonej kolejności. Ocenianie rozpoczętej
@@ -55,3 +55,35 @@ Szczegóły oceny i budżetu: [MEMORY.md](MEMORY.md).
 regions, country_regions; szerszy katalog facts i answer_aliases;
 app_settings. Rozpoznawanie, podpowiedź i samodzielne przypominanie wymagają
 niezależnych kart. Nie usuwać historii przy zmianie treści lub algorytmu.
+
+## Ręczne zakończenie quizu
+
+`completed_at` oznacza zamknięcie sesji, również przed ostatnim pytaniem.
+Operacja `finish(id)` jest transakcyjna i idempotentna. Nie ocenia niewysłanej
+odpowiedzi tekstowej ani pytań bez kliknięcia. Rozpoczęte błędne pytanie mapowe
+zamyka jako błąd w `attempts`, bez ponownej oceny FSRS. Częściowe podsumowanie
+opiera wynik na liczbie zatwierdzonych prób i podaje ją względem rozmiaru serii.
+Zwykłe wyjście Wstecz pozostawia sesję do wznowienia; jawne zakończenie ją zamyka.
+
+## Dostępne ćwiczenie z pomocą
+
+Pomoc nie wymaga osobnej zmiany schematu. `memory_reviews.origin='assisted'` i `applied=false`
+zachowują pochodzenie potwierdzonej próby; `LearningSession.assistedIndices`
+odtwarza oznaczenia przy wznowieniu. Taki wpis nie zmienia stanu karty, liczby
+ocenionych przeglądów ani terminu FSRS. Postępy uwzględniają wyłącznie wpisy
+`applied=true`; historia prób nadal zawiera wybór użytkownika.
+
+## Migracja 3 → 4 i trzy próby mapy
+
+`map_guesses`: session_id + question_index + guess_index jako klucz,
+selected_country_id, correct, assisted, guessed_at. Kliknięcie jest jawną
+odpowiedzią; transakcja pierwszego kliknięcia zapisuje próbę i dziennik FSRS.
+Druga/trzecia próba nie tworzą dodatkowego przeglądu. `attempts` zachowuje wynik
+pytania po trafieniu, trzecim błędzie lub ręcznym zakończeniu rozpoczętego pytania.
+Powtórne wysłanie tego samego indeksu nie konsumuje szansy. Stare próby i sesje
+pozostają zgodne; migracja dodaje tylko tabelę.
+
+`topic=flags`: difficulty choice/firstLetter/write/map. Migawka zawiera nazwę
+państwa, wariant grafiki i SHA, ścieżkę assetu w wersjonowanym katalogu oraz opcje.
+Nowe liczbowe ID FSRS flag są w oddzielnej przestrzeni od istniejących kart;
+liczby i stany starych kart nie są zmieniane.

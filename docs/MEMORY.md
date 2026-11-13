@@ -1,7 +1,8 @@
 # Pamięć Kuny — pierwszy przyrost
 
-Każde z 51 państw ma cztery niezależne umiejętności: mapa, stolica A–D,
-stolica z pierwszą literą oraz samodzielne pisanie. Stabilny klucz to
+Każde z 51 państw ma osiem niezależnych umiejętności: mapa, stolica A–D,
+stolica z pierwszą literą, samodzielne pisanie stolicy oraz flaga → państwo
+w trzech poziomach i flaga → mapa. Stabilny klucz to
 `topic:countryId:difficulty`, np. `capitals:POL:write`. Sukces w A–D nie
 aktualizuje pamięci samodzielnego przypominania.
 
@@ -58,3 +59,29 @@ transakcyjne. Dzisiejsze próby zaczynają historię od bieżącego stanu bez du
 Po jednym ukończonym treningu nie pokazujemy „opanowane na zawsze”. Statystyki
 trwałego zapamiętania, eksport, optymalizacja FSRS i przypomnienia systemowe
 pozostają kolejnymi przyrostami. Dalsze decyzje: [NEXT_STEPS.md](NEXT_STEPS.md).
+
+## Wybór państwa z pomocą i ekran postępów
+
+Nazwana lista w quizie mapowym jest dostępna dla klawiatury i czytników ekranu,
+ale nie mierzy samodzielnej lokalizacji na mapie. Zatwierdzenie zapisuje próbę
+oraz dziennik `origin=assisted`, `applied=false`; nie zmienia stanu FSRS ani
+budżetu nowych. W obrębie pytania późniejsze dotknięcie mapy nie usuwa oznaczenia
+pomocy. Wznowienie i podsumowanie odczytują to oznaczenie z dziennika.
+
+Postępy rozróżniają osiem formatów. „Za mało danych” to brak ocenianego przeglądu,
+„Do powtórki” to zaległy termin lub ostatnia oceniona błędna odpowiedź, a pozostałe
+rozpoczęte karty mają „Ćwiczysz”. Termin przyszły jest pokazany także przy ostatnim
+błędzie. Nie wyliczamy procentu opanowania ani nie zaliczamy pomocy jako dowodu
+wiedzy. „Ćwiczysz” nie oznacza potwierdzonego utrwalenia na miesiące.
+
+## Flagi i bezpośrednie próby mapy
+
+Produkcyjny katalog ma teraz 408 umiejętności: dotychczasowe cztery oraz
+cztery flagowe na państwo. Pierwszy klik mapy jest oceną Good/Again; poprawa
+za drugą/trzecią próbą pozostaje ćwiczeniem. Zapisuje się liczbę prób i końcowe
+trafienie, nie podszywa się nimi pod poprawne pierwsze przypomnienie.
+Po błędzie nie ujawniamy celu do wyczerpania trzech szans; klik w wodę lub zoom
+klastra nie jest odpowiedzią. Sesja wznawia także częściowo rozegrane pytanie.
+Dziś zachowuje budżet trzech nowości i nie powtarza kraju między kategoriami.
+Mapowy wybór z pomocą jest teraz również jawnym kliknięciem i od razu zapisuje
+próbę, nadal bez oceny pamięci. Pozostałe pola pisane wymagają przycisku lub Enter.

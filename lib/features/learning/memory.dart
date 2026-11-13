@@ -41,8 +41,14 @@ class MemoryScheduler {
 
   int _cardId(String id) {
     final parts = id.split(':');
+    if (parts.length != 3 ||
+        !['map', 'capitals', 'flags'].contains(parts[0]) ||
+        !['map', 'choice', 'firstLetter', 'write'].contains(parts[2])) {
+      throw ArgumentError('Nieobsługiwana umiejętność: $id');
+    }
     final country = parts[1].codeUnits.fold(0, (int n, c) => n * 128 + c);
-    return country * 4 +
+    return (parts[0] == 'flags' ? 1000000000 : 0) +
+        country * 4 +
         ['map', 'choice', 'firstLetter', 'write'].indexOf(parts[2]);
   }
 }
@@ -108,7 +114,8 @@ class MemoryStore {
     )..where((c) => c.id.equals(id))).getSingle();
     final fresh = card.state == null;
     final applied =
-        fresh || !attempt.correct || !card.due!.isAfter(attempt.answeredAt);
+        origin != 'assisted' &&
+        (fresh || !attempt.correct || !card.due!.isAfter(attempt.answeredAt));
     ScheduledMemory? result;
     if (applied) {
       result = _scheduler.review(

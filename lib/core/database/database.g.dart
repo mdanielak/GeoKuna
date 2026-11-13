@@ -2456,6 +2456,499 @@ class MemoryMetaCompanion extends UpdateCompanion<MemoryMetaData> {
   }
 }
 
+class $MapGuessesTable extends MapGuesses
+    with TableInfo<$MapGuessesTable, MapGuess> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MapGuessesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _sessionIdMeta = const VerificationMeta(
+    'sessionId',
+  );
+  @override
+  late final GeneratedColumn<String> sessionId = GeneratedColumn<String>(
+    'session_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES sessions (id)',
+    ),
+  );
+  static const VerificationMeta _questionIndexMeta = const VerificationMeta(
+    'questionIndex',
+  );
+  @override
+  late final GeneratedColumn<int> questionIndex = GeneratedColumn<int>(
+    'question_index',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _guessIndexMeta = const VerificationMeta(
+    'guessIndex',
+  );
+  @override
+  late final GeneratedColumn<int> guessIndex = GeneratedColumn<int>(
+    'guess_index',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _selectedCountryIdMeta = const VerificationMeta(
+    'selectedCountryId',
+  );
+  @override
+  late final GeneratedColumn<String> selectedCountryId =
+      GeneratedColumn<String>(
+        'selected_country_id',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _correctMeta = const VerificationMeta(
+    'correct',
+  );
+  @override
+  late final GeneratedColumn<bool> correct = GeneratedColumn<bool>(
+    'correct',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("correct" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _assistedMeta = const VerificationMeta(
+    'assisted',
+  );
+  @override
+  late final GeneratedColumn<bool> assisted = GeneratedColumn<bool>(
+    'assisted',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("assisted" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _guessedAtMeta = const VerificationMeta(
+    'guessedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> guessedAt = GeneratedColumn<DateTime>(
+    'guessed_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    sessionId,
+    questionIndex,
+    guessIndex,
+    selectedCountryId,
+    correct,
+    assisted,
+    guessedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'map_guesses';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<MapGuess> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('session_id')) {
+      context.handle(
+        _sessionIdMeta,
+        sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sessionIdMeta);
+    }
+    if (data.containsKey('question_index')) {
+      context.handle(
+        _questionIndexMeta,
+        questionIndex.isAcceptableOrUnknown(
+          data['question_index']!,
+          _questionIndexMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_questionIndexMeta);
+    }
+    if (data.containsKey('guess_index')) {
+      context.handle(
+        _guessIndexMeta,
+        guessIndex.isAcceptableOrUnknown(data['guess_index']!, _guessIndexMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_guessIndexMeta);
+    }
+    if (data.containsKey('selected_country_id')) {
+      context.handle(
+        _selectedCountryIdMeta,
+        selectedCountryId.isAcceptableOrUnknown(
+          data['selected_country_id']!,
+          _selectedCountryIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_selectedCountryIdMeta);
+    }
+    if (data.containsKey('correct')) {
+      context.handle(
+        _correctMeta,
+        correct.isAcceptableOrUnknown(data['correct']!, _correctMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_correctMeta);
+    }
+    if (data.containsKey('assisted')) {
+      context.handle(
+        _assistedMeta,
+        assisted.isAcceptableOrUnknown(data['assisted']!, _assistedMeta),
+      );
+    }
+    if (data.containsKey('guessed_at')) {
+      context.handle(
+        _guessedAtMeta,
+        guessedAt.isAcceptableOrUnknown(data['guessed_at']!, _guessedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_guessedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {
+    sessionId,
+    questionIndex,
+    guessIndex,
+  };
+  @override
+  MapGuess map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return MapGuess(
+      sessionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}session_id'],
+      )!,
+      questionIndex: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}question_index'],
+      )!,
+      guessIndex: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}guess_index'],
+      )!,
+      selectedCountryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}selected_country_id'],
+      )!,
+      correct: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}correct'],
+      )!,
+      assisted: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}assisted'],
+      )!,
+      guessedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}guessed_at'],
+      )!,
+    );
+  }
+
+  @override
+  $MapGuessesTable createAlias(String alias) {
+    return $MapGuessesTable(attachedDatabase, alias);
+  }
+}
+
+class MapGuess extends DataClass implements Insertable<MapGuess> {
+  final String sessionId;
+  final int questionIndex;
+  final int guessIndex;
+  final String selectedCountryId;
+  final bool correct;
+  final bool assisted;
+  final DateTime guessedAt;
+  const MapGuess({
+    required this.sessionId,
+    required this.questionIndex,
+    required this.guessIndex,
+    required this.selectedCountryId,
+    required this.correct,
+    required this.assisted,
+    required this.guessedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['session_id'] = Variable<String>(sessionId);
+    map['question_index'] = Variable<int>(questionIndex);
+    map['guess_index'] = Variable<int>(guessIndex);
+    map['selected_country_id'] = Variable<String>(selectedCountryId);
+    map['correct'] = Variable<bool>(correct);
+    map['assisted'] = Variable<bool>(assisted);
+    map['guessed_at'] = Variable<DateTime>(guessedAt);
+    return map;
+  }
+
+  MapGuessesCompanion toCompanion(bool nullToAbsent) {
+    return MapGuessesCompanion(
+      sessionId: Value(sessionId),
+      questionIndex: Value(questionIndex),
+      guessIndex: Value(guessIndex),
+      selectedCountryId: Value(selectedCountryId),
+      correct: Value(correct),
+      assisted: Value(assisted),
+      guessedAt: Value(guessedAt),
+    );
+  }
+
+  factory MapGuess.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return MapGuess(
+      sessionId: serializer.fromJson<String>(json['sessionId']),
+      questionIndex: serializer.fromJson<int>(json['questionIndex']),
+      guessIndex: serializer.fromJson<int>(json['guessIndex']),
+      selectedCountryId: serializer.fromJson<String>(json['selectedCountryId']),
+      correct: serializer.fromJson<bool>(json['correct']),
+      assisted: serializer.fromJson<bool>(json['assisted']),
+      guessedAt: serializer.fromJson<DateTime>(json['guessedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'sessionId': serializer.toJson<String>(sessionId),
+      'questionIndex': serializer.toJson<int>(questionIndex),
+      'guessIndex': serializer.toJson<int>(guessIndex),
+      'selectedCountryId': serializer.toJson<String>(selectedCountryId),
+      'correct': serializer.toJson<bool>(correct),
+      'assisted': serializer.toJson<bool>(assisted),
+      'guessedAt': serializer.toJson<DateTime>(guessedAt),
+    };
+  }
+
+  MapGuess copyWith({
+    String? sessionId,
+    int? questionIndex,
+    int? guessIndex,
+    String? selectedCountryId,
+    bool? correct,
+    bool? assisted,
+    DateTime? guessedAt,
+  }) => MapGuess(
+    sessionId: sessionId ?? this.sessionId,
+    questionIndex: questionIndex ?? this.questionIndex,
+    guessIndex: guessIndex ?? this.guessIndex,
+    selectedCountryId: selectedCountryId ?? this.selectedCountryId,
+    correct: correct ?? this.correct,
+    assisted: assisted ?? this.assisted,
+    guessedAt: guessedAt ?? this.guessedAt,
+  );
+  MapGuess copyWithCompanion(MapGuessesCompanion data) {
+    return MapGuess(
+      sessionId: data.sessionId.present ? data.sessionId.value : this.sessionId,
+      questionIndex: data.questionIndex.present
+          ? data.questionIndex.value
+          : this.questionIndex,
+      guessIndex: data.guessIndex.present
+          ? data.guessIndex.value
+          : this.guessIndex,
+      selectedCountryId: data.selectedCountryId.present
+          ? data.selectedCountryId.value
+          : this.selectedCountryId,
+      correct: data.correct.present ? data.correct.value : this.correct,
+      assisted: data.assisted.present ? data.assisted.value : this.assisted,
+      guessedAt: data.guessedAt.present ? data.guessedAt.value : this.guessedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MapGuess(')
+          ..write('sessionId: $sessionId, ')
+          ..write('questionIndex: $questionIndex, ')
+          ..write('guessIndex: $guessIndex, ')
+          ..write('selectedCountryId: $selectedCountryId, ')
+          ..write('correct: $correct, ')
+          ..write('assisted: $assisted, ')
+          ..write('guessedAt: $guessedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    sessionId,
+    questionIndex,
+    guessIndex,
+    selectedCountryId,
+    correct,
+    assisted,
+    guessedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MapGuess &&
+          other.sessionId == this.sessionId &&
+          other.questionIndex == this.questionIndex &&
+          other.guessIndex == this.guessIndex &&
+          other.selectedCountryId == this.selectedCountryId &&
+          other.correct == this.correct &&
+          other.assisted == this.assisted &&
+          other.guessedAt == this.guessedAt);
+}
+
+class MapGuessesCompanion extends UpdateCompanion<MapGuess> {
+  final Value<String> sessionId;
+  final Value<int> questionIndex;
+  final Value<int> guessIndex;
+  final Value<String> selectedCountryId;
+  final Value<bool> correct;
+  final Value<bool> assisted;
+  final Value<DateTime> guessedAt;
+  final Value<int> rowid;
+  const MapGuessesCompanion({
+    this.sessionId = const Value.absent(),
+    this.questionIndex = const Value.absent(),
+    this.guessIndex = const Value.absent(),
+    this.selectedCountryId = const Value.absent(),
+    this.correct = const Value.absent(),
+    this.assisted = const Value.absent(),
+    this.guessedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  MapGuessesCompanion.insert({
+    required String sessionId,
+    required int questionIndex,
+    required int guessIndex,
+    required String selectedCountryId,
+    required bool correct,
+    this.assisted = const Value.absent(),
+    required DateTime guessedAt,
+    this.rowid = const Value.absent(),
+  }) : sessionId = Value(sessionId),
+       questionIndex = Value(questionIndex),
+       guessIndex = Value(guessIndex),
+       selectedCountryId = Value(selectedCountryId),
+       correct = Value(correct),
+       guessedAt = Value(guessedAt);
+  static Insertable<MapGuess> custom({
+    Expression<String>? sessionId,
+    Expression<int>? questionIndex,
+    Expression<int>? guessIndex,
+    Expression<String>? selectedCountryId,
+    Expression<bool>? correct,
+    Expression<bool>? assisted,
+    Expression<DateTime>? guessedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (sessionId != null) 'session_id': sessionId,
+      if (questionIndex != null) 'question_index': questionIndex,
+      if (guessIndex != null) 'guess_index': guessIndex,
+      if (selectedCountryId != null) 'selected_country_id': selectedCountryId,
+      if (correct != null) 'correct': correct,
+      if (assisted != null) 'assisted': assisted,
+      if (guessedAt != null) 'guessed_at': guessedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  MapGuessesCompanion copyWith({
+    Value<String>? sessionId,
+    Value<int>? questionIndex,
+    Value<int>? guessIndex,
+    Value<String>? selectedCountryId,
+    Value<bool>? correct,
+    Value<bool>? assisted,
+    Value<DateTime>? guessedAt,
+    Value<int>? rowid,
+  }) {
+    return MapGuessesCompanion(
+      sessionId: sessionId ?? this.sessionId,
+      questionIndex: questionIndex ?? this.questionIndex,
+      guessIndex: guessIndex ?? this.guessIndex,
+      selectedCountryId: selectedCountryId ?? this.selectedCountryId,
+      correct: correct ?? this.correct,
+      assisted: assisted ?? this.assisted,
+      guessedAt: guessedAt ?? this.guessedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (sessionId.present) {
+      map['session_id'] = Variable<String>(sessionId.value);
+    }
+    if (questionIndex.present) {
+      map['question_index'] = Variable<int>(questionIndex.value);
+    }
+    if (guessIndex.present) {
+      map['guess_index'] = Variable<int>(guessIndex.value);
+    }
+    if (selectedCountryId.present) {
+      map['selected_country_id'] = Variable<String>(selectedCountryId.value);
+    }
+    if (correct.present) {
+      map['correct'] = Variable<bool>(correct.value);
+    }
+    if (assisted.present) {
+      map['assisted'] = Variable<bool>(assisted.value);
+    }
+    if (guessedAt.present) {
+      map['guessed_at'] = Variable<DateTime>(guessedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MapGuessesCompanion(')
+          ..write('sessionId: $sessionId, ')
+          ..write('questionIndex: $questionIndex, ')
+          ..write('guessIndex: $guessIndex, ')
+          ..write('selectedCountryId: $selectedCountryId, ')
+          ..write('correct: $correct, ')
+          ..write('assisted: $assisted, ')
+          ..write('guessedAt: $guessedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2464,6 +2957,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $MemoryCardsTable memoryCards = $MemoryCardsTable(this);
   late final $MemoryReviewsTable memoryReviews = $MemoryReviewsTable(this);
   late final $MemoryMetaTable memoryMeta = $MemoryMetaTable(this);
+  late final $MapGuessesTable mapGuesses = $MapGuessesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2474,6 +2968,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     memoryCards,
     memoryReviews,
     memoryMeta,
+    mapGuesses,
   ];
 }
 
@@ -2538,6 +3033,24 @@ final class $$SessionsTableReferences
     ).filter((f) => f.sessionId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_memoryReviewsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$MapGuessesTable, List<MapGuess>>
+  _mapGuessesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.mapGuesses,
+    aliasName: 'sessions__id__map_guesses__session_id',
+  );
+
+  $$MapGuessesTableProcessedTableManager get mapGuessesRefs {
+    final manager = $$MapGuessesTableTableManager(
+      $_db,
+      $_db.mapGuesses,
+    ).filter((f) => f.sessionId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_mapGuessesRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -2639,6 +3152,31 @@ class $$SessionsTableFilterComposer
           }) => $$MemoryReviewsTableFilterComposer(
             $db: $db,
             $table: $db.memoryReviews,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> mapGuessesRefs(
+    Expression<bool> Function($$MapGuessesTableFilterComposer f) f,
+  ) {
+    final $$MapGuessesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.mapGuesses,
+      getReferencedColumn: (t) => t.sessionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$MapGuessesTableFilterComposer(
+            $db: $db,
+            $table: $db.mapGuesses,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -2801,6 +3339,31 @@ class $$SessionsTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> mapGuessesRefs<T extends Object>(
+    Expression<T> Function($$MapGuessesTableAnnotationComposer a) f,
+  ) {
+    final $$MapGuessesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.mapGuesses,
+      getReferencedColumn: (t) => t.sessionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$MapGuessesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.mapGuesses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$SessionsTableTableManager
@@ -2816,7 +3379,11 @@ class $$SessionsTableTableManager
           $$SessionsTableUpdateCompanionBuilder,
           (Session, $$SessionsTableReferences),
           Session,
-          PrefetchHooks Function({bool attemptsRefs, bool memoryReviewsRefs})
+          PrefetchHooks Function({
+            bool attemptsRefs,
+            bool memoryReviewsRefs,
+            bool mapGuessesRefs,
+          })
         > {
   $$SessionsTableTableManager(_$AppDatabase db, $SessionsTable table)
     : super(
@@ -2886,12 +3453,17 @@ class $$SessionsTableTableManager
               )
               .toList(),
           prefetchHooksCallback:
-              ({attemptsRefs = false, memoryReviewsRefs = false}) {
+              ({
+                attemptsRefs = false,
+                memoryReviewsRefs = false,
+                mapGuessesRefs = false,
+              }) {
                 return PrefetchHooks(
                   db: db,
                   explicitlyWatchedTables: [
                     if (attemptsRefs) db.attempts,
                     if (memoryReviewsRefs) db.memoryReviews,
+                    if (mapGuessesRefs) db.mapGuesses,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -2936,6 +3508,26 @@ class $$SessionsTableTableManager
                           referencedColumn: 'session_id',
                           typedResults: items,
                         ),
+                      if (mapGuessesRefs)
+                        await $_getPrefetchedDataByColumns<
+                          Session,
+                          $SessionsTable,
+                          MapGuess,
+                          $MapGuessesTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$SessionsTableReferences
+                              ._mapGuessesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$SessionsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).mapGuessesRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'session_id',
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -2956,7 +3548,11 @@ typedef $$SessionsTableProcessedTableManager =
       $$SessionsTableUpdateCompanionBuilder,
       (Session, $$SessionsTableReferences),
       Session,
-      PrefetchHooks Function({bool attemptsRefs, bool memoryReviewsRefs})
+      PrefetchHooks Function({
+        bool attemptsRefs,
+        bool memoryReviewsRefs,
+        bool mapGuessesRefs,
+      })
     >;
 typedef $$AttemptsTableCreateCompanionBuilder = AttemptsCompanion Function({
   required String sessionId,
@@ -4350,6 +4946,363 @@ typedef $$MemoryMetaTableProcessedTableManager =
       MemoryMetaData,
       PrefetchHooks Function()
     >;
+typedef $$MapGuessesTableCreateCompanionBuilder = MapGuessesCompanion Function({
+  required String sessionId,
+  required int questionIndex,
+  required int guessIndex,
+  required String selectedCountryId,
+  required bool correct,
+  Value<bool> assisted,
+  required DateTime guessedAt,
+  Value<int> rowid,
+});
+typedef $$MapGuessesTableUpdateCompanionBuilder = MapGuessesCompanion Function({
+  Value<String> sessionId,
+  Value<int> questionIndex,
+  Value<int> guessIndex,
+  Value<String> selectedCountryId,
+  Value<bool> correct,
+  Value<bool> assisted,
+  Value<DateTime> guessedAt,
+  Value<int> rowid,
+});
+
+final class $$MapGuessesTableReferences
+    extends BaseReferences<_$AppDatabase, $MapGuessesTable, MapGuess> {
+  $$MapGuessesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $SessionsTable _sessionIdTable(_$AppDatabase db) =>
+      db.sessions.createAlias('map_guesses__session_id__sessions__id');
+
+  $$SessionsTableProcessedTableManager get sessionId {
+    final $_column = $_itemColumn<String>('session_id')!;
+
+    final manager = $$SessionsTableTableManager(
+      $_db,
+      $_db.sessions,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_sessionIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$MapGuessesTableFilterComposer
+    extends Composer<_$AppDatabase, $MapGuessesTable> {
+  $$MapGuessesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get questionIndex => $composableBuilder(
+    column: $table.questionIndex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get guessIndex => $composableBuilder(
+    column: $table.guessIndex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get selectedCountryId => $composableBuilder(
+    column: $table.selectedCountryId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get correct => $composableBuilder(
+    column: $table.correct,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get assisted => $composableBuilder(
+    column: $table.assisted,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get guessedAt => $composableBuilder(
+    column: $table.guessedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$SessionsTableFilterComposer get sessionId {
+    final $$SessionsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sessionId,
+      referencedTable: $db.sessions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$SessionsTableFilterComposer(
+            $db: $db,
+            $table: $db.sessions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$MapGuessesTableOrderingComposer
+    extends Composer<_$AppDatabase, $MapGuessesTable> {
+  $$MapGuessesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get questionIndex => $composableBuilder(
+    column: $table.questionIndex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get guessIndex => $composableBuilder(
+    column: $table.guessIndex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get selectedCountryId => $composableBuilder(
+    column: $table.selectedCountryId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get correct => $composableBuilder(
+    column: $table.correct,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get assisted => $composableBuilder(
+    column: $table.assisted,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get guessedAt => $composableBuilder(
+    column: $table.guessedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$SessionsTableOrderingComposer get sessionId {
+    final $$SessionsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sessionId,
+      referencedTable: $db.sessions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$SessionsTableOrderingComposer(
+            $db: $db,
+            $table: $db.sessions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$MapGuessesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $MapGuessesTable> {
+  $$MapGuessesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get questionIndex => $composableBuilder(
+    column: $table.questionIndex,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get guessIndex => $composableBuilder(
+    column: $table.guessIndex,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get selectedCountryId => $composableBuilder(
+    column: $table.selectedCountryId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get correct =>
+      $composableBuilder(column: $table.correct, builder: (column) => column);
+
+  GeneratedColumn<bool> get assisted =>
+      $composableBuilder(column: $table.assisted, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get guessedAt =>
+      $composableBuilder(column: $table.guessedAt, builder: (column) => column);
+
+  $$SessionsTableAnnotationComposer get sessionId {
+    final $$SessionsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.sessionId,
+      referencedTable: $db.sessions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$SessionsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.sessions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$MapGuessesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $MapGuessesTable,
+          MapGuess,
+          $$MapGuessesTableFilterComposer,
+          $$MapGuessesTableOrderingComposer,
+          $$MapGuessesTableAnnotationComposer,
+          $$MapGuessesTableCreateCompanionBuilder,
+          $$MapGuessesTableUpdateCompanionBuilder,
+          (MapGuess, $$MapGuessesTableReferences),
+          MapGuess,
+          PrefetchHooks Function({bool sessionId})
+        > {
+  $$MapGuessesTableTableManager(_$AppDatabase db, $MapGuessesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$MapGuessesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$MapGuessesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$MapGuessesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> sessionId = const Value.absent(),
+                Value<int> questionIndex = const Value.absent(),
+                Value<int> guessIndex = const Value.absent(),
+                Value<String> selectedCountryId = const Value.absent(),
+                Value<bool> correct = const Value.absent(),
+                Value<bool> assisted = const Value.absent(),
+                Value<DateTime> guessedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => MapGuessesCompanion(
+                sessionId: sessionId,
+                questionIndex: questionIndex,
+                guessIndex: guessIndex,
+                selectedCountryId: selectedCountryId,
+                correct: correct,
+                assisted: assisted,
+                guessedAt: guessedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String sessionId,
+                required int questionIndex,
+                required int guessIndex,
+                required String selectedCountryId,
+                required bool correct,
+                Value<bool> assisted = const Value.absent(),
+                required DateTime guessedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => MapGuessesCompanion.insert(
+                sessionId: sessionId,
+                questionIndex: questionIndex,
+                guessIndex: guessIndex,
+                selectedCountryId: selectedCountryId,
+                correct: correct,
+                assisted: assisted,
+                guessedAt: guessedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$MapGuessesTable, MapGuess>(table),
+                  $$MapGuessesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({sessionId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (sessionId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.sessionId,
+                        referencedTable: $$MapGuessesTableReferences
+                            ._sessionIdTable(db),
+                        referencedColumn: $$MapGuessesTableReferences
+                            ._sessionIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$MapGuessesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $MapGuessesTable,
+      MapGuess,
+      $$MapGuessesTableFilterComposer,
+      $$MapGuessesTableOrderingComposer,
+      $$MapGuessesTableAnnotationComposer,
+      $$MapGuessesTableCreateCompanionBuilder,
+      $$MapGuessesTableUpdateCompanionBuilder,
+      (MapGuess, $$MapGuessesTableReferences),
+      MapGuess,
+      PrefetchHooks Function({bool sessionId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -4364,4 +5317,6 @@ class $AppDatabaseManager {
       $$MemoryReviewsTableTableManager(_db, _db.memoryReviews);
   $$MemoryMetaTableTableManager get memoryMeta =>
       $$MemoryMetaTableTableManager(_db, _db.memoryMeta);
+  $$MapGuessesTableTableManager get mapGuesses =>
+      $$MapGuessesTableTableManager(_db, _db.mapGuesses);
 }

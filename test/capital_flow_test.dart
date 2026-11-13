@@ -11,6 +11,7 @@ import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/flags.dart';
 
 void main() {
   for (final difficulty in CapitalDifficulty.values) {
@@ -22,9 +23,13 @@ void main() {
         addTearDown(tester.view.resetPhysicalSize);
         addTearDown(tester.view.resetDevicePixelRatio);
         final data = (await tester.runAsync(
-          () async => (await Catalog.load(), await CapitalCatalog.load()),
+          () async => (
+            await Catalog.load(),
+            await CapitalCatalog.load(),
+            await FlagCatalog.load(),
+          ),
         ))!;
-        final (catalog, capitals) = data;
+        final (catalog, capitals, flags) = data;
         final question = capitals.questions(['POL'], Random(3)).single;
         final db = AppDatabase(NativeDatabase.memory());
         addTearDown(() async {
@@ -50,6 +55,7 @@ void main() {
               databaseProvider.overrideWithValue(db),
               catalogProvider.overrideWith((ref) async => catalog),
               capitalsProvider.overrideWith((ref) async => capitals),
+              flagsProvider.overrideWith((ref) async => flags),
             ],
             child: const GeoKunaApp(),
           ),

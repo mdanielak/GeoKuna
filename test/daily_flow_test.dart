@@ -10,6 +10,7 @@ import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/flags.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -21,7 +22,11 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     final data = (await tester.runAsync(
-      () async => (await Catalog.load(), await CapitalCatalog.load()),
+      () async => (
+        await Catalog.load(),
+        await CapitalCatalog.load(),
+        await FlagCatalog.load(),
+      ),
     ))!;
     final db = AppDatabase(NativeDatabase.memory());
     addTearDown(() async {
@@ -34,6 +39,7 @@ void main() {
           databaseProvider.overrideWithValue(db),
           catalogProvider.overrideWith((ref) async => data.$1),
           capitalsProvider.overrideWith((ref) async => data.$2),
+          flagsProvider.overrideWith((ref) async => data.$3),
         ],
         child: const GeoKunaApp(),
       ),
@@ -59,7 +65,11 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     final data = (await tester.runAsync(
-      () async => (await Catalog.load(), await CapitalCatalog.load()),
+      () async => (
+        await Catalog.load(),
+        await CapitalCatalog.load(),
+        await FlagCatalog.load(),
+      ),
     ))!;
     final db = AppDatabase(NativeDatabase.memory());
     addTearDown(() async {
@@ -72,6 +82,7 @@ void main() {
           databaseProvider.overrideWithValue(db),
           catalogProvider.overrideWith((ref) async => data.$1),
           capitalsProvider.overrideWith((ref) async => data.$2),
+          flagsProvider.overrideWith((ref) async => data.$3),
         ],
         child: const GeoKunaApp(),
       ),
@@ -109,7 +120,11 @@ void main() {
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
       final data = (await tester.runAsync(
-        () async => (await Catalog.load(), await CapitalCatalog.load()),
+        () async => (
+          await Catalog.load(),
+          await CapitalCatalog.load(),
+          await FlagCatalog.load(),
+        ),
       ))!;
       final question = data.$2.questions(['POL'], Random(3)).single;
       final db = AppDatabase(NativeDatabase.memory());
@@ -151,6 +166,7 @@ void main() {
             databaseProvider.overrideWithValue(db),
             catalogProvider.overrideWith((ref) async => data.$1),
             capitalsProvider.overrideWith((ref) async => data.$2),
+            flagsProvider.overrideWith((ref) async => data.$3),
           ],
           child: const GeoKunaApp(),
         ),

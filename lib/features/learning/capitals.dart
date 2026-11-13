@@ -110,11 +110,18 @@ class AnswerEvaluation {
 }
 
 AnswerEvaluation evaluateCapitalAnswer(String input, CapitalFact fact) {
+  return evaluateTextAnswer(input, [fact.name, ...fact.aliases]);
+}
+
+AnswerEvaluation evaluateTextAnswer(
+  String input,
+  List<String> acceptedAnswers,
+) {
   final answer = normalizeAnswer(input);
   if (answer.isEmpty || answer.length > 100) {
     return const AnswerEvaluation(false);
   }
-  final accepted = [fact.name, ...fact.aliases].map(normalizeAnswer).toList();
+  final accepted = acceptedAnswers.map(normalizeAnswer).toList();
   if (accepted.contains(answer)) return const AnswerEvaluation(true);
   final typo = accepted.any((expected) => _editDistance(answer, expected) == 1);
   return AnswerEvaluation(typo, typoAccepted: typo);

@@ -1,17 +1,22 @@
 # GeoKuna
 
 **Kuna wie, gdzie!** Aplikacja Android do nauki geografii, po polsku i offline.
-Aktualna wersja 0.4: mapa i stolice 51 państw w szerokim zakresie Europy,
+Aktualny zakres: mapa, stolice i flagi 51 państw w szerokim zakresie Europy,
 trwały zapis sesji w SQLite i kuna z globusem w nagłówku.
 Stolice mają trzy poziomy: odpowiedzi A–D, pierwsza litera z dopisywaniem
 reszty oraz samodzielne wpisanie całej nazwy. Tryby pisane dopuszczają jedną
 literówkę, a poprawna pisownia jest wyświetlana po zatwierdzeniu.
 Pytania mapowe zaczynają się od łagodnego przybliżenia regionu. Mapa wypełnia
-obszar quizu, a przycisk „Potwierdź” pojawia się po zaznaczeniu państwa.
+obszar quizu. Kliknięcie jest odpowiedzią; masz do trzech różnych prób,
+a rozwiązanie pojawia się po trafieniu lub trzecim błędzie.
 W stolicach najważniejsza jest duża nazwa państwa i krótkie pytanie „Stolica?”.
-Powtórki planuje lokalnie FSRS: osobne karty obejmują mapę oraz trzy formaty stolic. Dzisiejsza wyprawa wybiera najpierw zaległe karty, a ręczny trening pozostaje dostępny.
+Powtórki planuje lokalnie FSRS: 408 osobnych kart obejmuje mapę, trzy formaty stolic i cztery formaty flag. Dzisiejsza wyprawa wybiera najpierw zaległe karty, a ręczny trening pozostaje dostępny.
 
 Repozytorium prywatne: [mdanielak/GeoKuna](https://github.com/mdanielak/GeoKuna).
+
+Atlas ma wyszukiwarkę i listę państw. Ekran Postępy pokazuje osobno osiem
+umiejętności; mapa obsługuje klawiaturę oraz jawną pomoc z listy, bez oceny
+pamięci lokalizacji. Błąd karty powtórek nie ukrywa pozostałej nawigacji.
 
 ## Uruchomienie
 
@@ -46,6 +51,7 @@ flutter analyze
 flutter test
 python3 tools/data_pipeline/build_map.py --check
 python3 tools/data_pipeline/build_capitals.py --check
+python3 tools/data_pipeline/build_flags.py --check
 flutter build web --no-web-resources-cdn
 ```
 
@@ -53,6 +59,14 @@ Generowany `database.g.dart` należy do repozytorium. Po zmianie tabel ponów ge
 `flutter test` sprawdza SQLite w pamięci i na dysku, utrwalenie odpowiedzi po zamknięciu
 bazy, migrację ze starego schematu, trzy tryby stolic, literówki, sesję 10 pytań
 oraz przepływy ekranów na rozmiarze telefonu.
+
+## Flagi i trzy próby mapy
+
+51 lokalnych flag: A–D, pierwsza litera, wpisanie nazwy oraz flaga → mapa.
+Każdy format ma osobny FSRS; Dziś może mieszać 408 umiejętności. Pierwsza
+próba mapowa stanowi ocenę, następne służą ćwiczeniu. Feedback: błąd czerwony,
+rozwiązanie zielone, zaakceptowana literówka żółta — zawsze z tekstem i ikoną.
+Źródła i odtwarzanie grafik: [FLAGS.md](docs/FLAGS.md).
 
 ## Dane mapowe
 
@@ -92,3 +106,10 @@ prompty zachowano w [katalogu wariantów](output/imagegen/kuna-options/PROMPTS.m
 - [Przegląd kodu i ograniczenia](docs/CODE_REVIEW.md)
 
 Dalsze prace i odłożoną weryfikację na fizycznym Androidzie opisują [kolejne kroki](docs/NEXT_STEPS.md).
+
+## Flagi Europy
+
+Flaga → państwo: A–D, pierwsza litera lub cała nazwa. Flaga → mapa:
+trzy bezpośrednie próby. 51 grafik jest dostarczanych lokalnie i zachowuje
+proporcje. Każdy format ma osobny postęp FSRS. Źródła i odtwarzanie paczki:
+[FLAGS.md](docs/FLAGS.md).

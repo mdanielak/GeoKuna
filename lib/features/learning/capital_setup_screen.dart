@@ -76,9 +76,14 @@ class _CapitalSetupScreenState extends ConsumerState<CapitalSetupScreen> {
                           ),
                           const SizedBox(height: 20),
                           const Text(
-                            'Przy wpisywaniu akceptujemy jedną literówkę: zamianę, pominięcie, '
-                            'dodanie litery lub przestawienie dwóch sąsiednich liter. '
-                            'Wielkość liter i znaki diakrytyczne nie wpływają na wynik.',
+                            'W odpowiedziach pisanych dopuszczamy jedną literówkę; wielkość liter i polskie znaki nie zmieniają wyniku.',
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: _showAnswerRules,
+                              child: const Text('Jak sprawdzamy odpowiedzi?'),
+                            ),
                           ),
                           const SizedBox(height: 20),
                           if (pending != null)
@@ -110,5 +115,21 @@ class _CapitalSetupScreenState extends ConsumerState<CapitalSetupScreen> {
                 },
               ),
         ),
+  );
+
+  Future<void> _showAnswerRules() => showDialog<void>(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      title: const Text('Jak sprawdzamy odpowiedzi?'),
+      content: const Text(
+        'Przy wpisywaniu akceptujemy jedną literówkę: zamianę, pominięcie, dodanie litery lub przestawienie dwóch sąsiednich liter. Wielkość liter i znaki diakrytyczne nie wpływają na wynik.',
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(),
+          child: const Text('Rozumiem'),
+        ),
+      ],
+    ),
   );
 }

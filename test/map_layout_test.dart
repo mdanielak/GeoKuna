@@ -64,14 +64,15 @@ void main() {
     expect(MapCamera.of(tester.element(layer)).zoom, greaterThan(initialZoom));
     expect(find.text('Potwierdź'), findsNothing);
     expect(await db.select(db.attempts).get(), isEmpty);
-    for (var i = 0; i < 4 && find.text('Potwierdź').evaluate().isEmpty; i++) {
+    for (
+      var i = 0;
+      i < 4 && (await db.select(db.attempts).get()).isEmpty;
+      i++
+    ) {
       await tester.tapAt(tester.getCenter(marker));
-      await tester.pump(const Duration(milliseconds: 400));
+      await tester.pumpAndSettle();
     }
-    expect(find.text('Potwierdź'), findsOneWidget);
-    expect(await db.select(db.attempts).get(), isEmpty);
-    await tester.tap(find.text('Potwierdź'));
-    await tester.pumpAndSettle();
+    expect(find.text('Potwierdź'), findsNothing);
     expect(await db.select(db.attempts).get(), hasLength(1));
     expect(tester.takeException(), isNull);
   });

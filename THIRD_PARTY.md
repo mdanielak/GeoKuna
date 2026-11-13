@@ -42,3 +42,7 @@ dołączane przez Flutter do zbudowanej aplikacji.
 
 FSRS: pakiet Dart `fsrs` 2.0.1, MIT, Open Spaced Repetition.
 https://github.com/open-spaced-repetition/dart-fsrs
+
+Flagi: hampusborgos/country-flags, commit c09927e63705529bbf59ca6684cd9b23225dddad.
+Deklaracja public domain w przypiętym README; źródłowe SVG i manifest w repo.
+Szczegóły: docs/FLAGS.md.

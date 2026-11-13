@@ -5,7 +5,10 @@ FSRS, bazy, dostępności i kosztu odświeżania. Nie jest to dowód poprawnośc
 całego produktu. Równolegle trwały zmiany UI; numery wierszy odnoszą się do
 stanu podczas przeglądu. Kontrolę wizualną Chrome prowadzi osobno Luna/Sol.
 
-## Ustalenia według priorytetu
+## Historyczne ustalenia według priorytetu
+
+Stan po poprawkach znajduje się w końcowych sekcjach. Numery wierszy poniżej
+są historyczne i nie wskazują aktualnych lokalizacji kodu.
 
 ### Wysoki — mapa nie ma równoważnej obsługi czytnikiem ekranu
 
@@ -89,3 +92,41 @@ W `lib/app/app.dart` nadano klucz zależny od URI, aby zmiana formatu tworzyła
 nowy stan ekranu i wznawiała właściwą sesję z repozytorium. Test regresji
 `test/learning_route_test.dart` najpierw odtworzył błąd, następnie sprawdza
 przejścia pisanie → mapa → A–D bez zapisywania jakiejkolwiek odpowiedzi.
+
+## Korekta mapy podczas testu zakończenia quizu
+
+Chrome debug zgłosił `Infinite loop going beyond 30` z
+`flutter_map` 8.3.2 (`FeatureLayerUtils.workAcrossWorlds`), a następnie błędy
+MouseTracker. Na ekranie zostały znaczniki bez poligonów. Ustawienie mapy
+regionalnej na pojedynczy świat Mercatora (`replicatesWorldLongitude=false`)
+omija powtarzanie kopii regionu, zachowując dotychczasową projekcję. Nie
+modyfikowano cache pakietu, zależności ani globalnej konfiguracji.
+
+Mechanizm zapętlonego powielania potwierdza log i kod biblioteki; przyczyny
+różnicy pomiędzy debug i wcześniejszym release nie rozstrzygnięto. Przed
+prawdziwą mapą świata i geometrią przekraczającą południk 180° trzeba ponownie
+ocenić strategię powielania i kadrowania. Regionalne obejście nie zastępuje
+rozwiązania tego przyszłego wymagania.
+
+## Aktualizacja po wdrożeniu rekomendacji UX
+
+Zależność całej nawigacji od Dziś usunięto: stan async dotyczy tylko karty.
+Dostępne wejście do mapy uzupełniono o klawiaturę oraz nazwaną listę jako pomoc,
+która nie aktualizuje FSRS. Nie oznacza to pełnej dostępności poligonów ani
+równoważnego testu przestrzennego dla czytnika ekranu; potrzebne są późniejsze
+próby na TalkBack. Ograniczenie migawki mapy pozostaje otwarte. Zapewnianie kart zmieniono
+na zbiorczy zapis opisany poniżej.
+
+## Stan po przyroście flag i trzech prób mapy
+
+- Produkcyjny katalog zawiera 408 kart. Zapewnianie kart korzysta z jednego
+  `db.batch` z `insertAll`/`insertOrIgnore`, zamiast kolejnych wywołań async
+  dla każdej karty. Nie jest to pomiar wydajności na Androidzie.
+- `map_guesses` przechowuje do trzech różnych wyborów i odtwarza częściowe
+  pytanie. Pierwszy wybór zapisuje ocenę FSRS, kolejne jej nie nadpisują.
+  Wynik końcowy jest osobnym wpisem `attempts`; migracja v3 → v4 zachowuje dane.
+- Flagi mają własne ID kart i migawki; testy sprawdzają brak kolizji
+  z dotychczasowymi ID oraz zachowanie rozdzielności formatów.
+- Wyniki testów, kontroli paczek i ograniczenia runtime: [STATUS.md](STATUS.md).
+  Nadal otwarte: wersjonowanie geometrii aktywnej sesji, pomiary na telefonie,
+  TalkBack, eksport postępu oraz długoterminowa obserwacja harmonogramu.

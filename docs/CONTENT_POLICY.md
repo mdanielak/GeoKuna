@@ -1,6 +1,7 @@
-# Polityka treści — Europa 0.2
+# Polityka treści — Europa
 
-Paczka dotyczy lokalizacji, a nie faktów encyklopedycznych. Źródło geometrii:
+Mapa i katalog lokalizacji mają wersję 0.2; stolice i flagi są osobnymi
+paczkami z własnymi wersjami i manifestami. Źródło geometrii:
 [Natural Earth v5.1.2](https://github.com/nvkelso/natural-earth-vector/tree/v5.1.2/geojson),
 `ne_50m_admin_0_countries.geojson`, [domena publiczna](https://www.naturalearthdata.com/about/terms-of-use/).
 Import sprawdza przypięte SHA-256. Manifest zawiera sumy wyników. `--check` działa offline.
@@ -53,7 +54,7 @@ wojskowej. Kolejna wersja źródła wymaga ponownej kontroli tych przypisań.
 
 ## Kolejne kategorie
 
-Przed dodaniem stolic, walut i języków: zebrać źródła pierwotne, daty
+Przed dodaniem walut i języków: zebrać źródła pierwotne, daty
 weryfikacji, warianty nazw, wiele wartości i zakres ich obowiązywania.
 Wikidata może być źródłem importu, ale nie automatycznym zatwierdzeniem.
 Stan „verified” wymaga udokumentowanej weryfikacji. Model językowy nie jest źródłem.
@@ -84,3 +85,11 @@ python3 tools/data_pipeline/build_capitals.py --check
 Drugie polecenie nie wymaga sieci ani narzędzi PDF. Sprawdza kompletność,
 jednoznaczność nazw, metadane, zgodność pliku redakcyjnego z paczką i sumy.
 Zmiany nazw/stolic po wydaniu źródła wymagają nowej weryfikacji i wersji treści.
+
+## Flagi — paczka 0.1.0
+
+Źródłowe SVG z przypiętego commita country-flags, mapowanie ISO z Natural
+Earth i lokalne PNG w oryginalnych proporcjach. Pochodzenie, deklaracja
+licencji, manifest oraz polecenia odtworzenia i kontroli: [FLAGS.md](FLAGS.md).
+Nie generować symboli flag przez AI. `build_flags.py --check` sprawdza
+51 krajów, nazwy, sumy źródeł i PNG oraz kompletność plików bez sieci.

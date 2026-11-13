@@ -32,6 +32,19 @@ class Attempts extends Table {
   Set<Column> get primaryKey => {sessionId, questionIndex};
 }
 
+@DataClassName('MapGuess')
+class MapGuesses extends Table {
+  TextColumn get sessionId => text().references(Sessions, #id)();
+  IntColumn get questionIndex => integer()();
+  IntColumn get guessIndex => integer()();
+  TextColumn get selectedCountryId => text()();
+  BoolColumn get correct => boolean()();
+  BoolColumn get assisted => boolean().withDefault(const Constant(false))();
+  DateTimeColumn get guessedAt => dateTime()();
+  @override
+  Set<Column> get primaryKey => {sessionId, questionIndex, guessIndex};
+}
+
 class MemoryCards extends Table {
   TextColumn get id => text()();
   TextColumn get countryId => text()();
@@ -67,7 +80,14 @@ class MemoryMeta extends Table {
 }
 
 @DriftDatabase(
-  tables: [Sessions, Attempts, MemoryCards, MemoryReviews, MemoryMeta],
+  tables: [
+    Sessions,
+    Attempts,
+    MemoryCards,
+    MemoryReviews,
+    MemoryMeta,
+    MapGuesses,
+  ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
@@ -82,7 +102,7 @@ class AppDatabase extends _$AppDatabase {
         ),
       );
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
@@ -101,6 +121,9 @@ class AppDatabase extends _$AppDatabase {
         await m.createTable(memoryCards);
         await m.createTable(memoryReviews);
         await m.createTable(memoryMeta);
+      }
+      if (from < 4) {
+        await m.createTable(mapGuesses);
       }
     },
     beforeOpen: (_) async {

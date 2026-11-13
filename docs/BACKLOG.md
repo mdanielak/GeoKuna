@@ -9,7 +9,7 @@
 - GK-003b: zweryfikowane waluty i języki urzędowe — do realizacji.
 - GK-004b: stolice: A–D, pierwsza litera, samodzielne pisanie i jedna literówka — wdrożone.
 - GK-005a: adapter FSRS, niezależne karty, Dziś, dobór sesji i migracja — wdrożone.
-- GK-005b: czytelne postępy, słabe punkty i walidacja długoterminowego harmonogramu.
+- GK-005b: czytelne postępy i filtry — wdrożone; walidacja długoterminowego harmonogramu — później.
 - GK-006: pełne Dziś/Atlas/Powtórki/Postępy oraz ustawienia.
 - GK-007: stabilizacja, pełne testy offline, wydanie MVP.
 
@@ -20,7 +20,8 @@ Status i wyniki bieżącego przyrostu: `docs/STATUS.md`.
 - GK-008: postępy i opcjonalna diagnoza, bez przenoszenia sukcesu A–D na pisanie.
 - GK-009: wybór zakresu na Dziś, globalny budżet i migawka zakresu sesji.
 - GK-010: typowane encje i bezpieczny adapter ID, paczka województw Polski.
-- GK-011: flagi Europy w obu kierunkach, lokalne assety i niezależne karty.
+- GK-011a: flaga → państwo w trzech poziomach oraz flaga → mapa, lokalne assety i niezależne karty — wdrożone.
+- GK-011b: państwo → wybierz flagę — kolejny przyrost.
 - GK-012: jeden kolejny kontynent; potem pozostałe paczki w małych etapach.
 - GK-013: miasta wojewódzkie, parki, rzeki i góry Polski — osobne paczki.
 - GK-014: mały zweryfikowany katalog głównych rzek i gór świata.

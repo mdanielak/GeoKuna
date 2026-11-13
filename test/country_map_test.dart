@@ -50,6 +50,44 @@ void main() {
     },
   );
 
+  testWidgets('question seeds give stable regional framing', (tester) async {
+    final catalog = (await tester.runAsync(Catalog.load))!;
+    Future<MapCamera> cameraFor(String seed) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 390,
+              height: 450,
+              child: CountryMap(
+                key: ValueKey(seed),
+                catalog: catalog,
+                onSelected: (_) {},
+                questionRegionId: 'POL',
+                questionSeed: seed,
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      return MapCamera.of(tester.element(find.byType(PolygonLayer<String>)));
+    }
+
+    final first = await cameraFor('question-1');
+    final same = await cameraFor('question-1');
+    final other = await cameraFor('question-2');
+    final target = catalog.country('POL').center;
+    expect(first.center, same.center);
+    expect(first.center, isNot(other.center));
+    for (final camera in [first, other]) {
+      expect((camera.center.latitude - target.latitude).abs(), lessThan(5));
+      expect((camera.center.longitude - target.longitude).abs(), lessThan(7));
+      expect(camera.center, isNot(target));
+      expect(camera.visibleBounds.contains(target), isTrue);
+    }
+  });
+
   testWidgets(
     'overlapping small states zoom before selection; Vatican remains reachable',
     (tester) async {

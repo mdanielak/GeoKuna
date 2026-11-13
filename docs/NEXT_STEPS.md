@@ -27,7 +27,7 @@ Bieżące priorytety i szczegółowe zadania znajdują się w [backlogu](BACKLOG
    zmiany magazynu lub algorytmu.
 4. **Mapa i dostępność.** Dopracować małe państwa, gesty jedną ręką i czytelność
    przy dużej czcionce. Zweryfikować TalkBack na fizycznym Androidzie.
-5. **Nowe kategorie.** Flagi, później waluty i języki: dla każdej osobny
+5. **Nowe kategorie.** Odwrotny quiz państwo → flaga, później waluty i języki: dla każdej osobny
    wersjonowany zestaw źródeł, walidator, zasady wyjątków i stabilne ID kart.
    Nie rozszerzać katalogu na podstawie faktów z pamięci modelu.
 6. **Wydanie Android.** Po uzgodnieniu toolchaina: podpisywanie APK/AAB,
@@ -43,3 +43,11 @@ z konkretnym problemem edukacyjnym i kryteriami akceptacji.
 - [Diagnoza wiedzy](LEARNING_REVIEW.md): opcjonalna próbka, formaty osobno, wspólny budżet.
 - [Kontynenty, flagi, Polska i świat](EXPANSION_ROADMAP.md): etapy, dane, migracje i akceptacja.
 - [Ustalenia przeglądu kodu](CODE_REVIEW.md): dostępność mapy, zgodność paczek, odporność na błędy.
+
+## Po przyroście flag i trzech prób mapy
+
+Flaga → państwo (A–D, pierwsza litera, pisanie) i flaga → mapa są gotowe.
+Następnie warto dodać odwrotny kierunek z czterema obrazami, osobną kartą
+pamięci i opcjami o podobnych flagach; po nim wybór zakresu na Dziś oraz
+Polskę od województw. Eksport postępu warto ukończyć przed rozszerzeniem
+magazynu na nowe typy obiektów.

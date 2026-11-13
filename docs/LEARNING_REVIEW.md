@@ -1,9 +1,9 @@
 # Rozpoznanie wiedzy i dobór nauki — propozycja
 
-Stan obecny: cztery osobne umiejętności na państwo, niezależne harmonogramy
+Stan obecny: osiem osobnych umiejętności na państwo, niezależne harmonogramy
 FSRS; dzienna wyprawa wybiera zaległe karty, a następnie do trzech nowych,
 z pominięciem powtórzeń tego samego państwa w serii. Nowe karty są mieszane
-deterministycznie według dnia (`lib/features/learning/session_repository.dart:255`).
+deterministycznie według dnia (`lib/features/learning/session_repository.dart`).
 Nie ma oceny wiedzy wejściowej ani automatycznego przejścia między formatami.
 To czytelny punkt wyjścia, ale doświadczony użytkownik musi spotkać wiele
 łatwych pytań, zanim system zaobserwuje jego wiedzę; początkujący może dostać
@@ -109,3 +109,10 @@ estymacją modelu, nie procentem faktycznie opanowanej geografii.
 
 Przed rozwojem rekomendacji sprawdzić przykłady i testy z kontrolowanym zegarem;
 nie dopisywać sztucznych ocen ani ustawiać długich interwałów za deklarację „znam”.
+
+## Wdrożony fundament postępów
+
+Ekran Postępy jest dostępny z Dziś. Pokazuje każdą umiejętność oddzielnie,
+trzy proste stany, termin i liczbę ocenionych prób. Nie wdrożono jeszcze
+opcjonalnej diagnozy ani automatycznej rekomendacji poziomu. Pomoc z nazwanej
+listy nie jest oceną lokalizacji i jest wyłączona z aktualizacji pamięci.

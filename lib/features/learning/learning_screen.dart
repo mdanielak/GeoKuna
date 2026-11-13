@@ -7,11 +7,20 @@ import '../../app/providers.dart';
 import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
 import '../atlas/country_map.dart';
+import '../atlas/country_picker.dart';
 import 'capitals.dart';
+import 'flags.dart';
+import 'answer_feedback.dart';
 import 'session_repository.dart';
 
 class LearningScreen extends ConsumerStatefulWidget {
-  const LearningScreen({super.key, this.capitalDifficulty, this.daily = false});
+  const LearningScreen({
+    super.key,
+    this.capitalDifficulty,
+    this.flagDifficulty,
+    this.daily = false,
+  });
+  final FlagDifficulty? flagDifficulty;
   final CapitalDifficulty? capitalDifficulty;
   final bool daily;
   @override
@@ -21,7 +30,9 @@ class LearningScreen extends ConsumerStatefulWidget {
 class _LearningScreenState extends ConsumerState<LearningScreen> {
   late Future<(Catalog, LearningSession?)> _initial;
   LearningSession? _session;
+  bool _hasLoadedSession = false;
   String? _selected;
+  bool _assisted = false;
   String _typed = '';
   bool _busy = false;
 
@@ -34,29 +45,96 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   Future<(Catalog, LearningSession?)> _load() async {
     final repository = ref.read(repositoryProvider);
     final catalogFuture = ref.read(catalogProvider.future);
-    final capitalsFuture = widget.capitalDifficulty == null && !widget.daily
-        ? null
-        : ref.read(capitalsProvider.future);
     final catalog = await catalogFuture;
-    final session = widget.daily
-        ? await repository.startDaily(catalog, await capitalsFuture!)
-        : capitalsFuture == null
-        ? await repository.start(catalog.countries.map((c) => c.id).toList())
-        : await repository.startCapitals(
-            await capitalsFuture,
-            widget.capitalDifficulty!,
-          );
-    if (mounted) ref.invalidate(dashboardProvider);
-    if (mounted) ref.invalidate(dailyOverviewProvider);
+    final LearningSession? session;
+    if (widget.daily) {
+      session = await repository.startDaily(
+        catalog,
+        await ref.read(capitalsProvider.future),
+        flags: await ref.read(flagsProvider.future),
+      );
+    } else if (widget.flagDifficulty != null) {
+      session = await repository.startFlags(
+        await ref.read(flagsProvider.future),
+        widget.flagDifficulty!,
+      );
+    } else if (widget.capitalDifficulty != null) {
+      session = await repository.startCapitals(
+        await ref.read(capitalsProvider.future),
+        widget.capitalDifficulty!,
+      );
+    } else {
+      session = await repository.start(
+        catalog.countries.map((c) => c.id).toList(),
+      );
+    }
+    if (mounted) {
+      ref.invalidate(dashboardProvider);
+      ref.invalidate(dailyOverviewProvider);
+      setState(() {
+        _session = session;
+        _hasLoadedSession = true;
+      });
+    }
     return (catalog, session);
   }
 
   bool _canSubmit(LearningSession session) =>
       session.currentAttempt != null ||
-      (session.isCapitalAt(session.index) &&
-              session.difficultyAt(session.index) != CapitalDifficulty.choice
-          ? _typed.trim().isNotEmpty
-          : _selected != null);
+      (session.isMapAt(session.index)
+          ? false
+          : session.difficultyNameAt(session.index) == 'choice'
+          ? _selected != null
+          : _typed.trim().isNotEmpty);
+
+  Future<void> _guessSelected(
+    Catalog catalog,
+    LearningSession session,
+    String id,
+  ) async {
+    if (_busy || session.currentAttempt != null) return;
+    setState(() => _busy = true);
+    try {
+      final updated = await ref
+          .read(repositoryProvider)
+          .guessMap(
+            session.row.id,
+            session.index,
+            id,
+            catalog.countries.map((c) => c.id).toSet(),
+            expectedGuessIndex: session.currentMapGuesses.length,
+            assisted:
+                _assisted || session.assistedIndices.contains(session.index),
+          );
+      if (!mounted) return;
+      if (updated.currentMapGuesses.length ==
+          session.currentMapGuesses.length) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('To państwo już wskazywano. Wybierz inne.'),
+          ),
+        );
+      }
+      ref.invalidate(dashboardProvider);
+      ref.invalidate(dailyOverviewProvider);
+      ref.invalidate(learningProgressProvider);
+      setState(() {
+        _session = updated;
+        _selected = id;
+        _assisted = updated.assistedIndices.contains(updated.index);
+      });
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Nie udało się zapisać próby. Spróbuj ponownie.'),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
 
   Future<void> _submit(Catalog catalog, LearningSession session) async {
     if (_busy || !_canSubmit(session)) return;
@@ -67,6 +145,12 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
       final LearningSession updated;
       if (session.currentAttempt != null) {
         updated = await repository.advance(session.row.id, session.index);
+      } else if (session.isFlagAt(session.index)) {
+        updated = await repository.answerFlag(
+          session.row.id,
+          session.index,
+          session.flagDifficulty == FlagDifficulty.choice ? _selected! : _typed,
+        );
       } else if (session.isCapitalAt(session.index)) {
         updated = await repository.answerCapital(
           session.row.id,
@@ -81,14 +165,17 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           session.index,
           _selected!,
           catalog.countries.map((c) => c.id).toSet(),
+          assisted: _assisted,
         );
       }
       if (mounted) {
         ref.invalidate(dashboardProvider);
         ref.invalidate(dailyOverviewProvider);
+        ref.invalidate(learningProgressProvider);
         setState(() {
           _session = updated;
           _selected = null;
+          _assisted = false;
           _typed = '';
         });
       }
@@ -105,16 +192,80 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     }
   }
 
+  Future<void> _finishQuiz() async {
+    if (_busy) return;
+    setState(() => _busy = true);
+    try {
+      final session = _session ?? (await _initial).$2;
+      if (!mounted || session == null || session.completed) return;
+      final shouldFinish = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: const Text('Zakończyć quiz?'),
+          content: const Text(
+            'Zachowamy zatwierdzone odpowiedzi. Pozostałe pytania nie będą ocenione. Tej serii nie wznowisz.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('Wróć do quizu'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: const Text('Zakończ quiz'),
+            ),
+          ],
+        ),
+      );
+      if (shouldFinish != true || !mounted) return;
+
+      final finished = await ref
+          .read(repositoryProvider)
+          .finish(session.row.id);
+      if (!mounted) return;
+      ref.invalidate(dashboardProvider);
+      ref.invalidate(dailyOverviewProvider);
+      ref.invalidate(learningProgressProvider);
+      setState(() {
+        _session = finished;
+        _selected = null;
+        _assisted = false;
+        _typed = '';
+      });
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Nie udało się zakończyć quizu. Spróbuj ponownie.'),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Text(
         widget.daily
             ? 'Dzisiejsza wyprawa'
+            : widget.flagDifficulty != null
+            ? 'Flagi Europy'
             : widget.capitalDifficulty == null
             ? 'Wyprawa po Europie'
             : 'Stolice Europy',
       ),
+      actions: _hasLoadedSession && _session != null && !_session!.completed
+          ? [
+              IconButton(
+                tooltip: 'Zakończ quiz',
+                onPressed: _busy ? null : _finishQuiz,
+                icon: const Icon(Icons.close),
+              ),
+            ]
+          : const [],
     ),
     body: SafeArea(
       top: false,
@@ -132,8 +283,13 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           if (session == null) return _emptyDaily();
           if (session.completed) return _summary(catalog, session);
           final attempt = session.currentAttempt;
-          final selected = attempt?.answer ?? _selected;
-          if (!session.isCapitalAt(session.index)) {
+          final selected =
+              attempt?.answer ??
+              _selected ??
+              (session.currentMapGuesses.isEmpty
+                  ? null
+                  : session.currentMapGuesses.last.selectedCountryId);
+          if (session.isMapAt(session.index)) {
             return _mapQuestion(catalog, session, selected, attempt);
           }
           return _capitalQuestion(catalog, session, attempt);
@@ -151,13 +307,18 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     children: [
       Positioned.fill(
         child: CountryMap(
-          key: ValueKey(session.index),
+          key: ValueKey('${session.row.id}:${session.index}'),
           catalog: catalog,
+          questionSeed: '${session.row.id}:${session.index}',
           questionRegionId: session.targetId,
           selectedId: selected,
           correctId: attempt == null ? null : session.targetId,
           locked: attempt != null || _busy,
-          onSelected: (id) => setState(() => _selected = id),
+          wrongIds: session.currentMapGuesses
+              .where((g) => !g.correct)
+              .map((g) => g.selectedCountryId)
+              .toSet(),
+          onSelected: (id) => _guessSelected(catalog, session, id),
         ),
       ),
       Positioned(
@@ -185,11 +346,25 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      catalog.country(session.targetId).locationQuestion,
-                      style: Theme.of(context).textTheme.titleLarge
-                          ?.copyWith(fontWeight: FontWeight.w700),
-                    ),
+                    if (session.isFlagAt(session.index)) ...[
+                      _flagImage(
+                        session.flagQuestionAt(session.index),
+                        height: 72,
+                      ),
+                      const SizedBox(height: 4),
+                      const Text(
+                        'Wskaż państwo',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ] else
+                      Text(
+                        catalog.country(session.targetId).locationQuestion,
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
                   ],
                 ),
               ),
@@ -197,65 +372,145 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           ),
         ),
       ),
-      if (selected != null || attempt != null)
-        Positioned(
-          left: 12,
-          right: 12,
-          bottom: 12,
-          child: SafeArea(
-            top: false,
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: 680,
-                  maxHeight: MediaQuery.sizeOf(context).height * .44,
-                ),
-                child: Card.filled(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (attempt != null)
-                          Semantics(
-                            liveRegion: true,
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 12),
-                              child: Text(_feedback(catalog, session)),
-                            ),
+      Positioned(
+        left: 12,
+        right: 12,
+        bottom: 12,
+        child: SafeArea(
+          top: false,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: 680,
+                maxHeight: MediaQuery.sizeOf(context).height * .44,
+              ),
+              child: Card.filled(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (attempt != null) ...[
+                        Semantics(
+                          liveRegion: true,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Text(_feedback(catalog, session)),
                           ),
+                        ),
                         FilledButton(
                           onPressed: _busy
                               ? null
                               : () => _submit(catalog, session),
                           child: Text(
-                            _busy
-                                ? 'Zapisuję…'
-                                : attempt == null
-                                ? 'Potwierdź'
-                                : session.index == session.countryIds.length - 1
+                            session.index == session.countryIds.length - 1
                                 ? 'Zobacz wynik'
                                 : 'Następne pytanie',
                           ),
                         ),
+                      ] else ...[
+                        if (session.currentMapGuesses.isNotEmpty)
+                          Semantics(
+                            liveRegion: true,
+                            child: Text(
+                              'Jeszcze nie. Pozostało prób: ${3 - session.currentMapGuesses.length}.',
+                              style: const TextStyle(
+                                color: Color(0xFF8C1D18),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        TextButton.icon(
+                          onPressed: _busy
+                              ? null
+                              : () => _chooseCountryWithHelp(
+                                  catalog,
+                                  session,
+                                  selected,
+                                ),
+                          icon: const Icon(Icons.list_alt),
+                          label: const Text('Wybierz z listy (z pomocą)'),
+                        ),
+                        if (session.assistedIndices.contains(session.index))
+                          const Text('Z pomocą — bez oceny pamięci mapy.'),
                       ],
-                    ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
         ),
+      ),
     ],
   );
+
+  Future<void> _chooseCountryWithHelp(
+    Catalog catalog,
+    LearningSession session,
+    String? selectedId,
+  ) async {
+    final chosenId = await showDialog<String>(
+      context: context,
+      builder: (dialogContext) {
+        final availableHeight =
+            MediaQuery.sizeOf(dialogContext).height -
+            MediaQuery.viewInsetsOf(dialogContext).bottom -
+            180;
+        final pickerHeight = availableHeight.clamp(180.0, 560.0);
+        return Dialog(
+          child: SizedBox(
+            width: 420,
+            height: pickerHeight,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'Wybierz państwo z pomocą',
+                    style: Theme.of(dialogContext).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Wybór z listy pomaga znaleźć państwo, ale nie ćwiczy ani nie ocenia pamięci mapy.',
+                  ),
+                  const SizedBox(height: 12),
+                  Expanded(
+                    child: CountryPicker(
+                      catalog: catalog,
+                      selectedId: selectedId,
+                      onSelected: (id) => Navigator.of(dialogContext).pop(id),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () => Navigator.of(dialogContext).pop(),
+                      child: const Text('Wróć do mapy'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+    if (chosenId != null && mounted) {
+      setState(() => _assisted = true);
+      await _guessSelected(catalog, session, chosenId);
+    }
+  }
 
   Widget _capitalQuestion(
     Catalog catalog,
     LearningSession session,
     Attempt? attempt,
   ) {
-    final question = session.capitalQuestionAt(session.index);
+    final flag = session.isFlagAt(session.index);
+    final question = flag ? null : session.capitalQuestionAt(session.index);
     final defaultPrompt = 'Jaka jest stolica tego państwa?';
     return Center(
       child: ConstrainedBox(
@@ -275,29 +530,39 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               borderRadius: BorderRadius.circular(8),
             ),
             const SizedBox(height: 20),
-            Text(
-              catalog.country(session.targetId).name,
-              style: Theme.of(context).textTheme.headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              question.fact.prompt == defaultPrompt
-                  ? 'Stolica?'
-                  : question.fact.prompt,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            if (flag) ...[
+              _flagImage(session.flagQuestionAt(session.index)),
+              const SizedBox(height: 12),
+              Text(
+                'Jakie to państwo?',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ] else ...[
+              Text(
+                catalog.country(session.targetId).name,
+                style: Theme.of(context).textTheme.headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                question!.fact.prompt == defaultPrompt
+                    ? 'Stolica?'
+                    : question.fact.prompt,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ],
             const SizedBox(height: 20),
             if (attempt == null) _capitalInput(catalog, session),
             if (attempt != null)
-              Semantics(
-                liveRegion: true,
-                child: Card.filled(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(_feedback(catalog, session)),
-                  ),
-                ),
+              AnswerFeedback(
+                correct: attempt.correct,
+                typoAccepted: attempt.typoAccepted,
+                answer: attempt.answer,
+                solution: flag
+                    ? session.flagQuestionAt(session.index).countryName
+                    : question!.fact.name,
+                note: flag ? '' : question!.fact.note,
+                subject: flag ? 'Państwo' : 'Stolica',
               ),
             const SizedBox(height: 12),
             FilledButton(
@@ -321,9 +586,15 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   }
 
   Widget _capitalInput(Catalog catalog, LearningSession session) {
-    final question = session.capitalQuestionAt(session.index);
-    final difficulty = session.difficultyAt(session.index);
-    if (difficulty == CapitalDifficulty.choice) {
+    final flag = session.isFlagAt(session.index);
+    final options = flag
+        ? session.flagQuestionAt(session.index).options
+        : session.capitalQuestionAt(session.index).options;
+    final firstLetter = flag
+        ? session.flagQuestionAt(session.index).firstLetter
+        : session.capitalQuestionAt(session.index).fact.firstLetter;
+    final difficulty = session.difficultyNameAt(session.index);
+    if (difficulty == 'choice') {
       return RadioGroup<String>(
         groupValue: _selected,
         onChanged: (value) {
@@ -331,27 +602,27 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         },
         child: Column(
           children: [
-            for (var i = 0; i < question.options.length; i++)
+            for (var i = 0; i < options.length; i++)
               Card.filled(
                 child: RadioListTile<String>(
-                  value: question.options[i],
+                  value: options[i],
                   enabled: !_busy,
-                  title: Text(
-                    '${String.fromCharCode(65 + i)}. ${question.options[i]}',
-                  ),
+                  title: Text('${String.fromCharCode(65 + i)}. ${options[i]}'),
                 ),
               ),
           ],
         ),
       );
     }
-    final hint = difficulty == CapitalDifficulty.firstLetter;
+    final hint = difficulty == 'firstLetter';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           hint
-              ? 'Pierwsza litera: ${question.fact.firstLetter}. Dopisz pozostałe litery.'
+              ? 'Pierwsza litera: $firstLetter. Dopisz pozostałe litery.'
+              : flag
+              ? 'Wpisz całą nazwę państwa.'
               : 'Wpisz całą nazwę stolicy.',
         ),
         const SizedBox(height: 16),
@@ -367,12 +638,16 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             counterText: '',
-            labelText: hint ? 'Pozostałe litery' : 'Nazwa stolicy',
+            labelText: hint
+                ? 'Pozostałe litery'
+                : flag
+                ? 'Nazwa państwa'
+                : 'Nazwa stolicy',
             prefixIcon: hint
                 ? Padding(
                     padding: const EdgeInsets.all(16),
                     child: Text(
-                      question.fact.firstLetter,
+                      firstLetter,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   )
@@ -383,85 +658,145 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         ),
         const SizedBox(height: 12),
         const Text(
-          'Jedna literówka jest dozwolona. Nie musisz wpisywać znaków diakrytycznych.',
-          style: TextStyle(fontSize: 12),
+          'Dopuszczamy jedną literówkę; polskie znaki nie są wymagane.',
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: _showCapitalAnswerHelp,
+            child: const Text('Jak sprawdzamy odpowiedzi?'),
+          ),
         ),
       ],
     );
   }
 
-  String _feedback(Catalog catalog, LearningSession session) {
-    final attempt = session.currentAttempt!;
-    if (attempt.topic != 'capitals') {
-      return attempt.correct
-          ? 'Dobrze! To ${catalog.country(session.targetId).name}.'
-          : 'Wskazane państwo: ${catalog.country(attempt.answer).name}. '
-                'Poprawna odpowiedź: ${catalog.country(session.targetId).name} — zaznaczona na zielono.';
-    }
-    final fact = session.capitalQuestionAt(attempt.questionIndex).fact;
-    final result = attempt.correct
-        ? (attempt.typoAccepted
-              ? 'Dobrze — literówka zaakceptowana.\nPoprawna pisownia: ${fact.name}.'
-              : 'Dobrze! Stolica: ${fact.name}.')
-        : 'Poprawna odpowiedź: ${fact.name}.';
-    return '$result\nTwoja odpowiedź: ${attempt.answer}${fact.note.isEmpty ? '' : '\n\n${fact.note}'}';
-  }
-
-  Widget _summary(Catalog catalog, LearningSession session) => Center(
-    child: ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 620),
-      child: ListView(
-        padding: const EdgeInsets.all(24),
-        children: [
-          const Icon(Icons.explore, size: 64),
-          const SizedBox(height: 24),
-          Text(
-            widget.daily
-                ? 'Dzisiejsza wyprawa ukończona!'
-                : 'Wyprawa ukończona!',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const SizedBox(height: 12),
-          Text(
-            '${session.correctCount} z ${session.countryIds.length} poprawnych odpowiedzi.',
-          ),
-          const SizedBox(height: 24),
-          for (final attempt in session.attempts)
-            ListTile(
-              leading: Icon(
-                attempt.correct ? Icons.check_circle_outline : Icons.replay,
-              ),
-              title: Text(catalog.country(attempt.countryId).name),
-              subtitle: Text(
-                attempt.topic == 'capitals'
-                    ? '${session.capitalQuestionAt(attempt.questionIndex).fact.name} · ${CapitalDifficulty.values.byName(attempt.difficulty).label}${attempt.typoAccepted ? ' · literówka zaakceptowana' : ''}'
-                    : attempt.correct
-                    ? 'Odnalezione!'
-                    : 'Wróć do tego państwa w atlasie.',
-              ),
-            ),
-          const SizedBox(height: 24),
-          FilledButton(
-            onPressed: () => context.go('/'),
-            child: const Text('Wróć na start'),
-          ),
-          if (!widget.daily) ...[
-            const SizedBox(height: 12),
-            OutlinedButton(
-              onPressed: () => context.go(
-                session.isCapitalAt(session.index) ? '/capitals' : '/atlas',
-              ),
-              child: Text(
-                session.isCapitalAt(session.index)
-                    ? 'Wybierz inny poziom'
-                    : 'Obejrzyj atlas',
-              ),
-            ),
-          ],
-        ],
+  Future<void> _showCapitalAnswerHelp() => showDialog<void>(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      title: const Text('Jak sprawdzamy odpowiedzi?'),
+      content: const Text(
+        'Przy wpisywaniu akceptujemy jedną literówkę: zamianę, pominięcie, dodanie litery lub przestawienie dwóch sąsiednich liter. Wielkość liter i znaki diakrytyczne nie wpływają na wynik.',
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(),
+          child: const Text('Rozumiem'),
+        ),
+      ],
     ),
   );
+
+  Widget _flagImage(FlagQuestion question, {double height = 156}) => Container(
+    height: height,
+    padding: const EdgeInsets.all(8),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(color: const Color(0xFF7C887E)),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Image.asset(
+      question.assetPath,
+      fit: BoxFit.contain,
+      semanticLabel: 'Flaga do rozpoznania',
+    ),
+  );
+
+  String _feedback(Catalog catalog, LearningSession session) {
+    final attempt = session.currentAttempt!;
+    final guesses = session.currentMapGuesses;
+    final result = attempt.correct
+        ? guesses.length > 1
+              ? 'Odnaleziono za ${guesses.length}. próbą. To ${catalog.country(session.targetId).name}.\nPóźniejsze próby są ćwiczeniem.'
+              : 'Dobrze! To ${catalog.country(session.targetId).name}.'
+        : 'Wskazane państwo: ${catalog.country(attempt.answer).name}. Poprawna odpowiedź: ${catalog.country(session.targetId).name} — zaznaczona na zielono.';
+    return session.assistedIndices.contains(session.index)
+        ? 'Z pomocą — bez oceny pamięci mapy.\n$result'
+        : result;
+  }
+
+  Widget _summary(Catalog catalog, LearningSession session) {
+    final confirmedCount = session.attempts.length;
+    final isPartial = confirmedCount < session.countryIds.length;
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 620),
+        child: ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            const Icon(Icons.explore, size: 64),
+            const SizedBox(height: 24),
+            Text(
+              isPartial
+                  ? 'Quiz zakończony'
+                  : widget.daily
+                  ? 'Dzisiejsza wyprawa ukończona!'
+                  : 'Wyprawa ukończona!',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              isPartial
+                  ? confirmedCount == 0
+                        ? 'Nie zatwierdzono żadnej odpowiedzi.'
+                        : 'Zatwierdzono $confirmedCount z ${session.countryIds.length} pytań.\n'
+                              '${session.correctCount} z $confirmedCount poprawnych odpowiedzi.'
+                  : '${session.correctCount} z ${session.countryIds.length} poprawnych odpowiedzi.',
+            ),
+            if (session.assistedIndices.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Odpowiedzi z pomocą: ${session.assistedIndices.length} — bez oceny pamięci mapy.',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+            const SizedBox(height: 24),
+            for (final attempt in session.attempts)
+              ListTile(
+                leading: Icon(
+                  attempt.correct ? Icons.check_circle_outline : Icons.replay,
+                ),
+                title: Text(catalog.country(attempt.countryId).name),
+                subtitle: Text(
+                  session.assistedIndices.contains(attempt.questionIndex)
+                      ? 'Z pomocą — bez oceny pamięci mapy.'
+                      : attempt.topic == 'flags' && attempt.difficulty != 'map'
+                      ? '${session.flagQuestionAt(attempt.questionIndex).countryName} · ${FlagDifficulty.values.byName(attempt.difficulty).label}${attempt.typoAccepted ? ' · literówka zaakceptowana' : ''}'
+                      : attempt.topic == 'capitals'
+                      ? '${session.capitalQuestionAt(attempt.questionIndex).fact.name} · ${CapitalDifficulty.values.byName(attempt.difficulty).label}${attempt.typoAccepted ? ' · literówka zaakceptowana' : ''}'
+                      : attempt.correct
+                      ? 'Odnalezione! Próba: ${session.mapGuesses.where((g) => g.questionIndex == attempt.questionIndex).length}.'
+                      : 'Wróć do tego państwa w atlasie.',
+                ),
+              ),
+            const SizedBox(height: 24),
+            FilledButton(
+              onPressed: () => context.go('/'),
+              child: const Text('Wróć na start'),
+            ),
+            if (!widget.daily) ...[
+              const SizedBox(height: 12),
+              OutlinedButton(
+                onPressed: () => context.go(
+                  session.isFlagAt(session.index)
+                      ? '/flags'
+                      : session.isCapitalAt(session.index)
+                      ? '/capitals'
+                      : '/atlas',
+                ),
+                child: Text(
+                  (session.isCapitalAt(session.index) ||
+                          session.isFlagAt(session.index))
+                      ? 'Wybierz inny poziom'
+                      : 'Obejrzyj atlas',
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _emptyDaily() {
     final nextDue = ref.watch(dailyOverviewProvider).asData?.value.nextDue;

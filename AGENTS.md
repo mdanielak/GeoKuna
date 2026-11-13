@@ -146,6 +146,7 @@ flutter analyze
 flutter test
 python3 tools/data_pipeline/build_map.py --check
 python3 tools/data_pipeline/build_capitals.py --check
+python3 tools/data_pipeline/build_flags.py --check
 ```
 
 Testy jednostkowe, widgetów, odpowiednie integracyjne oraz `flutter analyze`
@@ -159,3 +160,10 @@ Raport rozdziela wykonane sprawdzenia, wyniki oraz ograniczenia środowiska.
 Bez destrukcyjnych operacji Git i usuwania danych użytkownika. Worktree wymaga
 istniejącego commita: brak HEAD nie uzasadnia automatycznego commita lub utraty
 nieśledzonych plików. Stan narzędzi i aktywacja: `docs/AGENT_ENVIRONMENT.md`.
+
+## Aktualne quizy mapowe
+
+Kliknięcie państwa jest jawnym zatwierdzeniem próby: do trzech różnych państw,
+FSRS ocenia pierwszą próbę raz, kolejne służą ćwiczeniu. Nie pokazuj celu po
+pierwszym/drugim błędzie. Flagi mają osobne karty; grafiki tylko z paczki
+zweryfikowanej `build_flags.py --check`. Bez ponownego generowania flag przez AI.

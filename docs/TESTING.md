@@ -64,3 +64,19 @@ nie uruchamiaj pełnej aplikacji bez potrzeby. Komendy kontrolne są w AGENTS.md
 
 Ta polityka zastępuje wcześniejsze wymaganie kontroli wizualnych na emulatorze.
 Historyczny zapis rozmowy nie jest aktualną instrukcją uruchamiania narzędzi.
+
+## Kontrola paczek przed commitem
+
+```bash
+dart format --output=none --set-exit-if-changed lib test
+flutter analyze
+flutter test
+python3 tools/data_pipeline/build_map.py --check
+python3 tools/data_pipeline/build_capitals.py --check
+python3 tools/data_pipeline/build_flags.py --check
+```
+
+Walidatory `--check` działają bez sieci i nie odtwarzają paczek. Flagi oraz
+źródłowe SVG są lokalne; instrukcja generatora: [FLAGS.md](FLAGS.md).
+Po samych zmianach dokumentacji wystarcza kontrola odwołań i spójności.
+Przed integracją niezatwierdzonego przyrostu kodu wykonaj pełny zestaw.

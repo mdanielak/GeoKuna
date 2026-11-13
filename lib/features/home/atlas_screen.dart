@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/app.dart';
 import '../../app/providers.dart';
 import '../atlas/country_map.dart';
+import '../atlas/country_picker.dart';
 
 class AtlasScreen extends ConsumerStatefulWidget {
   const AtlasScreen({super.key});
@@ -49,19 +50,14 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                         : catalog.country(_selected!).name,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 4,
-                    children: [
-                      for (final country in catalog.countries)
-                        ChoiceChip(
-                          label: Text(country.name),
-                          selected: _selected == country.id,
-                          onSelected: (_) =>
-                              setState(() => _selected = country.id),
-                        ),
-                    ],
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 360,
+                    child: CountryPicker(
+                      catalog: catalog,
+                      selectedId: _selected,
+                      onSelected: (id) => setState(() => _selected = id),
+                    ),
                   ),
                   const SizedBox(height: 24),
                   const Text(
