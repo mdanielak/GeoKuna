@@ -89,6 +89,10 @@ final countryTriviaProvider = FutureProvider(
   (ref) => CountryTriviaCatalog.load(),
 );
 
+final flagTriviaProvider = FutureProvider(
+  (ref) => CountryTriviaCatalog.load(asset: CountryTriviaCatalog.flagAsset),
+);
+
 final continentAchievementsProvider = FutureProvider.autoDispose
     .family<List<CategoryAchievement>, Continent>((ref, continent) async {
       final db = ref.watch(databaseProvider);

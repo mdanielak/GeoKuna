@@ -1,4 +1,5 @@
 import '../settings/app_preferences.dart';
+import 'country_trivia.dart';
 import 'memory.dart';
 
 import 'package:material_ui/material_ui.dart';
@@ -337,11 +338,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
       _ => 'normal',
     };
     final quizSeed = '${session.row.id}:${session.index}';
-    final trivia = ref
-        .watch(countryTriviaProvider)
-        .asData
-        ?.value
-        .pick(session.targetId, seed: quizSeed);
+    final trivia = _trivia(catalog, session, quizSeed);
     final textTheme = Theme.of(context).textTheme;
     // The question sits above the map so it never covers countries or labels.
     final header = Padding(
@@ -564,6 +561,17 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               ),
             if (attempt != null)
               _InsightNote(catalog: catalog, session: session),
+            if (attempt != null && flag)
+              if (_trivia(
+                    catalog,
+                    session,
+                    '${session.row.id}:${session.index}',
+                  )
+                  case final fact?)
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: _TriviaCard(text: fact.text),
+                ),
             const SizedBox(height: 12),
             FilledButton(
               onPressed: _busy || !_canSubmit(session)
@@ -715,6 +723,28 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     return session.assistedIndices.contains(session.index)
         ? 'Z pomocą — bez oceny pamięci mapy.\n$result'
         : result;
+  }
+
+  /// One local fact for the current question: about the flag in flag
+  /// questions, otherwise about the country. Skips facts naming countries
+  /// asked later in this series.
+  CountryTriviaFact? _trivia(
+    Catalog catalog,
+    LearningSession session,
+    String seed,
+  ) {
+    final provider = session.isFlagAt(session.index)
+        ? flagTriviaProvider
+        : countryTriviaProvider;
+    final upcoming = [
+      for (final id in session.countryIds.skip(session.index + 1))
+        if (catalog.countries.any((c) => c.id == id)) catalog.country(id).name,
+    ];
+    return ref
+        .watch(provider)
+        .asData
+        ?.value
+        .pick(session.targetId, seed: seed, avoid: upcoming);
   }
 
   String _questionLabel(LearningSession session) {

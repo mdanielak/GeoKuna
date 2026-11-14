@@ -162,6 +162,15 @@ osobne informacje o Zachodnim Brzegu i Strefie Gazy. Walidator sprawdza
 strukturę (pokrycie, 3 różne rekordy, ID, data, URL), nie prawdziwość treści —
 ta wymaga przeglądu człowieka. `--allow-incomplete` służy tylko roboczej kontroli.
 
+### Ciekawostki o flagach
+
+`assets/content/flag_trivia.json`: po 3 fakty o fladze każdego z 148 krajów
+(444), z opisów flag w przypiętym archiwum CIA Factbook (opis, znaczenie barw,
+historia, podobne flagi); Palestyna — artykuł Wikipedii o fladze. Teksty to
+polskie parafrazy wyłącznie tego, co jest w źródle. Pokazywane po pytaniach
+o flagę (także flaga → mapa); aplikacja pomija fakt, który wspomina kraj
+pytany dalej w tej samej serii. Walidator: `build_trivia.py --check` (obie paczki).
+
 ## Odtwarzanie paczek
 
 Wszystkie `--check` działają offline i nie odtwarzają plików.

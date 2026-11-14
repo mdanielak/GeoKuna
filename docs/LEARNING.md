@@ -186,7 +186,9 @@ dostępu do powtórek, nie opóźnia kolejnego kroku.
 Po trafieniu **lub po trzecim błędzie** (razem z ujawnionym krajem) pokazujemy
 jedną z trzech lokalnych, źródłowych ciekawostek na kremowo-bursztynowej karcie
 z żarówką i podpisem „Ciekawostka” (sam kolor nie jest sygnałem — żółty oznacza
-literówkę). Docelowo w miejscu żarówki kuna z lupą. Wybór jest deterministyczny dla sesji i pytania, nie
+literówkę). Docelowo w miejscu żarówki kuna z lupą.
+Po pytaniach o flagę ciekawostka dotyczy flagi (znaczenie barw, historia, podobne
+flagi). Fakt wspominający kraj pytany dalej w serii jest pomijany. Wybór jest deterministyczny dla sesji i pytania, nie
 wpływa na FSRS i nie zdradza odpowiedzi przyszłych pytań. Źródła: [CONTENT.md](CONTENT.md#ciekawostki).
 
 ## Reset

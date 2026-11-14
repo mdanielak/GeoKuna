@@ -11,6 +11,9 @@ void main() {
     'all supported countries have exactly three source-backed facts',
     () async {
       final catalog = await CountryTriviaCatalog.load();
+      final flags = await CountryTriviaCatalog.load(
+        asset: CountryTriviaCatalog.flagAsset,
+      );
       final ids = <String>{};
       for (final path in [
         'assets/content/countries.json',
@@ -26,6 +29,7 @@ void main() {
       }
       expect(ids, hasLength(148));
       for (final id in ids) {
+        expect(flags.factsFor(id), hasLength(3), reason: 'flag $id');
         final facts = catalog.factsFor(id);
         expect(facts, hasLength(3), reason: id);
         expect(facts.map((fact) => fact.id).toSet(), hasLength(3), reason: id);
@@ -58,6 +62,22 @@ void main() {
         ids.add(catalog.pick('CZE', seed: 'session:$i')!.id);
       }
       expect(ids, facts.map((fact) => fact.id).toSet());
+    },
+  );
+
+  test(
+    'a fact naming a country asked later in the series is skipped',
+    () async {
+      final flags = await CountryTriviaCatalog.load(
+        asset: CountryTriviaCatalog.flagAsset,
+      );
+      // One Polish flag fact compares it with Indonesia and Monaco.
+      final all = flags.factsFor('POL');
+      expect(all.any((f) => f.text.contains('Monako')), isTrue);
+      for (var i = 0; i < 30; i++) {
+        final fact = flags.pick('POL', seed: 's$i', avoid: ['Monako']);
+        expect(fact!.text.contains('Monako'), isFalse);
+      }
     },
   );
 }

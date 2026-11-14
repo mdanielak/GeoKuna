@@ -1,0 +1,3410 @@
+{
+  "version": "flag-trivia-0.1.0",
+  "status": "verified",
+  "countries": {
+    "AFG": [
+      {
+        "id": "flag-afg-rekord",
+        "text": "W XX wieku Afganistan zmieniał flagę częściej niż jakikolwiek inny kraj — według jednego z wyliczeń aż 19 razy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-afg-1919",
+        "text": "Pod meczetem w godle widnieje rok 1298 kalendarza słonecznego, czyli 1919 — rok uzyskania niepodległości od Wielkiej Brytanii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-afg-kolory",
+        "text": "Czerń oznacza przeszłość, czerwień krew przelaną za niepodległość, a zieleń nadzieję, dobrobyt rolnictwa lub islam.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AGO": [
+      {
+        "id": "flag-ago-maczeta",
+        "text": "Godło Angoli — gwiazda w połowie koła zębatego skrzyżowana z maczetą — naśladuje sierp i młot.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ago-robotnicy",
+        "text": "Godło symbolizuje robotników i chłopów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ago-kolory",
+        "text": "Czerwień oznacza wolność, a czerń kontynent afrykański.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ALB": [
+      {
+        "id": "flag-alb-orzel",
+        "text": "Dwugłowy czarny orzeł nawiązuje do nazwy, którą Albańczycy nazywają samych siebie: Shqiptarë, czyli „synowie orła”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-alb-skanderbeg",
+        "text": "Wzór flagi wywodzi się podobno od Skanderbega, XV-wiecznego bohatera, który poprowadził powstanie przeciw Turkom osmańskim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-alb-tlo",
+        "text": "Na czerwonym tle flagi widnieje czarny dwugłowy orzeł.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AND": [
+      {
+        "id": "flag-and-motto",
+        "text": "Na herbie we fladze widnieje łacińskie motto VIRTUS UNITA FORTIOR, czyli „Siła w jedności”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-and-kolory",
+        "text": "Barwy łączą niebieski i czerwony Francji z czerwonym i żółtym Hiszpanii, symbolizując opiekę obu państw nad Andorą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-and-podobne",
+        "text": "Bez herbu flaga Andory byłaby bardzo podobna do flag Czadu i Rumunii; środkowy żółty pas jest w niej nieco szerszy od pozostałych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ARE": [
+      {
+        "id": "flag-are-ropa",
+        "text": "Czarny pas na fladze Zjednoczonych Emiratów Arabskich symbolizuje ropę naftową.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-are-emiraty",
+        "text": "Czerwień była obecna na flagach wszystkich emiratów przed ich zjednoczeniem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-are-panarab",
+        "text": "Flaga zawiera wszystkie cztery barwy panarabskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ARM": [
+      {
+        "id": "flag-arm-pomarancz",
+        "text": "Pomarańczowy pas symbolizuje ziemię i odwagę ludzi, którzy ją uprawiają.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-arm-blekit",
+        "text": "Niebieski oznacza armeńskie niebo i nadzieję.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-arm-czerwien",
+        "text": "Czerwień oznacza krew przelaną za wolność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AUT": [
+      {
+        "id": "flag-aut-najstarsza",
+        "text": "Czerwono-biało-czerwona flaga Austrii należy do najstarszych flag państwowych na świecie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/au.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-aut-legenda",
+        "text": "Według legendy po bitwie w 1191 roku tunika księcia Leopolda V była zbroczona krwią, a spod pasa wyłonił się biały pas — tak powstały barwy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/au.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-aut-krucjata",
+        "text": "Legenda o pochodzeniu flagi wiąże ją z III wyprawą krzyżową.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/au.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AZE": [
+      {
+        "id": "flag-aze-gwiazda",
+        "text": "Osiem ramion gwiazdy oznacza osiem ludów tureckich świata.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-aze-blekit",
+        "text": "Błękitny pas symbolizuje tureckie dziedzictwo Azerbejdżanu, czerwony modernizację, a zielony islam.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-aze-polksiezyc",
+        "text": "Biały półksiężyc i gwiazda są w czerwonym pasie, pośrodku flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BDI": [
+      {
+        "id": "flag-bdi-gwiazdy",
+        "text": "Trzy gwiazdy na białym dysku oznaczają główne grupy etniczne — Hutu, Twa i Tutsi — oraz jedność, pracę i postęp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bdi-krzyz",
+        "text": "Biały ukośny krzyż dzieli flagę na czerwone i zielone trójkąty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bdi-szesc",
+        "text": "Gwiazdy na fladze Burundi są sześcioramienne, czerwone z zieloną obwódką.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BEL": [
+      {
+        "id": "flag-bel-brabancja",
+        "text": "Czarny, żółty i czerwony pochodzą z herbu Księstwa Brabancji: żółtego lwa z czerwonymi pazurami na czarnym polu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bel-uklad",
+        "text": "Pionowy układ pasów wzorowano na fladze Francji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bel-pasy",
+        "text": "Pasy są pionowe: czarny przy drzewcu, żółty i czerwony.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BEN": [
+      {
+        "id": "flag-ben-kolory",
+        "text": "Zieleń oznacza nadzieję i odrodzenie, żółć bogactwo, a czerwień odwagę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ben-panafryka",
+        "text": "Flaga Beninu używa barw ruchu panafrykańskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ben-uklad",
+        "text": "Pionowy zielony pas jest przy drzewcu, a obok leżą dwa poziome pasy: żółty i czerwony.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BFA": [
+      {
+        "id": "flag-bfa-gwiazda",
+        "text": "Żółta gwiazda symbolizuje bogactwa mineralne kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bfa-kolory",
+        "text": "Czerwień to walka o niepodległość, a zieleń nadzieja i obfitość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bfa-panafryka",
+        "text": "Flaga Burkina Faso używa barw panafrykańskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BGD": [
+      {
+        "id": "flag-bgd-dysk",
+        "text": "Czerwony dysk jest lekko przesunięty w stronę drzewca.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bgd-slonce",
+        "text": "Dysk oznacza wschodzące słońce i ofiarę poniesioną za niepodległość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bgd-zielen",
+        "text": "Zielone tło symbolizuje bujną roślinność Bangladeszu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BGR": [
+      {
+        "id": "flag-bgr-rosja",
+        "text": "Przyjęta w 1879 roku flaga była zmienioną wersją rosyjskiej trójbarwy — z zielonym pasem zamiast niebieskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bgr-kolory",
+        "text": "Biel oznacza pokój i wolność, zieleń bogactwo rolnictwa, a czerwień walkę o niepodległość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bgr-herb",
+        "text": "W latach 1948–1990 na fladze widniał komunistyczny herb; usunięto go po upadku rządu komunistycznego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BHR": [
+      {
+        "id": "flag-bhr-katar",
+        "text": "Do 2002 roku flaga Bahrajnu miała osiem białych zębów; zmniejszono je do pięciu, by nie myliła się z flagą Kataru.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bhr-filary",
+        "text": "Pięć białych zębów symbolizuje pięć filarów islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bhr-czerwien",
+        "text": "Czerwień jest tradycyjną barwą flag państw Zatoki Perskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BIH": [
+      {
+        "id": "flag-bih-trojkat",
+        "text": "Żółty trójkąt przybliża kształt kraju, a jego trzy wierzchołki symbolizują Boszniaków, Chorwatów i Serbów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bih-gwiazdy",
+        "text": "Białe gwiazdy wzdłuż przeciwprostokątnej symbolizują Europę; dwie skrajne są przecięte na pół.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bih-ksztalt",
+        "text": "To jedna z czterech flag państwowych, które odwzorowują kształt kraju; pozostałe to flagi Brazylii, Erytrei i Vanuatu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BLR": [
+      {
+        "id": "flag-blr-ornament",
+        "text": "Przy drzewcu biegnie biały pas z czerwonym tradycyjnym ornamentem białoruskim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-blr-kolory",
+        "text": "Czerwień ma oznaczać dawne zmagania z uciskiem, a zieleń nadzieję i lasy kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-blr-proporcje",
+        "text": "Zielony pas jest o połowę węższy od czerwonego nad nim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BRN": [
+      {
+        "id": "flag-brn-parasol",
+        "text": "Godło ma królewski parasol (monarchia), dwa skrzydła, dwie wzniesione dłonie i półksiężyc islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-brn-motto",
+        "text": "Wstęga pod półksiężycem głosi: „Brunei, siedziba pokoju”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-brn-pasy",
+        "text": "Biały i czarny ukośny pas symbolizują głównych ministrów, a żółte tło sułtanat.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BTN": [
+      {
+        "id": "flag-btn-smok",
+        "text": "Na fladze Bhutanu jest Druk — Smok Grzmotu, godło narodowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-btn-klejnoty",
+        "text": "Klejnoty w szponach smoka oznaczają bogactwo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-btn-kolory",
+        "text": "Pomarańcz oznacza buddyzm, a żółć panującą dynastię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BWA": [
+      {
+        "id": "flag-bwa-deszcz",
+        "text": "Błękit flagi Botswany symbolizuje wodę deszczową.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bwa-harmonia",
+        "text": "Czarny pas z białymi brzegami oznacza harmonię między rasami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-bwa-pas",
+        "text": "Na jasnoniebieskim tle biegnie poziomy czarny pas obwiedziony bielą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CAF": [
+      {
+        "id": "flag-caf-pion",
+        "text": "Pionowy czerwony pas przecina cztery poziome pasy flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-caf-kolory",
+        "text": "Flaga łączy barwy panafrykańskie z barwami Francji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-caf-gwiazda",
+        "text": "Żółta gwiazda w rogu oznacza dążenie do pomyślnej przyszłości.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CHE": [
+      {
+        "id": "flag-che-kwadrat",
+        "text": "Flaga Szwajcarii jest kwadratowa, a ramiona białego krzyża nie sięgają krawędzi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-che-czerwonykrzyz",
+        "text": "W 1863 roku Międzynarodowy Czerwony Krzyż przyjął za symbol odwrotność flagi szwajcarskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-che-laupen",
+        "text": "Biały krzyż oznaczał wojska Konfederacji już w bitwie pod Laupen w 1339 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CHN": [
+      {
+        "id": "flag-chn-gwiazdy",
+        "text": "Cztery małe gwiazdy oznaczają klasy społeczne zjednoczone pod przywództwem Komunistycznej Partii Chin.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-chn-klasy",
+        "text": "Te klasy to robotnicy, chłopi, drobnomieszczaństwo i burżuazja narodowa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-chn-luk",
+        "text": "Małe gwiazdy ułożone są łukiem wokół dużej gwiazdy w lewym górnym rogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CIV": [
+      {
+        "id": "flag-civ-irlandia",
+        "text": "Flaga Irlandii ma te same barwy w odwrotnej kolejności i inne proporcje.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-civ-sawanna",
+        "text": "Pomarańcz oznacza sawannę i urodzajność, a zieleń lasy południa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-civ-francja",
+        "text": "Układ pasów wzorowano na fladze Francji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CMR": [
+      {
+        "id": "flag-cmr-gwiazda",
+        "text": "Żółta gwiazda w środku nazywana jest „gwiazdą jedności”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cmr-polnoc",
+        "text": "Żółty pas oznacza też sawanny północy, a zielony lasy południa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cmr-francja",
+        "text": "Pionowy układ trzech pasów przypomina flagę Francji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COD": [
+      {
+        "id": "flag-cod-gwiazda",
+        "text": "Żółta gwiazda w rogu symbolizuje jedność i świetlaną przyszłość kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cod-ukos",
+        "text": "Czerwony ukośny pas w żółtych obwódkach biegnie od dolnego lewego do górnego prawego rogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cod-kolory",
+        "text": "Błękit oznacza pokój, czerwień krew męczenników, a żółć bogactwo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COG": [
+      {
+        "id": "flag-cog-ukos",
+        "text": "Szeroki żółty pas biegnie ukośnie od lewego dołu, dzieląc flagę na zielony i czerwony trójkąt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cog-zolty",
+        "text": "Żółty oznacza przyjaźń i szlachetność ludzi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cog-zielony",
+        "text": "Zieleń symbolizuje rolnictwo i lasy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COM": [
+      {
+        "id": "flag-com-wyspy",
+        "text": "Cztery poziome pasy i cztery gwiazdy oznaczają cztery główne wyspy: Mwali, Ndzuwani, Ngazidja i Majotta.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-com-majotta",
+        "text": "Majotta jest departamentem Francji, ale Komory uznają ją za swoją — dlatego ma swój pas na fladze.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-com-islam",
+        "text": "Półksiężyc, gwiazdy i zielony kolor to tradycyjne symbole islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CPV": [
+      {
+        "id": "flag-cpv-gwiazdy",
+        "text": "Krąg dziesięciu gwiazd oznacza dziesięć głównych wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cpv-pasy",
+        "text": "Biało-czerwono-białe paski symbolizują powstanie kraju przez pokój i wysiłek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cpv-blekit",
+        "text": "Górny niebieski pas zajmuje połowę wysokości flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CYP": [
+      {
+        "id": "flag-cyp-mapa",
+        "text": "W centrum białej flagi widnieje miedziana sylwetka całej wyspy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/cy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cyp-oliwki",
+        "text": "Dwie gałązki oliwne symbolizują nadzieję na pokój i pojednanie społeczności greckiej i tureckiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/cy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cyp-kosowo",
+        "text": "To jedna z dwóch flag państwowych z mapą kraju; drugą jest flaga Kosowa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/cy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CZE": [
+      {
+        "id": "flag-cze-czechoslowacja",
+        "text": "Flaga Czech jest identyczna z flagą dawnej Czechosłowacji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ez.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cze-kolory",
+        "text": "Biel i czerwień pochodzą z barw Czech właściwych, a niebieski klin z herbu Moraw.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ez.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-cze-klin",
+        "text": "Niebieski trójkąt równoramienny wychodzi od drzewca i sięga środka flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ez.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DEU": [
+      {
+        "id": "flag-deu-cesarz",
+        "text": "Czerń, czerwień i złoto wywodzi się od średniowiecznego sztandaru cesarza rzymskiego: czarnego orła z czerwonymi szponami na złotym polu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-deu-zloto",
+        "text": "Oficjalnie dolny pas flagi Niemiec jest złoty, a nie żółty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-deu-pasy",
+        "text": "Pasy idą od góry: czarny, czerwony, złoty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DJI": [
+      {
+        "id": "flag-dji-ludy",
+        "text": "Błękit symbolizuje lud Issa, a zieleń lud Afar — dwie główne społeczności Dżibuti.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dji-gwiazda",
+        "text": "Czerwona gwiazda w białym trójkącie oznacza walkę o niepodległość i jedność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dji-morze",
+        "text": "Niebieski oznacza też morze i niebo, a zielony ziemię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DNK": [
+      {
+        "id": "flag-dnk-dannebrog",
+        "text": "Flaga Danii, Dannebrog, uchodzi za jedną z najstarszych flag państwowych świata.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dnk-legenda",
+        "text": "Według legendy sztandar spadł z nieba podczas bitwy na początku XIII wieku i poprowadził wojsko do zwycięstwa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dnk-krzyz",
+        "text": "Przesunięty ku drzewcu krzyż przejęły potem Finlandia, Islandia, Norwegia, Szwecja i Wyspy Owcze.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DZA": [
+      {
+        "id": "flag-dza-polksiezyc",
+        "text": "Półksiężyc na fladze Algierii jest bardziej zamknięty niż w innych krajach muzułmańskich — długie rogi mają przynosić szczęście.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dza-kolory",
+        "text": "Zieleń oznacza islam, biel czystość i pokój, a czerwień wolność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-dza-granica",
+        "text": "Czerwona gwiazda w półksiężycu leży dokładnie na granicy zielonego i białego pasa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "EGY": [
+      {
+        "id": "flag-egy-saladyn",
+        "text": "W białym pasie jest złoty orzeł Saladyna z napisem z nazwą kraju po arabsku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/eg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-egy-kolory",
+        "text": "Czerń to ucisk, który pokonała krwawa walka (czerwień), by nastała jasna przyszłość (biel).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/eg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-egy-podobne",
+        "text": "Podobne flagi mają Syria (dwie zielone gwiazdy), Irak (arabski napis) i Jemen (pusty biały pas).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/eg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ERI": [
+      {
+        "id": "flag-eri-ksztalt",
+        "text": "Czerwony trójkąt odwzorowuje kształt Erytrei — to jedna z czterech flag z kształtem kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-eri-oliwka",
+        "text": "Przy drzewcu jest złoty wieniec otaczający złotą gałązkę oliwną.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-eri-kolory",
+        "text": "Zieleń oznacza rolnictwo, czerwień krew przelaną za wolność, a błękit bogactwa morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ESP": [
+      {
+        "id": "flag-esp-kolumny",
+        "text": "Dwie kolumny w herbie to Słupy Heraklesa — Gibraltar i Ceuta po obu stronach Cieśniny Gibraltarskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-esp-granat",
+        "text": "Owoc granatu u dołu tarczy oznacza Grenadę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-esp-plusultra",
+        "text": "Wstęga z mottem „Plus Ultra” („jeszcze dalej”) nawiązuje do hiszpańskich posiadłości poza Europą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "EST": [
+      {
+        "id": "flag-est-czern",
+        "text": "Czarny pas oznacza ziemię i dawne cierpienia Estończyków.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-est-biel",
+        "text": "Biel ma przypominać korę brzozy, śnieg i białe noce.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-est-blekit",
+        "text": "Niebieski oznacza wiarę i wierność, a także niebo, morze i jeziora.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ETH": [
+      {
+        "id": "flag-eth-panafryka",
+        "text": "Etiopia to najstarsze niepodległe państwo Afryki, a jej barwy przejęły nowe państwa afrykańskie jako barwy panafrykańskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/et.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-eth-pentagram",
+        "text": "Żółty pentagram na niebieskim dysku oznacza jedność i równość narodów Etiopii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/et.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-eth-1996",
+        "text": "Godło w środku flagi dodano w 1996 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/et.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "FIN": [
+      {
+        "id": "flag-fin-jeziora",
+        "text": "Niebieski krzyż symbolizuje tysiące fińskich jezior, a biel — śnieg.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-fin-krzyz",
+        "text": "Krzyż jest przesunięty ku drzewcu na wzór duńskiego Dannebrogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-fin-pola",
+        "text": "Flaga Finlandii to niebieski krzyż na białym tle, sięgający krawędzi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "FRA": [
+      {
+        "id": "flag-fra-rewolucja",
+        "text": "Trójkolorowa flaga pochodzi z 1790 roku i czasów rewolucji francuskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-fra-paryz",
+        "text": "Niebieski i czerwony to barwy milicji Paryża, połączone z tradycyjną bielą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-fra-odwrotnie",
+        "text": "Przez pierwsze cztery lata (1790–1794) pasy miały odwrotną kolejność: czerwony, biały, niebieski.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GAB": [
+      {
+        "id": "flag-gab-rownik",
+        "text": "Żółty pas symbolizuje równik i słońce.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gab-las",
+        "text": "Zieleń oznacza lasy i bogactwa naturalne kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gab-morze",
+        "text": "Niebieski pas symbolizuje morze.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GBR": [
+      {
+        "id": "flag-gbr-krzyze",
+        "text": "Union Jack łączy krzyż św. Jerzego (Anglia), krzyż św. Andrzeja (Szkocja) i krzyż św. Patryka (Irlandia).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/uk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gbr-nazwa",
+        "text": "Oficjalna nazwa to Union Flag, ale powszechnie mówi się Union Jack.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/uk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gbr-wzor",
+        "text": "Wzór i barwy Union Jacka stały się podstawą wielu innych flag.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/uk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GEO": [
+      {
+        "id": "flag-geo-piec",
+        "text": "Flagę Gruzji nazywa się Flagą Pięciu Krzyży.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-geo-xiv",
+        "text": "Wzór nawiązuje do XIV-wiecznego sztandaru Królestwa Gruzji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-geo-bolnisi",
+        "text": "Cztery małe krzyże to krzyże bolniskie o ramionach rozszerzających się ku końcom.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GHA": [
+      {
+        "id": "flag-gha-gwiazda",
+        "text": "Czarna gwiazda ma być „gwiazdą przewodnią” wolności Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gha-boliwia",
+        "text": "Flaga Boliwii ma te same pasy, ale z herbem zamiast gwiazdy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gha-panafryka",
+        "text": "Flaga Ghany używa barw panafrykańskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GIN": [
+      {
+        "id": "flag-gin-sasiedzi",
+        "text": "Kolory flagi Gwinei są w odwrotnej kolejności niż u sąsiadów — Mali i Senegalu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gin-zolty",
+        "text": "Żółty oznacza słońce, bogactwa ziemi i sprawiedliwość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gin-czerwien",
+        "text": "Czerwień symbolizuje ofiarę ludu na rzecz wyzwolenia i pracę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GMB": [
+      {
+        "id": "flag-gmb-rzeka",
+        "text": "Niebieski pas w białych obwódkach symbolizuje rzekę Gambię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gmb-sawanna",
+        "text": "Czerwień oznacza słońce i sawannę, a zieleń lasy i rolnictwo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gmb-biel",
+        "text": "Wąskie białe paski wokół niebieskiego pasa oznaczają jedność i pokój.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GNB": [
+      {
+        "id": "flag-gnb-ghana",
+        "text": "Na wzór flagi Gwinei Bissau silnie wpłynęła flaga Ghany.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gnb-gwiazda",
+        "text": "Czarna gwiazda w czerwonym pasie oznacza jedność Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gnb-kolory",
+        "text": "Żółty oznacza słońce, zielony nadzieję, a czerwony krew przelaną za niepodległość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GNQ": [
+      {
+        "id": "flag-gnq-gwiazdy",
+        "text": "Sześć gwiazd w herbie oznacza część lądową kraju i pięć wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gnq-drzewo",
+        "text": "Na szarej tarczy herbu rośnie drzewo kapokowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-gnq-motto",
+        "text": "Motto w herbie brzmi UNIDAD, PAZ, JUSTICIA — „Jedność, Pokój, Sprawiedliwość”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GRC": [
+      {
+        "id": "flag-grc-paski",
+        "text": "Flaga ma dziewięć poziomych pasów, na przemian niebieskich i białych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-grc-odcien",
+        "text": "Ustawa mówi o barwie „kyanos”, która po grecku może znaczyć po prostu niebieski, więc odcień flagi bywał od jasnego po ciemny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-grc-krzyz",
+        "text": "Biały krzyż w lewym górnym rogu symbolizuje prawosławie; pasy nie mają oficjalnego znaczenia.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "HRV": [
+      {
+        "id": "flag-hrv-szachownica",
+        "text": "Środek herbu to szachownica z 13 czerwonych i 12 srebrnych pól.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-hrv-korona",
+        "text": "Nad szachownicą tworzy koronę pięć małych tarcz: Chorwacji, Dubrownika, Dalmacji, Istrii i Slawonii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-hrv-panslawizm",
+        "text": "Czerwony, biały i niebieski to barwy panslawistyczne, zainspirowane XIX-wieczną flagą Rosji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "HUN": [
+      {
+        "id": "flag-hun-cnoty",
+        "text": "Według tradycji czerwień oznacza siłę, biel wierność, a zieleń nadzieję.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-hun-francja",
+        "text": "Flaga łączy średniowieczne barwy herbu Węgier z ideą rewolucyjnej trójbarwy francuskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-hun-pastwiska",
+        "text": "W innej interpretacji zieleń symbolizuje węgierskie pastwiska.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IDN": [
+      {
+        "id": "flag-idn-majapahit",
+        "text": "Barwy pochodzą ze sztandaru imperium Majapahit z XIII–XV wieku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-idn-monako",
+        "text": "Bardzo podobna jest flaga Monako, która ma inne proporcje.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-idn-kolory",
+        "text": "Czerwień oznacza odwagę, a biel czystość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IND": [
+      {
+        "id": "flag-ind-czakra",
+        "text": "Niebieska czakra ma 24 szprychy i symbolizuje koło życia w ruchu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ind-szafran",
+        "text": "Szafranowy pas oznacza odwagę, poświęcenie i wyrzeczenie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ind-niger",
+        "text": "Podobna jest flaga Nigru — ma w białym pasie pomarańczowy dysk.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRL": [
+      {
+        "id": "flag-irl-zielen",
+        "text": "Zieleń bywa odczytywana jako tradycja irlandzkich nacjonalistów, a pomarańcz jako tradycja zwolenników Wilhelma Orańskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irl-pokoj",
+        "text": "Biały pas między nimi oznacza pokój między obiema tradycjami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irl-podobne",
+        "text": "Flaga Wybrzeża Kości Słoniowej ma te same barwy w odwrotnej kolejności i jest krótsza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRN": [
+      {
+        "id": "flag-irn-tulipan",
+        "text": "Godło to stylizowane słowo Allah w kształcie tulipana — symbolu męczeństwa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irn-11",
+        "text": "Napis Allahu akbar powtórzono 22 razy: 11 razy przy dolnej krawędzi zielonego pasa i 11 razy przy górnej czerwonego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irn-kolory",
+        "text": "Zieleń oznacza islam i wzrost, biel uczciwość i pokój, a czerwień męstwo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRQ": [
+      {
+        "id": "flag-irq-2008",
+        "text": "Obecną flagę przyjęto w 2008 roku jako kompromisowy zamiennik flagi z czasów Saddama.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irq-takbir",
+        "text": "W białym pasie jest zielony napis Allahu akbar — „Bóg jest wielki”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-irq-kolory",
+        "text": "Czerń to ucisk pokonany krwawą walką (czerwień), po której nastaje jasna przyszłość (biel).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ISL": [
+      {
+        "id": "flag-isl-wulkany",
+        "text": "Czerwony krzyż symbolizuje ogień wulkanów, biel lód i śnieg, a błękit ocean.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-isl-krzyz",
+        "text": "Czerwony krzyż jest obwiedziony bielą i przesunięty ku drzewcu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-isl-obwodka",
+        "text": "Czerwony krzyż ma białą obwódkę i biegnie na niebieskim tle aż do krawędzi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ISR": [
+      {
+        "id": "flag-isr-talit",
+        "text": "Wzór przypomina żydowski szal modlitewny (tałes) — biały z niebieskimi pasami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-isr-gwiazda",
+        "text": "Gwiazda Dawida jako symbol żydowski sięga średniowiecza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-isr-odcien",
+        "text": "Odcień niebieskiego na fladze Izraela nigdy nie został ustalony i bywa różny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ITA": [
+      {
+        "id": "flag-ita-mediolan",
+        "text": "Czerwień i biel to barwy Mediolanu, a zieleń — kolor mundurów mediolańskiej gwardii obywatelskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ita-napoleon",
+        "text": "Wzór zainspirowała flaga Francji, którą Napoleon przyniósł do Włoch w 1797 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ita-meksyk",
+        "text": "Flaga Meksyku ma te same barwy, ale z herbem pośrodku i ciemniejszymi odcieniami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "JOR": [
+      {
+        "id": "flag-jor-kalifaty",
+        "text": "Czerń, biel i zieleń oznaczają kalifaty Abbasydów, Umajjadów i Fatymidów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/jo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-jor-gwiazda",
+        "text": "Siedem ramion gwiazdy odpowiada siedmiu wersetom pierwszej sury Koranu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/jo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-jor-1916",
+        "text": "Czerwony trójkąt upamiętnia Wielkie Powstanie Arabskie z 1916 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/jo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "JPN": [
+      {
+        "id": "flag-jpn-1184",
+        "text": "Flaga ze słońcem jest używana w Japonii co najmniej od 1184 roku; obecną przyjęto w 1854 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ja.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-jpn-amaterasu",
+        "text": "Według tradycji kraj założyła w VII wieku p.n.e. bogini słońca Amaterasu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ja.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-jpn-dysk",
+        "text": "Czerwony dysk przedstawia słońce bez promieni.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ja.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KAZ": [
+      {
+        "id": "flag-kaz-orzel",
+        "text": "Pod złotym słońcem szybuje orzeł stepowy, obecny na flagach plemion kazachskich od wieków.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kaz-promienie",
+        "text": "Słońce ma 32 promienie w kształcie ziaren zboża.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kaz-baran",
+        "text": "Przy drzewcu biegnie ornament koshkar-muiz, czyli „rogi barana”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KEN": [
+      {
+        "id": "flag-ken-masaj",
+        "text": "W centrum flagi Kenii jest tarcza wojownika masajskiego na skrzyżowanych włóczniach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ke.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ken-obrona",
+        "text": "Tarcza i włócznie symbolizują obronę wolności.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ke.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ken-kolory",
+        "text": "Czerń oznacza większość mieszkańców, czerwień krew przelaną za wolność, a zieleń bogactwo natury.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ke.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KGZ": [
+      {
+        "id": "flag-kgz-jurta",
+        "text": "W środku słońca jest tunduk — okrągły otwór w dachu tradycyjnej kirgiskiej jurty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kgz-promienie",
+        "text": "Słońce ma 40 promieni oznaczających plemiona kirgiskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kgz-kierunek",
+        "text": "Promienie biegną przeciwnie do ruchu wskazówek zegara na awersie i zgodnie na rewersie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KHM": [
+      {
+        "id": "flag-khm-angkor",
+        "text": "W centrum flagi jest biała świątynia o trzech wieżach — Angkor Wat.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/cb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-khm-budynek",
+        "text": "To jedyna flaga państwowa, na której wyraźnie widać rozpoznawalną budowlę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/cb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-khm-kolory",
+        "text": "Czerwień i błękit to tradycyjne barwy Kambodży.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/cb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KOR": [
+      {
+        "id": "flag-kor-taegukki",
+        "text": "Flaga Korei Południowej nazywa się Taegukki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kor-trygramy",
+        "text": "W rogach są cztery trygramy z „Księgi Przemian” I Ching.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kor-yinyang",
+        "text": "Czerwień oznacza dodatnie siły yang, a błękit ujemne siły yin.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KOS": [
+      {
+        "id": "flag-kos-gwiazdy",
+        "text": "Sześć białych gwiazd symbolizuje główne grupy etniczne Kosowa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kos-mapa",
+        "text": "Na niebieskim tle widnieje złota sylwetka kraju — to jedna z dwóch flag z mapą, obok flagi Cypru.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kos-grupy",
+        "text": "Gwiazdy oznaczają Albańczyków, Serbów, Turków, Goran, Romów i Boszniaków.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KWT": [
+      {
+        "id": "flag-kwt-miecze",
+        "text": "Czerwień oznacza krew na kuwejckich mieczach, a czerń pokonanie wroga.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kwt-trapez",
+        "text": "Przy drzewcu jest czarny trapez.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-kwt-arab",
+        "text": "Barwy i wzór nawiązują do flagi powstania arabskiego z czasów I wojny światowej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LAO": [
+      {
+        "id": "flag-lao-ksiezyc",
+        "text": "Biały dysk przedstawia księżyc w pełni nad Mekongiem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lao-mekong",
+        "text": "Niebieski pas symbolizuje rzekę Mekong i dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lao-pas",
+        "text": "Niebieski pas jest dwa razy szerszy od czerwonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBN": [
+      {
+        "id": "flag-lbn-cedr",
+        "text": "Zielony cedr w centrum to symbol narodowy Libanu, oznaczający wieczność i stałość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/le.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lbn-snieg",
+        "text": "Biały pas oznacza pokój i śnieg na górach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/le.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lbn-pas",
+        "text": "Biały pas jest dwa razy szerszy od czerwonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/le.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBR": [
+      {
+        "id": "flag-lbr-usa",
+        "text": "Flaga Liberii wzorowana jest na fladze Stanów Zjednoczonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lbr-pasy",
+        "text": "Jedenaście pasów upamiętnia sygnatariuszy liberyjskiej deklaracji niepodległości.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lbr-gwiazda",
+        "text": "Biała gwiazda oznacza wolność dla byłych niewolników, a niebieski kwadrat kontynent afrykański.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBY": [
+      {
+        "id": "flag-lby-regiony",
+        "text": "Trzy barwy oznaczają regiony kraju: czerwień — Fazzan, czerń — Cyrenajkę, zieleń — Trypolitanię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lby-2011",
+        "text": "W 2011 roku przywrócono flagę dawnego Królestwa Libii, zastępując całkowicie zieloną flagę z czasów Kaddafiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lby-czarny",
+        "text": "Czarny pas jest dwa razy szerszy od pozostałych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LIE": [
+      {
+        "id": "flag-lie-haiti",
+        "text": "Złotą koronę dodano w 1937 roku, gdy okazało się, że flaga jest identyczna z flagą Haiti.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lie-liberia",
+        "text": "Niebiesko-czerwone barwy mogą pochodzić z liberii dworu książęcego z XVIII wieku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lie-korona2",
+        "text": "Złota korona książęca znajduje się w lewej części niebieskiego pasa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LKA": [
+      {
+        "id": "flag-lka-lew",
+        "text": "Flagę Sri Lanki nazywa się Flagą Lwa — złoty lew trzyma miecz.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lka-liscie",
+        "text": "Cztery liście drzewa bo symbolizują buddyzm i cztery cnoty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lka-pasy",
+        "text": "Pomarańczowy pas oznacza Tamilów, zielony Maurów, a bordowy Syngalezów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LSO": [
+      {
+        "id": "flag-lso-kapelusz",
+        "text": "Na fladze Lesotho widnieje mokorotlo — tradycyjny słomkowy kapelusz ludu Basotho.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lso-2006",
+        "text": "Obecną flagę wprowadzono w 2006 roku na 40-lecie niepodległości.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lso-deszcz",
+        "text": "Błękit oznacza deszcz, biel pokój, a zieleń dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LTU": [
+      {
+        "id": "flag-ltu-zolty",
+        "text": "Żółty oznacza złote pola, słońce i dobro.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ltu-zielen",
+        "text": "Zieleń symbolizuje lasy, przyrodę, wolność i nadzieję.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ltu-czerwien",
+        "text": "Czerwień to odwaga i krew przelana w obronie ojczyzny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LUX": [
+      {
+        "id": "flag-lux-herb",
+        "text": "Barwy pochodzą z herbu wielkiego księcia Luksemburga.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lux-holandia",
+        "text": "Flaga jest bardzo podobna do holenderskiej, ale ma jaśniejszy, błękitny pas.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lux-proporcje",
+        "text": "Oficjalnie flaga Luksemburga jest dłuższa od holenderskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LVA": [
+      {
+        "id": "flag-lva-kronika",
+        "text": "Średniowieczna kronika wspomina, że już ok. 1280 roku plemiona łotewskie używały czerwonego sztandaru z białym pasem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lva-kolor",
+        "text": "Czerwień flagi Łotwy to ciemny, bordowy odcień.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-lva-pas",
+        "text": "Biały pas w środku jest o połowę węższy od pasów czerwonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MAR": [
+      {
+        "id": "flag-mar-salomon",
+        "text": "Zielona pięcioramienna gwiazda to pieczęć Salomona (Sulejmana).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mar-filary",
+        "text": "Pięć ramion gwiazdy symbolizuje pięć filarów islamu i więź Boga z narodem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mar-1912",
+        "text": "Wzór flagi pochodzi z 1912 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MCO": [
+      {
+        "id": "flag-mco-grimaldi",
+        "text": "Czerwień i biel to barwy panującego rodu Grimaldich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mco-1339",
+        "text": "Barwy są używane od 1339 roku, co czyni flagę jedną z najstarszych na świecie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mco-indonezja",
+        "text": "Niemal identyczna jest flaga Indonezji — różni się tylko proporcjami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDA": [
+      {
+        "id": "flag-mda-dwustronna",
+        "text": "To jedna z trzech flag państwowych różniących się stronami — obok flag Paragwaju i Arabii Saudyjskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mda-tur",
+        "text": "Na tarczy orła widnieje głowa tura, gwiazda, róża i półksiężyc.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mda-rumunia",
+        "text": "Barwy wywodzą się z flagi Rumunii, ale niebieski pas Mołdawii jest jaśniejszy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDG": [
+      {
+        "id": "flag-mdg-kolory",
+        "text": "Czerwień oznacza suwerenność, zieleń nadzieję, a biel czystość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ma.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mdg-uklad",
+        "text": "Biały pionowy pas jest przy drzewcu, obok czerwony i zielony pas poziomy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ma.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mdg-czerwien",
+        "text": "Czerwony pas jest u góry, a zielony u dołu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ma.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDV": [
+      {
+        "id": "flag-mdv-prostokat",
+        "text": "W środku czerwonej flagi jest duży zielony prostokąt z białym półksiężycem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mdv-czerwien",
+        "text": "Czerwień upamiętnia tych, którzy oddali życie za kraj.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mdv-zielen",
+        "text": "Zieleń oznacza pokój i dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MKD": [
+      {
+        "id": "flag-mkd-slonce",
+        "text": "Na czerwonym polu świeci żółte Słońce Wolności z ośmioma rozszerzającymi się promieniami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mkd-promienie",
+        "text": "Promienie słońca sięgają aż do krawędzi flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mkd-kolory",
+        "text": "Czerwień i żółć od dawna kojarzone są z Macedonią.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MLI": [
+      {
+        "id": "flag-mli-senegal",
+        "text": "Barwy Mali są w tej samej kolejności co u Senegalu, który ma dodatkowo zieloną gwiazdę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ml.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mli-gwinea",
+        "text": "Flaga Gwinei ma te same barwy w odwrotnej kolejności.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ml.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mli-panafryka",
+        "text": "Flaga Mali używa barw panafrykańskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ml.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MLT": [
+      {
+        "id": "flag-mlt-krzyz",
+        "text": "W rogu flagi jest Krzyż Jerzego — brytyjskie odznaczenie nadane mieszkańcom Malty w 1942 roku za męstwo podczas II wojny światowej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mlt-joannici",
+        "text": "Biel i czerwień najpewniej pochodzą od joannitów, którzy rządzili Maltą w latach 1530–1798.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mlt-legenda",
+        "text": "Legenda wiąże barwy z hrabią Rogerem z Sycylii, który miał oddać Malcie róg swojej szachowanej chorągwi w 1091 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MMR": [
+      {
+        "id": "flag-mmr-okupacja",
+        "text": "Flaga nawiązuje do trójbarwy używanej w Birmie w latach 1943–1945, podczas okupacji japońskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mmr-gwiazda",
+        "text": "Biała gwiazda w środku nachodzi na żółty i czerwony pas.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mmr-pasy",
+        "text": "Pasy idą od góry: żółty, zielony, czerwony.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MNE": [
+      {
+        "id": "flag-mne-orzel",
+        "text": "Złoty dwugłowy orzeł symbolizuje jedność Kościoła i państwa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mne-lew",
+        "text": "Lew na piersi orła to znak władzy biskupiej — przez ok. trzy i pół wieku Czarnogórą rządzili władcy duchowni.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mne-obramowanie",
+        "text": "Czerwone pole flagi otacza wąskie złote obramowanie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MNG": [
+      {
+        "id": "flag-mng-sojombo",
+        "text": "Żółte godło sojombo to abstrakcyjny obraz ognia, słońca, księżyca, ziemi, wody i symbolu yin-yang.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mng-blekit",
+        "text": "Niebieski pas oznacza niebo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mng-czerwien",
+        "text": "Czerwone pasy oznaczają postęp i dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MOZ": [
+      {
+        "id": "flag-moz-karabin",
+        "text": "Flaga Mozambiku to jedna z dwóch flag państwowych z bronią palną; drugą ma Gwatemala.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-moz-motyka",
+        "text": "Karabin oznacza obronę, motyka rolnictwo, a otwarta książka wagę edukacji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-moz-gwiazda",
+        "text": "Gwiazda symbolizuje marksizm i internacjonalizm.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MRT": [
+      {
+        "id": "flag-mrt-sahara",
+        "text": "Żółty kolor oznacza piaski Sahary.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mrt-pasy",
+        "text": "Czerwone pasy przy górnej i dolnej krawędzi oznaczają krew przelaną za niepodległość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mrt-islam",
+        "text": "Półksiężyc, gwiazda i zieleń to tradycyjne symbole islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MUS": [
+      {
+        "id": "flag-mus-cztery",
+        "text": "Mauritius ma jedyną flagę państwową z czterema poziomymi pasami barw.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mus-ocean",
+        "text": "Niebieski pas symbolizuje Ocean Indyjski.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mus-kolory",
+        "text": "Czerwień to niepodległość, żółć nowe światło niepodległości, a zieleń bujna roślinność wyspy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MWI": [
+      {
+        "id": "flag-mwi-slonce",
+        "text": "Na czarnym pasie wschodzi czerwone słońce — symbol nadziei na wolność dla całej Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mwi-czern",
+        "text": "Czerń oznacza ludy kraju, czerwień krew przelaną za wolność, a zieleń przyrodę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mwi-pasy",
+        "text": "Pasy idą od góry: czarny, czerwony, zielony.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MYS": [
+      {
+        "id": "flag-mys-chwala",
+        "text": "Flaga Malezji nazywa się Jalur Gemilang — „Pasy Chwały”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mys-14",
+        "text": "Czternaście pasów oznacza 13 stanów i rząd federalny; gwiazda ma 14 ramion.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-mys-usa",
+        "text": "Wzór flagi oparto na fladze Stanów Zjednoczonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NAM": [
+      {
+        "id": "flag-nam-slonce",
+        "text": "W niebieskim trójkącie świeci złote słońce z 12 promieniami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nam-czerwien",
+        "text": "Czerwony ukośny pas oznacza bohaterstwo narodu i dążenie do równych szans.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nam-ocean",
+        "text": "Błękit oznacza niebo i Ocean Atlantycki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NER": [
+      {
+        "id": "flag-ner-dysk",
+        "text": "Pomarańczowy dysk w centrum oznacza słońce i ofiary ludu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ner-indie",
+        "text": "Podobna jest flaga Indii, która w białym pasie ma niebieskie koło.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ner-niger",
+        "text": "Zieleń oznacza żyzne tereny południa i zachodu oraz rzekę Niger, a pomarańcz północną Saharę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NGA": [
+      {
+        "id": "flag-nga-pasy",
+        "text": "Flaga Nigerii ma trzy pionowe pasy: zielony, biały i zielony.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nga-zielen",
+        "text": "Zieleń oznacza lasy i bogactwa naturalne kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nga-biel",
+        "text": "Biel symbolizuje pokój i jedność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NLD": [
+      {
+        "id": "flag-nld-pomarancz",
+        "text": "Górny pas był pierwotnie pomarańczowy, ale barwnik z czasem czerwieniał, więc ostatecznie przyjęto czerwień.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nld-oranski",
+        "text": "Barwy pochodzą od Wilhelma I Orańskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nld-luksemburg",
+        "text": "Bardzo podobna jest flaga Luksemburga — ma jaśniejszy błękit i inne proporcje.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NOR": [
+      {
+        "id": "flag-nor-unie",
+        "text": "Czerwień i biel nawiązują do unii z Danią, a błękit do unii ze Szwecją.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nor-krzyz",
+        "text": "Niebieski krzyż obwiedziony bielą jest przesunięty ku drzewcu na wzór Dannebrogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-nor-obwodka",
+        "text": "Na czerwonym tle biegnie niebieski krzyż w białej obwódce.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NPL": [
+      {
+        "id": "flag-npl-ksztalt",
+        "text": "Nepal ma jedyną flagę państwową, która nie jest prostokątem ani kwadratem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-npl-trojkaty",
+        "text": "Dwa trójkąty pierwotnie symbolizowały Himalaje, a dziś hinduizm i buddyzm.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-npl-rododendron",
+        "text": "Karmazynowy kolor oznacza rododendron — kwiat narodowy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "OMN": [
+      {
+        "id": "flag-omn-sztylet",
+        "text": "W godle jest sztylet khanjar w pochwie na dwóch skrzyżowanych szablach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-omn-zielen",
+        "text": "Zieleń oznacza Dżabal al-Achdar (Zielone Góry) i urodzajność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-omn-czerwien",
+        "text": "Czerwień oznacza walki z najeźdźcami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PAK": [
+      {
+        "id": "flag-pak-mniejszosci",
+        "text": "Biały pas przy drzewcu symbolizuje rolę mniejszości religijnych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-pak-islam",
+        "text": "Półksiężyc, gwiazda i zieleń to tradycyjne symbole islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-pak-uklad",
+        "text": "Biały półksiężyc i gwiazda są na zielonym polu, nie na białym pasie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PHL": [
+      {
+        "id": "flag-phl-wojna",
+        "text": "W czasie wojny flagę Filipin wywiesza się odwrotnie — czerwonym pasem do góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-phl-promienie",
+        "text": "Osiem promieni słońca oznacza osiem pierwszych prowincji, które wystąpiły przeciw Hiszpanii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-phl-gwiazdy",
+        "text": "Trzy gwiazdy w rogach trójkąta to Luzon, Visayas i Mindanao.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "POL": [
+      {
+        "id": "flag-pol-godlo",
+        "text": "Biel i czerwień pochodzą z godła: białego orła na czerwonym polu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/pl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-pol-monako",
+        "text": "Flagi Indonezji i Monako mają te same barwy w odwrotnej kolejności — czerwień u góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/pl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-pol-pasy",
+        "text": "Flaga Polski ma dwa równe poziome pasy: biały u góry i czerwony u dołu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/pl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PRK": [
+      {
+        "id": "flag-prk-gwiazda",
+        "text": "Czerwona gwiazda w białym dysku oznacza socjalizm.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-prk-pas",
+        "text": "Czerwony pas jest trzy razy szerszy od niebieskich i obwiedziony bielą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-prk-kolory",
+        "text": "Czerwień oznacza tradycje rewolucyjne, a błękit suwerenność i pokój.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PRT": [
+      {
+        "id": "flag-prt-sfera",
+        "text": "Na granicy pasów jest herb ze sferą armilarną i tarczą narodową.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/po.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-prt-proporcje",
+        "text": "Zielony pas zajmuje dwie piąte szerokości, a czerwony trzy piąte.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/po.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-prt-kolory",
+        "text": "Popularnie zieleń oznacza nadzieję, a czerwień krew obrońców ojczyzny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/po.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PSX": [
+      {
+        "id": "flag-psx-arab",
+        "text": "Wzór flagi Palestyny wywodzi się z flagi powstania arabskiego z 1916 roku.",
+        "source_url": "https://en.wikipedia.org/wiki/Flag_of_Palestine",
+        "source_title": "Wikipedia: Flag of Palestine",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-psx-plo",
+        "text": "Organizacja Wyzwolenia Palestyny przyjęła tę flagę w 1964 roku.",
+        "source_url": "https://en.wikipedia.org/wiki/Flag_of_Palestine",
+        "source_title": "Wikipedia: Flag of Palestine",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-psx-uklad",
+        "text": "Flaga ma trzy poziome pasy — czarny, biały i zielony — oraz czerwony trójkąt przy drzewcu.",
+        "source_url": "https://en.wikipedia.org/wiki/Flag_of_Palestine",
+        "source_title": "Wikipedia: Flag of Palestine",
+        "checked": "2026-11-15"
+      }
+    ],
+    "QAT": [
+      {
+        "id": "flag-qat-dziewiec",
+        "text": "Dziewięć zębów oznacza, że Katar był dziewiątym członkiem „pojednanych emiratów” po traktacie z 1916 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-qat-bordo",
+        "text": "Bordowy kolor oznacza krew przelaną w wojnach Kataru, a biel pokój.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-qat-zeby",
+        "text": "Szeroki biały pas przy drzewcu ma ząbkowaną krawędź.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ROU": [
+      {
+        "id": "flag-rou-ksiestwa",
+        "text": "Barwy pochodzą z herbów Wołoszczyzny (czerwony i żółty) i Mołdawii (czerwony i niebieski), połączonych w 1862 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rou-czad",
+        "text": "Flaga Czadu jest niemal identyczna — ma tylko ciemniejszy niebieski pas.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rou-herb",
+        "text": "Dawniej w środku żółtego pasa był herb; dziś go usunięto.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "RUS": [
+      {
+        "id": "flag-rus-marynarka",
+        "text": "Biało-niebiesko-czerwona flaga powstała, gdy Rosja budowała pierwsze okręty, i do XIX wieku była głównie banderą wojenną.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rus-holandia",
+        "text": "Barwy mogły być wzorowane na fladze Holandii; oficjalnie nie mają przypisanego znaczenia.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rus-slowianie",
+        "text": "Rosyjska trójbarwa zainspirowała inne kraje słowiańskie do przyjęcia tych samych kolorów w innych układach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "RWA": [
+      {
+        "id": "flag-rwa-slonce",
+        "text": "Złote słońce ma 24 promienie i symbolizuje jedność oraz oświecenie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rwa-blekit",
+        "text": "Niebieski pas jest dwa razy szerszy od pozostałych i oznacza szczęście i pokój.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-rwa-zolty",
+        "text": "Żółty oznacza rozwój gospodarczy i bogactwa mineralne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SAU": [
+      {
+        "id": "flag-sau-napis",
+        "text": "To jedyna flaga państwowa, której głównym motywem jest napis — wyznanie wiary islamu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sau-szabla",
+        "text": "Flaga ma dwie różne strony, żeby napis czytał się poprawnie od prawej do lewej, a szabla wskazywała ten sam kierunek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sau-saudowie",
+        "text": "Wzór pochodzi z początku XX wieku i jest związany z rodem Saudów, który założył królestwo w 1932 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SDN": [
+      {
+        "id": "flag-sdn-arab",
+        "text": "Barwy i wzór nawiązują do flagi powstania arabskiego z czasów I wojny światowej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sdn-trojkat",
+        "text": "Zielony trójkąt przy drzewcu oznacza islam, rolnictwo i dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sdn-kolory",
+        "text": "Czerwień oznacza walkę o wolność, biel pokój, a czerń lud.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SDS": [
+      {
+        "id": "flag-sds-nil",
+        "text": "Niebieski trójkąt symbolizuje Nil.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sds-kenia",
+        "text": "Flaga Sudanu Południowego jest podobna do flagi Kenii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sds-szesc",
+        "text": "To jedna z dwóch flag z sześcioma barwami w głównym wzorze; drugą ma RPA.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SEN": [
+      {
+        "id": "flag-sen-gwiazda",
+        "text": "Zielona gwiazda w środku oznacza jedność i nadzieję.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sen-mali",
+        "text": "Barwy są ułożone tak samo jak u Mali, a odwrotnie niż u Gwinei.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sen-zielen",
+        "text": "Zieleń symbolizuje islam, postęp i nadzieję.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SGP": [
+      {
+        "id": "flag-sgp-ksiezyc",
+        "text": "Rosnący księżyc symbolizuje młody, wzrastający naród.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sgp-gwiazdy",
+        "text": "Pięć gwiazd oznacza ideały: demokrację, pokój, postęp, sprawiedliwość i równość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sgp-kolory",
+        "text": "Czerwień oznacza braterstwo i równość, a biel czystość i cnotę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SLE": [
+      {
+        "id": "flag-sle-port",
+        "text": "Błękit symbolizuje morze i naturalny port we Freetown.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sle-zielen",
+        "text": "Zieleń oznacza rolnictwo, góry i bogactwa naturalne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-sle-pasy",
+        "text": "Pasy idą od góry: jasnozielony, biały, jasnoniebieski.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SMR": [
+      {
+        "id": "flag-smr-wieze",
+        "text": "Trzy wieże w herbie to zamki Guaita, Cesta i Montale na Monte Titano.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-smr-libertas",
+        "text": "Na wstędze pod herbem widnieje napis LIBERTAS, czyli „Wolność”.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-smr-kolory",
+        "text": "Biel i błękit mają oznaczać pokój i wolność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SOM": [
+      {
+        "id": "flag-som-gwiazda",
+        "text": "Pięć ramion gwiazdy oznacza regiony zamieszkane przez Somalijczyków, m.in. Dżibuti, Ogaden i północno-wschodnią Kenię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-som-onz",
+        "text": "Błękit pierwotnie nawiązywał do flagi ONZ.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-som-ocean",
+        "text": "Dziś błękit tłumaczy się jako niebo i Ocean Indyjski.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SRB": [
+      {
+        "id": "flag-srb-orzel",
+        "text": "W herbie jest biały dwugłowy orzeł na czerwonej tarczy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ri.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-srb-krzesiwa",
+        "text": "Znaczenie białych, zakrzywionych symboli w ćwiartkach małej tarczy nie jest pewne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ri.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-srb-panslawizm",
+        "text": "Czerwony, niebieski i biały to barwy panslawistyczne, zainspirowane flagą Rosji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ri.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "STP": [
+      {
+        "id": "flag-stp-kakao",
+        "text": "Żółty pas symbolizuje kakao, jeden z głównych produktów rolnych kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-stp-gwiazdy",
+        "text": "Dwie czarne gwiazdy w żółtym pasie oznaczają dwie główne wyspy kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-stp-pas",
+        "text": "Żółty pas jest dwa razy szerszy od zielonych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SVK": [
+      {
+        "id": "flag-svk-krzyz",
+        "text": "W herbie widnieje biały podwójny krzyż świętych Cyryla i Metodego na trzech niebieskich wzgórzach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-svk-herb",
+        "text": "Herb jest przesunięty w stronę drzewca.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-svk-panslawizm",
+        "text": "Biel, błękit i czerwień to barwy panslawistyczne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SVN": [
+      {
+        "id": "flag-svn-triglav",
+        "text": "Na tarczy jest biały zarys Triglavu, najwyższego szczytu Słowenii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-svn-gwiazdy",
+        "text": "Trzy sześcioramienne gwiazdy pochodzą z herbu hrabiów Celje.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-svn-linie",
+        "text": "Dwie faliste niebieskie linie pod szczytem oznaczają morze i rzeki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SWE": [
+      {
+        "id": "flag-swe-herb",
+        "text": "Błękit i złoto pochodzą z herbu Szwecji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-swe-krzyz",
+        "text": "Złoty krzyż jest przesunięty ku drzewcu na wzór duńskiego Dannebrogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-swe-tlo",
+        "text": "Szwecja ma złotożółty krzyż na niebieskim tle.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SWZ": [
+      {
+        "id": "flag-swz-tarcza",
+        "text": "W centrum jest czarno-biała tarcza zakrywająca dwie włócznie i laskę z frędzlami z piór.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-swz-grupy",
+        "text": "Barwy tarczy symbolizują pokojowe współistnienie grup etnicznych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-swz-pasy",
+        "text": "Czerwony pas jest trzy razy szerszy od niebieskich i obwiedziony żółcią.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SYC": [
+      {
+        "id": "flag-syc-promienie",
+        "text": "Pięć pasów rozchodzi się promieniście z lewego dolnego rogu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-syc-przyszlosc",
+        "text": "Pasy mają symbolizować dynamiczny kraj zmierzający w przyszłość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-syc-biel",
+        "text": "Biel oznacza sprawiedliwość społeczną i harmonię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SYR": [
+      {
+        "id": "flag-syr-2025",
+        "text": "W 2025 roku flaga z trzema gwiazdami stała się nową flagą państwową, zastępując wzór z dwiema gwiazdami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-syr-opozycja",
+        "text": "Od 2011 roku tej flagi używali przeciwnicy rządów Asada.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-syr-gwiazdy",
+        "text": "Ten sam wzór był flagą Syrii w latach 1932–1958 i 1961–1963.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TCD": [
+      {
+        "id": "flag-tcd-rumunia",
+        "text": "Flaga Czadu jest niemal identyczna z flagą Rumunii — różni się tylko ciemniejszym błękitem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tcd-pustynia",
+        "text": "Złoty pas oznacza słońce i pustynię na północy kraju, a niebieski — niebo i południe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tcd-francja",
+        "text": "Barwy łączą niebieski i czerwony Francji z panafrykańską czerwienią i żółcią.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TGO": [
+      {
+        "id": "flag-tgo-regiony",
+        "text": "Pięć poziomych pasów oznacza regiony kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tgo-gwiazda",
+        "text": "Biała gwiazda na czerwonym kwadracie symbolizuje życie, pokój i niepodległość.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tgo-zolty",
+        "text": "Żółty oznacza bogactwa mineralne i wiarę, że praca przyniesie dobrobyt.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "THA": [
+      {
+        "id": "flag-tha-kostaryka",
+        "text": "Flaga Tajlandii jest podobna do flagi Kostaryki, ale ma odwrócone barwy niebieską i czerwoną.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tha-monarchia",
+        "text": "Niebieski oznacza monarchię, biel religię, a czerwień naród.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tha-pas",
+        "text": "Niebieski pas w środku jest dwa razy szerszy od pozostałych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TJK": [
+      {
+        "id": "flag-tjk-siedem",
+        "text": "Siedem gwiazd nad koroną oznacza liczbę siedem — symbol doskonałości i szczęścia.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tjk-bawelna",
+        "text": "Biały pas oznacza czystość, bawełnę i śniegi gór.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tjk-korona",
+        "text": "Złota korona symbolizuje naród tadżycki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TKM": [
+      {
+        "id": "flag-tkm-dywany",
+        "text": "Pionowy pas zawiera pięć gulów — tradycyjnych wzorów tkanych na dywanach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tkm-regiony",
+        "text": "Pięć gwiazd oznacza regiony kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tkm-oliwki",
+        "text": "Pod gulami są dwie skrzyżowane gałązki oliwne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TLS": [
+      {
+        "id": "flag-tls-kolory",
+        "text": "Żółty oznacza kolonialną przeszłość, czarny ciemnotę do przezwyciężenia, a czerwony walkę o wolność.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tls-gwiazda",
+        "text": "Biała gwiazda oznacza pokój i światło przewodnie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tls-grot",
+        "text": "Czarny trójkąt leży na nieco dłuższym żółtym grocie, sięgającym środka flagi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TUN": [
+      {
+        "id": "flag-tun-osmanie",
+        "text": "Flaga Tunezji przypomina flagę osmańską — przypomnienie o historii kraju w Imperium Osmańskim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tun-dysk",
+        "text": "Biały dysk w centrum mieści czerwony półksiężyc i gwiazdę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tun-czerwien",
+        "text": "Czerwień oznacza krew męczenników, a biel pokój.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TUR": [
+      {
+        "id": "flag-tur-osmanie",
+        "text": "Barwy i wzór flagi są bardzo podobne do flagi Imperium Osmańskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tur-ksiezyc",
+        "text": "Półksiężyc i gwiazda są tradycyjnym znakiem ludów tureckich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tur-legenda",
+        "text": "Według jednej z interpretacji flaga to odbicie księżyca i gwiazdy w kałuży krwi tureckich wojowników.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TWN": [
+      {
+        "id": "flag-twn-godziny",
+        "text": "Dwanaście promieni słońca oznacza miesiące roku i tradycyjne chińskie godziny — każdy promień to dwie godziny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-twn-1895",
+        "text": "Biało-niebieski róg ze słońcem postępu pochodzi z 1895 roku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-twn-samoa",
+        "text": "Flaga Tajwanu jest podobna do flagi Samoa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TZA": [
+      {
+        "id": "flag-tza-zanzibar",
+        "text": "Barwy pochodzą z flag Tanganiki i Zanzibaru.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tza-suahili",
+        "text": "Czarny pas oznacza lud suahili.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-tza-blekit",
+        "text": "Błękit symbolizuje jeziora, rzeki i Ocean Indyjski.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UGA": [
+      {
+        "id": "flag-uga-zuraw",
+        "text": "W centrum jest koronnik szary — ptak, który jest symbolem narodowym Ugandy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ug.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-uga-pasy",
+        "text": "Flaga ma sześć poziomych pasów: czarny, żółty, czerwony, powtórzone dwa razy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ug.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-uga-kolory",
+        "text": "Czerń oznacza ludy Afryki, żółć słońce, a czerwień braterstwo Afrykanów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ug.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UKR": [
+      {
+        "id": "flag-ukr-pola",
+        "text": "Niebiesko-żółtą flagę często odczytuje się jako łany zboża pod błękitnym niebem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ukr-heraldyka",
+        "text": "Barwy sięgają średniowiecznej heraldyki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-ukr-pasy",
+        "text": "Flaga ma dwa równe poziome pasy: niebieski u góry i żółty u dołu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UZB": [
+      {
+        "id": "flag-uzb-kalendarz",
+        "text": "Dwanaście gwiazd oznacza miesiące i gwiazdozbiory kalendarza uzbeckiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/uz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-uzb-paski",
+        "text": "Wąskie czerwone paski symbolizują siłę życiową wszystkich organizmów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/uz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-uzb-blekit",
+        "text": "Niebieski pas oznacza ludy tureckie i niebo.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/uz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "VAT": [
+      {
+        "id": "flag-vat-klucze",
+        "text": "W herbie Stolicy Apostolskiej są skrzyżowane klucze świętego Piotra pod potrójną tiarą papieską.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-vat-kolory",
+        "text": "Żółty oznacza duchową władzę papieża, a biały — świecką.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-vat-uklad",
+        "text": "Żółty pas jest przy drzewcu, a herb Stolicy Apostolskiej w pasie białym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "VNM": [
+      {
+        "id": "flag-vnm-gwiazda",
+        "text": "Pięć ramion gwiazdy oznacza chłopów, robotników, inteligencję, kupców i żołnierzy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-vnm-czerwien",
+        "text": "Czerwień oznacza rewolucję i krew.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-vnm-uklad",
+        "text": "Flaga Wietnamu to żółta gwiazda pośrodku czerwonego pola.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "YEM": [
+      {
+        "id": "flag-yem-kolory",
+        "text": "Barwy pochodzą z flagi wyzwolenia arabskiego: ucisk (czerń) pokonany walką (czerwień) dla jasnej przyszłości (biel).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-yem-podobne",
+        "text": "Podobne flagi mają Irak (napis w białym pasie) i Egipt (orzeł w białym pasie).",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-yem-pasy",
+        "text": "Flaga Jemenu to trzy poziome pasy bez żadnego godła.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZAF": [
+      {
+        "id": "flag-zaf-y",
+        "text": "Zielony pas w kształcie litery Y symbolizuje zbieganie się różnych elementów społeczeństwa i wspólną drogę naprzód.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zaf-szesc",
+        "text": "To jedna z dwóch flag państwowych z sześcioma barwami w głównym wzorze; drugą ma Sudan Południowy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zaf-znaczenie",
+        "text": "Kolory flagi RPA nie mają oficjalnego znaczenia.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZMB": [
+      {
+        "id": "flag-zmb-orzel",
+        "text": "Pomarańczowy orzeł w locie oznacza zdolność narodu do wzniesienia się ponad problemy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zmb-pasy",
+        "text": "Trzy pionowe pasy są w prawym dolnym rogu flagi, pod orłem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zmb-pomarancz",
+        "text": "Pomarańcz oznacza bogactwa mineralne kraju, a czerń jego mieszkańców.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZWE": [
+      {
+        "id": "flag-zwe-ptak",
+        "text": "Żółty ptak na czerwonej gwieździe symbolizuje długą historię kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zwe-pasy",
+        "text": "Flaga ma siedem poziomych pasów i biały trójkąt z czarną obwódką.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "flag-zwe-kolory",
+        "text": "Zieleń oznacza rolnictwo, żółć bogactwa mineralne, a czerń lud.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json), flaga",
+        "checked": "2026-11-15"
+      }
+    ]
+  }
+}

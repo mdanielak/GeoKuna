@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the source-backed, offline country trivia catalogue."""
+"""Validate the source-backed, offline trivia packs: countries and flags."""
 import argparse
 import json
 import re
@@ -9,12 +9,15 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / 'assets/content'
-DATA = CONTENT / 'country_trivia.json'
+PACKS = {
+    'country-trivia': CONTENT / 'country_trivia.json',
+    'flag-trivia': CONTENT / 'flag_trivia.json',
+}
 
 
-def validate(require_complete=True):
-    data = json.loads(DATA.read_text(encoding='utf-8'))
-    assert re.fullmatch(r'country-trivia-\d+\.\d+\.\d+(?:-draft)?', data['version'])
+def validate(prefix, path, require_complete=True):
+    data = json.loads(path.read_text(encoding='utf-8'))
+    assert re.fullmatch(prefix + r'-\d+\.\d+\.\d+(?:-draft)?', data['version'])
     expected = set()
     for path in ['countries.json', 'africa/countries.json', 'asia/countries.json']:
         expected.update(c['id'] for c in json.loads((CONTENT / path).read_text())['countries'])
@@ -38,7 +41,7 @@ def validate(require_complete=True):
     if require_complete:
         assert not missing, f'Missing countries ({len(missing)}): {", ".join(sorted(missing))}'
         assert data['status'] == 'verified', 'A complete production package must be verified'
-    print(f'OK: {len(countries)}/{len(expected)} countries, {len(seen_ids)} facts, {len(missing)} missing')
+    print(f'OK {prefix}: {len(countries)}/{len(expected)} countries, {len(seen_ids)} facts, {len(missing)} missing')
 
 
 if __name__ == '__main__':
@@ -46,4 +49,5 @@ if __name__ == '__main__':
     parser.add_argument('--check', action='store_true', help='validate all countries (default)')
     parser.add_argument('--allow-incomplete', action='store_true', help='validate a draft only')
     args = parser.parse_args()
-    validate(not args.allow_incomplete)
+    for prefix, path in PACKS.items():
+        validate(prefix, path, not args.allow_incomplete)
