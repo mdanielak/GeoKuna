@@ -8,21 +8,27 @@ import 'package:geokuna/features/settings/app_preferences.dart';
 
 void main() {
   testWidgets(
-    'quiz uses almost the full continent, independent of question key',
+    'quiz frame ignores the question; landscape shows the whole continent, '
+    'portrait its core',
     (tester) async {
       final catalog = (await tester.runAsync(Catalog.load))!;
-      Future<MapCamera> cameraFor(String key, {bool quiz = false}) async {
+      Future<MapCamera> cameraFor(
+        String key,
+        Size size, {
+        bool quiz = true,
+      }) async {
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(
-              body: SizedBox(
-                width: 390,
-                height: 450,
-                child: CountryMap(
-                  key: ValueKey(key),
-                  catalog: catalog,
-                  onSelected: (_) {},
-                  quizMode: quiz,
+              body: Center(
+                child: SizedBox.fromSize(
+                  size: size,
+                  child: CountryMap(
+                    key: ValueKey('$key$size'),
+                    catalog: catalog,
+                    onSelected: (_) {},
+                    quizMode: quiz,
+                  ),
                 ),
               ),
             ),
@@ -32,26 +38,37 @@ void main() {
         return MapCamera.of(tester.element(find.byType(PolygonLayer<String>)));
       }
 
-      final atlas = await cameraFor('atlas');
-      final kosovo = await cameraFor('question-KOS', quiz: true);
-      final iceland = await cameraFor('question-ISL', quiz: true);
-      expect(kosovo.center, iceland.center);
-      expect(kosovo.zoom, closeTo(iceland.zoom, .0001));
-      expect(kosovo.zoom - atlas.zoom, inInclusiveRange(0, .12));
+      const landscape = Size(700, 450), portrait = Size(390, 560);
+      final atlas = await cameraFor('atlas', landscape, quiz: false);
+      final wide = await cameraFor('question-KOS', landscape);
+      expect((await cameraFor('question-ISL', landscape)).center, wide.center);
+      expect(wide.zoom - atlas.zoom, inInclusiveRange(0, .12));
       for (final country in catalog.countries) {
         expect(
-          kosovo.visibleBounds.contains(country.center),
+          wide.visibleBounds.contains(country.center),
           isTrue,
           reason: country.name,
         );
       }
+
+      final tall = await cameraFor('question-KOS', portrait);
+      final tallOther = await cameraFor('question-ISL', portrait);
+      expect(tallOther.center, tall.center);
+      expect(tallOther.zoom, closeTo(tall.zoom, .0001));
+      for (final id in ['PRT', 'NOR', 'GRC', 'TUR', 'GBR', 'POL']) {
+        expect(
+          tall.visibleBounds.contains(catalog.country(id).center),
+          isTrue,
+          reason: id,
+        );
+      }
+      // Reset returns to the starting frame of the quiz.
       await tester.tap(find.byTooltip('Pokaż cały obszar'));
       await tester.pumpAndSettle();
       final reset = MapCamera.of(
         tester.element(find.byType(PolygonLayer<String>)),
       );
-      expect(reset.zoom, closeTo(atlas.zoom, .001));
-      expect(reset.center, atlas.center);
+      expect(reset.zoom, closeTo(tallOther.zoom, .001));
     },
   );
 

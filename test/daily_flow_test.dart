@@ -65,7 +65,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Rozpocznij dzisiejszą wyprawę'));
     await tester.pumpAndSettle();
-    expect(find.text('PYTANIE 1 Z 3'), findsOneWidget);
+    expect(find.text('Pytanie 1 z 3'), findsOneWidget);
     expect(await db.select(db.attempts).get(), isEmpty);
     expect(await db.select(db.memoryReviews).get(), isEmpty);
     expect(tester.takeException(), isNull);
@@ -149,7 +149,7 @@ void main() {
       await tester.ensureVisible(find.text('Następne pytanie'));
       await tester.tap(find.text('Następne pytanie'));
       await tester.pumpAndSettle();
-      expect(find.text('PYTANIE 2 Z 2'), findsOneWidget);
+      expect(find.text('Pytanie 2 z 2'), findsOneWidget);
       expect(find.text('Gdzie leżą Niemcy?'), findsOneWidget);
       expect(tester.takeException(), isNull);
     },

@@ -74,6 +74,29 @@ class _CountryMapState extends State<CountryMap> {
     ),
   };
 
+  // On a portrait phone the whole continent leaves most of the screen as sea:
+  // frame its core instead; outlying areas stay reachable by panning.
+  LatLngBounds get _portraitBounds => switch (widget.catalog.continent) {
+    Continent.europe => LatLngBounds(
+      const LatLng(35, -11),
+      const LatLng(71, 50),
+    ),
+    Continent.africa => LatLngBounds(
+      const LatLng(-35, -18),
+      const LatLng(37.5, 52),
+    ),
+    Continent.asia => LatLngBounds(
+      const LatLng(-11, 26),
+      const LatLng(56, 146),
+    ),
+  };
+
+  Size? _viewport;
+  LatLngBounds get _frameBounds =>
+      widget.quizMode && _viewport != null && _viewport!.aspectRatio < 1
+      ? _portraitBounds
+      : _bounds;
+
   double get _minZoom => 1;
 
   // A tiny scale difference only; framing never depends on the answer.
@@ -142,7 +165,7 @@ class _CountryMapState extends State<CountryMap> {
     // Show the answer within its region, not a close-up: at most
     // [_revealZoomGain] above the continent overview.
     final overviewZoom = CameraFit.bounds(
-      bounds: _bounds,
+      bounds: _frameBounds,
       padding: _initialPadding,
     ).fit(_controller.camera).zoom;
     _controller.fitCamera(
@@ -207,7 +230,7 @@ class _CountryMapState extends State<CountryMap> {
   );
 
   void _resetView() => _controller.fitCamera(
-    CameraFit.bounds(bounds: _bounds, padding: const EdgeInsets.all(24)),
+    CameraFit.bounds(bounds: _frameBounds, padding: _initialPadding),
   );
 
   @override
@@ -262,172 +285,20 @@ class _CountryMapState extends State<CountryMap> {
                 Positioned.fill(
                   child: MapSurface(appearance: widget.appearance),
                 ),
-                FlutterMap(
-                  mapController: _controller,
-                  options: MapOptions(
-                    crs: const _RegionalMercator(),
-                    initialCameraFit: CameraFit.bounds(
-                      bounds: _bounds,
-                      padding: _initialPadding,
-                    ),
-                    minZoom: _minZoom,
-                    maxZoom: 10,
-                    backgroundColor: Colors.transparent,
-                    // initialCameraFit is applied after onMapReady; frame the
-                    // question once the continent fit is in place.
-                    onMapReady: () =>
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          if (mounted) _applyQuizFrame();
-                        }),
-                    interactionOptions: const InteractionOptions(
-                      flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                    ),
-                  ),
-                  children: [
-                    if (widget.appearance == MapAppearance.relief)
-                      IgnorePointer(
-                        child: ExcludeSemantics(
-                          child: OverlayImageLayer(
-                            overlayImages: [
-                              OverlayImage(
-                                bounds: _bounds,
-                                imageProvider: AssetImage(
-                                  'assets/maps/styles/relief/${widget.catalog.continent.name}.png',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    if (widget.appearance == MapAppearance.paper)
-                      const MapGraticule(),
-                    GestureDetector(
-                      onTap: () {
-                        final hits = _hits.value?.hitValues;
-                        if (hits != null && hits.isNotEmpty) {
-                          _select(hits.first);
-                        }
-                      },
-                      child: PolygonLayer<String>(
-                        hitNotifier: _hits,
-                        polygons: [
-                          for (final shape in widget.catalog.shapes)
-                            Polygon<String>(
-                              points: shape.rings.first,
-                              holePointsList: shape.rings.skip(1).toList(),
-                              hitValue: shape.countryId,
-                              color: _color(shape.countryId),
-                              borderColor: MapPalette(widget.appearance)
-                                  .boundary,
-                              borderStrokeWidth: .9,
-                            ),
-                        ],
-                      ),
-                    ),
-                    MarkerLayer(
-                      markers: [
-                        for (final country in widget.catalog.countries.where(
-                          (c) => c.small,
-                        ))
-                          Marker(
-                            point: country.center,
-                            width: 48,
-                            height: 48,
-                            child: Semantics(
-                              key: ValueKey('country-marker-${country.id}'),
-                              label: 'Małe państwo — znacznik',
-                              button: true,
-                              child: GestureDetector(
-                                behavior: HitTestBehavior.opaque,
-                                onTap: () => _selectMarker(country),
-                                child: Container(
-                                  margin: const EdgeInsets.all(9),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        _color(country.id) == Colors.transparent
-                                        ? MapPalette(widget.appearance)
-                                              .markerFill
-                                        : _color(country.id),
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: const Color(0xFF365643),
-                                      width: 2,
-                                    ),
-                                  ),
-                                  child: const Icon(
-                                    Icons.place_outlined,
-                                    size: 19,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    MarkerLayer(
-                      markers: [
-                        for (final country in widget.catalog.countries.where(
-                          (country) =>
-                              widget.wrongCountryIds.contains(country.id),
-                        ))
-                          Marker(
-                            point: country.center,
-                            width: 150,
-                            height: 48,
-                            child: IgnorePointer(
-                              child: Semantics(
-                                container: true,
-                                liveRegion: true,
-                                excludeSemantics: true,
-                                label: 'Błędna odpowiedź: ${country.name}',
-                                child: Align(
-                                  alignment: Alignment.topCenter,
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFF8C1D18),
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 2,
-                                      ),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Color(0x55000000),
-                                          blurRadius: 4,
-                                          offset: Offset(0, 2),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 6,
-                                      ),
-                                      child: Text(
-                                        country.name,
-                                        maxLines: 2,
-                                        textAlign: TextAlign.center,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ],
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    _viewport = constraints.biggest;
+                    return _map();
+                  },
                 ),
                 Positioned(
                   right: 8,
-                  top: 8,
+                  // In a quiz the top and bottom belong to the question and
+                  // the feedback panel; keep the controls mid-height.
+                  top: widget.quizMode ? 0 : 8,
+                  bottom: widget.quizMode ? 0 : null,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _control(Icons.add, 'Przybliż mapę', () => _zoom(1)),
                       _control(Icons.remove, 'Oddal mapę', () => _zoom(-1)),
@@ -439,16 +310,17 @@ class _CountryMapState extends State<CountryMap> {
                     ],
                   ),
                 ),
-                Positioned(
-                  left: 10,
-                  bottom: 8,
-                  child: IgnorePointer(
-                    child: Text(
-                      'Natural Earth · ${widget.catalog.countries.length} państw',
-                      style: const TextStyle(fontSize: 10),
+                if (!widget.quizMode)
+                  Positioned(
+                    left: 10,
+                    bottom: 8,
+                    child: IgnorePointer(
+                      child: Text(
+                        'Natural Earth · ${widget.catalog.countries.length} państw',
+                        style: const TextStyle(fontSize: 10),
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -456,6 +328,201 @@ class _CountryMapState extends State<CountryMap> {
       ),
     ),
   );
+
+  Widget _map() => FlutterMap(
+    mapController: _controller,
+    options: MapOptions(
+      crs: const _RegionalMercator(),
+      initialCameraFit: CameraFit.bounds(
+        bounds: _frameBounds,
+        padding: _initialPadding,
+      ),
+      minZoom: _minZoom,
+      maxZoom: 10,
+      backgroundColor: Colors.transparent,
+      // initialCameraFit is applied after onMapReady; frame the
+      // question once the continent fit is in place.
+      onMapReady: () => WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _applyQuizFrame();
+      }),
+      interactionOptions: const InteractionOptions(
+        flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+      ),
+    ),
+    children: [
+      if (widget.appearance == MapAppearance.relief)
+        IgnorePointer(
+          child: ExcludeSemantics(
+            child: OverlayImageLayer(
+              overlayImages: [
+                OverlayImage(
+                  bounds: _bounds,
+                  imageProvider: AssetImage(
+                    'assets/maps/styles/relief/${widget.catalog.continent.name}.png',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      if (widget.appearance == MapAppearance.paper) const MapGraticule(),
+      GestureDetector(
+        onTap: () {
+          final hits = _hits.value?.hitValues;
+          if (hits != null && hits.isNotEmpty) {
+            _select(hits.first);
+          }
+        },
+        child: PolygonLayer<String>(
+          hitNotifier: _hits,
+          polygons: [
+            for (final shape in widget.catalog.shapes)
+              Polygon<String>(
+                points: shape.rings.first,
+                holePointsList: shape.rings.skip(1).toList(),
+                hitValue: shape.countryId,
+                color: _color(shape.countryId),
+                borderColor: MapPalette(widget.appearance).boundary,
+                borderStrokeWidth: .9,
+              ),
+          ],
+        ),
+      ),
+      IgnorePointer(child: PolygonLayer(polygons: _edgeFade())),
+      MarkerLayer(
+        markers: [
+          for (final country in widget.catalog.countries.where((c) => c.small))
+            Marker(
+              point: country.center,
+              width: 48,
+              height: 48,
+              child: Semantics(
+                key: ValueKey('country-marker-${country.id}'),
+                label: 'Małe państwo — znacznik',
+                button: true,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () => _selectMarker(country),
+                  child: Container(
+                    // A small dot inside a 48 dp touch target, so microstates
+                    // do not hide their larger neighbours.
+                    margin: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: _color(country.id) == Colors.transparent
+                          ? MapPalette(widget.appearance).markerFill
+                          : _color(country.id),
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: const Color(0xFF365643),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+      Builder(
+        builder: (context) => MarkerLayer(
+          markers: [
+            for (final country in widget.catalog.countries.where(
+              (country) => widget.wrongCountryIds.contains(country.id),
+            ))
+              Marker(
+                point: _labelPoint(MapCamera.of(context), country.center),
+                width: 150,
+                height: 48,
+                child: IgnorePointer(
+                  child: Semantics(
+                    container: true,
+                    liveRegion: true,
+                    excludeSemantics: true,
+                    label: 'Błędna odpowiedź: ${country.name}',
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF8C1D18),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 2),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0x55000000),
+                              blurRadius: 4,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 6,
+                          ),
+                          child: Text(
+                            country.name,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    ],
+  );
+
+  /// Keeps a wrong-answer label on screen: clamped inside the map with room
+  /// for the zoom controls, instead of being cut at the edge.
+  LatLng _labelPoint(MapCamera camera, LatLng point) {
+    const halfWidth = 75.0, halfHeight = 24.0, margin = 8.0;
+    final size = camera.size;
+    final right = size.width - halfWidth - margin - 64;
+    final left = halfWidth + margin;
+    if (right <= left) return point;
+    final offset = camera.latLngToScreenOffset(point);
+    final clamped = Offset(
+      offset.dx.clamp(left, right),
+      offset.dy.clamp(halfHeight + margin, size.height - halfHeight - margin),
+    );
+    return clamped == offset ? point : camera.screenOffsetToLatLng(clamped);
+  }
+
+  /// Soft edge of the data window: stacked translucent sea bands so land cut
+  /// by the window fades into the sea instead of ending in a straight line.
+  List<Polygon> _edgeFade() {
+    final b = _bounds;
+    final latStep = (b.north - b.south) * .012;
+    final lngStep = (b.east - b.west) * .01;
+    final sea = MapPalette(widget.appearance).ocean.withValues(alpha: .3);
+    LatLng at(double lat, double lng) =>
+        LatLng(lat.clamp(-90, 90), lng.clamp(-180, 180));
+    List<LatLng> rect(double inset) => [
+      at(b.north - inset * latStep, b.west + inset * lngStep),
+      at(b.north - inset * latStep, b.east - inset * lngStep),
+      at(b.south + inset * latStep, b.east - inset * lngStep),
+      at(b.south + inset * latStep, b.west + inset * lngStep),
+    ];
+    return [
+      for (var band = 1; band <= 4; band++)
+        Polygon(
+          points: rect(-.5),
+          holePointsList: [rect(band.toDouble())],
+          color: sea,
+          borderStrokeWidth: 0,
+        ),
+    ];
+  }
 
   Widget _control(IconData icon, String tooltip, VoidCallback action) =>
       Padding(

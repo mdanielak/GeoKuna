@@ -44,7 +44,7 @@ void main() {
 
     expect(find.text('Europa'), findsOneWidget);
     expect(find.text('Wyprawa po Europie'), findsOneWidget);
-    expect(find.text('Passa Europa: 0 dni'), findsOneWidget);
+    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
     expect(
       find.textContaining('Nowe pytania czekają już w rozpoczętej wyprawie'),
       findsOneWidget,
@@ -63,7 +63,7 @@ void main() {
 
     expect(find.text('Afryka'), findsOneWidget);
     expect(find.text('Wyprawa po Afryce'), findsOneWidget);
-    expect(find.text('Passa Afryka: 0 dni'), findsOneWidget);
+    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
     expect(
       tester
           .widget<SegmentedButton<Continent>>(
@@ -76,20 +76,25 @@ void main() {
     await tester.tap(find.text('Azja'));
     await tester.pumpAndSettle();
     expect(find.text('Wyprawa po Azji'), findsOneWidget);
-    expect(find.text('Passa Azja: 0 dni'), findsOneWidget);
+    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
     tester.view.physicalSize = const Size(320, 640);
     tester.platformDispatcher.textScaleFactorTestValue = 2;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
     await tester.pumpAndSettle();
-    for (final level in ['Bardzo łatwy', 'Łatwy', 'Normalny']) {
-      expect(find.widgetWithText(ChoiceChip, level), findsOneWidget);
-    }
-    expect(tester.takeException(), isNull);
     expect(
       tester
           .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Azja'))
           .selected,
       isTrue,
     );
+    // Level chips sit below the expedition card; they stay reachable.
+    await tester.scrollUntilVisible(
+      find.widgetWithText(ChoiceChip, 'Bardzo łatwy'),
+      200,
+    );
+    for (final level in ['Bardzo łatwy', 'Łatwy', 'Normalny']) {
+      expect(find.widgetWithText(ChoiceChip, level), findsOneWidget);
+    }
+    expect(tester.takeException(), isNull);
   });
 }

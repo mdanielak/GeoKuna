@@ -178,7 +178,8 @@ Pełne reguły: `docs/LEARNING.md` (nauka) i `docs/CONTENT.md` (źródła). Nie 
   błędzie etykieta tylko z nazwą wskazanego kraju, bez ujawniania i kadrowania celu;
   po 3. jednorazowe przybliżenie rozwiązania (≤ +1,5 zoomu). Ręczny zoom/pan
   i zoom klastra zachowane. Nie przywracaj wyboru z listy w quizie.
-- Kadr normalny ≈ cały kontynent; łatwe poziomy przybliżają nad pytany kraj
+- Kadr normalny nie zależy od celu: szeroki ekran — cały kontynent, telefon w pionie —
+  rdzeń kontynentu (reszta przesunięciem); łatwe poziomy przybliżają nad pytany kraj
   z losowym przesunięciem, nigdy idealnie na środku.
 - Błąd w serii wraca po 3–5 pytaniach jako nieoceniane ćwiczenie; trudny kraj
   wymaga 3 trafień z rzędu rozłożonych w czasie.

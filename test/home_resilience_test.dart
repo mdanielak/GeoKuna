@@ -21,7 +21,7 @@ void main() {
     await tester.pump();
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Trening mapy'), 160);
-    await tester.scrollUntilVisible(find.text('Odkrywaj atlas'), 160);
+    await tester.scrollUntilVisible(find.text('Atlas'), 160);
     await tester.scrollUntilVisible(find.text('Moja nauka'), 160);
     expect(find.text('Moja nauka'), findsOneWidget);
     pending.completeError(StateError('katalog'));
@@ -30,8 +30,8 @@ void main() {
       find.text('Nie udało się wczytać dzisiejszej wyprawy.'),
       findsOneWidget,
     );
-    await tester.scrollUntilVisible(find.text('Odkrywaj atlas'), 160);
-    expect(find.text('Odkrywaj atlas'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Atlas'), 160);
+    expect(find.text('Atlas'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Ponów odczyt'), -160);
     expect(find.text('Ponów odczyt'), findsOneWidget);
   });

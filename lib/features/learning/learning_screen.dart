@@ -332,153 +332,162 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         .asData
         ?.value
         .pick(session.targetId, seed: quizSeed);
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: CountryMap(
-            key: ValueKey('${session.row.id}:${session.index}'),
-            catalog: catalog,
-            appearance:
-                ref.watch(appPreferencesProvider).asData?.value.appearance ??
-                MapAppearance.relief,
-            quizMode: true,
-            selectedId: selected,
-            correctId: attempt == null ? null : session.targetId,
-            wrongCountryIds: session.currentMapGuesses
-                .where((guess) => !guess.correct)
-                .map((guess) => guess.selectedCountryId)
-                .toSet(),
-            targetId: session.targetId,
-            supportLevel: supportLevel,
-            questionSeed: quizSeed,
-            revealId: attempt != null && !attempt.correct
-                ? session.targetId
-                : null,
-            locked: attempt != null || _busy,
-            onSelected: (id) => _guessSelected(catalog, session, id),
-          ),
-        ),
-        Positioned(
-          top: 12,
-          left: 12,
-          right: 76,
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 680),
-              child: Card.filled(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        _questionLabel(session),
-                        style: Theme.of(context).textTheme.labelMedium
-                            ?.copyWith(
-                              letterSpacing: 1.2,
-                              fontWeight: FontWeight.w700,
-                            ),
-                      ),
-                      const SizedBox(height: 4),
-                      if (session.isFlagAt(session.index)) ...[
-                        _flagImage(
-                          session.flagQuestionAt(session.index),
-                          height: 72,
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'Wskaż państwo',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ] else
-                        Text(
-                          catalog.country(session.targetId).locationQuestion,
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
+    final textTheme = Theme.of(context).textTheme;
+    // The question sits above the map so it never covers countries or labels.
+    final header = Padding(
+      padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            _questionLabel(session),
+            style: textTheme.labelLarge?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
-        ),
-        if (attempt != null ||
-            session.currentMapGuesses.isNotEmpty ||
-            session.assistedIndices.contains(session.index))
-          Positioned(
-            left: 12,
-            right: 12,
-            bottom: 12,
-            child: SafeArea(
-              top: false,
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: 680,
-                    maxHeight: MediaQuery.sizeOf(context).height * .44,
+          const SizedBox(height: 4),
+          if (session.isFlagAt(session.index))
+            Row(
+              children: [
+                _flagImage(session.flagQuestionAt(session.index), height: 56),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Wskaż to państwo',
+                    style: textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  child: Card.filled(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(12),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (attempt != null) ...[
-                            Semantics(
-                              liveRegion: true,
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 12),
-                                child: Text(_feedback(catalog, session)),
-                              ),
-                            ),
-                            _InsightNote(catalog: catalog, session: session),
-                            // After a hit or the third miss: one local fact.
-                            if (trivia != null) ...[
-                              _TriviaCard(text: trivia.text),
-                              const SizedBox(height: 12),
-                            ],
-                            FilledButton(
-                              onPressed: _busy
-                                  ? null
-                                  : () => _submit(catalog, session),
-                              child: Text(
-                                session.index == session.countryIds.length - 1
-                                    ? 'Zobacz wynik'
-                                    : 'Następne pytanie',
-                              ),
-                            ),
-                          ] else ...[
-                            if (session.currentMapGuesses.isNotEmpty)
-                              Semantics(
-                                liveRegion: true,
-                                child: Text(
-                                  'Jeszcze nie. Pozostało prób: ${3 - session.currentMapGuesses.length}.',
-                                  style: const TextStyle(
-                                    color: Color(0xFF8C1D18),
-                                    fontWeight: FontWeight.w700,
+                ),
+              ],
+            )
+          else
+            Text(
+              catalog.country(session.targetId).locationQuestion,
+              style: textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+        ],
+      ),
+    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        header,
+        Expanded(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: CountryMap(
+                  key: ValueKey('${session.row.id}:${session.index}'),
+                  catalog: catalog,
+                  appearance:
+                      ref
+                          .watch(appPreferencesProvider)
+                          .asData
+                          ?.value
+                          .appearance ??
+                      MapAppearance.relief,
+                  quizMode: true,
+                  selectedId: selected,
+                  correctId: attempt == null ? null : session.targetId,
+                  wrongCountryIds: session.currentMapGuesses
+                      .where((guess) => !guess.correct)
+                      .map((guess) => guess.selectedCountryId)
+                      .toSet(),
+                  targetId: session.targetId,
+                  supportLevel: supportLevel,
+                  questionSeed: quizSeed,
+                  revealId: attempt != null && !attempt.correct
+                      ? session.targetId
+                      : null,
+                  locked: attempt != null || _busy,
+                  onSelected: (id) => _guessSelected(catalog, session, id),
+                ),
+              ),
+              if (attempt != null ||
+                  session.currentMapGuesses.isNotEmpty ||
+                  session.assistedIndices.contains(session.index))
+                Positioned(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  child: SafeArea(
+                    top: false,
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: 680,
+                          maxHeight: MediaQuery.sizeOf(context).height * .44,
+                        ),
+                        child: Card.filled(
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                if (attempt != null) ...[
+                                  Semantics(
+                                    liveRegion: true,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: 12,
+                                      ),
+                                      child: Text(_feedback(catalog, session)),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            if (session.assistedIndices.contains(session.index))
-                              const Text('Z pomocą — bez oceny pamięci mapy.'),
-                          ],
-                        ],
+                                  _InsightNote(
+                                    catalog: catalog,
+                                    session: session,
+                                  ),
+                                  // After a hit or the third miss: one local fact.
+                                  if (trivia != null) ...[
+                                    _TriviaCard(text: trivia.text),
+                                    const SizedBox(height: 12),
+                                  ],
+                                  FilledButton(
+                                    onPressed: _busy
+                                        ? null
+                                        : () => _submit(catalog, session),
+                                    child: Text(
+                                      session.index ==
+                                              session.countryIds.length - 1
+                                          ? 'Zobacz wynik'
+                                          : 'Następne pytanie',
+                                    ),
+                                  ),
+                                ] else ...[
+                                  if (session.currentMapGuesses.isNotEmpty)
+                                    Semantics(
+                                      liveRegion: true,
+                                      child: Text(
+                                        'Jeszcze nie. Pozostało prób: ${3 - session.currentMapGuesses.length}.',
+                                        style: const TextStyle(
+                                          color: Color(0xFF8C1D18),
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  if (session.assistedIndices.contains(
+                                    session.index,
+                                  ))
+                                    const Text(
+                                      'Z pomocą — bez oceny pamięci mapy.',
+                                    ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ),
+            ],
           ),
+        ),
       ],
     );
   }
@@ -501,7 +510,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             Text(
               _questionLabel(session),
               style: Theme.of(context).textTheme.labelMedium
-                  ?.copyWith(letterSpacing: 1.2, fontWeight: FontWeight.w700),
+                  ?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 8),
             LinearProgressIndicator(
@@ -699,10 +708,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   }
 
   String _questionLabel(LearningSession session) {
-    final label = 'PYTANIE ${session.index + 1} Z ${session.countryIds.length}';
-    if (session.isRetryAt(session.index)) return '$label · JESZCZE RAZ';
+    final label = 'Pytanie ${session.index + 1} z ${session.countryIds.length}';
+    if (session.isRetryAt(session.index)) return '$label, powtórka błędu';
     return session.originAt(session.index) == 'control'
-        ? '$label · KONTROLA'
+        ? '$label, kontrola'
         : label;
   }
 
@@ -738,18 +747,20 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         child: ListView(
           padding: const EdgeInsets.all(24),
           children: [
-            const Icon(Icons.explore, size: 64),
-            const SizedBox(height: 24),
+            const SizedBox(height: 8),
             Text(
               isPartial
                   ? 'Quiz zakończony'
                   : widget.daily
                   ? 'Dzisiejsza wyprawa ukończona!'
                   : 'Wyprawa ukończona!',
-              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineSmall
+                  ?.copyWith(fontWeight: FontWeight.w700),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Text(
+              textAlign: TextAlign.center,
               isChoiceOnly
                   ? 'Trening rozpoznawania A–D: $correctScoredCount z $scoreCount odpowiedzi poprawnych. Każdy poziom ma osobne powtórki.'
                   : isPartial
@@ -759,6 +770,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                               '$correctScoredCount z $scoreCount ocenianych odpowiedzi poprawnych.'
                   : '$correctScoredCount z $scoreCount ocenianych odpowiedzi poprawnych.',
             ),
+            const SizedBox(height: 16),
+            // One centred column: title, result, then the kuna's reaction.
+            QuizMascotFeedbackView(feedback: mascotFeedback),
             if (retryCount > 0) ...[
               const SizedBox(height: 8),
               Text(
@@ -778,8 +792,6 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
-            const SizedBox(height: 20),
-            QuizMascotFeedbackView(feedback: mascotFeedback),
             const SizedBox(height: 24),
             for (final attempt in session.attempts)
               ListTile(
@@ -801,18 +813,24 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                 ),
               ),
             const SizedBox(height: 24),
-            if (widget.daily) ...[
+            // One primary action: another round after real answers,
+            // otherwise going back.
+            if (widget.daily && confirmedCount > 0) ...[
               FilledButton.icon(
                 onPressed: () => context.pushReplacement('/daily?mode=extra'),
                 icon: const Icon(Icons.replay),
                 label: const Text('Kolejna runda'),
               ),
               const SizedBox(height: 12),
-            ],
-            FilledButton(
-              onPressed: () => context.go('/'),
-              child: const Text('Wróć na start'),
-            ),
+              OutlinedButton(
+                onPressed: () => context.go('/'),
+                child: const Text('Wróć na start'),
+              ),
+            ] else
+              FilledButton(
+                onPressed: () => context.go('/'),
+                child: const Text('Wróć na start'),
+              ),
             if (!widget.daily) ...[
               const SizedBox(height: 12),
               OutlinedButton(

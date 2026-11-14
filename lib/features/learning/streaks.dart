@@ -53,3 +53,6 @@ class StreakStore {
     );
   }
 }
+
+/// Polish day count: „1 dzień”, otherwise „N dni”.
+String daysLabel(int days) => days == 1 ? '1 dzień' : '$days dni';

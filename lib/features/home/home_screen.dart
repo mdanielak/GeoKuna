@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../app/providers.dart';
 import '../atlas/continent.dart';
 import '../learning/session_repository.dart';
+import '../learning/streaks.dart';
 import '../settings/app_preferences.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -128,46 +129,11 @@ class HomeScreen extends ConsumerWidget {
                               },
                             ),
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Poziom wyprawy',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        for (final level in LearningDifficulty.values)
-                          ChoiceChip(
-                            label: Text(level.label),
-                            selected:
-                                (difficulty ?? LearningDifficulty.normal) ==
-                                level,
-                            showCheckmark: false,
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            onSelected: (selected) async {
-                              if (!selected || difficulty == level) return;
-                              await ref
-                                  .read(appPreferencesProvider.notifier)
-                                  .setDifficulty(continent, level);
-                              ref.invalidate(dailyOverviewProvider);
-                            },
-                          ),
-                      ],
-                    ),
-                    if (overview?.activeSession != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        'Rozpoczęta wyprawa zachowuje zapisane poziomy; wybór tutaj dotyczy następnej.',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
                     const SizedBox(height: 8),
                     Semantics(
                       liveRegion: true,
                       label:
-                          'Passa ${continent.label}: ${streak?.current ?? 0} dni. Rekord ${streak?.best ?? 0} dni.',
+                          'Passa: ${daysLabel(streak?.current ?? 0)} z rzędu. Rekord: ${daysLabel(streak?.best ?? 0)}.',
                       child: ListTile(
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 4,
@@ -176,12 +142,14 @@ class HomeScreen extends ConsumerWidget {
                           Icons.local_fire_department_outlined,
                         ),
                         title: Text(
-                          'Passa ${continent.label}: ${streak?.current ?? 0} dni',
+                          'Passa: ${daysLabel(streak?.current ?? 0)} z rzędu',
                         ),
                         subtitle: Text(
                           streak?.practisedToday == true
-                              ? 'Dziś już była nauka · rekord ${streak?.best ?? 0} dni'
-                              : 'Rekord: ${streak?.best ?? 0} dni · wróć dziś do nauki',
+                              ? 'Dzisiejsza nauka zaliczona. Rekord: ${daysLabel(streak?.best ?? 0)}.'
+                              : (streak?.current ?? 0) == 0
+                              ? 'Odpowiedz dziś na jedno pytanie, aby zacząć passę.'
+                              : 'Odpowiedz dziś, aby jej nie przerwać. Rekord: ${daysLabel(streak?.best ?? 0)}.',
                         ),
                       ),
                     ),
@@ -256,6 +224,7 @@ class HomeScreen extends ConsumerWidget {
                                     newCards: overview.plannedNewCount,
                                     total: overview.plannedCount,
                                     activeSession: overview.activeSession,
+                                    nextDue: overview.nextDue,
                                   ),
                                   if (overview.otherDueCount > 0) ...[
                                     const SizedBox(height: 8),
@@ -337,8 +306,8 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                       const SizedBox(height: 4),
                                       Text(
-                                        'Trafione kraje nie zużywają limitu '
-                                        'nowych na dziś.',
+                                        'Kraje, które już znasz, od razu '
+                                        'pominiesz.',
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodySmall,
@@ -349,14 +318,44 @@ class HomeScreen extends ConsumerWidget {
                               ),
                             ),
                           ),
-                          if (overview.plannedCount == 0 &&
-                              overview.activeSession == null) ...[
-                            const SizedBox(height: 8),
-                            _NextDueNote(nextDue: overview.nextDue),
-                          ],
                         ],
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Poziom wyprawy',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    const SizedBox(height: 6),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final level in LearningDifficulty.values)
+                          ChoiceChip(
+                            label: Text(level.label),
+                            selected:
+                                (difficulty ?? LearningDifficulty.normal) ==
+                                level,
+                            showCheckmark: false,
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            onSelected: (selected) async {
+                              if (!selected || difficulty == level) return;
+                              await ref
+                                  .read(appPreferencesProvider.notifier)
+                                  .setDifficulty(continent, level);
+                              ref.invalidate(dailyOverviewProvider);
+                            },
+                          ),
+                      ],
+                    ),
+                    if (overview?.activeSession != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        'Rozpoczęta wyprawa zachowuje zapisane poziomy; wybór tutaj dotyczy następnej.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
                     const SizedBox(height: 24),
                     Text(
                       'Wybierz własny trening',
@@ -382,7 +381,7 @@ class HomeScreen extends ConsumerWidget {
                         }
                       },
                       icon: const Icon(Icons.location_city_outlined),
-                      label: const Text('Trening stolic · wybierz poziom'),
+                      label: const Text('Trening stolic'),
                     ),
                     const SizedBox(height: 8),
                     FilledButton.tonalIcon(
@@ -393,7 +392,7 @@ class HomeScreen extends ConsumerWidget {
                         }
                       },
                       icon: const Icon(Icons.flag_outlined),
-                      label: const Text('Trening flag · wybierz tryb'),
+                      label: const Text('Trening flag'),
                     ),
                     const SizedBox(height: 8),
                     OutlinedButton.icon(
@@ -401,8 +400,8 @@ class HomeScreen extends ConsumerWidget {
                       icon: const Icon(Icons.map_outlined),
                       label: Text(
                         catalog == null
-                            ? 'Odkrywaj atlas'
-                            : 'Odkrywaj atlas · ${catalog.countries.length} państw',
+                            ? 'Atlas'
+                            : 'Atlas: ${catalog.countries.length} państw',
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -428,7 +427,10 @@ class _DailyCounts extends StatelessWidget {
     required this.newCards,
     required this.total,
     required this.activeSession,
+    this.nextDue,
   });
+
+  final DateTime? nextDue;
 
   final int due;
   final int newCards;
@@ -457,7 +459,7 @@ class _DailyCounts extends StatelessWidget {
         ] else ...[
           Text(
             total == 0
-                ? 'Na dziś nie ma pytań do powtórki.'
+                ? _calmMessage(context, nextDue)
                 : '$total ${_questionWord(total)} w dzisiejszej serii',
             style: textStyle?.copyWith(fontWeight: FontWeight.w700),
           ),
@@ -491,32 +493,21 @@ class _DailyCounts extends StatelessWidget {
   }
 }
 
-class _NextDueNote extends StatelessWidget {
-  const _NextDueNote({required this.nextDue});
-
-  final DateTime? nextDue;
-
-  @override
-  Widget build(BuildContext context) {
-    final dueDate = nextDue;
-    final message = dueDate == null
-        ? 'Nowe pytania pojawią się w kolejnych dniach.'
-        : 'Następna powtórka: ${MaterialLocalizations.of(context).formatMediumDate(dueDate.toLocal())} o ${MaterialLocalizations.of(context).formatTimeOfDay(TimeOfDay.fromDateTime(dueDate.toLocal()), alwaysUse24HourFormat: true)}.';
-    return Semantics(
-      liveRegion: true,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Icon(Icons.check_circle_outline),
-              const SizedBox(width: 12),
-              Expanded(child: Text('Na dziś wszystko. $message')),
-            ],
-          ),
-        ),
-      ),
-    );
+/// One message for an empty plan: when the next review is due.
+String _calmMessage(BuildContext context, DateTime? nextDue) {
+  if (nextDue == null) {
+    return 'Na dziś wszystko. Nowe pytania pojawią się jutro.';
   }
+  final local = nextDue.toLocal();
+  final now = DateTime.now();
+  final time = MaterialLocalizations.of(
+    context,
+  ).formatTimeOfDay(TimeOfDay.fromDateTime(local), alwaysUse24HourFormat: true);
+  if (local.year == now.year &&
+      local.month == now.month &&
+      local.day == now.day) {
+    return 'Kolejna powtórka dziś o $time.';
+  }
+  final date = MaterialLocalizations.of(context).formatMediumDate(local);
+  return 'Na dziś wszystko. Kolejna powtórka: $date o $time.';
 }

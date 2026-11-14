@@ -49,7 +49,7 @@ nie gwarantuje 90% pamięci.
 ### Błędy i trudne kraje
 
 - Błąd w serii dziennej: to samo pytanie wraca **po 3–5 innych pytaniach**
-  (nigdy zaraz), najwyżej 3 powtórki na serię, oznaczone „JESZCZE RAZ”.
+  (nigdy zaraz), najwyżej 3 powtórki na serię, oznaczone „powtórka błędu”.
   Powtórka to ćwiczenie (`origin=retry`, bez oceny FSRS) i nie wlicza się do wyniku.
   Gdy w serii brak miejsca na odstęp, kraj przejmuje kolejna runda lub dzień.
 - **Trudny kraj:** karta z błędem pozostaje trudna, dopóki nie padną
@@ -73,8 +73,10 @@ i ponowne kliknięcie tego samego kraju nie zużywają szansy.
   jednorazowo przybliża poprawny kraj; ręczny zoom i przesuwanie działają dalej.
 - Po 3. błędzie przybliżenie rozwiązania wynosi najwyżej +1,5 poziomu zoomu
   względem widoku kontynentu — kraj widać w jego regionie, nie z bliska.
-- Kadr normalny: niemal cały kontynent (padding 16 dp zamiast 24 dp atlasu),
-  niezależny od celu. Bardzo łatwy: zoom +0,9 i przesunięcie 70% nad pytany kraj,
+- Kadr normalny jest niezależny od celu: na szerokim ekranie niemal cały
+  kontynent (padding 16 dp), na telefonie w pionie jego rdzeń (np. Europa
+  11°W–50°E), a skrajne obszary są dostępne przesunięciem. Krawędź wycinka
+  mapy przechodzi miękko w morze; mikropaństwa to małe kropki z polem dotyku 48 dp. Bardzo łatwy: zoom +0,9 i przesunięcie 70% nad pytany kraj,
   łatwy: +0,5 i 40%; plus stabilny losowy rozrzut (8% / 6% ekranu) z seeda
   pytania, więc cel nigdy nie jest idealnie wycentrowany. Kadr odtwarza się po wznowieniu.
 

@@ -73,11 +73,8 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(find.bySemanticsLabel('Kuna z globusem'), findsOneWidget);
-        await tester.scrollUntilVisible(
-          find.text('Trening stolic · wybierz poziom'),
-          200,
-        );
-        await tester.tap(find.text('Trening stolic · wybierz poziom'));
+        await tester.scrollUntilVisible(find.text('Trening stolic'), 200);
+        await tester.tap(find.text('Trening stolic'));
         await tester.pumpAndSettle();
         expect(find.text('Poziom: ${preference.label}'), findsOneWidget);
         await tester.ensureVisible(find.text('Wznów trening stolic'));
