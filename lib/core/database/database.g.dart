@@ -28,6 +28,18 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _continentMeta = const VerificationMeta(
+    'continent',
+  );
+  @override
+  late final GeneratedColumn<String> continent = GeneratedColumn<String>(
+    'continent',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('europe'),
+  );
   static const VerificationMeta _currentIndexMeta = const VerificationMeta(
     'currentIndex',
   );
@@ -112,6 +124,7 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
   List<GeneratedColumn> get $columns => [
     id,
     countryIds,
+    continent,
     currentIndex,
     createdAt,
     completedAt,
@@ -144,6 +157,12 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
       );
     } else if (isInserting) {
       context.missing(_countryIdsMeta);
+    }
+    if (data.containsKey('continent')) {
+      context.handle(
+        _continentMeta,
+        continent.isAcceptableOrUnknown(data['continent']!, _continentMeta),
+      );
     }
     if (data.containsKey('current_index')) {
       context.handle(
@@ -218,6 +237,10 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
         DriftSqlType.string,
         data['${effectivePrefix}country_ids'],
       )!,
+      continent: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}continent'],
+      )!,
       currentIndex: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}current_index'],
@@ -258,6 +281,7 @@ class $SessionsTable extends Sessions with TableInfo<$SessionsTable, Session> {
 class Session extends DataClass implements Insertable<Session> {
   final String id;
   final String countryIds;
+  final String continent;
   final int currentIndex;
   final DateTime createdAt;
   final DateTime? completedAt;
@@ -268,6 +292,7 @@ class Session extends DataClass implements Insertable<Session> {
   const Session({
     required this.id,
     required this.countryIds,
+    required this.continent,
     required this.currentIndex,
     required this.createdAt,
     this.completedAt,
@@ -281,6 +306,7 @@ class Session extends DataClass implements Insertable<Session> {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['country_ids'] = Variable<String>(countryIds);
+    map['continent'] = Variable<String>(continent);
     map['current_index'] = Variable<int>(currentIndex);
     map['created_at'] = Variable<DateTime>(createdAt);
     if (!nullToAbsent || completedAt != null) {
@@ -297,6 +323,7 @@ class Session extends DataClass implements Insertable<Session> {
     return SessionsCompanion(
       id: Value(id),
       countryIds: Value(countryIds),
+      continent: Value(continent),
       currentIndex: Value(currentIndex),
       createdAt: Value(createdAt),
       completedAt: completedAt == null && nullToAbsent
@@ -317,6 +344,7 @@ class Session extends DataClass implements Insertable<Session> {
     return Session(
       id: serializer.fromJson<String>(json['id']),
       countryIds: serializer.fromJson<String>(json['countryIds']),
+      continent: serializer.fromJson<String>(json['continent']),
       currentIndex: serializer.fromJson<int>(json['currentIndex']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       completedAt: serializer.fromJson<DateTime?>(json['completedAt']),
@@ -332,6 +360,7 @@ class Session extends DataClass implements Insertable<Session> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'countryIds': serializer.toJson<String>(countryIds),
+      'continent': serializer.toJson<String>(continent),
       'currentIndex': serializer.toJson<int>(currentIndex),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'completedAt': serializer.toJson<DateTime?>(completedAt),
@@ -345,6 +374,7 @@ class Session extends DataClass implements Insertable<Session> {
   Session copyWith({
     String? id,
     String? countryIds,
+    String? continent,
     int? currentIndex,
     DateTime? createdAt,
     Value<DateTime?> completedAt = const Value.absent(),
@@ -355,6 +385,7 @@ class Session extends DataClass implements Insertable<Session> {
   }) => Session(
     id: id ?? this.id,
     countryIds: countryIds ?? this.countryIds,
+    continent: continent ?? this.continent,
     currentIndex: currentIndex ?? this.currentIndex,
     createdAt: createdAt ?? this.createdAt,
     completedAt: completedAt.present ? completedAt.value : this.completedAt,
@@ -369,6 +400,7 @@ class Session extends DataClass implements Insertable<Session> {
       countryIds: data.countryIds.present
           ? data.countryIds.value
           : this.countryIds,
+      continent: data.continent.present ? data.continent.value : this.continent,
       currentIndex: data.currentIndex.present
           ? data.currentIndex.value
           : this.currentIndex,
@@ -394,6 +426,7 @@ class Session extends DataClass implements Insertable<Session> {
     return (StringBuffer('Session(')
           ..write('id: $id, ')
           ..write('countryIds: $countryIds, ')
+          ..write('continent: $continent, ')
           ..write('currentIndex: $currentIndex, ')
           ..write('createdAt: $createdAt, ')
           ..write('completedAt: $completedAt, ')
@@ -409,6 +442,7 @@ class Session extends DataClass implements Insertable<Session> {
   int get hashCode => Object.hash(
     id,
     countryIds,
+    continent,
     currentIndex,
     createdAt,
     completedAt,
@@ -423,6 +457,7 @@ class Session extends DataClass implements Insertable<Session> {
       (other is Session &&
           other.id == this.id &&
           other.countryIds == this.countryIds &&
+          other.continent == this.continent &&
           other.currentIndex == this.currentIndex &&
           other.createdAt == this.createdAt &&
           other.completedAt == this.completedAt &&
@@ -435,6 +470,7 @@ class Session extends DataClass implements Insertable<Session> {
 class SessionsCompanion extends UpdateCompanion<Session> {
   final Value<String> id;
   final Value<String> countryIds;
+  final Value<String> continent;
   final Value<int> currentIndex;
   final Value<DateTime> createdAt;
   final Value<DateTime?> completedAt;
@@ -446,6 +482,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   const SessionsCompanion({
     this.id = const Value.absent(),
     this.countryIds = const Value.absent(),
+    this.continent = const Value.absent(),
     this.currentIndex = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.completedAt = const Value.absent(),
@@ -458,6 +495,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   SessionsCompanion.insert({
     required String id,
     required String countryIds,
+    this.continent = const Value.absent(),
     this.currentIndex = const Value.absent(),
     required DateTime createdAt,
     this.completedAt = const Value.absent(),
@@ -472,6 +510,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   static Insertable<Session> custom({
     Expression<String>? id,
     Expression<String>? countryIds,
+    Expression<String>? continent,
     Expression<int>? currentIndex,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? completedAt,
@@ -484,6 +523,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (countryIds != null) 'country_ids': countryIds,
+      if (continent != null) 'continent': continent,
       if (currentIndex != null) 'current_index': currentIndex,
       if (createdAt != null) 'created_at': createdAt,
       if (completedAt != null) 'completed_at': completedAt,
@@ -498,6 +538,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
   SessionsCompanion copyWith({
     Value<String>? id,
     Value<String>? countryIds,
+    Value<String>? continent,
     Value<int>? currentIndex,
     Value<DateTime>? createdAt,
     Value<DateTime?>? completedAt,
@@ -510,6 +551,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     return SessionsCompanion(
       id: id ?? this.id,
       countryIds: countryIds ?? this.countryIds,
+      continent: continent ?? this.continent,
       currentIndex: currentIndex ?? this.currentIndex,
       createdAt: createdAt ?? this.createdAt,
       completedAt: completedAt ?? this.completedAt,
@@ -529,6 +571,9 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     }
     if (countryIds.present) {
       map['country_ids'] = Variable<String>(countryIds.value);
+    }
+    if (continent.present) {
+      map['continent'] = Variable<String>(continent.value);
     }
     if (currentIndex.present) {
       map['current_index'] = Variable<int>(currentIndex.value);
@@ -562,6 +607,7 @@ class SessionsCompanion extends UpdateCompanion<Session> {
     return (StringBuffer('SessionsCompanion(')
           ..write('id: $id, ')
           ..write('countryIds: $countryIds, ')
+          ..write('continent: $continent, ')
           ..write('currentIndex: $currentIndex, ')
           ..write('createdAt: $createdAt, ')
           ..write('completedAt: $completedAt, ')
@@ -2949,6 +2995,956 @@ class MapGuessesCompanion extends UpdateCompanion<MapGuess> {
   }
 }
 
+class $AppPreferenceEntriesTable extends AppPreferenceEntries
+    with TableInfo<$AppPreferenceEntriesTable, PreferenceEntry> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AppPreferenceEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _keyMeta = const VerificationMeta('key');
+  @override
+  late final GeneratedColumn<String> key = GeneratedColumn<String>(
+    'key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _valueMeta = const VerificationMeta('value');
+  @override
+  late final GeneratedColumn<String> value = GeneratedColumn<String>(
+    'value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [key, value];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'app_preference_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PreferenceEntry> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('key')) {
+      context.handle(
+        _keyMeta,
+        key.isAcceptableOrUnknown(data['key']!, _keyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_keyMeta);
+    }
+    if (data.containsKey('value')) {
+      context.handle(
+        _valueMeta,
+        value.isAcceptableOrUnknown(data['value']!, _valueMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_valueMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {key};
+  @override
+  PreferenceEntry map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PreferenceEntry(
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
+      value: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}value'],
+      )!,
+    );
+  }
+
+  @override
+  $AppPreferenceEntriesTable createAlias(String alias) {
+    return $AppPreferenceEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class PreferenceEntry extends DataClass implements Insertable<PreferenceEntry> {
+  final String key;
+  final String value;
+  const PreferenceEntry({required this.key, required this.value});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['key'] = Variable<String>(key);
+    map['value'] = Variable<String>(value);
+    return map;
+  }
+
+  AppPreferenceEntriesCompanion toCompanion(bool nullToAbsent) {
+    return AppPreferenceEntriesCompanion(key: Value(key), value: Value(value));
+  }
+
+  factory PreferenceEntry.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PreferenceEntry(
+      key: serializer.fromJson<String>(json['key']),
+      value: serializer.fromJson<String>(json['value']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'key': serializer.toJson<String>(key),
+      'value': serializer.toJson<String>(value),
+    };
+  }
+
+  PreferenceEntry copyWith({String? key, String? value}) =>
+      PreferenceEntry(key: key ?? this.key, value: value ?? this.value);
+  PreferenceEntry copyWithCompanion(AppPreferenceEntriesCompanion data) {
+    return PreferenceEntry(
+      key: data.key.present ? data.key.value : this.key,
+      value: data.value.present ? data.value.value : this.value,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PreferenceEntry(')
+          ..write('key: $key, ')
+          ..write('value: $value')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(key, value);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PreferenceEntry &&
+          other.key == this.key &&
+          other.value == this.value);
+}
+
+class AppPreferenceEntriesCompanion extends UpdateCompanion<PreferenceEntry> {
+  final Value<String> key;
+  final Value<String> value;
+  final Value<int> rowid;
+  const AppPreferenceEntriesCompanion({
+    this.key = const Value.absent(),
+    this.value = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AppPreferenceEntriesCompanion.insert({
+    required String key,
+    required String value,
+    this.rowid = const Value.absent(),
+  }) : key = Value(key),
+       value = Value(value);
+  static Insertable<PreferenceEntry> custom({
+    Expression<String>? key,
+    Expression<String>? value,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (key != null) 'key': key,
+      if (value != null) 'value': value,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AppPreferenceEntriesCompanion copyWith({
+    Value<String>? key,
+    Value<String>? value,
+    Value<int>? rowid,
+  }) {
+    return AppPreferenceEntriesCompanion(
+      key: key ?? this.key,
+      value: value ?? this.value,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (key.present) {
+      map['key'] = Variable<String>(key.value);
+    }
+    if (value.present) {
+      map['value'] = Variable<String>(value.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppPreferenceEntriesCompanion(')
+          ..write('key: $key, ')
+          ..write('value: $value, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ActivityDaysTable extends ActivityDays
+    with TableInfo<$ActivityDaysTable, ActivityDay> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ActivityDaysTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _continentMeta = const VerificationMeta(
+    'continent',
+  );
+  @override
+  late final GeneratedColumn<String> continent = GeneratedColumn<String>(
+    'continent',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _localDateMeta = const VerificationMeta(
+    'localDate',
+  );
+  @override
+  late final GeneratedColumn<String> localDate = GeneratedColumn<String>(
+    'local_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _recordedAtMeta = const VerificationMeta(
+    'recordedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> recordedAt = GeneratedColumn<DateTime>(
+    'recorded_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _offsetMinutesMeta = const VerificationMeta(
+    'offsetMinutes',
+  );
+  @override
+  late final GeneratedColumn<int> offsetMinutes = GeneratedColumn<int>(
+    'offset_minutes',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    continent,
+    localDate,
+    recordedAt,
+    offsetMinutes,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'activity_days';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ActivityDay> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('continent')) {
+      context.handle(
+        _continentMeta,
+        continent.isAcceptableOrUnknown(data['continent']!, _continentMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_continentMeta);
+    }
+    if (data.containsKey('local_date')) {
+      context.handle(
+        _localDateMeta,
+        localDate.isAcceptableOrUnknown(data['local_date']!, _localDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_localDateMeta);
+    }
+    if (data.containsKey('recorded_at')) {
+      context.handle(
+        _recordedAtMeta,
+        recordedAt.isAcceptableOrUnknown(data['recorded_at']!, _recordedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_recordedAtMeta);
+    }
+    if (data.containsKey('offset_minutes')) {
+      context.handle(
+        _offsetMinutesMeta,
+        offsetMinutes.isAcceptableOrUnknown(
+          data['offset_minutes']!,
+          _offsetMinutesMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_offsetMinutesMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {continent, localDate};
+  @override
+  ActivityDay map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ActivityDay(
+      continent: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}continent'],
+      )!,
+      localDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}local_date'],
+      )!,
+      recordedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}recorded_at'],
+      )!,
+      offsetMinutes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}offset_minutes'],
+      )!,
+    );
+  }
+
+  @override
+  $ActivityDaysTable createAlias(String alias) {
+    return $ActivityDaysTable(attachedDatabase, alias);
+  }
+}
+
+class ActivityDay extends DataClass implements Insertable<ActivityDay> {
+  final String continent;
+  final String localDate;
+  final DateTime recordedAt;
+  final int offsetMinutes;
+  const ActivityDay({
+    required this.continent,
+    required this.localDate,
+    required this.recordedAt,
+    required this.offsetMinutes,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['continent'] = Variable<String>(continent);
+    map['local_date'] = Variable<String>(localDate);
+    map['recorded_at'] = Variable<DateTime>(recordedAt);
+    map['offset_minutes'] = Variable<int>(offsetMinutes);
+    return map;
+  }
+
+  ActivityDaysCompanion toCompanion(bool nullToAbsent) {
+    return ActivityDaysCompanion(
+      continent: Value(continent),
+      localDate: Value(localDate),
+      recordedAt: Value(recordedAt),
+      offsetMinutes: Value(offsetMinutes),
+    );
+  }
+
+  factory ActivityDay.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ActivityDay(
+      continent: serializer.fromJson<String>(json['continent']),
+      localDate: serializer.fromJson<String>(json['localDate']),
+      recordedAt: serializer.fromJson<DateTime>(json['recordedAt']),
+      offsetMinutes: serializer.fromJson<int>(json['offsetMinutes']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'continent': serializer.toJson<String>(continent),
+      'localDate': serializer.toJson<String>(localDate),
+      'recordedAt': serializer.toJson<DateTime>(recordedAt),
+      'offsetMinutes': serializer.toJson<int>(offsetMinutes),
+    };
+  }
+
+  ActivityDay copyWith({
+    String? continent,
+    String? localDate,
+    DateTime? recordedAt,
+    int? offsetMinutes,
+  }) => ActivityDay(
+    continent: continent ?? this.continent,
+    localDate: localDate ?? this.localDate,
+    recordedAt: recordedAt ?? this.recordedAt,
+    offsetMinutes: offsetMinutes ?? this.offsetMinutes,
+  );
+  ActivityDay copyWithCompanion(ActivityDaysCompanion data) {
+    return ActivityDay(
+      continent: data.continent.present ? data.continent.value : this.continent,
+      localDate: data.localDate.present ? data.localDate.value : this.localDate,
+      recordedAt: data.recordedAt.present
+          ? data.recordedAt.value
+          : this.recordedAt,
+      offsetMinutes: data.offsetMinutes.present
+          ? data.offsetMinutes.value
+          : this.offsetMinutes,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActivityDay(')
+          ..write('continent: $continent, ')
+          ..write('localDate: $localDate, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('offsetMinutes: $offsetMinutes')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(continent, localDate, recordedAt, offsetMinutes);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ActivityDay &&
+          other.continent == this.continent &&
+          other.localDate == this.localDate &&
+          other.recordedAt == this.recordedAt &&
+          other.offsetMinutes == this.offsetMinutes);
+}
+
+class ActivityDaysCompanion extends UpdateCompanion<ActivityDay> {
+  final Value<String> continent;
+  final Value<String> localDate;
+  final Value<DateTime> recordedAt;
+  final Value<int> offsetMinutes;
+  final Value<int> rowid;
+  const ActivityDaysCompanion({
+    this.continent = const Value.absent(),
+    this.localDate = const Value.absent(),
+    this.recordedAt = const Value.absent(),
+    this.offsetMinutes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ActivityDaysCompanion.insert({
+    required String continent,
+    required String localDate,
+    required DateTime recordedAt,
+    required int offsetMinutes,
+    this.rowid = const Value.absent(),
+  }) : continent = Value(continent),
+       localDate = Value(localDate),
+       recordedAt = Value(recordedAt),
+       offsetMinutes = Value(offsetMinutes);
+  static Insertable<ActivityDay> custom({
+    Expression<String>? continent,
+    Expression<String>? localDate,
+    Expression<DateTime>? recordedAt,
+    Expression<int>? offsetMinutes,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (continent != null) 'continent': continent,
+      if (localDate != null) 'local_date': localDate,
+      if (recordedAt != null) 'recorded_at': recordedAt,
+      if (offsetMinutes != null) 'offset_minutes': offsetMinutes,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ActivityDaysCompanion copyWith({
+    Value<String>? continent,
+    Value<String>? localDate,
+    Value<DateTime>? recordedAt,
+    Value<int>? offsetMinutes,
+    Value<int>? rowid,
+  }) {
+    return ActivityDaysCompanion(
+      continent: continent ?? this.continent,
+      localDate: localDate ?? this.localDate,
+      recordedAt: recordedAt ?? this.recordedAt,
+      offsetMinutes: offsetMinutes ?? this.offsetMinutes,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (continent.present) {
+      map['continent'] = Variable<String>(continent.value);
+    }
+    if (localDate.present) {
+      map['local_date'] = Variable<String>(localDate.value);
+    }
+    if (recordedAt.present) {
+      map['recorded_at'] = Variable<DateTime>(recordedAt.value);
+    }
+    if (offsetMinutes.present) {
+      map['offset_minutes'] = Variable<int>(offsetMinutes.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActivityDaysCompanion(')
+          ..write('continent: $continent, ')
+          ..write('localDate: $localDate, ')
+          ..write('recordedAt: $recordedAt, ')
+          ..write('offsetMinutes: $offsetMinutes, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $AwardedMedalsTable extends AwardedMedals
+    with TableInfo<$AwardedMedalsTable, AwardedMedal> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AwardedMedalsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _continentMeta = const VerificationMeta(
+    'continent',
+  );
+  @override
+  late final GeneratedColumn<String> continent = GeneratedColumn<String>(
+    'continent',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _topicMeta = const VerificationMeta('topic');
+  @override
+  late final GeneratedColumn<String> topic = GeneratedColumn<String>(
+    'topic',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _levelMeta = const VerificationMeta('level');
+  @override
+  late final GeneratedColumn<String> level = GeneratedColumn<String>(
+    'level',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _medalMeta = const VerificationMeta('medal');
+  @override
+  late final GeneratedColumn<int> medal = GeneratedColumn<int>(
+    'medal',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _earnedAtMeta = const VerificationMeta(
+    'earnedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> earnedAt = GeneratedColumn<DateTime>(
+    'earned_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _catalogVersionMeta = const VerificationMeta(
+    'catalogVersion',
+  );
+  @override
+  late final GeneratedColumn<String> catalogVersion = GeneratedColumn<String>(
+    'catalog_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    continent,
+    topic,
+    level,
+    medal,
+    earnedAt,
+    catalogVersion,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'awarded_medals';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AwardedMedal> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('continent')) {
+      context.handle(
+        _continentMeta,
+        continent.isAcceptableOrUnknown(data['continent']!, _continentMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_continentMeta);
+    }
+    if (data.containsKey('topic')) {
+      context.handle(
+        _topicMeta,
+        topic.isAcceptableOrUnknown(data['topic']!, _topicMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_topicMeta);
+    }
+    if (data.containsKey('level')) {
+      context.handle(
+        _levelMeta,
+        level.isAcceptableOrUnknown(data['level']!, _levelMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_levelMeta);
+    }
+    if (data.containsKey('medal')) {
+      context.handle(
+        _medalMeta,
+        medal.isAcceptableOrUnknown(data['medal']!, _medalMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_medalMeta);
+    }
+    if (data.containsKey('earned_at')) {
+      context.handle(
+        _earnedAtMeta,
+        earnedAt.isAcceptableOrUnknown(data['earned_at']!, _earnedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_earnedAtMeta);
+    }
+    if (data.containsKey('catalog_version')) {
+      context.handle(
+        _catalogVersionMeta,
+        catalogVersion.isAcceptableOrUnknown(
+          data['catalog_version']!,
+          _catalogVersionMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_catalogVersionMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {continent, topic, level, medal};
+  @override
+  AwardedMedal map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AwardedMedal(
+      continent: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}continent'],
+      )!,
+      topic: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}topic'],
+      )!,
+      level: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}level'],
+      )!,
+      medal: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}medal'],
+      )!,
+      earnedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}earned_at'],
+      )!,
+      catalogVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}catalog_version'],
+      )!,
+    );
+  }
+
+  @override
+  $AwardedMedalsTable createAlias(String alias) {
+    return $AwardedMedalsTable(attachedDatabase, alias);
+  }
+}
+
+class AwardedMedal extends DataClass implements Insertable<AwardedMedal> {
+  final String continent;
+  final String topic;
+  final String level;
+  final int medal;
+  final DateTime earnedAt;
+  final String catalogVersion;
+  const AwardedMedal({
+    required this.continent,
+    required this.topic,
+    required this.level,
+    required this.medal,
+    required this.earnedAt,
+    required this.catalogVersion,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['continent'] = Variable<String>(continent);
+    map['topic'] = Variable<String>(topic);
+    map['level'] = Variable<String>(level);
+    map['medal'] = Variable<int>(medal);
+    map['earned_at'] = Variable<DateTime>(earnedAt);
+    map['catalog_version'] = Variable<String>(catalogVersion);
+    return map;
+  }
+
+  AwardedMedalsCompanion toCompanion(bool nullToAbsent) {
+    return AwardedMedalsCompanion(
+      continent: Value(continent),
+      topic: Value(topic),
+      level: Value(level),
+      medal: Value(medal),
+      earnedAt: Value(earnedAt),
+      catalogVersion: Value(catalogVersion),
+    );
+  }
+
+  factory AwardedMedal.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AwardedMedal(
+      continent: serializer.fromJson<String>(json['continent']),
+      topic: serializer.fromJson<String>(json['topic']),
+      level: serializer.fromJson<String>(json['level']),
+      medal: serializer.fromJson<int>(json['medal']),
+      earnedAt: serializer.fromJson<DateTime>(json['earnedAt']),
+      catalogVersion: serializer.fromJson<String>(json['catalogVersion']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'continent': serializer.toJson<String>(continent),
+      'topic': serializer.toJson<String>(topic),
+      'level': serializer.toJson<String>(level),
+      'medal': serializer.toJson<int>(medal),
+      'earnedAt': serializer.toJson<DateTime>(earnedAt),
+      'catalogVersion': serializer.toJson<String>(catalogVersion),
+    };
+  }
+
+  AwardedMedal copyWith({
+    String? continent,
+    String? topic,
+    String? level,
+    int? medal,
+    DateTime? earnedAt,
+    String? catalogVersion,
+  }) => AwardedMedal(
+    continent: continent ?? this.continent,
+    topic: topic ?? this.topic,
+    level: level ?? this.level,
+    medal: medal ?? this.medal,
+    earnedAt: earnedAt ?? this.earnedAt,
+    catalogVersion: catalogVersion ?? this.catalogVersion,
+  );
+  AwardedMedal copyWithCompanion(AwardedMedalsCompanion data) {
+    return AwardedMedal(
+      continent: data.continent.present ? data.continent.value : this.continent,
+      topic: data.topic.present ? data.topic.value : this.topic,
+      level: data.level.present ? data.level.value : this.level,
+      medal: data.medal.present ? data.medal.value : this.medal,
+      earnedAt: data.earnedAt.present ? data.earnedAt.value : this.earnedAt,
+      catalogVersion: data.catalogVersion.present
+          ? data.catalogVersion.value
+          : this.catalogVersion,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AwardedMedal(')
+          ..write('continent: $continent, ')
+          ..write('topic: $topic, ')
+          ..write('level: $level, ')
+          ..write('medal: $medal, ')
+          ..write('earnedAt: $earnedAt, ')
+          ..write('catalogVersion: $catalogVersion')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(continent, topic, level, medal, earnedAt, catalogVersion);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AwardedMedal &&
+          other.continent == this.continent &&
+          other.topic == this.topic &&
+          other.level == this.level &&
+          other.medal == this.medal &&
+          other.earnedAt == this.earnedAt &&
+          other.catalogVersion == this.catalogVersion);
+}
+
+class AwardedMedalsCompanion extends UpdateCompanion<AwardedMedal> {
+  final Value<String> continent;
+  final Value<String> topic;
+  final Value<String> level;
+  final Value<int> medal;
+  final Value<DateTime> earnedAt;
+  final Value<String> catalogVersion;
+  final Value<int> rowid;
+  const AwardedMedalsCompanion({
+    this.continent = const Value.absent(),
+    this.topic = const Value.absent(),
+    this.level = const Value.absent(),
+    this.medal = const Value.absent(),
+    this.earnedAt = const Value.absent(),
+    this.catalogVersion = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AwardedMedalsCompanion.insert({
+    required String continent,
+    required String topic,
+    required String level,
+    required int medal,
+    required DateTime earnedAt,
+    required String catalogVersion,
+    this.rowid = const Value.absent(),
+  }) : continent = Value(continent),
+       topic = Value(topic),
+       level = Value(level),
+       medal = Value(medal),
+       earnedAt = Value(earnedAt),
+       catalogVersion = Value(catalogVersion);
+  static Insertable<AwardedMedal> custom({
+    Expression<String>? continent,
+    Expression<String>? topic,
+    Expression<String>? level,
+    Expression<int>? medal,
+    Expression<DateTime>? earnedAt,
+    Expression<String>? catalogVersion,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (continent != null) 'continent': continent,
+      if (topic != null) 'topic': topic,
+      if (level != null) 'level': level,
+      if (medal != null) 'medal': medal,
+      if (earnedAt != null) 'earned_at': earnedAt,
+      if (catalogVersion != null) 'catalog_version': catalogVersion,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AwardedMedalsCompanion copyWith({
+    Value<String>? continent,
+    Value<String>? topic,
+    Value<String>? level,
+    Value<int>? medal,
+    Value<DateTime>? earnedAt,
+    Value<String>? catalogVersion,
+    Value<int>? rowid,
+  }) {
+    return AwardedMedalsCompanion(
+      continent: continent ?? this.continent,
+      topic: topic ?? this.topic,
+      level: level ?? this.level,
+      medal: medal ?? this.medal,
+      earnedAt: earnedAt ?? this.earnedAt,
+      catalogVersion: catalogVersion ?? this.catalogVersion,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (continent.present) {
+      map['continent'] = Variable<String>(continent.value);
+    }
+    if (topic.present) {
+      map['topic'] = Variable<String>(topic.value);
+    }
+    if (level.present) {
+      map['level'] = Variable<String>(level.value);
+    }
+    if (medal.present) {
+      map['medal'] = Variable<int>(medal.value);
+    }
+    if (earnedAt.present) {
+      map['earned_at'] = Variable<DateTime>(earnedAt.value);
+    }
+    if (catalogVersion.present) {
+      map['catalog_version'] = Variable<String>(catalogVersion.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AwardedMedalsCompanion(')
+          ..write('continent: $continent, ')
+          ..write('topic: $topic, ')
+          ..write('level: $level, ')
+          ..write('medal: $medal, ')
+          ..write('earnedAt: $earnedAt, ')
+          ..write('catalogVersion: $catalogVersion, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -2958,6 +3954,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $MemoryReviewsTable memoryReviews = $MemoryReviewsTable(this);
   late final $MemoryMetaTable memoryMeta = $MemoryMetaTable(this);
   late final $MapGuessesTable mapGuesses = $MapGuessesTable(this);
+  late final $AppPreferenceEntriesTable appPreferenceEntries =
+      $AppPreferenceEntriesTable(this);
+  late final $ActivityDaysTable activityDays = $ActivityDaysTable(this);
+  late final $AwardedMedalsTable awardedMedals = $AwardedMedalsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2969,12 +3969,16 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     memoryReviews,
     memoryMeta,
     mapGuesses,
+    appPreferenceEntries,
+    activityDays,
+    awardedMedals,
   ];
 }
 
 typedef $$SessionsTableCreateCompanionBuilder = SessionsCompanion Function({
   required String id,
   required String countryIds,
+  Value<String> continent,
   Value<int> currentIndex,
   required DateTime createdAt,
   Value<DateTime?> completedAt,
@@ -2987,6 +3991,7 @@ typedef $$SessionsTableCreateCompanionBuilder = SessionsCompanion Function({
 typedef $$SessionsTableUpdateCompanionBuilder = SessionsCompanion Function({
   Value<String> id,
   Value<String> countryIds,
+  Value<String> continent,
   Value<int> currentIndex,
   Value<DateTime> createdAt,
   Value<DateTime?> completedAt,
@@ -3073,6 +4078,11 @@ class $$SessionsTableFilterComposer
 
   ColumnFilters<String> get countryIds => $composableBuilder(
     column: $table.countryIds,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get continent => $composableBuilder(
+    column: $table.continent,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -3206,6 +4216,11 @@ class $$SessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<int> get currentIndex => $composableBuilder(
     column: $table.currentIndex,
     builder: (column) => ColumnOrderings(column),
@@ -3258,6 +4273,9 @@ class $$SessionsTableAnnotationComposer
     column: $table.countryIds,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get continent =>
+      $composableBuilder(column: $table.continent, builder: (column) => column);
 
   GeneratedColumn<int> get currentIndex => $composableBuilder(
     column: $table.currentIndex,
@@ -3400,6 +4418,7 @@ class $$SessionsTableTableManager
               ({
                 Value<String> id = const Value.absent(),
                 Value<String> countryIds = const Value.absent(),
+                Value<String> continent = const Value.absent(),
                 Value<int> currentIndex = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<DateTime?> completedAt = const Value.absent(),
@@ -3411,6 +4430,7 @@ class $$SessionsTableTableManager
               }) => SessionsCompanion(
                 id: id,
                 countryIds: countryIds,
+                continent: continent,
                 currentIndex: currentIndex,
                 createdAt: createdAt,
                 completedAt: completedAt,
@@ -3424,6 +4444,7 @@ class $$SessionsTableTableManager
               ({
                 required String id,
                 required String countryIds,
+                Value<String> continent = const Value.absent(),
                 Value<int> currentIndex = const Value.absent(),
                 required DateTime createdAt,
                 Value<DateTime?> completedAt = const Value.absent(),
@@ -3435,6 +4456,7 @@ class $$SessionsTableTableManager
               }) => SessionsCompanion.insert(
                 id: id,
                 countryIds: countryIds,
+                continent: continent,
                 currentIndex: currentIndex,
                 createdAt: createdAt,
                 completedAt: completedAt,
@@ -5303,6 +6325,600 @@ typedef $$MapGuessesTableProcessedTableManager =
       MapGuess,
       PrefetchHooks Function({bool sessionId})
     >;
+typedef $$AppPreferenceEntriesTableCreateCompanionBuilder =
+    AppPreferenceEntriesCompanion Function({
+      required String key,
+      required String value,
+      Value<int> rowid,
+    });
+typedef $$AppPreferenceEntriesTableUpdateCompanionBuilder =
+    AppPreferenceEntriesCompanion Function({
+      Value<String> key,
+      Value<String> value,
+      Value<int> rowid,
+    });
+
+class $$AppPreferenceEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $AppPreferenceEntriesTable> {
+  $$AppPreferenceEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get value => $composableBuilder(
+    column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AppPreferenceEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $AppPreferenceEntriesTable> {
+  $$AppPreferenceEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get key => $composableBuilder(
+    column: $table.key,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get value => $composableBuilder(
+    column: $table.value,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AppPreferenceEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AppPreferenceEntriesTable> {
+  $$AppPreferenceEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get key =>
+      $composableBuilder(column: $table.key, builder: (column) => column);
+
+  GeneratedColumn<String> get value =>
+      $composableBuilder(column: $table.value, builder: (column) => column);
+}
+
+class $$AppPreferenceEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AppPreferenceEntriesTable,
+          PreferenceEntry,
+          $$AppPreferenceEntriesTableFilterComposer,
+          $$AppPreferenceEntriesTableOrderingComposer,
+          $$AppPreferenceEntriesTableAnnotationComposer,
+          $$AppPreferenceEntriesTableCreateCompanionBuilder,
+          $$AppPreferenceEntriesTableUpdateCompanionBuilder,
+          (
+            PreferenceEntry,
+            BaseReferences<
+              _$AppDatabase,
+              $AppPreferenceEntriesTable,
+              PreferenceEntry
+            >,
+          ),
+          PreferenceEntry,
+          PrefetchHooks Function()
+        > {
+  $$AppPreferenceEntriesTableTableManager(
+    _$AppDatabase db,
+    $AppPreferenceEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AppPreferenceEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AppPreferenceEntriesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$AppPreferenceEntriesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> key = const Value.absent(),
+                Value<String> value = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AppPreferenceEntriesCompanion(
+                key: key,
+                value: value,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String key,
+                required String value,
+                Value<int> rowid = const Value.absent(),
+              }) => AppPreferenceEntriesCompanion.insert(
+                key: key,
+                value: value,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AppPreferenceEntriesTable, PreferenceEntry>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $AppPreferenceEntriesTable,
+                    PreferenceEntry
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AppPreferenceEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AppPreferenceEntriesTable,
+      PreferenceEntry,
+      $$AppPreferenceEntriesTableFilterComposer,
+      $$AppPreferenceEntriesTableOrderingComposer,
+      $$AppPreferenceEntriesTableAnnotationComposer,
+      $$AppPreferenceEntriesTableCreateCompanionBuilder,
+      $$AppPreferenceEntriesTableUpdateCompanionBuilder,
+      (
+        PreferenceEntry,
+        BaseReferences<
+          _$AppDatabase,
+          $AppPreferenceEntriesTable,
+          PreferenceEntry
+        >,
+      ),
+      PreferenceEntry,
+      PrefetchHooks Function()
+    >;
+typedef $$ActivityDaysTableCreateCompanionBuilder =
+    ActivityDaysCompanion Function({
+      required String continent,
+      required String localDate,
+      required DateTime recordedAt,
+      required int offsetMinutes,
+      Value<int> rowid,
+    });
+typedef $$ActivityDaysTableUpdateCompanionBuilder =
+    ActivityDaysCompanion Function({
+      Value<String> continent,
+      Value<String> localDate,
+      Value<DateTime> recordedAt,
+      Value<int> offsetMinutes,
+      Value<int> rowid,
+    });
+
+class $$ActivityDaysTableFilterComposer
+    extends Composer<_$AppDatabase, $ActivityDaysTable> {
+  $$ActivityDaysTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get localDate => $composableBuilder(
+    column: $table.localDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get offsetMinutes => $composableBuilder(
+    column: $table.offsetMinutes,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ActivityDaysTableOrderingComposer
+    extends Composer<_$AppDatabase, $ActivityDaysTable> {
+  $$ActivityDaysTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get localDate => $composableBuilder(
+    column: $table.localDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get offsetMinutes => $composableBuilder(
+    column: $table.offsetMinutes,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ActivityDaysTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ActivityDaysTable> {
+  $$ActivityDaysTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get continent =>
+      $composableBuilder(column: $table.continent, builder: (column) => column);
+
+  GeneratedColumn<String> get localDate =>
+      $composableBuilder(column: $table.localDate, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get recordedAt => $composableBuilder(
+    column: $table.recordedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get offsetMinutes => $composableBuilder(
+    column: $table.offsetMinutes,
+    builder: (column) => column,
+  );
+}
+
+class $$ActivityDaysTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ActivityDaysTable,
+          ActivityDay,
+          $$ActivityDaysTableFilterComposer,
+          $$ActivityDaysTableOrderingComposer,
+          $$ActivityDaysTableAnnotationComposer,
+          $$ActivityDaysTableCreateCompanionBuilder,
+          $$ActivityDaysTableUpdateCompanionBuilder,
+          (
+            ActivityDay,
+            BaseReferences<_$AppDatabase, $ActivityDaysTable, ActivityDay>,
+          ),
+          ActivityDay,
+          PrefetchHooks Function()
+        > {
+  $$ActivityDaysTableTableManager(_$AppDatabase db, $ActivityDaysTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ActivityDaysTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ActivityDaysTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ActivityDaysTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> continent = const Value.absent(),
+                Value<String> localDate = const Value.absent(),
+                Value<DateTime> recordedAt = const Value.absent(),
+                Value<int> offsetMinutes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ActivityDaysCompanion(
+                continent: continent,
+                localDate: localDate,
+                recordedAt: recordedAt,
+                offsetMinutes: offsetMinutes,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String continent,
+                required String localDate,
+                required DateTime recordedAt,
+                required int offsetMinutes,
+                Value<int> rowid = const Value.absent(),
+              }) => ActivityDaysCompanion.insert(
+                continent: continent,
+                localDate: localDate,
+                recordedAt: recordedAt,
+                offsetMinutes: offsetMinutes,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ActivityDaysTable, ActivityDay>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $ActivityDaysTable,
+                    ActivityDay
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ActivityDaysTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ActivityDaysTable,
+      ActivityDay,
+      $$ActivityDaysTableFilterComposer,
+      $$ActivityDaysTableOrderingComposer,
+      $$ActivityDaysTableAnnotationComposer,
+      $$ActivityDaysTableCreateCompanionBuilder,
+      $$ActivityDaysTableUpdateCompanionBuilder,
+      (
+        ActivityDay,
+        BaseReferences<_$AppDatabase, $ActivityDaysTable, ActivityDay>,
+      ),
+      ActivityDay,
+      PrefetchHooks Function()
+    >;
+typedef $$AwardedMedalsTableCreateCompanionBuilder =
+    AwardedMedalsCompanion Function({
+      required String continent,
+      required String topic,
+      required String level,
+      required int medal,
+      required DateTime earnedAt,
+      required String catalogVersion,
+      Value<int> rowid,
+    });
+typedef $$AwardedMedalsTableUpdateCompanionBuilder =
+    AwardedMedalsCompanion Function({
+      Value<String> continent,
+      Value<String> topic,
+      Value<String> level,
+      Value<int> medal,
+      Value<DateTime> earnedAt,
+      Value<String> catalogVersion,
+      Value<int> rowid,
+    });
+
+class $$AwardedMedalsTableFilterComposer
+    extends Composer<_$AppDatabase, $AwardedMedalsTable> {
+  $$AwardedMedalsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get topic => $composableBuilder(
+    column: $table.topic,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get level => $composableBuilder(
+    column: $table.level,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get medal => $composableBuilder(
+    column: $table.medal,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get earnedAt => $composableBuilder(
+    column: $table.earnedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get catalogVersion => $composableBuilder(
+    column: $table.catalogVersion,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AwardedMedalsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AwardedMedalsTable> {
+  $$AwardedMedalsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get topic => $composableBuilder(
+    column: $table.topic,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get level => $composableBuilder(
+    column: $table.level,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get medal => $composableBuilder(
+    column: $table.medal,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get earnedAt => $composableBuilder(
+    column: $table.earnedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get catalogVersion => $composableBuilder(
+    column: $table.catalogVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AwardedMedalsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AwardedMedalsTable> {
+  $$AwardedMedalsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get continent =>
+      $composableBuilder(column: $table.continent, builder: (column) => column);
+
+  GeneratedColumn<String> get topic =>
+      $composableBuilder(column: $table.topic, builder: (column) => column);
+
+  GeneratedColumn<String> get level =>
+      $composableBuilder(column: $table.level, builder: (column) => column);
+
+  GeneratedColumn<int> get medal =>
+      $composableBuilder(column: $table.medal, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get earnedAt =>
+      $composableBuilder(column: $table.earnedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get catalogVersion => $composableBuilder(
+    column: $table.catalogVersion,
+    builder: (column) => column,
+  );
+}
+
+class $$AwardedMedalsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AwardedMedalsTable,
+          AwardedMedal,
+          $$AwardedMedalsTableFilterComposer,
+          $$AwardedMedalsTableOrderingComposer,
+          $$AwardedMedalsTableAnnotationComposer,
+          $$AwardedMedalsTableCreateCompanionBuilder,
+          $$AwardedMedalsTableUpdateCompanionBuilder,
+          (
+            AwardedMedal,
+            BaseReferences<_$AppDatabase, $AwardedMedalsTable, AwardedMedal>,
+          ),
+          AwardedMedal,
+          PrefetchHooks Function()
+        > {
+  $$AwardedMedalsTableTableManager(_$AppDatabase db, $AwardedMedalsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AwardedMedalsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AwardedMedalsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AwardedMedalsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> continent = const Value.absent(),
+                Value<String> topic = const Value.absent(),
+                Value<String> level = const Value.absent(),
+                Value<int> medal = const Value.absent(),
+                Value<DateTime> earnedAt = const Value.absent(),
+                Value<String> catalogVersion = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AwardedMedalsCompanion(
+                continent: continent,
+                topic: topic,
+                level: level,
+                medal: medal,
+                earnedAt: earnedAt,
+                catalogVersion: catalogVersion,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String continent,
+                required String topic,
+                required String level,
+                required int medal,
+                required DateTime earnedAt,
+                required String catalogVersion,
+                Value<int> rowid = const Value.absent(),
+              }) => AwardedMedalsCompanion.insert(
+                continent: continent,
+                topic: topic,
+                level: level,
+                medal: medal,
+                earnedAt: earnedAt,
+                catalogVersion: catalogVersion,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AwardedMedalsTable, AwardedMedal>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $AwardedMedalsTable,
+                    AwardedMedal
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AwardedMedalsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AwardedMedalsTable,
+      AwardedMedal,
+      $$AwardedMedalsTableFilterComposer,
+      $$AwardedMedalsTableOrderingComposer,
+      $$AwardedMedalsTableAnnotationComposer,
+      $$AwardedMedalsTableCreateCompanionBuilder,
+      $$AwardedMedalsTableUpdateCompanionBuilder,
+      (
+        AwardedMedal,
+        BaseReferences<_$AppDatabase, $AwardedMedalsTable, AwardedMedal>,
+      ),
+      AwardedMedal,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -5319,4 +6935,10 @@ class $AppDatabaseManager {
       $$MemoryMetaTableTableManager(_db, _db.memoryMeta);
   $$MapGuessesTableTableManager get mapGuesses =>
       $$MapGuessesTableTableManager(_db, _db.mapGuesses);
+  $$AppPreferenceEntriesTableTableManager get appPreferenceEntries =>
+      $$AppPreferenceEntriesTableTableManager(_db, _db.appPreferenceEntries);
+  $$ActivityDaysTableTableManager get activityDays =>
+      $$ActivityDaysTableTableManager(_db, _db.activityDays);
+  $$AwardedMedalsTableTableManager get awardedMedals =>
+      $$AwardedMedalsTableTableManager(_db, _db.awardedMedals);
 }

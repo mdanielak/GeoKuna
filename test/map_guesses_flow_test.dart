@@ -7,6 +7,7 @@ import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/atlas/country_map.dart';
+import 'package:geokuna/features/learning/country_trivia.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -14,6 +15,7 @@ void main() {
     tester,
   ) async {
     final catalog = (await tester.runAsync(Catalog.load))!;
+    final trivia = (await tester.runAsync(CountryTriviaCatalog.load))!;
     final db = AppDatabase(NativeDatabase.memory());
     addTearDown(() async {
       await tester.pumpWidget(const SizedBox());
@@ -33,6 +35,7 @@ void main() {
         overrides: [
           databaseProvider.overrideWithValue(db),
           catalogProvider.overrideWith((ref) async => catalog),
+          countryTriviaProvider.overrideWith((ref) async => trivia),
         ],
         child: const GeoKunaApp(),
       ),
@@ -54,6 +57,9 @@ void main() {
       }
     }
     expect(find.textContaining('Poprawna odpowiedź: Polska'), findsOneWidget);
+    // A fact also follows a miss, on its own bulb card.
+    expect(find.text('Ciekawostka'), findsOneWidget);
+    expect(find.byIcon(Icons.lightbulb), findsOneWidget);
     expect((await db.select(db.memoryReviews).get()).single.rating, 1);
   });
 }

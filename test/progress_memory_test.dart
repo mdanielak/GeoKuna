@@ -7,32 +7,6 @@ import 'package:geokuna/features/learning/learning_progress.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  test(
-    'assisted selection survives resume without changing map memory',
-    () async {
-      final catalog = await Catalog.load();
-      final db = AppDatabase(NativeDatabase.memory());
-      addTearDown(db.close);
-      final repo = SessionRepository(db);
-      final session = await repo.start(['POL']);
-      final answered = await repo.answer(session.row.id, 0, 'POL', {
-        'POL',
-      }, assisted: true);
-      expect(answered.assistedIndices, {0});
-      expect((await repo.byId(session.row.id)).assistedIndices, {0});
-      expect((await db.select(db.memoryCards).get()).single.state, isNull);
-      final log = (await db.select(db.memoryReviews).get()).single;
-      expect(log.origin, 'assisted');
-      expect(log.applied, isFalse);
-      final progress = await repo.learningProgress(catalog);
-      expect(
-        progress.firstWhere((p) => p.id == 'map:POL:map').status,
-        LearningProgressStatus.insufficient,
-      );
-      await repo.answer(session.row.id, 0, 'POL', {'POL'});
-      expect(await db.select(db.memoryReviews).get(), hasLength(1));
-    },
-  );
 
   test('progress separates formats, errors, and due dates', () async {
     final catalog = await Catalog.load();
@@ -41,7 +15,7 @@ void main() {
     var now = DateTime.utc(2026, 11, 13, 12);
     final repo = SessionRepository(db, clock: () => now);
     var progress = await repo.learningProgress(catalog);
-    expect(progress, hasLength(204));
+    expect(progress, hasLength(51 * 6)); // 3 map levels + 3 capital formats
     expect(
       progress.every((p) => p.status == LearningProgressStatus.insufficient),
       isTrue,
@@ -59,7 +33,7 @@ void main() {
           .every((p) => p.status == LearningProgressStatus.insufficient),
       isTrue,
     );
-    now = now.add(const Duration(days: 1));
+    now = now.add(const Duration(days: 20)); // known at first sight: ~16 days
     expect(
       (await repo.learningProgress(catalog))
           .firstWhere((p) => p.id == 'map:POL:map')

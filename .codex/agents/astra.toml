@@ -14,7 +14,7 @@ Never install or launch an Android emulator, AVD or system image, and never requ
 to complete current development. Do not install Android SDK/JDK or extra tools now.
 Physical Android checks come later, when needed.
 Account for Drift native/WASM storage, gestures, performance and platform API differences.
-Preserve Android-first Material 3/accessibility/touch ergonomics; see docs/TESTING.md. Do not equate gamification
+Preserve Android-first Material 3/accessibility/touch ergonomics; see docs/DEVELOPMENT.md. Do not equate gamification
 with retention or recognition with recall. Avoid speculative frameworks and extra layers.
 Do not edit files, install software, change configuration, commit or spawn other agents.
 Return a short recommendation with assumptions, tradeoffs and acceptance checks.

@@ -38,50 +38,54 @@ void main() {
     },
   );
 
-  test('one substitution, deletion, insertion or adjacent swap is accepted, two errors are not', () {
-    final warsaw = capitals.facts.firstWhere((f) => f.countryId == 'POL');
-    for (final answer in ['Warszaqa', 'Warszwa', 'Warszzawa', 'Wasrzawa']) {
-      final evaluation = evaluateCapitalAnswer(answer, warsaw);
-      expect(evaluation.correct, isTrue, reason: answer);
-      expect(evaluation.typoAccepted, isTrue, reason: answer);
-    }
-    for (final answer in [
-      '',
-      '   ',
-      'Wrszqa',
-      'Xarszaqa',
-      'Warsz',
-      'Kraków',
-      'WarszawaaX',
-    ]) {
+  test(
+    'written answers: one typo, diacritics and endonyms; two errors fail',
+    () {
+      final warsaw = capitals.facts.firstWhere((f) => f.countryId == 'POL');
+      for (final answer in ['Warszaqa', 'Warszwa', 'Warszzawa', 'Wasrzawa']) {
+        final evaluation = evaluateCapitalAnswer(answer, warsaw);
+        expect(evaluation.correct, isTrue, reason: answer);
+        expect(evaluation.typoAccepted, isTrue, reason: answer);
+      }
+      for (final answer in [
+        '',
+        '   ',
+        'Wrszqa',
+        'Xarszaqa',
+        'Warsz',
+        'Kraków',
+        'WarszawaaX',
+      ]) {
+        expect(
+          evaluateCapitalAnswer(answer, warsaw).correct,
+          isFalse,
+          reason: answer,
+        );
+      }
       expect(
-        evaluateCapitalAnswer(answer, warsaw).correct,
+        evaluateCapitalAnswer('  wArSzAwA  ', warsaw).typoAccepted,
         isFalse,
-        reason: answer,
       );
-    }
-    expect(evaluateCapitalAnswer('  wArSzAwA  ', warsaw).typoAccepted, isFalse);
-    final berlin = capitals.facts.firstWhere((f) => f.countryId == 'DEU');
-    expect(evaluateCapitalAnswer('Berno', berlin).correct, isFalse);
-  });
-
-  test('diacritics, decomposed accents and verified endonyms are accepted without a typo', () {
-    for (final entry in {
-      'LTU': '  WILNO ',
-      'AUT': 'Wieden',
-      'ISL': 'Reykjavi\u0301k',
-      'UKR': 'Kyiv',
-      'AND': 'Andorra la Vella',
-      'CHE': 'Bern',
-    }.entries) {
-      final result = evaluateCapitalAnswer(
-        entry.value,
-        capitals.facts.firstWhere((f) => f.countryId == entry.key),
-      );
-      expect(result.correct, isTrue, reason: entry.value);
-      expect(result.typoAccepted, isFalse, reason: entry.value);
-    }
-  });
+      final berlin = capitals.facts.firstWhere((f) => f.countryId == 'DEU');
+      expect(evaluateCapitalAnswer('Berno', berlin).correct, isFalse);
+      // Diacritics, decomposed accents and verified endonyms are not typos.
+      for (final entry in {
+        'LTU': '  WILNO ',
+        'AUT': 'Wieden',
+        'ISL': 'Reykjavi\u0301k',
+        'UKR': 'Kyiv',
+        'AND': 'Andorra la Vella',
+        'CHE': 'Bern',
+      }.entries) {
+        final result = evaluateCapitalAnswer(
+          entry.value,
+          capitals.facts.firstWhere((f) => f.countryId == entry.key),
+        );
+        expect(result.correct, isTrue, reason: entry.value);
+        expect(result.typoAccepted, isFalse, reason: entry.value);
+      }
+    },
+  );
 
   test('each level resumes independently and keeps the same question/options snapshot', () async {
     final db = AppDatabase(NativeDatabase.memory());

@@ -1,0 +1,1008 @@
+{
+  "version": "asia-0.1.0",
+  "source": {
+    "name": "KSNG — Urzędowy wykaz nazw państw i terytoriów niesamodzielnych, wydanie VIII zaktualizowane, 2025 z aktualizacją 2026",
+    "url": "https://www.gov.pl/attachment/1cde0699-e88f-4401-bca5-c9909d0fe526",
+    "sha256": "4645f3f84b46920b7e9bb480a265f70a52da5d429977eb650709d84dfabd08eb"
+  },
+  "countries": [
+    {
+      "id": "AFG",
+      "name": "Afganistan",
+      "iso2": "AF",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Afghanistan"
+      ]
+    },
+    {
+      "id": "SAU",
+      "name": "Arabia Saudyjska",
+      "iso2": "SA",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Saudi Arabia"
+      ]
+    },
+    {
+      "id": "ARM",
+      "name": "Armenia",
+      "iso2": "AM",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "AZE",
+      "name": "Azerbejdżan",
+      "iso2": "AZ",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Azerbaijan"
+      ]
+    },
+    {
+      "id": "BHR",
+      "name": "Bahrajn",
+      "iso2": "BH",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Bahrain"
+      ]
+    },
+    {
+      "id": "BGD",
+      "name": "Bangladesz",
+      "iso2": "BD",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Bangladesh"
+      ]
+    },
+    {
+      "id": "BTN",
+      "name": "Bhutan",
+      "iso2": "BT",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "BRN",
+      "name": "Brunei",
+      "iso2": "BN",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "CHN",
+      "name": "Chiny",
+      "iso2": "CN",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "People's Republic of China"
+      ]
+    },
+    {
+      "id": "CYP",
+      "name": "Cypr",
+      "iso2": "CY",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Cyprus"
+      ]
+    },
+    {
+      "id": "PHL",
+      "name": "Filipiny",
+      "iso2": "PH",
+      "plural": true,
+      "small": false,
+      "aliases": [
+        "Philippines"
+      ]
+    },
+    {
+      "id": "GEO",
+      "name": "Gruzja",
+      "iso2": "GE",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Georgia"
+      ]
+    },
+    {
+      "id": "IND",
+      "name": "Indie",
+      "iso2": "IN",
+      "plural": true,
+      "small": false,
+      "aliases": [
+        "India"
+      ]
+    },
+    {
+      "id": "IDN",
+      "name": "Indonezja",
+      "iso2": "ID",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Indonesia"
+      ]
+    },
+    {
+      "id": "IRQ",
+      "name": "Irak",
+      "iso2": "IQ",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Iraq"
+      ]
+    },
+    {
+      "id": "IRN",
+      "name": "Iran",
+      "iso2": "IR",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "ISR",
+      "name": "Izrael",
+      "iso2": "IL",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Israel"
+      ]
+    },
+    {
+      "id": "JPN",
+      "name": "Japonia",
+      "iso2": "JP",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Japan"
+      ]
+    },
+    {
+      "id": "YEM",
+      "name": "Jemen",
+      "iso2": "YE",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Yemen"
+      ]
+    },
+    {
+      "id": "JOR",
+      "name": "Jordania",
+      "iso2": "JO",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Jordan"
+      ]
+    },
+    {
+      "id": "KHM",
+      "name": "Kambodża",
+      "iso2": "KH",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Cambodia"
+      ]
+    },
+    {
+      "id": "QAT",
+      "name": "Katar",
+      "iso2": "QA",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Qatar"
+      ]
+    },
+    {
+      "id": "KAZ",
+      "name": "Kazachstan",
+      "iso2": "KZ",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Kazakhstan"
+      ]
+    },
+    {
+      "id": "KGZ",
+      "name": "Kirgistan",
+      "iso2": "KG",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Kyrgyzstan"
+      ]
+    },
+    {
+      "id": "KOR",
+      "name": "Korea Południowa",
+      "iso2": "KR",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "South Korea"
+      ]
+    },
+    {
+      "id": "PRK",
+      "name": "Korea Północna",
+      "iso2": "KP",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "North Korea"
+      ]
+    },
+    {
+      "id": "KWT",
+      "name": "Kuwejt",
+      "iso2": "KW",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Kuwait"
+      ]
+    },
+    {
+      "id": "LAO",
+      "name": "Laos",
+      "iso2": "LA",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "LBN",
+      "name": "Liban",
+      "iso2": "LB",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Lebanon"
+      ]
+    },
+    {
+      "id": "MDV",
+      "name": "Malediwy",
+      "iso2": "MV",
+      "plural": true,
+      "small": true,
+      "aliases": [
+        "Maldives"
+      ]
+    },
+    {
+      "id": "MYS",
+      "name": "Malezja",
+      "iso2": "MY",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Malaysia"
+      ]
+    },
+    {
+      "id": "MMR",
+      "name": "Mjanma",
+      "iso2": "MM",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Myanmar"
+      ]
+    },
+    {
+      "id": "MNG",
+      "name": "Mongolia",
+      "iso2": "MN",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "NPL",
+      "name": "Nepal",
+      "iso2": "NP",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "OMN",
+      "name": "Oman",
+      "iso2": "OM",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "PAK",
+      "name": "Pakistan",
+      "iso2": "PK",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "PSX",
+      "name": "Palestyna",
+      "iso2": "PS",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Palestine"
+      ]
+    },
+    {
+      "id": "TWN",
+      "name": "Tajwan",
+      "iso2": "TW",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Taiwan"
+      ]
+    },
+    {
+      "id": "RUS",
+      "name": "Rosja",
+      "iso2": "RU",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Russia"
+      ]
+    },
+    {
+      "id": "SGP",
+      "name": "Singapur",
+      "iso2": "SG",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Singapore"
+      ]
+    },
+    {
+      "id": "LKA",
+      "name": "Sri Lanka",
+      "iso2": "LK",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "SYR",
+      "name": "Syria",
+      "iso2": "SY",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "TJK",
+      "name": "Tadżykistan",
+      "iso2": "TJ",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Tajikistan"
+      ]
+    },
+    {
+      "id": "THA",
+      "name": "Tajlandia",
+      "iso2": "TH",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Thailand"
+      ]
+    },
+    {
+      "id": "TLS",
+      "name": "Timor Wschodni",
+      "iso2": "TL",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "East Timor"
+      ]
+    },
+    {
+      "id": "TUR",
+      "name": "Turcja",
+      "iso2": "TR",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Turkey"
+      ]
+    },
+    {
+      "id": "TKM",
+      "name": "Turkmenistan",
+      "iso2": "TM",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "UZB",
+      "name": "Uzbekistan",
+      "iso2": "UZ",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "VNM",
+      "name": "Wietnam",
+      "iso2": "VN",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Vietnam"
+      ]
+    },
+    {
+      "id": "ARE",
+      "name": "Zjednoczone Emiraty Arabskie",
+      "iso2": "AE",
+      "plural": true,
+      "small": false,
+      "aliases": [
+        "United Arab Emirates"
+      ]
+    }
+  ],
+  "capitals": [
+    {
+      "id": "capital:AFG",
+      "country_id": "AFG",
+      "name": "Kabul",
+      "aliases": [],
+      "source_page": 18,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:SAU",
+      "country_id": "SAU",
+      "name": "Rijad",
+      "aliases": [
+        "Riyadh"
+      ],
+      "source_page": 20,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:ARM",
+      "country_id": "ARM",
+      "name": "Erywań",
+      "aliases": [
+        "Yerevan"
+      ],
+      "source_page": 20,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:AZE",
+      "country_id": "AZE",
+      "name": "Baku",
+      "aliases": [],
+      "source_page": 21,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:BHR",
+      "country_id": "BHR",
+      "name": "Manama",
+      "aliases": [],
+      "source_page": 21,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:BGD",
+      "country_id": "BGD",
+      "name": "Dhaka",
+      "aliases": [],
+      "source_page": 21,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:BTN",
+      "country_id": "BTN",
+      "name": "Thimphu",
+      "aliases": [],
+      "source_page": 22,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:BRN",
+      "country_id": "BRN",
+      "name": "Bandar Seri Begawan",
+      "aliases": [],
+      "source_page": 24,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:CHN",
+      "country_id": "CHN",
+      "name": "Pekin",
+      "aliases": [
+        "Beijing"
+      ],
+      "source_page": 25,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:CYP",
+      "country_id": "CYP",
+      "name": "Nikozja",
+      "aliases": [
+        "Nicosia"
+      ],
+      "source_page": 25,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:PHL",
+      "country_id": "PHL",
+      "name": "Manila",
+      "aliases": [],
+      "source_page": 29,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:GEO",
+      "country_id": "GEO",
+      "name": "Tbilisi",
+      "aliases": [],
+      "source_page": 30,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:IND",
+      "country_id": "IND",
+      "name": "Nowe Delhi",
+      "aliases": [
+        "New Delhi"
+      ],
+      "source_page": 33,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:IDN",
+      "country_id": "IDN",
+      "name": "Dżakarta",
+      "aliases": [
+        "Jakarta"
+      ],
+      "source_page": 33,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Jaka jest stolica Indonezji według wykazu KSNG?",
+      "note": "Dżakarta pozostaje stolicą według zaktualizowanego wykazu KSNG; przenoszenie stolicy do Nusantary jest w toku."
+    },
+    {
+      "id": "capital:IRQ",
+      "country_id": "IRQ",
+      "name": "Bagdad",
+      "aliases": [
+        "Baghdad"
+      ],
+      "source_page": 33,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:IRN",
+      "country_id": "IRN",
+      "name": "Teheran",
+      "aliases": [
+        "Tehran"
+      ],
+      "source_page": 33,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:ISR",
+      "country_id": "ISR",
+      "name": "Jerozolima",
+      "aliases": [
+        "Jerusalem"
+      ],
+      "source_page": 34,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Gdzie znajduje się siedziba władz Izraela?",
+      "note": "Izrael wskazuje Jerozolimę jako stolicę. Status Jerozolimy pozostaje sporny; ONZ nie uznaje jej za stolicę Izraela."
+    },
+    {
+      "id": "capital:JPN",
+      "country_id": "JPN",
+      "name": "Tokio",
+      "aliases": [
+        "Tokyo"
+      ],
+      "source_page": 35,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:YEM",
+      "country_id": "YEM",
+      "name": "Sana",
+      "aliases": [
+        "Sanaa"
+      ],
+      "source_page": 35,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Jaka jest konstytucyjna stolica Jemenu?",
+      "note": "Sana jest stolicą konstytucyjną. Obecna sytuacja polityczna i siedziba władz pozostają złożone."
+    },
+    {
+      "id": "capital:JOR",
+      "country_id": "JOR",
+      "name": "Amman",
+      "aliases": [],
+      "source_page": 35,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:KHM",
+      "country_id": "KHM",
+      "name": "Phnom Penh",
+      "aliases": [],
+      "source_page": 35,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:QAT",
+      "country_id": "QAT",
+      "name": "Doha",
+      "aliases": [],
+      "source_page": 36,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:KAZ",
+      "country_id": "KAZ",
+      "name": "Astana",
+      "aliases": [],
+      "source_page": 36,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:KGZ",
+      "country_id": "KGZ",
+      "name": "Biszkek",
+      "aliases": [
+        "Bishkek"
+      ],
+      "source_page": 37,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:KOR",
+      "country_id": "KOR",
+      "name": "Seul",
+      "aliases": [
+        "Seoul"
+      ],
+      "source_page": 38,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:PRK",
+      "country_id": "PRK",
+      "name": "Pjongjang",
+      "aliases": [
+        "Pyongyang"
+      ],
+      "source_page": 38,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:KWT",
+      "country_id": "KWT",
+      "name": "Kuwejt",
+      "aliases": [
+        "Kuwait City"
+      ],
+      "source_page": 39,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:LAO",
+      "country_id": "LAO",
+      "name": "Wientian",
+      "aliases": [
+        "Vientiane"
+      ],
+      "source_page": 40,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:LBN",
+      "country_id": "LBN",
+      "name": "Bejrut",
+      "aliases": [
+        "Beirut"
+      ],
+      "source_page": 40,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:MDV",
+      "country_id": "MDV",
+      "name": "Male",
+      "aliases": [
+        "Malé"
+      ],
+      "source_page": 42,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:MYS",
+      "country_id": "MYS",
+      "name": "Kuala Lumpur",
+      "aliases": [],
+      "source_page": 42,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:MMR",
+      "country_id": "MMR",
+      "name": "Naypyidaw",
+      "aliases": [],
+      "source_page": 44,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:MNG",
+      "country_id": "MNG",
+      "name": "Ułan Bator",
+      "aliases": [
+        "Ulaanbaatar"
+      ],
+      "source_page": 45,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:NPL",
+      "country_id": "NPL",
+      "name": "Katmandu",
+      "aliases": [
+        "Kathmandu"
+      ],
+      "source_page": 46,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:OMN",
+      "country_id": "OMN",
+      "name": "Maskat",
+      "aliases": [
+        "Muscat"
+      ],
+      "source_page": 47,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:PAK",
+      "country_id": "PAK",
+      "name": "Islamabad",
+      "aliases": [],
+      "source_page": 48,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:PSX",
+      "country_id": "PSX",
+      "name": "Ramallah",
+      "aliases": [],
+      "source_page": 81,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Gdzie znajduje się tymczasowa siedziba władz Palestyny?",
+      "note": "Ramallah jest tymczasową siedzibą władz Palestyny; ostateczny status terytorium i Jerozolimy jest sporny."
+    },
+    {
+      "id": "capital:TWN",
+      "country_id": "TWN",
+      "name": "Tajpej",
+      "aliases": [
+        "Taipei"
+      ],
+      "source_page": 82,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Gdzie znajduje się siedziba władz Tajwanu?",
+      "note": "Tajwan jest obszarem o szczególnym statusie międzynarodowym; uwzględnienie go w quizie nie rozstrzyga tego statusu."
+    },
+    {
+      "id": "capital:RUS",
+      "country_id": "RUS",
+      "name": "Moskwa",
+      "aliases": [
+        "Moscow"
+      ],
+      "source_page": 50,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:SGP",
+      "country_id": "SGP",
+      "name": "Singapur",
+      "aliases": [
+        "Singapore"
+      ],
+      "source_page": 53,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:LKA",
+      "country_id": "LKA",
+      "name": "Sri Dźajawardanapura Kotte",
+      "aliases": [
+        "Sri Jayawardenepura Kotte"
+      ],
+      "source_page": 54,
+      "status": "verified",
+      "verified_at": "2026-11-13",
+      "prompt": "Jaka jest oficjalna stolica Sri Lanki?",
+      "note": "Sri Dźajawardanapura Kotte jest stolicą; siedziba rządu znajduje się w Kolombo."
+    },
+    {
+      "id": "capital:SYR",
+      "country_id": "SYR",
+      "name": "Damaszek",
+      "aliases": [
+        "Damascus"
+      ],
+      "source_page": 55,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:TJK",
+      "country_id": "TJK",
+      "name": "Duszanbe",
+      "aliases": [
+        "Dushanbe"
+      ],
+      "source_page": 56,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:THA",
+      "country_id": "THA",
+      "name": "Bangkok",
+      "aliases": [],
+      "source_page": 56,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:TLS",
+      "country_id": "TLS",
+      "name": "Dili",
+      "aliases": [],
+      "source_page": 57,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:TUR",
+      "country_id": "TUR",
+      "name": "Ankara",
+      "aliases": [],
+      "source_page": 58,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:TKM",
+      "country_id": "TKM",
+      "name": "Aszchabad",
+      "aliases": [
+        "Ashgabat"
+      ],
+      "source_page": 58,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:UZB",
+      "country_id": "UZB",
+      "name": "Taszkent",
+      "aliases": [
+        "Tashkent"
+      ],
+      "source_page": 59,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:VNM",
+      "country_id": "VNM",
+      "name": "Hanoi",
+      "aliases": [],
+      "source_page": 60,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    },
+    {
+      "id": "capital:ARE",
+      "country_id": "ARE",
+      "name": "Abu Zabi",
+      "aliases": [
+        "Abu Dhabi"
+      ],
+      "source_page": 62,
+      "status": "verified",
+      "verified_at": "2026-11-13"
+    }
+  ]
+}

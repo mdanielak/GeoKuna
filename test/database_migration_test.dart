@@ -61,7 +61,7 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          4,
+          7,
         );
       } finally {
         await db.close();
@@ -104,7 +104,7 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          4,
+          7,
         );
       } finally {
         await db.close();

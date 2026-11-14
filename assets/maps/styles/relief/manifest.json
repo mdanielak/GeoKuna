@@ -1,0 +1,70 @@
+{
+  "version": "natural-earth-relief-0.1.0",
+  "source": {
+    "name": "Natural Earth I with Shaded Relief 1:50m",
+    "version": "3.2.0",
+    "url": "https://naciscdn.org/naturalearth/50m/raster/NE1_50M_SR.zip",
+    "page": "https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/",
+    "sha256": "ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934",
+    "license": "public-domain",
+    "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "verified_at": "2026-11-13"
+  },
+  "projection": "EPSG:3857",
+  "parameters": {
+    "width": 1536,
+    "resampling": "bilinear",
+    "rows": "inverse-mercator",
+    "palette_colors": 256,
+    "land_tint_rgb": [
+      220,
+      233,
+      201
+    ],
+    "land_tint_strength": 0.2,
+    "ocean_rgb": [
+      218,
+      238,
+      244
+    ],
+    "pillow_version": "10.2.0"
+  },
+  "regions": {
+    "europe": {
+      "asset_path": "assets/maps/styles/relief/europe.png",
+      "bounds_wsen": [
+        -32.0,
+        34.0,
+        65.0,
+        72.0
+      ],
+      "width": 1536,
+      "height": 1099,
+      "sha256": "3947258073792396db5399704da1e145c014eab2aaf5f3dc0f864bfab5bc3541"
+    },
+    "africa": {
+      "asset_path": "assets/maps/styles/relief/africa.png",
+      "bounds_wsen": [
+        -26.0,
+        -36.0,
+        65.0,
+        38.0
+      ],
+      "width": 1536,
+      "height": 1346,
+      "sha256": "b2f69b9a098e3e4f3efc7f257f92dc64ae37d265f710a9116e7b99f5436d5da5"
+    },
+    "asia": {
+      "asset_path": "assets/maps/styles/relief/asia.png",
+      "bounds_wsen": [
+        20.0,
+        -12.0,
+        180.0,
+        82.0
+      ],
+      "width": 1536,
+      "height": 1579,
+      "sha256": "9e2ab9a0087568568b2f7974aeb9161d7949f60d48c82a7ca9ad35d9fcc8f9fb"
+    }
+  }
+}

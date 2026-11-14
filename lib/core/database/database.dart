@@ -6,6 +6,7 @@ part 'database.g.dart';
 class Sessions extends Table {
   TextColumn get id => text()();
   TextColumn get countryIds => text()();
+  TextColumn get continent => text().withDefault(const Constant('europe'))();
   IntColumn get currentIndex => integer().withDefault(const Constant(0))();
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get completedAt => dateTime().nullable()();
@@ -79,6 +80,34 @@ class MemoryMeta extends Table {
   Set<Column> get primaryKey => {key};
 }
 
+@DataClassName('PreferenceEntry')
+class AppPreferenceEntries extends Table {
+  TextColumn get key => text()();
+  TextColumn get value => text()();
+  @override
+  Set<Column> get primaryKey => {key};
+}
+
+class ActivityDays extends Table {
+  TextColumn get continent => text()();
+  TextColumn get localDate => text()();
+  DateTimeColumn get recordedAt => dateTime()();
+  IntColumn get offsetMinutes => integer()();
+  @override
+  Set<Column> get primaryKey => {continent, localDate};
+}
+
+class AwardedMedals extends Table {
+  TextColumn get continent => text()();
+  TextColumn get topic => text()();
+  TextColumn get level => text()();
+  IntColumn get medal => integer()();
+  DateTimeColumn get earnedAt => dateTime()();
+  TextColumn get catalogVersion => text()();
+  @override
+  Set<Column> get primaryKey => {continent, topic, level, medal};
+}
+
 @DriftDatabase(
   tables: [
     Sessions,
@@ -87,6 +116,9 @@ class MemoryMeta extends Table {
     MemoryReviews,
     MemoryMeta,
     MapGuesses,
+    AppPreferenceEntries,
+    ActivityDays,
+    AwardedMedals,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -102,7 +134,7 @@ class AppDatabase extends _$AppDatabase {
         ),
       );
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 7;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
@@ -124,6 +156,16 @@ class AppDatabase extends _$AppDatabase {
       }
       if (from < 4) {
         await m.createTable(mapGuesses);
+      }
+      if (from < 5) {
+        await m.addColumn(sessions, sessions.continent);
+      }
+      if (from < 6) {
+        await m.createTable(appPreferenceEntries);
+      }
+      if (from < 7) {
+        await m.createTable(activityDays);
+        await m.createTable(awardedMedals);
       }
     },
     beforeOpen: (_) async {

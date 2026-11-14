@@ -12,7 +12,7 @@ Default app target is Flutter Web in Chrome; Luna owns browser visual verificati
 Support applicable unit/widget/integration tests, flutter analyze and Drift persistence/
 migration checks, distinguishing native SQLite from browser WASM storage.
 Never install or launch an Android emulator/AVD/system image, Android SDK/JDK or extra
-browser tools. Physical Android testing is deferred; follow docs/TESTING.md.
+browser tools. Physical Android testing is deferred; follow docs/DEVELOPMENT.md.
 Do not repeatedly run full suites or browser flows without a new failure or relevant change.
 For read-only reviews, do not edit any file. For edits, respect assigned file ownership;
 coordinate pubspec, generated Drift code and schema changes with Sol.

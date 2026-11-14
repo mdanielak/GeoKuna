@@ -3,18 +3,45 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/providers.dart';
+import '../atlas/continent.dart';
 import '../learning/session_repository.dart';
+import '../settings/app_preferences.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
+  Future<void> _openDaily(
+    BuildContext context,
+    WidgetRef ref,
+    String mode,
+  ) async {
+    await context.push('/daily?mode=$mode');
+    if (context.mounted) ref.invalidate(dailyOverviewProvider);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final catalog = ref.watch(catalogProvider).asData?.value;
+    final continent = ref.watch(selectedContinentProvider);
     final daily = ref.watch(dailyOverviewProvider);
+    final streak = ref.watch(streakProvider).asData?.value;
+    final difficulty = ref
+        .watch(appPreferencesProvider)
+        .asData
+        ?.value
+        .difficultyFor(continent);
     final overview = daily.asData?.value;
     return Scaffold(
-      appBar: AppBar(title: const Text('Dziś')),
+      appBar: AppBar(
+        title: const Text('Dziś'),
+        actions: [
+          IconButton(
+            tooltip: 'Ustawienia',
+            onPressed: () => context.push('/settings'),
+            icon: const Icon(Icons.settings_outlined),
+          ),
+        ],
+      ),
       body: SafeArea(
         top: false,
         child: LayoutBuilder(
@@ -50,8 +77,117 @@ class HomeScreen extends ConsumerWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
+                    Semantics(
+                      label: 'Wybierz kontynent',
+                      child:
+                          MediaQuery.sizeOf(context).width < 360 ||
+                              MediaQuery.textScalerOf(context).scale(14) > 18
+                          ? Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                for (final option in Continent.values)
+                                  ChoiceChip(
+                                    label: Text(option.label),
+                                    selected: continent == option,
+                                    showCheckmark: false,
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.padded,
+                                    onSelected: (_) => ref
+                                        .read(
+                                          selectedContinentProvider.notifier,
+                                        )
+                                        .select(option),
+                                  ),
+                              ],
+                            )
+                          : SegmentedButton<Continent>(
+                              segments: [
+                                for (final option in Continent.values)
+                                  ButtonSegment<Continent>(
+                                    value: option,
+                                    label: Text(option.label),
+                                    icon: Icon(switch (option) {
+                                      Continent.europe => Icons.public_outlined,
+                                      Continent.africa =>
+                                        Icons.landscape_outlined,
+                                      Continent.asia =>
+                                        Icons.travel_explore_outlined,
+                                    }),
+                                  ),
+                              ],
+                              selected: {continent},
+                              showSelectedIcon: false,
+                              onSelectionChanged: (selection) {
+                                if (selection.isNotEmpty &&
+                                    selection.single != continent) {
+                                  ref
+                                      .read(selectedContinentProvider.notifier)
+                                      .select(selection.single);
+                                }
+                              },
+                            ),
+                    ),
+                    const SizedBox(height: 20),
                     Text(
-                      'Twoja dzisiejsza wyprawa',
+                      'Poziom wyprawy',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    const SizedBox(height: 6),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final level in LearningDifficulty.values)
+                          ChoiceChip(
+                            label: Text(level.label),
+                            selected:
+                                (difficulty ?? LearningDifficulty.normal) ==
+                                level,
+                            showCheckmark: false,
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            onSelected: (selected) async {
+                              if (!selected || difficulty == level) return;
+                              await ref
+                                  .read(appPreferencesProvider.notifier)
+                                  .setDifficulty(continent, level);
+                              ref.invalidate(dailyOverviewProvider);
+                            },
+                          ),
+                      ],
+                    ),
+                    if (overview?.activeSession != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        'Rozpoczęta wyprawa zachowuje zapisane poziomy; wybór tutaj dotyczy następnej.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                    const SizedBox(height: 8),
+                    Semantics(
+                      liveRegion: true,
+                      label:
+                          'Passa ${continent.label}: ${streak?.current ?? 0} dni. Rekord ${streak?.best ?? 0} dni.',
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                        ),
+                        leading: const Icon(
+                          Icons.local_fire_department_outlined,
+                        ),
+                        title: Text(
+                          'Passa ${continent.label}: ${streak?.current ?? 0} dni',
+                        ),
+                        subtitle: Text(
+                          streak?.practisedToday == true
+                              ? 'Dziś już była nauka · rekord ${streak?.best ?? 0} dni'
+                              : 'Rekord: ${streak?.best ?? 0} dni · wróć dziś do nauki',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      'Wyprawa po ${continent.journey}',
                       style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(fontWeight: FontWeight.w700),
                     ),
@@ -59,7 +195,7 @@ class HomeScreen extends ConsumerWidget {
                     Text(
                       overview?.activeSession != null
                           ? 'Wróć do miejsca, w którym przerwano dzisiejszą serię.'
-                          : 'Krótka seria powtórek i nowych pytań o Europę.',
+                          : 'Krótka seria powtórek i nowych pytań.',
                     ),
                     const SizedBox(height: 20),
                     daily.when(
@@ -121,6 +257,27 @@ class HomeScreen extends ConsumerWidget {
                                     total: overview.plannedCount,
                                     activeSession: overview.activeSession,
                                   ),
+                                  if (overview.otherDueCount > 0) ...[
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Na innych poziomach: ${overview.otherDueCount} powtórek.',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall,
+                                    ),
+                                  ],
+                                  if (overview.reservedNewElsewhere > 0 &&
+                                      overview.activeSession == null) ...[
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Nowe pytania czekają już w rozpoczętej '
+                                      'wyprawie na innym kontynencie. Wróć do '
+                                      'niej lub zakończ ją, aby zmienić zakres.',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                  ],
                                   if (overview.plannedCount > 0 ||
                                       overview.activeSession != null) ...[
                                     const SizedBox(height: 18),
@@ -145,6 +302,48 @@ class HomeScreen extends ConsumerWidget {
                                         ),
                                       ),
                                     ),
+                                  ],
+                                  if (overview.activeSession == null) ...[
+                                    if (overview.plannedCount == 0 &&
+                                        overview.canStartExtra) ...[
+                                      const SizedBox(height: 18),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: FilledButton.icon(
+                                          onPressed: () =>
+                                              _openDaily(context, ref, 'extra'),
+                                          icon: const Icon(Icons.replay),
+                                          label: const Text('Kolejna runda'),
+                                        ),
+                                      ),
+                                    ],
+                                    if (overview.newAvailable > 0) ...[
+                                      const SizedBox(height: 10),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: OutlinedButton.icon(
+                                          onPressed: () => _openDaily(
+                                            context,
+                                            ref,
+                                            'placement',
+                                          ),
+                                          icon: const Icon(
+                                            Icons.travel_explore,
+                                          ),
+                                          label: const Text(
+                                            'Kuna sprawdzi, co już wiesz',
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        'Trafione kraje nie zużywają limitu '
+                                        'nowych na dziś.',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
+                                      ),
+                                    ],
                                   ],
                                 ],
                               ),
@@ -208,9 +407,9 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     OutlinedButton.icon(
-                      onPressed: () => context.push('/progress'),
+                      onPressed: () => context.push('/learning'),
                       icon: const Icon(Icons.insights_outlined),
-                      label: const Text('Postępy'),
+                      label: const Text('Moja nauka'),
                     ),
                   ],
                 ),

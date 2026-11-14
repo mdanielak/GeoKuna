@@ -34,12 +34,16 @@ class LearningProgressEntry {
   String get skillLabel => topic == 'flags'
       ? switch (difficulty) {
           'map' => 'Flaga · państwo na mapie',
+          'mapEasy' => 'Flaga → mapa · łatwy',
+          'mapVeryEasy' => 'Flaga → mapa · bardzo łatwy',
           'choice' => 'Flaga · wybór państwa A–D',
           'firstLetter' => 'Flaga · pierwsza litera',
           _ => 'Flaga · samodzielne pisanie',
         }
       : switch (difficulty) {
           'map' => 'Lokalizacja na mapie',
+          'mapEasy' => 'Mapa · łatwy',
+          'mapVeryEasy' => 'Mapa · bardzo łatwy',
           'choice' => 'Stolica · wybór A–D',
           'firstLetter' => 'Stolica · pierwsza litera',
           'write' => 'Stolica · samodzielne pisanie',

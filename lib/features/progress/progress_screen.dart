@@ -7,13 +7,14 @@ import '../../app/providers.dart';
 import '../learning/learning_progress.dart';
 
 class ProgressScreen extends ConsumerStatefulWidget {
-  const ProgressScreen({super.key});
+  const ProgressScreen({super.key, this.initialCountry});
+  final String? initialCountry;
   @override
   ConsumerState<ProgressScreen> createState() => _ProgressScreenState();
 }
 
 class _ProgressScreenState extends ConsumerState<ProgressScreen> {
-  final _search = TextEditingController();
+  late final _search = TextEditingController(text: widget.initialCountry);
   LearningProgressStatus? _status;
   String _skill = 'all';
   @override
@@ -71,7 +72,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                               ),
                               const SizedBox(height: 8),
                               const Text(
-                                'To historia ćwiczeń, nie procent opanowania geografii. Wybór z pomocą nie ocenia pamięci mapy.',
+                                'Każdy poziom ma własne powtórki. A–D ćwiczy rozpoznawanie; nie zalicza samodzielnego wpisywania. Historyczne odpowiedzi z pomocą nie oceniają pamięci.',
                               ),
                               const SizedBox(height: 16),
                               Wrap(
@@ -112,45 +113,19 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                                   child: DropdownButton<String>(
                                     value: _skill,
                                     isExpanded: true,
-                                    items: const [
-                                      DropdownMenuItem(
+                                    items: [
+                                      const DropdownMenuItem(
                                         value: 'all',
                                         child: Text('Wszystkie'),
                                       ),
-                                      DropdownMenuItem(
-                                        value: 'map:map',
-                                        child: Text('Mapa'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'capitals:choice',
-                                        child: Text('Stolice · A–D'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'capitals:firstLetter',
-                                        child: Text(
-                                          'Stolica · pierwsza litera',
+                                      for (final skill in <String, String>{
+                                        for (final entry in entries)
+                                          entry.skillKey: entry.skillLabel,
+                                      }.entries)
+                                        DropdownMenuItem(
+                                          value: skill.key,
+                                          child: Text(skill.value),
                                         ),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'capitals:write',
-                                        child: Text('Stolice · pisanie'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'flags:choice',
-                                        child: Text('Flagi · A–D'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'flags:firstLetter',
-                                        child: Text('Flagi · 1. litera'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'flags:write',
-                                        child: Text('Flagi · pisanie'),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'flags:map',
-                                        child: Text('Flagi · mapa'),
-                                      ),
                                     ],
                                     onChanged: (value) {
                                       if (value != null) {

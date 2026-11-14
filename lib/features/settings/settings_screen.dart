@@ -1,0 +1,358 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
+
+import '../../app/providers.dart';
+import '../atlas/catalog.dart';
+import '../atlas/continent.dart';
+import '../learning/learning_reset.dart';
+import 'app_preferences.dart';
+
+class SettingsScreen extends ConsumerStatefulWidget {
+  const SettingsScreen({super.key});
+  @override
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  bool _all = false;
+  bool _busy = false;
+  String? _error;
+
+  Future<void> _setAppearance(MapAppearance value) async {
+    if (_busy) return;
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await ref.read(appPreferencesProvider.notifier).setAppearance(value);
+    } catch (_) {
+      if (mounted) {
+        setState(() => _error = 'Nie udało się zapisać ustawienia mapy.');
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _setDifficulty(
+    Continent continent,
+    LearningDifficulty value,
+  ) async {
+    if (_busy) return;
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      await ref
+          .read(appPreferencesProvider.notifier)
+          .setDifficulty(continent, value);
+    } catch (_) {
+      if (mounted) {
+        setState(() => _error = 'Nie udało się zapisać poziomu trudności.');
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _reset() async {
+    final continent = ref.read(selectedContinentProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        scrollable: true,
+        title: const Text('Rozpocząć naukę od nowa?'),
+        content: Text(
+          _all
+              ? 'Usuniemy wszystkie wyniki, historię, rozpoczęte quizy i terminy powtórek ze wszystkich kontynentów. Tego nie można cofnąć.'
+              : 'Usuniemy sesje z zakresu ${continent.label} i postęp jej krajów. Kraje wspólne z innymi kontynentami także stracą postęp. Tego nie można cofnąć.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Zachowaj naukę'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Usuń postęp'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      final reset = LearningReset(ref.read(databaseProvider));
+      if (_all) {
+        await reset.all();
+      } else {
+        final catalog = await Catalog.load(continent: continent);
+        await reset.continent(
+          continent,
+          catalog.countries.map((c) => c.id).toSet(),
+        );
+      }
+      ref.invalidate(dashboardProvider);
+      ref.invalidate(dailyOverviewProvider);
+      ref.invalidate(learningProgressProvider);
+      ref.invalidate(continentProgressProvider);
+      ref.invalidate(streakProvider);
+      ref.invalidate(achievementsProvider);
+      ref.invalidate(continentAchievementsProvider);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Postęp zresetowany. Możesz zacząć od nowa.'),
+          ),
+        );
+        context.go('/');
+      }
+    } catch (_) {
+      if (mounted) {
+        setState(
+          () => _error = 'Nie udało się zresetować nauki. Spróbuj ponownie.',
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final continent = ref.watch(selectedContinentProvider);
+    final preferences = ref.watch(appPreferencesProvider);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Ustawienia')),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 680),
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
+              children: [
+                Text(
+                  'Wygląd mapy',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 4),
+                const Text(
+                  'Wybierz styl używany na mapach w atlasie i quizach.',
+                ),
+                const SizedBox(height: 12),
+                preferences.when(
+                  loading: () => const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                  error: (_, _) => const Text(
+                    'Nie udało się wczytać ustawień. Spróbuj ponownie później.',
+                  ),
+                  data: (value) => Column(
+                    children: [
+                      RadioGroup<MapAppearance>(
+                        groupValue: value.appearance,
+                        onChanged: (appearance) {
+                          if (!_busy &&
+                              appearance != null &&
+                              appearance != value.appearance) {
+                            _setAppearance(appearance);
+                          }
+                        },
+                        child: AbsorbPointer(
+                          absorbing: _busy,
+                          child: Column(
+                            children: [
+                              for (final appearance in MapAppearance.values)
+                                _AppearanceCard(
+                                  appearance: appearance,
+                                  selected: value.appearance == appearance,
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Poziom nauki',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Dotyczy nowych quizów mapy, stolic i flag na wybranym kontynencie. Zaplanowane powtórki zachowują ćwiczony poziom.',
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      for (final region in Continent.values)
+                        _DifficultyPreference(
+                          continent: region,
+                          value: value.difficultyFor(region),
+                          enabled: !_busy,
+                          onChanged: (difficulty) =>
+                              _setDifficulty(region, difficulty),
+                        ),
+                    ],
+                  ),
+                ),
+                if (_error != null) ...[
+                  const SizedBox(height: 12),
+                  Semantics(
+                    liveRegion: true,
+                    child: Text(
+                      _error!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 28),
+                Text(
+                  'Nowy początek',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Reset usuwa zapisane postępy na tym urządzeniu. Nie ma jeszcze kopii zapasowej ani możliwości cofnięcia.',
+                ),
+                const SizedBox(height: 12),
+                RadioGroup<bool>(
+                  groupValue: _all,
+                  onChanged: (value) {
+                    if (!_busy && value != null) {
+                      setState(() => _all = value);
+                    }
+                  },
+                  child: Column(
+                    children: [
+                      RadioListTile<bool>(
+                        value: false,
+                        title: Text('Tylko ${continent.label}'),
+                        subtitle: const Text(
+                          'Także wspólne karty krajów transkontynentalnych.',
+                        ),
+                      ),
+                      const RadioListTile<bool>(
+                        value: true,
+                        title: Text('Cała nauka'),
+                        subtitle: Text(
+                          'Wszystkie kontynenty i wszystkie rozpoczęte quizy.',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                OutlinedButton.icon(
+                  onPressed: _busy ? null : _reset,
+                  icon: _busy
+                      ? const SizedBox.square(
+                          dimension: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.restart_alt),
+                  label: Text(_busy ? 'Zapisuję…' : 'Zresetuj naukę'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AppearanceCard extends StatelessWidget {
+  const _AppearanceCard({required this.appearance, required this.selected});
+  final MapAppearance appearance;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    final (icon, description) = switch (appearance) {
+      MapAppearance.atlas => (
+        Icons.public,
+        'Wyraźne granice i spokojne kolory atlasu.',
+      ),
+      MapAppearance.paper => (
+        Icons.map_outlined,
+        'Jasna mapa w stylu papierowego atlasu.',
+      ),
+      MapAppearance.relief => (
+        Icons.terrain,
+        'Cieniowanie podkreślające ukształtowanie terenu.',
+      ),
+    };
+    return Card.outlined(
+      clipBehavior: Clip.antiAlias,
+      child: RadioListTile<MapAppearance>(
+        value: appearance,
+        title: Text(appearance.label),
+        subtitle: Text(description),
+        secondary: Icon(icon, size: 30),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        selected: selected,
+        controlAffinity: ListTileControlAffinity.trailing,
+      ),
+    );
+  }
+}
+
+class _DifficultyPreference extends StatelessWidget {
+  const _DifficultyPreference({
+    required this.continent,
+    required this.value,
+    required this.enabled,
+    required this.onChanged,
+  });
+  final Continent continent;
+  final LearningDifficulty value;
+  final bool enabled;
+  final ValueChanged<LearningDifficulty> onChanged;
+
+  @override
+  Widget build(BuildContext context) => Card.outlined(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(continent.label, style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          DropdownButtonFormField<LearningDifficulty>(
+            key: ValueKey('${continent.name}-${value.name}'),
+            initialValue: value,
+            decoration: const InputDecoration(labelText: 'Poziom quizów'),
+            isExpanded: true,
+            items: [
+              for (final difficulty in LearningDifficulty.values)
+                DropdownMenuItem(
+                  value: difficulty,
+                  child: Text(difficulty.label),
+                ),
+            ],
+            onChanged: enabled
+                ? (difficulty) {
+                    if (difficulty != null && difficulty != value) {
+                      onChanged(difficulty);
+                    }
+                  }
+                : null,
+          ),
+          const SizedBox(height: 8),
+          Text(value.description),
+        ],
+      ),
+    ),
+  );
+}

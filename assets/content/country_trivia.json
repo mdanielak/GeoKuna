@@ -1,0 +1,3410 @@
+{
+  "version": "country-trivia-0.1.0",
+  "status": "verified",
+  "countries": {
+    "AFG": [
+      {
+        "id": "afg-krajobraz",
+        "text": "Hindukusz dzieli północ kraju od pozostałych regionów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "afg-polozenie",
+        "text": "Na południowym zachodzie Afganistanu rozciągają się równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "afg-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Noshak, 7492 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "AGO": [
+      {
+        "id": "ago-krajobraz",
+        "text": "Angolska prowincja Kabinda jest oddzielona od reszty kraju przez Demokratyczną Republikę Konga.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ago-polozenie",
+        "text": "Nad wąską równiną nadbrzeżną wznosi się rozległy płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ago-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Moco, 2620 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ao.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ALB": [
+      {
+        "id": "alb-krajobraz",
+        "text": "Albania leży nad cieśniną Otranto łączącą Adriatyk z Morzem Jońskim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "alb-polozenie",
+        "text": "Większość powierzchni Albanii zajmują góry i wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "alb-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Maja e Korabit, 2764 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/al.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "AND": [
+      {
+        "id": "and-krajobraz",
+        "text": "Andora leży w Pirenejach i nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "and-polozenie",
+        "text": "Jej górski krajobraz przecinają wąskie doliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "and-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pic de Coma Pedrosa, 2946 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ARE": [
+      {
+        "id": "are-krajobraz",
+        "text": "Wschodnią część Emiratów Arabskich obejmują góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "are-polozenie",
+        "text": "W głębi kraju równiny nadbrzeżne przechodzą w piaszczyste wydmy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "are-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal Bil 'Ays, 1905 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ae.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ARM": [
+      {
+        "id": "arm-krajobraz",
+        "text": "Jezioro Sewan leży w górach Małego Kaukazu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "arm-polozenie",
+        "text": "Armenia zajmuje część górzystej Wyżyny Armeńskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "arm-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Aragats Lerrnagagat', 4090 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "AUT": [
+      {
+        "id": "aut-dziedzictwo",
+        "text": "Salzburg zachował zabudowę rozwijaną od średniowiecza do XIX wieku.",
+        "source_url": "https://whc.unesco.org/en/list/784/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "aut-polozenie",
+        "text": "Wschodnia część Austrii obejmuje łagodne równiny i wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/au.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "aut-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Grossglockner, 3798 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/au.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "AZE": [
+      {
+        "id": "aze-krajobraz",
+        "text": "Azerbejdżańska eksklawa Nachiczewan nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "aze-polozenie",
+        "text": "Nizina Kurańsko-Araska leży częściowo poniżej poziomu morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "aze-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Bazarduzu Dagi, 4466 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/aj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BDI": [
+      {
+        "id": "bdi-krajobraz",
+        "text": "Burundi leży na wododziale dorzeczy Nilu i Konga.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bdi-polozenie",
+        "text": "Na wschodzie górzyste tereny Burundi przechodzą w płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bdi-najwyzszy-punkt",
+        "text": "Najwyższy punkt Burundi leży w paśmie Mukike.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BEL": [
+      {
+        "id": "bel-krajobraz",
+        "text": "Północno-zachodnią Belgię zajmują nadmorskie niziny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bel-polozenie",
+        "text": "W południowo-wschodniej Belgii rozciągają się Ardeny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bel-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Botrange, 694 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BEN": [
+      {
+        "id": "ben-krajobraz",
+        "text": "Wybrzeże Beninu jest otoczone przez piaszczyste ławice.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ben-polozenie",
+        "text": "Większość Beninu zajmuje płaska lub falista równina.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ben-najwyzszy-punkt",
+        "text": "Najwyższy punkt Beninu leży w pobliżu miejscowości Kotopounga.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BFA": [
+      {
+        "id": "bfa-krajobraz",
+        "text": "Przez Burkina Faso płyną Czarna, Czerwona i Biała Wolta.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bfa-polozenie",
+        "text": "W zachodniej i południowo-wschodniej części kraju występują wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bfa-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Tena Kourou, 749 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/uv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BGD": [
+      {
+        "id": "bgd-krajobraz",
+        "text": "Znaczna część Bangladeszu leży w deltach wielkich rzek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bgd-polozenie",
+        "text": "Ganges łączy się tu z Jamuną, jedną z odnóg Brahmaputry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bgd-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mowdok Taung, 1060 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BGR": [
+      {
+        "id": "bgr-krajobraz",
+        "text": "Bułgaria jest górzysta, ale ma niziny na północy i południowym wschodzie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bgr-polozenie",
+        "text": "Kraj leży blisko cieśnin łączących Morze Czarne ze Śródziemnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bgr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Musala, 2925 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BHR": [
+      {
+        "id": "bhr-krajobraz",
+        "text": "Krajobraz Bahrajnu tworzą głównie niskie pustynne równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bhr-polozenie",
+        "text": "Wyspy Bahrajnu leżą w Zatoce Perskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bhr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal ad Dukhan, 135 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BIH": [
+      {
+        "id": "bih-krajobraz",
+        "text": "Krajobraz Bośni i Hercegowiny tworzą liczne góry i doliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bih-polozenie",
+        "text": "Kraj znajduje się na Półwyspie Bałkańskim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bih-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Maglic, 2386 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BLR": [
+      {
+        "id": "blr-krajobraz",
+        "text": "Polodowcowy krajobraz Białorusi obejmuje tysiące jezior.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "blr-polozenie",
+        "text": "Znaczną część Białorusi zajmują płaskie i podmokłe tereny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "blr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Dzyarzhynskaya Hara, 346 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/bo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BRN": [
+      {
+        "id": "brn-krajobraz",
+        "text": "Dwie części Brunei są oddzielone od siebie terytorium Malezji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "brn-polozenie",
+        "text": "Nadmorska nizina Brunei przechodzi w góry na wschodzie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "brn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Bukit Pagon, 1850 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BTN": [
+      {
+        "id": "btn-krajobraz",
+        "text": "Bhutan leży w Himalajach pomiędzy Indiami a Chinami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "btn-polozenie",
+        "text": "Między górami Bhutanu znajdują się żyzne doliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "btn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Gangkar Puensum, 7570 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "BWA": [
+      {
+        "id": "bwa-krajobraz",
+        "text": "Południowo-zachodnią Botswanę obejmuje pustynia Kalahari.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bwa-polozenie",
+        "text": "Większą część Botswany tworzy płaski lub lekko falisty płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "bwa-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Manyelanong Hill, 1495 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/bc.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CAF": [
+      {
+        "id": "caf-krajobraz",
+        "text": "Republika Środkowoafrykańska leży w pobliżu środka Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "caf-polozenie",
+        "text": "Jej krajobraz tworzy rozległy płaskowyż z pojedynczymi wzgórzami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "caf-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Ngaoui, 1410 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CHE": [
+      {
+        "id": "che-krajobraz",
+        "text": "Na południu Szwajcarii wznoszą się Alpy, a na północnym zachodzie Jura.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "che-polozenie",
+        "text": "Szwajcaria nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "che-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Dufourspitze, 4634 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CHN": [
+      {
+        "id": "chn-dziedzictwo",
+        "text": "Budowa i przebudowa Wielkiego Muru trwały przez wiele stuleci.",
+        "source_url": "https://whc.unesco.org/en/list/438/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "chn-polozenie",
+        "text": "We wschodnich Chinach rozciągają się niziny i delty rzeczne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "chn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mount Everest, 8849 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CIV": [
+      {
+        "id": "civ-krajobraz",
+        "text": "Na północnym zachodzie Wybrzeża Kości Słoniowej wznoszą się góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "civ-polozenie",
+        "text": "Nadmorski pas Wybrzeża Kości Słoniowej ma piaszczysty charakter.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "civ-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Monts Nimba, 1752 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CMR": [
+      {
+        "id": "cmr-krajobraz",
+        "text": "Kamerun obejmuje niziny nadbrzeżne, płaskowyże i góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cmr-polozenie",
+        "text": "W zachodniej części kraju wznosi się wulkan Kamerun.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cmr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Fako na górze Kamerun, 4045 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "COD": [
+      {
+        "id": "cod-krajobraz",
+        "text": "Przez Demokratyczną Republikę Konga przebiega równik.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cod-polozenie",
+        "text": "Centralną kotlinę Konga pokrywają gęste lasy tropikalne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cod-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Szczyt Małgorzaty, 5110 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "COG": [
+      {
+        "id": "cog-krajobraz",
+        "text": "Krajobraz Republiki Konga obejmuje nizinę nadbrzeżną i płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cog-polozenie",
+        "text": "Brazzaville i Pointe-Noire łączy linia kolejowa.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cog-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Nabeba, 1020 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "COM": [
+      {
+        "id": "com-krajobraz",
+        "text": "Komory tworzą wyspy pochodzenia wulkanicznego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "com-polozenie",
+        "text": "Wyspy leżą przy północnym krańcu Kanału Mozambickiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "com-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Karthala, 2360 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CPV": [
+      {
+        "id": "cpv-krajobraz",
+        "text": "Republika Zielonego Przylądka jest wulkanicznym archipelagiem na Atlantyku.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cpv-polozenie",
+        "text": "Wyspy leżą około 500 kilometrów od zachodniego wybrzeża Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cpv-najwyzszy-punkt",
+        "text": "Najwyższy punkt: wulkan Fogo, 2829 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CYP": [
+      {
+        "id": "cyp-krajobraz",
+        "text": "Cypr jest trzecią co do wielkości wyspą Morza Śródziemnego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/cy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cyp-polozenie",
+        "text": "Środkową równinę Cypru otaczają pasma górskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/cy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cyp-najwyzszy-punkt",
+        "text": "Cypryjski Olimp w górach Troodos ma około 1951 m wysokości.",
+        "source_url": "https://www.gov.cy/tradecenters/en/cyprus/cyprus-at-a-glance/",
+        "source_title": "Rząd Republiki Cypryjskiej",
+        "checked": "2026-11-14"
+      }
+    ],
+    "CZE": [
+      {
+        "id": "cze-soft-lenses",
+        "text": "Czeski chemik Otto Wichterle opracował miękkie soczewki kontaktowe.",
+        "source_url": "https://plasy.ntm.cz/en/about-our-museum/ntm-museums/museum-of-industry/history-of-contact-lenses",
+        "source_title": "National Technical Museum",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cze-kromeriz",
+        "text": "W Kromieryżu barokowy pałac arcybiskupi sąsiaduje z dwoma zabytkowymi ogrodami.",
+        "source_url": "https://whc.unesco.org/en/list/860/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "cze-prague",
+        "text": "Historyczne centrum Pragi zachowało zabytki od średniowiecza po czasy nowożytne.",
+        "source_url": "https://whc.unesco.org/en/list/616/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      }
+    ],
+    "DEU": [
+      {
+        "id": "deu-dziedzictwo",
+        "text": "Budowę katedry w Kolonii rozpoczęto w 1248 roku, a ukończono w 1880.",
+        "source_url": "https://whc.unesco.org/en/list/292/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "deu-polozenie",
+        "text": "Na południu kraju wznoszą się Alpy Bawarskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "deu-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Zugspitze, 2963 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "DJI": [
+      {
+        "id": "dji-krajobraz",
+        "text": "W Dżibuti niziny nadbrzeżne i płaskowyż rozdzielają góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dji-polozenie",
+        "text": "Jezioro Assal leży na obszarze depresji poniżej poziomu morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dji-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Moussa Ali, 2021 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "DNK": [
+      {
+        "id": "dnk-krajobraz",
+        "text": "Dania obejmuje Półwysep Jutlandzki i liczne wyspy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dnk-polozenie",
+        "text": "Krajobraz Danii jest w większości nizinny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dnk-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Store Mollehoj, 171 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/da.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "DZA": [
+      {
+        "id": "dza-krajobraz",
+        "text": "Znaczną część Algierii zajmują tereny pustynne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dza-polozenie",
+        "text": "Na dalekim południu Algierii leży pasmo górskie Ahaggar.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "dza-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Tahat, 2908 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ag.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "EGY": [
+      {
+        "id": "egy-saqqara",
+        "text": "W Sakkarze stoi schodkowa piramida Dżesera, jedna z najstarszych piramid Egiptu.",
+        "source_url": "https://whc.unesco.org/en/list/86/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "egy-thebes",
+        "text": "Starożytne Teby były stolicą Egiptu w okresie Średniego i Nowego Państwa.",
+        "source_url": "https://whc.unesco.org/en/list/87/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "egy-whales",
+        "text": "W egipskiej Dolinie Wielorybów zachowały się skamieniałości dawnych waleni.",
+        "source_url": "https://whc.unesco.org/en/list/1186/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ERI": [
+      {
+        "id": "eri-krajobraz",
+        "text": "Przez Erytreę ciągnie się północne przedłużenie Wyżyny Etiopskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "eri-polozenie",
+        "text": "Górzysty teren Erytrei opada na wschodzie w stronę wybrzeża.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "eri-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Soira, 3018 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/er.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ESP": [
+      {
+        "id": "esp-dziedzictwo",
+        "text": "W Barcelonie można zobaczyć budowle zaprojektowane przez Antoniego Gaudíego.",
+        "source_url": "https://whc.unesco.org/en/list/320/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "esp-polozenie",
+        "text": "Wulkan Teide leży na Teneryfie w archipelagu Wysp Kanaryjskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "esp-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Teide na Teneryfie, 3718 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "EST": [
+      {
+        "id": "est-krajobraz",
+        "text": "U wybrzeży Estonii leży ponad 1500 wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "est-polozenie",
+        "text": "Północ Estonii jest przeważnie płaska, a południe bardziej pagórkowate.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "est-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Suur Munamagi, 318 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/en.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ETH": [
+      {
+        "id": "eth-dziedzictwo",
+        "text": "W dolinie Auasz odkryto bardzo stare szczątki związane z ewolucją człowieka.",
+        "source_url": "https://whc.unesco.org/en/list/10/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "eth-polozenie",
+        "text": "W Etiopii ma źródło Nil Błękitny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/et.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "eth-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Ras Daszan, 4550 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/et.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "FIN": [
+      {
+        "id": "fin-krajobraz",
+        "text": "W krajobrazie Finlandii liczne jeziora przeplatają się z niskimi wzgórzami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "fin-polozenie",
+        "text": "Helsinki są najbardziej wysuniętą na północ stolicą kontynentalnej Europy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "fin-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Halti, 1328 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "FRA": [
+      {
+        "id": "fra-dziedzictwo",
+        "text": "Carcassonne zachowało mury otaczające średniowieczny zamek i miasto.",
+        "source_url": "https://whc.unesco.org/en/list/345/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "fra-polozenie",
+        "text": "Sekwana i Loara należą do wielkich rzek Francji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "fra-najwyzszy-punkt",
+        "text": "Mont Blanc leży w Alpach przy granicy Francji z Włochami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GAB": [
+      {
+        "id": "gab-krajobraz",
+        "text": "W Gabonie zachowały się rozległe lasy deszczowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gab-polozenie",
+        "text": "Wąską nizinę nadbrzeżną oddzielają od sawann pagórki wnętrza kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gab-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Bengoue, 1050 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GBR": [
+      {
+        "id": "gbr-dziedzictwo",
+        "text": "Stonehenge jest zespołem kamiennych kręgów w angielskim hrabstwie Wiltshire.",
+        "source_url": "https://whc.unesco.org/en/list/373/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gbr-polozenie",
+        "text": "Znaczną część Wielkiej Brytanii tworzą wzgórza i niskie góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/uk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gbr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Ben Nevis, 1345 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/uk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GEO": [
+      {
+        "id": "geo-krajobraz",
+        "text": "Na północy Gruzji wznosi się Wielki Kaukaz.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "geo-polozenie",
+        "text": "Południową część Gruzji obejmują góry Małego Kaukazu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "geo-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Szchara, 5193 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GHA": [
+      {
+        "id": "gha-krajobraz",
+        "text": "Jezioro Wolta jest wielkim sztucznym zbiornikiem wodnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gha-polozenie",
+        "text": "W południowo-środkowej Ghanie leży rozczłonkowany płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gha-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Afadżato, 885 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GIN": [
+      {
+        "id": "gin-krajobraz",
+        "text": "Rzeka Niger ma źródła na wyżynach Gwinei.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gin-polozenie",
+        "text": "Nadbrzeżna równina Gwinei przechodzi w górzyste wnętrze kraju.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gin-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Nimba, 1752 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/gv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GMB": [
+      {
+        "id": "gmb-krajobraz",
+        "text": "Gambia leży wzdłuż rzeki o tej samej nazwie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gmb-polozenie",
+        "text": "Senegal niemal w całości otacza terytorium Gambii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gmb-najwyzszy-punkt",
+        "text": "Gambia jest najmniejszym państwem kontynentalnej Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ga.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GNB": [
+      {
+        "id": "gnb-krajobraz",
+        "text": "Wybrzeże Gwinei Bissau jest poprzecinane szerokimi ujściami rzek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gnb-polozenie",
+        "text": "Zachodnie tereny kraju obejmują obszary bagienne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gnb-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Dongol Ronde, 277 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/pu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GNQ": [
+      {
+        "id": "gnq-krajobraz",
+        "text": "Mimo nazwy przez terytorium Gwinei Równikowej nie przebiega równik.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gnq-polozenie",
+        "text": "Gwinea Równikowa ma część kontynentalną i wyspy wulkaniczne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "gnq-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pico Basile, 3008 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ek.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "GRC": [
+      {
+        "id": "grc-dziedzictwo",
+        "text": "Ateński Akropol jest zespołem zabytków starożytnej Grecji.",
+        "source_url": "https://whc.unesco.org/en/list/404/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "grc-polozenie",
+        "text": "Górzysty krajobraz Grecji sięga wybrzeży Morza Egejskiego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "grc-najwyzszy-punkt",
+        "text": "Grecki masyw Olimpu wznosi się na wysokość około 2917 metrów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "HRV": [
+      {
+        "id": "hrv-krajobraz",
+        "text": "Większość wysp Adriatyku leży u wybrzeży Chorwacji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "hrv-polozenie",
+        "text": "W Chorwacji są równiny przy granicy z Węgrami i górzyste wybrzeże.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "hrv-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Dinara, 1831 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "HUN": [
+      {
+        "id": "hun-krajobraz",
+        "text": "Większość Węgier zajmują równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "hun-polozenie",
+        "text": "Przy granicy Węgier ze Słowacją występują wzgórza i niskie góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "hun-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Kékes, 1014 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/hu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "IDN": [
+      {
+        "id": "idn-krajobraz",
+        "text": "Indonezja jest rozległym archipelagiem z wieloma zamieszkanymi wyspami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "idn-polozenie",
+        "text": "Na większych wyspach Indonezji wznoszą się góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "idn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Puncak Jaya, 4884 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/id.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "IND": [
+      {
+        "id": "ind-dziedzictwo",
+        "text": "Tadź Mahal wzniesiono w Agrze na polecenie cesarza Szahdżahana.",
+        "source_url": "https://whc.unesco.org/en/list/252/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ind-polozenie",
+        "text": "Wzdłuż Gangesu rozciąga się wielka równina.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ind-najwyzszy-punkt",
+        "text": "Himalajska Kanczendzonga wznosi się na wysokość 8586 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "IRL": [
+      {
+        "id": "irl-krajobraz",
+        "text": "Wnętrze Irlandii tworzy równina otoczona wzgórzami i niskimi górami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irl-polozenie",
+        "text": "U wybrzeży Irlandii występują strome klify.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irl-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Carrauntoohil, 1041 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ei.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "IRN": [
+      {
+        "id": "irn-krajobraz",
+        "text": "Wnętrze Iranu obejmuje wysoką kotlinę z pustyniami i górami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irn-polozenie",
+        "text": "Południowe wybrzeża Iranu leżą nad Zatoką Perską.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Demawend, 5625 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ir.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "IRQ": [
+      {
+        "id": "irq-krajobraz",
+        "text": "W południowym Iraku znajdują się rozległe obszary bagienne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irq-polozenie",
+        "text": "Szatt al-Arab jest drogą wodną prowadzącą do Zatoki Perskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "irq-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Cheekha Dar, 3611 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/iz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ISL": [
+      {
+        "id": "isl-krajobraz",
+        "text": "Krajobraz Islandii obejmuje góry i rozległe pola lodowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "isl-polozenie",
+        "text": "Linię brzegową Islandii przecinają liczne zatoki i fiordy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "isl-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Hvannadalshnukur, 2110 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ic.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ISR": [
+      {
+        "id": "isr-krajobraz",
+        "text": "Pustynia Negew leży na południu Izraela.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "isr-polozenie",
+        "text": "Jezioro Tyberiadzkie jest ważnym źródłem słodkiej wody.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "isr-najwyzszy-punkt",
+        "text": "Dolina ryftowa Jordanu przylega do wschodniej części Izraela.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ITA": [
+      {
+        "id": "ita-dziedzictwo",
+        "text": "Wenecja rozciąga się na ponad stu małych wyspach laguny.",
+        "source_url": "https://whc.unesco.org/en/list/394/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ita-polozenie",
+        "text": "Włochy leżą w środkowej części Morza Śródziemnego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ita-najwyzszy-punkt",
+        "text": "Masyw Mont Blanc leży przy granicy Włoch z Francją.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "JOR": [
+      {
+        "id": "jor-dziedzictwo",
+        "text": "Petra była ważnym miastem karawan Nabatejczyków.",
+        "source_url": "https://whc.unesco.org/en/list/326/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "jor-polozenie",
+        "text": "Południowe wybrzeże Jordanii leży nad Zatoką Akaba.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/jo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "jor-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal Umm ad Dami, 1854 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/jo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "JPN": [
+      {
+        "id": "jpn-dziedzictwo",
+        "text": "W wioskach Shirakawa-go zachowały się duże domy związane z hodowlą jedwabników.",
+        "source_url": "https://whc.unesco.org/en/list/734/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "jpn-polozenie",
+        "text": "Większość Japonii zajmują tereny górzyste.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ja.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "jpn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Fudżi, 3776 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ja.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KAZ": [
+      {
+        "id": "kaz-krajobraz",
+        "text": "Kazachski step ciągnie się od okolic Wołgi ku górom Ałtaj.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kaz-polozenie",
+        "text": "Kazachstan jest największym państwem bez dostępu do oceanu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kaz-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Chan Tengri, 7010 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KEN": [
+      {
+        "id": "ken-dziedzictwo",
+        "text": "Lasy Mijikenda na kenijskim wybrzeżu kryją pozostałości ufortyfikowanych osad kaya.",
+        "source_url": "https://whc.unesco.org/en/list/1231/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ken-polozenie",
+        "text": "Na górze Kenia występują lodowce.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ke.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ken-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Kenia, 5199 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ke.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KGZ": [
+      {
+        "id": "kgz-krajobraz",
+        "text": "Większą część Kirgistanu zajmują pasma Tienszanu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kgz-polozenie",
+        "text": "Kirgistan jest krajem śródlądowym o górzystym krajobrazie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kgz-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jengish Chokusu, 7439 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/kg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KHM": [
+      {
+        "id": "khm-dziedzictwo",
+        "text": "Angkor obejmuje rozległe stanowiska archeologiczne i tereny leśne.",
+        "source_url": "https://whc.unesco.org/en/list/668/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "khm-polozenie",
+        "text": "Kambodża obejmuje rozległe równiny oraz pasma górskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/cb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "khm-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Phnum Aoral, 1810 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/cb.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KOR": [
+      {
+        "id": "kor-krajobraz",
+        "text": "U zachodnich i południowych wybrzeży Korei Południowej leżą tysiące wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kor-polozenie",
+        "text": "Południe i zachód kraju obejmują szerokie równiny nadbrzeżne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kor-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Hallasan, 1950 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ks.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KOS": [
+      {
+        "id": "kos-krajobraz",
+        "text": "Rzeka Nerodimka rozdziela się na odnogi płynące do różnych mórz.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kos-polozenie",
+        "text": "Kotlinę Kosowa otaczają pasma wysokich gór.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kos-najwyzszy-punkt",
+        "text": "Środkowa kotlina Kosowa leży na wysokości około 400–700 metrów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/kv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "KWT": [
+      {
+        "id": "kwt-krajobraz",
+        "text": "Kuwejt ma wybrzeże nad Zatoką Perską.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kwt-polozenie",
+        "text": "Krajobraz Kuwejtu tworzy głównie płaska, pustynna równina.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "kwt-najwyzszy-punkt",
+        "text": "Lato w Kuwejcie jest bardzo gorące i suche.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ku.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LAO": [
+      {
+        "id": "lao-krajobraz",
+        "text": "Mekong tworzy znaczną część zachodniej granicy Laosu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lao-polozenie",
+        "text": "Laos jest państwem śródlądowym z rozległymi terenami górskimi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lao-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Phu Bia, 2817 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/la.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LBN": [
+      {
+        "id": "lbn-dziedzictwo",
+        "text": "Starożytny Baalbek słynął z monumentalnych świątyń.",
+        "source_url": "https://whc.unesco.org/en/list/294/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lbn-polozenie",
+        "text": "Nadmorska równina Libanu jest stosunkowo wąska.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/le.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lbn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Qornet es Saouda, 3088 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/le.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LBR": [
+      {
+        "id": "lbr-krajobraz",
+        "text": "Wybrzeże Liberii obejmuje laguny, lasy namorzynowe i piaszczyste mierzeje.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lbr-polozenie",
+        "text": "Niziny Liberii wznoszą się w stronę płaskowyżu i gór na północy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lbr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: góra Wuteve, 1447 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/li.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LBY": [
+      {
+        "id": "lby-krajobraz",
+        "text": "Ponad 90% powierzchni Libii stanowią pustynie i półpustynie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lby-polozenie",
+        "text": "Libijski krajobraz obejmuje równiny, płaskowyże i zagłębienia terenu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lby-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Bikku Bitti, 2267 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ly.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LIE": [
+      {
+        "id": "lie-krajobraz",
+        "text": "Liechtenstein i Uzbekistan są podwójnie śródlądowe: otaczają je kraje bez dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lie-polozenie",
+        "text": "Zachodnią część Liechtensteinu zajmuje dolina Renu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lie-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Vorder-Grauspitz, 2599 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ls.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LKA": [
+      {
+        "id": "lka-krajobraz",
+        "text": "Między Sri Lanką a Indiami ciągnie się łańcuch płycizn zwany Mostem Adama.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lka-polozenie",
+        "text": "Góry Sri Lanki leżą w południowo-środkowej części wyspy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lka-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pidurutalagala, 2524 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LSO": [
+      {
+        "id": "lso-krajobraz",
+        "text": "Lesotho jest w całości otoczone przez Republikę Południowej Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lso-polozenie",
+        "text": "Ponad 80% obszaru Lesotho leży na wysokości ponad 1800 metrów.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lso-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Thabana Ntlenyana, 3482 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/lt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LTU": [
+      {
+        "id": "ltu-krajobraz",
+        "text": "Na Litwie znajduje się wiele małych jezior.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ltu-polozenie",
+        "text": "Część litewskich wzgórz powstała z osadów pozostawionych przez lodowiec.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ltu-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Aukštojas, 294 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lh.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LUX": [
+      {
+        "id": "lux-krajobraz",
+        "text": "Luksemburg nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lux-polozenie",
+        "text": "Jego krajobraz obejmuje łagodne wyżyny oraz szerokie doliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lux-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Buurgplaatz, 559 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "LVA": [
+      {
+        "id": "lva-krajobraz",
+        "text": "Większość Łotwy leży na nisko położonych równinach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lva-polozenie",
+        "text": "We wschodniej części Łotwy wznoszą się wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "lva-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Gaiziņkalns, 312 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MAR": [
+      {
+        "id": "mar-krajobraz",
+        "text": "Maroko ma wybrzeża nad Atlantykiem i Morzem Śródziemnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mar-polozenie",
+        "text": "W głębi kraju wznoszą się góry Atlas.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mar-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Tubkal, 4165 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MCO": [
+      {
+        "id": "mco-krajobraz",
+        "text": "Monako jest niewielkim państwem nad Morzem Śródziemnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mco-polozenie",
+        "text": "Większą część Monako zajmuje zabudowany, pagórkowaty teren.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mco-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Chemin des Révoires na stokach Mont Agel, 162 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MDA": [
+      {
+        "id": "mda-krajobraz",
+        "text": "Mołdawia nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mda-polozenie",
+        "text": "Jej krajobraz obejmuje faliste równiny i skały osadowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mda-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Dealul Balanesti, 430 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/md.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MDG": [
+      {
+        "id": "mdg-dziedzictwo",
+        "text": "Zachodni Madagaskar słynie z tsingy: ostrych wapiennych iglic.",
+        "source_url": "https://whc.unesco.org/en/list/494/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mdg-polozenie",
+        "text": "Wnętrze Madagaskaru tworzą płaskowyże i góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ma.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mdg-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Maromokotro, 2876 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ma.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MDV": [
+      {
+        "id": "mdv-krajobraz",
+        "text": "Archipelag Malediwów obejmuje około 1190 wysp koralowych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mdv-polozenie",
+        "text": "Malediwskie wyspy leżą na podmorskim grzbiecie pochodzenia wulkanicznego.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mdv-najwyzszy-punkt",
+        "text": "Wyspy Malediwów skupiają się w 26 atolach.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MKD": [
+      {
+        "id": "mkd-krajobraz",
+        "text": "Trzy duże jeziora Macedonii Północnej są podzielone granicami państwowymi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mkd-polozenie",
+        "text": "Krajobraz kraju obejmuje góry, głębokie kotliny i doliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mkd-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Golem Korab, 2764 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MLI": [
+      {
+        "id": "mli-dziedzictwo",
+        "text": "Timbuktu było ważnym ośrodkiem nauki i kultury islamskiej.",
+        "source_url": "https://whc.unesco.org/en/list/119/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mli-polozenie",
+        "text": "Mali obejmuje południowy Sudan, środkowy Sahel i północną Saharę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ml.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mli-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Hombori Tondo, 1155 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ml.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MLT": [
+      {
+        "id": "mlt-krajobraz",
+        "text": "Malta jest archipelagiem na Morzu Śródziemnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mlt-polozenie",
+        "text": "Trzy największe wyspy archipelagu to Malta, Gozo i Comino.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mlt-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Ta’ Dmejrek na klifach Dingli, 253 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MMR": [
+      {
+        "id": "mmr-krajobraz",
+        "text": "Irawadi przepływa przez Mjanmę z północy na południe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mmr-polozenie",
+        "text": "Środkowe niziny Mjanmy otaczają strome wyżyny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mmr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Gamlang Razi, 5870 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/bm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MNE": [
+      {
+        "id": "mne-krajobraz",
+        "text": "Czarnogóra leży nad Morzem Adriatyckim.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mne-polozenie",
+        "text": "Nad jej wąską niziną nadbrzeżną wznoszą się wapienne góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mne-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Zia Kolata, 2534 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/mj.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MNG": [
+      {
+        "id": "mng-krajobraz",
+        "text": "Krajobraz Mongolii obejmuje stepy oraz pustynię Gobi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mng-polozenie",
+        "text": "Mongolia leży między Rosją a Chinami i nie ma dostępu do morza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mng-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Nayramadlin Orgil, 4374 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/mg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MOZ": [
+      {
+        "id": "moz-krajobraz",
+        "text": "Rzeka Zambezi przepływa przez północno-środkowy Mozambik.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "moz-polozenie",
+        "text": "Krajobraz kraju obejmuje przybrzeżne niziny i wyżyny w głębi lądu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "moz-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Monte Binga, 2436 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MRT": [
+      {
+        "id": "mrt-krajobraz",
+        "text": "Większą część Mauretanii zajmują pustynne równiny Sahary.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mrt-polozenie",
+        "text": "Mauretanię zalicza się zarówno do Maghrebu, jak i Sahelu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mrt-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Kediet Ijill, 915 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mr.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MUS": [
+      {
+        "id": "mus-krajobraz",
+        "text": "Główna wyspa Mauritiusa ma pochodzenie wulkaniczne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mus-polozenie",
+        "text": "Wyspę otaczają rafy koralowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mus-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Piton, 828 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MWI": [
+      {
+        "id": "mwi-krajobraz",
+        "text": "Jezioro Malawi ma około 580 kilometrów długości.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mwi-polozenie",
+        "text": "Malawi leży na wąskim, wydłużonym płaskowyżu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mwi-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Sapitwa, 3002 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "MYS": [
+      {
+        "id": "mys-krajobraz",
+        "text": "Malezja leży przy ważnym szlaku morskim w cieśninie Malakka.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mys-polozenie",
+        "text": "Nad malezyjskimi nizinami nadbrzeżnymi wznoszą się wzgórza i góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "mys-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Gunung Kinabalu, 4095 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/my.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NAM": [
+      {
+        "id": "nam-dziedzictwo",
+        "text": "Nad pustynią Namib mgła dociera do rozległych pól wydmowych.",
+        "source_url": "https://whc.unesco.org/en/list/1430/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nam-polozenie",
+        "text": "We wschodniej części Namibii leży pustynia Kalahari.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nam-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Königstein w masywie Brandberg, 2573 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NER": [
+      {
+        "id": "ner-krajobraz",
+        "text": "Na północy Nigru występują pustynie i wydmy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ner-polozenie",
+        "text": "Południową część Nigru zajmują tereny sawanny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ner-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Idoukal-n-Taghes, 2022 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NGA": [
+      {
+        "id": "nga-krajobraz",
+        "text": "Rzeka Niger wpływa do Nigerii od północnego zachodu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nga-polozenie",
+        "text": "Na południu kraju Niger tworzy deltę z obszarami bagiennymi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nga-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Chappal Waddi, 2419 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ni.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NLD": [
+      {
+        "id": "nld-krajobraz",
+        "text": "U wybrzeży Holandii do morza uchodzą Ren, Moza i Skalda.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nld-polozenie",
+        "text": "Część nizin Holandii powstała przez osuszenie terenów zwanych polderami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nld-najwyzszy-punkt",
+        "text": "Na karaibskiej wyspie Saba wznosi się wulkan Mount Scenery.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/nl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NOR": [
+      {
+        "id": "nor-krajobraz",
+        "text": "Norweskie wybrzeże jest silnie rozczłonkowane przez zatoki i fiordy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nor-polozenie",
+        "text": "Poza stałym lądem Norwegii znajdują się tysiące wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "nor-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Galdhøpiggen, 2469 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/no.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "NPL": [
+      {
+        "id": "npl-krajobraz",
+        "text": "W Nepalu leży osiem z dziesięciu najwyższych szczytów Ziemi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "npl-polozenie",
+        "text": "Południowy Nepal obejmuje nizinną równinę Teraj.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "npl-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mount Everest, 8849 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/np.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "OMN": [
+      {
+        "id": "omn-krajobraz",
+        "text": "Omański półwysep Musandam leży nad cieśniną Ormuz.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "omn-polozenie",
+        "text": "Wnętrze Omanu obejmuje pustynne równiny i góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "omn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal Shams, 3004 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/mu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "PAK": [
+      {
+        "id": "pak-krajobraz",
+        "text": "Na północy Pakistanu wznoszą się wysokie pasma górskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "pak-polozenie",
+        "text": "Rzeka Indus przepływa przez rozległą równinę Pakistanu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "pak-najwyzszy-punkt",
+        "text": "Najwyższy punkt: K2, 8611 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "PHL": [
+      {
+        "id": "phl-krajobraz",
+        "text": "Filipiny tworzą archipelag obejmujący tysiące wysp.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "phl-polozenie",
+        "text": "Krajobraz Filipin jest w większości górzysty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "phl-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Apo, 2954 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/rp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "POL": [
+      {
+        "id": "pol-wieliczka",
+        "text": "W kopalniach Wieliczki i Bochni sól wydobywano już w XIII wieku.",
+        "source_url": "https://whc.unesco.org/en/list/32/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "pol-bialowieza",
+        "text": "Puszcza Białowieska rozciąga się po obu stronach granicy Polski i Białorusi.",
+        "source_url": "https://whc.unesco.org/en/list/33/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "pol-malbork",
+        "text": "Zamek w Malborku był siedzibą wielkiego mistrza zakonu krzyżackiego.",
+        "source_url": "https://whc.unesco.org/en/list/847/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      }
+    ],
+    "PRK": [
+      {
+        "id": "prk-krajobraz",
+        "text": "Północną Koreę obejmują góry rozdzielone wąskimi dolinami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "prk-polozenie",
+        "text": "Korea Północna graniczy z Chinami, Rosją i Koreą Południową.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "prk-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pektu-san, 2744 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "PRT": [
+      {
+        "id": "prt-dziedzictwo",
+        "text": "Na azorskiej wyspie Pico kamienne murki osłaniają winnice.",
+        "source_url": "https://whc.unesco.org/en/list/1117/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "prt-polozenie",
+        "text": "Rzeka Tag płynie przez Portugalię ku Atlantykowi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/po.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "prt-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pico na Azorach, 2351 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/po.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "PSX": [
+      {
+        "id": "psx-krajobraz",
+        "text": "Na wschodzie Zachodniego Brzegu teren opada ku dolinie Jordanu.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/we.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "psx-polozenie",
+        "text": "W zachodniej części Zachodniego Brzegu występują głęboko rozcięte wyżyny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/we.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "psx-najwyzszy-punkt",
+        "text": "Strefa Gazy leży nad Morzem Śródziemnym, między Egiptem a Izraelem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/gz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "QAT": [
+      {
+        "id": "qat-krajobraz",
+        "text": "Katar leży na półwyspie w Zatoce Perskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "qat-polozenie",
+        "text": "Krajobraz Kataru tworzą głównie płaskie tereny pustynne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "qat-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Tuwayyir al Hamir, 103 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/qa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ROU": [
+      {
+        "id": "rou-krajobraz",
+        "text": "Karpaty rozdzielają część rumuńskich wyżyn i kotlin.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rou-polozenie",
+        "text": "W środkowej Rumunii leży Kotlina Transylwańska.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rou-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Moldoveanu, 2544 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ro.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "RUS": [
+      {
+        "id": "rus-krajobraz",
+        "text": "Syberia obejmuje rozległe lasy iglaste i tundrę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rus-polozenie",
+        "text": "Na zachód od Uralu rozciągają się wielkie równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rus-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Elbrus, 5642 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "RWA": [
+      {
+        "id": "rwa-krajobraz",
+        "text": "Rwandyjski krajobraz tworzą głównie wyżyny i wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rwa-polozenie",
+        "text": "Wysokość terenu Rwandy obniża się ku wschodowi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "rwa-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Volcan Karisimbi, 4519 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/rw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SAU": [
+      {
+        "id": "sau-krajobraz",
+        "text": "Arabia Saudyjska ma wybrzeża nad Morzem Czerwonym i Zatoką Perską.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sau-polozenie",
+        "text": "Znaczną część kraju zajmują piaszczyste pustynie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sau-najwyzszy-punkt",
+        "text": "W Arabii Saudyjskiej nie ma stałych rzek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sa.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SDN": [
+      {
+        "id": "sdn-krajobraz",
+        "text": "Nil Biały i Nil Błękitny łączą się w Chartumie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sdn-polozenie",
+        "text": "Na północy Sudanu dominują pustynie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sdn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal Marrah, 3042 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/su.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SDS": [
+      {
+        "id": "sds-krajobraz",
+        "text": "Sudd to rozległe bagna utworzone przez Nil Biały.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sds-polozenie",
+        "text": "Południe Sudanu Południowego obejmuje wyżyny przy granicy z Ugandą.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sds-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Kinyeti, 3187 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/od.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SEN": [
+      {
+        "id": "sen-krajobraz",
+        "text": "Senegal leży na zachodnim skraju kontynentalnej Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sen-polozenie",
+        "text": "Senegal niemal całkowicie otacza Gambię.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sen-najwyzszy-punkt",
+        "text": "W południowo-wschodnim Senegalu teren wznosi się ku podnóżom gór.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SGP": [
+      {
+        "id": "sgp-krajobraz",
+        "text": "Singapur obejmuje główną wyspę Pulau Ujong oraz liczne mniejsze wyspy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sgp-polozenie",
+        "text": "Singapur leży przy ważnych szlakach morskich Azji Południowo-Wschodniej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sgp-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Bukit Timah, 166 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SLE": [
+      {
+        "id": "sle-krajobraz",
+        "text": "Wybrzeże Sierra Leone obejmuje tereny lasów namorzynowych.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sle-polozenie",
+        "text": "We wschodniej Sierra Leone wznoszą się góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "sle-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Loma Mansa, 1948 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sl.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SMR": [
+      {
+        "id": "smr-krajobraz",
+        "text": "San Marino jest w całości otoczone przez Włochy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "smr-polozenie",
+        "text": "San Marino jest jednym z najmniejszych państw Europy.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "smr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Monte Titano, 739 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SOM": [
+      {
+        "id": "som-krajobraz",
+        "text": "Somalia leży na Półwyspie Somalijskim, zwanym Rogiem Afryki.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "som-polozenie",
+        "text": "Na północy Somalii płaskowyż wznosi się ku wzgórzom.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "som-najwyzszy-punkt",
+        "text": "Najwyższy punkt: góra Szimbiris, 2460 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SRB": [
+      {
+        "id": "srb-krajobraz",
+        "text": "Północ Serbii obejmuje żyzne równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ri.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "srb-polozenie",
+        "text": "We wschodniej Serbii występują wapienne pasma i kotliny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/ri.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "srb-najwyzszy-punkt",
+        "text": "Midżor w paśmie Stara Płanina ma 2169 m wysokości.",
+        "source_url": "https://www.va.mod.gov.rs/lat/1590/planinarska-sekcija-vojne-akademije-na-staroj-planini-1590",
+        "source_title": "Akademia Wojskowa w Belgradzie",
+        "checked": "2026-11-14"
+      }
+    ],
+    "STP": [
+      {
+        "id": "stp-krajobraz",
+        "text": "Główne wyspy archipelagu to Wyspa Świętego Tomasza i Książęca.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "stp-polozenie",
+        "text": "Dwie główne wyspy należą do łańcucha wulkanicznego w Zatoce Gwinejskiej.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "stp-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Pico de Sao Tome, 2024 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SVK": [
+      {
+        "id": "svk-krajobraz",
+        "text": "W północnej Słowacji leżą Tatry z licznymi jeziorami górskimi.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "svk-polozenie",
+        "text": "Południową część Słowacji obejmują tereny nizinne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "svk-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Gerlach, 2655 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/lo.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SVN": [
+      {
+        "id": "svn-krajobraz",
+        "text": "Słowenia ma krótki odcinek wybrzeża nad Adriatykiem.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "svn-polozenie",
+        "text": "Na południowym zachodzie kraju występują tereny krasowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "svn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Triglav, 2864 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SWE": [
+      {
+        "id": "swe-krajobraz",
+        "text": "W Szwecji znajduje się niemal sto tysięcy jezior.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "swe-polozenie",
+        "text": "Szwecja leży przy cieśninach łączących Bałtyk z Morzem Północnym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "swe-najwyzszy-punkt",
+        "text": "Kebnekaise to masyw górski w zachodniej Szwecji.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SWZ": [
+      {
+        "id": "swz-krajobraz",
+        "text": "Eswatini jest niemal całkowicie otoczone przez RPA.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "swz-polozenie",
+        "text": "Większość Eswatini zajmują góry i wzgórza.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "swz-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Emlembe, 1862 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/wz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SYC": [
+      {
+        "id": "syc-krajobraz",
+        "text": "Mahé, największa wyspa Seszeli, ma górzyste wnętrze.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "syc-polozenie",
+        "text": "Wyspy Seszeli obejmują zarówno wyspy skaliste, jak i koralowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "syc-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Morne Seychellois, 905 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/se.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "SYR": [
+      {
+        "id": "syr-krajobraz",
+        "text": "Damaszek leży przy oazie zasilanej wodami rzeki Barada.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "syr-polozenie",
+        "text": "Wnętrze Syrii obejmuje półsuche i pustynne płaskowyże.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "syr-najwyzszy-punkt",
+        "text": "Na zachodzie Syrii wznoszą się pasma górskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TCD": [
+      {
+        "id": "tcd-krajobraz",
+        "text": "Na północy Czadu rozciąga się Sahara.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tcd-polozenie",
+        "text": "Jezioro Czad jest pozostałością znacznie większego dawnego jeziora.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tcd-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Emi Koussi, 3445 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TGO": [
+      {
+        "id": "tgo-krajobraz",
+        "text": "Na południu Togo leży nizina nadbrzeżna.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tgo-polozenie",
+        "text": "Krajobraz kraju zmienia się od równin po wzgórza i sawanny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tgo-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mont Agou, 986 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "THA": [
+      {
+        "id": "tha-krajobraz",
+        "text": "Wschodnią Tajlandię zajmuje płaskowyż Khorat.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tha-polozenie",
+        "text": "Środkową Tajlandię obejmuje rozległa równina.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tha-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Doi Inthanon, 2565 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/th.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TJK": [
+      {
+        "id": "tjk-krajobraz",
+        "text": "Na południowym wschodzie Tadżykistanu wznosi się Pamir.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tjk-polozenie",
+        "text": "Północny Tadżykistan obejmuje pasma Gór Ałajskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tjk-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Szczyt Ismaila Samanidy, 7495 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TKM": [
+      {
+        "id": "tkm-krajobraz",
+        "text": "Znaczną część Turkmenistanu zajmuje pustynia Kara-kum.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tkm-polozenie",
+        "text": "Na południu Turkmenistanu równiny przechodzą w góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tkm-najwyzszy-punkt",
+        "text": "Najwyższy punkt: góra Ajrybaba, 3139 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TLS": [
+      {
+        "id": "tls-krajobraz",
+        "text": "Timor jest największą i najbardziej wysuniętą na wschód z Małych Wysp Sundajskich.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tls-polozenie",
+        "text": "Krajobraz Timoru Wschodniego jest górzysty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tls-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Foho Tatamailau, 2963 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TUN": [
+      {
+        "id": "tun-krajobraz",
+        "text": "Północną Tunezję obejmują pasma górskie.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tun-polozenie",
+        "text": "Południowe krajobrazy Tunezji stopniowo przechodzą w Saharę.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tun-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jebel ech Chambi, 1544 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ts.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TUR": [
+      {
+        "id": "tur-dziedzictwo",
+        "text": "W Kapadocji można zobaczyć sanktuaria wykute w skale.",
+        "source_url": "https://whc.unesco.org/en/list/357/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tur-polozenie",
+        "text": "Środkową Turcję obejmuje wyżyna Anatolii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tur-najwyzszy-punkt",
+        "text": "Na wschodzie Turcji wznosi się góra Ararat.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TWN": [
+      {
+        "id": "twn-krajobraz",
+        "text": "Wschodnią część Tajwanu zajmują góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "twn-polozenie",
+        "text": "Na zachodzie wyspy leżą równiny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "twn-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Yu Shan, 3952 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "TZA": [
+      {
+        "id": "tza-dziedzictwo",
+        "text": "W Serengeti odbywają się coroczne wędrówki wielkich stad roślinożerców.",
+        "source_url": "https://whc.unesco.org/en/list/156/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tza-polozenie",
+        "text": "Na północy i południu Tanzanii znajdują się wyżyny.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "tza-najwyzszy-punkt",
+        "text": "Krajobraz Tanzanii obejmuje nadbrzeżne równiny i centralny płaskowyż.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "UGA": [
+      {
+        "id": "uga-dziedzictwo",
+        "text": "W górach Rwenzori znajdują się lodowce, wodospady i jeziora.",
+        "source_url": "https://whc.unesco.org/en/list/684/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "uga-polozenie",
+        "text": "Krajobraz Ugandy tworzy głównie płaskowyż otoczony górami.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ug.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "uga-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Szczyt Małgorzaty, 5110 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ug.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "UKR": [
+      {
+        "id": "ukr-krajobraz",
+        "text": "Na zachodzie Ukrainy wznoszą się Karpaty.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ukr-polozenie",
+        "text": "Znaczną część Ukrainy zajmują żyzne równiny stepowe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "ukr-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Hora Hoverla, 2061 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "UZB": [
+      {
+        "id": "uzb-dziedzictwo",
+        "text": "Samarkanda była ważnym skrzyżowaniem kultur Azji Środkowej.",
+        "source_url": "https://whc.unesco.org/en/list/603/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "uzb-polozenie",
+        "text": "Uzbekistan obejmuje pustynie z wydmami i nawadniane doliny rzek.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/uz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "uzb-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Chazrat Sulton, 4643 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/uz.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "VAT": [
+      {
+        "id": "vat-krajobraz",
+        "text": "Watykan jest najmniejszym państwem świata.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "vat-polozenie",
+        "text": "Terytorium Watykanu jest w całości otoczone przez Rzym.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "vat-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Vatican Gardens, 78 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/vt.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "VNM": [
+      {
+        "id": "vnm-krajobraz",
+        "text": "Na północy i południu Wietnamu leżą rozległe delty rzeczne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "vnm-polozenie",
+        "text": "W najwęższym miejscu Wietnam ma około 50 kilometrów szerokości.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "vnm-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Fansipan, 3144 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "YEM": [
+      {
+        "id": "yem-krajobraz",
+        "text": "Cieśnina Bab al-Mandab łączy Morze Czerwone z Zatoką Adeńską.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "yem-polozenie",
+        "text": "W Jemenie nad wąską niziną nadbrzeżną wznoszą się góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "yem-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Jabal an Nabi Shu'ayb, 3666 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ym.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ZAF": [
+      {
+        "id": "zaf-dziedzictwo",
+        "text": "Region Przylądkowy słynie z wyjątkowo bogatej roślinności.",
+        "source_url": "https://whc.unesco.org/en/list/1007/",
+        "source_title": "UNESCO World Heritage Centre",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zaf-polozenie",
+        "text": "Rozległy płaskowyż wnętrza kraju otaczają wzgórza i wąskie niziny nadbrzeżne.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zaf-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mafadi, 3450 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sf.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ZMB": [
+      {
+        "id": "zmb-krajobraz",
+        "text": "Rzeka Zambezi tworzy część granicy Zambii i Zimbabwe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zmb-polozenie",
+        "text": "Jezioro Kariba leży przy granicy Zambii i Zimbabwe.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zmb-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Mafinga Central, 2330 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ],
+    "ZWE": [
+      {
+        "id": "zwe-krajobraz",
+        "text": "Zambezi tworzy naturalną granicę Zimbabwe i Zambii.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zwe-polozenie",
+        "text": "Na wschodzie Zimbabwe wznoszą się góry.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      },
+      {
+        "id": "zwe-najwyzszy-punkt",
+        "text": "Najwyższy punkt: Njangani, 2592 m n.p.m.",
+        "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
+        "source_title": "CIA World Factbook (archiwum factbook.json)",
+        "checked": "2026-11-14"
+      }
+    ]
+  }
+}

@@ -39,6 +39,8 @@ void main() {
       );
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(find.text('Trening mapy'), 180);
+      await tester.ensureVisible(find.text('Trening mapy'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Trening mapy'));
       await tester.pumpAndSettle();
       expect(find.text('Gdzie leży Liechtenstein?'), findsOneWidget);
@@ -54,7 +56,10 @@ void main() {
       await tester.tap(find.text('Zobacz wynik'));
       await tester.pumpAndSettle();
       expect(find.text('Wyprawa ukończona!'), findsOneWidget);
-      expect(find.text('2 z 2 poprawnych odpowiedzi.'), findsOneWidget);
+      expect(
+        find.text('2 z 2 ocenianych odpowiedzi poprawnych.'),
+        findsOneWidget,
+      );
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox());
       await db.close();

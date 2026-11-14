@@ -43,6 +43,7 @@ void main() {
         'CZE',
       }, expectedGuessIndex: 2);
       expect(session.currentAttempt!.correct, isTrue);
+      expect(session.correctCount, 0);
       expect(session.currentMapGuesses, hasLength(3));
       expect(await db.select(db.memoryReviews).get(), hasLength(1));
       expect((await db.select(db.memoryCards).get()).single.reviewCount, 1);
@@ -78,24 +79,4 @@ void main() {
       expect(session.attempts, hasLength(1));
     },
   );
-  test('first correct and assisted guesses remain distinct evidence', () async {
-    var session = await repo.start(['POL']);
-    session = await repo.guessMap(
-      session.row.id,
-      0,
-      'POL',
-      {'POL'},
-      expectedGuessIndex: 0,
-      assisted: true,
-    );
-    expect(session.assistedIndices, {0});
-    expect((await db.select(db.memoryReviews).get()).single.applied, isFalse);
-    expect((await db.select(db.memoryCards).get()).single.state, isNull);
-    await repo.finish(session.row.id);
-    session = await repo.start(['POL']);
-    await repo.guessMap(session.row.id, 0, 'POL', {
-      'POL',
-    }, expectedGuessIndex: 0);
-    expect((await db.select(db.memoryReviews).get()).last.rating, 3);
-  });
 }

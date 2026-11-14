@@ -1,115 +1,48 @@
 # GeoKuna
 
-**Kuna wie, gdzie!** Aplikacja Android do nauki geografii, po polsku i offline.
-Aktualny zakres: mapa, stolice i flagi 51 państw w szerokim zakresie Europy,
-trwały zapis sesji w SQLite i kuna z globusem w nagłówku.
-Stolice mają trzy poziomy: odpowiedzi A–D, pierwsza litera z dopisywaniem
-reszty oraz samodzielne wpisanie całej nazwy. Tryby pisane dopuszczają jedną
-literówkę, a poprawna pisownia jest wyświetlana po zatwierdzeniu.
-Pytania mapowe zaczynają się od łagodnego przybliżenia regionu. Mapa wypełnia
-obszar quizu. Kliknięcie jest odpowiedzią; masz do trzech różnych prób,
-a rozwiązanie pojawia się po trafieniu lub trzecim błędzie.
-W stolicach najważniejsza jest duża nazwa państwa i krótkie pytanie „Stolica?”.
-Powtórki planuje lokalnie FSRS: 408 osobnych kart obejmuje mapę, trzy formaty stolic i cztery formaty flag. Dzisiejsza wyprawa wybiera najpierw zaległe karty, a ręczny trening pozostaje dostępny.
+**Kuna wie, gdzie!** Aplikacja Android do nauki geografii — po polsku,
+offline, bez konta i backendu. Zamiast losowych quizów uczy tego, czego jeszcze
+nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
 
-Repozytorium prywatne: [mdanielak/GeoKuna](https://github.com/mdanielak/GeoKuna).
+![Kuna z globusem](assets/mascot/kuna-globe.png)
 
-Atlas ma wyszukiwarkę i listę państw. Ekran Postępy pokazuje osobno osiem
-umiejętności; mapa obsługuje klawiaturę oraz jawną pomoc z listy, bez oceny
-pamięci lokalizacji. Błąd karty powtórek nie ukrywa pozostałej nawigacji.
+## Co potrafi
+
+- **Zakres:** Europa (51), Afryka (54), Azja (50) — mapa, stolice, flagi.
+- **Quizy:** wskaż kraj na mapie (do 3 prób), stolica i flaga → nazwa
+  (A–D, pierwsza litera, pełne wpisanie z tolerancją jednej literówki),
+  flaga → mapa.
+- **Dziś:** codzienna wyprawa do 10 pytań — zaległe powtórki, potem najwyżej
+  3 nowe karty dziennie; ręczny trening zawsze dostępny.
+- **Poziomy** bardzo łatwy / łatwy / normalny ustawiane osobno dla kontynentu.
+- **Motywacja, która nie przeszkadza w nauce:** medale za 50/80/100% utrwalonych
+  faktów, passa dni nauki per kontynent, ciekawostki po trafieniu, pięć reakcji kuny.
+- **Atlas** z wyszukiwarką, **Moja nauka** z postępem kontynentów, trzy style map
+  (domyślnie prawdziwa rzeźba terenu Natural Earth), reset z potwierdzeniem.
 
 ## Uruchomienie
 
-Szczegółowa instrukcja, w tym późniejszy opcjonalny Android i ADB Wireless: [uruchamianie](docs/RUNNING.md).
-
-Wymagany Flutter 3.50.0 / Dart 3.14 (wersje użyte do weryfikacji).
-SDK zainstalowany w tym środowisku: `/home/danim/.local/share/geokuna/flutter`.
-
 ```bash
-export PATH="$HOME/.local/share/geokuna/flutter/bin:$PATH"
+export PATH="$HOME/.local/share/geokuna/flutter/bin:$PATH"   # Flutter 3.50.0
 flutter pub get
 flutter run -d chrome
 ```
 
-Flutter Web w Chrome jest domyślnym środowiskiem uruchamiania i kontroli
-wizualnej na ThinkPadzie T460s z Linux Mint. Luna sprawdza ekrany i interakcje;
-screenshoty są potrzebne przy większych zmianach, nie przy każdej korekcie.
-Nie instalujemy ani nie uruchamiamy emulatora Androida. Testy na fizycznym
-telefonie i potrzebny do nich toolchain przygotujemy później. Aplikacja nadal
-jest projektowana przede wszystkim dla Androida. Zasady: [testowanie](docs/TESTING.md).
-
-Internet jest potrzebny przy pobieraniu narzędzi i zależności. Aplikacja nie pobiera
-kafelków, geometrii ani pytań w czasie nauki. Wersja web jest bieżącym środowiskiem rozwoju;
-nie zapewnia instalacji/offline po zamknięciu przeglądarki. Dane web i Androida są osobne.
-
-## Weryfikacja
-
-```bash
-dart run build_runner build
-dart format --output=none --set-exit-if-changed lib test
-flutter analyze
-flutter test
-python3 tools/data_pipeline/build_map.py --check
-python3 tools/data_pipeline/build_capitals.py --check
-python3 tools/data_pipeline/build_flags.py --check
-flutter build web --no-web-resources-cdn
-```
-
-Generowany `database.g.dart` należy do repozytorium. Po zmianie tabel ponów generator.
-`flutter test` sprawdza SQLite w pamięci i na dysku, utrwalenie odpowiedzi po zamknięciu
-bazy, migrację ze starego schematu, trzy tryby stolic, literówki, sesję 10 pytań
-oraz przepływy ekranów na rozmiarze telefonu.
-
-## Flagi i trzy próby mapy
-
-51 lokalnych flag: A–D, pierwsza litera, wpisanie nazwy oraz flaga → mapa.
-Każdy format ma osobny FSRS; Dziś może mieszać 408 umiejętności. Pierwsza
-próba mapowa stanowi ocenę, następne służą ćwiczeniu. Feedback: błąd czerwony,
-rozwiązanie zielone, zaakceptowana literówka żółta — zawsze z tekstem i ikoną.
-Źródła i odtwarzanie grafik: [FLAGS.md](docs/FLAGS.md).
-
-## Dane mapowe
-
-Natural Earth v5.1.2, 1:50m, domena publiczna. Import ma przypiętą sumę źródła:
-
-```bash
-python3 tools/data_pipeline/build_map.py
-```
-
-Walidacja `--check` nie używa sieci. Szczegóły w [polityce treści](docs/CONTENT_POLICY.md).
-Dodatkowe komponenty przeglądarkowej bazy pochodzą z
-[wydania Drift 2.35.4](https://github.com/simolus3/drift/releases/tag/drift-2.35.4).
-Aktualizuj `web/sqlite3.wasm` i `web/drift_worker.dart.js` razem z Drift.
-
-## Stolice i maskotka
-
-Fakty stolic zweryfikowano względem KSNG 2025. Każdy ma stronę źródła,
-status i datę weryfikacji. Odtworzenie paczki: [polityka treści](docs/CONTENT_POLICY.md).
-Reguły poziomów i literówek: [stolice](docs/CAPITALS.md).
-
-Wybrano wariant 1: [kuna z globusem](assets/mascot/kuna-globe.png).
-Wygenerowano wbudowanym image_gen; oryginały czterech propozycji i dokładne
-prompty zachowano w [katalogu wariantów](output/imagegen/kuna-options/PROMPTS.md).
+Chrome to bieżące środowisko rozwoju; docelową platformą jest Android.
+Weryfikacja, testy i telefon: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 ## Dokumentacja
 
-- [Wymagania i kryteria akceptacji](docs/PRD.md)
-- [Architektura](docs/ARCHITECTURE.md)
-- [Model danych](docs/DATA_MODEL.md)
-- [Pamięć Kuny i zasady FSRS](docs/MEMORY.md)
-- [Backlog](docs/BACKLOG.md)
-- [Stan implementacji i ograniczenia](docs/STATUS.md)
-- [Kolejne kroki](docs/NEXT_STEPS.md)
-- [Plan kontynentów, flag, Polski i świata](docs/EXPANSION_ROADMAP.md)
-- [Diagnoza wiedzy i dobór nauki](docs/LEARNING_REVIEW.md)
-- [Audyt użyteczności](docs/UI_UX_REVIEW.md)
-- [Przegląd kodu i ograniczenia](docs/CODE_REVIEW.md)
+| Dokument | Zawartość |
+|---|---|
+| [LEARNING.md](docs/LEARNING.md) | zasady nauki: karty, FSRS, ocena, Dziś, postęp, medale, passa, kuna, reset |
+| [CONTENT.md](docs/CONTENT.md) | źródła, polityka granic, wyjątki stolic, flagi, relief, ciekawostki, odtwarzanie paczek |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | moduły, decyzje, schemat SQLite v7 i migracje |
+| [DEVELOPMENT.md](docs/DEVELOPMENT.md) | uruchamianie, weryfikacja, zasady testów, Chrome vs Android, agenci |
+| [ROADMAP.md](docs/ROADMAP.md) | stan, najbliższe kroki, przyszłe przyrosty, otwarte ryzyka |
+| [AGENTS.md](AGENTS.md) | zasady pracy agentów |
 
-Dalsze prace i odłożoną weryfikację na fizycznym Androidzie opisują [kolejne kroki](docs/NEXT_STEPS.md).
+Historyczne plany i przeglądy: [docs/archive/](docs/archive/).
+Licencje i źródła zewnętrzne: [THIRD_PARTY.md](THIRD_PARTY.md).
 
-## Flagi Europy
-
-Flaga → państwo: A–D, pierwsza litera lub cała nazwa. Flaga → mapa:
-trzy bezpośrednie próby. 51 grafik jest dostarczanych lokalnie i zachowuje
-proporcje. Każdy format ma osobny postęp FSRS. Źródła i odtwarzanie paczki:
-[FLAGS.md](docs/FLAGS.md).
+Repozytorium prywatne: [mdanielak/GeoKuna](https://github.com/mdanielak/GeoKuna).

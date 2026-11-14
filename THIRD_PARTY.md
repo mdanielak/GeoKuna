@@ -45,4 +45,40 @@ https://github.com/open-spaced-repetition/dart-fsrs
 
 Flagi: hampusborgos/country-flags, commit c09927e63705529bbf59ca6684cd9b23225dddad.
 Deklaracja public domain w przypiętym README; źródłowe SVG i manifest w repo.
-Szczegóły: docs/FLAGS.md.
+Szczegóły: docs/CONTENT.md.
+
+### Paczki Afryki i Azji
+
+Lokalne flagi SVG i PNG korzystają z tego samego przypiętego źródła country-flags
+oraz deklaracji domeny publicznej wskazanej wyżej. Geometria i angielskie nazwy
+pochodzą z Natural Earth v5.1.2. Zakres, przycięcie geometrii, polityka obszarów
+spornych oraz sumy źródeł: [Afryka](docs/CONTENT.md), [Azja](docs/CONTENT.md).
+
+Warianty maskotki `assets/mascot/kuna-happy.png` i `kuna-sad.png` wygenerowano
+wbudowanym imagegen na podstawie wybranej kuny, zachowując przezroczystość.
+Prompty i ścieżki: `output/imagegen/kuna-emotions/PROMPTS.md`.
+Kolejne cztery warianty emocji wybrano na podstawie plansz 2 i 2B; pliki
+produkcyjne i pełne prompty: [katalog promptów](output/imagegen/kuna-production-2b/PROMPTS.md).
+
+### Ciekawostki o krajach
+
+Część faktów opracowano na podstawie historycznych profili CIA World Factbook,
+opracowania rządu USA w domenie publicznej, dostępnych w archiwum
+[factbook/factbook.json](https://github.com/factbook/factbook.json) (CC0),
+commit `144d6977b2b01ac1cbd220de754c0a005616760b`.
+
+Źródłem części krótkich polskich parafraz jest UNESCO World Heritage Centre,
+[World Heritage List](https://whc.unesco.org/en/list/); oryginalne opisy
+obiektów są oznaczone licencją [CC BY-SA IGO 3.0](https://creativecommons.org/licenses/by-sa/3.0/igo/).
+Parafrazy i odsyłacze do konkretnych obiektów zawiera
+`assets/content/country_trivia.json`. Wymienione źródła nie oznaczają wsparcia
+ani zatwierdzenia aplikacji przez UNESCO. Dodatkowy fakt o soczewkach oparto na
+National Technical Museum w Czechach. Adresy wszystkich źródeł są przy rekordach;
+zakres, data sprawdzenia i ograniczenia: [CONTENT.md](docs/CONTENT.md).
+
+### Rzeźba terenu offline
+
+Natural Earth I with Shaded Relief 1:50m v3.2.0, dane w domenie publicznej:
+https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/
+https://www.naturalearthdata.com/about/terms-of-use/
+Trzy regiony, projekcja, przypięty SHA i odtwarzanie: [style map](docs/CONTENT.md).

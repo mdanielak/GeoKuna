@@ -25,7 +25,7 @@ void main() {
         capitals,
         flags: flags,
       );
-      expect(overview.newAvailable, 408);
+      expect(overview.newAvailable, 204);
       expect(overview.newRemainingToday, 3);
       final manual = await repo.startFlags(
         flags,
@@ -38,7 +38,7 @@ void main() {
         manual.flagQuestionAt(0).countryName,
       );
       await repo.finish(manual.row.id);
-      now = now.add(const Duration(days: 1));
+      now = now.add(const Duration(days: 20)); // known at first sight: ~16 days
       final daily = (await repo.startDaily(catalog, capitals, flags: flags))!;
       expect(daily.isFlagAt(0), isTrue);
       expect(daily.flagDifficulty, FlagDifficulty.write);
@@ -49,7 +49,7 @@ void main() {
       );
       expect(daily.countryIds.toSet().length, daily.countryIds.length);
       final progress = await repo.learningProgress(catalog, flags: flags);
-      expect(progress, hasLength(408));
+      expect(progress, hasLength(612));
       final map = await repo.startFlags(
         flags,
         FlagDifficulty.map,

@@ -34,7 +34,7 @@ void main() {
     final entries = [
       entry('POL', 'map', LearningProgressStatus.review),
       entry('POL', 'write', LearningProgressStatus.insufficient),
-      entry('DEU', 'choice', LearningProgressStatus.practising),
+      entry('DEU', 'firstLetter', LearningProgressStatus.practising),
     ];
     await tester.pumpWidget(
       ProviderScope(

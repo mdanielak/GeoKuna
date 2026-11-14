@@ -1,58 +1,90 @@
-# Architektura
+# Architektura i model danych
 
-Modularny monolit Flutter; Material 3, Riverpod, GoRouter, flutter_map,
-Drift/SQLite. Geometria GeoJSON w assets; bez warstwy kafelkowej.
+Modularny monolit Flutter, feature-first. Material 3, Riverpod (stan
+i zależności), GoRouter (nawigacja), Drift/SQLite (postęp), flutter_map
+z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 
-`app/` — motyw, routing, dostawcy zależności.
-`core/database/` — schemat Drift i transakcyjny zapis.
-`features/atlas/` — katalog, parser GeoJSON, widget mapy.
-`features/learning/` — model sesji, repozytorium, kontroler i ekran.
-`features/home/` — ekran Dziś i atlas.
-`features/progress/` — filtrowane postępy według umiejętności.
+## Moduły
 
-UI → kontroler → repozytorium → Drift. Odpowiedź ma klucz
-`(session_id, question_index)`; zapis i postęp sesji są transakcją.
-Zablokowany przycisk w UI oraz unikalność w bazie chronią przed podwójnym zapisem.
-Stan po ocenie pozostaje zapisany, dopóki użytkownik nie wybierze „Dalej”.
+| Katalog | Odpowiedzialność |
+|---|---|
+| `app/` | motyw, routing (`app.dart`), providery (`providers.dart`) |
+| `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
+| `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
+| `features/learning/` | sesje i zapis (`session_repository.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
+| `features/home/` | Dziś i atlas |
+| `features/progress/` | Moja nauka (kontynent → kraje) i szczegóły umiejętności |
+| `features/settings/` | preferencje (`app_preferences.dart`) i ekran ustawień z resetem |
 
-Katalogi są ładowane asynchronicznie z assets. Błąd dziennej wyprawy
-ma lokalny komunikat z ponowieniem i nie ukrywa niezależnej nawigacji. Repozytorium nie zastępuje uszkodzonej bazy pustą.
+Przepływ: UI → Riverpod → repozytorium → Drift. Reguły nauki są czystymi
+funkcjami/klasami poza widgetami. `Continent` wybiera paczki, providery
+i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu).
 
-## Decyzje
+## Kluczowe decyzje
 
-- 0.4 obejmuje mapę, stolice i flagi 51 państw oraz niezależną pamięć FSRS.
-- `memory.dart`: czysty adapter dart-fsrs i zapis dziennika. Repozytorium
-  transakcyjnie łączy ocenę z harmonogramem, wybiera kolejkę i importuje historię.
-  UI otrzymuje stan przez Riverpod; reguły nauki są niezależne od widgetów.
-- Kolejność pytań losowana raz, następnie utrwalana w sesji.
-- Natural Earth 1:50m v5.1.2; geometria przycięta do okna widoku
-  32°W–65°E, 34°N–72°N. To wycinek renderowania, nie definicja granicy kontynentu.
-  Poligony zachowują otwory. Reguły przypisania terytoriów: CONTENT_POLICY.md.
-- Siedem małych państw ma znaczniki 48×48 px; bliskie znaczniki najpierw
-  przybliżają mapę. `focusId` atlasu centruje wybrane państwo.
-- `Country.plural` jest metadaną językową; `locationQuestion` dobiera
-  „leży” / „leżą”. Nie wnioskujemy liczby gramatycznej z końcówki nazwy.
-- Pytanie mapowe startuje w przybliżeniu regionu: środek przesunięty losowo
-  o 1,5–3,5° szerokości i 2,5–5,5° długości w obu kierunkach;
-  okno ±10° szerokości geograficznej i ±16° długości.
-  Seed sesji i indeksu pytania utrzymuje kadr przy zaznaczaniu i wznowieniu. Nie zaznacza celu.
-  Reset przywraca całą Europę, a atlas zachowuje ogólny widok początkowy.
-- Stolice: trzy poziomy; migawka pytań w sesji; osobna aktywna sesja dla
-  każdego poziomu. Ocenianie tekstu jest czystą funkcją z tolerancją jednego
-  błędu edycyjnego. Próby przechowują poziom oraz zaakceptowanie literówki.
-- SQLite v4: migracje zachowują dane mapowe i stolic. Szczegóły w DATA_MODEL.md.
-- Wybrana maskotka: `assets/mascot/kuna-globe.png`; oryginał i prompty
-  pozostają w `output/imagegen/kuna-options/`.
-- Android jest celem wydania. Flutter Web w Chrome jest domyślnym środowiskiem
-  bieżącego uruchamiania i kontroli wizualnej; jego dane są osobnym magazynem
-  przeglądarki. Nie uruchamiamy emulatora. Fizyczny Android będzie sprawdzany
-  później zgodnie z docs/TESTING.md.
-- Role agentów i warunki użycia skilli: AGENTS.md oraz `.codex/agents/`.
+- Zapis próby, karty FSRS, dziennika i dnia aktywności to jedna transakcja.
+  Klucz `(session_id, question_index)` + zablokowany przycisk chronią przed duplikatem.
+  Stan po ocenie zostaje do „Następne pytanie”.
+- Kolejność pytań losowana raz i utrwalana. Stolice i flagi zapisują migawkę
+  faktów, aliasów i opcji; mapa zapisuje ID (geometria z bieżącej paczki —
+  otwarte ryzyko przy przyszłej zmianie katalogu).
+- Mapa regionalna: jeden świat Mercatora (`replicatesWorldLongitude=false`)
+  omija pętlę powielania w flutter_map 8.3.2. Świat i geometria przez 180°
+  wymagają ponownej oceny.
+- Kadr quizu ustawiany po `initialCameraFit` (post-frame po `onMapReady`);
+  zmiana stylu nie resetuje kamery; rozwiązanie po 3. błędzie dopasowuje kamerę raz.
+- Etykiety błędnych krajów to `IgnorePointer` z jedną etykietą semantyczną.
+- Błąd ładowania Dziś dotyczy tylko karty wyprawy; nawigacja pozostaje dostępna.
+- Repozytorium nie zastępuje uszkodzonej bazy pustą.
+- Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.
+- Relief to lokalny `OverlayImage` pod interaktywnymi poligonami.
 
-## Kolejne etapy
+## Schemat SQLite (wersja 7)
 
-Rozwijać postępy i słabe punkty na podstawie osobnych kart umiejętności.
-Wersjonowane fakty, adapter FSRS i dziennik powtórek są już częścią aplikacji. Nie wyciągać ogólnego „opanowania państwa” z jednego trafienia.
+| Tabela | Klucz | Zawartość |
+|---|---|---|
+| `sessions` | `id` (UUID) | `country_ids` (JSON, kolejność), `current_index`, `created_at`, `completed_at`, `continent`, `topic` (`map`/`capitals`/`flags`/`daily`), `difficulty` (format lub `mixed`), `question_data` (migawka JSON), `content_version` |
+| `attempts` | `(session_id, question_index)` | `country_id`, `answer`, `correct`, `typo_accepted`, `topic`, `difficulty`, `answered_at` |
+| `map_guesses` | `(session_id, question_index, guess_index)` | do 3 wyborów: `selected_country_id`, `correct`, `assisted`, `guessed_at` |
+| `memory_cards` | `id` = `topic:country:difficulty` | `state` (JSON FSRS lub null), `due` (UTC), `introduced_at`, `review_count` |
+| `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/historyczne `assisted`, `recognition`), `review_log` |
+| `memory_meta` | `key` | m.in. znacznik jednorazowego importu historii |
+| `app_preference_entries` | `key` | `map_appearance`, `difficulty_{europe,africa,asia}`; nieznane wartości → relief/normal |
+| `activity_days` | `(continent, local_date)` | `recorded_at` (UTC), `offset_minutes` |
+| `awarded_medals` | `(continent, topic, level, medal)` | `earned_at`, `catalog_version`; medal 1/2/3 = 50/80/100% |
 
-Flagi są osobnym formatem pytań; obrazy PNG lokalne. Szczegóły: FLAGS.md.
-Trzy próby mapy są transakcjami repozytorium, nie wyłącznie stanem widgetu.
+Uwagi:
+
+- Jedna aktywna sesja mapy, po jednej na każdy poziom stolic i flag, jedna `daily`
+  na kontynent. `byId` odrzuca sesję innego kontynentu.
+- `finish(id)` jest idempotentne; nie ocenia niewysłanego tekstu; rozpoczęte
+  błędne pytanie mapy zamyka jako błąd bez ponownej oceny FSRS.
+- Liczbowe ID kart FSRS: stolice/mapa i flagi mają rozłączne przestrzenie,
+  `mapEasy`/`mapVeryEasy` osobny zakres (`memory.dart`). Nowe kategorie
+  (np. Polska) wymagają nowego, trwałego przydziału ID — obecny parser zna
+  tylko trzy segmenty i bieżące formaty.
+
+## Migracje
+
+Żadna migracja nie usuwa prób, sesji, kart ani preferencji.
+
+| Wersja | Zmiana |
+|---|---|
+| 1→2 | pola topic/difficulty/question_data; `selected_country_id` → `answer` |
+| 2→3 | `memory_cards`, `memory_reviews`, `memory_meta`; jednorazowy idempotentny import historii |
+| 3→4 | `map_guesses` (trzy próby mapy) |
+| 4→5 | `sessions.continent` (domyślnie `europe`) |
+| 5→6 | `app_preference_entries` |
+| 6→7 | `activity_days`, `awarded_medals`; poziomy mapy `mapEasy`/`mapVeryEasy`, stary `map` = normalny |
+
+`test/database_migration_test.dart` otwiera prawdziwe pliki schematu 1 i 2
+i sprawdza przejście do bieżącej wersji.
+
+## Paczki
+
+`assets/content/` (katalogi, stolice, ciekawostki; `africa/`, `asia/`),
+`assets/maps/*.geojson`, `assets/maps/styles/relief/`, `assets/flags/*-0.1.0/`.
+Manifesty SHA-256 paczek są niezależne od wersji schematu. Komponenty bazy
+Web (`web/sqlite3.wasm`, `web/drift_worker.dart.js`) pochodzą z
+[wydania Drift 2.35.4](https://github.com/simolus3/drift/releases/tag/drift-2.35.4)
+i aktualizuje się je razem z Drift.

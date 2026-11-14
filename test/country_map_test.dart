@@ -4,89 +4,56 @@ import 'package:material_ui/material_ui.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/atlas/country_map.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 
 void main() {
   testWidgets(
-    'Kosovo question starts slightly closer to the Balkans and can reset to Europe',
+    'quiz uses almost the full continent, independent of question key',
     (tester) async {
       final catalog = (await tester.runAsync(Catalog.load))!;
-      Widget map(String? region) => MaterialApp(
-        home: Scaffold(
-          body: SizedBox(
-            width: 390,
-            height: 450,
-            child: CountryMap(
-              key: ValueKey(region),
-              catalog: catalog,
-              onSelected: (_) {},
-              questionRegionId: region,
-            ),
-          ),
-        ),
-      );
-      await tester.pumpWidget(map(null));
-      await tester.pumpAndSettle();
-      final fullZoom = MapCamera.of(
-        tester.element(find.byType(PolygonLayer<String>)),
-      ).zoom;
-      await tester.pumpWidget(map('KOS'));
-      await tester.pumpAndSettle();
-      final camera = MapCamera.of(
-        tester.element(find.byType(PolygonLayer<String>)),
-      );
-      expect(camera.zoom, greaterThan(fullZoom));
-      expect(camera.zoom - fullZoom, lessThan(1.8));
-      expect(
-        camera.visibleBounds.contains(catalog.country('KOS').center),
-        isTrue,
-      );
-      expect(camera.center, isNot(catalog.country('KOS').center));
-      await tester.tap(find.byTooltip('Pokaż cały obszar'));
-      await tester.pumpAndSettle();
-      expect(
-        MapCamera.of(tester.element(find.byType(PolygonLayer<String>))).zoom,
-        closeTo(fullZoom, .001),
-      );
-    },
-  );
-
-  testWidgets('question seeds give stable regional framing', (tester) async {
-    final catalog = (await tester.runAsync(Catalog.load))!;
-    Future<MapCamera> cameraFor(String seed) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              width: 390,
-              height: 450,
-              child: CountryMap(
-                key: ValueKey(seed),
-                catalog: catalog,
-                onSelected: (_) {},
-                questionRegionId: 'POL',
-                questionSeed: seed,
+      Future<MapCamera> cameraFor(String key, {bool quiz = false}) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: SizedBox(
+                width: 390,
+                height: 450,
+                child: CountryMap(
+                  key: ValueKey(key),
+                  catalog: catalog,
+                  onSelected: (_) {},
+                  quizMode: quiz,
+                ),
               ),
             ),
           ),
-        ),
-      );
-      await tester.pumpAndSettle();
-      return MapCamera.of(tester.element(find.byType(PolygonLayer<String>)));
-    }
+        );
+        await tester.pumpAndSettle();
+        return MapCamera.of(tester.element(find.byType(PolygonLayer<String>)));
+      }
 
-    final first = await cameraFor('question-1');
-    final same = await cameraFor('question-1');
-    final other = await cameraFor('question-2');
-    final target = catalog.country('POL').center;
-    expect(first.center, same.center);
-    expect(first.center, isNot(other.center));
-    for (final camera in [first, other]) {
-      expect((camera.center.latitude - target.latitude).abs(), lessThan(5));
-      expect((camera.center.longitude - target.longitude).abs(), lessThan(7));
-      expect(camera.center, isNot(target));
-      expect(camera.visibleBounds.contains(target), isTrue);
-    }
-  });
+      final atlas = await cameraFor('atlas');
+      final kosovo = await cameraFor('question-KOS', quiz: true);
+      final iceland = await cameraFor('question-ISL', quiz: true);
+      expect(kosovo.center, iceland.center);
+      expect(kosovo.zoom, closeTo(iceland.zoom, .0001));
+      expect(kosovo.zoom - atlas.zoom, inInclusiveRange(0, .12));
+      for (final country in catalog.countries) {
+        expect(
+          kosovo.visibleBounds.contains(country.center),
+          isTrue,
+          reason: country.name,
+        );
+      }
+      await tester.tap(find.byTooltip('Pokaż cały obszar'));
+      await tester.pumpAndSettle();
+      final reset = MapCamera.of(
+        tester.element(find.byType(PolygonLayer<String>)),
+      );
+      expect(reset.zoom, closeTo(atlas.zoom, .001));
+      expect(reset.center, atlas.center);
+    },
+  );
 
   testWidgets(
     'overlapping small states zoom before selection; Vatican remains reachable',
@@ -150,6 +117,121 @@ void main() {
     );
     expect(camera.center, catalog.country('ISL').center);
     expect(camera.zoom, 6);
+  });
+
+  testWidgets('wrong country label shows its name without intercepting taps', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    final catalog = (await tester.runAsync(Catalog.load))!;
+    String? selected;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            width: 390,
+            height: 450,
+            child: CountryMap(
+              catalog: catalog,
+              onSelected: (id) => selected = id,
+              wrongCountryIds: const {'DEU'},
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Niemcy'), findsOneWidget);
+    expect(find.bySemanticsLabel('Błędna odpowiedź: Niemcy'), findsOneWidget);
+    final mapFinder = find.byType(FlutterMap);
+    final camera = MapCamera.of(
+      tester.element(find.byType(PolygonLayer<String>)),
+    );
+    await tester.tapAt(
+      tester.getTopLeft(mapFinder) +
+          camera.latLngToScreenOffset(const LatLng(52, 19)),
+    );
+    expect(selected, 'POL');
+    expect(tester.takeException(), isNull);
+    semantics.dispose();
+  });
+
+  testWidgets('easy map support applies one stable small camera hint', (
+    tester,
+  ) async {
+    final catalog = (await tester.runAsync(Catalog.load))!;
+    Widget map(MapAppearance appearance, String level) => MaterialApp(
+      home: Scaffold(
+        body: SizedBox(
+          width: 390,
+          height: 450,
+          child: CountryMap(
+            key: ValueKey(level),
+            catalog: catalog,
+            onSelected: (_) {},
+            quizMode: true,
+            appearance: appearance,
+            supportLevel: level,
+            targetId: 'ISL',
+            questionSeed: 'daily-question-0',
+          ),
+        ),
+      ),
+    );
+    final layer = find.byType(PolygonLayer<String>);
+    await tester.pumpWidget(map(MapAppearance.atlas, 'normal'));
+    await tester.pumpAndSettle();
+    final normal = MapCamera.of(tester.element(layer));
+    await tester.pumpWidget(map(MapAppearance.atlas, 'veryEasy'));
+    await tester.pumpAndSettle();
+    final hinted = MapCamera.of(tester.element(layer));
+    expect(hinted.zoom - normal.zoom, closeTo(.9, .02));
+    expect(hinted.center, isNot(normal.center));
+
+    await tester.pumpWidget(map(MapAppearance.paper, 'veryEasy'));
+    await tester.pumpAndSettle();
+    final afterStyleChange = MapCamera.of(tester.element(layer));
+    expect(afterStyleChange.center, hinted.center);
+    expect(afterStyleChange.zoom, closeTo(hinted.zoom, .001));
+  });
+
+  testWidgets('exhausting guesses refits map to the revealed country once', (
+    tester,
+  ) async {
+    final catalog = (await tester.runAsync(Catalog.load))!;
+    Widget map(String? reveal) => MaterialApp(
+      home: Scaffold(
+        body: SizedBox(
+          width: 390,
+          height: 450,
+          child: CountryMap(
+            catalog: catalog,
+            onSelected: (_) {},
+            quizMode: true,
+            revealId: reveal,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpWidget(map(null));
+    await tester.pumpAndSettle();
+    final layer = find.byType(PolygonLayer<String>);
+    final overview = MapCamera.of(tester.element(layer));
+    await tester.pumpWidget(map('ISL'));
+    await tester.pumpAndSettle();
+    final revealed = MapCamera.of(tester.element(layer));
+    expect(revealed.zoom, greaterThan(overview.zoom));
+    expect(revealed.zoom, lessThanOrEqualTo(overview.zoom + 1.5 + .01));
+    expect(revealed.center.latitude, closeTo(65, 8));
+    expect(revealed.center.longitude, closeTo(-18, 8));
+
+    await tester.tap(find.byTooltip('Oddal mapę'));
+    await tester.pumpAndSettle();
+    final manuallyMoved = MapCamera.of(tester.element(layer));
+    await tester.pumpWidget(map('ISL'));
+    await tester.pumpAndSettle();
+    expect(MapCamera.of(tester.element(layer)).zoom, manuallyMoved.zoom);
   });
 
   testWidgets('polygon selection remains accurate after zoom and reset', (

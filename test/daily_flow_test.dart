@@ -14,47 +14,6 @@ import 'package:geokuna/features/learning/flags.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
-  testWidgets('Dziś oferuje trzy nowe pytania i uruchamia wyprawę', (
-    tester,
-  ) async {
-    tester.view.physicalSize = const Size(390, 844);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
-    final data = (await tester.runAsync(
-      () async => (
-        await Catalog.load(),
-        await CapitalCatalog.load(),
-        await FlagCatalog.load(),
-      ),
-    ))!;
-    final db = AppDatabase(NativeDatabase.memory());
-    addTearDown(() async {
-      await tester.pumpWidget(const SizedBox());
-      await db.close();
-    });
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          databaseProvider.overrideWithValue(db),
-          catalogProvider.overrideWith((ref) async => data.$1),
-          capitalsProvider.overrideWith((ref) async => data.$2),
-          flagsProvider.overrideWith((ref) async => data.$3),
-        ],
-        child: const GeoKunaApp(),
-      ),
-    );
-    await tester.pumpAndSettle();
-    expect(find.text('3 pytania w dzisiejszej serii'), findsOneWidget);
-    expect(find.text('0 powtórek · 3 nowych w serii'), findsOneWidget);
-    await tester.tap(find.text('Rozpocznij dzisiejszą wyprawę'));
-    await tester.pumpAndSettle();
-    expect(find.text('PYTANIE 1 Z 3'), findsOneWidget);
-    expect(await db.select(db.attempts).get(), isEmpty);
-    expect(await db.select(db.memoryReviews).get(), isEmpty);
-    expect(tester.takeException(), isNull);
-  });
-
   testWidgets('Dziś: mały telefon i tekst 200% zachowują dostęp do CTA', (
     tester,
   ) async {

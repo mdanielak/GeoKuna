@@ -1,13 +1,19 @@
 import 'dart:convert';
+
+import '../atlas/continent.dart';
+
 import 'dart:math';
 
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/services.dart';
 
 enum CapitalDifficulty {
-  choice('Łatwy', 'Wybierz jedną z odpowiedzi A, B, C, D.'),
-  firstLetter('Średni', 'Pierwszą literę dostajesz. Dopisz resztę nazwy.'),
-  write('Trudny', 'Wpisz całą nazwę bez podpowiedzi.');
+  choice(
+    'Bardzo łatwy',
+    'Wybierz jedną z odpowiedzi A–D. Osobne powtórki rozpoznawania.',
+  ),
+  firstLetter('Łatwy', 'Pierwszą literę dostajesz. Dopisz resztę nazwy.'),
+  write('Normalny', 'Wpisz całą nazwę bez podpowiedzi.');
 
   const CapitalDifficulty(this.label, this.description);
   final String label;
@@ -81,9 +87,11 @@ class CapitalCatalog {
     return CapitalQuestion(fact, options);
   }).toList();
 
-  static Future<CapitalCatalog> load() async {
+  static Future<CapitalCatalog> load({
+    Continent continent = Continent.europe,
+  }) async {
     final json = jsonDecode(
-      await rootBundle.loadString('assets/content/capitals.json'),
+      await rootBundle.loadString(continent.contentPath('capitals.json')),
     ) as Map<String, dynamic>;
     final records = (json['capitals'] as List).cast<Map<String, dynamic>>();
     if (records.any((r) => r['status'] != 'verified')) {

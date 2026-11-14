@@ -40,13 +40,15 @@ void main() {
     return repository.answerCapital(session.row.id, session.index, input);
   }
 
-  test('four independent skills per country and a duplicate answer reviews once', () async {
+  test('six independent skills per country and a duplicate answer reviews once', () async {
     await repository.memoryOverview(catalog, capitals);
     final rows = await db
         .customSelect("SELECT id FROM memory_cards WHERE country_id = 'POL'")
         .get();
     expect(rows.map((r) => r.read<String>('id')).toSet(), {
       'map:POL:map',
+      'map:POL:mapEasy',
+      'map:POL:mapVeryEasy',
       'capitals:POL:choice',
       'capitals:POL:firstLetter',
       'capitals:POL:write',
@@ -153,12 +155,12 @@ void main() {
       cards
           .where((row) => row.read<int>('review_count') > 0)
           .map((row) => row.read<String>('id')),
-      ['capitals:POL:choice'],
+      isEmpty,
     );
     expect(await repository.history(), hasLength(1));
   });
 
-  test('due cards precede new cards and countries do not repeat', () async {
+  test('due cards first; a backlog still lets one new card in', () async {
     await repository.memoryOverview(catalog, capitals);
     final manual = await repository.start(['POL']);
     await answerCorrect(manual);
@@ -180,13 +182,16 @@ void main() {
     }
     final overview = await repository.memoryOverview(catalog, capitals);
     expect(overview.dueCount, greaterThanOrEqualTo(10));
-    expect(overview.plannedNewCount, 0);
+    expect(overview.plannedNewCount, 1);
     final daily = (await repository.startDaily(catalog, capitals))!;
     expect(daily.countryIds, hasLength(10));
     expect(daily.countryIds.toSet(), hasLength(10));
-    expect(daily.countryIds.toSet(), countries.toSet());
-    for (var i = 0; i < daily.countryIds.length; i++) {
-      expect(daily.isCapitalAt(i), isFalse);
+    expect(
+      daily.countryIds.toSet().intersection(countries.toSet()),
+      hasLength(9),
+    );
+    for (var i = 0; i < 9; i++) {
+      expect(daily.isMapAt(i), isTrue, reason: 'due reviews come first');
     }
   });
 }

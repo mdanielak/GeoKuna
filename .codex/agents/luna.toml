@@ -20,7 +20,7 @@ Keep one browser session on the ThinkPad T460s; avoid unnecessary repeated check
 Never install or launch an Android emulator, AVD or system image. Do not install Android
 SDK/JDK or extra tools now. Physical Android checks are deferred until actually needed.
 Preserve Android-first Material 3/touch design. Report differences in Drift native/WASM
-storage, gestures, performance, keyboard/lifecycle and platform APIs per docs/TESTING.md.
+storage, gestures, performance, keyboard/lifecycle and platform APIs per docs/DEVELOPMENT.md.
 Run applicable unit/widget/integration tests and flutter analyze; report actual results.
 Browser success satisfies the current visual check, but is not proof of Android behavior.
 Do not add dependencies, change global config, commit, publish or spawn other agents.

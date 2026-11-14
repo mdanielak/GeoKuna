@@ -15,7 +15,8 @@ import 'package:geokuna/features/learning/capitals.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
-  for (final mode in FlagDifficulty.values) {
+  // choice/firstLetter share the capitals answer widgets; keep typing and map.
+  for (final mode in [FlagDifficulty.write, FlagDifficulty.map]) {
     testWidgets('flag ${mode.name}: offline question and independent memory', (
       tester,
     ) async {
@@ -88,6 +89,19 @@ void main() {
       } else {
         await tester.ensureVisible(find.byType(TextFormField));
         await tester.pumpAndSettle();
+        if (mode == FlagDifficulty.firstLetter) {
+          expect(
+            tester
+                .widget<TextField>(
+                  find.descendant(
+                    of: find.byType(TextFormField),
+                    matching: find.byType(TextField),
+                  ),
+                )
+                .textCapitalization,
+            TextCapitalization.none,
+          );
+        }
         await tester.enterText(
           find.byType(TextFormField),
           mode == FlagDifficulty.firstLetter ? 'olska' : 'Polsqa',

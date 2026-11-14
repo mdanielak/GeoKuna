@@ -1,3 +1,5 @@
+import '../settings/app_preferences.dart';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -5,6 +7,7 @@ import '../../app/app.dart';
 import '../../app/providers.dart';
 import '../atlas/country_map.dart';
 import '../atlas/country_picker.dart';
+import '../atlas/continent.dart';
 
 class AtlasScreen extends ConsumerStatefulWidget {
   const AtlasScreen({super.key});
@@ -16,7 +19,9 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
   String? _selected;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Atlas Europy')),
+    appBar: AppBar(
+      title: Text('Atlas ${ref.watch(selectedContinentProvider).genitive}'),
+    ),
     body: ref
         .watch(catalogProvider)
         .when(
@@ -38,6 +43,13 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                     height: MediaQuery.sizeOf(context).height * .52,
                     child: CountryMap(
                       catalog: catalog,
+                      appearance:
+                          ref
+                              .watch(appPreferencesProvider)
+                              .asData
+                              ?.value
+                              .appearance ??
+                          MapAppearance.relief,
                       selectedId: _selected,
                       focusId: _selected,
                       onSelected: (id) => setState(() => _selected = id),
@@ -60,14 +72,21 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  const Text(
-                    'Geometria: Natural Earth 1:50m, v5.1.2 · domena publiczna. '
-                    '51 państw w szerokim zakresie edukacyjnym: Europa, Kosowo, Cypr, '
-                    'Turcja, Gruzja, Armenia, Azerbejdżan i Kazachstan. '
-                    'Mapa pokazuje europejski wycinek świata; odległe części państw '
-                    'i terytoria zależne nie są osobnymi zadaniami. '
-                    'Krym jest przypisany do Ukrainy, a północ Cypru do Cypru.',
-                    style: TextStyle(fontSize: 12),
+                  Text(
+                    catalog.continent == Continent.africa
+                        ? 'Afryka: ${catalog.countries.length} państw. '
+                              'Terytoria zależne nie są osobnymi zadaniami; '
+                              'szczegóły granic i źródeł: dokumentacja Afryki.'
+                        : catalog.continent == Continent.asia
+                        ? 'Azja: ${catalog.countries.length} państw. '
+                              'Szczegóły granic i źródeł: dokumentacja Azji.'
+                        : 'Geometria: Natural Earth 1:50m, v5.1.2 · domena publiczna. '
+                              '51 państw w szerokim zakresie edukacyjnym: Europa, Kosowo, Cypr, '
+                              'Turcja, Gruzja, Armenia, Azerbejdżan i Kazachstan. '
+                              'Mapa pokazuje europejski wycinek świata; odległe części państw '
+                              'i terytoria zależne nie są osobnymi zadaniami. '
+                              'Krym jest przypisany do Ukrainy, a północ Cypru do Cypru.',
+                    style: const TextStyle(fontSize: 12),
                   ),
                 ],
               ),

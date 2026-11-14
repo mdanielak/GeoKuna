@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'continent.dart';
+
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -27,7 +29,12 @@ class CountryShape {
 }
 
 class Catalog {
-  Catalog(this.countries, this.shapes) {
+  Catalog(
+    this.countries,
+    this.shapes, {
+    this.continent = Continent.europe,
+    this.version = 'custom',
+  }) {
     if (countries.length != countries.map((c) => c.id).toSet().length ||
         countries.any((c) => !shapes.any((s) => s.countryId == c.id)) ||
         shapes.any((s) => !countries.any((c) => c.id == s.countryId))) {
@@ -35,16 +42,18 @@ class Catalog {
     }
   }
 
+  final Continent continent;
+  final String version;
   final List<Country> countries;
   final List<CountryShape> shapes;
   Country country(String id) => countries.firstWhere((c) => c.id == id);
 
-  static Future<Catalog> load() async {
+  static Future<Catalog> load({Continent continent = Continent.europe}) async {
     final content = jsonDecode(
-      await rootBundle.loadString('assets/content/countries.json'),
+      await rootBundle.loadString(continent.contentPath('countries.json')),
     ) as Map<String, dynamic>;
     final geometry = jsonDecode(
-      await rootBundle.loadString('assets/maps/europe.geojson'),
+      await rootBundle.loadString('assets/maps/${continent.name}.geojson'),
     ) as Map<String, dynamic>;
     final countries = (content['countries'] as List).map((raw) {
       final c = raw as Map<String, dynamic>;
@@ -81,6 +90,11 @@ class Catalog {
         );
       }
     }
-    return Catalog(countries, shapes);
+    return Catalog(
+      countries,
+      shapes,
+      continent: continent,
+      version: content['version'] as String,
+    );
   }
 }

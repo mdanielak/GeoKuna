@@ -71,7 +71,7 @@ Przed większą funkcją zrób krótki brainstorming: problem nauki/użytkownika
 ustalenia; pytaj tylko o istotne nierozstrzygnięte kwestie. Nie ponawiaj
 zatwierdzania tego samego zakresu. Drobna korekta tekstu nie wymaga nowego procesu.
 
-Pracuj według `docs/BACKLOG.md`; większe plany zapisuj w `docs/superpowers/plans/`.
+Pracuj według `docs/ROADMAP.md`; większe plany zapisuj w `docs/superpowers/plans/`.
 Polecenia użytkownika i AGENTS mają pierwszeństwo przed domyślnymi procesami
 skilli. Nie wykonuj automatycznych commitów, instalacji ani globalnych zmian
 środowiska tylko dlatego, że występują w przykładzie skilla.
@@ -120,7 +120,7 @@ poprawności Androida. Drift/SQLite native i WASM/przechowywanie przeglądarki
 mają osobne magazyny i ograniczenia. Mysz/emulacja dotyku nie zastępuje gestów
 telefonu; płynność web debug nie dowodzi wydajności Androida. Klawiatura
 systemowa, przycisk Wstecz, cykl życia, uprawnienia i API platformowe wymagają
-późniejszych sprawdzeń na fizycznym telefonie. Szczegóły: `docs/TESTING.md`.
+późniejszych sprawdzeń na fizycznym telefonie. Szczegóły: `docs/DEVELOPMENT.md`.
 
 ## Dane i skuteczność nauki
 
@@ -130,7 +130,7 @@ późniejszych sprawdzeń na fizycznym telefonie. Szczegóły: `docs/TESTING.md`
 - Próba jest zapisywana po zatwierdzeniu; zapis i wznowienie są idempotentne.
 - A–D, pierwsza litera i samodzielne pisanie to różne dowody wiedzy. Sukces
   rozpoznawania nie aktualizuje automatycznie pamięci pełnego przypominania.
-- Jedna literówka w trybie pisanym według `docs/CAPITALS.md`; pokazuj poprawną
+- Jedna literówka w trybie pisanym według `docs/LEARNING.md`; pokazuj poprawną
   pisownię. Fuzzy match nie usprawiedliwia wybrania złej opcji A–D.
 - Bez internetowych kafelków/fontów/pytań podczas nauki. Nowa zależność wymaga
   konkretnej korzyści, kontroli licencji/offline i decyzji Sola w zakresie zadania.
@@ -138,7 +138,7 @@ późniejszych sprawdzeń na fizycznym telefonie. Szczegóły: `docs/TESTING.md`
 ## Weryfikacja i bezpieczeństwo pracy
 
 Używaj Dart MCP, gdy jest podłączony i ma odpowiednie narzędzie; inaczej
-istniejącego SDK opisanego w `docs/AGENT_ENVIRONMENT.md`. Po zmianach Dart/Flutter:
+istniejącego SDK opisanego w `docs/DEVELOPMENT.md`. Po zmianach Dart/Flutter:
 
 ```bash
 dart format --output=none --set-exit-if-changed lib test
@@ -147,6 +147,10 @@ flutter test
 python3 tools/data_pipeline/build_map.py --check
 python3 tools/data_pipeline/build_capitals.py --check
 python3 tools/data_pipeline/build_flags.py --check
+python3 tools/data_pipeline/build_africa.py --check
+python3 tools/data_pipeline/build_asia.py --check
+python3 tools/data_pipeline/build_relief.py --check
+python3 tools/data_pipeline/build_trivia.py --check
 ```
 
 Testy jednostkowe, widgetów, odpowiednie integracyjne oraz `flutter analyze`
@@ -159,11 +163,32 @@ Raport rozdziela wykonane sprawdzenia, wyniki oraz ograniczenia środowiska.
 
 Bez destrukcyjnych operacji Git i usuwania danych użytkownika. Worktree wymaga
 istniejącego commita: brak HEAD nie uzasadnia automatycznego commita lub utraty
-nieśledzonych plików. Stan narzędzi i aktywacja: `docs/AGENT_ENVIRONMENT.md`.
+nieśledzonych plików. Stan narzędzi i aktywacja: `docs/DEVELOPMENT.md`.
 
-## Aktualne quizy mapowe
+## Niezmienniki nauki
 
-Kliknięcie państwa jest jawnym zatwierdzeniem próby: do trzech różnych państw,
-FSRS ocenia pierwszą próbę raz, kolejne służą ćwiczeniu. Nie pokazuj celu po
-pierwszym/drugim błędzie. Flagi mają osobne karty; grafiki tylko z paczki
-zweryfikowanej `build_flags.py --check`. Bez ponownego generowania flag przez AI.
+Pełne reguły: `docs/LEARNING.md` (nauka) i `docs/CONTENT.md` (źródła). Nie łam bez decyzji użytkownika:
+
+- 12 kart FSRS na kraj (mapa, stolica, flaga → nazwa, flaga → mapa × 3 poziomy);
+  A–D ma własny FSRS i nie zalicza pisania. Wspólne kraje kontynentów mają jedną kartę.
+- Główna zasada: nie pytaj o to, co użytkownik zna; skup się na trudnościach;
+  okresowo sprawdzaj opanowane. Trafienie przy pierwszym kontakcie (pisanie,
+  mapa normalna) = Easy; odstęp maks. 60 dni; literówka o stopień niżej.
+- Mapa: kliknięcie = odpowiedź, do 3 różnych prób, FSRS ocenia pierwszą. Po 1./2.
+  błędzie etykieta tylko z nazwą wskazanego kraju, bez ujawniania i kadrowania celu;
+  po 3. jednorazowe przybliżenie rozwiązania (≤ +1,5 zoomu). Ręczny zoom/pan
+  i zoom klastra zachowane. Nie przywracaj wyboru z listy w quizie.
+- Kadr normalny ≈ cały kontynent; łatwe poziomy przybliżają nad pytany kraj
+  z losowym przesunięciem, nigdy idealnie na środku.
+- Błąd w serii wraca po 3–5 pytaniach jako nieoceniane ćwiczenie; trudny kraj
+  wymaga 3 trafień z rzędu rozłożonych w czasie.
+- Limit 3 nowości dziennie jest globalny (trafienia w „Kuna sprawdzi” go nie zużywają);
+  kolejna runda i pytania kontrolne nie są dopychane na siłę; rozpoczęta seria
+  zachowuje format i migawkę.
+- Medale 50/80/100%, zaliczenie: dwie poprawne oceny w różne dni, ≥24 h, bez błędu
+  pomiędzy; dziedziczenie poziomów bez kopiowania FSRS. Passa per kontynent sesji.
+- Kuna, medale, passy i ciekawostki nie zmieniają wyniku, FSRS ani dostępu do powtórek;
+  ciekawostka (także po 3. błędzie) nie zdradza przyszłych pytań.
+- Flagi tylko z paczki sprawdzonej `build_flags.py --check`, bez generowania AI.
+- Relief z danych Natural Earth, nie z makiet. Preferencje są oddzielne od postępu
+  i przetrwają reset.

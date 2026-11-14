@@ -4,127 +4,155 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../settings/app_preferences.dart';
 import 'flags.dart';
 
-class FlagsSetupScreen extends ConsumerStatefulWidget {
+class FlagsSetupScreen extends ConsumerWidget {
   const FlagsSetupScreen({super.key});
-  @override
-  ConsumerState<FlagsSetupScreen> createState() => _FlagsSetupScreenState();
-}
 
-class _FlagsSetupScreenState extends ConsumerState<FlagsSetupScreen> {
-  FlagDifficulty _difficulty = FlagDifficulty.choice;
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Flagi Europy')),
-    body: SafeArea(
-      top: false,
-      child: ref
-          .watch(flagsProvider)
-          .when(
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (_, _) =>
-                LoadError(onRetry: () => ref.invalidate(flagsProvider)),
-            data: (flags) => ref
-                .watch(dashboardProvider)
-                .when(
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  error: (_, _) => LoadError(
-                    onRetry: () => ref.invalidate(dashboardProvider),
-                  ),
-                  data: (data) {
-                    final pending = data.flagsSessions.any(
-                      (s) => s.row.difficulty == _difficulty.name,
-                    );
-                    final pendingMap = data.flagsSessions.any(
-                      (s) => s.row.difficulty == 'map',
-                    );
-                    return Center(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 620),
-                        child: ListView(
-                          padding: const EdgeInsets.all(24),
-                          children: [
-                            Text(
-                              'Jakie to państwo?',
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              '${flags.facts.length} flag · lokalne grafiki · 10 pytań',
-                            ),
-                            const SizedBox(height: 16),
-                            RadioGroup<FlagDifficulty>(
-                              groupValue: _difficulty,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  setState(() => _difficulty = value);
-                                }
-                              },
-                              child: Column(
-                                children: [
-                                  for (final difficulty
-                                      in FlagDifficulty.values.where(
-                                        (d) => d != FlagDifficulty.map,
-                                      ))
+  Widget build(BuildContext context, WidgetRef ref) {
+    final continent = ref.watch(selectedContinentProvider);
+    return Scaffold(
+      appBar: AppBar(title: Text('Flagi ${continent.genitive}')),
+      body: SafeArea(
+        top: false,
+        child: ref
+            .watch(appPreferencesProvider)
+            .when(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (_, _) => LoadError(
+                onRetry: () => ref.invalidate(appPreferencesProvider),
+              ),
+              data: (preferences) => ref
+                  .watch(flagsProvider)
+                  .when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (_, _) =>
+                        LoadError(onRetry: () => ref.invalidate(flagsProvider)),
+                    data: (flags) => ref
+                        .watch(dashboardProvider)
+                        .when(
+                          loading: () =>
+                              const Center(child: CircularProgressIndicator()),
+                          error: (_, _) => LoadError(
+                            onRetry: () => ref.invalidate(dashboardProvider),
+                          ),
+                          data: (data) {
+                            final selectedDifficulty = preferences
+                                .difficultyFor(continent);
+                            final pending = data.flagsSessions.any(
+                              (s) =>
+                                  s.row.difficulty == selectedDifficulty.mode,
+                            );
+                            final pendingMap = data.flagsSessions.any(
+                              (s) => s.row.difficulty == 'map',
+                            );
+                            return Center(
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 620,
+                                ),
+                                child: ListView(
+                                  padding: const EdgeInsets.all(24),
+                                  children: [
+                                    Text(
+                                      'Rozpoznawaj flagi państw.',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall,
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      '${flags.facts.length} flag · lokalne grafiki · 10 pytań',
+                                    ),
+                                    const SizedBox(height: 16),
                                     Card.filled(
-                                      child: RadioListTile<FlagDifficulty>(
-                                        value: difficulty,
-                                        title: Text(difficulty.label),
-                                        subtitle: Text(difficulty.description),
-                                        contentPadding: const EdgeInsets.all(
-                                          12,
+                                      child: ListTile(
+                                        leading: const Icon(Icons.tune),
+                                        title: Text(
+                                          'Poziom: ${selectedDifficulty.label}',
+                                        ),
+                                        subtitle: Text(
+                                          selectedDifficulty.description,
+                                        ),
+                                        trailing: const Icon(
+                                          Icons.chevron_right,
+                                        ),
+                                        onTap: () => context.push('/settings'),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: TextButton.icon(
+                                        onPressed: () =>
+                                            context.push('/settings'),
+                                        icon: const Icon(
+                                          Icons.settings_outlined,
+                                        ),
+                                        label: const Text(
+                                          'Zmień poziom w ustawieniach',
                                         ),
                                       ),
                                     ),
-                                ],
+                                    const SizedBox(height: 8),
+                                    const Text(
+                                      'Przy wpisywaniu dopuszczamy jedną literówkę. Polskie znaki nie są wymagane.',
+                                    ),
+                                    const SizedBox(height: 16),
+                                    FilledButton(
+                                      onPressed: () => _start(
+                                        context,
+                                        ref,
+                                        selectedDifficulty.mode,
+                                      ),
+                                      child: Text(
+                                        pending
+                                            ? 'Wznów quiz flag'
+                                            : 'Rozpocznij quiz flag',
+                                      ),
+                                    ),
+                                    const SizedBox(height: 28),
+                                    Text(
+                                      'Flaga → mapa',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                    ),
+                                    const SizedBox(height: 8),
+                                    const Text(
+                                      'Rozpoznaj flagę i wskaż państwo na mapie. Masz trzy próby.',
+                                    ),
+                                    const SizedBox(height: 12),
+                                    FilledButton.tonalIcon(
+                                      onPressed: () => _start(
+                                        context,
+                                        ref,
+                                        FlagDifficulty.map.name,
+                                      ),
+                                      icon: const Icon(Icons.public),
+                                      label: Text(
+                                        pendingMap
+                                            ? 'Wznów: flaga → mapa'
+                                            : 'Rozpocznij: flaga → mapa',
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 16),
-                            const Text(
-                              'Przy wpisywaniu dopuszczamy jedną literówkę. Polskie znaki nie są wymagane.',
-                            ),
-                            const SizedBox(height: 16),
-                            FilledButton(
-                              onPressed: () => _start(_difficulty),
-                              child: Text(
-                                pending
-                                    ? 'Wznów quiz flag'
-                                    : 'Rozpocznij quiz flag',
-                              ),
-                            ),
-                            const SizedBox(height: 28),
-                            Text(
-                              'Flaga → mapa',
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'Rozpoznaj flagę i wskaż państwo na mapie. Masz trzy próby.',
-                            ),
-                            const SizedBox(height: 12),
-                            FilledButton.tonalIcon(
-                              onPressed: () => _start(FlagDifficulty.map),
-                              icon: const Icon(Icons.public),
-                              label: Text(
-                                pendingMap
-                                    ? 'Wznów: flaga → mapa'
-                                    : 'Rozpocznij: flaga → mapa',
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      ),
-                    );
-                  },
-                ),
-          ),
-    ),
-  );
-  Future<void> _start(FlagDifficulty difficulty) async {
-    await context.push('/learn?topic=flags&level=${difficulty.name}');
-    if (mounted) {
+                  ),
+            ),
+      ),
+    );
+  }
+
+  Future<void> _start(BuildContext context, WidgetRef ref, String mode) async {
+    await context.push('/learn?topic=flags&level=$mode');
+    if (context.mounted) {
       ref.invalidate(dashboardProvider);
       ref.invalidate(dailyOverviewProvider);
       ref.invalidate(learningProgressProvider);

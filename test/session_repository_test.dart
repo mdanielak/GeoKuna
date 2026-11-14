@@ -36,13 +36,28 @@ void main() {
     if (!defaultDbClosed) await db.close();
   });
 
-  test('starts ten distinct questions and resumes the same session', () async {
-    final session = await repository.start(ids, random: Random(7));
+  test('ten distinct questions resume, finish and keep history', () async {
+    var session = await repository.start(ids, random: Random(7));
     expect(session.countryIds.toSet(), hasLength(10));
     final resumed = await repository.start(ids);
     expect(resumed.row.id, session.row.id);
     expect(resumed.countryIds, session.countryIds);
     expect(await repository.history(), isEmpty);
+    session = await repository.start(ids);
+    for (var i = 0; i < 10; i++) {
+      session = await repository.answer(
+        session.row.id,
+        i,
+        session.targetId,
+        ids.toSet(),
+      );
+      session = await repository.advance(session.row.id, i);
+    }
+    expect(session.completed, isTrue);
+    expect(session.correctCount, 10);
+    expect(await repository.active(), isNull);
+    expect(await repository.history(), hasLength(10));
+    expect((await repository.start(ids)).row.id, isNot(session.row.id));
   });
 
   test(
@@ -93,24 +108,6 @@ void main() {
       expect(duplicateAdvance.index, 1);
     },
   );
-
-  test('finishes all ten questions and starts a fresh session without deleting history', () async {
-    var session = await repository.start(ids);
-    for (var i = 0; i < 10; i++) {
-      session = await repository.answer(
-        session.row.id,
-        i,
-        session.targetId,
-        ids.toSet(),
-      );
-      session = await repository.advance(session.row.id, i);
-    }
-    expect(session.completed, isTrue);
-    expect(session.correctCount, 10);
-    expect(await repository.active(), isNull);
-    expect(await repository.history(), hasLength(10));
-    expect((await repository.start(ids)).row.id, isNot(session.row.id));
-  });
 
   test('early finish preserves answers and memory and is idempotent', () async {
     var now = DateTime.utc(2026, 1, 1);
