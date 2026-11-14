@@ -41,6 +41,7 @@ flutter:
     - assets/content/africa/
     - assets/content/asia/
     - assets/maps/
+    - assets/maps/context/
     - assets/maps/styles/relief/
     - assets/mascot/
     - assets/flags/europe-0.1.0/

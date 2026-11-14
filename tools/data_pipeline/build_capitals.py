@@ -30,7 +30,7 @@ def validate(data):
         assert all(isinstance(a, str) and a.strip() for a in fact['aliases'])
     by_id = {f['country_id']: f for f in facts}
     assert by_id['POL']['name'] == 'Warszawa'
-    assert by_id['KAZ']['name'] == 'Astana'
+    assert by_id['TUR']['name'] == 'Ankara'
     assert by_id['NLD']['name'] == 'Amsterdam' and by_id['NLD']['prompt']
     assert by_id['CHE']['name'] == 'Berno' and by_id['CHE']['prompt']
 

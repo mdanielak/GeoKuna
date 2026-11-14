@@ -15,7 +15,7 @@ void main() {
     var now = DateTime.utc(2026, 11, 13, 12);
     final repo = SessionRepository(db, clock: () => now);
     var progress = await repo.learningProgress(catalog);
-    expect(progress, hasLength(51 * 6)); // 3 map levels + 3 capital formats
+    expect(progress, hasLength(47 * 6)); // 3 map levels + 3 capital formats
     expect(
       progress.every((p) => p.status == LearningProgressStatus.insufficient),
       isTrue,

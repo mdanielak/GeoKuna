@@ -13,12 +13,8 @@
     "assets/flags/europe-0.1.0/al.png": "87d472022b667128a01b3825f8c1d78c30339400028ecf56d355db3d85455151",
     "tools/data_pipeline/flags_sources/ad.svg": "4bd80209ab5bf4e474c789e9fc21635f51a18275151d9f948bea92c05c7e8964",
     "assets/flags/europe-0.1.0/ad.png": "972dcf7658ef708bc26e2e0af240d1937a914182ae34dbc1a43a78f5c1fb54ee",
-    "tools/data_pipeline/flags_sources/am.svg": "b52bf90a8165cecd27e6cacfab8a52934566e090aa33d17b0c418bf385d3d1b8",
-    "assets/flags/europe-0.1.0/am.png": "4cc95822ed109742f417b12323e533497f12f003227a1afa7767353342671fe6",
     "tools/data_pipeline/flags_sources/at.svg": "28306a3d65e26dd0720063b4825ffdf3d86c306360a77351b78caacc09401d96",
     "assets/flags/europe-0.1.0/at.png": "c41dd542932c5d4e0ab9c0202901b36586792efc1720dab046f8133634233b24",
-    "tools/data_pipeline/flags_sources/az.svg": "1a04b7f55b879b568a82b419dad78b7943d60788370f85731a82bbe772e5f3f2",
-    "assets/flags/europe-0.1.0/az.png": "0dee3f134ca63f8760b2dd3b888fed2cf1504facff0c42341f9235c2f827d769",
     "tools/data_pipeline/flags_sources/be.svg": "cedd0a665a0ab17ba183e8e41694e097db4c9c1c06040ed62924ca9292f24e4e",
     "assets/flags/europe-0.1.0/be.png": "f61741c9c7e8d05f11bf2b02706cbd2ff2eb428b19f8d331d9c969c98de77172",
     "tools/data_pipeline/flags_sources/by.svg": "e23393e407d5ab20cece67b85595707da0644f4f63cb57efc9ce54734cc60de3",
@@ -45,8 +41,6 @@
     "assets/flags/europe-0.1.0/fr.png": "8c6ce32b8baf881398242b5790f867a3b9583036af09d1d204c738ae50922d5a",
     "tools/data_pipeline/flags_sources/gr.svg": "86cce2a11b19e83087b4ea15be2c293563f8dc90df958488174c2194e2adac07",
     "assets/flags/europe-0.1.0/gr.png": "d701b2bbe5d143a048f4bff17cc1b083c19377c72930b01ac732d12ef09a75e8",
-    "tools/data_pipeline/flags_sources/ge.svg": "f8d487ea68fb839dff8d7836d4ecbdcaa4ed7dd7ca4c6eb2bbfe6e8bb95eebf7",
-    "assets/flags/europe-0.1.0/ge.png": "61b4aa36b838d53a4ad6da0b3854d60e9c6d27ece7523cb4c19c936f76d411bb",
     "tools/data_pipeline/flags_sources/es.svg": "e6ce1922eba61c4ac26f70845b8c54ff8f29e33ef64aa35a150c719c07f76ef3",
     "assets/flags/europe-0.1.0/es.png": "26919bb56a1df8967d5f301fcaa115d1264a0bbd987a25b3bddaacc9e6279e33",
     "tools/data_pipeline/flags_sources/nl.svg": "0d04d9eadc49c5514881c1c3f7c465a10a37ead378bc5e61cf96fdfcb3599e54",
@@ -55,8 +49,6 @@
     "assets/flags/europe-0.1.0/ie.png": "7b24aa5e41e80c22bb0097a1e4fabb8b7ca1aaeebf5eec688417fdde906f893a",
     "tools/data_pipeline/flags_sources/is.svg": "2f4de4153dd44e63cc532733fe16c36410302f00faf2a5edda2dca6c19d42107",
     "assets/flags/europe-0.1.0/is.png": "c12045d27a4d72ca51c0cc675531ff3b7d51d6ce26fde22d3e51c8337161692b",
-    "tools/data_pipeline/flags_sources/kz.svg": "2091001401171cb135b0683e1295a9748c9fb6658b54b716b4a7c7072258e0dd",
-    "assets/flags/europe-0.1.0/kz.png": "9bdff657da27566cfea0cb01d61003a1d167472f4ef201c20abc4a7dfec068d0",
     "tools/data_pipeline/flags_sources/xk.svg": "b99d21fab5c2e9d106a9d48ec7e300dd068b116f71126a48b116c2cc539c7bba",
     "assets/flags/europe-0.1.0/xk.png": "3215bd6e77adcb2d7f0e01a9fc6bfb0d1020111bab4a932555ebc8df98d5ae67",
     "tools/data_pipeline/flags_sources/li.svg": "88f34e0aa148bb98d2ff7e47eec4d1a65557f699be53215a6ce69d7cf48508d4",
@@ -111,6 +103,6 @@
     "assets/flags/europe-0.1.0/gb.png": "b70b22c49d76449bd0613dd2e2d792ff402f479ba43ec567419f2b63f4043dd8",
     "tools/data_pipeline/flags_sources/it.svg": "15777a0dc5a5dd8af5d75deacec27d2d6dab190aa7295d61db601a28a71b5c6f",
     "assets/flags/europe-0.1.0/it.png": "0205488f6be9eb0b31ed9cfe41a1f2396478b508d09ac66aa5c92b0f0aaa62f5",
-    "assets/content/flags.json": "4141615c5da39fb5b9a916aa76f6a46b06b05b2167134a47b173e1d741f08965"
+    "assets/content/flags.json": "c7b426a3f0cde54c5f3f21050498439e9dff4821b47690c63014cdff62800d28"
   }
 }

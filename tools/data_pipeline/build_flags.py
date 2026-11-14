@@ -43,7 +43,7 @@ def check():
     assert content['version'] == VERSION and content['source'] == BASE
     assert manifest['source'] == BASE and manifest['natural_earth_sha256'] == NE_SHA
     assert manifest['files']['assets/content/flags.json'] == digest(CONTENT.read_bytes())
-    assert len(flags) == len(countries) == 51
+    assert len(flags) == len(countries) == 47
     assert {f['country_id']: f['country_name'] for f in flags} == {c['id']: c['name'] for c in countries}
     assert len({f['country_id'] for f in flags}) == len({f['source_iso2'] for f in flags}) == len(flags)
     paths = set()

@@ -4,7 +4,7 @@
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
-- Europa 51, Afryka 54, Azja 50; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
+- Europa 47, Afryka 54, Azja 50; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
 - Mapa, stolice, flaga → nazwa, flaga → mapa; trzy poziomy i 12 kart FSRS na kraj;
   A–D z własnym FSRS rozpoznawania.
 - Dziś: zaległe najpierw, globalny limit 3 nowości, poziom per kontynent.

@@ -23,7 +23,7 @@ Po zmianie tabel: `dart run build_runner build` (wynik `database.g.dart` jest w 
 dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test
-for s in map capitals flags africa asia relief trivia; do
+for s in map capitals flags africa asia relief trivia context; do
   python3 tools/data_pipeline/build_$s.py --check
 done
 flutter build web --no-web-resources-cdn   # przy wydaniu

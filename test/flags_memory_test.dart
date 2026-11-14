@@ -25,7 +25,7 @@ void main() {
         capitals,
         flags: flags,
       );
-      expect(overview.newAvailable, 204);
+      expect(overview.newAvailable, 47 * 4);
       expect(overview.newRemainingToday, 3);
       final manual = await repo.startFlags(
         flags,
@@ -49,7 +49,7 @@ void main() {
       );
       expect(daily.countryIds.toSet().length, daily.countryIds.length);
       final progress = await repo.learningProgress(catalog, flags: flags);
-      expect(progress, hasLength(612));
+      expect(progress, hasLength(47 * 12));
       final map = await repo.startFlags(
         flags,
         FlagDifficulty.map,

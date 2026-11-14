@@ -8,7 +8,7 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 ## Komendy
 - `export PATH="$HOME/.local/share/geokuna/flutter/bin:$PATH"` — SDK nie jest w PATH (Flutter 3.50)
 - `flutter test 2>&1 | grep -E "^\s+/home.*_test.dart: |All tests passed" | sort -u` — wszystkie porażki (`tail -1` pokazuje tylko ostatnią)
-- `for s in map capitals flags africa asia relief trivia; do python3 tools/data_pipeline/build_$s.py --check; done`
+- `for s in map capitals flags africa asia relief trivia context; do python3 tools/data_pipeline/build_$s.py --check; done`
 - `dart run build_runner build` — po zmianie tabel; `database.g.dart` jest w repo
 - `/shots` — zrzuty kluczowych ekranów do przeglądu wyglądu (skill w `.claude/skills/shots/`)
 

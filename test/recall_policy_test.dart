@@ -68,7 +68,7 @@ void main() {
       }
       final entries = await repo.learningProgress(catalog, flags: flags);
       expect(entries.any((e) => e.difficulty == 'choice'), isTrue);
-      expect(entries.length, 51 * 12);
+      expect(entries.length, 47 * 12);
     },
   );
 }

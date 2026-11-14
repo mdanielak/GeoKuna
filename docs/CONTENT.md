@@ -31,12 +31,14 @@ jest granicą). Państwa transkontynentalne można wskazać w każdym widocznym 
 
 | Zakres | Okno | Obiekty |
 |---|---|---|
-| Europa | 32°W–65°E, 34°N–72°N | 51 |
+| Europa | 32°W–65°E, 34°N–72°N | 47 |
 | Afryka | 26°W–65°E, 36°S–38°N | 54 |
 | Azja | 20°E–180°E, 12°S–82°N | 50 |
 
-**Europa (51):** typowe 44 państwa, Kosowo oraz Cypr, Turcja, Gruzja, Armenia,
-Azerbejdżan i Kazachstan — świadomie szeroki zakres edukacyjny. Terytoria
+**Europa (47):** 44 państwa europejskie ONZ, Kosowo oraz Cypr i Turcja
+(wspólne z Azją: Cypr jako członek UE, Turcja jako kraj transkontynentalny).
+Kazachstan, Gruzja, Armenia i Azerbejdżan są celami tylko w Azji; na mapie
+Europy widać je jako ląd kontekstowy. Terytoria
 zależne nie są osobnymi pytaniami; Wyspy Alandzkie należą do Finlandii.
 Okno zachowuje Azory, Islandię i Kaukaz, pomija północne archipelagi.
 
@@ -60,6 +62,11 @@ Palestyna i Tajwan jako obszary o szczególnym statusie opisanym przez KSNG —
 ujęcie w quizie nie rozstrzyga statusu. Cypr Północny → Cypr; Hongkong i Makau →
 Chiny; Gaza i Zachodni Brzeg tworzą Palestynę. Pominięto fragmenty Rosji za
 południkiem 180°.
+
+**Ląd kontekstowy:** pozostały ląd w oknie każdej mapy (kraje spoza quizu tego
+kontynentu oraz obszary wycięte przez politykę, np. Krym na mapie Azji, Sahara
+Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`,
+`build_context.py`). Krym nie jest Rosją także na mapie Azji (walidator to sprawdza).
 
 Mikropaństwa (7 w Europie) mają znaczniki 48×48 dp; nakładające się znaczniki
 najpierw przybliżają mapę, dopiero potem wybierają kraj.

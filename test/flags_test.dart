@@ -9,7 +9,7 @@ import 'package:geokuna/features/learning/memory.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  test('51 sourced local flags, four unique names and one typo', () async {
+  test('47 sourced local flags, four unique names and one typo', () async {
     final catalog = await Catalog.load();
     final flags = await FlagCatalog.load();
     expect(flags.facts.length, catalog.countries.length);

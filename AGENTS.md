@@ -151,6 +151,7 @@ python3 tools/data_pipeline/build_africa.py --check
 python3 tools/data_pipeline/build_asia.py --check
 python3 tools/data_pipeline/build_relief.py --check
 python3 tools/data_pipeline/build_trivia.py --check
+python3 tools/data_pipeline/build_context.py --check
 ```
 
 Testy jednostkowe, widgetów, odpowiednie integracyjne oraz `flutter analyze`

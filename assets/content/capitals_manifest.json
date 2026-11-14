@@ -1,7 +1,7 @@
 {
   "source_sha256": "0ae270339e81939708fea46130f1579ca2dd443524dc9c4d25dc9d14f551b60a",
   "files": {
-    "assets/content/capitals.json": "d7162f0c11d67957304e7d551a9aaa2b342e0428435efb60632e4aa18a15e10b",
-    "tools/data_pipeline/capitals_curated.json": "d7162f0c11d67957304e7d551a9aaa2b342e0428435efb60632e4aa18a15e10b"
+    "assets/content/capitals.json": "4eaffb91af3f7478eec54e4e4a4659584f4068f87cc49e1b5297505d448b67af",
+    "tools/data_pipeline/capitals_curated.json": "4eaffb91af3f7478eec54e4e4a4659584f4068f87cc49e1b5297505d448b67af"
   }
 }

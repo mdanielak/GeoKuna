@@ -35,7 +35,7 @@ void main() {
     'bundled map covers every country and includes small-country markers',
     () async {
       final catalog = await Catalog.load();
-      expect(catalog.countries, hasLength(51));
+      expect(catalog.countries, hasLength(47));
       expect(
         catalog.shapes.map((s) => s.countryId).toSet(),
         catalog.countries.map((c) => c.id).toSet(),
@@ -46,7 +46,11 @@ void main() {
       expect(catalog.countries.where((c) => c.small), hasLength(7));
       expect(catalog.country('VAT').small, isTrue);
       expect(catalog.country('KOS').name, 'Kosowo');
-      expect(catalog.country('KAZ').name, 'Kazachstan');
+      // Kazakhstan and the South Caucasus are Asia-only; here they are context.
+      for (final id in ['KAZ', 'GEO', 'ARM', 'AZE']) {
+        expect(catalog.countries.any((c) => c.id == id), isFalse, reason: id);
+      }
+      expect(catalog.context, isNotEmpty);
       for (final id in ['DEU', 'CZE', 'HUN', 'ITA']) {
         expect(
           catalog.country(id).locationQuestion,

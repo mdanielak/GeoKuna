@@ -125,7 +125,7 @@ odpowiedzi nie są błędami); Wstecz zostawia serię do wznowienia.
 ## Postęp „na bieżąco”
 
 „Na bieżąco X%” = karty w stanie **Ćwiczysz** / wszystkie karty kontynentu
-(Europa 612, Afryka 648, Azja 600; wspólne kraje liczone kanonicznie).
+(Europa 564, Afryka 648, Azja 600; wspólne kraje liczone kanonicznie).
 
 - **Ćwiczysz:** jest zastosowana ocena FSRS, ostatnia odpowiedź poprawna,
   termin w przyszłości.

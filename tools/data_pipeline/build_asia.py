@@ -162,6 +162,10 @@ def build(pdf, source, places):
         source_feature = by_id[code]
         assert all(alias == source_feature['properties']['NAME_EN'] for alias in raw['aliases'])
         polygons = list(build_map.polygons(source_feature))
+        if code == 'RUS':
+            # Same policy as Europe: the exact Crimea polygon is Ukraine's, not
+            # Russia's. Ukraine is not an Asia quiz target, so it stays context.
+            polygons = [p for p in polygons if not all(32 <= x <= 37 and 44 <= y <= 47 for x, y in p[0])]
         if code == 'CYP':
             polygons += build_map.polygons(by_id['CYN'])
         if code == 'CHN':
@@ -248,6 +252,7 @@ def check():
     # Palestinian areas remain a separate selectable object.
     assert polygon_contains(by_id['CYP'], [33.9, 35.3]), 'Northern Cyprus must be selectable as Cyprus'
     assert polygon_contains(by_id['PSX'], [34.45, 31.5]), 'Gaza should be selectable as Palestine'
+    assert not polygon_contains(by_id['RUS'], [34.1, 44.95]), 'Crimea cannot select Russia'
     assert polygon_contains(by_id['TWN'], [121, 23.7]), 'Taiwan should be selectable'
     for code in SMALL_IDS:
         assert by_id[code]['geometry']['coordinates']

@@ -34,6 +34,7 @@ class Catalog {
     this.shapes, {
     this.continent = Continent.europe,
     this.version = 'custom',
+    this.context = const [],
   }) {
     if (countries.length != countries.map((c) => c.id).toSet().length ||
         countries.any((c) => !shapes.any((s) => s.countryId == c.id)) ||
@@ -46,6 +47,10 @@ class Catalog {
   final String version;
   final List<Country> countries;
   final List<CountryShape> shapes;
+
+  /// Neutral land around the quiz countries (never selectable): polygons as
+  /// rings, outer first.
+  final List<List<List<LatLng>>> context;
   Country country(String id) => countries.firstWhere((c) => c.id == id);
 
   static Future<Catalog> load({Continent continent = Continent.europe}) async {
@@ -90,11 +95,30 @@ class Catalog {
         );
       }
     }
+    final contextData = jsonDecode(
+      await rootBundle.loadString(
+        'assets/maps/context/${continent.name}.geojson',
+      ),
+    ) as Map<String, dynamic>;
     return Catalog(
       countries,
       shapes,
       continent: continent,
       version: content['version'] as String,
+      context: [
+        for (final feature in contextData['features'] as List)
+          for (final polygon in feature['geometry']['coordinates'] as List)
+            [
+              for (final ring in polygon as List)
+                [
+                  for (final point in ring as List)
+                    LatLng(
+                      (point[1] as num).toDouble(),
+                      (point[0] as num).toDouble(),
+                    ),
+                ],
+            ],
+      ],
     );
   }
 }

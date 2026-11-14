@@ -53,28 +53,38 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     final repository = ref.read(repositoryProvider);
     final catalogFuture = ref.read(catalogProvider.future);
     final catalog = await catalogFuture;
-    final LearningSession? session;
-    if (widget.daily) {
-      session = await repository.startDaily(
-        catalog,
-        await ref.read(capitalsProvider.future),
-        flags: await ref.read(flagsProvider.future),
-        mode: widget.dailyMode,
-      );
-    } else if (widget.flagDifficulty != null) {
-      session = await repository.startFlags(
-        await ref.read(flagsProvider.future),
-        widget.flagDifficulty!,
-      );
-    } else if (widget.capitalDifficulty != null) {
-      session = await repository.startCapitals(
-        await ref.read(capitalsProvider.future),
-        widget.capitalDifficulty!,
-      );
-    } else {
-      session = await repository.start(
-        catalog.countries.map((c) => c.id).toList(),
-      );
+    Future<LearningSession?> open() async {
+      if (widget.daily) {
+        return await repository.startDaily(
+          catalog,
+          await ref.read(capitalsProvider.future),
+          flags: await ref.read(flagsProvider.future),
+          mode: widget.dailyMode,
+        );
+      } else if (widget.flagDifficulty != null) {
+        return await repository.startFlags(
+          await ref.read(flagsProvider.future),
+          widget.flagDifficulty!,
+        );
+      } else if (widget.capitalDifficulty != null) {
+        return await repository.startCapitals(
+          await ref.read(capitalsProvider.future),
+          widget.capitalDifficulty!,
+        );
+      } else {
+        return await repository.start(
+          catalog.countries.map((c) => c.id).toList(),
+        );
+      }
+    }
+
+    var session = await open();
+    // A series started before a catalog change (e.g. countries moved to
+    // another continent) is closed with its answers kept, then replaced.
+    final known = catalog.countries.map((c) => c.id).toSet();
+    if (session != null && !session.countryIds.every(known.contains)) {
+      await repository.finish(session.row.id);
+      session = await open();
     }
     if (mounted) {
       ref.invalidate(dashboardProvider);

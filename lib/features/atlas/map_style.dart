@@ -24,6 +24,13 @@ class MapPalette {
     MapAppearance.paper => const Color(0xFF6F6650),
     MapAppearance.relief => const Color(0xFF4F6352),
   };
+
+  /// Land outside the quiz: neutral, so it reads as "not asked here".
+  Color get contextLand => switch (appearance) {
+    MapAppearance.atlas => const Color(0xFFE6E3DA),
+    MapAppearance.paper => const Color(0xFFE1DAC7),
+    MapAppearance.relief => const Color(0x40F2EFE6),
+  };
   double get boundaryWidth => appearance == MapAppearance.relief ? 1.3 : 1.2;
   Color get markerFill => const Color(0xFFFAF7E9);
 

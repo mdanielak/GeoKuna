@@ -10,15 +10,16 @@ ROOT = Path(__file__).resolve().parents[2]
 URL = ('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/'
        'v5.1.2/geojson/ne_50m_admin_0_countries.geojson')
 SHA256 = '3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb'
-# Educational scope: 44 UN-Europe states + Kosovo + six adjacent/transcontinental states.
+# Educational scope: 44 UN-Europe states + Kosovo + Cyprus and Turkey (shared with Asia).
+# Kazakhstan and the South Caucasus are Asia-only quiz targets (context land here).
 COUNTRIES = [
-    ('ALB', 'Albania'), ('AND', 'Andora'), ('ARM', 'Armenia'), ('AUT', 'Austria'),
-    ('AZE', 'Azerbejdżan'), ('BEL', 'Belgia'), ('BLR', 'Białoruś'),
+    ('ALB', 'Albania'), ('AND', 'Andora'), ('AUT', 'Austria'),
+    ('BEL', 'Belgia'), ('BLR', 'Białoruś'),
     ('BIH', 'Bośnia i Hercegowina'), ('BGR', 'Bułgaria'), ('HRV', 'Chorwacja'),
     ('CYP', 'Cypr'), ('MNE', 'Czarnogóra'), ('CZE', 'Czechy'), ('DNK', 'Dania'),
     ('EST', 'Estonia'), ('FIN', 'Finlandia'), ('FRA', 'Francja'), ('GRC', 'Grecja'),
-    ('GEO', 'Gruzja'), ('ESP', 'Hiszpania'), ('NLD', 'Holandia'), ('IRL', 'Irlandia'),
-    ('ISL', 'Islandia'), ('KAZ', 'Kazachstan'), ('KOS', 'Kosowo'), ('LIE', 'Liechtenstein'),
+    ('ESP', 'Hiszpania'), ('NLD', 'Holandia'), ('IRL', 'Irlandia'),
+    ('ISL', 'Islandia'), ('KOS', 'Kosowo'), ('LIE', 'Liechtenstein'),
     ('LTU', 'Litwa'), ('LUX', 'Luksemburg'), ('LVA', 'Łotwa'), ('MKD', 'Macedonia Północna'),
     ('MLT', 'Malta'), ('MDA', 'Mołdawia'), ('MCO', 'Monako'), ('DEU', 'Niemcy'),
     ('NOR', 'Norwegia'), ('POL', 'Polska'), ('PRT', 'Portugalia'), ('RUS', 'Rosja'),
@@ -121,8 +122,7 @@ def check():
     assert not contains_country(russia, (34.1, 44.95)), 'Crimea cannot select Russia'
     cyprus = next(f for f in geo['features'] if f['id'] == 'CYP')
     assert contains_country(cyprus, (33.9, 35.3)), 'Northern Cyprus must select Cyprus'
-    for code, point in [('GEO', (41.02, 43.0)), ('GEO', (43.97, 42.23)),
-                        ('AZE', (46.75, 39.75)), ('RUS', (20.5, 54.7)), ('FIN', (19.94, 60.1))]:
+    for code, point in [('RUS', (20.5, 54.7)), ('FIN', (19.94, 60.1))]:
         feature = next(f for f in geo['features'] if f['id'] == code)
         assert contains_country(feature, point), (code, point)
     for path, digest in manifest['files'].items():
@@ -166,13 +166,11 @@ def build(source):
             ring = clipped[0][0][:-1]
             longitude = round(sum(p[0] for p in ring) / len(ring), 6)
             latitude = round(sum(p[1] for p in ring) / len(ring), 6)
-        if code == 'KAZ':
-            longitude, latitude = 53, 50  # Representative point inside the rendering window.
         countries.append(dict(id=code, name=name, latitude=latitude, longitude=longitude,
                               small=code in SMALL_IDS, plural=code in PLURAL_IDS))
     outputs = {
         'assets/content/countries.json': {
-            'version': 'europe-location-0.2.0', 'source': URL, 'license': 'Public domain',
+            'version': 'europe-location-0.3.0', 'source': URL, 'license': 'Public domain',
             'countries': countries},
         'assets/maps/europe.geojson': {'type': 'FeatureCollection', 'features': selected},
     }

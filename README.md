@@ -8,7 +8,7 @@ nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
 
 ## Co potrafi
 
-- **Zakres:** Europa (51), Afryka (54), Azja (50) — mapa, stolice, flagi.
+- **Zakres:** Europa (47), Afryka (54), Azja (50) — mapa, stolice, flagi.
 - **Quizy:** wskaż kraj na mapie (do 3 prób), stolica i flaga → nazwa
   (A–D, pierwsza litera, pełne wpisanie z tolerancją jednej literówki),
   flaga → mapa.

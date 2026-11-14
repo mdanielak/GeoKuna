@@ -371,6 +371,21 @@ class _CountryMapState extends State<CountryMap> {
           ),
         ),
       if (widget.appearance == MapAppearance.paper) const MapGraticule(),
+      if (widget.catalog.context.isNotEmpty)
+        IgnorePointer(
+          child: PolygonLayer(
+            polygons: [
+              for (final polygon in widget.catalog.context)
+                Polygon(
+                  points: polygon.first,
+                  holePointsList: polygon.skip(1).toList(),
+                  color: _palette.contextLand,
+                  borderColor: _palette.boundary.withValues(alpha: .35),
+                  borderStrokeWidth: .6,
+                ),
+            ],
+          ),
+        ),
       GestureDetector(
         onTap: () {
           final hits = _hits.value?.hitValues;

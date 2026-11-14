@@ -13,7 +13,7 @@
   },
   "files": {
     "tools/data_pipeline/asia_curated.json": "d47176dd55b05fc4d8ae230fc4ca4afba77d42c99f99ab33fc584f72a97f4721",
-    "assets/maps/asia.geojson": "171c8e6bc93ddbadb03eaac3b5b80c5a0ca717f6205e27c3416fdd3f963a0f34",
+    "assets/maps/asia.geojson": "97d266bd60baea11a18756ac00bf3e4c6c3b5cc0750335b5602b0bd194c8cd4e",
     "assets/content/asia/countries.json": "73e23d92fe70e3abc0e0ea92b3831c80c5e7798134979123560912041e55c770",
     "assets/content/asia/capitals.json": "4bdbcff2e9325f371eec0adbdcf73f344845d571f2114c6ab6bce6947cf57609",
     "assets/content/asia/flags.json": "7b88aad8219ebe74266175004909c7c696c955a8f4540b871c2997a63b6d1757",

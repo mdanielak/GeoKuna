@@ -27,18 +27,6 @@
       "verified_at": "2026-11-12"
     },
     {
-      "id": "capital:ARM",
-      "country_id": "ARM",
-      "name": "Erywań",
-      "aliases": [
-        "Yerevan",
-        "Jerewan"
-      ],
-      "source_page": 20,
-      "status": "verified",
-      "verified_at": "2026-11-12"
-    },
-    {
       "id": "capital:AUT",
       "country_id": "AUT",
       "name": "Wiedeń",
@@ -46,15 +34,6 @@
         "Wien"
       ],
       "source_page": 20,
-      "status": "verified",
-      "verified_at": "2026-11-12"
-    },
-    {
-      "id": "capital:AZE",
-      "country_id": "AZE",
-      "name": "Baku",
-      "aliases": [],
-      "source_page": 21,
       "status": "verified",
       "verified_at": "2026-11-12"
     },
@@ -187,15 +166,6 @@
       "verified_at": "2026-11-12"
     },
     {
-      "id": "capital:GEO",
-      "country_id": "GEO",
-      "name": "Tbilisi",
-      "aliases": [],
-      "source_page": 30,
-      "status": "verified",
-      "verified_at": "2026-11-12"
-    },
-    {
       "id": "capital:ESP",
       "country_id": "ESP",
       "name": "Madryt",
@@ -231,15 +201,6 @@
       "name": "Reykjavík",
       "aliases": [],
       "source_page": 34,
-      "status": "verified",
-      "verified_at": "2026-11-12"
-    },
-    {
-      "id": "capital:KAZ",
-      "country_id": "KAZ",
-      "name": "Astana",
-      "aliases": [],
-      "source_page": 36,
       "status": "verified",
       "verified_at": "2026-11-12"
     },
