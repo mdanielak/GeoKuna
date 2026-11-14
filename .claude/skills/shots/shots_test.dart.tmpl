@@ -1,0 +1,195 @@
+// GeoKuna screenshot harness for the /shots skill. Copied to the scratchpad and run
+// with `flutter test --update-goldens`; never committed as a test.
+import 'dart:io';
+
+import 'package:drift/native.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
+import 'package:geokuna/app/app.dart';
+import 'package:geokuna/app/providers.dart';
+import 'package:geokuna/core/database/database.dart';
+import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/atlas/country_map.dart';
+import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/country_trivia.dart';
+import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/session_repository.dart';
+import 'package:material_ui/material_ui.dart';
+
+final sdk = '${Platform.environment['HOME']}/.local/share/geokuna/flutter/bin/cache/artifacts/material_fonts';
+
+Future<void> loadFonts() async {
+  final roboto = FontLoader('Roboto');
+  for (final w in ['Regular', 'Medium', 'Bold', 'Light', 'Black']) {
+    roboto.addFont(
+      Future.value(ByteData.sublistView(File('$sdk/Roboto-$w.ttf').readAsBytesSync())),
+    );
+  }
+  await roboto.load();
+  final icons = FontLoader('MaterialIcons')
+    ..addFont(
+      Future.value(
+        ByteData.sublistView(File('$sdk/MaterialIcons-Regular.otf').readAsBytesSync()),
+      ),
+    );
+  await icons.load();
+}
+
+void main() {
+  late Catalog catalog;
+  late CapitalCatalog capitals;
+  late FlagCatalog flags;
+  late CountryTriviaCatalog trivia;
+
+  Future<AppDatabase> app(WidgetTester tester, {Size size = const Size(390, 844), double text = 1}) async {
+    await tester.runAsync(loadFonts);
+    final data = (await tester.runAsync(() async => (
+          await Catalog.load(),
+          await CapitalCatalog.load(),
+          await FlagCatalog.load(),
+          await CountryTriviaCatalog.load(),
+        )))!;
+    (catalog, capitals, flags, trivia) = data;
+    tester.view.physicalSize = size * 2;
+    tester.view.devicePixelRatio = 2;
+    tester.platformDispatcher.textScaleFactorTestValue = text;
+    addTearDown(tester.view.reset);
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox());
+      await db.close();
+    });
+    return db;
+  }
+
+  Future<void> settle(WidgetTester tester) async {
+    for (var i = 0; i < 8; i++) {
+      await tester.runAsync(() async {
+        for (final e in find.byType(Image).evaluate()) {
+          await precacheImage((e.widget as Image).image, e);
+        }
+        await Future<void>.delayed(const Duration(milliseconds: 60));
+      });
+      await tester.pump(const Duration(milliseconds: 300));
+    }
+  }
+
+  Future<void> pumpApp(WidgetTester tester, AppDatabase db) async {
+    await tester.pumpWidget(ProviderScope(overrides: [
+      databaseProvider.overrideWithValue(db),
+      catalogProvider.overrideWith((ref) async => catalog),
+      capitalsProvider.overrideWith((ref) async => capitals),
+      flagsProvider.overrideWith((ref) async => flags),
+      countryTriviaProvider.overrideWith((ref) async => trivia),
+    ], child: const GeoKunaApp()));
+    await settle(tester);
+  }
+
+  Future<void> shot(WidgetTester tester, String name) async {
+    await settle(tester);
+    await expectLater(find.byType(GeoKunaApp), matchesGoldenFile('out/$name.png'));
+  }
+
+  void go(WidgetTester tester, String path) =>
+      GoRouter.of(tester.element(find.byType(Scaffold).first)).go(path);
+
+  testWidgets('01 today fresh', (tester) async {
+    final db = await app(tester);
+    await pumpApp(tester, db);
+    await shot(tester, '01_today');
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, -500));
+    await shot(tester, '02_today_scrolled');
+  });
+
+  testWidgets('03 map quiz states', (tester) async {
+    final db = await app(tester);
+    await tester.runAsync(() => SessionRepository(db).start(['NOR', 'POL', 'DEU']));
+    await pumpApp(tester, db);
+    go(tester, '/learn');
+    await shot(tester, '03_map_question');
+    final map = () => tester.widget<CountryMap>(find.byType(CountryMap));
+    final target = (await tester.runAsync(() => SessionRepository(db).active()))!.targetId;
+    final wrong = ['SWE', 'FIN', 'DNK', 'POL'].where((c) => c != target).toList();
+    map().onSelected(wrong[0]);
+    await shot(tester, '04_map_one_miss');
+    map().onSelected(wrong[1]);
+    await settle(tester);
+    map().onSelected(wrong[2]);
+    await tester.pump(const Duration(seconds: 2));
+    await shot(tester, '05_map_revealed_trivia');
+  });
+
+  testWidgets('06 capital write and typo', (tester) async {
+    final db = await app(tester);
+    await pumpApp(tester, db);
+    go(tester, '/learn?topic=capitals&level=write');
+    await shot(tester, '06_capital_question');
+    final s = (await tester.runAsync(() => SessionRepository(db).activeCapitals()))!.first;
+    final name = s.capitalQuestion.fact.name;
+    await tester.enterText(find.byType(TextFormField), '${name}x');
+    await tester.tap(find.text('Sprawdź odpowiedź'));
+    await shot(tester, '07_capital_typo');
+  });
+
+  testWidgets('08 flag choice', (tester) async {
+    final db = await app(tester);
+    await pumpApp(tester, db);
+    go(tester, '/learn?topic=flags&level=choice');
+    await shot(tester, '08_flag_choice');
+  });
+
+  testWidgets('09 summary', (tester) async {
+    final db = await app(tester);
+    final repo = SessionRepository(db);
+    await tester.runAsync(() async {
+      var s = (await repo.startDaily(catalog, capitals, flags: flags))!;
+      var i = 0;
+      while (!s.completed) {
+        final ok = i++ != 1;
+        if (s.isMapAt(s.index)) {
+          final ids = catalog.countries.map((c) => c.id).toSet();
+          final pick = ok ? s.targetId : ids.firstWhere((c) => c != s.targetId);
+          s = await repo.guessMap(s.row.id, s.index, pick, ids, expectedGuessIndex: 0);
+          if (!ok) {
+            for (var g = 1; s.currentAttempt == null; g++) {
+              s = await repo.guessMap(s.row.id, s.index, ids.where((c) => c != s.targetId).elementAt(g), ids, expectedGuessIndex: g);
+            }
+          }
+        } else if (s.isCapital) {
+          s = await repo.answerCapital(s.row.id, s.index, ok ? s.capitalQuestion.fact.name : 'Xyz');
+        } else {
+          s = await repo.answerFlag(s.row.id, s.index, ok ? s.flagQuestionAt(s.index).countryName : 'Xyz');
+        }
+        s = await repo.advance(s.row.id, s.index);
+      }
+    });
+    await pumpApp(tester, db);
+    await shot(tester, '09_today_after');
+    go(tester, '/daily?mode=extra');
+    await settle(tester);
+    await tester.tap(find.byTooltip('Zakończ quiz'));
+    await settle(tester);
+    await tester.tap(find.text('Zakończ quiz').last);
+    await shot(tester, '10_summary_partial');
+  });
+
+  testWidgets('11 learning overview, settings, atlas', (tester) async {
+    final db = await app(tester);
+    await pumpApp(tester, db);
+    go(tester, '/learning');
+    await shot(tester, '11_my_learning');
+    go(tester, '/settings');
+    await shot(tester, '12_settings');
+    go(tester, '/atlas');
+    await shot(tester, '13_atlas');
+  });
+
+  testWidgets('14 small phone large text', (tester) async {
+    final db = await app(tester, size: const Size(320, 640), text: 1.6);
+    await pumpApp(tester, db);
+    await shot(tester, '14_today_small_text');
+  });
+}
