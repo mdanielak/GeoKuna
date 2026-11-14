@@ -1,5 +1,5 @@
 {
-  "version": "country-trivia-0.1.0",
+  "version": "country-trivia-0.2.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -11,11 +11,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "afg-polozenie",
-        "text": "Na południowym zachodzie Afganistanu rozciągają się równiny.",
+        "id": "afg-wachan",
+        "text": "Afganistan nie ma dostępu do morza, a jego najwyższe szczyty wznoszą się w Korytarzu Wachańskim.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/af.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "afg-najwyzszy-punkt",
@@ -73,11 +73,11 @@
     ],
     "AND": [
       {
-        "id": "and-krajobraz",
-        "text": "Andora leży w Pirenejach i nie ma dostępu do morza.",
+        "id": "and-szlaki",
+        "text": "Andora nie ma dostępu do morza, a przez jej terytorium wiodą ważne szlaki przez Pireneje.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/an.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "and-polozenie",
@@ -119,11 +119,11 @@
     ],
     "ARM": [
       {
-        "id": "arm-krajobraz",
-        "text": "Jezioro Sewan leży w górach Małego Kaukazu.",
+        "id": "arm-sewan",
+        "text": "Sewan to największe jezioro w paśmie Małego Kaukazu.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/am.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "arm-polozenie",
@@ -188,18 +188,18 @@
     ],
     "BDI": [
       {
-        "id": "bdi-krajobraz",
-        "text": "Burundi leży na wododziale dorzeczy Nilu i Konga.",
+        "id": "bdi-kagera",
+        "text": "Kagera, która wpływa do Jeziora Wiktorii, to najdalej wysunięte źródło Nilu Białego.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
-        "id": "bdi-polozenie",
-        "text": "Na wschodzie górzyste tereny Burundi przechodzą w płaskowyż.",
+        "id": "bdi-wododzial",
+        "text": "Burundi leży na grzbiecie wododziału między dorzeczami Nilu i Konga.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/by.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "bdi-najwyzszy-punkt",
@@ -218,11 +218,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "bel-polozenie",
-        "text": "W południowo-wschodniej Belgii rozciągają się Ardeny.",
+        "id": "bel-bruksela",
+        "text": "Większość stolic Europy Zachodniej leży w promieniu 1000 km od Brukseli, siedziby UE i NATO.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/be.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "bel-najwyzszy-punkt",
@@ -280,11 +280,11 @@
     ],
     "BGD": [
       {
-        "id": "bgd-krajobraz",
-        "text": "Znaczna część Bangladeszu leży w deltach wielkich rzek.",
+        "id": "bgd-zatoka",
+        "text": "Ganges łączy się z Jamuną, a potem z Meghną i razem uchodzą do Zatoki Bengalskiej.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bg.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "bgd-polozenie",
@@ -333,11 +333,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "bhr-polozenie",
-        "text": "Wyspy Bahrajnu leżą w Zatoce Perskiej.",
+        "id": "bhr-ropa",
+        "text": "Przez Zatokę Perską przy Bahrajnie przepływa znaczna część ropy naftowej płynącej na Zachód.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/ba.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "bhr-najwyzszy-punkt",
@@ -418,11 +418,11 @@
     ],
     "BTN": [
       {
-        "id": "btn-krajobraz",
-        "text": "Bhutan leży w Himalajach pomiędzy Indiami a Chinami.",
+        "id": "btn-przelecze",
+        "text": "Bhutan kontroluje kilka kluczowych przełęczy himalajskich między Chinami a Indiami.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/bt.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "btn-polozenie",
@@ -464,11 +464,11 @@
     ],
     "CAF": [
       {
-        "id": "caf-krajobraz",
-        "text": "Republika Środkowoafrykańska leży w pobliżu środka Afryki.",
+        "id": "caf-srodek",
+        "text": "Republika Środkowoafrykańska leży niemal dokładnie w środku Afryki.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ct.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "caf-polozenie",
@@ -487,11 +487,11 @@
     ],
     "CHE": [
       {
-        "id": "che-krajobraz",
-        "text": "Na południu Szwajcarii wznoszą się Alpy, a na północnym zachodzie Jura.",
+        "id": "che-alpy",
+        "text": "Szwajcaria — razem z południowo-wschodnią Francją, północnymi Włochami i Austrią — ma najwyższe partie Alp.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sz.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "che-polozenie",
@@ -517,11 +517,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "chn-polozenie",
-        "text": "We wschodnich Chinach rozciągają się niziny i delty rzeczne.",
+        "id": "chn-jaskinia",
+        "text": "W Chinach jest największa komora jaskiniowa świata — Miao Room w systemie jaskiń Gebihe.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/ch.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "chn-najwyzszy-punkt",
@@ -533,11 +533,11 @@
     ],
     "CIV": [
       {
-        "id": "civ-krajobraz",
-        "text": "Na północnym zachodzie Wybrzeża Kości Słoniowej wznoszą się góry.",
+        "id": "civ-ludnosc",
+        "text": "Większość mieszkańców Wybrzeża Kości Słoniowej żyje nad morzem, a zalesione wnętrze kraju jest słabo zaludnione.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/iv.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "civ-polozenie",
@@ -632,11 +632,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "com-polozenie",
-        "text": "Wyspy leżą przy północnym krańcu Kanału Mozambickiego.",
+        "id": "com-polkula",
+        "text": "Komory to jedyny kraj Ligi Arabskiej leżący w całości na półkuli południowej.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cn.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "com-najwyzszy-punkt",
@@ -724,11 +724,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "deu-polozenie",
-        "text": "Na południu kraju wznoszą się Alpy Bawarskie.",
+        "id": "deu-rzeki",
+        "text": "Ren, Wezera, Odra i Łaba płyną na północ, a Dunaj, wypływający ze Schwarzwaldu, na wschód.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/gm.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "deu-najwyzszy-punkt",
@@ -747,11 +747,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "dji-polozenie",
-        "text": "Jezioro Assal leży na obszarze depresji poniżej poziomu morza.",
+        "id": "dji-assal",
+        "text": "Jezioro Assal to najniższy punkt Afryki i najbardziej słone jezioro świata.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/dj.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "dji-najwyzszy-punkt",
@@ -862,11 +862,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "esp-polozenie",
-        "text": "Wulkan Teide leży na Teneryfie w archipelagu Wysp Kanaryjskich.",
+        "id": "esp-enklawy",
+        "text": "Do Hiszpanii należą enklawy w północnym Maroku — Ceuta i Melilla — oraz kilka wysepek przy tamtejszym wybrzeżu.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sp.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "esp-najwyzszy-punkt",
@@ -954,18 +954,18 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "fra-polozenie",
-        "text": "Sekwana i Loara należą do wielkich rzek Francji.",
+        "id": "fra-rodan",
+        "text": "Z wielkich rzek Francji tylko Rodan płynie na południe, do Morza Śródziemnego.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
-        "id": "fra-najwyzszy-punkt",
-        "text": "Mont Blanc leży w Alpach przy granicy Francji z Włochami.",
+        "id": "fra-pelee",
+        "text": "Wybuch wulkanu Mont Pelée na Martynice w 1902 roku zniszczył miasto Saint-Pierre.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/fr.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       }
     ],
     "GAB": [
@@ -1016,11 +1016,11 @@
     ],
     "GEO": [
       {
-        "id": "geo-krajobraz",
-        "text": "Na północy Gruzji wznosi się Wielki Kaukaz.",
+        "id": "geo-jaskinie",
+        "text": "W Gruzji są cztery najgłębsze jaskinie świata, w tym jedyne dwie głębsze niż 2000 m: Krubera i Wierowkina.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/gg.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "geo-polozenie",
@@ -1253,11 +1253,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "ind-polozenie",
-        "text": "Wzdłuż Gangesu rozciąga się wielka równina.",
+        "id": "ind-subkontynent",
+        "text": "Indie dominują na Subkontynencie Indyjskim i leżą przy ważnych szlakach handlowych Oceanu Indyjskiego.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/in.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "ind-najwyzszy-punkt",
@@ -1361,11 +1361,11 @@
     ],
     "ISR": [
       {
-        "id": "isr-krajobraz",
-        "text": "Pustynia Negew leży na południu Izraela.",
+        "id": "isr-sodoma",
+        "text": "Góra Sodoma to wzgórze w 80% zbudowane z soli; jej jaskinia Malham to najdłuższa jaskinia solna świata.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/is.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "isr-polozenie",
@@ -1391,18 +1391,18 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "ita-polozenie",
-        "text": "Włochy leżą w środkowej części Morza Śródziemnego.",
+        "id": "ita-etna",
+        "text": "Etna (3330 m) to najaktywniejszy wulkan Europy; razem z Wezuwiuszem ma status „wulkanu dekady”.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
-        "id": "ita-najwyzszy-punkt",
-        "text": "Masyw Mont Blanc leży przy granicy Włoch z Francją.",
+        "id": "ita-1861",
+        "text": "Włochy stały się jednym państwem dopiero w 1861 roku, pod królem Wiktorem Emanuelem II.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/it.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       }
     ],
     "JOR": [
@@ -1736,11 +1736,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "lka-polozenie",
-        "text": "Góry Sri Lanki leżą w południowo-środkowej części wyspy.",
+        "id": "lka-cyklon",
+        "text": "Według dawnych zapisów Mostem Adama dało się przejść pieszo do XV wieku, gdy rozbił go cyklon.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/ce.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "lka-najwyzszy-punkt",
@@ -1943,11 +1943,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "mdv-polozenie",
-        "text": "Malediwskie wyspy leżą na podmorskim grzbiecie pochodzenia wulkanicznego.",
+        "id": "mdv-najmniejszy",
+        "text": "Malediwy to najmniejsze państwo Azji; zamieszkanych jest ok. 200 z 1190 wysp.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/mv.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "mdv-najwyzszy-punkt",
@@ -2173,11 +2173,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "mwi-polozenie",
-        "text": "Malawi leży na wąskim, wydłużonym płaskowyżu.",
+        "id": "mwi-ryby",
+        "text": "W jeziorze Niasa (Malawi) żyje więcej gatunków ryb niż w jakimkolwiek innym jeziorze na Ziemi.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/mi.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "mwi-najwyzszy-punkt",
@@ -2235,11 +2235,11 @@
     ],
     "NER": [
       {
-        "id": "ner-krajobraz",
-        "text": "Na północy Nigru występują pustynie i wydmy.",
+        "id": "ner-upal",
+        "text": "Niger należy do najgorętszych krajów świata; cztery piąte jego powierzchni to pustynia.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/ng.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "ner-polozenie",
@@ -2373,11 +2373,11 @@
     ],
     "PAK": [
       {
-        "id": "pak-krajobraz",
-        "text": "Na północy Pakistanu wznoszą się wysokie pasma górskie.",
+        "id": "pak-chajber",
+        "text": "Pakistan kontroluje Przełęcz Chajberską i Przełęcz Bolan — dawne szlaki najazdów z Azji Środkowej do Indii.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/south-asia/pk.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "pak-polozenie",
@@ -2449,11 +2449,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "prk-polozenie",
-        "text": "Korea Północna graniczy z Chinami, Rosją i Koreą Południową.",
+        "id": "prk-izolacja",
+        "text": "Górzyste wnętrze Korei Północnej jest odizolowane i słabo zaludnione.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/kn.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "prk-najwyzszy-punkt",
@@ -2564,11 +2564,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "rus-polozenie",
-        "text": "Na zachód od Uralu rozciągają się wielkie równiny.",
+        "id": "rus-bajkal",
+        "text": "Bajkał, najgłębsze jezioro świata, mieści około jednej piątej słodkiej wody powierzchniowej Ziemi.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/rs.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "rus-najwyzszy-punkt",
@@ -2672,11 +2672,11 @@
     ],
     "SEN": [
       {
-        "id": "sen-krajobraz",
-        "text": "Senegal leży na zachodnim skraju kontynentalnej Afryki.",
+        "id": "sen-zachod",
+        "text": "Senegal to najdalej na zachód wysunięte państwo kontynentalnej Afryki.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/sg.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "sen-polozenie",
@@ -2702,11 +2702,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "sgp-polozenie",
-        "text": "Singapur leży przy ważnych szlakach morskich Azji Południowo-Wschodniej.",
+        "id": "sgp-wyspy",
+        "text": "Osuszanie morza zlikwidowało wiele dawnych wysp Singapuru i utworzyło nowe.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/sn.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "sgp-najwyzszy-punkt",
@@ -2764,18 +2764,18 @@
     ],
     "SOM": [
       {
-        "id": "som-krajobraz",
-        "text": "Somalia leży na Półwyspie Somalijskim, zwanym Rogiem Afryki.",
+        "id": "som-babelmandeb",
+        "text": "Somalia leży przy południowym wejściu do cieśniny Bab al-Mandab, na szlaku przez Morze Czerwone i Kanał Sueski.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
-        "id": "som-polozenie",
-        "text": "Na północy Somalii płaskowyż wznosi się ku wzgórzom.",
+        "id": "som-1960",
+        "text": "W 1960 roku Somali Brytyjskie i Somali Włoskie połączyły się w Republikę Somalii.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/so.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "som-najwyzszy-punkt",
@@ -2817,11 +2817,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "stp-polozenie",
-        "text": "Dwie główne wyspy należą do łańcucha wulkanicznego w Zatoce Gwinejskiej.",
+        "id": "stp-maly",
+        "text": "Wyspy Świętego Tomasza i Książęca to drugie najmniejsze państwo Afryki, po Seszelach.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tp.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "stp-najwyzszy-punkt",
@@ -2863,11 +2863,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "svn-polozenie",
-        "text": "Na południowym zachodzie kraju występują tereny krasowe.",
+        "id": "svn-tranzyt",
+        "text": "Mimo niewielkich rozmiarów Słowenia kontroluje jedne z głównych szlaków tranzytowych Europy.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/si.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "svn-najwyzszy-punkt",
@@ -2886,11 +2886,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "swe-polozenie",
-        "text": "Szwecja leży przy cieśninach łączących Bałtyk z Morzem Północnym.",
+        "id": "swe-wener",
+        "text": "Wener, największe z prawie 100 tysięcy szwedzkich jezior, jest trzecim co do wielkości jeziorem Europy.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/sw.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "swe-najwyzszy-punkt",
@@ -2948,11 +2948,11 @@
     ],
     "SYR": [
       {
-        "id": "syr-krajobraz",
-        "text": "Damaszek leży przy oazie zasilanej wodami rzeki Barada.",
+        "id": "syr-damaszek",
+        "text": "Damaszek uchodzi za jedno z najstarszych nieprzerwanie zamieszkanych miast świata.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "syr-polozenie",
@@ -2962,20 +2962,20 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "syr-najwyzszy-punkt",
-        "text": "Na zachodzie Syrii wznoszą się pasma górskie.",
+        "id": "syr-zra",
+        "text": "W 1958 roku Syria połączyła się z Egiptem w Zjednoczoną Republikę Arabską; rozdzieliły się w 1961 roku.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/sy.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       }
     ],
     "TCD": [
       {
-        "id": "tcd-krajobraz",
-        "text": "Na północy Czadu rozciąga się Sahara.",
+        "id": "tcd-ounianga",
+        "text": "Jeziora Ounianga w północnym Czadzie to ostatnia pozostałość „Zielonej Sahary”.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/cd.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "tcd-polozenie",
@@ -2994,11 +2994,11 @@
     ],
     "TGO": [
       {
-        "id": "tgo-krajobraz",
-        "text": "Na południu Togo leży nizina nadbrzeżna.",
+        "id": "tgo-regiony",
+        "text": "Togo obejmuje sześć odrębnych regionów geograficznych, od klimatu tropikalnego po sawannę.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/to.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "tgo-polozenie",
@@ -3040,11 +3040,11 @@
     ],
     "TJK": [
       {
-        "id": "tjk-krajobraz",
-        "text": "Na południowym wschodzie Tadżykistanu wznosi się Pamir.",
+        "id": "tjk-komunizm",
+        "text": "Najwyższy szczyt Tadżykistanu, dawniej Pik Komunizmu, był najwyższą górą ZSRR.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/ti.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "tjk-polozenie",
@@ -3070,11 +3070,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "tkm-polozenie",
-        "text": "Na południu Turkmenistanu równiny przechodzą w góry.",
+        "id": "tkm-ocean",
+        "text": "Turkmenistan nie ma dostępu do oceanu, a jego wschodnią część zajmuje płaskowyż.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/central-asia/tx.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "tkm-najwyzszy-punkt",
@@ -3146,11 +3146,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "tur-najwyzszy-punkt",
-        "text": "Na wschodzie Turcji wznosi się góra Ararat.",
+        "id": "tur-stambul",
+        "text": "Stambuł, położony po obu stronach Bosforu, to jedyna metropolia świata leżąca na dwóch kontynentach.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/middle-east/tu.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       }
     ],
     "TWN": [
@@ -3162,11 +3162,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "twn-polozenie",
-        "text": "Na zachodzie wyspy leżą równiny.",
+        "id": "twn-ciesniny",
+        "text": "Tajwan sąsiaduje zarówno z Cieśniną Tajwańską, jak i Cieśniną Luzon.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/tw.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "twn-najwyzszy-punkt",
@@ -3185,11 +3185,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "tza-polozenie",
-        "text": "Na północy i południu Tanzanii znajdują się wyżyny.",
+        "id": "tza-kilimandzaro",
+        "text": "Kilimandżaro to najwyższy szczyt Afryki i jedno z trzech miejsc na kontynencie z lodowcami.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/tz.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "tza-najwyzszy-punkt",
@@ -3224,11 +3224,11 @@
     ],
     "UKR": [
       {
-        "id": "ukr-krajobraz",
-        "text": "Na zachodzie Ukrainy wznoszą się Karpaty.",
+        "id": "ukr-drugi",
+        "text": "Ukraina jest drugim co do wielkości krajem Europy, po Rosji.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/europe/up.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "ukr-polozenie",
@@ -3293,11 +3293,11 @@
     ],
     "VNM": [
       {
-        "id": "vnm-krajobraz",
-        "text": "Na północy i południu Wietnamu leżą rozległe delty rzeczne.",
+        "id": "vnm-sondoong",
+        "text": "Son Doong to największa jaskinia świata — ma własną dżunglę, podziemną rzekę i chmury.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/east-n-southeast-asia/vm.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "vnm-polozenie",
@@ -3369,11 +3369,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "zmb-polozenie",
-        "text": "Jezioro Kariba leży przy granicy Zambii i Zimbabwe.",
+        "id": "zmb-kariba",
+        "text": "Jezioro Kariba na granicy z Zimbabwe to największy pod względem objętości zbiornik zaporowy świata.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/za.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "zmb-najwyzszy-punkt",
@@ -3392,11 +3392,11 @@
         "checked": "2026-11-14"
       },
       {
-        "id": "zwe-polozenie",
-        "text": "Na wschodzie Zimbabwe wznoszą się góry.",
+        "id": "zwe-wiktoria",
+        "text": "Wodospady Wiktorii w porze wezbrań tworzą największą na świecie zasłonę spadającej wody.",
         "source_url": "https://github.com/factbook/factbook.json/blob/144d6977b2b01ac1cbd220de754c0a005616760b/africa/zi.json",
         "source_title": "CIA World Factbook (archiwum factbook.json)",
-        "checked": "2026-11-14"
+        "checked": "2026-11-15"
       },
       {
         "id": "zwe-najwyzszy-punkt",

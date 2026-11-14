@@ -444,50 +444,54 @@ class _CountryMapState extends State<CountryMap> {
         ],
       ),
       Builder(
-        builder: (context) => MarkerLayer(
-          markers: [
-            for (final country in widget.catalog.countries.where(
-              (country) => widget.wrongCountryIds.contains(country.id),
-            ))
-              Marker(
-                point: _labelPoint(MapCamera.of(context), country.center),
-                width: 150,
-                height: 48,
-                child: IgnorePointer(
-                  child: Semantics(
-                    container: true,
-                    liveRegion: true,
-                    excludeSemantics: true,
-                    label: 'Błędna odpowiedź: ${country.name}',
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF8C1D18),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.white, width: 2),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x55000000),
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 6,
+        builder: (context) {
+          final wrong = widget.catalog.countries
+              .where((country) => widget.wrongCountryIds.contains(country.id))
+              .toList();
+          final points = _labelPoints(MapCamera.of(context), wrong);
+          return MarkerLayer(
+            markers: [
+              for (final country in wrong)
+                Marker(
+                  point: points[country.id]!,
+                  width: 150,
+                  height: 48,
+                  child: IgnorePointer(
+                    child: Semantics(
+                      container: true,
+                      liveRegion: true,
+                      excludeSemantics: true,
+                      label: 'Błędna odpowiedź: ${country.name}',
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF8C1D18),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.white, width: 2),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color(0x55000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
                           ),
-                          child: Text(
-                            country.name,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            child: Text(
+                              country.name,
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ),
@@ -495,27 +499,45 @@ class _CountryMapState extends State<CountryMap> {
                     ),
                   ),
                 ),
-              ),
-          ],
-        ),
+            ],
+          );
+        },
       ),
     ],
   );
 
-  /// Keeps a wrong-answer label on screen: clamped inside the map with room
-  /// for the zoom controls, instead of being cut at the edge.
-  LatLng _labelPoint(MapCamera camera, LatLng point) {
-    const halfWidth = 75.0, halfHeight = 24.0, margin = 8.0;
+  /// Places wrong-answer labels on screen: clamped inside the map with room
+  /// for the zoom controls, and pushed apart when two would overlap.
+  Map<String, LatLng> _labelPoints(MapCamera camera, List<Country> countries) {
+    const halfWidth = 75.0, halfHeight = 24.0, margin = 8.0, step = 44.0;
     final size = camera.size;
     final right = size.width - halfWidth - margin - 64;
     final left = halfWidth + margin;
-    if (right <= left) return point;
-    final offset = camera.latLngToScreenOffset(point);
-    final clamped = Offset(
-      offset.dx.clamp(left, right),
-      offset.dy.clamp(halfHeight + margin, size.height - halfHeight - margin),
-    );
-    return clamped == offset ? point : camera.screenOffsetToLatLng(clamped);
+    final top = halfHeight + margin, bottom = size.height - halfHeight - margin;
+    if (right <= left || bottom <= top) {
+      return {for (final c in countries) c.id: c.center};
+    }
+    final placed = <Offset>[];
+    final result = <String, LatLng>{};
+    for (final country in countries) {
+      final raw = camera.latLngToScreenOffset(country.center);
+      var offset = Offset(raw.dx.clamp(left, right), raw.dy.clamp(top, bottom));
+      for (var tries = 0; tries < 6; tries++) {
+        final clash = placed.any(
+          (p) =>
+              (p.dx - offset.dx).abs() < 2 * halfWidth &&
+              (p.dy - offset.dy).abs() < step,
+        );
+        if (!clash) break;
+        final down = offset.dy + step;
+        offset = Offset(offset.dx, down <= bottom ? down : offset.dy - step);
+      }
+      placed.add(offset);
+      result[country.id] = offset == raw
+          ? country.center
+          : camera.screenOffsetToLatLng(offset);
+    }
+    return result;
   }
 
   /// Soft edge of the data window: stacked translucent sea bands so land cut

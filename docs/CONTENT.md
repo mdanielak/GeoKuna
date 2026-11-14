@@ -157,6 +157,11 @@ i URL źródła, data `checked`. Nie zmieniać istniejących ID bez powodu.
   — miękkie soczewki Ottona Wichterlego.
 - Źródła urzędowe: rząd Cypru, Akademia Wojskowa w Belgradzie (w odnośnikach).
 
+Wersja 0.2.0 zastąpiła ogólniki o położeniu („leży w…”, „na południu…”) oraz
+duble (Mont Blanc, Teide) faktami z notatek geograficznych i tła tego samego
+profilu Factbook: rekordy, enklawy, historia. „Najwyższy punkt” zostaje — to
+klasyczne pytanie teleturniejowe.
+
 Obszary sporne opisujemy geograficznie, bez rozstrzygania granic; Palestyna ma
 osobne informacje o Zachodnim Brzegu i Strefie Gazy. Walidator sprawdza
 strukturę (pokrycie, 3 różne rekordy, ID, data, URL), nie prawdziwość treści —
