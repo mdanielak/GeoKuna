@@ -24,7 +24,9 @@ SOURCE_PAGE = 'https://www.naturalearthdata.com/downloads/50m-raster-data/50m-na
 LICENSE_URL = 'https://www.naturalearthdata.com/about/terms-of-use/'
 SOURCE_SHA = 'ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934'
 MEMBER = 'NE1_50M_SR/NE1_50M_SR.tif'
-WIDTH = 1536
+SOURCE_WIDTH = 10800  # 1/30 degree per pixel
+MAX_WIDTH = 3072  # native source resolution, capped for package size
+QUALITY = 90  # lossy WebP: full colour without palette banding
 # west, south, east, north in degrees WGS84. These match CountryMap._bounds.
 REGIONS = {
     'europe': (-32.0, 34.0, 65.0, 72.0),
@@ -34,7 +36,6 @@ REGIONS = {
 OCEAN = (218, 238, 244)
 LAND_TINT = (220, 233, 201)
 TINT_STRENGTH = 0.20
-PALETTE = 256
 # A land and an ocean control point per region, inside the output bounds.
 # These catch projection inversion and incorrect geographic extent. They do not
 # define borders or replace the separately verified interactive geometries.
@@ -59,9 +60,10 @@ def mercator_y(latitude):
 
 def dimensions(bounds):
     west, south, east, north = bounds
-    height = round(WIDTH * (mercator_y(north) - mercator_y(south)) /
+    width = min(MAX_WIDTH, round((east - west) / 360.0 * SOURCE_WIDTH))
+    height = round(width * (mercator_y(north) - mercator_y(south)) /
                    math.radians(east - west))
-    return WIDTH, height
+    return width, height
 
 
 def render(source, bounds):
@@ -94,9 +96,7 @@ def render(source, bounds):
     water_mask = distance.point([255] + [0] * 255)
     pastel = Image.blend(raster, Image.new('RGB', raster.size, LAND_TINT), TINT_STRENGTH)
     pastel.paste(Image.new('RGB', raster.size, OCEAN), mask=water_mask)
-    # Indexed PNG preserves the subtle relief with a bounded offline footprint.
-    return pastel.quantize(colors=PALETTE, method=Image.Quantize.MEDIANCUT,
-                           dither=Image.Dither.NONE)
+    return pastel
 
 
 def check():
@@ -106,18 +106,18 @@ def check():
     assert manifest['source']['sha256'] == SOURCE_SHA
     assert manifest['source']['license'] == 'public-domain'
     assert manifest['projection'] == 'EPSG:3857'
-    assert manifest['parameters']['width'] == WIDTH
+    assert manifest['parameters']['max_width'] == MAX_WIDTH
     assert manifest['parameters']['ocean_rgb'] == list(OCEAN)
     assert set(manifest['regions']) == set(REGIONS)
     total = 0
     for region, bounds in REGIONS.items():
         item = manifest['regions'][region]
-        path = DEST / f'{region}.png'
+        path = DEST / f'{region}.webp'
         assert item['asset_path'] == str(path.relative_to(ROOT))
         assert item['bounds_wsen'] == list(bounds)
         assert item['sha256'] == digest(path), region
         with Image.open(path) as im:
-            assert im.format == 'PNG' and im.size == dimensions(bounds), region
+            assert im.format == 'WEBP' and im.size == dimensions(bounds), region
             assert [item['width'], item['height']] == list(im.size), region
             im.verify()
         with Image.open(path) as im:
@@ -132,8 +132,8 @@ def check():
                 distance = sum(abs(a - b) for a, b in zip(pixel, OCEAN))
                 assert (distance < 12) if kind == 'water' else (distance > 12), (region, lon, lat, pixel)
         total += path.stat().st_size
-    actual = {p.name for p in DEST.glob('*.png')}
-    assert actual == {f'{r}.png' for r in REGIONS}, 'Unexpected or missing PNG'
+    actual = {p.name for p in DEST.iterdir() if p.name != 'manifest.json'}
+    assert actual == {f'{r}.webp' for r in REGIONS}, 'Unexpected or missing image'
     print(f'OK: 3 offline Mercator relief overlays, control points, hashes/bounds/dimensions; {total:,} bytes')
 
 
@@ -154,9 +154,9 @@ def build(archive):
             regions = {}
             for region, bounds in REGIONS.items():
                 print(f'Rendering {region}…', flush=True)
-                path = DEST / f'{region}.png'
+                path = DEST / f'{region}.webp'
                 image = render(source, bounds)
-                image.save(path, format='PNG', optimize=True)
+                image.save(path, format='WEBP', quality=QUALITY, method=6)
                 regions[region] = {
                     'asset_path': str(path.relative_to(ROOT)),
                     'bounds_wsen': list(bounds),
@@ -166,14 +166,14 @@ def build(archive):
                 }
                 image.close()
     manifest = {
-        'version': 'natural-earth-relief-0.1.0',
+        'version': 'natural-earth-relief-0.2.0',
         'source': {'name': 'Natural Earth I with Shaded Relief 1:50m',
                    'version': '3.2.0', 'url': SOURCE_URL, 'page': SOURCE_PAGE,
                    'sha256': SOURCE_SHA, 'license': 'public-domain',
                    'license_url': LICENSE_URL, 'verified_at': '2026-11-13'},
         'projection': 'EPSG:3857',
-        'parameters': {'width': WIDTH, 'resampling': 'bilinear', 'rows': 'inverse-mercator',
-                       'palette_colors': PALETTE, 'land_tint_rgb': list(LAND_TINT),
+        'parameters': {'max_width': MAX_WIDTH, 'resampling': 'bilinear', 'rows': 'inverse-mercator',
+                       'format': 'webp', 'quality': QUALITY, 'land_tint_rgb': list(LAND_TINT),
                        'land_tint_strength': TINT_STRENGTH, 'ocean_rgb': list(OCEAN),
                        'pillow_version': Image.__version__},
         'regions': regions,

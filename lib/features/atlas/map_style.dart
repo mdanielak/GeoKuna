@@ -5,39 +5,95 @@ import 'package:latlong2/latlong.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../settings/app_preferences.dart';
+import 'catalog.dart';
 
 class MapPalette {
   const MapPalette(this.appearance);
   final MapAppearance appearance;
 
   Color get ocean => switch (appearance) {
-    MapAppearance.atlas => const Color(0xFFDDEEF4),
-    MapAppearance.paper => const Color(0xFFDDE9E3),
+    MapAppearance.atlas => const Color(0xFFCFE5EF),
+    MapAppearance.paper => const Color(0xFFD3E1D6),
     MapAppearance.relief => const Color(0xFFDAEEF4),
   };
-  Color get boundary => appearance == MapAppearance.paper
-      ? const Color(0xFF817E65)
-      : const Color(0xFF637866);
+
+  /// Country borders: darker and thicker than before so neighbours read
+  /// clearly at a glance, while staying calmer than answer colours.
+  Color get boundary => switch (appearance) {
+    MapAppearance.atlas => const Color(0xFF5B6E60),
+    MapAppearance.paper => const Color(0xFF6F6650),
+    MapAppearance.relief => const Color(0xFF4F6352),
+  };
+  double get boundaryWidth => appearance == MapAppearance.relief ? 1.3 : 1.2;
   Color get markerFill => const Color(0xFFFAF7E9);
 
-  Color country(String id) {
-    final seed = id.codeUnits.fold(0, (sum, unit) => sum * 31 + unit);
-    final colors = appearance == MapAppearance.paper
-        ? const [
-            Color(0xFFE8E2C5),
-            Color(0xFFD9DEBE),
-            Color(0xFFECE7D2),
-            Color(0xFFDDE3CA),
-          ]
-        : const [
-            Color(0xFFE8E7D3),
-            Color(0xFFD9E4D1),
-            Color(0xFFEAE1CC),
-            Color(0xFFDEE4E2),
-          ];
-    return colors[seed % colors.length];
-  }
+  /// Five fills per style; [countryColoring] gives neighbours different ones.
+  List<Color> get fills => appearance == MapAppearance.paper
+      ? const [
+          Color(0xFFEADFB6), // ochre
+          Color(0xFFD5DCAC), // olive
+          Color(0xFFEBCFAF), // light terracotta
+          Color(0xFFDDD3BE), // stone
+          Color(0xFFCFDCC0), // pale moss
+        ]
+      : const [
+          Color(0xFFEEE3C1), // sand
+          Color(0xFFD2E4BF), // sage
+          Color(0xFFF1D4BC), // peach
+          Color(0xFFE2D7E9), // lavender
+          Color(0xFFCDE5D8), // mint
+        ];
 }
+
+final _colorings = Expando<Map<String, int>>();
+
+/// Greedy colouring of the land-border graph (countries sharing border
+/// vertices), so adjacent countries never share a fill. Cached per catalog.
+Map<String, int> countryColoring(Catalog catalog, int colors) =>
+    _colorings[catalog] ??= () {
+      final owners = <int, Set<String>>{};
+      for (final shape in catalog.shapes) {
+        for (final ring in shape.rings) {
+          for (final point in ring) {
+            final key =
+                (point.latitude * 1e4).round() * 4000000 +
+                (point.longitude * 1e4).round();
+            (owners[key] ??= {}).add(shape.countryId);
+          }
+        }
+      }
+      final shared = <String, Map<String, int>>{};
+      for (final ids in owners.values.where((ids) => ids.length > 1)) {
+        for (final a in ids) {
+          for (final b in ids.where((b) => b != a)) {
+            final counts = shared[a] ??= {};
+            counts[b] = (counts[b] ?? 0) + 1;
+          }
+        }
+      }
+      final neighbours = {
+        for (final c in catalog.countries)
+          c.id: {
+            for (final MapEntry(:key, :value) in (shared[c.id] ?? {}).entries)
+              if (value >= 2) key,
+          },
+      };
+      final order = [...catalog.countries.map((c) => c.id)]
+        ..sort((a, b) {
+          final degree = neighbours[b]!.length.compareTo(neighbours[a]!.length);
+          return degree != 0 ? degree : a.compareTo(b);
+        });
+      final result = <String, int>{};
+      for (final id in order) {
+        final used = {for (final n in neighbours[id]!) result[n]};
+        var color = 0;
+        while (used.contains(color) && color < colors - 1) {
+          color++;
+        }
+        result[id] = color;
+      }
+      return result;
+    }();
 
 /// Purely decorative surface; it cannot receive a map gesture or an answer.
 class MapSurface extends StatelessWidget {

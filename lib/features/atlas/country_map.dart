@@ -195,6 +195,8 @@ class _CountryMapState extends State<CountryMap> {
     _select(country.id);
   }
 
+  MapPalette get _palette => MapPalette(widget.appearance);
+
   Color _color(String id) {
     if (id == widget.correctId) return const Color(0xFF458461);
     if (widget.wrongCountryIds.contains(id)) return const Color(0xFFB85A48);
@@ -205,7 +207,10 @@ class _CountryMapState extends State<CountryMap> {
     }
     return widget.appearance == MapAppearance.relief
         ? Colors.transparent
-        : MapPalette(widget.appearance).country(id);
+        : _palette.fills[countryColoring(
+            widget.catalog,
+            _palette.fills.length,
+          )[id]!];
   }
 
   void _select(String id) {
@@ -358,7 +363,7 @@ class _CountryMapState extends State<CountryMap> {
                 OverlayImage(
                   bounds: _bounds,
                   imageProvider: AssetImage(
-                    'assets/maps/styles/relief/${widget.catalog.continent.name}.png',
+                    'assets/maps/styles/relief/${widget.catalog.continent.name}.webp',
                   ),
                 ),
               ],
@@ -382,8 +387,8 @@ class _CountryMapState extends State<CountryMap> {
                 holePointsList: shape.rings.skip(1).toList(),
                 hitValue: shape.countryId,
                 color: _color(shape.countryId),
-                borderColor: MapPalette(widget.appearance).boundary,
-                borderStrokeWidth: .9,
+                borderColor: _palette.boundary,
+                borderStrokeWidth: _palette.boundaryWidth,
               ),
           ],
         ),

@@ -793,24 +793,12 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               ),
             ],
             const SizedBox(height: 24),
-            for (final attempt in session.attempts)
-              ListTile(
-                leading: Icon(
-                  attempt.correct ? Icons.check_circle_outline : Icons.replay,
-                ),
-                title: Text(catalog.country(attempt.countryId).name),
-                subtitle: Text(
-                  session.assistedIndices.contains(attempt.questionIndex)
-                      ? 'Z pomocą — bez oceny pamięci mapy.'
-                      : attempt.topic == 'flags' &&
-                            !mapDifficulties.contains(attempt.difficulty)
-                      ? '${session.flagQuestionAt(attempt.questionIndex).countryName} · ${FlagDifficulty.values.byName(attempt.difficulty).label}${attempt.typoAccepted ? ' · literówka zaakceptowana' : ''}'
-                      : attempt.topic == 'capitals'
-                      ? '${session.capitalQuestionAt(attempt.questionIndex).fact.name} · ${CapitalDifficulty.values.byName(attempt.difficulty).label}${attempt.typoAccepted ? ' · literówka zaakceptowana' : ''}'
-                      : attempt.correct
-                      ? 'Odnalezione! Próba: ${session.mapGuesses.where((g) => g.questionIndex == attempt.questionIndex).length}.'
-                      : 'Wróć do tego państwa w atlasie.',
-                ),
+            if (session.attempts.isNotEmpty)
+              _ResultList(
+                rows: [
+                  for (final attempt in session.attempts)
+                    _resultRow(catalog, session, attempt),
+                ],
               ),
             const SizedBox(height: 24),
             // One primary action: another round after real answers,
@@ -969,4 +957,86 @@ class _TriviaCard extends StatelessWidget {
       ),
     ),
   );
+}
+
+typedef _Result = ({bool correct, String title, String detail});
+
+_Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
+  final i = attempt.questionIndex;
+  final typo = attempt.typoAccepted ? ', literówka' : '';
+  final retry = session.isRetryAt(i) ? 'powtórka, ' : '';
+  final String detail;
+  if (session.assistedIndices.contains(i)) {
+    detail = 'z pomocą';
+  } else if (attempt.topic == 'capitals') {
+    detail = '${session.capitalQuestionAt(i).fact.name}$typo';
+  } else if (attempt.topic == 'flags' &&
+      !mapDifficulties.contains(attempt.difficulty)) {
+    detail = 'flaga$typo';
+  } else {
+    final tries = session.mapGuesses.where((g) => g.questionIndex == i).length;
+    detail = !attempt.correct
+        ? 'nie odnaleziono'
+        : tries > 1
+        ? 'za $tries. razem'
+        : 'od razu';
+  }
+  return (
+    correct: attempt.correct,
+    title: catalog.country(attempt.countryId).name,
+    detail: '$retry$detail',
+  );
+}
+
+/// Compact result table: one short line per question.
+class _ResultList extends StatelessWidget {
+  const _ResultList({required this.rows});
+  final List<_Result> rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card.outlined(
+      margin: const EdgeInsets.only(top: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+        child: Column(
+          children: [
+            for (final (index, row) in rows.indexed) ...[
+              if (index > 0) const Divider(height: 1),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  children: [
+                    Icon(
+                      row.correct ? Icons.check_circle : Icons.cancel,
+                      size: 20,
+                      color: row.correct
+                          ? const Color(0xFF2E7D57)
+                          : const Color(0xFFA63A2B),
+                      semanticLabel: row.correct ? 'Dobrze' : 'Błąd',
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(row.title, style: theme.textTheme.bodyLarge),
+                    ),
+                    const SizedBox(width: 8),
+                    Flexible(
+                      child: Text(
+                        row.detail,
+                        textAlign: TextAlign.end,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }

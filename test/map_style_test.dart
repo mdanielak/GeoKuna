@@ -49,7 +49,7 @@ void main() {
           expect(
             (overlay.overlayImages.single.imageProvider as AssetImage)
                 .assetName,
-            'assets/maps/styles/relief/europe.png',
+            'assets/maps/styles/relief/europe.webp',
           );
           expect(
             polygons

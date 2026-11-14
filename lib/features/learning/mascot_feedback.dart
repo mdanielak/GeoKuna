@@ -136,30 +136,70 @@ class QuizMascotFeedbackView extends StatelessWidget {
     liveRegion: true,
     label: '${feedback.accessibilityLabel} ${feedback.message}',
     child: ExcludeSemantics(
-      child: Column(
+      // The kuna speaks: her picture with a speech bubble beside it.
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 120,
-            width: double.infinity,
+            width: 104,
+            height: 116,
             child: Image.asset(
               feedback.assetPath,
               fit: BoxFit.contain,
-              cacheWidth: 384,
+              cacheWidth: 312,
               errorBuilder: (context, error, stackTrace) => Image.asset(
                 'assets/mascot/kuna-globe.png',
                 fit: BoxFit.contain,
-                cacheWidth: 384,
+                cacheWidth: 312,
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            feedback.message,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
+          Expanded(
+            child: CustomPaint(
+              painter: _BubbleTail(_bubbleColor),
+              child: Container(
+                margin: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: _bubbleColor,
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                child: Text(
+                  feedback.message,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+            ),
           ),
         ],
       ),
     ),
   );
+}
+
+const _bubbleColor = Color(0xFFEFECE3);
+
+/// Small triangle on the bubble's left edge, pointing at the kuna.
+class _BubbleTail extends CustomPainter {
+  const _BubbleTail(this.color);
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final mid = size.height / 2;
+    canvas.drawPath(
+      Path()
+        ..moveTo(0, mid)
+        ..lineTo(12, mid - 8)
+        ..lineTo(12, mid + 8)
+        ..close(),
+      Paint()..color = color,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_BubbleTail oldDelegate) => oldDelegate.color != color;
 }

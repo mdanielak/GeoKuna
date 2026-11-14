@@ -120,11 +120,16 @@ domena publiczna; archiwum `https://naciscdn.org/naturalearth/50m/raster/NE1_50M
 SHA-256 `ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934`.
 
 Generator przelicza raster z WGS84 do EPSG:3857 (interpolacja dwuliniowa),
-rozjaśnia paletę, ustawia morze na RGB `218, 238, 244` i indeksuje do 256 kolorów.
-PNG 1536 px szerokości: Europa 1536×1099, Afryka 1536×1346, Azja 1536×1579
-(łącznie ok. 2,6 MB; manifest w `assets/maps/styles/relief/`). Raster jest tylko
-tłem — wybór i ocenianie wynikają z wektorów. Przy dużym zoomie możliwe drobne
-różnice wybrzeży (różne wersje generalizacji) i pikselizacja.
+rozjaśnia paletę i ustawia morze na RGB `218, 238, 244`. Szerokość to natywna
+rozdzielczość źródła (1/30°), najwyżej 3072 px; zapis WebP (jakość 90, pełny kolor).
+Europa 2910 px, Afryka 2730 px, Azja 3072 px szerokości; łącznie ok. 1,8 MB
+(manifest w `assets/maps/styles/relief/`, wersja 0.2.0). Raster jest tylko tłem —
+wybór i ocenianie wynikają z wektorów. Przy dużym zoomie możliwe drobne różnice
+wybrzeży (różne wersje generalizacji).
+
+**Style wektorowe:** nowoczesny i papierowy atlas mają po 5 wypełnień; sąsiednie
+kraje (wspólne wierzchołki granicy) zawsze dostają różne kolory (kolorowanie grafu
+w `countryColoring`). Granice 1,2–1,3 px, ciemniejsze niż wypełnienia.
 Koszt pamięci na Androidzie wymaga sprawdzenia na telefonie.
 
 ## Ciekawostki

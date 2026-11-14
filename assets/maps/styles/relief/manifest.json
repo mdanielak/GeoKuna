@@ -1,5 +1,5 @@
 {
-  "version": "natural-earth-relief-0.1.0",
+  "version": "natural-earth-relief-0.2.0",
   "source": {
     "name": "Natural Earth I with Shaded Relief 1:50m",
     "version": "3.2.0",
@@ -12,10 +12,11 @@
   },
   "projection": "EPSG:3857",
   "parameters": {
-    "width": 1536,
+    "max_width": 3072,
     "resampling": "bilinear",
     "rows": "inverse-mercator",
-    "palette_colors": 256,
+    "format": "webp",
+    "quality": 90,
     "land_tint_rgb": [
       220,
       233,
@@ -31,40 +32,40 @@
   },
   "regions": {
     "europe": {
-      "asset_path": "assets/maps/styles/relief/europe.png",
+      "asset_path": "assets/maps/styles/relief/europe.webp",
       "bounds_wsen": [
         -32.0,
         34.0,
         65.0,
         72.0
       ],
-      "width": 1536,
-      "height": 1099,
-      "sha256": "3947258073792396db5399704da1e145c014eab2aaf5f3dc0f864bfab5bc3541"
+      "width": 2910,
+      "height": 2082,
+      "sha256": "53a0f9a8a92740166c92cb928c5c6b2fad664b8e42322bf1815647b090914a3b"
     },
     "africa": {
-      "asset_path": "assets/maps/styles/relief/africa.png",
+      "asset_path": "assets/maps/styles/relief/africa.webp",
       "bounds_wsen": [
         -26.0,
         -36.0,
         65.0,
         38.0
       ],
-      "width": 1536,
-      "height": 1346,
-      "sha256": "b2f69b9a098e3e4f3efc7f257f92dc64ae37d265f710a9116e7b99f5436d5da5"
+      "width": 2730,
+      "height": 2393,
+      "sha256": "575d2e865fe06dc2c05643599063501313860f00f307d65da3505623dd4fc211"
     },
     "asia": {
-      "asset_path": "assets/maps/styles/relief/asia.png",
+      "asset_path": "assets/maps/styles/relief/asia.webp",
       "bounds_wsen": [
         20.0,
         -12.0,
         180.0,
         82.0
       ],
-      "width": 1536,
-      "height": 1579,
-      "sha256": "9e2ab9a0087568568b2f7974aeb9161d7949f60d48c82a7ca9ad35d9fcc8f9fb"
+      "width": 3072,
+      "height": 3159,
+      "sha256": "61c33926c1b2d9e5e5765b77ef98eface0e03068cfc6918dca588749ed65fa84"
     }
   }
 }
