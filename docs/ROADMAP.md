@@ -15,7 +15,8 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 - Dolny pasek Dziś / Atlas / Moja nauka (Dziś: jedna karta wyprawy z kuną i passą,
   poziom kontynentu w arkuszu, postęp mapy do następnego medalu, trening w jednym
   rzędzie; Ameryki i Australia z Oceanią jako wyszarzone „wkrótce”); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
-- SQLite v8 (indeksy historii) z migracjami od v1.
+- SQLite v9 (indeksy historii, żetony passy) z migracjami od v1.
+- Nagrody za passę (3–90 dni) i żetony Nieprzykunowanie per kontynent; plan Dziś wydzielony do `daily_planner.dart`.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
   pewniaków, „Kuna sprawdzi, co już wiesz”, ciekawostka z żarówką także po błędzie.
@@ -43,7 +44,11 @@ nie dowodzi retencji w miesiącach.
 4. **Fizyczny Android** po uzgodnieniu toolchainu: tryb samolotowy, Wstecz,
    klawiatura, TalkBack, trwałość bazy, płynność; potem podpisywanie APK/AAB
    (klucze poza repo).
-5. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
+5. **Ciekawostki według nowych zasad** (po 3 o kraju, stolicy i fladze):
+   flagi przepisane (0.2.0, 444 fakty, 2026-11-15); dalej nowa paczka o stolicach
+   (pokazywana po pytaniach o stolice) i przepisanie paczki o krajach — zasady w
+   [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne).
+6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.
 
 ## Plan: drabinka trudnych kart (dalsze szczeble)

@@ -39,7 +39,7 @@ Weryfikacja, testy i telefon: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 |---|---|
 | [LEARNING.md](docs/LEARNING.md) | zasady nauki: karty, FSRS, ocena, Dziś, postęp, medale, passa, kuna, reset |
 | [CONTENT.md](docs/CONTENT.md) | źródła, polityka granic, wyjątki stolic, flagi, relief, ciekawostki, odtwarzanie paczek |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | moduły, decyzje, schemat SQLite v8 i migracje |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | moduły, decyzje, schemat SQLite v9 i migracje |
 | [DEVELOPMENT.md](docs/DEVELOPMENT.md) | uruchamianie, weryfikacja, zasady testów, Chrome vs Android, agenci |
 | [ROADMAP.md](docs/ROADMAP.md) | stan, najbliższe kroki, przyszłe przyrosty, otwarte ryzyka |
 | [AGENTS.md](AGENTS.md) | zasady pracy agentów |

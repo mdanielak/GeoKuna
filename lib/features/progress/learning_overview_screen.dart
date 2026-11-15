@@ -6,6 +6,8 @@ import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../learning/learning_progress.dart';
+import '../learning/streaks.dart';
+import '../learning/token_icon.dart';
 
 /// A transparent practice indicator, not a claim of long-term mastery.
 class KnowledgeSummary {
@@ -127,6 +129,11 @@ class LearningOverviewScreen extends ConsumerWidget {
                                                 'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z 36',
                                               ),
                                             ),
+                                        Text(
+                                          'Nagrody za passę: '
+                                          '${ref.watch(continentStreakProvider(region)).asData?.value.earnedRewards.length ?? 0}'
+                                          ' z ${streakRewards.length}',
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -183,6 +190,8 @@ class LearningOverviewScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 16),
               _medalsSection(ref, region),
+              const SizedBox(height: 12),
+              _StreakRewards(region: region),
               const SizedBox(height: 12),
               for (final country in countries)
                 Builder(
@@ -277,4 +286,85 @@ class LearningOverviewScreen extends ConsumerWidget {
           );
         },
       );
+}
+
+/// Streak rewards of one continent: earned ones lit, the rest outlined.
+class _StreakRewards extends ConsumerWidget {
+  const _StreakRewards({required this.region});
+  final Continent region;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final streak = ref.watch(continentStreakProvider(region)).asData?.value;
+    final earned = streak?.earnedRewards ?? const <int>[];
+    final tokens = streak?.tokens ?? 0;
+    final toNext = streak == null ? tokenEveryDays : streak.daysToNextToken;
+    final colors = GeoColors.of(context);
+    return Card.filled(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Nagrody za passę',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              '${earned.length} z ${streakRewards.length} · '
+              'rekord: ${daysLabel(streak?.best ?? 0)}',
+            ),
+            const SizedBox(height: 4),
+            Semantics(
+              label:
+                  'Żetony Nieprzykunowanie: $tokens z $maxTokens. '
+                  '${toNext == null ? 'Komplet.' : 'Następny za ${daysLabel(toNext)} passy.'}',
+              excludeSemantics: true,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 4,
+                children: [
+                  const Text('Nieprzykunowanie:'),
+                  for (var i = 0; i < tokens; i++) const TokenIcon(),
+                  Text(
+                    '$tokens z $maxTokens · '
+                    '${toNext == null ? 'komplet' : 'następny za ${daysLabel(toNext)} passy'}',
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                for (final days in streakRewards)
+                  Semantics(
+                    label:
+                        '$days dni z rzędu: '
+                        '${earned.contains(days) ? 'zdobyta' : 'jeszcze nie'}',
+                    excludeSemantics: true,
+                    child: Chip(
+                      backgroundColor: earned.contains(days)
+                          ? colors.triviaContainer
+                          : null,
+                      avatar: Icon(
+                        earned.contains(days)
+                            ? Icons.local_fire_department
+                            : Icons.local_fire_department_outlined,
+                        color: earned.contains(days)
+                            ? colors.streak
+                            : Theme.of(context).colorScheme.outline,
+                      ),
+                      label: Text('$days'),
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

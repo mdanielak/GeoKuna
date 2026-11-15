@@ -14,7 +14,9 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 
 ## Kluczowe pliki
 - `lib/features/learning/memory.dart` — adapter FSRS (oceny, Easy/Hard, limit 60 dni), `recoveringSkills`
-- `lib/features/learning/session_repository.dart` — sesje, `_plan` (tryby Dziś: regular/extra/placement), powtórki w serii, ręczny dobór
+- `lib/features/learning/session_repository.dart` — sesje i odpowiedzi, powtórki w serii, ręczny dobór
+- `lib/features/learning/daily_planner.dart` — `plan` Dziś (regular/extra/placement), drabinka, mylone pary, stałe serii
+- `lib/features/learning/quiz_controller.dart` — otwarcie/odpowiedź/koniec serii; drogie widoki (plan, medale) odświeża dopiero na końcu serii
 - `lib/features/learning/achievements.dart` — zaliczenia i medale; `streaks.dart` — passa
 - `lib/app/theme.dart` — tokeny: role Material + `GeoColors` (nie wpisuj `Color(0x…)` w UI; mapy: `map_style.dart`)
 - `lib/features/atlas/country_map.dart` + `quiz_map_frame.dart` — mapa quizu, kadr łatwych poziomów
@@ -27,7 +29,7 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
   `catalogProvider`; inaczej transakcja Drift blokuje bazę i testy przepływów wiszą
   (`dart_test.yaml` przerywa test po 60 s)
 - Dziś ma dwa Scrollable (rząd kontynentów) — `scrollUntilVisible(..., scrollable: find.byType(Scrollable).first)`
-- W `session_repository.dart` `min` z Drift przesłania `dart:math` — używaj porównania
+- W `session_repository.dart` i `daily_planner.dart` `min` z Drift przesłania `dart:math` — używaj porównania
 - Kadr quizu stosuj po `initialCameraFit` (post-frame po `onMapReady`)
 - Zmiana reguł harmonogramu przesuwa terminy w testach — szukaj `Duration(days:` w `test/`
 - Hook po edycji formatuje pliki `.dart` (`.claude/hooks/dart-format.sh`)

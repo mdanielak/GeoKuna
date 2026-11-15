@@ -29,7 +29,7 @@ void main() {
       for (final bad in [
         'nie json',
         '{"format":"inna"}',
-        file.replaceFirst('"schema":8', '"schema":99'),
+        file.replaceFirst('"schema":${source.schemaVersion}', '"schema":99'),
         file.replaceFirst('"attempts":[', '"attempts":[{"x":1},'),
       ]) {
         await expectLater(

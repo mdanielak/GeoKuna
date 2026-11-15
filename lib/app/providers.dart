@@ -93,6 +93,13 @@ final streakProvider = FutureProvider.autoDispose<StreakSummary>((ref) async {
       .overview(ref.watch(selectedContinentProvider));
 });
 
+/// Streak of any continent, for the progress overview.
+final continentStreakProvider = FutureProvider.autoDispose
+    .family<StreakSummary, Continent>(
+      (ref, continent) =>
+          StreakStore(ref.watch(databaseProvider)).overview(continent),
+    );
+
 final countryTriviaProvider = FutureProvider(
   (ref) => CountryTriviaCatalog.load(),
 );

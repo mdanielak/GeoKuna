@@ -7,6 +7,7 @@ import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../learning/session_repository.dart';
 import '../learning/streaks.dart';
+import '../learning/token_icon.dart';
 import '../settings/app_preferences.dart';
 
 /// Today: one expedition card with the kuna, its level, map progress and
@@ -46,6 +47,7 @@ class HomeScreen extends ConsumerWidget {
                   children: [
                     _ContinentPicker(continent: continent),
                     const SizedBox(height: 16),
+                    _StreakRescueCard(continent: continent),
                     daily.when(
                       loading: () => const _CardShell(
                         child: Padding(
@@ -149,6 +151,7 @@ Future<void> _openAndRefresh(
   if (context.mounted) {
     ref.invalidate(dailyOverviewProvider);
     ref.invalidate(achievementsProvider);
+    ref.invalidate(continentAchievementsProvider);
   }
 }
 
@@ -392,15 +395,25 @@ class _StreakLine extends ConsumerWidget {
     final streak = ref.watch(streakProvider).asData?.value;
     final current = streak?.current ?? 0;
     final today = streak?.practisedToday == true;
+    final tokens = streak?.tokens ?? 0;
     final text = current == 0
         ? 'Zacznij dziś passę'
         : today
         ? 'Passa: ${daysLabel(current)}'
         : 'Passa: ${daysLabel(current)}, odpowiedz dziś';
     final spoken = today ? '$text, dzisiaj zaliczona' : text;
+    final next = streak?.nextReward;
+    final reward = next == null
+        ? null
+        : 'Nagroda za $next dni z rzędu: '
+              'jeszcze ${daysLabel(streak!.daysToNextReward!)}';
     return Semantics(
       liveRegion: true,
-      label: '$spoken. Rekord: ${daysLabel(streak?.best ?? 0)}.',
+      label:
+          '$spoken. '
+          'Rekord: ${daysLabel(streak?.best ?? 0)}.'
+          '${tokens > 0 ? ' Żetony Nieprzykunowanie: $tokens.' : ''}'
+          '${reward == null ? '' : ' $reward.'}',
       excludeSemantics: true,
       child: Row(
         children: [
@@ -413,7 +426,29 @@ class _StreakLine extends ConsumerWidget {
           ),
           const SizedBox(width: 6),
           Expanded(
-            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text.rich(
+                  TextSpan(
+                    text: text,
+                    children: [
+                      if (tokens > 0) ...[
+                        const TextSpan(text: '  '),
+                        const WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: TokenIcon(size: 18),
+                        ),
+                        TextSpan(text: ' $tokens'),
+                      ],
+                    ],
+                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                if (reward != null)
+                  Text(reward, style: Theme.of(context).textTheme.bodySmall),
+              ],
+            ),
           ),
         ],
       ),
@@ -692,4 +727,104 @@ String _calmMessage(BuildContext context, DateTime? nextDue) {
   }
   final date = MaterialLocalizations.of(context).formatMediumDate(local);
   return 'Na dziś wszystko. Kolejna powtórka: $date o $time.';
+}
+
+/// The day after a missed day: the sad kuna offers a „Nieprzykunowanie”
+/// token, so the streak survives. Hidden when nothing can be saved.
+class _StreakRescueCard extends ConsumerStatefulWidget {
+  const _StreakRescueCard({required this.continent});
+  final Continent continent;
+
+  @override
+  ConsumerState<_StreakRescueCard> createState() => _StreakRescueCardState();
+}
+
+class _StreakRescueCardState extends ConsumerState<_StreakRescueCard> {
+  bool _busy = false;
+
+  Future<void> _decide(StreakRescue rescue, {required bool keep}) async {
+    setState(() => _busy = true);
+    try {
+      await StreakStore(ref.read(databaseProvider))
+          .decide(widget.continent, rescue, keep: keep);
+      ref
+        ..invalidate(streakProvider)
+        ..invalidate(continentStreakProvider);
+      if (mounted && keep) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Passa uratowana: ${daysLabel(rescue.streak)} i liczymy dalej!',
+            ),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final streak = ref.watch(streakProvider).asData?.value;
+    final rescue = streak?.rescue;
+    if (streak == null || rescue == null) return const SizedBox.shrink();
+    final missed = rescue.missedDays.length;
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Card.filled(
+        color: GeoColors.of(context).speechBubble,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Wrap(
+                // Wraps below the kuna when large text leaves no room.
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 12,
+                runSpacing: 8,
+                children: [
+                  Image.asset(
+                    'assets/mascot/kuna-sad.png',
+                    width: 64,
+                    height: 64,
+                    cacheWidth: 192,
+                    semanticLabel: 'Smutna kuna',
+                  ),
+                  Text(
+                    missed == 1
+                        ? 'Wczoraj Cię tu nie było!'
+                        : 'Nie było Cię tu przez ${daysLabel(missed)}!',
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Twoja passa (${daysLabel(rescue.streak)}) wisi na włosku. '
+                'Żeton Nieprzykunowanie uratuje '
+                '${missed == 1 ? 'opuszczony dzień' : 'każdy opuszczony dzień'}'
+                '. Masz ${tokensLabel(streak.tokens)}.',
+              ),
+              const SizedBox(height: 12),
+              FilledButton.icon(
+                onPressed: _busy ? null : () => _decide(rescue, keep: true),
+                icon: const TokenIcon(),
+                label: Text(
+                  missed == 1 ? 'Użyj żetonu' : 'Użyj żetonów: $missed',
+                ),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+                onPressed: _busy ? null : () => _decide(rescue, keep: false),
+                child: const Text('Nie, zacznę passę od nowa'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

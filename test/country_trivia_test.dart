@@ -71,12 +71,12 @@ void main() {
       final flags = await CountryTriviaCatalog.load(
         asset: CountryTriviaCatalog.flagAsset,
       );
-      // One Polish flag fact compares it with Indonesia and Monaco.
-      final all = flags.factsFor('POL');
-      expect(all.any((f) => f.text.contains('Monako')), isTrue);
+      // One Monaco flag fact compares it with Indonesia.
+      final all = flags.factsFor('MCO');
+      expect(all.any((f) => f.text.contains('Indonezji')), isTrue);
       for (var i = 0; i < 30; i++) {
-        final fact = flags.pick('POL', seed: 's$i', avoid: ['Monako']);
-        expect(fact!.text.contains('Monako'), isFalse);
+        final fact = flags.pick('MCO', seed: 's$i', avoid: ['Indonezja']);
+        expect(fact!.text.contains('Indonezji'), isFalse);
       }
     },
   );

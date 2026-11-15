@@ -50,6 +50,7 @@ class ProgressBackup {
         'preferences': rows(await db.select(db.appPreferenceEntries).get()),
         'activity_days': rows(await db.select(db.activityDays).get()),
         'awarded_medals': rows(await db.select(db.awardedMedals).get()),
+        'streak_saves': rows(await db.select(db.streakSaves).get()),
       },
     });
   }
@@ -73,8 +74,13 @@ class ProgressBackup {
           'Kopia pochodzi z nowszej wersji aplikacji. Zaktualizuj GeoKunę.',
         );
       }
-      List<T> parse<T>(String key, T Function(Map<String, dynamic>) from) {
-        final list = tables[key];
+      List<T> parse<T>(
+        String key,
+        T Function(Map<String, dynamic>) from, {
+        int since = 1,
+      }) {
+        // A table added in a later schema is simply absent from older copies.
+        final list = tables[key] ?? (schema < since ? const <Object?>[] : null);
         if (list is! List) {
           throw const BackupException('Kopia jest niepełna.');
         }
@@ -91,6 +97,7 @@ class ProgressBackup {
         final preferences = parse('preferences', PreferenceEntry.fromJson);
         final days = parse('activity_days', ActivityDay.fromJson);
         final medals = parse('awarded_medals', AwardedMedal.fromJson);
+        final saves = parse('streak_saves', StreakSave.fromJson, since: 9);
         await db.transaction(() async {
           // Children first: foreign keys point at sessions and cards.
           for (final table in <TableInfo<Table, Object?>>[
@@ -103,6 +110,7 @@ class ProgressBackup {
             db.appPreferenceEntries,
             db.activityDays,
             db.awardedMedals,
+            db.streakSaves,
           ]) {
             await db.delete(table).go();
           }
@@ -116,7 +124,8 @@ class ProgressBackup {
               ..insertAll(db.memoryMeta, meta)
               ..insertAll(db.appPreferenceEntries, preferences)
               ..insertAll(db.activityDays, days)
-              ..insertAll(db.awardedMedals, medals);
+              ..insertAll(db.awardedMedals, medals)
+              ..insertAll(db.streakSaves, saves);
           });
         });
         return BackupSummary(answers: attempts.length, days: days.length);

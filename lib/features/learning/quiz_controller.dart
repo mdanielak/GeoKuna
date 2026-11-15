@@ -86,7 +86,7 @@ class QuizController {
       expectedGuessIndex: session.currentMapGuesses.length,
       assisted: assisted || session.assistedIndices.contains(session.index),
     );
-    _answered();
+    _answered(updated);
     return updated;
   }
 
@@ -126,7 +126,7 @@ class QuizController {
         assisted: assisted,
       );
     }
-    _answered();
+    _answered(updated);
     return updated;
   }
 
@@ -135,19 +135,28 @@ class QuizController {
     final finished = await _repository.finish(session.row.id);
     ref
       ..invalidate(dashboardProvider)
-      ..invalidate(dailyOverviewProvider)
       ..invalidate(learningProgressProvider);
+    _seriesEnded();
     return finished;
   }
 
-  void _answered() => ref
-    ..invalidate(dashboardProvider)
+  /// Cheap views refresh after every answer. Today's plan and medals are
+  /// costly (they read the whole history) and Today stays mounted under the
+  /// quiz, so they refresh once: when the series ends, or when Today regains
+  /// focus after the quiz is left early.
+  void _answered(LearningSession updated) {
+    ref
+      ..invalidate(dashboardProvider)
+      ..invalidate(learningProgressProvider)
+      ..invalidate(streakProvider);
+    if (updated.completed) _seriesEnded();
+  }
+
+  void _seriesEnded() => ref
     ..invalidate(dailyOverviewProvider)
-    ..invalidate(learningProgressProvider)
-    ..invalidate(streakProvider)
-    ..invalidate(
-      continentAchievementsProvider(ref.read(selectedContinentProvider)),
-    );
+    ..invalidate(achievementsProvider)
+    ..invalidate(continentAchievementsProvider)
+    ..invalidate(continentStreakProvider);
 }
 
 final quizControllerProvider = Provider<QuizController>(QuizController.new);

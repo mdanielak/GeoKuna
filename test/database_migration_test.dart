@@ -61,7 +61,7 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          8,
+          9,
         );
         expect(
           await db
@@ -72,6 +72,7 @@ void main() {
               .get(),
           hasLength(1),
         );
+        expect(await db.select(db.streakSaves).get(), isEmpty);
       } finally {
         await db.close();
         await directory.delete(recursive: true);
@@ -113,7 +114,7 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          8,
+          9,
         );
         expect(
           await db

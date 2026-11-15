@@ -114,6 +114,18 @@ class AwardedMedals extends Table {
   Set<Column> get primaryKey => {continent, topic, level, medal};
 }
 
+/// A missed streak day: covered by a „Nieprzykunowanie” token ([kept]) or
+/// declined, so Today does not ask again. Token balance is derived from
+/// activity days and these rows (see streaks.dart).
+class StreakSaves extends Table {
+  TextColumn get continent => text()();
+  TextColumn get localDate => text()();
+  BoolColumn get kept => boolean()();
+  DateTimeColumn get decidedAt => dateTime()();
+  @override
+  Set<Column> get primaryKey => {continent, localDate};
+}
+
 @DriftDatabase(
   tables: [
     Sessions,
@@ -125,6 +137,7 @@ class AwardedMedals extends Table {
     AppPreferenceEntries,
     ActivityDays,
     AwardedMedals,
+    StreakSaves,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -140,7 +153,7 @@ class AppDatabase extends _$AppDatabase {
         ),
       );
   @override
-  int get schemaVersion => 8;
+  int get schemaVersion => 9;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
@@ -185,6 +198,9 @@ class AppDatabase extends _$AppDatabase {
         ]) {
           await m.createIndex(index);
         }
+      }
+      if (from < 9) {
+        await m.createTable(streakSaves);
       }
     },
     beforeOpen: (_) async {

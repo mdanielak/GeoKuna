@@ -169,12 +169,60 @@ ta wymaga przeglądu człowieka. `--allow-incomplete` służy tylko roboczej kon
 
 ### Ciekawostki o flagach
 
-`assets/content/flag_trivia.json`: po 3 fakty o fladze każdego z 148 krajów
-(444), z opisów flag w przypiętym archiwum CIA Factbook (opis, znaczenie barw,
-historia, podobne flagi); Palestyna — artykuł Wikipedii o fladze. Teksty to
-polskie parafrazy wyłącznie tego, co jest w źródle. Pokazywane po pytaniach
-o flagę (także flaga → mapa); aplikacja pomija fakt, który wspomina kraj
-pytany dalej w tej samej serii. Walidator: `build_trivia.py --check` (obie paczki).
+`assets/content/flag_trivia.json` (wersja 0.2.0): po 3 fakty o fladze każdego
+z 148 krajów (444), według zasad poniżej — geneza barw i symboli, pierwsze
+użycie i rok przyjęcia, co przedstawia godło, nietypowości. Źródło każdego
+faktu: artykuł Wikipedii o fladze (polski lub angielski) w przypiętej wersji
+(`?oldid=`), pobrany 2026-11-15 przez API MediaWiki; tekst to polska parafraza
+wyłącznie tego, co jest w tej wersji. Wersja 0.1.0 (CIA Factbook) dawała głównie
+znaczenia barw. Pokazywane po pytaniach o flagę (także flaga → mapa); aplikacja
+pomija fakt, który wspomina kraj pytany dalej w tej samej serii. Walidator:
+`build_trivia.py --check` (obie paczki). Fakty sprawdza się z linkiem do wersji.
+
+### Jaka ma być ciekawostka (zasady redakcyjne)
+
+Ciekawostka ma dać „aha!”, a nie powtórzyć oczywistość. Obowiązuje obie paczki;
+nowe i poprawiane fakty przechodzą przez tę listę.
+
+- **Konkret, nie ogólnik.** Liczba, rok, nazwa, miejsce lub rekord. „Godło
+  symbolizuje robotników i chłopów” — za mało; „Czerwień oznacza wolność” — samo
+  w sobie banalne.
+- **Pełny kontekst.** Wynalazek lub „pierwszy raz” zawsze z rokiem i miejscem;
+  przy rekordzie powiedz, w jakiej skali: „pierwsze na świecie miękkie soczewki
+  kontaktowe (Otto Wichterle, Praga, 1961)”, a nie „w Czechach wynaleziono
+  soczewki”. Superlatyw („pierwszy”, „największy”, „najstarszy”) tylko wtedy,
+  gdy źródło go potwierdza; inaczej „jeden z pierwszych” albo bez rekordu.
+- **Legenda jako legenda.** „Według legendy…” przy podaniach (np. Dannebrog
+  spadający z nieba w 1219 r.), osobno udokumentowana data.
+- **Wyjaśnia „dlaczego”.** Najlepsze fakty łączą dwie rzeczy, które uczeń zna
+  albo zapamięta: barwy z herbu, nazwę z rzeki, datę z wydarzeniem.
+- **Samodzielna i krótka.** 1–2 zdania (walidator: 20–250 znaków), zrozumiała
+  bez pytania; bez „ten kraj”, gdy nazwa jest potrzebna.
+- **Trzy różne fakty na kraj** — różne tematy, nie trzy warianty tego samego.
+- **Bez zdradzania.** Nie podaje odpowiedzi przyszłych pytań (aplikacja i tak
+  pomija fakt z krajem pytanym dalej w serii).
+- **Źródło do konkretu.** Każda liczba i data musi być w podanym źródle.
+  Kolejność: urzędowe (konstytucja, ustawa o symbolach, strona rządu lub
+  parlamentu), encyklopedie (Britannica), CIA Factbook, artykuł Wikipedii
+  o fladze z **przypiętą wersją** (`?oldid=`), tak by tekst źródła się nie
+  zmienił; Flags of the World (FOTW) pomocniczo. Spory — „według…”.
+
+**Flagi — tematy w kolejności ważności** (każdy kraj: zwykle geneza + dwa inne):
+
+1. **Geneza barw i symboli** — skąd te kolory: herb, dynastia, ruch
+   niepodległościowy, barwy panafrykańskie lub panarabskie, flaga wzorcowa.
+   Np. Polska: biel i czerwień z herbu — biały orzeł na czerwonym polu
+   — z podanym źródłem urzędowym lub encyklopedycznym.
+2. **Pierwsze użycie i przyjęcie** — rok i okoliczność: powstanie, niepodległość,
+   rewolucja; czy wzór się zmieniał.
+3. **Co jest na fladze** — zwierzę lub postać: jaki gatunek i dlaczego (np.
+   żuraw koroniasty Ugandy, amazonka cesarska Dominiki); budowla, broń, napis
+   z przekładem.
+4. **Nietypowość** — kształt lub proporcje (Nepal), najstarsza w użyciu,
+   rekord liczby zmian, jak odróżnić od bliźniaczej (Czad / Rumunia).
+
+Unikaj samego „barwa X oznacza Y” bez genezy — dopuszczalne raz, gdy znaczenie
+jest urzędowe i zaskakujące.
 
 ## Odtwarzanie paczek
 

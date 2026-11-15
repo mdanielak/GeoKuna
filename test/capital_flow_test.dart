@@ -78,6 +78,9 @@ void main() {
           200,
           scrollable: find.byType(Scrollable).first,
         );
+        // Clear the bottom navigation bar, which would take the tap.
+        await tester.drag(find.byType(Scrollable).first, const Offset(0, -200));
+        await tester.pumpAndSettle();
         await tester.tap(find.text('Stolice'));
         await tester.pumpAndSettle();
         expect(find.text('Poziom: ${preference.label}'), findsOneWidget);

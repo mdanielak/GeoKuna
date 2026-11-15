@@ -11,6 +11,7 @@ class LearningReset {
 
   Future<void> all() => db.transaction(() async {
     await db.delete(db.activityDays).go();
+    await db.delete(db.streakSaves).go();
     await db.delete(db.awardedMedals).go();
     await db.delete(db.memoryReviews).go();
     await db.delete(db.mapGuesses).go();
@@ -30,6 +31,9 @@ class LearningReset {
     await (db.delete(
       db.awardedMedals,
     )..where((m) => m.continent.equals(continent.name))).go();
+    await (db.delete(
+      db.streakSaves,
+    )..where((s) => s.continent.equals(continent.name))).go();
     await MemoryStore(db).importHistoryOnce();
     final sessions = await (db.select(
       db.sessions,

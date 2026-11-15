@@ -11,7 +11,7 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 | `app/` | motyw i tokeny (`theme.dart`: `GeoTheme`, `GeoColors`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
 | `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
-| `features/learning/` | sesje i zapis (`session_repository.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
+| `features/learning/` | sesje i zapis (`session_repository.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
 | `features/home/` | Dziś i atlas |
 | `features/progress/` | Moja nauka (kontynent → kraje) i szczegóły umiejętności |
 | `features/settings/` | preferencje (`app_preferences.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
@@ -64,6 +64,7 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 | `app_preference_entries` | `key` | `map_appearance`, `difficulty_{europe,africa,asia}`; nieznane wartości → relief/normal |
 | `activity_days` | `(continent, local_date)` | `recorded_at` (UTC), `offset_minutes` |
 | `awarded_medals` | `(continent, topic, level, medal)` | `earned_at`, `catalog_version`; medal 1/2/3 = 50/80/100% |
+| `streak_saves` | `(continent, local_date)` | `kept` (żeton użyty / odmowa), `decided_at`; saldo żetonów liczone z dni nauki |
 
 Indeksy (v8): `memory_reviews(skill_id, reviewed_at)`, `memory_reviews(reviewed_at)`,
 `memory_cards(country_id)`, `attempts(country_id)`, `map_guesses(selected_country_id)`,
@@ -96,6 +97,7 @@ Uwagi:
 | 5→6 | `app_preference_entries` |
 | 6→7 | `activity_days`, `awarded_medals`; poziomy mapy `mapEasy`/`mapVeryEasy`, stary `map` = normalny |
 | 7→8 | indeksy historii (bez zmian danych) |
+| 8→9 | `streak_saves` (żetony Nieprzykunowanie); kopia z v8 wczytuje się bez tej tabeli |
 
 `test/database_migration_test.dart` otwiera prawdziwe pliki schematu 1 i 2
 i sprawdza przejście do bieżącej wersji.

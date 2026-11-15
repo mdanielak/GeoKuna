@@ -3945,6 +3945,322 @@ class AwardedMedalsCompanion extends UpdateCompanion<AwardedMedal> {
   }
 }
 
+class $StreakSavesTable extends StreakSaves
+    with TableInfo<$StreakSavesTable, StreakSave> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $StreakSavesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _continentMeta = const VerificationMeta(
+    'continent',
+  );
+  @override
+  late final GeneratedColumn<String> continent = GeneratedColumn<String>(
+    'continent',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _localDateMeta = const VerificationMeta(
+    'localDate',
+  );
+  @override
+  late final GeneratedColumn<String> localDate = GeneratedColumn<String>(
+    'local_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _keptMeta = const VerificationMeta('kept');
+  @override
+  late final GeneratedColumn<bool> kept = GeneratedColumn<bool>(
+    'kept',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("kept" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _decidedAtMeta = const VerificationMeta(
+    'decidedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> decidedAt = GeneratedColumn<DateTime>(
+    'decided_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [continent, localDate, kept, decidedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'streak_saves';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<StreakSave> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('continent')) {
+      context.handle(
+        _continentMeta,
+        continent.isAcceptableOrUnknown(data['continent']!, _continentMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_continentMeta);
+    }
+    if (data.containsKey('local_date')) {
+      context.handle(
+        _localDateMeta,
+        localDate.isAcceptableOrUnknown(data['local_date']!, _localDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_localDateMeta);
+    }
+    if (data.containsKey('kept')) {
+      context.handle(
+        _keptMeta,
+        kept.isAcceptableOrUnknown(data['kept']!, _keptMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_keptMeta);
+    }
+    if (data.containsKey('decided_at')) {
+      context.handle(
+        _decidedAtMeta,
+        decidedAt.isAcceptableOrUnknown(data['decided_at']!, _decidedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_decidedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {continent, localDate};
+  @override
+  StreakSave map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return StreakSave(
+      continent: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}continent'],
+      )!,
+      localDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}local_date'],
+      )!,
+      kept: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}kept'],
+      )!,
+      decidedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}decided_at'],
+      )!,
+    );
+  }
+
+  @override
+  $StreakSavesTable createAlias(String alias) {
+    return $StreakSavesTable(attachedDatabase, alias);
+  }
+}
+
+class StreakSave extends DataClass implements Insertable<StreakSave> {
+  final String continent;
+  final String localDate;
+  final bool kept;
+  final DateTime decidedAt;
+  const StreakSave({
+    required this.continent,
+    required this.localDate,
+    required this.kept,
+    required this.decidedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['continent'] = Variable<String>(continent);
+    map['local_date'] = Variable<String>(localDate);
+    map['kept'] = Variable<bool>(kept);
+    map['decided_at'] = Variable<DateTime>(decidedAt);
+    return map;
+  }
+
+  StreakSavesCompanion toCompanion(bool nullToAbsent) {
+    return StreakSavesCompanion(
+      continent: Value(continent),
+      localDate: Value(localDate),
+      kept: Value(kept),
+      decidedAt: Value(decidedAt),
+    );
+  }
+
+  factory StreakSave.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return StreakSave(
+      continent: serializer.fromJson<String>(json['continent']),
+      localDate: serializer.fromJson<String>(json['localDate']),
+      kept: serializer.fromJson<bool>(json['kept']),
+      decidedAt: serializer.fromJson<DateTime>(json['decidedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'continent': serializer.toJson<String>(continent),
+      'localDate': serializer.toJson<String>(localDate),
+      'kept': serializer.toJson<bool>(kept),
+      'decidedAt': serializer.toJson<DateTime>(decidedAt),
+    };
+  }
+
+  StreakSave copyWith({
+    String? continent,
+    String? localDate,
+    bool? kept,
+    DateTime? decidedAt,
+  }) => StreakSave(
+    continent: continent ?? this.continent,
+    localDate: localDate ?? this.localDate,
+    kept: kept ?? this.kept,
+    decidedAt: decidedAt ?? this.decidedAt,
+  );
+  StreakSave copyWithCompanion(StreakSavesCompanion data) {
+    return StreakSave(
+      continent: data.continent.present ? data.continent.value : this.continent,
+      localDate: data.localDate.present ? data.localDate.value : this.localDate,
+      kept: data.kept.present ? data.kept.value : this.kept,
+      decidedAt: data.decidedAt.present ? data.decidedAt.value : this.decidedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('StreakSave(')
+          ..write('continent: $continent, ')
+          ..write('localDate: $localDate, ')
+          ..write('kept: $kept, ')
+          ..write('decidedAt: $decidedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(continent, localDate, kept, decidedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is StreakSave &&
+          other.continent == this.continent &&
+          other.localDate == this.localDate &&
+          other.kept == this.kept &&
+          other.decidedAt == this.decidedAt);
+}
+
+class StreakSavesCompanion extends UpdateCompanion<StreakSave> {
+  final Value<String> continent;
+  final Value<String> localDate;
+  final Value<bool> kept;
+  final Value<DateTime> decidedAt;
+  final Value<int> rowid;
+  const StreakSavesCompanion({
+    this.continent = const Value.absent(),
+    this.localDate = const Value.absent(),
+    this.kept = const Value.absent(),
+    this.decidedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  StreakSavesCompanion.insert({
+    required String continent,
+    required String localDate,
+    required bool kept,
+    required DateTime decidedAt,
+    this.rowid = const Value.absent(),
+  }) : continent = Value(continent),
+       localDate = Value(localDate),
+       kept = Value(kept),
+       decidedAt = Value(decidedAt);
+  static Insertable<StreakSave> custom({
+    Expression<String>? continent,
+    Expression<String>? localDate,
+    Expression<bool>? kept,
+    Expression<DateTime>? decidedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (continent != null) 'continent': continent,
+      if (localDate != null) 'local_date': localDate,
+      if (kept != null) 'kept': kept,
+      if (decidedAt != null) 'decided_at': decidedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  StreakSavesCompanion copyWith({
+    Value<String>? continent,
+    Value<String>? localDate,
+    Value<bool>? kept,
+    Value<DateTime>? decidedAt,
+    Value<int>? rowid,
+  }) {
+    return StreakSavesCompanion(
+      continent: continent ?? this.continent,
+      localDate: localDate ?? this.localDate,
+      kept: kept ?? this.kept,
+      decidedAt: decidedAt ?? this.decidedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (continent.present) {
+      map['continent'] = Variable<String>(continent.value);
+    }
+    if (localDate.present) {
+      map['local_date'] = Variable<String>(localDate.value);
+    }
+    if (kept.present) {
+      map['kept'] = Variable<bool>(kept.value);
+    }
+    if (decidedAt.present) {
+      map['decided_at'] = Variable<DateTime>(decidedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('StreakSavesCompanion(')
+          ..write('continent: $continent, ')
+          ..write('localDate: $localDate, ')
+          ..write('kept: $kept, ')
+          ..write('decidedAt: $decidedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -3958,6 +4274,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $AppPreferenceEntriesTable(this);
   late final $ActivityDaysTable activityDays = $ActivityDaysTable(this);
   late final $AwardedMedalsTable awardedMedals = $AwardedMedalsTable(this);
+  late final $StreakSavesTable streakSaves = $StreakSavesTable(this);
   late final Index sessionsOpen = Index(
     'sessions_open',
     'CREATE INDEX sessions_open ON sessions (topic, completed_at)',
@@ -3996,6 +4313,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     appPreferenceEntries,
     activityDays,
     awardedMedals,
+    streakSaves,
     sessionsOpen,
     attemptsCountry,
     memoryCardsCountry,
@@ -6949,6 +7267,196 @@ typedef $$AwardedMedalsTableProcessedTableManager =
       AwardedMedal,
       PrefetchHooks Function()
     >;
+typedef $$StreakSavesTableCreateCompanionBuilder =
+    StreakSavesCompanion Function({
+      required String continent,
+      required String localDate,
+      required bool kept,
+      required DateTime decidedAt,
+      Value<int> rowid,
+    });
+typedef $$StreakSavesTableUpdateCompanionBuilder =
+    StreakSavesCompanion Function({
+      Value<String> continent,
+      Value<String> localDate,
+      Value<bool> kept,
+      Value<DateTime> decidedAt,
+      Value<int> rowid,
+    });
+
+class $$StreakSavesTableFilterComposer
+    extends Composer<_$AppDatabase, $StreakSavesTable> {
+  $$StreakSavesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get localDate => $composableBuilder(
+    column: $table.localDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get kept => $composableBuilder(
+    column: $table.kept,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get decidedAt => $composableBuilder(
+    column: $table.decidedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$StreakSavesTableOrderingComposer
+    extends Composer<_$AppDatabase, $StreakSavesTable> {
+  $$StreakSavesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get continent => $composableBuilder(
+    column: $table.continent,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get localDate => $composableBuilder(
+    column: $table.localDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get kept => $composableBuilder(
+    column: $table.kept,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get decidedAt => $composableBuilder(
+    column: $table.decidedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$StreakSavesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $StreakSavesTable> {
+  $$StreakSavesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get continent =>
+      $composableBuilder(column: $table.continent, builder: (column) => column);
+
+  GeneratedColumn<String> get localDate =>
+      $composableBuilder(column: $table.localDate, builder: (column) => column);
+
+  GeneratedColumn<bool> get kept =>
+      $composableBuilder(column: $table.kept, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get decidedAt =>
+      $composableBuilder(column: $table.decidedAt, builder: (column) => column);
+}
+
+class $$StreakSavesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $StreakSavesTable,
+          StreakSave,
+          $$StreakSavesTableFilterComposer,
+          $$StreakSavesTableOrderingComposer,
+          $$StreakSavesTableAnnotationComposer,
+          $$StreakSavesTableCreateCompanionBuilder,
+          $$StreakSavesTableUpdateCompanionBuilder,
+          (
+            StreakSave,
+            BaseReferences<_$AppDatabase, $StreakSavesTable, StreakSave>,
+          ),
+          StreakSave,
+          PrefetchHooks Function()
+        > {
+  $$StreakSavesTableTableManager(_$AppDatabase db, $StreakSavesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$StreakSavesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$StreakSavesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$StreakSavesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> continent = const Value.absent(),
+                Value<String> localDate = const Value.absent(),
+                Value<bool> kept = const Value.absent(),
+                Value<DateTime> decidedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => StreakSavesCompanion(
+                continent: continent,
+                localDate: localDate,
+                kept: kept,
+                decidedAt: decidedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String continent,
+                required String localDate,
+                required bool kept,
+                required DateTime decidedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => StreakSavesCompanion.insert(
+                continent: continent,
+                localDate: localDate,
+                kept: kept,
+                decidedAt: decidedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$StreakSavesTable, StreakSave>(table),
+                  BaseReferences<_$AppDatabase, $StreakSavesTable, StreakSave>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$StreakSavesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $StreakSavesTable,
+      StreakSave,
+      $$StreakSavesTableFilterComposer,
+      $$StreakSavesTableOrderingComposer,
+      $$StreakSavesTableAnnotationComposer,
+      $$StreakSavesTableCreateCompanionBuilder,
+      $$StreakSavesTableUpdateCompanionBuilder,
+      (
+        StreakSave,
+        BaseReferences<_$AppDatabase, $StreakSavesTable, StreakSave>,
+      ),
+      StreakSave,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -6971,4 +7479,6 @@ class $AppDatabaseManager {
       $$ActivityDaysTableTableManager(_db, _db.activityDays);
   $$AwardedMedalsTableTableManager get awardedMedals =>
       $$AwardedMedalsTableTableManager(_db, _db.awardedMedals);
+  $$StreakSavesTableTableManager get streakSaves =>
+      $$StreakSavesTableTableManager(_db, _db.streakSaves);
 }

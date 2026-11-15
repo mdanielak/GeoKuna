@@ -19,6 +19,8 @@ import 'answer_feedback.dart';
 import 'mascot_feedback.dart';
 import 'quiz_controller.dart';
 import 'session_repository.dart';
+import 'streaks.dart';
+import 'token_icon.dart';
 
 class LearningScreen extends ConsumerStatefulWidget {
   const LearningScreen({
@@ -741,6 +743,16 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             const SizedBox(height: 16),
             // One centred column: title, result, then the kuna's reaction.
             QuizMascotFeedbackView(feedback: mascotFeedback),
+            if (ref.watch(streakProvider).asData?.value.rewardToday
+                case final days?) ...[
+              const SizedBox(height: 16),
+              _StreakReward(days: days),
+            ],
+            if (ref.watch(streakProvider).asData?.value case final streak?
+                when streak.tokenEarnedToday) ...[
+              const SizedBox(height: 12),
+              _TokenEarned(tokens: streak.tokens),
+            ],
             if (retryCount > 0) ...[
               const SizedBox(height: 8),
               Text(
@@ -1019,4 +1031,64 @@ class _ResultList extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Shown on the summary the day a streak reward is reached.
+class _StreakReward extends StatelessWidget {
+  const _StreakReward({required this.days});
+  final int days;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = GeoColors.of(context);
+    return Semantics(
+      container: true,
+      liveRegion: true,
+      child: Card.filled(
+        color: colors.triviaContainer,
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          leading: Icon(
+            Icons.local_fire_department,
+            color: colors.streak,
+            size: 36,
+          ),
+          title: Text('Nagroda: $days dni z rzędu!'),
+          subtitle: Text(
+            days == streakRewards.last
+                ? 'To najwyższa nagroda za passę. Kuna jest pod wrażeniem!'
+                : 'Następna czeka za '
+                      '${streakRewards.firstWhere((d) => d > days)} dni.',
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A new „Nieprzykunowanie” token, earned with every 7 streak days.
+class _TokenEarned extends StatelessWidget {
+  const _TokenEarned({required this.tokens});
+  final int tokens;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    container: true,
+    liveRegion: true,
+    child: Card.filled(
+      color: GeoColors.of(context).triviaContainer,
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        leading: const TokenIcon(size: 36),
+        title: const Text('Nowy żeton: Nieprzykunowanie!'),
+        subtitle: Text(
+          'Uratuje passę, gdy opuścisz dzień. '
+          'Masz ${tokensLabel(tokens)} (najwyżej $maxTokens).',
+        ),
+      ),
+    ),
+  );
 }

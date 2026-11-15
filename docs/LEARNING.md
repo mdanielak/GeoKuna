@@ -172,6 +172,23 @@ Osobna dla każdego kontynentu, widoczna na Dziś dla wybranego kontynentu
 - Liczy się kontynent sesji: Turcja w sesji Europy zwiększa tylko passę Europy.
 - Zapis: lokalna data i offset z chwili odpowiedzi oraz czas UTC; zmiana strefy
   nie przelicza dawnych dni. Przerwa nie usuwa rekordu ani medali.
+- **Nagrody za passę:** 3, 7, 10, 14, 20, 30, 40, 50, 60 i 90 dni z rzędu, osobno
+  dla kontynentu (`streakRewards` w `streaks.dart`). Zdobyta, gdy rekord dojdzie
+  do progu, więc przerwa jej nie odbiera. Liczone z dni nauki, bez osobnej tabeli.
+  Dziś pokazuje, ile dni brakuje do następnej; podsumowanie serii gratuluje
+  w dniu zdobycia (tylko gdy wcześniejsza passa nie dotarła do progu);
+  Moja nauka → kontynent ma listę zdobytych i brakujących.
+- **Przerwa przerywa passę**, chyba że użyjesz żetonu **Nieprzykunowanie**
+  (na razie złota ikona monety; emoji wymagałoby czcionki z sieci w wersji web).
+  Żeton za każde 7 dni passy (7., 14., 21. dzień), najwyżej 3 na kontynent;
+  przy komplecie licznik stoi, po zużyciu nowy po kolejnych 7 dniach. Dzień po
+  przerwie Dziś pokazuje smutną kunę: „Wczoraj Cię tu nie było!” z wyborem
+  „Użyj żetonu” / „Nie, zacznę passę od nowa”. Jeden żeton ratuje jeden
+  opuszczony dzień; uratowany dzień nie wydłuża passy, tylko jej nie przerywa.
+  Propozycja trwa do końca dnia, także po odpowiedzi; odmowa jest ostateczna.
+  Gdy żetonów brakuje na wszystkie dni przerwy, passa przepada. Stan żetonów
+  liczy się z dni nauki i decyzji (`streak_saves`), więc przejście po historii
+  zawsze daje ten sam wynik.
 
 ## Kuna po quizie
 
