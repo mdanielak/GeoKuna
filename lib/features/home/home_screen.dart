@@ -554,9 +554,14 @@ class _MapProgress extends ConsumerWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            next == null
-                ? 'Złoty medal zdobyty.'
-                : 'Do ${next.$2} medalu: jeszcze $missing.',
+            [
+              if (map.learningCount > 0)
+                'W nauce: ${map.learningCount} '
+                    '${_plural(map.learningCount, 'kraj', 'kraje', 'krajów')}.',
+              next == null
+                  ? 'Złoty medal zdobyty.'
+                  : 'Do ${next.$2} medalu: jeszcze $missing.',
+            ].join(' '),
             style: theme.textTheme.bodySmall,
           ),
         ],

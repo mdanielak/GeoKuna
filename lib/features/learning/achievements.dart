@@ -14,7 +14,11 @@ class CategoryAchievement {
     required this.qualifiedCount,
     required this.totalCount,
     required this.inheritedCount,
+    this.learningCount = 0,
   });
+
+  /// Countries answered at this level but not yet qualified ("w nauce").
+  final int learningCount;
   final String topic;
   final LearningDifficulty level;
   final int earnedMedal, qualifiedCount, totalCount, inheritedCount;
@@ -69,6 +73,7 @@ class AchievementStore {
         final earned = await (db.select(
           db.awardedMedals,
         )..where((m) => m.continent.equals(catalog.continent.name))).get();
+        final answered = reviews.map((r) => r.skillId).toSet();
         final result = <CategoryAchievement>[];
         for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
           for (final level in LearningDifficulty.values) {
@@ -124,6 +129,13 @@ class AchievementStore {
                 qualifiedCount: effective.length,
                 totalCount: countryIds.length,
                 inheritedCount: effective.difference(direct).length,
+                learningCount: _effectiveCountries(
+                  answered,
+                  countryIds,
+                  topic,
+                  level,
+                  directOnly: true,
+                ).difference(effective).length,
               ),
             );
           }

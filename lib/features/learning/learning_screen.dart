@@ -701,7 +701,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     height: height,
     padding: const EdgeInsets.all(8),
     decoration: BoxDecoration(
-      color: Colors.white,
+      // Barely grey so white flag fields (e.g. the Netherlands) stay visible.
+      color: const Color(0xFFE9E8E3),
       border: Border.all(color: const Color(0xFF7C887E)),
       borderRadius: BorderRadius.circular(12),
     ),
