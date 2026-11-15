@@ -17,7 +17,7 @@ nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
 - **Poziomy** bardzo łatwy / łatwy / normalny ustawiane osobno dla kontynentu.
 - **Motywacja, która nie przeszkadza w nauce:** medale za 50/80/100% utrwalonych
   faktów, passa dni nauki per kontynent, ciekawostki po trafieniu, pięć reakcji kuny.
-- **Atlas** z wyszukiwarką, **Moja nauka** z postępem kontynentów, trzy style map
+- Dolny pasek **Dziś / Atlas / Moja nauka**: atlas z wyszukiwarką, postęp kontynentów, trzy style map
   (domyślnie prawdziwa rzeźba terenu Natural Earth), reset z potwierdzeniem.
 
 ## Uruchomienie

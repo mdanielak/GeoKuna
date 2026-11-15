@@ -44,7 +44,7 @@ void main() {
 
     expect(find.text('Europa'), findsOneWidget);
     expect(find.text('Wyprawa po Europie'), findsOneWidget);
-    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
+    expect(find.text('Odpowiedz dziś, aby zacząć passę'), findsOneWidget);
     expect(
       find.textContaining('Nowe pytania czekają już w rozpoczętej wyprawie'),
       findsOneWidget,
@@ -63,7 +63,7 @@ void main() {
 
     expect(find.text('Afryka'), findsOneWidget);
     expect(find.text('Wyprawa po Afryce'), findsOneWidget);
-    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
+    expect(find.text('Odpowiedz dziś, aby zacząć passę'), findsOneWidget);
     expect(
       tester
           .widget<SegmentedButton<Continent>>(
@@ -76,7 +76,7 @@ void main() {
     await tester.tap(find.text('Azja'));
     await tester.pumpAndSettle();
     expect(find.text('Wyprawa po Azji'), findsOneWidget);
-    expect(find.text('Passa: 0 dni z rzędu'), findsOneWidget);
+    expect(find.text('Odpowiedz dziś, aby zacząć passę'), findsOneWidget);
     tester.view.physicalSize = const Size(320, 640);
     tester.platformDispatcher.textScaleFactorTestValue = 2;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
@@ -87,13 +87,14 @@ void main() {
           .selected,
       isTrue,
     );
-    // Level chips sit below the expedition card; they stay reachable.
-    await tester.scrollUntilVisible(
-      find.widgetWithText(ChoiceChip, 'Bardzo łatwy'),
-      200,
-    );
+    // The level row sits below training; its sheet lists all levels.
+    await tester.scrollUntilVisible(find.text('Poziom: Normalny'), 200);
+    await tester.ensureVisible(find.text('Poziom: Normalny'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Poziom: Normalny'));
+    await tester.pumpAndSettle();
     for (final level in ['Bardzo łatwy', 'Łatwy', 'Normalny']) {
-      expect(find.widgetWithText(ChoiceChip, level), findsOneWidget);
+      expect(find.text(level), findsOneWidget);
     }
     expect(tester.takeException(), isNull);
   });

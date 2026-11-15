@@ -20,7 +20,27 @@ import '../features/learning/flags_setup_screen.dart';
 
 GoRouter _createRouter() => GoRouter(
   routes: [
-    GoRoute(path: '/', builder: (_, _) => const HomeScreen()),
+    StatefulShellRoute.indexedStack(
+      builder: (_, _, shell) => _TabShell(shell: shell),
+      branches: [
+        StatefulShellBranch(
+          routes: [GoRoute(path: '/', builder: (_, _) => const HomeScreen())],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(path: '/atlas', builder: (_, _) => const AtlasScreen()),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/learning',
+              builder: (_, _) => const LearningOverviewScreen(),
+            ),
+          ],
+        ),
+      ],
+    ),
     GoRoute(
       path: '/daily',
       builder: (_, state) => LearningScreen(
@@ -37,10 +57,6 @@ GoRouter _createRouter() => GoRouter(
           ProgressScreen(initialCountry: state.uri.queryParameters['country']),
     ),
     GoRoute(
-      path: '/learning',
-      builder: (_, _) => const LearningOverviewScreen(),
-    ),
-    GoRoute(
       path: '/learning/:continent',
       builder: (_, state) => LearningOverviewScreen(
         continent:
@@ -52,7 +68,6 @@ GoRouter _createRouter() => GoRouter(
     ),
     GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
     GoRoute(path: '/flags', builder: (_, _) => const FlagsSetupScreen()),
-    GoRoute(path: '/atlas', builder: (_, _) => const AtlasScreen()),
     GoRoute(path: '/capitals', builder: (_, _) => const CapitalSetupScreen()),
     GoRoute(
       path: '/learn',
@@ -151,6 +166,45 @@ class _GeoKunaAppState extends State<GeoKunaApp> {
       ),
     ),
     routerConfig: _router,
+  );
+}
+
+/// Bottom navigation for the three top-level places; Back returns to Today.
+class _TabShell extends StatelessWidget {
+  const _TabShell({required this.shell});
+  final StatefulNavigationShell shell;
+
+  @override
+  Widget build(BuildContext context) => PopScope(
+    canPop: shell.currentIndex == 0,
+    onPopInvokedWithResult: (didPop, _) {
+      if (!didPop) shell.goBranch(0);
+    },
+    child: Scaffold(
+      body: shell,
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: shell.currentIndex,
+        onDestinationSelected: (index) =>
+            shell.goBranch(index, initialLocation: index == shell.currentIndex),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.today_outlined),
+            selectedIcon: Icon(Icons.today),
+            label: 'Dziś',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.map_outlined),
+            selectedIcon: Icon(Icons.map),
+            label: 'Atlas',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.insights_outlined),
+            selectedIcon: Icon(Icons.insights),
+            label: 'Moja nauka',
+          ),
+        ],
+      ),
+    ),
   );
 }
 

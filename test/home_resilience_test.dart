@@ -20,18 +20,17 @@ void main() {
     );
     await tester.pump();
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    await tester.scrollUntilVisible(find.text('Trening mapy'), 160);
-    await tester.scrollUntilVisible(find.text('Atlas'), 160);
-    await tester.scrollUntilVisible(find.text('Moja nauka'), 160);
-    expect(find.text('Moja nauka'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Mapa'), 160);
+    // Atlas and "Moja nauka" stay in the bottom bar whatever the data state.
+    expect(find.widgetWithText(NavigationBar, 'Atlas'), findsOneWidget);
+    expect(find.widgetWithText(NavigationBar, 'Moja nauka'), findsOneWidget);
     pending.completeError(StateError('katalog'));
     await tester.pumpAndSettle();
     expect(
       find.text('Nie udało się wczytać dzisiejszej wyprawy.'),
       findsOneWidget,
     );
-    await tester.scrollUntilVisible(find.text('Atlas'), 160);
-    expect(find.text('Atlas'), findsOneWidget);
+    expect(find.widgetWithText(NavigationBar, 'Atlas'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Ponów odczyt'), -160);
     expect(find.text('Ponów odczyt'), findsOneWidget);
   });

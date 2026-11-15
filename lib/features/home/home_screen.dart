@@ -8,30 +8,18 @@ import '../learning/session_repository.dart';
 import '../learning/streaks.dart';
 import '../settings/app_preferences.dart';
 
+/// Today: one expedition card with the kuna, then free training and level.
+/// Atlas and "Moja nauka" live in the bottom navigation bar.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  Future<void> _openDaily(
-    BuildContext context,
-    WidgetRef ref,
-    String mode,
-  ) async {
-    await context.push('/daily?mode=$mode');
-    if (context.mounted) ref.invalidate(dailyOverviewProvider);
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final catalog = ref.watch(catalogProvider).asData?.value;
     final continent = ref.watch(selectedContinentProvider);
     final daily = ref.watch(dailyOverviewProvider);
-    final streak = ref.watch(streakProvider).asData?.value;
-    final difficulty = ref
-        .watch(appPreferencesProvider)
-        .asData
-        ?.value
-        .difficultyFor(continent);
-    final overview = daily.asData?.value;
+    final compact =
+        MediaQuery.sizeOf(context).width < 360 ||
+        MediaQuery.textScalerOf(context).scale(14) > 18;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dziś'),
@@ -47,368 +35,40 @@ class HomeScreen extends ConsumerWidget {
         top: false,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final horizontalPadding = constraints.maxWidth >= 600 ? 32.0 : 20.0;
+            final side = constraints.maxWidth >= 600 ? 32.0 : 20.0;
             return Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 720),
                 child: ListView(
-                  padding: EdgeInsets.fromLTRB(
-                    horizontalPadding,
-                    12,
-                    horizontalPadding,
-                    32,
-                  ),
+                  padding: EdgeInsets.fromLTRB(side, 4, side, 24),
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Kuna wie, gdzie!',
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                        Image.asset(
-                          'assets/mascot/kuna-globe.png',
-                          width: 72,
-                          height: 72,
-                          cacheWidth: 216,
-                          semanticLabel: 'Kuna z globusem',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Semantics(
-                      label: 'Wybierz kontynent',
-                      child:
-                          MediaQuery.sizeOf(context).width < 360 ||
-                              MediaQuery.textScalerOf(context).scale(14) > 18
-                          ? Wrap(
-                              spacing: 8,
-                              runSpacing: 8,
-                              children: [
-                                for (final option in Continent.values)
-                                  ChoiceChip(
-                                    label: Text(option.label),
-                                    selected: continent == option,
-                                    showCheckmark: false,
-                                    materialTapTargetSize:
-                                        MaterialTapTargetSize.padded,
-                                    onSelected: (_) => ref
-                                        .read(
-                                          selectedContinentProvider.notifier,
-                                        )
-                                        .select(option),
-                                  ),
-                              ],
-                            )
-                          : SegmentedButton<Continent>(
-                              segments: [
-                                for (final option in Continent.values)
-                                  ButtonSegment<Continent>(
-                                    value: option,
-                                    label: Text(option.label),
-                                    icon: Icon(switch (option) {
-                                      Continent.europe => Icons.public_outlined,
-                                      Continent.africa =>
-                                        Icons.landscape_outlined,
-                                      Continent.asia =>
-                                        Icons.travel_explore_outlined,
-                                    }),
-                                  ),
-                              ],
-                              selected: {continent},
-                              showSelectedIcon: false,
-                              onSelectionChanged: (selection) {
-                                if (selection.isNotEmpty &&
-                                    selection.single != continent) {
-                                  ref
-                                      .read(selectedContinentProvider.notifier)
-                                      .select(selection.single);
-                                }
-                              },
-                            ),
-                    ),
-                    const SizedBox(height: 8),
-                    Semantics(
-                      liveRegion: true,
-                      label:
-                          'Passa: ${daysLabel(streak?.current ?? 0)} z rzędu. Rekord: ${daysLabel(streak?.best ?? 0)}.',
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                        ),
-                        leading: const Icon(
-                          Icons.local_fire_department_outlined,
-                        ),
-                        title: Text(
-                          'Passa: ${daysLabel(streak?.current ?? 0)} z rzędu',
-                        ),
-                        subtitle: Text(
-                          streak?.practisedToday == true
-                              ? 'Dzisiejsza nauka zaliczona. Rekord: ${daysLabel(streak?.best ?? 0)}.'
-                              : (streak?.current ?? 0) == 0
-                              ? 'Odpowiedz dziś na jedno pytanie, aby zacząć passę.'
-                              : 'Odpowiedz dziś, aby jej nie przerwać. Rekord: ${daysLabel(streak?.best ?? 0)}.',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Wyprawa po ${continent.journey}',
-                      style: Theme.of(context).textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      overview?.activeSession != null
-                          ? 'Wróć do miejsca, w którym przerwano dzisiejszą serię.'
-                          : 'Krótka seria powtórek i nowych pytań.',
-                    ),
-                    const SizedBox(height: 20),
+                    _ContinentPicker(continent: continent, compact: compact),
+                    const SizedBox(height: 16),
                     daily.when(
-                      loading: () => const Card.filled(
+                      loading: () => const _CardShell(
                         child: Padding(
-                          padding: EdgeInsets.all(24),
+                          padding: EdgeInsets.all(8),
                           child: Center(child: CircularProgressIndicator()),
                         ),
                       ),
-                      error: (_, _) => Card.filled(
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Semantics(
-                            liveRegion: true,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Nie udało się wczytać dzisiejszej wyprawy.',
-                                ),
-                                const SizedBox(height: 8),
-                                OutlinedButton(
-                                  onPressed: () {
-                                    if (ref.read(catalogProvider).hasError) {
-                                      ref.invalidate(catalogProvider);
-                                    }
-                                    if (ref.read(capitalsProvider).hasError) {
-                                      ref.invalidate(capitalsProvider);
-                                    }
-                                    if (ref.read(flagsProvider).hasError) {
-                                      ref.invalidate(flagsProvider);
-                                    }
-                                    try {
-                                      ref.read(databaseProvider);
-                                    } catch (_) {
-                                      ref.invalidate(databaseProvider);
-                                    }
-                                    ref.invalidate(dailyOverviewProvider);
-                                  },
-                                  child: const Text('Ponów odczyt'),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      data: (overview) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Card.filled(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  _DailyCounts(
-                                    due: overview.dueCount,
-                                    newCards: overview.plannedNewCount,
-                                    total: overview.plannedCount,
-                                    activeSession: overview.activeSession,
-                                    nextDue: overview.nextDue,
-                                  ),
-                                  if (overview.otherDueCount > 0) ...[
-                                    const SizedBox(height: 8),
-                                    Text(
-                                      'Na innych poziomach: ${overview.otherDueCount} powtórek.',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall,
-                                    ),
-                                  ],
-                                  if (overview.reservedNewElsewhere > 0 &&
-                                      overview.activeSession == null) ...[
-                                    const SizedBox(height: 8),
-                                    Text(
-                                      'Nowe pytania czekają już w rozpoczętej '
-                                      'wyprawie na innym kontynencie. Wróć do '
-                                      'niej lub zakończ ją, aby zmienić zakres.',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                  if (overview.plannedCount > 0 ||
-                                      overview.activeSession != null) ...[
-                                    const SizedBox(height: 18),
-                                    SizedBox(
-                                      width: double.infinity,
-                                      child: FilledButton.icon(
-                                        onPressed: () async {
-                                          await context.push('/daily');
-                                          if (context.mounted) {
-                                            ref.invalidate(
-                                              dailyOverviewProvider,
-                                            );
-                                          }
-                                        },
-                                        icon: const Icon(
-                                          Icons.explore_outlined,
-                                        ),
-                                        label: Text(
-                                          overview.activeSession == null
-                                              ? 'Rozpocznij dzisiejszą wyprawę'
-                                              : 'Wznów dzisiejszą wyprawę',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                  if (overview.activeSession == null) ...[
-                                    if (overview.plannedCount == 0 &&
-                                        overview.canStartExtra) ...[
-                                      const SizedBox(height: 18),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: FilledButton.icon(
-                                          onPressed: () =>
-                                              _openDaily(context, ref, 'extra'),
-                                          icon: const Icon(Icons.replay),
-                                          label: const Text('Kolejna runda'),
-                                        ),
-                                      ),
-                                    ],
-                                    if (overview.newAvailable > 0) ...[
-                                      const SizedBox(height: 10),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: OutlinedButton.icon(
-                                          onPressed: () => _openDaily(
-                                            context,
-                                            ref,
-                                            'placement',
-                                          ),
-                                          icon: const Icon(
-                                            Icons.travel_explore,
-                                          ),
-                                          label: const Text(
-                                            'Kuna sprawdzi, co już wiesz',
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        'Kraje, które już znasz, od razu '
-                                        'pominiesz.',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                      ),
-                                    ],
-                                  ],
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      error: (_, _) => _LoadFailed(ref: ref),
+                      data: (overview) => _ExpeditionCard(
+                        continent: continent,
+                        overview: overview,
+                        compact: compact,
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Poziom wyprawy',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        for (final level in LearningDifficulty.values)
-                          ChoiceChip(
-                            label: Text(level.label),
-                            selected:
-                                (difficulty ?? LearningDifficulty.normal) ==
-                                level,
-                            showCheckmark: false,
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            onSelected: (selected) async {
-                              if (!selected || difficulty == level) return;
-                              await ref
-                                  .read(appPreferencesProvider.notifier)
-                                  .setDifficulty(continent, level);
-                              ref.invalidate(dailyOverviewProvider);
-                            },
-                          ),
-                      ],
-                    ),
-                    if (overview?.activeSession != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        'Rozpoczęta wyprawa zachowuje zapisane poziomy; wybór tutaj dotyczy następnej.',
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
                     const SizedBox(height: 24),
                     Text(
-                      'Wybierz własny trening',
+                      'Trening dowolny',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 10),
-                    FilledButton.tonalIcon(
-                      onPressed: () async {
-                        await context.push('/learn');
-                        if (context.mounted) {
-                          ref.invalidate(dailyOverviewProvider);
-                        }
-                      },
-                      icon: const Icon(Icons.public_outlined),
-                      label: const Text('Trening mapy'),
-                    ),
-                    const SizedBox(height: 8),
-                    FilledButton.tonalIcon(
-                      onPressed: () async {
-                        await context.push('/capitals');
-                        if (context.mounted) {
-                          ref.invalidate(dailyOverviewProvider);
-                        }
-                      },
-                      icon: const Icon(Icons.location_city_outlined),
-                      label: const Text('Trening stolic'),
-                    ),
-                    const SizedBox(height: 8),
-                    FilledButton.tonalIcon(
-                      onPressed: () async {
-                        await context.push('/flags');
-                        if (context.mounted) {
-                          ref.invalidate(dailyOverviewProvider);
-                        }
-                      },
-                      icon: const Icon(Icons.flag_outlined),
-                      label: const Text('Trening flag'),
-                    ),
-                    const SizedBox(height: 8),
-                    OutlinedButton.icon(
-                      onPressed: () => context.push('/atlas'),
-                      icon: const Icon(Icons.map_outlined),
-                      label: Text(
-                        catalog == null
-                            ? 'Atlas'
-                            : 'Atlas: ${catalog.countries.length} państw',
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    OutlinedButton.icon(
-                      onPressed: () => context.push('/learning'),
-                      icon: const Icon(Icons.insights_outlined),
-                      label: const Text('Moja nauka'),
+                    _TrainingRow(compact: compact),
+                    const SizedBox(height: 12),
+                    _LevelRow(
+                      continent: continent,
+                      activeSession: daily.asData?.value.activeSession != null,
                     ),
                   ],
                 ),
@@ -421,76 +81,442 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-class _DailyCounts extends StatelessWidget {
-  const _DailyCounts({
-    required this.due,
-    required this.newCards,
-    required this.total,
-    required this.activeSession,
-    this.nextDue,
-  });
+Future<void> _openAndRefresh(
+  BuildContext context,
+  WidgetRef ref,
+  String path,
+) async {
+  await context.push(path);
+  if (context.mounted) ref.invalidate(dailyOverviewProvider);
+}
 
-  final DateTime? nextDue;
-
-  final int due;
-  final int newCards;
-  final int total;
-  final LearningSession? activeSession;
+class _ContinentPicker extends ConsumerWidget {
+  const _ContinentPicker({required this.continent, required this.compact});
+  final Continent continent;
+  final bool compact;
 
   @override
-  Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.titleMedium;
-    final active = activeSession;
-    final remaining = active == null
-        ? null
-        : active.countryIds.length -
-              active.index -
-              (active.currentAttempt == null ? 0 : 1);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (remaining != null) ...[
-          Text(
-            'Seria w toku',
-            style: textStyle?.copyWith(fontWeight: FontWeight.w700),
-          ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    void select(Continent option) =>
+        ref.read(selectedContinentProvider.notifier).select(option);
+    return Semantics(
+      label: 'Wybierz kontynent',
+      child: compact
+          ? Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                for (final option in Continent.values)
+                  ChoiceChip(
+                    label: Text(option.label),
+                    selected: continent == option,
+                    showCheckmark: false,
+                    materialTapTargetSize: MaterialTapTargetSize.padded,
+                    onSelected: (_) => select(option),
+                  ),
+              ],
+            )
+          : SegmentedButton<Continent>(
+              segments: [
+                for (final option in Continent.values)
+                  ButtonSegment<Continent>(
+                    value: option,
+                    label: Text(option.label),
+                    icon: Icon(switch (option) {
+                      Continent.europe => Icons.public_outlined,
+                      Continent.africa => Icons.landscape_outlined,
+                      Continent.asia => Icons.travel_explore_outlined,
+                    }),
+                  ),
+              ],
+              selected: {continent},
+              showSelectedIcon: false,
+              onSelectionChanged: (selection) {
+                if (selection.isNotEmpty && selection.single != continent) {
+                  select(selection.single);
+                }
+              },
+            ),
+    );
+  }
+}
+
+/// Light green panel shared by the expedition card and its load states.
+class _CardShell extends StatelessWidget {
+  const _CardShell({required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) => Card.filled(
+    margin: EdgeInsets.zero,
+    color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: .5),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+    child: Padding(padding: const EdgeInsets.all(20), child: child),
+  );
+}
+
+class _LoadFailed extends StatelessWidget {
+  const _LoadFailed({required this.ref});
+  final WidgetRef ref;
+
+  void _retry() {
+    if (ref.read(catalogProvider).hasError) ref.invalidate(catalogProvider);
+    if (ref.read(capitalsProvider).hasError) ref.invalidate(capitalsProvider);
+    if (ref.read(flagsProvider).hasError) ref.invalidate(flagsProvider);
+    try {
+      ref.read(databaseProvider);
+    } catch (_) {
+      ref.invalidate(databaseProvider);
+    }
+    ref.invalidate(dailyOverviewProvider);
+  }
+
+  @override
+  Widget build(BuildContext context) => _CardShell(
+    child: Semantics(
+      liveRegion: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Nie udało się wczytać dzisiejszej wyprawy.'),
           const SizedBox(height: 8),
-          Text('Pozostało $remaining ${_questionWord(remaining)}'),
-        ] else ...[
-          Text(
-            total == 0
-                ? _calmMessage(context, nextDue)
-                : '$total ${_questionWord(total)} w dzisiejszej serii',
-            style: textStyle?.copyWith(fontWeight: FontWeight.w700),
+          OutlinedButton(onPressed: _retry, child: const Text('Ponów odczyt')),
+        ],
+      ),
+    ),
+  );
+}
+
+class _ExpeditionCard extends ConsumerWidget {
+  const _ExpeditionCard({
+    required this.continent,
+    required this.overview,
+    required this.compact,
+  });
+  final Continent continent;
+  final MemoryOverview overview;
+  final bool compact;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final active = overview.activeSession;
+    final canStart = overview.plannedCount > 0 || active != null;
+    final extra =
+        active == null && overview.plannedCount == 0 && overview.canStartExtra;
+    final mascot = compact ? 56.0 : 88.0;
+    final details = [
+      const SizedBox(height: 4),
+      Text(_planText(context, overview)),
+      const SizedBox(height: 8),
+      const _StreakLine(),
+    ];
+    return _CardShell(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            crossAxisAlignment: compact
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/mascot/kuna-globe.png',
+                width: mascot,
+                height: mascot,
+                cacheWidth: 264,
+                semanticLabel: 'Kuna z globusem',
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Wyprawa po ${continent.journey}',
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    // Narrow screens keep the details full width below.
+                    if (!compact) ...details,
+                  ],
+                ),
+              ),
+            ],
           ),
-          if (total > 0) ...[
-            const SizedBox(height: 8),
-            Text('$due ${_reviewWord(due)} · $newCards nowych w serii'),
+          if (compact) ...details,
+          if (overview.otherDueCount > 0) ...[
+            const SizedBox(height: 12),
+            Text(
+              'Na innych poziomach: ${overview.otherDueCount} '
+              '${_plural(overview.otherDueCount, 'powtórka', 'powtórki', 'powtórek')}.',
+              style: theme.textTheme.bodySmall,
+            ),
           ],
+          if (overview.reservedNewElsewhere > 0 && active == null) ...[
+            const SizedBox(height: 12),
+            Text(
+              'Nowe pytania czekają już w rozpoczętej wyprawie na innym '
+              'kontynencie. Wróć do niej lub zakończ ją, aby zmienić zakres.',
+              style: theme.textTheme.bodyMedium,
+            ),
+          ],
+          if (canStart || extra) ...[
+            const SizedBox(height: 18),
+            FilledButton.icon(
+              onPressed: () => _openAndRefresh(
+                context,
+                ref,
+                extra ? '/daily?mode=extra' : '/daily',
+              ),
+              icon: Icon(extra ? Icons.replay : Icons.explore_outlined),
+              label: Text(
+                extra
+                    ? 'Kolejna runda'
+                    : active == null
+                    ? 'Rozpocznij wyprawę'
+                    : 'Wznów wyprawę',
+              ),
+            ),
+          ],
+          if (active == null && overview.newAvailable > 0) ...[
+            const SizedBox(height: 4),
+            TextButton.icon(
+              style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+              onPressed: () =>
+                  _openAndRefresh(context, ref, '/daily?mode=placement'),
+              icon: const Icon(Icons.travel_explore),
+              label: const Text('Kuna sprawdzi, co już wiesz'),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _StreakLine extends ConsumerWidget {
+  const _StreakLine();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final streak = ref.watch(streakProvider).asData?.value;
+    final current = streak?.current ?? 0;
+    final today = streak?.practisedToday == true;
+    final text = current == 0
+        ? 'Odpowiedz dziś, aby zacząć passę'
+        : today
+        ? 'Passa: ${daysLabel(current)}, dziś zaliczone'
+        : 'Passa: ${daysLabel(current)}, odpowiedz dziś';
+    return Semantics(
+      liveRegion: true,
+      label: '$text. Rekord: ${daysLabel(streak?.best ?? 0)}.',
+      excludeSemantics: true,
+      child: Row(
+        children: [
+          Icon(
+            today
+                ? Icons.local_fire_department
+                : Icons.local_fire_department_outlined,
+            size: 20,
+            color: today ? const Color(0xFFC25A00) : null,
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TrainingRow extends ConsumerWidget {
+  const _TrainingRow({required this.compact});
+  final bool compact;
+
+  static const _items = [
+    ('Mapa', Icons.public_outlined, '/learn'),
+    ('Stolice', Icons.location_city_outlined, '/capitals'),
+    ('Flagi', Icons.flag_outlined, '/flags'),
+  ];
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scheme = Theme.of(context).colorScheme;
+    Widget tile((String, IconData, String) item) {
+      final (label, icon, path) = item;
+      final shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: scheme.outlineVariant),
+      );
+      return Semantics(
+        button: true,
+        label: 'Trening: $label',
+        excludeSemantics: true,
+        child: Material(
+          color: scheme.surface,
+          shape: shape,
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () => _openAndRefresh(context, ref, path),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: compact ? 12 : 16,
+                horizontal: 12,
+              ),
+              child: compact
+                  ? Row(
+                      children: [
+                        Icon(icon, color: scheme.primary),
+                        const SizedBox(width: 12),
+                        Expanded(child: Text(label)),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        Icon(icon, size: 28, color: scheme.primary),
+                        const SizedBox(height: 6),
+                        Text(label, maxLines: 1),
+                      ],
+                    ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (compact) {
+      return Column(
+        children: [
+          for (final item in _items) ...[
+            tile(item),
+            if (item != _items.last) const SizedBox(height: 8),
+          ],
+        ],
+      );
+    }
+    return Row(
+      children: [
+        for (final item in _items) ...[
+          Expanded(child: tile(item)),
+          if (item != _items.last) const SizedBox(width: 10),
         ],
       ],
     );
   }
+}
 
-  String _questionWord(int count) {
-    if (count == 1) return 'pytanie';
-    if (count % 10 >= 2 &&
-        count % 10 <= 4 &&
-        (count % 100 < 12 || count % 100 > 14)) {
-      return 'pytania';
-    }
-    return 'pytań';
+class _LevelRow extends ConsumerWidget {
+  const _LevelRow({required this.continent, required this.activeSession});
+  final Continent continent;
+  final bool activeSession;
+
+  Future<void> _choose(
+    BuildContext context,
+    WidgetRef ref,
+    LearningDifficulty current,
+  ) async {
+    final chosen = await showModalBottomSheet<LearningDifficulty>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      useRootNavigator: true,
+      builder: (context) => SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+                child: Text(
+                  'Poziom: ${continent.label}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              for (final level in LearningDifficulty.values)
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+                  title: Text(level.label),
+                  subtitle: Text(level.description),
+                  selected: level == current,
+                  trailing: level == current ? const Icon(Icons.check) : null,
+                  onTap: () => Navigator.pop(context, level),
+                ),
+              if (activeSession)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+                  child: Text(
+                    'Rozpoczęta wyprawa zachowuje zapisany poziom; wybór '
+                    'dotyczy następnej.',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+    if (chosen == null || chosen == current) return;
+    await ref
+        .read(appPreferencesProvider.notifier)
+        .setDifficulty(continent, chosen);
+    ref.invalidate(dailyOverviewProvider);
   }
 
-  String _reviewWord(int count) {
-    if (count == 1) return 'powtórka';
-    if (count % 10 >= 2 &&
-        count % 10 <= 4 &&
-        (count % 100 < 12 || count % 100 > 14)) {
-      return 'powtórki';
-    }
-    return 'powtórek';
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final current =
+        ref
+            .watch(appPreferencesProvider)
+            .asData
+            ?.value
+            .difficultyFor(continent) ??
+        LearningDifficulty.normal;
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+      leading: const Icon(Icons.tune),
+      title: Text('Poziom: ${current.label}'),
+      subtitle: Text(current.description),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => _choose(context, ref, current),
+    );
   }
+}
+
+String _planText(BuildContext context, MemoryOverview overview) {
+  final active = overview.activeSession;
+  if (active != null) {
+    final left =
+        active.countryIds.length -
+        active.index -
+        (active.currentAttempt == null ? 0 : 1);
+    final verb = _plural(left, 'Zostało', 'Zostały', 'Zostało');
+    return '$verb $left ${_plural(left, 'pytanie', 'pytania', 'pytań')} '
+        'w rozpoczętej serii.';
+  }
+  if (overview.plannedCount == 0) {
+    return _calmMessage(context, overview.nextDue);
+  }
+  final parts = [
+    if (overview.plannedNewCount > 0)
+      '${overview.plannedNewCount} '
+          '${_plural(overview.plannedNewCount, 'nowe pytanie', 'nowe pytania', 'nowych pytań')}',
+    if (overview.dueCount > 0)
+      '${overview.dueCount} '
+          '${_plural(overview.dueCount, 'powtórka', 'powtórki', 'powtórek')}',
+  ];
+  return '${parts.join(' i ')}.';
+}
+
+String _plural(int n, String one, String few, String many) {
+  if (n == 1) return one;
+  final tens = n % 100;
+  if (n % 10 >= 2 && n % 10 <= 4 && (tens < 12 || tens > 14)) return few;
+  return many;
 }
 
 /// One message for an empty plan: when the next review is due.
@@ -506,7 +532,7 @@ String _calmMessage(BuildContext context, DateTime? nextDue) {
   if (local.year == now.year &&
       local.month == now.month &&
       local.day == now.day) {
-    return 'Kolejna powtórka dziś o $time.';
+    return 'Na dziś wszystko. Kolejna powtórka o $time.';
   }
   final date = MaterialLocalizations.of(context).formatMediumDate(local);
   return 'Na dziś wszystko. Kolejna powtórka: $date o $time.';

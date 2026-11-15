@@ -34,6 +34,8 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Kadr quizu ustawiany po `initialCameraFit` (post-frame po `onMapReady`);
   zmiana stylu nie resetuje kamery; rozwiązanie po 3. błędzie dopasowuje kamerę raz.
 - Etykiety błędnych krajów to `IgnorePointer` z jedną etykietą semantyczną.
+- Dziś, Atlas i Moja nauka to gałęzie `StatefulShellRoute` z dolnym paskiem (Wstecz
+  wraca do Dziś); quizy, ustawienia i szczegóły otwierają się nad paskiem.
 - Błąd ładowania Dziś dotyczy tylko karty wyprawy; nawigacja pozostaje dostępna.
 - Repozytorium nie zastępuje uszkodzonej bazy pustą.
 - Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.

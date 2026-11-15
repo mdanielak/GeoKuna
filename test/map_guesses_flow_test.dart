@@ -41,7 +41,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    GoRouter.of(tester.element(find.text('Dziś'))).go('/learn');
+    GoRouter.of(tester.element(find.byType(NavigationBar))).go('/learn');
     await tester.pumpAndSettle();
     expect(find.text('Potwierdź'), findsNothing);
     for (var i = 0; i < 3; i++) {

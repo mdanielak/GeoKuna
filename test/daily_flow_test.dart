@@ -47,23 +47,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.text('3 pytania w dzisiejszej serii'),
-      150,
-    );
-    expect(find.text('3 pytania w dzisiejszej serii'), findsOneWidget);
-    await tester.scrollUntilVisible(
-      find.text('0 powtórek · 3 nowych w serii'),
-      150,
-    );
-    expect(find.text('0 powtórek · 3 nowych w serii'), findsOneWidget);
-    await tester.scrollUntilVisible(
-      find.text('Rozpocznij dzisiejszą wyprawę'),
-      150,
-    );
-    await tester.ensureVisible(find.text('Rozpocznij dzisiejszą wyprawę'));
+    expect(find.text('3 nowe pytania.'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Rozpocznij wyprawę'), 150);
+    await tester.ensureVisible(find.text('Rozpocznij wyprawę'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Rozpocznij dzisiejszą wyprawę'));
+    await tester.tap(find.text('Rozpocznij wyprawę'));
     await tester.pumpAndSettle();
     expect(find.text('Pytanie 1 z 3'), findsOneWidget);
     expect(await db.select(db.attempts).get(), isEmpty);
@@ -131,7 +119,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Wznów dzisiejszą wyprawę'));
+      await tester.tap(find.text('Wznów wyprawę'));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextFormField), 'Warszawa');
       await tester.pump();
@@ -142,7 +130,7 @@ void main() {
       expect(await db.select(db.memoryReviews).get(), hasLength(1));
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Wznów dzisiejszą wyprawę'));
+      await tester.tap(find.text('Wznów wyprawę'));
       await tester.pumpAndSettle();
       expect(find.text('Następne pytanie'), findsOneWidget);
       expect(await db.select(db.memoryReviews).get(), hasLength(1));

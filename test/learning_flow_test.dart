@@ -38,10 +38,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(find.text('Trening mapy'), 180);
-      await tester.ensureVisible(find.text('Trening mapy'));
+      await tester.scrollUntilVisible(find.text('Mapa'), 180);
+      await tester.ensureVisible(find.text('Mapa'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Trening mapy'));
+      await tester.tap(find.text('Mapa'));
       await tester.pumpAndSettle();
       expect(find.text('Gdzie leży Liechtenstein?'), findsOneWidget);
       expect(find.text('Potwierdź'), findsNothing);

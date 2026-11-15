@@ -12,7 +12,8 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
   lekki kadr podpowiedzi na łatwych poziomach.
 - Medale 50/80/100% z dziedziczeniem poziomów, passa per kontynent na Dziś,
   ciekawostki po trafieniu, pięć emocji kuny z trzema tekstami.
-- Atlas z wyszukiwarką i klawiaturą, Moja nauka, trzy style map, reset z potwierdzeniem.
+- Dolny pasek Dziś / Atlas / Moja nauka (Dziś: jedna karta wyprawy z kuną i passą,
+  trening w jednym rzędzie, poziom w arkuszu); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
 - SQLite v7 z migracjami od v1.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
