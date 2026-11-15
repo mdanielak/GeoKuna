@@ -63,6 +63,12 @@ nie gwarantuje 90% pamięci.
   FSRS, poza wynikiem, oznaczony „z podpowiedzią”), a właściwe pytanie wraca
   kilka pozycji dalej i to ono jest oceniane. Najwyżej 2 kroki na serię; A–D i
   mapa bardzo łatwa nie mają łatwiejszego formatu. Dalsze szczeble: ROADMAP.
+- **Mylona para (szczebel 2):** gdy ten sam kraj został **2 razy** podany zamiast
+  celu (błędny kraj na mapie albo nazwa we fladze), zaraz po ocenianym pytaniu
+  o cel pada to samo pytanie o drugi kraj pary, jako ćwiczenie „para do
+  porównania” (`origin=contrast`). W A–D flag drugi kraj pary jest zawsze wśród
+  odpowiedzi. Stolic nie łączymy w pary: wpisana stolica nie wskazuje kraju.
+  Najwyżej 2 pary na serię; para nie trafia do serii, w której już jest.
 - Zapisujemy wskazany błędny kraj. Gdy ten sam kraj ponownie zostanie wskazany
   zamiast celu, feedback podpowiada: „Ta para już się myliła: Norwegia i Szwecja”.
 - Historyczne odpowiedzi z pomocą (lista usunięta z quizu) i dawne nieocenione
@@ -208,6 +214,9 @@ Ustawienia → Zresetuj naukę, z potwierdzeniem i ostrzeżeniem o nieodwracalno
   odtwarza usuniętej pamięci.
 - **Cała nauka:** usuwa wszystko powyżej i metadane importu.
 - Ustawienia (styl mapy, poziomy) zawsze zostają. Web i Android mają osobne bazy.
+- **Kopia zapasowa** (Ustawienia): „Zapisz kopię” zapisuje całą naukę i ustawienia
+  do pliku JSON; „Wczytaj kopię” po potwierdzeniu zastępuje nią obecny stan.
+  Plik z nowszej wersji aplikacji lub uszkodzony jest odrzucany bez zmian w bazie.
 
 ## Ustawienia
 

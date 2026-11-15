@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/providers.dart';
+import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../learning/learning_progress.dart';
 
@@ -251,16 +252,14 @@ class LearningOverviewScreen extends ConsumerWidget {
                         (achievement) => achievement.topic == topic,
                       ))
                         ListTile(
-                          leading: Icon(
-                            level.earnedMedal == 0
-                                ? Icons.workspace_premium_outlined
-                                : Icons.workspace_premium,
-                            color: switch (level.earnedMedal) {
-                              1 => const Color(0xFF9A6339),
-                              2 => const Color(0xFF6F777D),
-                              3 => const Color(0xFF9A7420),
-                              _ => null,
-                            },
+                          leading: Builder(
+                            builder: (context) => Icon(
+                              level.earnedMedal == 0
+                                  ? Icons.workspace_premium_outlined
+                                  : Icons.workspace_premium,
+                              color: GeoColors.of(context)
+                                  .medal(level.earnedMedal),
+                            ),
                           ),
                           title: Text(
                             '${level.level.label} · ${_medalLabel(level.earnedMedal)}',

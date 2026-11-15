@@ -16,6 +16,7 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 - `lib/features/learning/memory.dart` — adapter FSRS (oceny, Easy/Hard, limit 60 dni), `recoveringSkills`
 - `lib/features/learning/session_repository.dart` — sesje, `_plan` (tryby Dziś: regular/extra/placement), powtórki w serii, ręczny dobór
 - `lib/features/learning/achievements.dart` — zaliczenia i medale; `streaks.dart` — passa
+- `lib/app/theme.dart` — tokeny: role Material + `GeoColors` (nie wpisuj `Color(0x…)` w UI; mapy: `map_style.dart`)
 - `lib/features/atlas/country_map.dart` + `quiz_map_frame.dart` — mapa quizu, kadr łatwych poziomów
 - `test/adaptive_learning_test.dart` — symulacja ucznia; pierwszy test do uruchomienia po zmianie reguł
 

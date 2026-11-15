@@ -84,6 +84,14 @@ class LearningSession {
   /// An easier, unscored ladder step before a stubborn skill's real question.
   bool isScaffoldAt(int i) => originAt(i) == 'scaffold';
 
+  /// The country a stubborn skill keeps being confused with, asked right
+  /// after it as unscored practice (ladder step 2).
+  bool isContrastAt(int i) => originAt(i) == 'contrast';
+
+  /// Practice inside a daily series: never scored and never an FSRS grade.
+  bool isPracticeAt(int i) =>
+      isRetryAt(i) || isScaffoldAt(i) || isContrastAt(i);
+
   /// Special origin stored in the daily snapshot (`control`, `placement`,
   /// `scaffold`).
   String? originAt(int i) => isDaily && i < _questions.length
@@ -95,8 +103,7 @@ class LearningSession {
       .where(
         (a) =>
             !assistedIndices.contains(a.questionIndex) &&
-            !isRetryAt(a.questionIndex) &&
-            !isScaffoldAt(a.questionIndex),
+            !isPracticeAt(a.questionIndex),
       )
       .toList();
   int get correctCount => scoredAttempts.where((attempt) {
@@ -120,6 +127,12 @@ const retryGapMin = 3, retryGapMax = 5;
 
 /// At most this many ladder steps per series, so it stays a review.
 const maxScaffoldsPerSeries = 2;
+
+/// A pair counts as confused after this many misses naming the same partner.
+const confusionThreshold = 2;
+
+/// At most this many contrast questions (ladder step 2) per series.
+const maxContrastsPerSeries = 2;
 
 /// New cards an extra round may introduce beyond the daily budget.
 const extraNewPerRound = 3;
@@ -447,9 +460,7 @@ class SessionRepository {
   /// Without room for the gap, the next round or day takes it via FSRS.
   Future<void> _queueRetry(LearningSession session, int index) async {
     // A missed ladder step needs no retry: the real question follows.
-    if (!session.isDaily ||
-        session.isRetryAt(index) ||
-        session.isScaffoldAt(index)) {
+    if (!session.isDaily || session.isPracticeAt(index)) {
       return;
     }
     final questions = jsonDecode(session.row.questionData) as List;
@@ -1129,6 +1140,7 @@ class SessionRepository {
         )
         .toList();
     _addScaffolds(questions, plan.struggling);
+    _addContrasts(questions, await _confusions(catalog, flags), flags);
     final id = const Uuid().v4();
     await db
         .into(db.sessions)
@@ -1179,6 +1191,111 @@ class SessionRepository {
       final gap = others < retryGapMin ? others : retryGapMin;
       questions.insert(at + 1 + gap, original);
       added++;
+    }
+  }
+
+  /// Target country → the country most often given instead of it, once the
+  /// same wrong answer happened [confusionThreshold] times. Map guesses and
+  /// flag names are reliable; a typed capital does not name a country.
+  Future<Map<String, String>> _confusions(
+    Catalog catalog,
+    FlagCatalog? flags,
+  ) async {
+    final known = catalog.countries.map((c) => c.id).toSet();
+    final counts = <(String, String), int>{};
+    void add(String target, String partner) {
+      if (target == partner ||
+          !known.contains(target) ||
+          !known.contains(partner)) {
+        return;
+      }
+      counts.update((target, partner), (n) => n + 1, ifAbsent: () => 1);
+    }
+
+    final guesses = await (db.select(db.mapGuesses).join([
+      innerJoin(
+        db.attempts,
+        db.attempts.sessionId.equalsExp(db.mapGuesses.sessionId) &
+            db.attempts.questionIndex.equalsExp(db.mapGuesses.questionIndex),
+      ),
+    ])..where(db.mapGuesses.correct.equals(false))).get();
+    for (final row in guesses) {
+      add(
+        row.readTable(db.attempts).countryId,
+        row.readTable(db.mapGuesses).selectedCountryId,
+      );
+    }
+    if (flags != null) {
+      final byName = {
+        for (final fact in flags.facts)
+          for (final name in [fact.countryName, ...fact.aliases])
+            normalizeAnswer(name): fact.countryId,
+      };
+      final wrong = await (db.select(
+        db.attempts,
+      )..where((a) => a.topic.equals('flags') & a.correct.equals(false))).get();
+      for (final attempt in wrong) {
+        final partner = byName[normalizeAnswer(attempt.answer)];
+        if (partner != null) add(attempt.countryId, partner);
+      }
+    }
+    final best = <String, (String, int)>{};
+    for (final MapEntry(key: (target, partner), :value) in counts.entries) {
+      if (value >= confusionThreshold && value > (best[target]?.$2 ?? 0)) {
+        best[target] = (partner, value);
+      }
+    }
+    return {for (final e in best.entries) e.key: e.value.$1};
+  }
+
+  /// Ladder step 2: right after a graded question about a confused country,
+  /// its usual partner follows in the same format as practice, so the two
+  /// are compared side by side. In A–D the partner is always an option.
+  void _addContrasts(
+    List<Map<String, dynamic>> questions,
+    Map<String, String> confusions,
+    FlagCatalog? flags,
+  ) {
+    var added = 0;
+    for (var i = 0; i < questions.length; i++) {
+      if (added == maxContrastsPerSeries) break;
+      final question = questions[i];
+      final topic = question['topic'] as String;
+      final partner = confusions[question['country_id']];
+      if (partner == null ||
+          topic == 'capitals' ||
+          (topic == 'flags' && flags == null) ||
+          question['retry'] == true ||
+          questions.any((q) => q['country_id'] == partner)) {
+        continue;
+      }
+      final partnerName = flags?.facts
+          .where((f) => f.countryId == partner)
+          .firstOrNull
+          ?.countryName;
+      final options = question['options'];
+      if (topic == 'flags' &&
+          options is List &&
+          partnerName != null &&
+          !options.contains(partnerName)) {
+        // Keep the answer, swap one distractor for the confused partner.
+        final answer = question['country_name'];
+        final slot = options.indexWhere((o) => o != answer);
+        if (slot >= 0) options[slot] = partnerName;
+      }
+      if (question['origin'] == 'scaffold') continue;
+      final difficulty = question['difficulty'] as String;
+      questions.insert(i + 1, {
+        if (topic == 'flags')
+          ...flags!.questions([partner], Random()).single.toJson(),
+        'topic': topic,
+        'difficulty': difficulty,
+        'skill_id': '$topic:$partner:$difficulty',
+        'country_id': partner,
+        'origin': 'contrast',
+      });
+      added++;
+      i++;
     }
   }
 

@@ -167,6 +167,7 @@ class MemoryStore {
         origin != 'assisted' &&
         origin != 'retry' &&
         origin != 'scaffold' &&
+        origin != 'contrast' &&
         (fresh ||
             !attempt.correct ||
             origin == 'control' ||

@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../../app/theme.dart';
 import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
 import '../atlas/country_map.dart';
@@ -359,21 +360,14 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                 _flagImage(session.flagQuestionAt(session.index), height: 56),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Text(
-                    'Wskaż to państwo',
-                    style: textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                  child: Text('Wskaż to państwo', style: textTheme.titleLarge),
                 ),
               ],
             )
           else
             Text(
               catalog.country(session.targetId).locationQuestion,
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+              style: textTheme.headlineSmall,
             ),
         ],
       ),
@@ -471,8 +465,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                                       liveRegion: true,
                                       child: Text(
                                         'Jeszcze nie. Pozostało prób: ${3 - session.currentMapGuesses.length}.',
-                                        style: const TextStyle(
-                                          color: Color(0xFF8C1D18),
+                                        style: TextStyle(
+                                          color: GeoColors.of(context)
+                                              .onWrongContainer,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
@@ -516,8 +511,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           children: [
             Text(
               _questionLabel(session),
-              style: Theme.of(context).textTheme.labelMedium
-                  ?.copyWith(fontWeight: FontWeight.w600),
+              style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 8),
             LinearProgressIndicator(
@@ -530,20 +524,22 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               const SizedBox(height: 12),
               Text(
                 'Jakie to państwo?',
-                style: Theme.of(context).textTheme.headlineSmall,
+                // The prompt stays regular; the subject above it is bold.
+                style: Theme.of(context).textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w400),
               ),
             ] else ...[
               Text(
                 catalog.country(session.targetId).name,
-                style: Theme.of(context).textTheme.headlineMedium
-                    ?.copyWith(fontWeight: FontWeight.w700),
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 4),
               Text(
                 question!.fact.prompt == defaultPrompt
                     ? 'Stolica?'
                     : question.fact.prompt,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w400),
               ),
             ],
             const SizedBox(height: 20),
@@ -702,8 +698,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     padding: const EdgeInsets.all(8),
     decoration: BoxDecoration(
       // Barely grey so white flag fields (e.g. the Netherlands) stay visible.
-      color: const Color(0xFFE9E8E3),
-      border: Border.all(color: const Color(0xFF7C887E)),
+      color: GeoColors.of(context).flagFrame,
+      border: Border.all(color: GeoColors.of(context).flagFrameBorder),
       borderRadius: BorderRadius.circular(12),
     ),
     child: Image.asset(
@@ -752,6 +748,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     final label = 'Pytanie ${session.index + 1} z ${session.countryIds.length}';
     if (session.isRetryAt(session.index)) return '$label, powtórka błędu';
     if (session.isScaffoldAt(session.index)) return '$label, z podpowiedzią';
+    if (session.isContrastAt(session.index)) {
+      return '$label, para do porównania';
+    }
     return session.originAt(session.index) == 'control'
         ? '$label, kontrola'
         : label;
@@ -765,11 +764,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         .where((a) => session.assistedIndices.contains(a.questionIndex))
         .length;
     final retryCount = session.attempts
-        .where(
-          (a) =>
-              session.isRetryAt(a.questionIndex) ||
-              session.isScaffoldAt(a.questionIndex),
-        )
+        .where((a) => session.isPracticeAt(a.questionIndex))
         .length;
     final isChoiceOnly = List.generate(
       session.countryIds.length,
@@ -801,8 +796,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                   ? 'Dzisiejsza wyprawa ukończona!'
                   : 'Wyprawa ukończona!',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineSmall
-                  ?.copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(
@@ -822,7 +816,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             if (retryCount > 0) ...[
               const SizedBox(height: 8),
               Text(
-                'Ćwiczenia w serii (powtórki błędów i podpowiedzi): $retryCount — nie liczą się do wyniku.',
+                'Ćwiczenia w serii (powtórki, podpowiedzi, pary): $retryCount — nie liczą się do wyniku.',
               ),
             ],
             if (unscoredCount > 0) ...[
@@ -932,9 +926,7 @@ class _InsightNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final insight = session.insight;
-    if (insight == null ||
-        session.isRetryAt(session.index) ||
-        session.isScaffoldAt(session.index)) {
+    if (insight == null || session.isPracticeAt(session.index)) {
       return const SizedBox.shrink();
     }
     final lines = [
@@ -967,44 +959,50 @@ class _TriviaCard extends StatelessWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    container: true,
-    label: 'Ciekawostka: $text',
-    excludeSemantics: true,
-    child: DecoratedBox(
-      decoration: BoxDecoration(
-        color: const Color(0xFFFCF0CF),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5C46B)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.lightbulb, color: Color(0xFFB07800), size: 28),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ciekawostka',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF5C3F00),
+  Widget build(BuildContext context) {
+    final colors = GeoColors.of(context);
+    return Semantics(
+      container: true,
+      label: 'Ciekawostka: $text',
+      excludeSemantics: true,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.triviaContainer,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: colors.triviaBorder),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.lightbulb, color: colors.triviaIcon, size: 28),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Ciekawostka',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: colors.triviaTitle,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(text, style: const TextStyle(color: Color(0xFF3B2F12))),
-                ],
+                    const SizedBox(height: 4),
+                    Text(
+                      text,
+                      style: TextStyle(color: colors.onTriviaContainer),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 typedef _Result = ({bool correct, String title, String detail});
@@ -1016,6 +1014,8 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
       ? 'powtórka, '
       : session.isScaffoldAt(i)
       ? 'podpowiedź, '
+      : session.isContrastAt(i)
+      ? 'para, '
       : '';
   final String detail;
   if (session.assistedIndices.contains(i)) {
@@ -1064,8 +1064,8 @@ class _ResultList extends StatelessWidget {
                       row.correct ? Icons.check_circle : Icons.cancel,
                       size: 20,
                       color: row.correct
-                          ? const Color(0xFF2E7D57)
-                          : const Color(0xFFA63A2B),
+                          ? GeoColors.of(context).correct
+                          : GeoColors.of(context).wrong,
                       semanticLabel: row.correct ? 'Dobrze' : 'Błąd',
                     ),
                     const SizedBox(width: 10),

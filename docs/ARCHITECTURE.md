@@ -8,13 +8,23 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 
 | Katalog | Odpowiedzialność |
 |---|---|
-| `app/` | motyw, routing (`app.dart`), providery (`providers.dart`) |
+| `app/` | motyw i tokeny (`theme.dart`: `GeoTheme`, `GeoColors`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
 | `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
 | `features/learning/` | sesje i zapis (`session_repository.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
 | `features/home/` | Dziś i atlas |
 | `features/progress/` | Moja nauka (kontynent → kraje) i szczegóły umiejętności |
-| `features/settings/` | preferencje (`app_preferences.dart`) i ekran ustawień z resetem |
+| `features/settings/` | preferencje (`app_preferences.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
+
+Kolory: role Material z jednego ziarna (`GeoTheme.seed`) na papierowym tle;
+role spoza Material (odpowiedź dobra/zła/literówka, ciekawostka, ramka flagi,
+dymek kuny, passa, medale) tylko w `GeoColors`. Palety map są osobno w
+`map_style.dart`. Typografia: Roboto z SDK (offline); pogrubione są nagłówki
+z tematem pytania lub ekranu, pytania pomocnicze („Stolica?”) zostają zwykłe.
+
+Kopia postępu: jeden plik JSON (`format: geokuna-progress`, `version`, `schema`)
+ze wszystkimi tabelami; import sprawdza cały plik i zastępuje dane w jednej
+transakcji. Zapis i odczyt pliku: `file_picker` (Android SAF, pobranie w Web).
 
 Przepływ: UI → Riverpod → repozytorium → Drift. Reguły nauki są czystymi
 funkcjami/klasami poza widgetami. `Continent` wybiera paczki, providery

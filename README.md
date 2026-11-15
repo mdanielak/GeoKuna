@@ -19,7 +19,8 @@ nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
 - **Motywacja, która nie przeszkadza w nauce:** medale za 50/80/100% utrwalonych
   faktów, passa dni nauki per kontynent, ciekawostki po trafieniu, pięć reakcji kuny.
 - Dolny pasek **Dziś / Atlas / Moja nauka**: atlas z wyszukiwarką, postęp kontynentów, trzy style map
-  (domyślnie prawdziwa rzeźba terenu Natural Earth), reset z potwierdzeniem.
+  (domyślnie prawdziwa rzeźba terenu Natural Earth), kopia postępu do pliku,
+  reset z potwierdzeniem.
 
 ## Uruchomienie
 

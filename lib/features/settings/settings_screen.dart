@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -7,6 +10,7 @@ import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
 import '../learning/learning_reset.dart';
 import 'app_preferences.dart';
+import 'progress_backup.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -18,6 +22,87 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   bool _all = false;
   bool _busy = false;
   String? _error;
+
+  void _invalidateProgress() {
+    ref.invalidate(dashboardProvider);
+    ref.invalidate(dailyOverviewProvider);
+    ref.invalidate(learningProgressProvider);
+    ref.invalidate(continentProgressProvider);
+    ref.invalidate(streakProvider);
+    ref.invalidate(achievementsProvider);
+    ref.invalidate(continentAchievementsProvider);
+  }
+
+  /// Runs one backup action with the shared busy/error state.
+  Future<void> _backupAction(Future<String?> Function() action) async {
+    if (_busy) return;
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      final message = await action();
+      if (message != null && mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(message)));
+      }
+    } on BackupException catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } catch (_) {
+      if (mounted) {
+        setState(() => _error = 'Nie udało się obsłużyć pliku kopii.');
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _export() => _backupAction(() async {
+    final backup = ProgressBackup(ref.read(databaseProvider));
+    final saved = await FilePicker.saveFile(
+      fileName: backup.fileName(DateTime.now()),
+      bytes: utf8.encode(await backup.export()),
+      mimeType: 'application/json',
+      dialogTitle: 'Zapisz kopię postępu',
+    );
+    return saved == null ? null : 'Kopia postępu zapisana.';
+  });
+
+  Future<void> _import() => _backupAction(() async {
+    final file = await FilePicker.pickFile(
+      dialogTitle: 'Wybierz kopię postępu',
+      type: FileType.custom,
+      allowedExtensions: const ['json'],
+    );
+    if (file == null || !mounted) return null;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Wczytać kopię?'),
+        content: const Text(
+          'Obecny postęp na tym urządzeniu zostanie zastąpiony postępem z '
+          'kopii. Tego nie da się cofnąć.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Anuluj'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Wczytaj kopię'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return null;
+    final summary = await ProgressBackup(ref.read(databaseProvider))
+        .import(utf8.decode(await file.readAsBytes()));
+    ref.invalidate(appPreferencesProvider);
+    _invalidateProgress();
+    return 'Wczytano kopię: ${summary.answers} odpowiedzi, '
+        '${summary.days} dni nauki.';
+  });
 
   Future<void> _setAppearance(MapAppearance value) async {
     if (_busy) return;
@@ -98,13 +183,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           catalog.countries.map((c) => c.id).toSet(),
         );
       }
-      ref.invalidate(dashboardProvider);
-      ref.invalidate(dailyOverviewProvider);
-      ref.invalidate(learningProgressProvider);
-      ref.invalidate(continentProgressProvider);
-      ref.invalidate(streakProvider);
-      ref.invalidate(achievementsProvider);
-      ref.invalidate(continentAchievementsProvider);
+      _invalidateProgress();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -219,12 +298,39 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ],
                 const SizedBox(height: 28),
                 Text(
+                  'Kopia zapasowa',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Cała nauka w jednym pliku: postęp, powtórki, passa, medale i '
+                  'ustawienia. Przyda się przy zmianie telefonu lub przeglądarki.',
+                ),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    FilledButton.tonalIcon(
+                      onPressed: _busy ? null : _export,
+                      icon: const Icon(Icons.save_alt),
+                      label: const Text('Zapisz kopię'),
+                    ),
+                    OutlinedButton.icon(
+                      onPressed: _busy ? null : _import,
+                      icon: const Icon(Icons.upload_file),
+                      label: const Text('Wczytaj kopię'),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 28),
+                Text(
                   'Nowy początek',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'Reset usuwa zapisane postępy na tym urządzeniu. Nie ma jeszcze kopii zapasowej ani możliwości cofnięcia.',
+                  'Reset usuwa zapisane postępy na tym urządzeniu i nie da się go cofnąć. Przed resetem możesz zapisać kopię.',
                 ),
                 const SizedBox(height: 12),
                 RadioGroup<bool>(

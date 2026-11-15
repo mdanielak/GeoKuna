@@ -19,7 +19,8 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
   pewniaków, „Kuna sprawdzi, co już wiesz”, ciekawostka z żarówką także po błędzie.
-- Drabinka trudnych kart, szczebel 1 (2026-11-15): po 2 błędach łatwiejszy krok
+- Drabinka trudnych kart, szczebele 1–2 (2026-11-15), kopia postępu w Ustawieniach,
+  tokeny kolorów i typografii (`GeoColors`): po 2 błędach łatwiejszy krok
   przed właściwym pytaniem. Ciekawostki o flagach (3 na flagę), Europa bez
   Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief WebP.
 
@@ -27,7 +28,7 @@ Ostatnie przyrosty sprawdzono zrzutami testowymi (`/shots`, 390×844 i 320×640/
 nie w Chrome ani na telefonie.
 
 Ograniczenia: brak testu na fizycznym Androidzie (gesty, Wstecz, TalkBack,
-cykl życia, wydajność reliefu, SQLite natywne), brak eksportu postępu, FSRS
+cykl życia, wydajność reliefu, SQLite natywne), FSRS
 nie dowodzi retencji w miesiącach.
 
 ## Najbliższe kroki
@@ -35,7 +36,8 @@ nie dowodzi retencji w miesiącach.
 1. **Kontrola Chrome** przyrostu poziomów/medali/pass: Dziś z passą, mapa
    bardzo łatwa/łatwa/normalna, etykieta błędu, przybliżenie po 3. błędzie,
    ciekawostka, podsumowanie z kuną, Moja nauka z medalami; 390×844 i 320×640/200%.
-2. **Eksport/import postępu** (plik lokalny) — przed kolejnymi zmianami magazynu.
+2. **Sprawdzenie kopii postępu na urządzeniu**: zapis przez systemowy wybór pliku
+   (Android SAF) i pobranie w Chrome; przeniesienie Web → telefon.
 3. **Państwo → flaga**: cztery obrazy, osobna karta, jednoznaczne dystraktory.
    **Kuna z lupą** zamiast żarówki na karcie ciekawostki (grafika w stylu maskotek).
 4. **Fizyczny Android** po uzgodnieniu toolchainu: tryb samolotowy, Wstecz,
@@ -52,13 +54,13 @@ się sposób nauki. Pierwszy szczebel działa (LEARNING.md → „Drabinka”). 
 | Szczebel | Kiedy | Co widzi użytkownik |
 |---|---|---|
 | 1 ✓ | 2 błędy od opanowania | łatwiejszy format jako ćwiczenie, potem właściwe pytanie |
-| 2 | mylona para (ten sam błędny kraj 2×) | pytanie o parę kolejno: „Słowacja” i „Słowenia”, z różnicą na mapie lub we flagach; w A–D drugi kraj pary zawsze wśród odpowiedzi |
+| 2 ✓ | mylona para (ten sam błędny kraj 2×) | pytanie o parę kolejno: „Słowacja” i „Słowenia”, z różnicą na mapie lub we flagach; w A–D drugi kraj pary zawsze wśród odpowiedzi |
 | 3 | 4+ błędy | karta przypomnienia przed pytaniem: kraj, sąsiedzi, ciekawostka; potem łatwiejszy krok i pytanie |
 | 4 | opanowanie po drabince | krótsze odstępy przez pierwsze 2 powtórki (np. limit 7 dni), zanim FSRS wróci do pełnych odstępów |
 
-Otwarte decyzje: czy szczebel 2 dotyczy też stolic i flag (wymaga zapisu, z którym
-krajem pomylono wpisaną odpowiedź); czy łatwiejszy krok ma się zaliczać do passy
-(obecnie tak, jak każda odpowiedź); jak liczyć „opanowanie” przy zmianie poziomu.
+Rozstrzygnięte: szczebel 2 obejmuje mapę i flagi (stolice nie, bo wpisana stolica
+nie wskazuje kraju); ćwiczenia drabinki liczą się do passy jak każda odpowiedź.
+Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
 
 ## Dalsze przyrosty
 

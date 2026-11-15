@@ -192,6 +192,37 @@ void main() {
     },
   );
 
+  test('ladder step 2: a confused pair is asked side by side', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    var now = DateTime(2026, 11, 1, 9);
+    final repo = SessionRepository(db, clock: () => now);
+    final all = catalog.countries.map((c) => c.id).toSet();
+    // Twice Slovakia was marked where Slovenia was asked.
+    for (var day = 0; day < 2; day++) {
+      now = DateTime(2026, 11, 1 + day, 9);
+      var s = await repo.start(['SVN']);
+      for (final (g, pick) in [(0, 'SVK'), (1, 'HRV'), (2, 'AUT')].indexed) {
+        s = await repo.guessMap(
+          s.row.id,
+          0,
+          pick.$2,
+          all,
+          expectedGuessIndex: g,
+        );
+      }
+      await repo.finish(s.row.id);
+    }
+    now = DateTime(2026, 11, 4, 9);
+    final daily = (await repo.startDaily(catalog, capitals, flags: flags))!;
+    final at = List.generate(daily.countryIds.length, (i) => i).firstWhere(
+      (i) => daily.skillIdAt(i) == 'map:SVN:map' && !daily.isPracticeAt(i),
+    );
+    expect(daily.countryIds[at + 1], 'SVK');
+    expect(daily.isContrastAt(at + 1), isTrue);
+    expect(daily.skillIdAt(at + 1), 'map:SVK:map');
+  });
+
   test('extra round checks known facts once the daily plan is done', () async {
     final db = AppDatabase(NativeDatabase.memory());
     addTearDown(db.close);

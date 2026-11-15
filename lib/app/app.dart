@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'providers.dart';
+import 'theme.dart';
 import '../features/settings/app_preferences.dart';
 
 import '../features/home/home_screen.dart';
@@ -145,26 +146,7 @@ class _GeoKunaAppState extends State<GeoKunaApp> {
     locale: const Locale('pl'),
     supportedLocales: const [Locale('pl')],
     localizationsDelegates: GlobalMaterialLocalizations.delegates,
-    theme: ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFF335C45),
-        surface: const Color(0xFFFAF8F0),
-      ),
-      scaffoldBackgroundColor: const Color(0xFFFAF8F0),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xFFFAF8F0),
-        centerTitle: false,
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          minimumSize: const Size(48, 52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-      ),
-    ),
+    theme: GeoTheme.light(),
     routerConfig: _router,
   );
 }

@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/theme.dart';
+
 enum QuizMascotMood { neutral, happy, sad, thoughtful, encouraging, heart }
 
 class QuizMascotFeedback {
@@ -156,7 +158,7 @@ class QuizMascotFeedbackView extends StatelessWidget {
           ),
           Expanded(
             child: CustomPaint(
-              painter: _BubbleTail(_bubbleColor),
+              painter: _BubbleTail(GeoColors.of(context).speechBubble),
               child: Container(
                 margin: const EdgeInsets.only(left: 10),
                 padding: const EdgeInsets.symmetric(
@@ -164,7 +166,7 @@ class QuizMascotFeedbackView extends StatelessWidget {
                   vertical: 12,
                 ),
                 decoration: BoxDecoration(
-                  color: _bubbleColor,
+                  color: GeoColors.of(context).speechBubble,
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Text(
@@ -179,8 +181,6 @@ class QuizMascotFeedbackView extends StatelessWidget {
     ),
   );
 }
-
-const _bubbleColor = Color(0xFFEFECE3);
 
 /// Small triangle on the bubble's left edge, pointing at the kuna.
 class _BubbleTail extends CustomPainter {

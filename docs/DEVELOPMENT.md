@@ -13,9 +13,11 @@ flutter run -d chrome                 # opcjonalnie --web-port=8766 dla stałego
 W `flutter run`: `r` hot reload, `R` restart, `q` koniec. Baza Web należy do
 profilu i adresu przeglądarki (inny port = osobny magazyn); nie czyść danych
 przeglądarki, jeśli chcesz zachować postęp. Web nie działa offline po zamknięciu
-karty (brak PWA). Eksportu/importu i synchronizacji z telefonem jeszcze nie ma.
+karty (brak PWA). Postęp przenosi się kopią z Ustawień (plik JSON); synchronizacji nie ma.
 
 Po zmianie tabel: `dart run build_runner build` (wynik `database.g.dart` jest w repo).
+Ikony Androida i Web: `python3 tools/build_icons.py` (z `assets/mascot/kuna-globe.png`,
+Pillow; `--check` sprawdza rozmiary).
 
 ## Weryfikacja przed integracją
 

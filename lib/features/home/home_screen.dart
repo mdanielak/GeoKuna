@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/providers.dart';
+import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../learning/session_repository.dart';
 import '../learning/streaks.dart';
@@ -23,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
         MediaQuery.textScalerOf(context).scale(14) > 18;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GeoKuna'),
+        title: const _Wordmark(),
         actions: [
           IconButton(
             tooltip: 'Ustawienia',
@@ -83,6 +84,57 @@ class HomeScreen extends ConsumerWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+/// App name with the same kuna as the launcher icon: one image, one name.
+class _Wordmark extends StatelessWidget {
+  const _Wordmark();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Semantics(
+      header: true,
+      label: 'GeoKuna',
+      excludeSemantics: true,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: GeoColors.of(context).brandMint,
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(3),
+              child: Image.asset(
+                'assets/mascot/kuna-globe.png',
+                width: 34,
+                height: 34,
+                cacheWidth: 102,
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          // A logo may shrink on narrow screens with very large text.
+          Flexible(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                'GeoKuna',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.4,
+                  color: scheme.primary,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -250,9 +302,7 @@ class _ExpeditionCard extends ConsumerWidget {
                   children: [
                     Text(
                       'Wyprawa po ${continent.journey}',
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: theme.textTheme.titleLarge,
                     ),
                     // Narrow screens keep the details full width below.
                     if (!compact) ...details,
@@ -342,7 +392,7 @@ class _StreakLine extends ConsumerWidget {
                 ? Icons.local_fire_department
                 : Icons.local_fire_department_outlined,
             size: 20,
-            color: today ? const Color(0xFFC25A00) : null,
+            color: today ? GeoColors.of(context).streak : null,
           ),
           const SizedBox(width: 6),
           Expanded(
