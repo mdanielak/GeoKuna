@@ -86,7 +86,7 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                               'Mapa pokazuje europejski wycinek świata; odległe części państw '
                               'i terytoria zależne nie są osobnymi zadaniami. '
                               'Krym jest przypisany do Ukrainy, a północ Cypru do Cypru.',
-                    style: const TextStyle(fontSize: 12),
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
               ),

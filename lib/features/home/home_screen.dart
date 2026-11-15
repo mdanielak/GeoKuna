@@ -279,89 +279,106 @@ class _ExpeditionCard extends ConsumerWidget {
       const SizedBox(height: 8),
       const _StreakLine(),
     ];
+    final title = Text(
+      'Wyprawa po ${continent.journey}',
+      style: theme.textTheme.titleLarge,
+    );
+    final kuna = Image.asset(
+      'assets/mascot/kuna-globe.png',
+      width: mascot,
+      height: mascot,
+      cacheWidth: 264,
+      semanticLabel: 'Kuna z globusem',
+    );
     return _CardShell(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            crossAxisAlignment: compact
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // Very large text: the kuna goes above the title, so words never
+          // break mid-word in a narrow column beside her.
+          final stacked =
+              constraints.maxWidth - mascot - 14 <
+              MediaQuery.textScalerOf(context).scale(22) * 6;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset(
-                'assets/mascot/kuna-globe.png',
-                width: mascot,
-                height: mascot,
-                cacheWidth: 264,
-                semanticLabel: 'Kuna z globusem',
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              if (stacked) ...[
+                Align(alignment: Alignment.centerLeft, child: kuna),
+                const SizedBox(height: 8),
+                title,
+                ...details,
+              ] else
+                Row(
+                  crossAxisAlignment: compact
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Wyprawa po ${continent.journey}',
-                      style: theme.textTheme.titleLarge,
+                    kuna,
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          title,
+                          // Narrow screens keep the details full width below.
+                          if (!compact) ...details,
+                        ],
+                      ),
                     ),
-                    // Narrow screens keep the details full width below.
-                    if (!compact) ...details,
                   ],
                 ),
-              ),
-            ],
-          ),
-          if (compact) ...details,
-          if (overview.otherDueCount > 0) ...[
-            const SizedBox(height: 12),
-            Text(
-              'Na innych poziomach: ${overview.otherDueCount} '
-              '${_plural(overview.otherDueCount, 'powtórka', 'powtórki', 'powtórek')}.',
-              style: theme.textTheme.bodySmall,
-            ),
-          ],
-          if (overview.reservedNewElsewhere > 0 && active == null) ...[
-            const SizedBox(height: 12),
-            Text(
-              'Nowe pytania czekają już w rozpoczętej wyprawie na innym '
-              'kontynencie. Wróć do niej lub zakończ ją, aby zmienić zakres.',
-              style: theme.textTheme.bodyMedium,
-            ),
-          ],
-          if (canStart || extra) ...[
-            const SizedBox(height: 18),
-            // The extra round is optional, so it never looks like the
-            // day's main task.
-            if (extra)
-              FilledButton.tonalIcon(
-                onPressed: () =>
-                    _openAndRefresh(context, ref, '/daily?mode=extra'),
-                icon: const Icon(Icons.replay),
-                label: const Text('Kolejna runda'),
-              )
-            else
-              FilledButton.icon(
-                onPressed: () => _openAndRefresh(context, ref, '/daily'),
-                icon: const Icon(Icons.explore_outlined),
-                label: Text(
-                  active == null ? 'Rozpocznij wyprawę' : 'Wznów wyprawę',
+              if (compact && !stacked) ...details,
+              if (overview.otherDueCount > 0) ...[
+                const SizedBox(height: 12),
+                Text(
+                  'Na innych poziomach: ${overview.otherDueCount} '
+                  '${_plural(overview.otherDueCount, 'powtórka', 'powtórki', 'powtórek')}.',
+                  style: theme.textTheme.bodySmall,
                 ),
-              ),
-          ],
-          // Placement helps at the start of a continent; later it is noise.
-          if (active == null &&
-              overview.newAvailable > 0 &&
-              overview.learnedCount < placementUntilLearned) ...[
-            const SizedBox(height: 4),
-            TextButton.icon(
-              style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-              onPressed: () =>
-                  _openAndRefresh(context, ref, '/daily?mode=placement'),
-              icon: const Icon(Icons.travel_explore),
-              label: const Text('Kuna sprawdzi, co już wiesz'),
-            ),
-          ],
-        ],
+              ],
+              if (overview.reservedNewElsewhere > 0 && active == null) ...[
+                const SizedBox(height: 12),
+                Text(
+                  'Nowe pytania czekają już w rozpoczętej wyprawie na innym '
+                  'kontynencie. Wróć do niej lub zakończ ją, aby zmienić zakres.',
+                  style: theme.textTheme.bodyMedium,
+                ),
+              ],
+              if (canStart || extra) ...[
+                const SizedBox(height: 18),
+                // The extra round is optional, so it never looks like the
+                // day's main task.
+                if (extra)
+                  FilledButton.tonalIcon(
+                    onPressed: () =>
+                        _openAndRefresh(context, ref, '/daily?mode=extra'),
+                    icon: const Icon(Icons.replay),
+                    label: const Text('Kolejna runda'),
+                  )
+                else
+                  FilledButton.icon(
+                    onPressed: () => _openAndRefresh(context, ref, '/daily'),
+                    icon: const Icon(Icons.explore_outlined),
+                    label: Text(
+                      active == null ? 'Rozpocznij wyprawę' : 'Wznów wyprawę',
+                    ),
+                  ),
+              ],
+              // Placement helps at the start of a continent; later it is noise.
+              if (active == null &&
+                  overview.newAvailable > 0 &&
+                  overview.learnedCount < placementUntilLearned) ...[
+                const SizedBox(height: 4),
+                TextButton.icon(
+                  style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
+                  onPressed: () =>
+                      _openAndRefresh(context, ref, '/daily?mode=placement'),
+                  icon: const Icon(Icons.travel_explore),
+                  label: const Text('Kuna sprawdzi, co już wiesz'),
+                ),
+              ],
+            ],
+          );
+        },
       ),
     );
   }

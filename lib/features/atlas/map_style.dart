@@ -34,6 +34,14 @@ class MapPalette {
   double get boundaryWidth => appearance == MapAppearance.relief ? 1.3 : 1.2;
   Color get markerFill => const Color(0xFFFAF7E9);
 
+  // Answer states, the same in every style: they must beat any land fill.
+  Color get correct => const Color(0xFF458461);
+  Color get wrong => const Color(0xFFB85A48);
+  Color get selected => const Color(0xFFD0A751);
+  Color get markerBorder => const Color(0xFF365643);
+  Color get wrongLabel => const Color(0xFF8C1D18);
+  Color get labelShadow => const Color(0x55000000);
+
   /// Five fills per style; [countryColoring] gives neighbours different ones.
   List<Color> get fills => appearance == MapAppearance.paper
       ? const [

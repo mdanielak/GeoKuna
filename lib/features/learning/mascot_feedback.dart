@@ -138,11 +138,10 @@ class QuizMascotFeedbackView extends StatelessWidget {
     liveRegion: true,
     label: '${feedback.accessibilityLabel} ${feedback.message}',
     child: ExcludeSemantics(
-      // The kuna speaks: her picture with a speech bubble beside it.
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final colors = GeoColors.of(context);
+          final picture = SizedBox(
             width: 104,
             height: 116,
             child: Image.asset(
@@ -155,28 +154,48 @@ class QuizMascotFeedbackView extends StatelessWidget {
                 cacheWidth: 312,
               ),
             ),
-          ),
-          Expanded(
-            child: CustomPaint(
-              painter: _BubbleTail(GeoColors.of(context).speechBubble),
-              child: Container(
-                margin: const EdgeInsets.only(left: 10),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: GeoColors.of(context).speechBubble,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Text(
-                  feedback.message,
-                  style: Theme.of(context).textTheme.bodyLarge,
+          );
+          final bubble = Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: colors.speechBubble,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Text(
+              feedback.message,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          );
+          // Large text on a narrow screen: the bubble goes below the kuna,
+          // so words never break mid-word beside her.
+          if (constraints.maxWidth - 114 <
+              MediaQuery.textScalerOf(context).scale(16) * 10) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(alignment: Alignment.centerLeft, child: picture),
+                const SizedBox(height: 8),
+                bubble,
+              ],
+            );
+          }
+          // The kuna speaks: her picture with a speech bubble beside it.
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              picture,
+              Expanded(
+                child: CustomPaint(
+                  painter: _BubbleTail(colors.speechBubble),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: bubble,
+                  ),
                 ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     ),
   );

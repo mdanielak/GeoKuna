@@ -93,7 +93,7 @@ class ProgressBackup {
         final medals = parse('awarded_medals', AwardedMedal.fromJson);
         await db.transaction(() async {
           // Children first: foreign keys point at sessions and cards.
-          for (final table in <TableInfo>[
+          for (final table in <TableInfo<Table, Object?>>[
             db.memoryReviews,
             db.mapGuesses,
             db.attempts,

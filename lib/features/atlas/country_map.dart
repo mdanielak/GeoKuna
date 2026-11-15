@@ -198,12 +198,11 @@ class _CountryMapState extends State<CountryMap> {
   MapPalette get _palette => MapPalette(widget.appearance);
 
   Color _color(String id) {
-    if (id == widget.correctId) return const Color(0xFF458461);
-    if (widget.wrongCountryIds.contains(id)) return const Color(0xFFB85A48);
+    final palette = _palette;
+    if (id == widget.correctId) return palette.correct;
+    if (widget.wrongCountryIds.contains(id)) return palette.wrong;
     if (id == widget.selectedId) {
-      return widget.correctId == null
-          ? const Color(0xFFD0A751)
-          : const Color(0xFFB85A48);
+      return widget.correctId == null ? palette.selected : palette.wrong;
     }
     return widget.appearance == MapAppearance.relief
         ? Colors.transparent
@@ -433,7 +432,7 @@ class _CountryMapState extends State<CountryMap> {
                           : _color(country.id),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: const Color(0xFF365643),
+                        color: _palette.markerBorder,
                         width: 2,
                       ),
                     ),
@@ -466,12 +465,12 @@ class _CountryMapState extends State<CountryMap> {
                         alignment: Alignment.topCenter,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            color: const Color(0xFF8C1D18),
+                            color: _palette.wrongLabel,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: Colors.white, width: 2),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
-                                color: Color(0x55000000),
+                                color: _palette.labelShadow,
                                 blurRadius: 4,
                                 offset: Offset(0, 2),
                               ),
