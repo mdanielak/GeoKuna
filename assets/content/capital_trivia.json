@@ -1,0 +1,3410 @@
+{
+  "version": "capital-trivia-0.1.0",
+  "status": "verified",
+  "countries": {
+    "AFG": [
+      {
+        "id": "capital-afg-tramwaj",
+        "text": "Jedyną koleją w historii Kabulu był tramwaj Kabul–Darulaman — kursował tylko sześć lat, od 1923 do 1929 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383209049",
+        "source_title": "Wikipedia (en): Kabul, wersja 1383209049",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-afg-habibia",
+        "text": "Pierwsze nowoczesne liceum w Kabulu, Habibia, otwarto w 1903 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383209049",
+        "source_title": "Wikipedia (en): Kabul, wersja 1383209049",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-afg-870",
+        "text": "W 870 r. Jakub ibn Lajs as-Saffar zdobył Kabul i założył pierwszą islamską dynastię w regionie. Wcześniej muzułmanie byli tu mniejszością.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383209049",
+        "source_title": "Wikipedia (en): Kabul, wersja 1383209049",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AGO": [
+      {
+        "id": "capital-ago-1576",
+        "text": "Luandę założył portugalski żeglarz Paulo Dias de Novais 25 stycznia 1576 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80209038",
+        "source_title": "Wikipedia (pl): Luanda, wersja 80209038",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ago-twierdze",
+        "text": "W 1618 r. Portugalczycy zbudowali tu twierdzę São Pedro da Barra, a później dwie kolejne: São Miguel (1634) i São Francisco do Penedo (1765–1766).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384856699",
+        "source_title": "Wikipedia (en): Luanda, wersja 1384856699",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ago-wojna",
+        "text": "Wojna kolonialna w Angoli (1961–1974) ominęła Luandę — wzrost gospodarczy regionu był wtedy rekordowy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384856699",
+        "source_title": "Wikipedia (en): Luanda, wersja 1384856699",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ALB": [
+      {
+        "id": "capital-alb-1614",
+        "text": "Tiranę założył w 1614 r. Sulejman Pasza Bargjini. Stolicą Albanii jest nieprzerwanie od 1920 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80769626",
+        "source_title": "Wikipedia (pl): Tirana, wersja 80769626",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-alb-spis",
+        "text": "Pierwszy osmański spis ziemi z lat 1431–1432 opisuje Tiranę jako 60 osad z około 2028 domami i 7300 mieszkańcami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383962817",
+        "source_title": "Wikipedia (en): Tirana, wersja 1383962817",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-alb-wenecja",
+        "text": "Tirana pojawia się w dokumentach weneckich już w latach 50. XIV wieku i w 1418 r. — prawie dwa stulecia przed założeniem miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383962817",
+        "source_title": "Wikipedia (en): Tirana, wersja 1383962817",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AND": [
+      {
+        "id": "capital-and-najwyzsza",
+        "text": "Andorra la Vella to najwyżej położona stolica Europy — leży wysoko we wschodnich Pirenejach, między Francją a Hiszpanią.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385042070",
+        "source_title": "Wikipedia (en): Andorra la Vella, wersja 1385042070",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-and-santa-coloma",
+        "text": "Najstarszym budynkiem miasta jest prawdopodobnie kościół Santa Coloma d'Andorra z IX wieku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385042070",
+        "source_title": "Wikipedia (en): Andorra la Vella, wersja 1385042070",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-and-1993",
+        "text": "W 1993 r. pierwsza konstytucja Andory umieściła w Andorra la Vella parlament, rząd i sądy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385042070",
+        "source_title": "Wikipedia (en): Andorra la Vella, wersja 1385042070",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ARE": [
+      {
+        "id": "capital-are-noor",
+        "text": "Farma słoneczna Noor Abu Dhabi, ukończona 2 lipca 2019 r., była największym projektem solarnym na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382756965",
+        "source_title": "Wikipedia (en): Abu Dhabi, wersja 1382756965",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-are-swiatlowod",
+        "text": "W 2009 r. Abu Zabi zaczęło budowę sieci światłowodowej do każdego domu, by stać się pierwszym takim miastem na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382756965",
+        "source_title": "Wikipedia (en): Abu Dhabi, wersja 1382756965",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-are-meczet",
+        "text": "W Abu Zabi stoi największy meczet kraju — Wielki Meczet Szejka Zajida.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80304755",
+        "source_title": "Wikipedia (pl): Abu Zabi, wersja 80304755",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ARM": [
+      {
+        "id": "capital-arm-erebuni",
+        "text": "Erywań powstał jako twierdza Erebuni, założona w 782 r. p.n.e. przez króla Urartu Argiszti I. To jedno z najstarszych nieprzerwanie zamieszkanych miast świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384650629",
+        "source_title": "Wikipedia (en): Yerevan, wersja 1384650629",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-arm-ksiazka",
+        "text": "W 2012 r. UNESCO ogłosiło Erywań Światową Stolicą Książki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384650629",
+        "source_title": "Wikipedia (en): Yerevan, wersja 1384650629",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-arm-milion",
+        "text": "W rocznicę rzezi Ormian odbyła się w Erywaniu pierwsza w historii ZSRR demonstracja z udziałem miliona ludzi.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80898284",
+        "source_title": "Wikipedia (pl): Erywań, wersja 80898284",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AUT": [
+      {
+        "id": "capital-aut-1910",
+        "text": "W 1910 r. Wiedeń miał ponad dwa miliony mieszkańców i był trzecim co do wielkości miastem Europy, po Londynie i Paryżu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382136598",
+        "source_title": "Wikipedia (en): Vienna, wersja 1382136598",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-aut-881",
+        "text": "Nazwa miasta pojawia się pierwszy raz w Rocznikach salzburskich pod rokiem 881, przy opisie bitwy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382136598",
+        "source_title": "Wikipedia (en): Vienna, wersja 1382136598",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-aut-grafiki",
+        "text": "Muzeum założone w 1768 r. przez księcia Alberta Sasko-Cieszyńskiego ma jedną z największych na świecie kolekcji grafik.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207617",
+        "source_title": "Wikipedia (pl): Wiedeń, wersja 81207617",
+        "checked": "2026-11-15"
+      }
+    ],
+    "AZE": [
+      {
+        "id": "capital-aze-najnizej",
+        "text": "Baku leży 28 m poniżej poziomu morza — to najniżej położona stolica świata i największe miasto poniżej poziomu morza.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80661311",
+        "source_title": "Wikipedia (pl): Baku, wersja 80661311",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-aze-igrzyska",
+        "text": "W 2015 r. w Baku odbyły się pierwsze w historii Igrzyska Europejskie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80661311",
+        "source_title": "Wikipedia (pl): Baku, wersja 80661311",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-aze-unesco",
+        "text": "Stare Miasto z Pałacem Szirwanszachów i Wieżą Dziewiczą wpisano w 2000 r. na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384568439",
+        "source_title": "Wikipedia (en): Baku, wersja 1384568439",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BDI": [
+      {
+        "id": "capital-bdi-krol",
+        "text": "Gitega była siedzibą królów Burundi — mwami — aż do zniesienia monarchii w 1966 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080287",
+        "source_title": "Wikipedia (en): Gitega, wersja 1385080287",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bdi-2019",
+        "text": "Parlament przeniósł stolicę z Bużumbury do Gitegi głosowaniem 16 stycznia 2019 r. Bużumbura została stolicą gospodarczą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080287",
+        "source_title": "Wikipedia (en): Gitega, wersja 1385080287",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bdi-1912",
+        "text": "Plan nowoczesnego miasta wytyczyli Niemcy w 1912 r., gdy Burundi należało do Niemieckiej Afryki Wschodniej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080287",
+        "source_title": "Wikipedia (en): Gitega, wersja 1385080287",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BEL": [
+      {
+        "id": "capital-bel-atomium",
+        "text": "Atomium zbudowano na Expo 1958: to 103-metrowy model kryształu żelaza, powiększonego 150 miliardów razy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80961724",
+        "source_title": "Wikipedia (pl): Bruksela, wersja 80961724",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bel-nato",
+        "text": "W 1967 r. przeniesiono do Brukseli z Paryża kwaterę główną NATO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80961724",
+        "source_title": "Wikipedia (pl): Bruksela, wersja 80961724",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bel-ewg",
+        "text": "Od 1958 r. w Brukseli mieści się siedziba EWG, później Wspólnot Europejskich — miasto stało się centrum zjednoczonej Europy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80961724",
+        "source_title": "Wikipedia (pl): Bruksela, wersja 80961724",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BEN": [
+      {
+        "id": "capital-ben-porto",
+        "text": "W 1730 r. Portugalczyk Eucaristo de Campos nazwał miasto Porto-Novo, czyli „Nowe Porto”, bo przypominało mu portugalskie Porto.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383284487",
+        "source_title": "Wikipedia (en): Porto-Novo, wersja 1383284487",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ben-termitiera",
+        "text": "Jedna ze świątyń, poświęcona bogu Abessanowi, ma 10-metrową wieżę zaprojektowaną na kształt termitiery.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383284487",
+        "source_title": "Wikipedia (en): Porto-Novo, wersja 1383284487",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ben-1863",
+        "text": "Po brytyjskim ostrzale w 1861 r. Królestwo Porto-Novo przyjęło w 1863 r. francuską protekcję, co wywołało wojnę z sąsiednim Dahomejem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383284487",
+        "source_title": "Wikipedia (en): Porto-Novo, wersja 1383284487",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BFA": [
+      {
+        "id": "capital-bfa-nazwa",
+        "text": "Miasto założyli być może już ok. 1050 r. przybysze z Imperium Ghany. Nazwa Wagadugu znaczy „dom ludu Wagu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385252905",
+        "source_title": "Wikipedia (en): Ouagadougou, wersja 1385252905",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bfa-moro-naba",
+        "text": "W każdy piątek władca Mossi — Moro-Naba — i jego dwór odprawiają w Wagadugu tradycyjną ceremonię.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385252905",
+        "source_title": "Wikipedia (en): Ouagadougou, wersja 1385252905",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bfa-meczet",
+        "text": "Pierwszy meczet w Wagadugu zbudował na początku XIX wieku Doulougou, 24. Moro-Naba.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385252905",
+        "source_title": "Wikipedia (en): Ouagadougou, wersja 1385252905",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BGD": [
+      {
+        "id": "capital-bgd-riksze",
+        "text": "Codziennie na ulice Dhaki wyjeżdża około 400 tysięcy riksz — to rekord świata.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80651309",
+        "source_title": "Wikipedia (pl): Dhaka, wersja 80651309",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bgd-uniwersytet",
+        "text": "Uniwersytet w Dhace, założony w 1921 r., to najstarszy uniwersytet w Bangladeszu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80651309",
+        "source_title": "Wikipedia (pl): Dhaka, wersja 80651309",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bgd-liga",
+        "text": "W 1906 r. w Dhace założono Ogólnoindyjską Ligę Muzułmańską — partię, która później doprowadziła do powstania Pakistanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385504830",
+        "source_title": "Wikipedia (en): Dhaka, wersja 1385504830",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BGR": [
+      {
+        "id": "capital-bgr-madrosc",
+        "text": "Nazwa „Sofia” znaczy po grecku „mądrość”. Pierwszy raz pojawia się w 1376 r., ale dawnej słowiańskiej nazwy Sredec używano oficjalnie do połowy XIX wieku.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80754126",
+        "source_title": "Wikipedia (pl): Sofia, wersja 80754126",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bgr-serdika",
+        "text": "Historia miasta zaczyna się od zdobycia celtyckiej Serdiki przez Rzymian w 29 r. p.n.e. W 809 r. chan Krum włączył je do Pierwszego Carstwa Bułgarskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385501710",
+        "source_title": "Wikipedia (en): Sofia, wersja 1385501710",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bgr-zrodla",
+        "text": "Sofia leży u stóp góry Witosza i ma wiele źródeł mineralnych, m.in. Centralne Źródło Mineralne w samym centrum.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385501710",
+        "source_title": "Wikipedia (en): Sofia, wersja 1385501710",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BHR": [
+      {
+        "id": "capital-bhr-1345",
+        "text": "Nazwa Manamy pojawia się pierwszy raz w rękopisie z 1345 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384755412",
+        "source_title": "Wikipedia (en): Manama, wersja 1384755412",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bhr-muharrak",
+        "text": "Do 1923 r. stolicą Bahrajnu był sąsiedni Muharrak, łatwiejszy do obrony. Dopiero potem rolę tę przejęła Manama.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384755412",
+        "source_title": "Wikipedia (en): Manama, wersja 1384755412",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bhr-portugalczycy",
+        "text": "W latach 1521–1602 Bahrajnem rządzili Portugalczycy; po ich panowaniu został w okolicy Manamy fort.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384755412",
+        "source_title": "Wikipedia (en): Manama, wersja 1384755412",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BIH": [
+      {
+        "id": "capital-bih-tramwaje",
+        "text": "Austro-Węgry testowały w Sarajewie nowe wynalazki: tramwaje jeździły tu od 1885 r., zanim trafiły do Wiednia.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80660685",
+        "source_title": "Wikipedia (pl): Sarajewo, wersja 80660685",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bih-oblezenie",
+        "text": "W czasie wojny w Bośni Sarajewo przeżyło najdłuższe oblężenie stolicy w nowożytnej historii: 1425 dni, od kwietnia 1992 do lutego 1996 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384458120",
+        "source_title": "Wikipedia (en): Sarajevo, wersja 1384458120",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bih-nazwa",
+        "text": "Nazwa pochodzi prawdopodobnie od tureckiego określenia notowanego od 1455 r., znaczącego „równiny wokół pałacu”. Nowożytne miasto założono w 1462 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384458120",
+        "source_title": "Wikipedia (en): Sarajevo, wersja 1384458120",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BLR": [
+      {
+        "id": "capital-blr-1067",
+        "text": "Mińsk pierwszy raz wspomniano w Latopisie Nestora pod rokiem 1067, przy opisie bitwy nad rzeką Niemigą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384673437",
+        "source_title": "Wikipedia (en): Minsk, wersja 1384673437",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-blr-jagiello",
+        "text": "W 1390 r. Władysław II Jagiełło, od 1386 r. także król Polski, ufundował w Mińsku pierwszy kościół farny.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80255201",
+        "source_title": "Wikipedia (pl): Mińsk, wersja 80255201",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-blr-2000",
+        "text": "Po wojnie polsko-rosyjskiej w XVII wieku Mińsk liczył tylko około 2000 mieszkańców i 300 domów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384673437",
+        "source_title": "Wikipedia (en): Minsk, wersja 1384673437",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BRN": [
+      {
+        "id": "capital-brn-kampong-ayer",
+        "text": "Kampong Ayer, wioska na palach nad wodą, ma około 1000 lat i 30 tysięcy mieszkańców — uchodzi za największą osadę na palach na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385415372",
+        "source_title": "Wikipedia (en): Bandar Seri Begawan, wersja 1385415372",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-brn-bandar",
+        "text": "Pierwszy człon nazwy — „bandar” — pochodzi od perskiego słowa oznaczającego port.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=72291706",
+        "source_title": "Wikipedia (pl): Bandar Seri Begawan, wersja 72291706",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-brn-jedyne",
+        "text": "Bandar Seri Begawan to formalnie jedyne miasto Brunei.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385415372",
+        "source_title": "Wikipedia (en): Bandar Seri Begawan, wersja 1385415372",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BTN": [
+      {
+        "id": "capital-btn-punakha",
+        "text": "Do 1955 r. stolicą Bhutanu była Punakha. Thimphu wybrano na stolicę w 1952 r., ale oficjalnie ogłosił ją nią król Jigme Dorji Wangchuck dopiero w 1961 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383627701",
+        "source_title": "Wikipedia (en): Thimphu, wersja 1383627701",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-btn-lotnisko",
+        "text": "Thimphu nie ma własnego lotniska. Najbliższe jest w Paro, około 40 km dalej — to jedyne międzynarodowe lotnisko w kraju.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80158388",
+        "source_title": "Wikipedia (pl): Thimphu, wersja 80158388",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-btn-budda",
+        "text": "Nad miastem stoi gigantyczny posąg Buddy Dordenma — sam posąg kosztował 47 mln dolarów, a cały projekt ponad 100 mln.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383627701",
+        "source_title": "Wikipedia (en): Thimphu, wersja 1383627701",
+        "checked": "2026-11-15"
+      }
+    ],
+    "BWA": [
+      {
+        "id": "capital-bwa-1964",
+        "text": "Gaborone założono dopiero w 1964 r., specjalnie jako stolicę przyszłej niepodległej Botswany. Miało wtedy tylko 3855 mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385477101",
+        "source_title": "Wikipedia (en): Gaborone, wersja 1385477101",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bwa-trzy-lata",
+        "text": "Większość pierwszego miasta zbudowano w trzy lata — jako miasteczko dla 20 tysięcy ludzi. Dziś mieszka tu około 10% ludności kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385477101",
+        "source_title": "Wikipedia (en): Gaborone, wersja 1385477101",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-bwa-gaberones",
+        "text": "W czasach kolonialnych miasto nazywało się Gaberones — tę nazwę można spotkać na starych mapach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385477101",
+        "source_title": "Wikipedia (en): Gaborone, wersja 1385477101",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CAF": [
+      {
+        "id": "capital-caf-1889",
+        "text": "Bangi założyli 26 czerwca 1889 r. Michel Dolisie i Alfred Uzac jako francuską placówkę nad rzeką Ubangi — od niej pochodzi nazwa miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385179699",
+        "source_title": "Wikipedia (en): Bangui, wersja 1385179699",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-caf-bokassa",
+        "text": "Uniwersytet w Bangi założył w 1969 r. prezydent Jean-Bédel Bokassa i nazwał go swoim imieniem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385179699",
+        "source_title": "Wikipedia (en): Bangui, wersja 1385179699",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-caf-bank",
+        "text": "Pierwszy bank w Bangi otwarto dopiero w 1946 r. — był to oddział paryskiego Banque de l'Afrique Occidentale.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385179699",
+        "source_title": "Wikipedia (en): Bangui, wersja 1385179699",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CHE": [
+      {
+        "id": "capital-che-niedzwiedz",
+        "text": "Według legendy założyciel Berna, książę Bertold V, obiecał nazwać miasto od pierwszego zwierzęcia upolowanego na łowach — był nim niedźwiedź (Bär). Niedźwiedź jest w herbie od lat 20. XIII wieku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384625813",
+        "source_title": "Wikipedia (en): Bern, wersja 1384625813",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-che-zytglogge",
+        "text": "Najsłynniejszy zabytek to Zytglogge — średniowieczna wieża zegarowa z ruchomymi figurkami. Wyznaczała zachodnią granicę miasta od 1191 do 1256 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384625813",
+        "source_title": "Wikipedia (en): Bern, wersja 1384625813",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-che-unesco",
+        "text": "Stare Miasto w Bernie wpisano w 1983 r. na listę światowego dziedzictwa UNESCO. Berno oficjalnie nie jest stolicą, tylko „miastem federalnym”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384625813",
+        "source_title": "Wikipedia (en): Bern, wersja 1384625813",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CHN": [
+      {
+        "id": "capital-chn-olimpiady",
+        "text": "W 2022 r. Pekin jako pierwsze miasto na świecie gościł zarówno letnie, jak i zimowe igrzyska olimpijskie (letnie odbyły się tu w 2008 r.).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385363010",
+        "source_title": "Wikipedia (en): Beijing, wersja 1385363010",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-chn-lotnisko",
+        "text": "W 1910 r. w Pekinie otwarto Nanyuan — pierwsze lotnisko w Chinach.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80513077",
+        "source_title": "Wikipedia (pl): Pekin, wersja 80513077",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-chn-stolica",
+        "text": "Z ponad 21,8 mln mieszkańców Pekin jest najludniejszą stolicą państwa na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385363010",
+        "source_title": "Wikipedia (en): Beijing, wersja 1385363010",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CIV": [
+      {
+        "id": "capital-civ-bazylika",
+        "text": "W Jamusukro stoi Bazylika Matki Bożej Królowej Pokoju — największy kościół chrześcijański na świecie. Konsekrował ją Jan Paweł II 10 września 1990 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382831748",
+        "source_title": "Wikipedia (en): Yamoussoukro, wersja 1382831748",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-civ-houphouet",
+        "text": "W Jamusukro urodził się Félix Houphouët-Boigny, pierwszy prezydent kraju — dlatego jego rodzinne miasto zostało stolicą.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79683658",
+        "source_title": "Wikipedia (pl): Jamusukro, wersja 79683658",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-civ-abidzan",
+        "text": "Choć Jamusukro jest stolicą, to dopiero trzecie co do wielkości miasto kraju; największym pozostaje Abidżan.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382831748",
+        "source_title": "Wikipedia (en): Yamoussoukro, wersja 1382831748",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CMR": [
+      {
+        "id": "capital-cmr-kosc-sloniowa",
+        "text": "Jaunde powstało w 1887 r. jako niemiecka placówka handlowa — skupowano tu kauczuk i kość słoniową.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381445391",
+        "source_title": "Wikipedia (en): Yaoundé, wersja 1381445391",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cmr-garnizon",
+        "text": "W 1895 r. Niemcy zbudowali w Jaunde garnizon wojskowy, co pozwoliło im opanować głąb kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381445391",
+        "source_title": "Wikipedia (en): Yaoundé, wersja 1381445391",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cmr-wysokosc",
+        "text": "Jaunde leży na wysokości około 750 m n.p.m., na skraju lasów między rzekami Nyong i Sanaga.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381445391",
+        "source_title": "Wikipedia (en): Yaoundé, wersja 1381445391",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COD": [
+      {
+        "id": "capital-cod-leopoldville",
+        "text": "W latach 1881–1966 Kinszasa nazywała się Léopoldville — od belgijskiego króla Leopolda II.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384848619",
+        "source_title": "Wikipedia (en): Kinshasa, wersja 1384848619",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cod-stanley",
+        "text": "Henry Morton Stanley odwiedził osadę Nshasa 14 marca 1877 r., podczas wyprawy z Zanzibaru do Bomy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384848619",
+        "source_title": "Wikipedia (en): Kinshasa, wersja 1384848619",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cod-muzyka",
+        "text": "W 2015 r. UNESCO uznało Kinszasę za Miasto Muzyki. To jedno z najszybciej rosnących megamiast świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384848619",
+        "source_title": "Wikipedia (en): Kinshasa, wersja 1384848619",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COG": [
+      {
+        "id": "capital-cog-naprzeciw",
+        "text": "To jedyne miejsce na świecie, gdzie stolice dwóch państw leżą naprzeciwko siebie, na dwóch brzegach jednej rzeki: Brazzaville i Kinszasa nad Kongiem.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77433711",
+        "source_title": "Wikipedia (pl): Brazzaville, wersja 77433711",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cog-brazza",
+        "text": "Osadę założył 10 września 1880 r. podróżnik włoskiego pochodzenia Pierre Savorgnan de Brazza i od niego wzięła nazwę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378477766",
+        "source_title": "Wikipedia (en): Brazzaville, wersja 1378477766",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cog-afryka-rownikowa",
+        "text": "W latach 1910–1960 Brazzaville było stolicą Francuskiej Afryki Równikowej, obejmującej też Gabon, Republikę Środkowoafrykańską i Czad.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378477766",
+        "source_title": "Wikipedia (en): Brazzaville, wersja 1378477766",
+        "checked": "2026-11-15"
+      }
+    ],
+    "COM": [
+      {
+        "id": "capital-com-rzeka",
+        "text": "Nazwa Moroni znaczy w języku szingazidża „przy rzece”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377771433",
+        "source_title": "Wikipedia (en): Moroni, Comoros, wersja 1377771433",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-com-meczet",
+        "text": "Stary Meczet Piątkowy w Moroni zbudowano w 1427 r.; minaret dodano dopiero w 1921 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377771433",
+        "source_title": "Wikipedia (en): Moroni, Comoros, wersja 1377771433",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-com-kartala",
+        "text": "Moroni leży na wyspie Wielki Komor, u stóp czynnego wulkanu Karthala o wysokości 2381 m.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=76392343",
+        "source_title": "Wikipedia (pl): Moroni (miasto), wersja 76392343",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CPV": [
+      {
+        "id": "capital-cpv-plaza",
+        "text": "Nazwa Praia znaczy po portugalsku „plaża”. Osada Praia de Santa Maria pojawia się w źródłach około 1615 r., przy naturalnym porcie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382731411",
+        "source_title": "Wikipedia (en): Praia, wersja 1382731411",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cpv-darwin",
+        "text": "Praia była pierwszym przystankiem Karola Darwina w podróży na statku Beagle w 1832 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382731411",
+        "source_title": "Wikipedia (en): Praia, wersja 1382731411",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cpv-liceum",
+        "text": "W 1861 r. powstało tu Liceu Nacional — pierwsza szkoła średnia na Wyspach Zielonego Przylądka.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382731411",
+        "source_title": "Wikipedia (en): Praia, wersja 1382731411",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CYP": [
+      {
+        "id": "capital-cyp-podzial",
+        "text": "Po częściowym podziale w 1964 r. turecka inwazja w 1974 r. przecięła miasto na pół. Północną część Turcy cypryjscy uważają za stolicę Cypru Północnego, uznawanego tylko przez Turcję.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80985718",
+        "source_title": "Wikipedia (pl): Nikozja, wersja 80985718",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cyp-ledra",
+        "text": "W starożytności stało tu miasto Ledra. Pierwsze wzmianki o nim pochodzą z VII wieku p.n.e.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80985718",
+        "source_title": "Wikipedia (pl): Nikozja, wersja 80985718",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cyp-mury",
+        "text": "Stare miasto otaczają mury z XVI wieku z bramami, m.in. Famagustańską i Kireńską.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80985718",
+        "source_title": "Wikipedia (pl): Nikozja, wersja 80985718",
+        "checked": "2026-11-15"
+      }
+    ],
+    "CZE": [
+      {
+        "id": "capital-cze-carolinum",
+        "text": "Karol IV założył w Pradze w 1348 r. pierwszy uniwersytet w Europie Środkowej — Carolinum.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207267",
+        "source_title": "Wikipedia (pl): Praga, wersja 81207267",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cze-defenestracja",
+        "text": "W 1618 r. w Pradze wyrzucono przez okno namiestników cesarza. Ta defenestracja stała się bezpośrednią przyczyną wojny trzydziestoletniej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207267",
+        "source_title": "Wikipedia (pl): Praga, wersja 81207267",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-cze-most",
+        "text": "Pierwszy most na Wełtawie, most Judyty, kazał zbudować w 1170 r. król Władysław I — na cześć żony, Judyty Turyńskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384753359",
+        "source_title": "Wikipedia (en): Prague, wersja 1384753359",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DEU": [
+      {
+        "id": "capital-deu-1237",
+        "text": "Berlin powstał z podwójnego osiedla: Cölln na wyspie na Szprewie wzmiankowano w 1237 r., a Berlin na brzegu — w 1244 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81130703",
+        "source_title": "Wikipedia (pl): Berlin, wersja 81130703",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-deu-ue",
+        "text": "Z 3,7 mln mieszkańców Berlin jest najludniejszym miastem Unii Europejskiej, licząc w granicach miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385834833",
+        "source_title": "Wikipedia (en): Berlin, wersja 1385834833",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-deu-1871",
+        "text": "W 1871 r. Berlin został stolicą nowo powstałego Cesarstwa Niemieckiego. Hohenzollernowie rządzili tu aż do 1918 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385834833",
+        "source_title": "Wikipedia (en): Berlin, wersja 1385834833",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DJI": [
+      {
+        "id": "capital-dji-1888",
+        "text": "Francuzi założyli Dżibuti w 1888 r. na niezamieszkanym wcześniej odcinku wybrzeża, na ziemi dzierżawionej od sułtanów Somalijczyków i Afarów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382209313",
+        "source_title": "Wikipedia (en): Djibouti City, wersja 1382209313",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dji-kolej",
+        "text": "Miasto urosło dzięki budowie kolei francusko-etiopskiej, łączącej port z Etiopią.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382209313",
+        "source_title": "Wikipedia (en): Djibouti City, wersja 1382209313",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dji-1977",
+        "text": "Gdy 27 czerwca 1977 r. Dżibuti ogłosiło niepodległość, stolica liczyła ponad 110 tysięcy mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382209313",
+        "source_title": "Wikipedia (en): Djibouti City, wersja 1382209313",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DNK": [
+      {
+        "id": "capital-dnk-rowery",
+        "text": "W 2016 r. w Kopenhadze liczba podróży rowerem po raz pierwszy przewyższyła liczbę podróży samochodem.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79939964",
+        "source_title": "Wikipedia (pl): Kopenhaga, wersja 79939964",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dnk-uniwersytet",
+        "text": "Uniwersytet Kopenhaski, założony w 1479 r., to najstarsza uczelnia w Danii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383738141",
+        "source_title": "Wikipedia (en): Copenhagen, wersja 1383738141",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dnk-pozar",
+        "text": "Pożar z 1728 r. był największym w historii Kopenhagi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383738141",
+        "source_title": "Wikipedia (en): Copenhagen, wersja 1383738141",
+        "checked": "2026-11-15"
+      }
+    ],
+    "DZA": [
+      {
+        "id": "capital-dza-972",
+        "text": "Algier formalnie założył w 972 r. Buluggin ibn Ziri, ale już między 1200 a 250 r. p.n.e. była tu fenicka faktoria handlowa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456454",
+        "source_title": "Wikipedia (en): Algiers, wersja 1384456454",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dza-kasba",
+        "text": "Kasbę — starą, warowną część Algieru — wpisano w grudniu 1992 r. na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456454",
+        "source_title": "Wikipedia (en): Algiers, wersja 1384456454",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-dza-dej",
+        "text": "W 1556 r. w najwyższym punkcie murów zbudowano cytadelę — Pałac Deja, siedzibę władcy Algieru.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456454",
+        "source_title": "Wikipedia (en): Algiers, wersja 1384456454",
+        "checked": "2026-11-15"
+      }
+    ],
+    "EGY": [
+      {
+        "id": "capital-egy-al-azhar",
+        "text": "W 972 r. zbudowano w Kairze meczet Al-Azhar, przy którym powstał uniwersytet — jeden z najstarszych na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80622251",
+        "source_title": "Wikipedia (pl): Kair, wersja 80622251",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-egy-metro",
+        "text": "Metro w Kairze, otwarte w 1987 r., jest najstarszym w Afryce. Rocznie przewozi ponad miliard pasażerów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385838391",
+        "source_title": "Wikipedia (en): Cairo, wersja 1385838391",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-egy-969",
+        "text": "Kair założono w 969 r., a w 973 r. został stolicą kalifatu Fatymidów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385838391",
+        "source_title": "Wikipedia (en): Cairo, wersja 1385838391",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ERI": [
+      {
+        "id": "capital-eri-modernizm",
+        "text": "W 2017 r. Asmarę wpisano na listę UNESCO jako „modernistyczne miasto Afryki” — za dobrze zachowaną włoską architekturę kolonialną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382004447",
+        "source_title": "Wikipedia (en): Asmara, wersja 1382004447",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-eri-wysokosc",
+        "text": "Asmara to druga najwyżej położona stolica Afryki i szósta na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382004447",
+        "source_title": "Wikipedia (en): Asmara, wersja 1382004447",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-eri-dawit",
+        "text": "Pierwsza wzmianka o Asmarze pochodzi z łacińskiego opisu podróży z czasów cesarza Etiopii Dawita I (1382–1411).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382004447",
+        "source_title": "Wikipedia (en): Asmara, wersja 1382004447",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ESP": [
+      {
+        "id": "capital-esp-filip-ii",
+        "text": "Madryt stał się stolicą w 1561 r., gdy król Filip II przeniósł tu swój dwór.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385634474",
+        "source_title": "Wikipedia (en): Madrid, wersja 1385634474",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-esp-cuatro-vientos",
+        "text": "Lotnisko Madryt-Cuatro Vientos, założone w 1911 r., jest najstarszym lotniskiem w Hiszpanii.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81151125",
+        "source_title": "Wikipedia (pl): Madryt, wersja 81151125",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-esp-edificio",
+        "text": "Edificio España, otwarty w 1953 r., przedstawiano jako najwyższy budynek w Europie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385634474",
+        "source_title": "Wikipedia (en): Madrid, wersja 1385634474",
+        "checked": "2026-11-15"
+      }
+    ],
+    "EST": [
+      {
+        "id": "capital-est-mury",
+        "text": "Od 1265 r. budowano tu mury długości 2,5 km, do 16 m wysokości, z 45 basztami — jedne z najdłuższych w średniowiecznej Europie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80960229",
+        "source_title": "Wikipedia (pl): Tallinn, wersja 80960229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-est-olaf",
+        "text": "Gotycka wieża kościoła św. Olafa miała 159 m i była wtedy prawdopodobnie jedną z najwyższych budowli na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80960229",
+        "source_title": "Wikipedia (pl): Tallinn, wersja 80960229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-est-nazwa",
+        "text": "Nazwa Tallinn wywodzi się prawdopodobnie od Taani-linna, czyli „duński gród” — Duńczycy zbudowali zamek po bitwie pod Lyndanisse w 1219 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384507806",
+        "source_title": "Wikipedia (en): Tallinn, wersja 1384507806",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ETH": [
+      {
+        "id": "capital-eth-kwiat",
+        "text": "Addis Abeba znaczy po amharsku „Nowy Kwiat”. To najwyżej położona stolica Afryki.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77887271",
+        "source_title": "Wikipedia (pl): Addis Abeba, wersja 77887271",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-eth-kolej",
+        "text": "W 2015 r. uruchomiono tu pierwszą w Etiopii nowoczesną kolej miejską — pierwszą w pełni zelektryfikowaną w Afryce Subsaharyjskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77887271",
+        "source_title": "Wikipedia (pl): Addis Abeba, wersja 77887271",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-eth-onz",
+        "text": "W Addis Abebie ma siedzibę Komisja Gospodarcza ONZ dla Afryki, założona w 1958 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385151839",
+        "source_title": "Wikipedia (en): Addis Ababa, wersja 1385151839",
+        "checked": "2026-11-15"
+      }
+    ],
+    "FIN": [
+      {
+        "id": "capital-fin-1550",
+        "text": "Helsinki założył 12 czerwca 1550 r. król Szwecji Gustaw Waza — jako konkurencję dla Tallinna w handlu bałtyckim.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207292",
+        "source_title": "Wikipedia (pl): Helsinki, wersja 81207292",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-fin-pijanstwo",
+        "text": "Pierwsze wojska szwedzkie przybyły do Helsinek w 1554 r., ale z powodu pijaństwa żołnierzy król szybko wycofał je z miasta.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207292",
+        "source_title": "Wikipedia (pl): Helsinki, wersja 81207292",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-fin-port",
+        "text": "W 2017 r. Helsinki uznano za najbardziej ruchliwy port pasażerski na świecie. Do ok. 1930 r. po angielsku nazywano je szwedzkim Helsingfors.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382243127",
+        "source_title": "Wikipedia (en): Helsinki, wersja 1382243127",
+        "checked": "2026-11-15"
+      }
+    ],
+    "FRA": [
+      {
+        "id": "capital-fra-metro",
+        "text": "Pierwsza linia paryskiego metra ruszyła w 1900 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81059607",
+        "source_title": "Wikipedia (pl): Paryż, wersja 81059607",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-fra-poczta",
+        "text": "Za Ludwika XV powstały w Paryżu straż pożarna (1722) i pierwszy urząd pocztowy (1738).",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81059607",
+        "source_title": "Wikipedia (pl): Paryż, wersja 81059607",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-fra-chlodwig",
+        "text": "Chlodwig, pierwszy król z dynastii Merowingów, uczynił Paryż swoją stolicą w 508 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385351351",
+        "source_title": "Wikipedia (en): Paris, wersja 1385351351",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GAB": [
+      {
+        "id": "capital-gab-wolne-miasto",
+        "text": "Libreville znaczy po francusku „Wolne Miasto”. W 1849 r. osiedlono tu 52 niewolników uwolnionych ze statku L'Elizia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379940012",
+        "source_title": "Wikipedia (en): Libreville, wersja 1379940012",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gab-1849",
+        "text": "Jeszcze w 1849 r. dawni niewolnicy zorganizowali wybory przywódców swojej nowej osady.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379940012",
+        "source_title": "Wikipedia (en): Libreville, wersja 1379940012",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gab-koszty",
+        "text": "Libreville należy do najdroższych miast Afryki dla obcokrajowców — w październiku 2025 r. zajęło pierwsze miejsce na kontynencie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379940012",
+        "source_title": "Wikipedia (en): Libreville, wersja 1379940012",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GBR": [
+      {
+        "id": "capital-gbr-olimpiady",
+        "text": "W 2012 r. Londyn jako pierwsze miasto na świecie zorganizował letnie igrzyska olimpijskie po raz trzeci — wcześniej w 1908 i 1948 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385755561",
+        "source_title": "Wikipedia (en): London, wersja 1385755561",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gbr-spis",
+        "text": "Liczbę mieszkańców Londynu sprzed XIX wieku tylko szacujemy: pierwszy spis ludności przeprowadzono dopiero w 1801 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81183204",
+        "source_title": "Wikipedia (pl): Londyn, wersja 81183204",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gbr-alfred",
+        "text": "Według Kroniki anglosaskiej król Alfred Wielki „założył na nowo” Londyn w 886 r., gdy wschodnią Anglią władali Wikingowie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385755561",
+        "source_title": "Wikipedia (en): London, wersja 1385755561",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GEO": [
+      {
+        "id": "capital-geo-tyflis",
+        "text": "W latach 1845–1936 Tbilisi oficjalnie nazywało się Tyflis.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81128258",
+        "source_title": "Wikipedia (pl): Tbilisi, wersja 81128258",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-geo-drukarnia",
+        "text": "W 1709 r. król Wachtang założył w Tbilisi pierwszą gruzińską drukarnię.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81128258",
+        "source_title": "Wikipedia (pl): Tbilisi, wersja 81128258",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-geo-tramwaj",
+        "text": "Po rozpadzie ZSRR brakowało prądu i transport elektryczny upadał. Ostatnią linię tramwajową w Tbilisi zamknięto 4 grudnia 2006 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384710456",
+        "source_title": "Wikipedia (en): Tbilisi, wersja 1384710456",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GHA": [
+      {
+        "id": "capital-gha-mrowki",
+        "text": "Nazwa Akra pochodzi z języka twi i oznacza mrówki-żołnierzy. Historyk Carl Christian Reindorf porównywał ich wojowniczość i wędrówki z dziejami ludu Ga.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385482382",
+        "source_title": "Wikipedia (en): Accra, wersja 1385482382",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gha-nkrumah",
+        "text": "Gdy w 1957 r. Kwame Nkrumah został pierwszym premierem Ghany, przygotował własny plan rozbudowy Akry.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385482382",
+        "source_title": "Wikipedia (en): Accra, wersja 1385482382",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gha-ga",
+        "text": "W miejscowym języku ga miasto nazywa się Ga albo Gaga — tak samo jak lud Ga, który je zamieszkuje.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385482382",
+        "source_title": "Wikipedia (en): Accra, wersja 1385482382",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GIN": [
+      {
+        "id": "capital-gin-tombo",
+        "text": "Konakry powstało na małej wyspie Tombo, a potem rozrosło się na półwysep Kaloum. W 1885 r. dwie wioski na wyspie liczyły mniej niż 500 mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385701902",
+        "source_title": "Wikipedia (en): Conakry, wersja 1385701902",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gin-1887",
+        "text": "Miasto właściwie założono po 1887 r., gdy Wielka Brytania oddała wyspę Francji. W 1904 r. zostało stolicą Gwinei Francuskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385701902",
+        "source_title": "Wikipedia (en): Conakry, wersja 1385701902",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gin-wzrost",
+        "text": "Po niepodległości w 1958 r. Konakry gwałtownie rosło: z 50 tysięcy mieszkańców w 1958 r. do ponad 3,4 miliona dziś.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385701902",
+        "source_title": "Wikipedia (en): Conakry, wersja 1385701902",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GMB": [
+      {
+        "id": "capital-gmb-bathurst",
+        "text": "Do 24 kwietnia 1973 r. Bandżul nazywał się Bathurst — od brytyjskiego ministra wojny i kolonii, 3. hrabiego Bathurst.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385512992",
+        "source_title": "Wikipedia (en): Banjul, wersja 1385512992",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gmb-1816",
+        "text": "Miasto założono w 1816 r. jako placówkę wojskową, która miała pilnować zakazu handlu niewolnikami.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77910474",
+        "source_title": "Wikipedia (pl): Bandżul, wersja 77910474",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gmb-waterloo",
+        "text": "Ulice wytyczono w siatkę i nazwano na cześć generałów sprzymierzonych z bitwy pod Waterloo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385512992",
+        "source_title": "Wikipedia (en): Banjul, wersja 1385512992",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GNB": [
+      {
+        "id": "capital-gnb-1687",
+        "text": "Bissau założono w 1687 r. jako portugalską faktorię handlową u ujścia rzeki Geba.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382133498",
+        "source_title": "Wikipedia (en): Bissau, wersja 1382133498",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gnb-fort",
+        "text": "W 1775 r. Portugalczycy przebudowali fort w Bissau, m.in. by przetrzymywać więcej niewolników przed wysyłką do Brazylii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382133498",
+        "source_title": "Wikipedia (en): Bissau, wersja 1382133498",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gnb-mecau",
+        "text": "Według ustnej tradycji królestwo Bissau założył Mecau, syn króla Quinary, który przybył tu z ciężarną siostrą, sześcioma żonami i poddanymi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382133498",
+        "source_title": "Wikipedia (en): Bissau, wersja 1382133498",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GNQ": [
+      {
+        "id": "capital-gnq-budowa",
+        "text": "Ciudad de la Paz to oficjalna stolica, która wciąż jest budowana — powstaje od podstaw w głębi lądu, na obszarze 81,5 km².",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382072652",
+        "source_title": "Wikipedia (en): Ciudad de la Paz, wersja 1382072652",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gnq-oyala",
+        "text": "Wcześniej miasto nazywało się Djibloho albo Oyala. Jako dystrykt miejski utworzono je w 2015 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382072652",
+        "source_title": "Wikipedia (en): Ciudad de la Paz, wersja 1382072652",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-gnq-oze",
+        "text": "Według planów miasto ma być zasilane w całości prądem z hydroelektrowni w Evinayong — jako pierwsza stolica świata tylko na energii odnawialnej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79335421",
+        "source_title": "Wikipedia (pl): Ciudad de la Paz, wersja 79335421",
+        "checked": "2026-11-15"
+      }
+    ],
+    "GRC": [
+      {
+        "id": "capital-grc-1896",
+        "text": "W 1896 r. Ateny zorganizowały pierwsze nowożytne igrzyska olimpijskie, a 108 lat później, w 2004 r., igrzyska wróciły do miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385560646",
+        "source_title": "Wikipedia (en): Athens, wersja 1385560646",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-grc-3400",
+        "text": "Ateny to jedno z najstarszych miast świata: ich zapisana historia liczy ponad 3400 lat.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385560646",
+        "source_title": "Wikipedia (en): Athens, wersja 1385560646",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-grc-poludnie",
+        "text": "Ateny są najdalej na południe wysuniętą stolicą na kontynentalnej części Europy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385560646",
+        "source_title": "Wikipedia (en): Athens, wersja 1385560646",
+        "checked": "2026-11-15"
+      }
+    ],
+    "HRV": [
+      {
+        "id": "capital-hrv-1134",
+        "text": "Nazwa Zagrzeb pojawia się pierwszy raz w dokumencie arcybiskupa Ostrzyhomia Felicjana z 1134 r., przy wzmiance o założeniu biskupstwa na Kaptolu w 1094 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385323319",
+        "source_title": "Wikipedia (en): Zagreb, wersja 1385323319",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-hrv-1852",
+        "text": "Nazwy Zagrzeb dla połączonego miasta używa się oficjalnie dopiero od 1852 r. Rok wcześniej Janko Kamauf został pierwszym burmistrzem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385323319",
+        "source_title": "Wikipedia (en): Zagreb, wersja 1385323319",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-hrv-jugoslawia",
+        "text": "W Jugosławii (1918–1991) Zagrzeb był drugim co do wielkości miastem kraju i ważnym ośrodkiem gospodarczym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385323319",
+        "source_title": "Wikipedia (en): Zagreb, wersja 1385323319",
+        "checked": "2026-11-15"
+      }
+    ],
+    "HUN": [
+      {
+        "id": "capital-hun-1873",
+        "text": "Budapeszt powstał w 1873 r. z połączenia trzech miast: Budy, Óbudy i Pesztu — stąd jego nazwa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384547566",
+        "source_title": "Wikipedia (en): Budapest, wersja 1384547566",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-hun-termy",
+        "text": "Budapeszt nazywa się uzdrowiskową stolicą Europy: ma ponad 100 leczniczych źródeł termalnych i największy system jaskiń z wodą termalną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384547566",
+        "source_title": "Wikipedia (en): Budapest, wersja 1384547566",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-hun-ksiazka",
+        "text": "Pierwszą węgierską książkę wydrukowano w Budzie w 1473 r. Most Łańcuchowy z 1849 r. był pierwszym stałym mostem na Dunaju między Budą a Pesztem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384547566",
+        "source_title": "Wikipedia (en): Budapest, wersja 1384547566",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IDN": [
+      {
+        "id": "capital-idn-batawia",
+        "text": "W 1619 r. Holenderska Kompania Wschodnioindyjska zdobyła i zburzyła Dżajakartę, a na jej miejscu zbudowała Batawię — od Batawów, plemienia uważanego przez Holendrów za przodków.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384289390",
+        "source_title": "Wikipedia (en): Jakarta, wersja 1384289390",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-idn-metropolia",
+        "text": "Z około 42 mln ludzi obszar metropolitalny Dżakarty jest największy na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81177294",
+        "source_title": "Wikipedia (pl): Dżakarta, wersja 81177294",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-idn-gubernator",
+        "text": "Mieszkańcy Dżakarty po raz pierwszy wybrali gubernatora w wyborach bezpośrednich dopiero w 2007 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384289390",
+        "source_title": "Wikipedia (en): Jakarta, wersja 1384289390",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IND": [
+      {
+        "id": "capital-ind-kalkuta",
+        "text": "Do grudnia 1911 r. stolicą Indii Brytyjskich była Kalkuta. Kamień węgielny pod Nowe Delhi położył król Jerzy V podczas durbaru w 1911 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384836966",
+        "source_title": "Wikipedia (en): New Delhi, wersja 1384836966",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ind-1931",
+        "text": "Nową stolicę oficjalnie otworzył wicekról Irwin 13 lutego 1931 r. Dużą część miasta zaplanowali brytyjscy architekci Edwin Lutyens i Herbert Baker.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384836966",
+        "source_title": "Wikipedia (en): New Delhi, wersja 1384836966",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ind-trzy-wladze",
+        "text": "W Nowym Delhi mieszczą się wszystkie trzy władze Indii: pałac prezydenta Rashtrapati Bhavan, parlament i Sąd Najwyższy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384836966",
+        "source_title": "Wikipedia (en): New Delhi, wersja 1384836966",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRL": [
+      {
+        "id": "capital-irl-988",
+        "text": "Rząd Irlandii uznał 988 r. za rok założenia Dublina, więc w 1988 r. miasto obchodziło swoje „oficjalne” tysiąclecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385054639",
+        "source_title": "Wikipedia (en): Dublin, wersja 1385054639",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irl-guinness",
+        "text": "W 1759 r. założono w Dublinie browar Guinnessa, który z czasem stał się największym browarem świata i największym pracodawcą w mieście.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385054639",
+        "source_title": "Wikipedia (en): Dublin, wersja 1385054639",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irl-kells",
+        "text": "Biblioteka Trinity College, uczelni założonej w 1592 r., słynie z iluminowanych rękopisów, m.in. Księgi z Kells.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207837",
+        "source_title": "Wikipedia (pl): Dublin, wersja 81207837",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRN": [
+      {
+        "id": "capital-irn-waliasr",
+        "text": "Przez Teheran biegnie ulica Waliasr — najdłuższa ulica Bliskiego Wschodu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80354145",
+        "source_title": "Wikipedia (pl): Teheran, wersja 80354145",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irn-clavijo",
+        "text": "Prawdopodobnie pierwszym Europejczykiem w Teheranie był Ruy González de Clavijo, kastylijski poseł jadący do Samarkandy, stolicy Timura.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80354145",
+        "source_title": "Wikipedia (pl): Teheran, wersja 80354145",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irn-naser",
+        "text": "Za panowania szacha Nasera ad-Dina (1848–1896) w Teheranie powstały pierwsze w Iranie uczelnia, bank, linia kolejowa i muzeum.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383911267",
+        "source_title": "Wikipedia (en): Tehran, wersja 1383911267",
+        "checked": "2026-11-15"
+      }
+    ],
+    "IRQ": [
+      {
+        "id": "capital-irq-okragle",
+        "text": "Kalif al-Mansur założył Bagdad w 762 r. jako „Miasto Pokoju” — jego sercem było Okrągłe Miasto o średnicy 2 km.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384797581",
+        "source_title": "Wikipedia (en): Baghdad, wersja 1384797581",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irq-dom-madrosci",
+        "text": "W 830 r. założono w Bagdadzie bibliotekę Dom Mądrości, która przetrwała do 1258 r. Dzięki niej miasto zyskało sławę światowego centrum nauki.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81091463",
+        "source_title": "Wikipedia (pl): Bagdad, wersja 81091463",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-irq-timur",
+        "text": "W sierpniu 1393 r. Bagdad zajął Timur (Tamerlan), który przemaszerował tu z Szirazu w zaledwie osiem dni.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384797581",
+        "source_title": "Wikipedia (en): Baghdad, wersja 1384797581",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ISL": [
+      {
+        "id": "capital-isl-polnoc",
+        "text": "Reykjavík leży na 64°08′ szerokości północnej — to najdalej na północ wysunięta stolica niepodległego państwa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385641325",
+        "source_title": "Wikipedia (en): Reykjavík, wersja 1385641325",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-isl-1762",
+        "text": "Najstarszy zachowany dom w Reykjavíku pochodzi z 1762 r. i stoi przy ulicy Aðalstræti 10.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81053686",
+        "source_title": "Wikipedia (pl): Reykjavík, wersja 81053686",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-isl-1226",
+        "text": "Osada rozwijała się dzięki klasztorowi augustiańskiemu, założonemu w pobliżu w 1226 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81053686",
+        "source_title": "Wikipedia (pl): Reykjavík, wersja 81053686",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ISR": [
+      {
+        "id": "capital-isr-miasto-dawida",
+        "text": "Najstarsze ślady osadnictwa w części zwanej Miastem Dawida pochodzą z IV tysiąclecia p.n.e. — były to obozowiska pasterzy przy źródle Gihon.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385001018",
+        "source_title": "Wikipedia (en): Jerusalem, wersja 1385001018",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-isr-sulejman",
+        "text": "Mury wokół Starego Miasta przebudowano po raz ostatni w 1538 r., za sułtana Sulejmana Wspaniałego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385001018",
+        "source_title": "Wikipedia (en): Jerusalem, wersja 1385001018",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-isr-rockefeller",
+        "text": "Muzeum Archeologiczne Rockefellera, otwarte w 1938 r., było pierwszym muzeum archeologicznym na Bliskim Wschodzie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81193327",
+        "source_title": "Wikipedia (pl): Jerozolima, wersja 81193327",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ITA": [
+      {
+        "id": "capital-ita-wieczne",
+        "text": "Nazwę „Wieczne Miasto” pierwszy nadał Rzymowi poeta Tibullus w I wieku p.n.e.; powtarzali ją potem Owidiusz, Wergiliusz i Liwiusz.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384447396",
+        "source_title": "Wikipedia (en): Rome, wersja 1384447396",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ita-tysiaclecie",
+        "text": "W 247 r. obchodzono w Rzymie pierwsze tysiąclecie miasta.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80887963",
+        "source_title": "Wikipedia (pl): Rzym, wersja 80887963",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ita-karol",
+        "text": "W Boże Narodzenie 800 r. papież Leon III koronował w Rzymie Karola Wielkiego na cesarza.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384447396",
+        "source_title": "Wikipedia (en): Rome, wersja 1384447396",
+        "checked": "2026-11-15"
+      }
+    ],
+    "JOR": [
+      {
+        "id": "capital-jor-posagi",
+        "text": "Osadnictwo w Ammanie sięga co najmniej VIII tysiąclecia p.n.e. W stanowisku Ain Ghazal znaleziono najstarsze na świecie posągi ludzi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385838616",
+        "source_title": "Wikipedia (en): Amman, wersja 1385838616",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-jor-filadelfia",
+        "text": "W starożytności miasto nazywało się Rabbath Ammon, potem — w czasach hellenistycznych i rzymskich — Filadelfia. Nazwę Amman nadali mu muzułmanie w VII wieku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385838616",
+        "source_title": "Wikipedia (en): Amman, wersja 1385838616",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-jor-wzgorza",
+        "text": "Amman zbudowano pierwotnie na siedmiu wzgórzach; dziś miasto rozciąga się na 19 wzgórzach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385838616",
+        "source_title": "Wikipedia (en): Amman, wersja 1385838616",
+        "checked": "2026-11-15"
+      }
+    ],
+    "JPN": [
+      {
+        "id": "capital-jpn-olimpiada",
+        "text": "W 1964 r. Tokio jako pierwsze miasto w Azji zorganizowało letnie igrzyska olimpijskie i paraolimpijskie. Ponownie gościło je w 2021 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384493530",
+        "source_title": "Wikipedia (en): Tokyo, wersja 1384493530",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-jpn-ginza",
+        "text": "Linia metra Ginza, otwarta w 1927 r., to najstarsza linia metra w Azji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384493530",
+        "source_title": "Wikipedia (en): Tokyo, wersja 1384493530",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-jpn-yayoi",
+        "text": "Okres Yayoi w dziejach Japonii nazwano od dzielnicy Tokio, w której w 1884 r. Shozo Arisaka wykopał pierwszą ceramikę z tej epoki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384493530",
+        "source_title": "Wikipedia (en): Tokyo, wersja 1384493530",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KAZ": [
+      {
+        "id": "capital-kaz-stolica",
+        "text": "Astana po kazachsku znaczy po prostu „stolica”. Miasto założono w 1830 r. jako Akmoły; potem nazywało się m.in. Akmolińsk i Celinograd.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383088855",
+        "source_title": "Wikipedia (en): Astana, wersja 1383088855",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kaz-1997",
+        "text": "Do 1997 r. stolicą Kazachstanu była Ałmaty — wciąż największe miasto kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383088855",
+        "source_title": "Wikipedia (en): Astana, wersja 1383088855",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kaz-unesco",
+        "text": "16 lipca 1999 r. UNESCO przyznało Astanie tytuł Miasta Pokoju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383088855",
+        "source_title": "Wikipedia (en): Astana, wersja 1383088855",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KEN": [
+      {
+        "id": "capital-ken-park",
+        "text": "Nairobi to jedyna stolica na świecie, która ma w swoich granicach park narodowy — z żyrafami i nosorożcami na tle wieżowców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385634609",
+        "source_title": "Wikipedia (en): Nairobi, wersja 1385634609",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ken-nazwa",
+        "text": "Nazwa pochodzi od masajskiego Enkare Nyirobi — „miejsce chłodnych wód”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385634609",
+        "source_title": "Wikipedia (en): Nairobi, wersja 1385634609",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ken-kolej",
+        "text": "Nairobi założono w 1898 r. jako bazę kolejową na linii Uganda–Kenia, w miejscu dzisiejszego dworca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385634609",
+        "source_title": "Wikipedia (en): Nairobi, wersja 1385634609",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KGZ": [
+      {
+        "id": "capital-kgz-frunze",
+        "text": "Do 1926 r. miasto nazywało się Piszpek, a w latach 1926–1991 — Frunze, od bolszewickiego dowódcy urodzonego w tym mieście.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385649500",
+        "source_title": "Wikipedia (en): Bishkek, wersja 1385649500",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kgz-1970",
+        "text": "Według spisu z 1970 r. Kirgizi stanowili w Frunze tylko 12,3% mieszkańców, a Rosjanie ponad 80%.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385649500",
+        "source_title": "Wikipedia (en): Bishkek, wersja 1385649500",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kgz-tienszan",
+        "text": "Biszkek leży u podnóża Gór Kirgiskich w Tienszanie, nad rzekami Ała-Arcza i Ałamedin.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80883550",
+        "source_title": "Wikipedia (pl): Biszkek, wersja 80883550",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KHM": [
+      {
+        "id": "capital-khm-penh",
+        "text": "Nazwa pochodzi od świątyni Wat Phnom („wzgórze”) i od pani Penh, założycielki miasta. Według legendy znalazła w rzece posążki Buddy i usypała dla nich wzgórze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385537438",
+        "source_title": "Wikipedia (en): Phnom Penh, wersja 1385537438",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-khm-1434",
+        "text": "Phnom Penh założono w 1372 r. Po upadku Angkoru, w 1434 r., zostało stolicą kraju; jest nią nieprzerwanie od 1865 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385537438",
+        "source_title": "Wikipedia (en): Phnom Penh, wersja 1385537438",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-khm-jezioro",
+        "text": "Największe jezioro słodkowodne w mieście, Boeung Kak, zasypano w 2010 r. pod zabudowę — budziło to wiele protestów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385537438",
+        "source_title": "Wikipedia (en): Phnom Penh, wersja 1385537438",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KOR": [
+      {
+        "id": "capital-kor-18-pne",
+        "text": "Historia Seulu sięga 18 r. p.n.e., gdy założył go lud Baekje — jednego z Trzech Królestw Korei.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384201546",
+        "source_title": "Wikipedia (en): Seoul, wersja 1384201546",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kor-olimpiada",
+        "text": "Największym parkiem Seulu jest Park Olimpijski, zbudowany na letnie igrzyska w 1988 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384201546",
+        "source_title": "Wikipedia (en): Seoul, wersja 1384201546",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kor-gestosc",
+        "text": "Gęstość zaludnienia Seulu jest prawie dwa razy większa niż Nowego Jorku i osiem razy większa niż Rzymu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384201546",
+        "source_title": "Wikipedia (en): Seoul, wersja 1384201546",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KOS": [
+      {
+        "id": "capital-kos-1315",
+        "text": "Prisztina pierwszy raz pojawia się z nazwy w dokumencie z lat 1315–1318 — złotej bulli z Banjskiej koło Mitrowicy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385725770",
+        "source_title": "Wikipedia (en): Pristina, wersja 1385725770",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kos-gracanica",
+        "text": "W pobliskiej Gračanicy król serbski Stefan Milutin założył w 1315 r. monaster, wpisany w 2006 r. na listę UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385725770",
+        "source_title": "Wikipedia (en): Pristina, wersja 1385725770",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kos-1487",
+        "text": "Osmański spis z 1487 r. wymienia w Prisztinie 412 domów chrześcijańskich i 94 muzułmańskie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385725770",
+        "source_title": "Wikipedia (en): Pristina, wersja 1385725770",
+        "checked": "2026-11-15"
+      }
+    ],
+    "KWT": [
+      {
+        "id": "capital-kwt-odsalanie",
+        "text": "Kuwejt ma bardzo mało wody pitnej, dlatego działają tu jedne z największych i najnowocześniejszych systemów odsalania wody morskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79506571",
+        "source_title": "Wikipedia (pl): Kuwejt (miasto), wersja 79506571",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kwt-al-arabi",
+        "text": "Wydawany w Kuwejcie od 1958 r. magazyn Al Arabi stał się najpopularniejszym czasopismem w świecie arabskim.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382540405",
+        "source_title": "Wikipedia (en): Kuwait City, wersja 1382540405",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-kwt-1963",
+        "text": "Pierwsze wybory parlamentarne w Kuwejcie odbyły się w 1963 r., według nowej konstytucji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382540405",
+        "source_title": "Wikipedia (en): Kuwait City, wersja 1382540405",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LAO": [
+      {
+        "id": "capital-lao-sandal",
+        "text": "„Wiang” po laotańsku to miasto otoczone murem, a „chan” może znaczyć drewno sandałowe albo księżyc — stąd nazwa „miasto sandałowego drewna” lub „miasto księżyca”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384851594",
+        "source_title": "Wikipedia (en): Vientiane, wersja 1384851594",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lao-patuxai",
+        "text": "Symbolem miasta jest brama Patuxai, zbudowana w latach 1957–1968.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384851594",
+        "source_title": "Wikipedia (en): Vientiane, wersja 1384851594",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lao-park-buddy",
+        "text": "Park Buddy założył w 1958 r. mnich Luang Pu Bunleua Sulilat — wśród drzew stoją setki rzeźb buddyjskich i hinduistycznych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384851594",
+        "source_title": "Wikipedia (en): Vientiane, wersja 1384851594",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBN": [
+      {
+        "id": "capital-lbn-5000",
+        "text": "Bejrut jest zamieszkany od ponad 5000 lat — to jedno z najstarszych miast świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385757746",
+        "source_title": "Wikipedia (en): Beirut, wersja 1385757746",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lbn-amarna",
+        "text": "Nazwa miasta pojawia się pierwszy raz w XIV wieku p.n.e., w listach z Amarny — król Biruty Ammunira pisał w nich do faraona Egiptu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385757746",
+        "source_title": "Wikipedia (en): Beirut, wersja 1385757746",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lbn-prawo",
+        "text": "W starożytności Bejrut słynął ze szkoły prawniczej, którą w 425 r. odnowił i rozbudował cesarz Teodozjusz II.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80974942",
+        "source_title": "Wikipedia (pl): Bejrut, wersja 80974942",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBR": [
+      {
+        "id": "capital-lbr-monroe",
+        "text": "Miasto nazwano w 1824 r. Monrovia na cześć prezydenta USA Jamesa Monroe, zwolennika osadnictwa w Liberii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382462959",
+        "source_title": "Wikipedia (en): Monrovia, wersja 1382462959",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lbr-christopolis",
+        "text": "Pierwotnie, przez dwa pierwsze lata, osada nazywała się Christopolis.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382462959",
+        "source_title": "Wikipedia (en): Monrovia, wersja 1382462959",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lbr-1822",
+        "text": "Monrovię założyło w 1822 r. Amerykańskie Towarzystwo Kolonizacyjne, które sprowadzało tu wyzwolonych niewolników ze Stanów Zjednoczonych i Indii Zachodnich.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79565385",
+        "source_title": "Wikipedia (pl): Monrovia, wersja 79565385",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LBY": [
+      {
+        "id": "capital-lby-fenicjanie",
+        "text": "Trypolis założyli w VII wieku p.n.e. Fenicjanie. Grecy nazywali je Oea.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385481017",
+        "source_title": "Wikipedia (en): Tripoli, Libya, wersja 1385481017",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lby-joannici",
+        "text": "W latach 1510–1530 miasto zajmowali Hiszpanie, a potem, do 1551 r., joannici, którzy umocnili najstarszą część Trypolisu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79917228",
+        "source_title": "Wikipedia (pl): Trypolis, wersja 79917228",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lby-zachod",
+        "text": "Historycznie nazywano je Trypolisem Zachodnim — dla odróżnienia od Trypolisu w Libanie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385481017",
+        "source_title": "Wikipedia (en): Tripoli, Libya, wersja 1385481017",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LIE": [
+      {
+        "id": "capital-lie-zamek",
+        "text": "Nad Vaduz, na stromym wzgórzu, stoi zamek — siedziba panującego księcia Liechtensteinu. Pierwsza wzmianka o nim pochodzi z 1322 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383007656",
+        "source_title": "Wikipedia (en): Vaduz, wersja 1383007656",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lie-schaan",
+        "text": "Vaduz jest najbardziej znanym miastem księstwa, ale nie największym — sąsiednie Schaan ma więcej mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383007656",
+        "source_title": "Wikipedia (en): Vaduz, wersja 1383007656",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lie-kolej",
+        "text": "Przez Liechtenstein biegnie tylko jedna linia kolejowa, Feldkirch–Buchs, obsługiwana przez austriackie koleje ÖBB.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383007656",
+        "source_title": "Wikipedia (en): Vaduz, wersja 1383007656",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LKA": [
+      {
+        "id": "capital-lka-wyspa",
+        "text": "Parlament Sri Lanki stoi na wyspie Duwa pośrodku jeziora — 5 hektarów lądu otoczonego wodą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376908641",
+        "source_title": "Wikipedia (en): Sri Jayawardenepura Kotte, wersja 1376908641",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lka-kotte",
+        "text": "W XIII wieku miejscowy wódz Nissanka Alagakkonara zbudował tu twierdzę — „kotte” — od której miasto ma nazwę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376908641",
+        "source_title": "Wikipedia (en): Sri Jayawardenepura Kotte, wersja 1376908641",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lka-kolombo",
+        "text": "Kotte jest stolicą ustawodawczą, ale leży tuż przy Kolombo — największym mieście i dawnej stolicy kraju.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78202180",
+        "source_title": "Wikipedia (pl): Sri Dźajawardanapura Kotte, wersja 78202180",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LSO": [
+      {
+        "id": "capital-lso-piaskowiec",
+        "text": "Nazwa Maseru znaczy w języku sesotho „czerwone piaskowce”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385109023",
+        "source_title": "Wikipedia (en): Maseru, wersja 1385109023",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lso-1869",
+        "text": "Brytyjczycy założyli Maseru w 1869 r. jako mały posterunek policji, gdy Basuto stało się brytyjskim protektoratem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385109023",
+        "source_title": "Wikipedia (en): Maseru, wersja 1385109023",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lso-droga",
+        "text": "Kingsway, łącząca lotnisko z pałacem królewskim, była pierwszą utwardzoną drogą w Lesotho i aż do niepodległości w 1966 r. jedyną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385109023",
+        "source_title": "Wikipedia (en): Maseru, wersja 1385109023",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LTU": [
+      {
+        "id": "capital-ltu-gedymin",
+        "text": "Wilno jest stolicą Litwy co najmniej od 1323 r. — wtedy wspomniał o nim jako o stolicy wielki książę Giedymin w swoim liście.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383788894",
+        "source_title": "Wikipedia (en): Vilnius, wersja 1383788894",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ltu-batory",
+        "text": "Uniwersytet Wileński założył w 1579 r. król Stefan Batory. Był drugim najstarszym uniwersytetem Rzeczypospolitej, po krakowskim.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207622",
+        "source_title": "Wikipedia (pl): Wilno, wersja 81207622",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ltu-witold",
+        "text": "Po pożarze w 1419 r. książę Witold zaczął budować na Górze Zamkowej pierwszy murowany zamek, nazwany później Zamkiem Górnym.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207622",
+        "source_title": "Wikipedia (pl): Wilno, wersja 81207622",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LUX": [
+      {
+        "id": "capital-lux-kazamaty",
+        "text": "Pod miastem biegną kazamaty — kilometry tuneli w skale. Pierwsze zaczęli kuć Hiszpanie w 1644 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384663668",
+        "source_title": "Wikipedia (en): Luxembourg City, wersja 1384663668",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lux-bogactwo",
+        "text": "W 2024 r. MFW uznał Luksemburg za kraj o najwyższym PKB na mieszkańca na świecie; stolica jest centrum bankowym i administracyjnym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384663668",
+        "source_title": "Wikipedia (en): Luxembourg City, wersja 1384663668",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lux-zygfryd",
+        "text": "Za pierwszego hrabiego Luksemburga uważa się Zygfryda, choć on sam nie używał tego tytułu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79326277",
+        "source_title": "Wikipedia (pl): Luksemburg (miasto), wersja 79326277",
+        "checked": "2026-11-15"
+      }
+    ],
+    "LVA": [
+      {
+        "id": "capital-lva-1201",
+        "text": "Rygę założył w 1201 r. biskup Albert von Buxhövden. Od 1282 r. należała do Hanzy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80713262",
+        "source_title": "Wikipedia (pl): Ryga, wersja 80713262",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lva-moneta",
+        "text": "W 1211 r. Ryga wybiła swoją pierwszą monetę, a biskup Albert położył kamień węgielny pod katedrę Dom.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383009953",
+        "source_title": "Wikipedia (en): Riga, wersja 1383009953",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-lva-festiwal",
+        "text": "W 1873 r. w Rydze odbył się pierwszy łotewski narodowy festiwal pieśni — ważny moment łotewskiego odrodzenia narodowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383009953",
+        "source_title": "Wikipedia (en): Riga, wersja 1383009953",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MAR": [
+      {
+        "id": "capital-mar-hassan",
+        "text": "Wieża Hassana to pozostałość ogromnego meczetu kalifa al-Mansura. Po jego śmierci w 1199 r. następcy nie dokończyli budowy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385486626",
+        "source_title": "Wikipedia (en): Rabat, wersja 1385486626",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mar-sala",
+        "text": "W miejscu zwanym dziś Chellah Rzymianie zbudowali miasto Sala Colonia. Później Marynidzi założyli tu królewską nekropolię.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385486626",
+        "source_title": "Wikipedia (en): Rabat, wersja 1385486626",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mar-1912",
+        "text": "Gdy w 1912 r. Francuzi ustanowili protektorat nad Marokiem, Rabat stał się jego centrum administracyjnym. Największym miastem pozostała Casablanca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385486626",
+        "source_title": "Wikipedia (en): Rabat, wersja 1385486626",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MCO": [
+      {
+        "id": "capital-mco-grimaldi",
+        "text": "Ród Grimaldich rządzi Monako, z krótkimi przerwami, od 1297 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385592284",
+        "source_title": "Wikipedia (en): Monaco, wersja 1385592284",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mco-gestosc",
+        "text": "Z 38 tysiącami mieszkańców Monako to drugie najmniejsze państwo świata, po Watykanie, i najgęściej zaludnione.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385592284",
+        "source_title": "Wikipedia (en): Monaco, wersja 1385592284",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mco-grace",
+        "text": "19 kwietnia 1956 r. książę Rainier III poślubił amerykańską aktorkę Grace Kelly — ślub transmitowała telewizja na cały świat.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385592284",
+        "source_title": "Wikipedia (en): Monaco, wersja 1385592284",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDA": [
+      {
+        "id": "capital-mda-1466",
+        "text": "Kiszyniów założono w 1466 r. na ziemiach Hospodarstwa Mołdawskiego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80764464",
+        "source_title": "Wikipedia (pl): Kiszyniów, wersja 80764464",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mda-1919",
+        "text": "W 1919 r. Kiszyniów, mający około 133 tysięcy mieszkańców, był drugim co do wielkości miastem Rumunii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382990772",
+        "source_title": "Wikipedia (en): Chișinău, wersja 1382990772",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mda-uczelnia",
+        "text": "W 1933 r. powstała tu pierwsza uczelnia w Besarabii — wydział rolniczy przeniesiony z uniwersytetu w Jassach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382990772",
+        "source_title": "Wikipedia (en): Chișinău, wersja 1382990772",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDG": [
+      {
+        "id": "capital-mdg-1610",
+        "text": "Antananarywę założono ok. 1610 r., gdy król Meriny Andrianjaka wypędził mieszkańców wioski Analamanga.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375911652",
+        "source_title": "Wikipedia (en): Antananarivo, wersja 1375911652",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mdg-misjonarze",
+        "text": "W 1820 r. przybyli tu misjonarze z Londyńskiego Towarzystwa Misyjnego i otworzyli pierwsze publiczne szkoły w mieście.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375911652",
+        "source_title": "Wikipedia (en): Antananarivo, wersja 1375911652",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mdg-ceglany-dom",
+        "text": "Pierwszy ceglany dom misjonarze zbudowali w 1869 r. Jego mieszany angielsko-kreolsko-malgaski styl szybko rozpowszechnił się w całych górach Madagaskaru.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375911652",
+        "source_title": "Wikipedia (en): Antananarivo, wersja 1375911652",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MDV": [
+      {
+        "id": "capital-mdv-gestosc",
+        "text": "Male to jedno z najgęściej zaludnionych miast świata: na maleńkiej wyspie mieszka ponad 200 tysięcy ludzi, a zabudowa zajmuje praktycznie cały ląd.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383637974",
+        "source_title": "Wikipedia (en): Malé, wersja 1383637974",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mdv-koral",
+        "text": "Meczet Piątkowy Hukuru Miskiy z XVII wieku zbudowano z kamienia koralowego. To jeden z najstarszych meczetów w kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383637974",
+        "source_title": "Wikipedia (en): Malé, wersja 1383637974",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mdv-wyspy",
+        "text": "Miasto Male obejmuje kilka wysp, m.in. Hulhulé, na której leży lotnisko, i sztucznie usypane Hulhumalé.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383637974",
+        "source_title": "Wikipedia (en): Malé, wersja 1383637974",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MKD": [
+      {
+        "id": "capital-mkd-scupi",
+        "text": "W czasach rzymskich miasto nazywało się Scupi. Założono je pod koniec I wieku, za cesarza Domicjana, a opuszczono po trzęsieniu ziemi w 518 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385757600",
+        "source_title": "Wikipedia (en): Skopje, wersja 1385757600",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mkd-1963",
+        "text": "W 1963 r. silne trzęsienie ziemi zniszczyło Skopje. Miasto odbudowano przy pomocy z całego świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385757600",
+        "source_title": "Wikipedia (en): Skopje, wersja 1385757600",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mkd-uskub",
+        "text": "Turcy osmańscy rządzili miastem ponad pięć wieków. Na Zachodzie aż do 1912 r. nazywano je po turecku Uskub.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385757600",
+        "source_title": "Wikipedia (en): Skopje, wersja 1385757600",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MLI": [
+      {
+        "id": "capital-mli-1650",
+        "text": "Bamako założyła ok. 1650 r. rodzina Niare, być może razem z Soninke o imieniu Bamba Sanogo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384660559",
+        "source_title": "Wikipedia (en): Bamako, wersja 1384660559",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mli-wzrost",
+        "text": "W 1884 r. Bamako miało tylko 2500 mieszkańców, w 1960 r. — 100 tysięcy, a w 2022 r. ponad 4,2 miliona.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384660559",
+        "source_title": "Wikipedia (en): Bamako, wersja 1384660559",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mli-most",
+        "text": "Pierwszy most na Nigrze w Bamako zbudowano w 1947 r., a rok później ukończono Wielki Meczet.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80837819",
+        "source_title": "Wikipedia (pl): Bamako, wersja 80837819",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MLT": [
+      {
+        "id": "capital-mlt-teatr",
+        "text": "Teatr Manoela, zbudowany w 1731 r. przez wielkiego mistrza Antonia Manoela de Vilhenę, jest dziś trzecim najstarszym czynnym teatrem na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81053647",
+        "source_title": "Wikipedia (pl): Valletta, wersja 81053647",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mlt-unesco",
+        "text": "Całą Vallettę wpisano w 1980 r. na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381541439",
+        "source_title": "Wikipedia (en): Valletta, wersja 1381541439",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mlt-szpital",
+        "text": "Szpital Sacra Infermeria otwarto w 1575 r. Jego główna sala, długa na 56 m, wciąż należy do największych w Europie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81053647",
+        "source_title": "Wikipedia (pl): Valletta, wersja 81053647",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MMR": [
+      {
+        "id": "capital-mmr-2005",
+        "text": "Naypyidaw zastąpiło Rangun jako stolica 6 listopada 2005 r. Nazwę nowego miasta ogłoszono dopiero 27 marca 2006 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383113464",
+        "source_title": "Wikipedia (en): Naypyidaw, wersja 1383113464",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mmr-parada",
+        "text": "Pierwszym publicznym wydarzeniem w nowej stolicy była parada ponad 12 tysięcy żołnierzy w Dniu Sił Zbrojnych, 27 marca 2006 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383113464",
+        "source_title": "Wikipedia (en): Naypyidaw, wersja 1383113464",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mmr-od-podstaw",
+        "text": "W odróżnieniu od innych miast Mjanmy Naypyidaw zbudowano od podstaw według planu, w środku kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383113464",
+        "source_title": "Wikipedia (en): Naypyidaw, wersja 1383113464",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MNE": [
+      {
+        "id": "capital-mne-titograd",
+        "text": "Po II wojnie światowej miasto odbudowano od podstaw i na cześć Josipa Broz Tity nazwano Titograd.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80972811",
+        "source_title": "Wikipedia (pl): Podgorica, wersja 80972811",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mne-1326",
+        "text": "Nazwa Podgorica pojawia się pierwszy raz w 1326 r., w dokumencie sądowym z archiwum w Kotorze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385302640",
+        "source_title": "Wikipedia (en): Podgorica, wersja 1385302640",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mne-1479",
+        "text": "W 1479 r. Osmanowie zbudowali tu dużą twierdzę i Podgorica stała się ich głównym bastionem w regionie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385302640",
+        "source_title": "Wikipedia (en): Podgorica, wersja 1385302640",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MNG": [
+      {
+        "id": "capital-mng-najzimniejsza",
+        "text": "Ułan Bator to najzimniejsza stolica świata pod względem średniej rocznej temperatury.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385608466",
+        "source_title": "Wikipedia (en): Ulaanbaatar, wersja 1385608466",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mng-29-razy",
+        "text": "Miasto powstało w 1639 r. jako wędrowny buddyjski klasztor, który zmieniał miejsce 29 razy, zanim w 1778 r. osiadł na stałe.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385608466",
+        "source_title": "Wikipedia (en): Ulaanbaatar, wersja 1385608466",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mng-1990",
+        "text": "W lipcu 1990 r. odbyły się pierwsze wolne wybory w Mongolii, co doprowadziło do nowej konstytucji w 1992 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385608466",
+        "source_title": "Wikipedia (en): Ulaanbaatar, wersja 1385608466",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MOZ": [
+      {
+        "id": "capital-moz-lourenco",
+        "text": "Do 1976 r. Maputo nazywało się Lourenço Marques — od portugalskiego żeglarza, który zbadał te okolice w 1544 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384663845",
+        "source_title": "Wikipedia (en): Maputo, wersja 1384663845",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-moz-1898",
+        "text": "W 1898 r. Portugalczycy przenieśli tu stolicę kolonii Mozambik.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384663845",
+        "source_title": "Wikipedia (en): Maputo, wersja 1384663845",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-moz-gozdzikow",
+        "text": "Wojna o niepodległość Mozambiku trwała ponad 10 lat. Skończyła się w 1974 r., gdy rewolucja goździków obaliła dyktaturę w Lizbonie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384663845",
+        "source_title": "Wikipedia (en): Maputo, wersja 1384663845",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MRT": [
+      {
+        "id": "capital-mrt-1958",
+        "text": "Nawakszut był małą wioską rybacką. Budowę stolicy zaczęto w marcu 1958 r., a podstawy ukończono przed niepodległością 28 listopada 1960 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381271266",
+        "source_title": "Wikipedia (en): Nouakchott, wersja 1381271266",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mrt-15000",
+        "text": "Miasto zaprojektowano dla 15 tysięcy ludzi. W latach 70. urosło gwałtownie, bo susze i pustynnienie wypędzały mieszkańców ze wsi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381271266",
+        "source_title": "Wikipedia (en): Nouakchott, wersja 1381271266",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mrt-wybor",
+        "text": "Miejsce wybrano m.in. po to, by stolica nie leżała ani na ziemiach Arabów i Berberów, ani ludów z południa — by uniknąć sporów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381271266",
+        "source_title": "Wikipedia (en): Nouakchott, wersja 1381271266",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MUS": [
+      {
+        "id": "capital-mus-ludwik",
+        "text": "Port nazwano na cześć francuskiego króla Ludwika XV.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383579095",
+        "source_title": "Wikipedia (en): Port Louis, wersja 1383579095",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mus-aapravasi",
+        "text": "Aapravasi Ghat, wpisany na listę UNESCO, to pozostałość punktu imigracyjnego, przez który Brytyjczycy sprowadzali robotników z Indii, Afryki i Azji do pracy na plantacjach trzciny cukrowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383579095",
+        "source_title": "Wikipedia (en): Port Louis, wersja 1383579095",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mus-bank",
+        "text": "Najstarszy bank z siedzibą w Port Louis, Mauritius Commercial Bank, założono w 1838 r. Rada miejska istnieje od 1830 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383579095",
+        "source_title": "Wikipedia (en): Port Louis, wersja 1383579095",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MWI": [
+      {
+        "id": "capital-mwi-zomba",
+        "text": "Lilongwe zostało stolicą Malawi w 1975 r., zastępując Zombę. Decyzję o przeniesieniu stolicy podjęto już w 1965 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378621524",
+        "source_title": "Wikipedia (en): Lilongwe, wersja 1378621524",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mwi-njewa",
+        "text": "Około 1902 r. miejscowy wódz Njewa założył tu osadę-bomę, a w 1904 r. stała się ona ośrodkiem administracyjnym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378621524",
+        "source_title": "Wikipedia (en): Lilongwe, wersja 1378621524",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mwi-banda",
+        "text": "W 1965 r. pierwszy prezydent Malawi, Hastings Kamuzu Banda, wybrał Lilongwe na ośrodek rozwoju gospodarczego północy i centrum kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378621524",
+        "source_title": "Wikipedia (en): Lilongwe, wersja 1378621524",
+        "checked": "2026-11-15"
+      }
+    ],
+    "MYS": [
+      {
+        "id": "capital-mys-petronas",
+        "text": "W Kuala Lumpur stoją Petronas Towers — najwyższe bliźniacze wieżowce na świecie i symbol rozwoju Malezji.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80826392",
+        "source_title": "Wikipedia (pl): Kuala Lumpur, wersja 80826392",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mys-cyna",
+        "text": "Miasto powstało przy kopalniach cyny w dżungli. Mimo wielu ofiar malarii kopalnie Ampang wysłały pierwszą cynę w 1859 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384371225",
+        "source_title": "Wikipedia (en): Kuala Lumpur, wersja 1384371225",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-mys-ksiazka",
+        "text": "UNESCO ogłosiło Kuala Lumpur Światową Stolicą Książki 2020.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384371225",
+        "source_title": "Wikipedia (en): Kuala Lumpur, wersja 1384371225",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NAM": [
+      {
+        "id": "capital-nam-woda",
+        "text": "W 1958 r. Windhuk uruchomił pierwszy na świecie zakład, który oczyszczał ścieki aż do wody pitnej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79575982",
+        "source_title": "Wikipedia (pl): Windhuk, wersja 79575982",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nam-jonker",
+        "text": "Miasto rozwinęło się po tym, jak w 1840 r. osiadł tu Jonker Afrikaner, wódz ludu Orlam, i zbudował kamienny kościół na 500 osób.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383911632",
+        "source_title": "Wikipedia (en): Windhoek, wersja 1383911632",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nam-1890",
+        "text": "Windhuk założono po raz drugi w 1890 r. — zrobił to major armii niemieckiej Curt von François, gdy tereny te kolonizowały Niemcy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383911632",
+        "source_title": "Wikipedia (en): Windhoek, wersja 1383911632",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NER": [
+      {
+        "id": "capital-ner-zinder",
+        "text": "Niamey zastąpiło Zinder jako stolica kolonii w latach 1903–1911 i ponownie w 1926 r. — dopiero wtedy miasto zaczęło szybko rosnąć.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378113383",
+        "source_title": "Wikipedia (en): Niamey, wersja 1378113383",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ner-1901",
+        "text": "Pierwszy francuski posterunek wojskowy w Niamey założono w 1901 r., nad zakolem Nigru.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378113383",
+        "source_title": "Wikipedia (en): Niamey, wersja 1378113383",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ner-1956",
+        "text": "W 1956 r. w Niamey odbyły się pierwsze w Nigrze wybory samorządowe; pierwszym burmistrzem został Djibo Bakary.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378113383",
+        "source_title": "Wikipedia (en): Niamey, wersja 1378113383",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NGA": [
+      {
+        "id": "capital-nga-1991",
+        "text": "Abudża zastąpiła Lagos jako stolica Nigerii 12 grudnia 1991 r. Lagos, najludniejsze miasto kraju, było już przeludnione.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385356229",
+        "source_title": "Wikipedia (en): Abuja, wersja 1385356229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nga-aso-rock",
+        "text": "Krajobraz Abudży wyznacza Aso Rock — monolit skalny wyrzeźbiony przez erozję wodną. Na północ od miasta wznosi się drugi, Zuma Rock.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385356229",
+        "source_title": "Wikipedia (en): Abuja, wersja 1385356229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nga-kolej",
+        "text": "Kolej miejska w Abudży, otwarta w 2018 r., była pierwszym szybkim transportem szynowym w Nigerii i w całej Afryce Zachodniej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385356229",
+        "source_title": "Wikipedia (en): Abuja, wersja 1385356229",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NLD": [
+      {
+        "id": "capital-nld-gielda",
+        "text": "Giełda w Amsterdamie, założona w 1602 r., uchodzi za najstarszą nowoczesną giełdę papierów wartościowych na świecie — handlowano na niej akcjami Kompanii Wschodnioindyjskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385685829",
+        "source_title": "Wikipedia (en): Amsterdam, wersja 1385685829",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nld-tama",
+        "text": "Nazwa pochodzi od tamy na rzece Amstel. Pierwszy raz zapisano ją w 1275 r. w przywileju hrabiego Florisa V: „apud Amestelledamme”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385685829",
+        "source_title": "Wikipedia (en): Amsterdam, wersja 1385685829",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nld-lennon",
+        "text": "W 1969 r. John Lennon i Yoko Ono przeprowadzili w łóżku w amsterdamskim hotelu Hilton swoją słynną akcję na rzecz pokoju na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207468",
+        "source_title": "Wikipedia (pl): Amsterdam, wersja 81207468",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NOR": [
+      {
+        "id": "capital-nor-christiania",
+        "text": "Po pożarze w 1624 r. król Christian IV kazał zbudować nowe miasto bliżej twierdzy Akershus i nazwał je Christiania. Nazwę Oslo przywrócono w 1925 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384418597",
+        "source_title": "Wikipedia (en): Oslo, wersja 1384418597",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nor-harald",
+        "text": "Według sag Oslo założył ok. 1049 r. król Harald Srogi, ale wykopaliska pokazują, że miasto istniało już przed 1000 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384418597",
+        "source_title": "Wikipedia (en): Oslo, wersja 1384418597",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-nor-kwadraty",
+        "text": "Część miasta budowana od 1624 r. ma regularny układ kwadratowych kwartałów — zupełnie inny niż średniowieczne Oslo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384418597",
+        "source_title": "Wikipedia (en): Oslo, wersja 1384418597",
+        "checked": "2026-11-15"
+      }
+    ],
+    "NPL": [
+      {
+        "id": "capital-npl-drzewo",
+        "text": "Nazwa Katmandu pochodzi od Kasthamandap, drewnianego pawilonu. Według legendy całe drewno na jego budowę pozyskano z jednego drzewa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385643995",
+        "source_title": "Wikipedia (en): Kathmandu, wersja 1385643995",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-npl-unesco",
+        "text": "W Dolinie Katmandu jest aż siedem obiektów z listy światowego dziedzictwa UNESCO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81016089",
+        "source_title": "Wikipedia (pl): Katmandu, wersja 81016089",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-npl-kantipur",
+        "text": "Od starożytności do średniowiecza miasto nazywano Kantipur.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385643995",
+        "source_title": "Wikipedia (en): Kathmandu, wersja 1385643995",
+        "checked": "2026-11-15"
+      }
+    ],
+    "OMN": [
+      {
+        "id": "capital-omn-ptolemeusz",
+        "text": "Już w I wieku n.e. grecki geograf Ptolemeusz opisywał Maskat jako port — nazywał go Cryptus Portus, czyli „Ukryty Port”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384142684",
+        "source_title": "Wikipedia (en): Muscat, wersja 1384142684",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-omn-albuquerque",
+        "text": "W 1507 r. do Maskatu przypłynął portugalski admirał Afonso de Albuquerque, a potem Portugalczycy rządzili miastem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384142684",
+        "source_title": "Wikipedia (en): Muscat, wersja 1384142684",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-omn-maszt",
+        "text": "Maszt flagowy na placu Al Khuwair, otwarty 22 maja 2025 r., ma 126 m — tyle co 40-piętrowy budynek.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384142684",
+        "source_title": "Wikipedia (en): Muscat, wersja 1384142684",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PAK": [
+      {
+        "id": "capital-pak-karaczi",
+        "text": "Islamabad zbudowano od podstaw w latach 60. XX wieku u stóp wzgórz Margalla i ustanowiono w 1967 r. Zastąpił Karaczi jako stolicę Pakistanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385700276",
+        "source_title": "Wikipedia (en): Islamabad, wersja 1385700276",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-pak-rawalpindi",
+        "text": "Stolicy nie przeniesiono od razu z Karaczi do Islamabadu: na początku lat 60. tymczasowo była nią Rawalpindi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385700276",
+        "source_title": "Wikipedia (en): Islamabad, wersja 1385700276",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-pak-metrobus",
+        "text": "Metrobus Rawalpindi–Islamabad, ukończony w marcu 2015 r., był pierwszą linią szybkiego transportu zbiorowego w regionie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385700276",
+        "source_title": "Wikipedia (en): Islamabad, wersja 1385700276",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PHL": [
+      {
+        "id": "capital-phl-tlaxcalanie",
+        "text": "Hiszpańską Manilę zakładali Europejczycy i Meksykanie, a załogę stanowiło też 400 Indian Tlaxcala z Meksyku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385807372",
+        "source_title": "Wikipedia (en): Manila, wersja 1385807372",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-phl-synod",
+        "text": "Synod w Manili z 1582 r. był pierwszym synodem katolickim na Filipinach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385807372",
+        "source_title": "Wikipedia (en): Manila, wersja 1385807372",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-phl-perla",
+        "text": "W 1952 r. Arsenio Lacson został pierwszym wybranym w wyborach burmistrzem Manili. Za jego rządów miasto odzyskało przydomek „Perła Orientu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385807372",
+        "source_title": "Wikipedia (en): Manila, wersja 1385807372",
+        "checked": "2026-11-15"
+      }
+    ],
+    "POL": [
+      {
+        "id": "capital-pol-1313",
+        "text": "Pierwsza wzmianka o Warszawie pochodzi z 23 kwietnia 1313 r., z tytulatury księcia Siemowita II.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81101780",
+        "source_title": "Wikipedia (pl): Warszawa, wersja 81101780",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-pol-elekcja",
+        "text": "W 1573 r. na polach wsi Kamion pod Warszawą odbyła się pierwsza wolna elekcja króla Polski.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81101780",
+        "source_title": "Wikipedia (pl): Warszawa, wersja 81101780",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-pol-zaluscy",
+        "text": "Biblioteka Załuskich, założona w Warszawie w 1747 r., była pierwszą polską biblioteką publiczną i jedną z największych w ówczesnej Europie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385748672",
+        "source_title": "Wikipedia (en): Warsaw, wersja 1385748672",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PRK": [
+      {
+        "id": "capital-prk-tangun",
+        "text": "Według legendy Pjongjang założono w 1122 r. p.n.e. w miejscu stolicy legendarnego króla Tanguna.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385609620",
+        "source_title": "Wikipedia (en): Pyongyang, wersja 1385609620",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-prk-nalot",
+        "text": "W 1952 r. Pjongjang był celem największego nalotu całej wojny koreańskiej — wzięło w nim udział 1400 samolotów ONZ.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385609620",
+        "source_title": "Wikipedia (en): Pyongyang, wersja 1385609620",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-prk-metro",
+        "text": "Pierwszą linię metra w Pjongjangu, Ch'ŏllima, otwarto w 1973 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80712193",
+        "source_title": "Wikipedia (pl): Pjongjang, wersja 80712193",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PRT": [
+      {
+        "id": "capital-prt-1147",
+        "text": "W 1147 r. Lizbonę zdobył pierwszy król Portugalii Alfons I Zdobywca z pomocą krzyżowców. Pierwszym biskupem miasta został angielski krzyżowiec Gilbert z Hastings.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81207368",
+        "source_title": "Wikipedia (pl): Lizbona, wersja 81207368",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-prt-belem",
+        "text": "Wieżę Belém zbudowano w latach 1515–1520 jako umocnioną latarnię strzegącą wejścia do portu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384546981",
+        "source_title": "Wikipedia (en): Lisbon, wersja 1384546981",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-prt-slonce",
+        "text": "Lizbona ma około 2875 godzin słońca rocznie — jedną z najwyższych wartości w Europie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384546981",
+        "source_title": "Wikipedia (en): Lisbon, wersja 1384546981",
+        "checked": "2026-11-15"
+      }
+    ],
+    "PSX": [
+      {
+        "id": "capital-psx-1550",
+        "text": "Ramallah założyli około 1550 r. arabscy chrześcijanie. Aż do początku XX wieku była to niewielka osada rolnicza.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77883252",
+        "source_title": "Wikipedia (pl): Ramallah, wersja 77883252",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-psx-uchodzcy",
+        "text": "Początkowo mieszkali tu głównie chrześcijanie; po wojnie 1948 r. w mieście osiedlili się muzułmańscy uchodźcy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77883252",
+        "source_title": "Wikipedia (pl): Ramallah, wersja 77883252",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-psx-siedziba",
+        "text": "Ramallah jest siedzibą władz Autonomii Palestyńskiej i faktyczną stolicą Palestyny, choć sama nie jest jej największym miastem.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77883252",
+        "source_title": "Wikipedia (pl): Ramallah, wersja 77883252",
+        "checked": "2026-11-15"
+      }
+    ],
+    "QAT": [
+      {
+        "id": "capital-qat-guttur",
+        "text": "Niemiecki podróżnik Carsten Niebuhr zaznaczył osadę na jednej z pierwszych map już w 1765 r. — jako „Guttur”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385447488",
+        "source_title": "Wikipedia (en): Doha, wersja 1385447488",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-qat-perly",
+        "text": "W pierwszej połowie XX wieku Doha urosła do około 12 tysięcy mieszkańców dzięki handlowi perłami. Domy budowano z mułu, kamienia i korali.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385447488",
+        "source_title": "Wikipedia (en): Doha, wersja 1385447488",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-qat-1971",
+        "text": "Doha powstała w latach 20. XIX wieku jako odgałęzienie osady Al Bidda. Stolicą ogłoszono ją w 1971 r., wraz z niepodległością Kataru.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385447488",
+        "source_title": "Wikipedia (en): Doha, wersja 1385447488",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ROU": [
+      {
+        "id": "capital-rou-wlad",
+        "text": "Bukareszt pierwszy raz pojawia się w 1459 r. jako „cytadela București” — rezydencja hospodara Wołoszczyzny Włada Palownika.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385787019",
+        "source_title": "Wikipedia (en): Bucharest, wersja 1385787019",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rou-1862",
+        "text": "Stolicą kraju Bukareszt jest od 1862 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78875303",
+        "source_title": "Wikipedia (pl): Bukareszt, wersja 78875303",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rou-ogrod",
+        "text": "Ogród botaniczny w Bukareszcie ma ponad 10 tysięcy gatunków roślin i należy do największych na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78875303",
+        "source_title": "Wikipedia (pl): Bukareszt, wersja 78875303",
+        "checked": "2026-11-15"
+      }
+    ],
+    "RUS": [
+      {
+        "id": "capital-rus-1147",
+        "text": "Moskwa pierwszy raz pojawia się w kronikach w 1147 r. Białe kamienne mury i wieże Kremla zbudowano w latach 1366–1368.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385584214",
+        "source_title": "Wikipedia (en): Moscow, wersja 1385584214",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rus-petersburg",
+        "text": "W 1712 r. Piotr Wielki przeniósł stolicę do nowo założonego Petersburga. Moskwa odzyskała tę rolę dopiero w XX wieku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385584214",
+        "source_title": "Wikipedia (en): Moscow, wersja 1385584214",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rus-cerkiew",
+        "text": "W Moskwie stoi Cerkiew Chrystusa Zbawiciela — największa cerkiew prawosławna na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80900913",
+        "source_title": "Wikipedia (pl): Moskwa, wersja 80900913",
+        "checked": "2026-11-15"
+      }
+    ],
+    "RWA": [
+      {
+        "id": "capital-rwa-1907",
+        "text": "Kigali założono w 1907 r., w czasach kolonii niemieckiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79634502",
+        "source_title": "Wikipedia (pl): Kigali, wersja 79634502",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rwa-6000",
+        "text": "Aż do niepodległości w 1962 r. Kigali liczyło tylko około 6 tysięcy mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384805902",
+        "source_title": "Wikipedia (en): Kigali, wersja 1384805902",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-rwa-drogi",
+        "text": "Na początku lat 70. Kigali miało 25 tysięcy mieszkańców i tylko pięć utwardzonych dróg. W 1991 r. liczba ludności doszła do około 250 tysięcy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384805902",
+        "source_title": "Wikipedia (en): Kigali, wersja 1384805902",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SAU": [
+      {
+        "id": "capital-sau-ogrody",
+        "text": "Nazwa Rijad znaczy „ogrody” — od dawnych osad w oazie. Pierwszy raz pod tą nazwą pojawia się w kronice arabskiej z 1590 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385440848",
+        "source_title": "Wikipedia (en): Riyadh, wersja 1385440848",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sau-1824",
+        "text": "Rijad jest stolicą państwa Saudów od lat 20. XIX wieku; w 1932 r. Ibn Saud nazwał swoje królestwo Arabią Saudyjską, ze stolicą w Rijadzie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385440848",
+        "source_title": "Wikipedia (en): Riyadh, wersja 1385440848",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sau-polwysep",
+        "text": "Rijad to największe miasto Półwyspu Arabskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385440848",
+        "source_title": "Wikipedia (en): Riyadh, wersja 1385440848",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SDN": [
+      {
+        "id": "capital-sdn-nil",
+        "text": "Chartum leży u zbiegu Nilu Białego i Nilu Błękitnego. Założył go w 1821 r. Muhammad Ali Pasza.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384637192",
+        "source_title": "Wikipedia (en): Khartoum, wersja 1384637192",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sdn-union-jack",
+        "text": "Po 1898 r. lord Kitchener odbudował Chartum według planu ulic w kształcie brytyjskiej flagi Union Jack.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384637192",
+        "source_title": "Wikipedia (en): Khartoum, wersja 1384637192",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sdn-faras",
+        "text": "W Muzeum Narodowym w Chartumie jest część wczesnochrześcijańskich fresków odkrytych podczas wykopalisk w Faras.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79645803",
+        "source_title": "Wikipedia (pl): Chartum, wersja 79645803",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SDS": [
+      {
+        "id": "capital-sds-najmlodsza",
+        "text": "Dżuba to najmłodsza stolica państwa na świecie — została nią w 2011 r., gdy Sudan Południowy uzyskał niepodległość.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384637084",
+        "source_title": "Wikipedia (en): Juba, wersja 1384637084",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sds-grecy",
+        "text": "Na początku lat 20. XX wieku Dżubę współzakładali greccy kupcy, którzy zaopatrywali armię brytyjską. Grecy zbudowali też wiele pierwszych budynków.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384637084",
+        "source_title": "Wikipedia (en): Juba, wersja 1384637084",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sds-gondokoro",
+        "text": "Na pobliskiej wyspie Gondokoro bazę mieli podróżnicy Samuel i Florence Baker podczas wypraw w latach 1863–1865 i 1871–1873.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384637084",
+        "source_title": "Wikipedia (en): Juba, wersja 1384637084",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SEN": [
+      {
+        "id": "capital-sen-zachod",
+        "text": "Dakar leży na półwyspie Zielonego Przylądka — to najdalej na zachód wysunięte miasto kontynentalnej Afryki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385580158",
+        "source_title": "Wikipedia (en): Dakar, wersja 1385580158",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sen-olimpiada",
+        "text": "W 2026 r. Dakar zorganizował Młodzieżowe Igrzyska Olimpijskie — jako pierwsze miasto Afryki gospodarz imprezy olimpijskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385580158",
+        "source_title": "Wikipedia (en): Dakar, wersja 1385580158",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sen-goree",
+        "text": "Na wyspie Gorée, dziś części Dakaru, stoi „Dom Niewolników” z 1776 r. — pamiątka handlu niewolnikami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385580158",
+        "source_title": "Wikipedia (en): Dakar, wersja 1385580158",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SGP": [
+      {
+        "id": "capital-sgp-1819",
+        "text": "Singapur założyli Brytyjczycy w 1819 r. Niepodległość uzyskał 9 sierpnia 1965 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81171435",
+        "source_title": "Wikipedia (pl): Singapur, wersja 81171435",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sgp-dok",
+        "text": "Brytyjska baza morska w Singapurze miała w 1938 r. największy suchy dok na świecie i paliwo dla całej floty brytyjskiej na pół roku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384840291",
+        "source_title": "Wikipedia (en): Singapore, wersja 1384840291",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sgp-churchill",
+        "text": "Kapitulację 60 tysięcy żołnierzy brytyjskich 15 lutego 1942 r. Winston Churchill nazwał „największą katastrofą i kapitulacją w historii Wielkiej Brytanii”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384840291",
+        "source_title": "Wikipedia (en): Singapore, wersja 1384840291",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SLE": [
+      {
+        "id": "capital-sle-1792",
+        "text": "Freetown formalnie założyli w 1792 r. dawni niewolnicy z Nowej Szkocji, którzy walczyli po stronie Brytyjczyków. Nazwa znaczy „Wolne Miasto”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375881140",
+        "source_title": "Wikipedia (en): Freetown, wersja 1375881140",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sle-granville",
+        "text": "Pierwsi osadnicy przybyli już w 1787 r., ale ich osada Granville Town została zniszczona w 1789 r. i zarosła dżunglą — na jej miejscu powstał Freetown.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375881140",
+        "source_title": "Wikipedia (en): Freetown, wersja 1375881140",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-sle-francuzi",
+        "text": "W 1794 r. Francuzi złupili Freetown, ale osadnicy odbudowali miasto.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375881140",
+        "source_title": "Wikipedia (en): Freetown, wersja 1375881140",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SMR": [
+      {
+        "id": "capital-smr-301",
+        "text": "Według tradycji miasto założono 3 września 301 r. — to czyni San Marino jednym z najstarszych istniejących państw.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80065902",
+        "source_title": "Wikipedia (pl): San Marino (miasto), wersja 80065902",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-smr-guaita",
+        "text": "Miasta strzegły trzy wieże. Pierwsza, Guaita z XI wieku, uchodziła za nie do zdobycia i skutecznie zniechęcała napastników.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380921401",
+        "source_title": "Wikipedia (en): City of San Marino, wersja 1380921401",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-smr-unesco",
+        "text": "W 2008 r. historyczne centrum San Marino razem z górą Monte Titano wpisano na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80065902",
+        "source_title": "Wikipedia (pl): San Marino (miasto), wersja 80065902",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SOM": [
+      {
+        "id": "capital-som-xamar",
+        "text": "Mieszkańcy nazywają Mogadiszu Xamar (Hamar) — słowo to może oznaczać czerwień. Najstarsza dzielnica to Hamar Weyne, „wielki czerwony”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383927528",
+        "source_title": "Wikipedia (en): Mogadishu, wersja 1383927528",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-som-periplus",
+        "text": "Poprzednikiem Mogadiszu było prawdopodobnie starożytne Sarapion, wymienione w greckim przewodniku żeglarskim „Periplus Morza Erytrejskiego” z I wieku n.e.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383927528",
+        "source_title": "Wikipedia (en): Mogadishu, wersja 1383927528",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-som-port",
+        "text": "Od tysiącleci Mogadiszu jest ważnym portem łączącym kupców z całego Oceanu Indyjskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383927528",
+        "source_title": "Wikipedia (en): Mogadishu, wersja 1383927528",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SRB": [
+      {
+        "id": "capital-srb-878",
+        "text": "Nazwa Belograd, „biały gród”, pojawia się pierwszy raz 16 kwietnia 878 r., w liście papieża do bułgarskiego władcy Borysa I.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385228509",
+        "source_title": "Wikipedia (en): Belgrade, wersja 1385228509",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-srb-osmanie",
+        "text": "Za Osmanów Belgrad szybko urósł do ponad 100 tysięcy mieszkańców — był drugim co do wielkości miastem osmańskim w Europie, po Konstantynopolu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385228509",
+        "source_title": "Wikipedia (en): Belgrade, wersja 1385228509",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-srb-uniwersytet",
+        "text": "Uniwersytet Belgradzki, założony w 1808 r. przez Dositeja Obradovicia, jest najstarszą uczelnią w Serbii.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80093611",
+        "source_title": "Wikipedia (pl): Belgrad, wersja 80093611",
+        "checked": "2026-11-15"
+      }
+    ],
+    "STP": [
+      {
+        "id": "capital-stp-1485",
+        "text": "São Tomé założyli Portugalczycy w 1485 r. To jedno z najstarszych miast kolonialnych w Afryce.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79777748",
+        "source_title": "Wikipedia (pl): São Tomé, wersja 79777748",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-stp-fort",
+        "text": "Fort São Sebastião, jedna z najstarszych budowli miasta, mieści dziś Muzeum Narodowe.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384721350",
+        "source_title": "Wikipedia (en): São Tomé, wersja 1384721350",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-stp-nazwa",
+        "text": "Nazwa São Tomé to po portugalsku „Święty Tomasz”. Centrum miasta tworzy szesnastowieczna katedra, w dużej mierze przebudowana w XIX wieku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384721350",
+        "source_title": "Wikipedia (en): São Tomé, wersja 1384721350",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SVK": [
+      {
+        "id": "capital-svk-koronacje",
+        "text": "W latach 1536–1783 Bratysława była stolicą Królestwa Węgier. W katedrze św. Marcina koronowano jedenastu królów i osiem królowych Węgier.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384318385",
+        "source_title": "Wikipedia (en): Bratislava, wersja 1384318385",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-svk-nazwa",
+        "text": "Nazwa Bratysława stała się oficjalna dopiero 16 marca 1919 r. Wcześniej miasto nazywano Pożoń, a po niemiecku Pressburg.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384318385",
+        "source_title": "Wikipedia (en): Bratislava, wersja 1384318385",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-svk-celtowie",
+        "text": "Około 200 r. p.n.e. celtyckie plemię Bojów założyło tu pierwszą dużą warowną osadę — oppidum.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384318385",
+        "source_title": "Wikipedia (en): Bratislava, wersja 1384318385",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SVN": [
+      {
+        "id": "capital-svn-emona",
+        "text": "Około 50 r. p.n.e. Rzymianie założyli tu obóz wojskowy, z którego powstało miasto Iulia Aemona.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384876133",
+        "source_title": "Wikipedia (en): Ljubljana, wersja 1384876133",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-svn-palafity",
+        "text": "Pozostałości prehistorycznych osad na palach w pobliskim Ig są od 2011 r. na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384876133",
+        "source_title": "Wikipedia (en): Ljubljana, wersja 1384876133",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-svn-1511",
+        "text": "Po trzęsieniu ziemi w 1511 r. Lublanę odbudowano w stylu renesansowym i otoczono nowymi murami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384876133",
+        "source_title": "Wikipedia (en): Ljubljana, wersja 1384876133",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SWE": [
+      {
+        "id": "capital-swe-birger",
+        "text": "Sztokholm założył w 1252 r. możnowładca Birger Jarl — według kroniki, by bronić Szwecji przed napadami z morza.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385146892",
+        "source_title": "Wikipedia (en): Stockholm, wersja 1385146892",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-swe-galeria",
+        "text": "Stacje sztokholmskiego metra, otwartego w 1950 r., są tak bogato zdobione, że nazywa się je najdłuższą galerią sztuki na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385146892",
+        "source_title": "Wikipedia (en): Stockholm, wersja 1385146892",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-swe-agnafit",
+        "text": "W staroskandynawskich sagach miejsce to nazywa się Agnafit i łączy z mitycznym królem Szwecji Agne.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79444832",
+        "source_title": "Wikipedia (pl): Sztokholm, wersja 79444832",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SWZ": [
+      {
+        "id": "capital-swz-dwie-stolice",
+        "text": "Eswatini ma dwie stolice: Mbabane jest stolicą wykonawczą, a Lobamba — królewską i ustawodawczą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384423009",
+        "source_title": "Wikipedia (en): Mbabane, wersja 1384423009",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-swz-1887",
+        "text": "Mbabane założył w 1887 r. Mickey Wells, w miejscu, gdzie droga z Transwalu do Mozambiku przekraczała rzekę Mbabane.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384423009",
+        "source_title": "Wikipedia (en): Mbabane, wersja 1384423009",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-swz-snieg",
+        "text": "Klimat jest łagodny: śnieg spadł tu tylko trzy razy od 1900 r., a przymrozki zdarzają się średnio cztery dni w roku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384423009",
+        "source_title": "Wikipedia (en): Mbabane, wersja 1384423009",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SYC": [
+      {
+        "id": "capital-syc-etablissement",
+        "text": "Miasto założyli francuscy osadnicy w 1778 r. Do 1841 r. nazywało się L'Établissement; Brytyjczycy przemianowali je na cześć królowej Wiktorii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378255669",
+        "source_title": "Wikipedia (en): Victoria, Seychelles, wersja 1378255669",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-syc-little-ben",
+        "text": "W centrum stoi wieża zegarowa wzorowana na londyńskiej wieży „Little Ben”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378255669",
+        "source_title": "Wikipedia (en): Victoria, Seychelles, wersja 1378255669",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-syc-lodoicja",
+        "text": "W ogrodzie botanicznym z 1901 r. rośnie lodoicja seszelska — palma, która dziko występuje tylko na wyspach Praslin i Curieuse.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79963918",
+        "source_title": "Wikipedia (pl): Victoria (Seszele), wersja 79963918",
+        "checked": "2026-11-15"
+      }
+    ],
+    "SYR": [
+      {
+        "id": "capital-syr-najstarsza",
+        "text": "Damaszek uchodzi za najstarszą stolicę świata — pierwsze osadnictwo pochodzi z III tysiąclecia p.n.e.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384468715",
+        "source_title": "Wikipedia (en): Damascus, wersja 1384468715",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-syr-umajjadzi",
+        "text": "W latach 661–750 Damaszek był stolicą kalifatu Umajjadów, jednego z największych imperiów w historii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384468715",
+        "source_title": "Wikipedia (en): Damascus, wersja 1384468715",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-syr-jasmin",
+        "text": "Syryjczycy poetycko nazywają Damaszek „Miastem Jaśminu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384468715",
+        "source_title": "Wikipedia (en): Damascus, wersja 1384468715",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TCD": [
+      {
+        "id": "capital-tcd-fort-lamy",
+        "text": "Do 1973 r. miasto nazywało się Fort-Lamy — od francuskiego oficera Amédée-François Lamy'ego. Francuzi założyli je w 1900 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384843725",
+        "source_title": "Wikipedia (en): N'Djamena, wersja 1384843725",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tcd-1937",
+        "text": "W 1937 r. Fort-Lamy liczyło niecałe 10 tysięcy mieszkańców; dziesięć lat później prawie dwa razy tyle.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384843725",
+        "source_title": "Wikipedia (en): N'Djamena, wersja 1384843725",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tcd-szari",
+        "text": "Ndżamena leży na brzegu rzeki Szari, niedaleko ujścia rzeki Logone — tuż przy granicy z Kamerunem.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79548891",
+        "source_title": "Wikipedia (pl): Ndżamena, wersja 79548891",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TGO": [
+      {
+        "id": "capital-tgo-drzewa",
+        "text": "Nazwa Lomé pochodzi z języka ewe od „Alotimé” — „wśród drzew alo”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384322533",
+        "source_title": "Wikipedia (en): Lomé, wersja 1384322533",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tgo-1897",
+        "text": "Lomé założyli Ewe, a rozbudowali niemieccy, brytyjscy i afrykańscy kupcy. W 1897 r. zostało stolicą niemieckiej kolonii Togo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384322533",
+        "source_title": "Wikipedia (en): Lomé, wersja 1384322533",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tgo-port",
+        "text": "Od 1904 r. port w Lomé był jedynym punktem morskim Togo i doprowadził do upadku rywalizującego Aného. W 1950 r. miasto miało tylko 30 tysięcy mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384322533",
+        "source_title": "Wikipedia (en): Lomé, wersja 1384322533",
+        "checked": "2026-11-15"
+      }
+    ],
+    "THA": [
+      {
+        "id": "capital-tha-nazwa",
+        "text": "Pełna tajska nazwa Bangkoku ma 168 liter i figuruje w Księdze Rekordów Guinnessa jako najdłuższa nazwa miejscowości na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385486516",
+        "source_title": "Wikipedia (en): Bangkok, wersja 1385486516",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tha-ajutthaja",
+        "text": "Gdy Birmańczycy zniszczyli dawną stolicę Syjamu, Ajutthaję, w Bangkoku zbudowano obóz warowny, z którego wyrosła nowa stolica.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80211562",
+        "source_title": "Wikipedia (pl): Bangkok, wersja 80211562",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tha-osiadanie",
+        "text": "Bangkok powoli się zapada: osiadanie gruntu odkryto w latach 70., a wzmaga je intensywne pompowanie wód podziemnych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385486516",
+        "source_title": "Wikipedia (en): Bangkok, wersja 1385486516",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TJK": [
+      {
+        "id": "capital-tjk-poniedzialek",
+        "text": "Duszanbe znaczy po tadżycku „poniedziałek” — w tym miejscu co poniedziałek odbywał się wielki targ.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384661035",
+        "source_title": "Wikipedia (en): Dushanbe, wersja 1384661035",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tjk-stalinabad",
+        "text": "W latach 1929–1961 miasto nazywało się Stalinabad, na cześć Józefa Stalina.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384661035",
+        "source_title": "Wikipedia (en): Dushanbe, wersja 1384661035",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tjk-283",
+        "text": "W czasie podboju radzieckiego liczba mieszkańców spadła z 3140 w 1920 r. do zaledwie 283 w 1924 r.; stało tylko 40 domów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384661035",
+        "source_title": "Wikipedia (en): Dushanbe, wersja 1384661035",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TKM": [
+      {
+        "id": "capital-tkm-marmur",
+        "text": "Po trzęsieniu ziemi w 1948 r., które zniszczyło większość miasta, Aszchabad odbudowano jako „Białe Miasto” — monumentalne budowle obłożono drogim białym marmurem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383903152",
+        "source_title": "Wikipedia (en): Ashgabat, wersja 1383903152",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tkm-milosc",
+        "text": "Nazwa Aszchabad dosłownie znaczy po persku „miasto miłości” albo „miasto oddania”, choć mogła powstać z przekształcenia dawnej nazwy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383903152",
+        "source_title": "Wikipedia (en): Ashgabat, wersja 1383903152",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tkm-1881",
+        "text": "Miasto założono w 1881 r. na miejscu wioski plemienia Achal-Teke. W latach 1919–1927 nazywało się Połtorack.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383903152",
+        "source_title": "Wikipedia (en): Ashgabat, wersja 1383903152",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TLS": [
+      {
+        "id": "capital-tls-1769",
+        "text": "Dili jest stolicą Timoru od 1769 r., gdy zostało stolicą Timoru Portugalskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381709153",
+        "source_title": "Wikipedia (en): Dili, wersja 1381709153",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tls-sandal",
+        "text": "Pierwsza znana portugalska wyprawa na Timor, z Malakki w 1516 r., wróciła z drewnem sandałowym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381709153",
+        "source_title": "Wikipedia (en): Dili, wersja 1381709153",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tls-siatka",
+        "text": "Gubernator, który przybył w 1834 r., przebudował Dili według regularnej siatki ulic.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381709153",
+        "source_title": "Wikipedia (en): Dili, wersja 1381709153",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TUN": [
+      {
+        "id": "capital-tun-burmistrz",
+        "text": "Tunis był pierwszą stolicą w świecie arabskim, w której burmistrzem została kobieta.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79740344",
+        "source_title": "Wikipedia (pl): Tunis, wersja 79740344",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tun-medyna",
+        "text": "Medyna Tunisu jest od 1979 r. na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385633927",
+        "source_title": "Wikipedia (en): Tunis, wersja 1385633927",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tun-hafsydzi",
+        "text": "W 1228 r. namiestnik Abu Zakarija przejął władzę, a rok później założył dynastię Hafsydów ze stolicą w Tunisie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385633927",
+        "source_title": "Wikipedia (en): Tunis, wersja 1385633927",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TUR": [
+      {
+        "id": "capital-tur-1923",
+        "text": "Ankara została stolicą Turcji 29 października 1923 r., w dniu proklamowania republiki. Zastąpiła Stambuł, dawną stolicę osmańską.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384753978",
+        "source_title": "Wikipedia (en): Ankara, wersja 1384753978",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tur-angora",
+        "text": "W 654 r. Arabowie pierwszy raz zdobyli miasto, nazywane w ich źródłach Kalat as-Salasil, czyli „twierdza łańcuchów”. Dawniej nazywało się Ancyra, a potem Angora.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384753978",
+        "source_title": "Wikipedia (en): Ankara, wersja 1384753978",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tur-august",
+        "text": "Świątynię Augusta i Romy zbudowano w Ankarze w latach 25–20 p.n.e., po podboju środkowej Anatolii przez Rzymian.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384753978",
+        "source_title": "Wikipedia (en): Ankara, wersja 1384753978",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TWN": [
+      {
+        "id": "capital-twn-taipei101",
+        "text": "W Tajpej stoi Taipei 101 — wieżowiec mający ponad 500 m wysokości, jeden z najwyższych budynków świata.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80254522",
+        "source_title": "Wikipedia (pl): Tajpej, wersja 80254522",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-twn-taihoku",
+        "text": "Gdy w 1895 r. Japonia przejęła Tajwan, zachowała Tajpej jako stolicę — pod japońską nazwą Taihoku miasto rozbudowano i zmodernizowano.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384561480",
+        "source_title": "Wikipedia (en): Taipei, wersja 1384561480",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-twn-muzeum",
+        "text": "Narodowe Muzeum Tajwanu, założone 24 października 1908 r. przez japońskie władze kolonialne, to najstarsze muzeum na wyspie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80254522",
+        "source_title": "Wikipedia (pl): Tajpej, wersja 80254522",
+        "checked": "2026-11-15"
+      }
+    ],
+    "TZA": [
+      {
+        "id": "capital-tza-1996",
+        "text": "Dodoma jest oficjalną stolicą od 1996 r., ale rząd przenosił się z Dar es Salaam stopniowo — nowy Pałac Prezydencki otwarto dopiero w 2023 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382097229",
+        "source_title": "Wikipedia (en): Dodoma, wersja 1382097229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tza-wioska",
+        "text": "Dodomę zaplanowano jako „główną wioskę w kraju wiosek” — pierwszą niemonumentalną stolicę, w ludzkiej skali, do przemierzania pieszo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382097229",
+        "source_title": "Wikipedia (en): Dodoma, wersja 1382097229",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-tza-wzrost",
+        "text": "Liczba mieszkańców Dodomy wzrosła z 411 tysięcy w 2012 r. do 765 tysięcy w 2022 r. W 2024 r. wyprzedziła Arushę jako trzecie miasto kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382097229",
+        "source_title": "Wikipedia (en): Dodoma, wersja 1382097229",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UGA": [
+      {
+        "id": "capital-uga-impala",
+        "text": "Wzgórze, na którym Brytyjczycy zbudowali fort, było terenem łowieckim króla Bugandy pełnym antylop impala. „Wzgórze impali” — po lugandyjsku Akasozi k'empala — dało nazwę Kampali.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384661568",
+        "source_title": "Wikipedia (en): Kampala, wersja 1384661568",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-uga-fort",
+        "text": "Kampala rozwinęła się wokół fortu założonego przez Brytyjską Imperialną Kompanię Wschodnioafrykańską w 1890 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80600581",
+        "source_title": "Wikipedia (pl): Kampala, wersja 80600581",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-uga-szpital",
+        "text": "Pierwszy szpital w stylu zachodnim, Mengo, otworzył w Kampali w 1897 r. brytyjski lekarz i misjonarz Albert Ruskin Cook.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384661568",
+        "source_title": "Wikipedia (en): Kampala, wersja 1384661568",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UKR": [
+      {
+        "id": "capital-ukr-tramwaj",
+        "text": "W 1892 r. w Kijowie ruszyła pierwsza linia tramwaju elektrycznego w Imperium Rosyjskim — trzecia na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384972107",
+        "source_title": "Wikipedia (en): Kyiv, wersja 1384972107",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ukr-zamek",
+        "text": "Litwini zbudowali pierwszy drewniany zamek na Górze Zamkowej w latach 1370–1380.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81030760",
+        "source_title": "Wikipedia (pl): Kijów, wersja 81030760",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-ukr-czarnobyl",
+        "text": "Elektrownia w Czarnobylu, gdzie w 1986 r. doszło do katastrofy, leży niedaleko na północ od Kijowa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384972107",
+        "source_title": "Wikipedia (en): Kyiv, wersja 1384972107",
+        "checked": "2026-11-15"
+      }
+    ],
+    "UZB": [
+      {
+        "id": "capital-uzb-kamien",
+        "text": "Według Al-Biruniego nazwa Taszkent łączy tureckie „tasz” i perskie „kent” — „Kamienne Miasto”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384474278",
+        "source_title": "Wikipedia (en): Tashkent, wersja 1384474278",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-uzb-czyngis",
+        "text": "Czyngis-chan zniszczył miasto w 1219 r., ale odbudowane rozkwitło dzięki położeniu na Jedwabnym Szlaku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384474278",
+        "source_title": "Wikipedia (en): Tashkent, wersja 1384474278",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-uzb-1966",
+        "text": "Trzęsienie ziemi w 1966 r. zniszczyło dużą część Taszkentu; odbudowano go jako wzorcowe miasto radzieckie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384474278",
+        "source_title": "Wikipedia (en): Tashkent, wersja 1384474278",
+        "checked": "2026-11-15"
+      }
+    ],
+    "VAT": [
+      {
+        "id": "capital-vat-gwardia",
+        "text": "Gwardię Szwajcarską, osobistą straż papieża, założył papież Juliusz II 22 stycznia 1506 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384895310",
+        "source_title": "Wikipedia (en): Vatican City, wersja 1384895310",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-vat-obserwatorium",
+        "text": "Obserwatorium Watykańskie założono w 1572 r. — to jedno z najstarszych obserwatoriów astronomicznych.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81103786",
+        "source_title": "Wikipedia (pl): Watykan, wersja 81103786",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-vat-bazylika",
+        "text": "Pierwszą bazylikę św. Piotra zbudował cesarz Konstantyn w 326 r. nad grobem, uważanym za grób apostoła. Obecną wznoszono w latach 1506–1626.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384895310",
+        "source_title": "Wikipedia (en): Vatican City, wersja 1384895310",
+        "checked": "2026-11-15"
+      }
+    ],
+    "VNM": [
+      {
+        "id": "capital-vnm-smok",
+        "text": "W 1010 r. cesarz Lý Thái Tổ założył tu stolicę Đại Việt i nazwał ją Thăng Long — „wznoszący się smok”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385770334",
+        "source_title": "Wikipedia (en): Hanoi, wersja 1385770334",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-vnm-mur",
+        "text": "Około 767 r. chiński namiestnik Zhang Boyi odbudował cytadelę po odparciu najazdu z Jawy i otoczył miasto murem długim na 6344 m.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385770334",
+        "source_title": "Wikipedia (en): Hanoi, wersja 1385770334",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-vnm-rzeka",
+        "text": "Wiele dawnych nazw Hanoi zawiera słowo „smok” — od zakola Rzeki Czerwonej wokół miasta, kojarzonego z wijącym się smokiem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385770334",
+        "source_title": "Wikipedia (en): Hanoi, wersja 1385770334",
+        "checked": "2026-11-15"
+      }
+    ],
+    "YEM": [
+      {
+        "id": "capital-yem-sem",
+        "text": "Według legendy Sanę założył Sem, syn Noego — przez wieki nazywano ją Miastem Sema.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80699075",
+        "source_title": "Wikipedia (pl): Sana, wersja 80699075",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-yem-unesco",
+        "text": "Stare miasto Sany wpisano w 1984 r. na listę światowego dziedzictwa UNESCO. Niektóre budowle, jak Wielki Meczet, mają ponad 1400 lat.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80699075",
+        "source_title": "Wikipedia (pl): Sana, wersja 80699075",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-yem-wysokosc",
+        "text": "Sana to siódma najwyżej położona stolica świata — leży między najwyższymi górami Półwyspu Arabskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385480650",
+        "source_title": "Wikipedia (en): Sanaa, wersja 1385480650",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZAF": [
+      {
+        "id": "capital-zaf-jakarandy",
+        "text": "Pretorię nazywa się „Miastem Jakarand” — od tysięcy fioletowo kwitnących jakarand wzdłuż ulic i w parkach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384444377",
+        "source_title": "Wikipedia (en): Pretoria, wersja 1384444377",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zaf-pretorius",
+        "text": "Miasto założył w 1855 r. przywódca Voortrekkerów Marthinus Pretorius i nazwał je na cześć ojca, Andriesa Pretoriusa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384444377",
+        "source_title": "Wikipedia (en): Pretoria, wersja 1384444377",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zaf-ambasady",
+        "text": "W Pretorii jest 134 ambasad i wysokich komisji — więcej ma tylko Waszyngton.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384444377",
+        "source_title": "Wikipedia (en): Pretoria, wersja 1384444377",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZMB": [
+      {
+        "id": "capital-zmb-lusaaka",
+        "text": "Lusakę założono w 1905 r. jako przystanek z wodą na linii kolejowej i nazwano od wodza Lusaaki z pobliskiej wioski ludu Lenje.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381447899",
+        "source_title": "Wikipedia (en): Lusaka, wersja 1381447899",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zmb-mieszkania",
+        "text": "Według raportu Pima spośród 10 tysięcy Afrykańczyków mieszkających wtedy w Lusace tylko 1500 miało formalne mieszkania.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381447899",
+        "source_title": "Wikipedia (en): Lusaka, wersja 1381447899",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zmb-plan",
+        "text": "Plan rozwoju Lusaki pierwszy raz zatwierdzono prawnie w 1952 r.; wcześniejsze projekty nie miały mocy prawa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381447899",
+        "source_title": "Wikipedia (en): Lusaka, wersja 1381447899",
+        "checked": "2026-11-15"
+      }
+    ],
+    "ZWE": [
+      {
+        "id": "capital-zwe-salisbury",
+        "text": "Harare założono w 1890 r. jako Fort Salisbury — od nazwiska brytyjskiego premiera lorda Salisbury'ego. Nazwę Harare nosi od 1981 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383090425",
+        "source_title": "Wikipedia (en): Harare, wersja 1383090425",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zwe-pionierzy",
+        "text": "Miasto założyła Kolumna Pionierów — mały oddział wojskowy Brytyjskiej Kompanii Południowoafrykańskiej, która zarządzała nim do 1923 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383090425",
+        "source_title": "Wikipedia (en): Harare, wersja 1383090425",
+        "checked": "2026-11-15"
+      },
+      {
+        "id": "capital-zwe-wzrost",
+        "text": "Od 2000 r. Harare rosło najszybciej ze wszystkich dużych miast Zimbabwe, podczas gdy Bulawayo czy Gweru stały w miejscu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383090425",
+        "source_title": "Wikipedia (en): Harare, wersja 1383090425",
+        "checked": "2026-11-15"
+      }
+    ]
+  }
+}

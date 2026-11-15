@@ -8,11 +8,14 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   test(
-    'all supported countries have exactly three source-backed facts',
+    'every country has three facts about itself, its capital and its flag',
     () async {
       final catalog = await CountryTriviaCatalog.load();
       final flags = await CountryTriviaCatalog.load(
         asset: CountryTriviaCatalog.flagAsset,
+      );
+      final capitals = await CountryTriviaCatalog.load(
+        asset: CountryTriviaCatalog.capitalAsset,
       );
       final ids = <String>{};
       for (final path in [
@@ -30,6 +33,7 @@ void main() {
       expect(ids, hasLength(148));
       for (final id in ids) {
         expect(flags.factsFor(id), hasLength(3), reason: 'flag $id');
+        expect(capitals.factsFor(id), hasLength(3), reason: 'capital $id');
         final facts = catalog.factsFor(id);
         expect(facts, hasLength(3), reason: id);
         expect(facts.map((fact) => fact.id).toSet(), hasLength(3), reason: id);

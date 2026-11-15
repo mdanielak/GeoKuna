@@ -141,29 +141,20 @@ Koszt pamięci na Androidzie wymaga sprawdzenia na telefonie.
 
 ## Ciekawostki
 
-`assets/content/country_trivia.json`: po 3 krótkie polskie parafrazy dla każdego
-z 148 kanonicznych krajów/obszarów (444 fakty). Rekord: trwałe `id`, tekst, tytuł
-i URL źródła, data `checked`. Nie zmieniać istniejących ID bez powodu.
+`assets/content/country_trivia.json` (wersja 0.3.0, 2026-11-15): po 3 fakty
+o każdym z 148 krajów (444) — rekordy w skali świata lub kontynentu, wynalazki,
+„pierwsze” i „jedyne”, przyroda i zabytki UNESCO. Rekord: trwałe `id`, tekst,
+tytuł i URL źródła, data `checked`.
 
-Źródła:
+Źródło każdego faktu: artykuł Wikipedii o kraju (pl lub en) w przypiętej wersji
+(`?oldid=`); tekst to parafraza tylko tego, co jest w tej wersji. Wersje 0.1–0.2
+opierały się na CIA World Factbook i dawały głównie położenie i najwyższe szczyty.
+Kandydatów wybierano skryptem, który punktuje zdania z rekordem i datą, a odrzuca
+politykę i statystyki; wybór i parafrazę robi człowiek lub model według zasad
+poniżej. Odtworzenie: te same artykuły w tych samych wersjach.
 
-- CIA World Factbook — archiwum [factbook/factbook.json](https://github.com/factbook/factbook.json)
-  przypięte do `144d6977b2b01ac1cbd220de754c0a005616760b` (CIA: domena publiczna,
-  archiwum: CC0). To archiwum, nie bieżące dane — wysokości i klasyfikacje
-  wymagają okresowego przeglądu.
-- [UNESCO World Heritage Centre](https://whc.unesco.org/en/list/) (opisy CC BY-SA IGO 3.0),
-  adres obiektu przy każdym fakcie.
-- [Narodowe Muzeum Techniki w Czechach](https://plasy.ntm.cz/en/about-our-museum/ntm-museums/museum-of-industry/history-of-contact-lenses)
-  — miękkie soczewki Ottona Wichterlego.
-- Źródła urzędowe: rząd Cypru, Akademia Wojskowa w Belgradzie (w odnośnikach).
-
-Wersja 0.2.0 zastąpiła ogólniki o położeniu („leży w…”, „na południu…”) oraz
-duble (Mont Blanc, Teide) faktami z notatek geograficznych i tła tego samego
-profilu Factbook: rekordy, enklawy, historia. „Najwyższy punkt” zostaje — to
-klasyczne pytanie teleturniejowe.
-
-Obszary sporne opisujemy geograficznie, bez rozstrzygania granic; Palestyna ma
-osobne informacje o Zachodnim Brzegu i Strefie Gazy. Walidator sprawdza
+Obszary sporne opisujemy neutralnie, bez rozstrzygania granic; przy Palestynie
+wybrano fakty kulturowe (haft, Betlejem, symbole przyrody). Walidator sprawdza
 strukturę (pokrycie, 3 różne rekordy, ID, data, URL), nie prawdziwość treści —
 ta wymaga przeglądu człowieka. `--allow-incomplete` służy tylko roboczej kontroli.
 
@@ -178,6 +169,15 @@ wyłącznie tego, co jest w tej wersji. Wersja 0.1.0 (CIA Factbook) dawała gł�
 znaczenia barw. Pokazywane po pytaniach o flagę (także flaga → mapa); aplikacja
 pomija fakt, który wspomina kraj pytany dalej w tej samej serii. Walidator:
 `build_trivia.py --check` (obie paczki). Fakty sprawdza się z linkiem do wersji.
+
+### Ciekawostki o stolicach
+
+`assets/content/capital_trivia.json` (0.1.0, 2026-11-15): po 3 fakty o stolicy
+każdego z 148 krajów (444) — założenie i dawne nazwy, „pierwsze” i rekordy,
+wydarzenia z datą. Źródła jak przy flagach: artykuł Wikipedii o mieście (pl lub
+en) w przypiętej wersji (`?oldid=`), tekst to parafraza tylko tego, co w niej
+jest. Klucz to kraj (jak w innych paczkach), więc kraj z dwoma stolicami ma
+fakty o tej z `capitals.json`. Pokazywane po pytaniach o stolicę.
 
 ### Jaka ma być ciekawostka (zasady redakcyjne)
 

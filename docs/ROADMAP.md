@@ -45,8 +45,9 @@ nie dowodzi retencji w miesiącach.
    klawiatura, TalkBack, trwałość bazy, płynność; potem podpisywanie APK/AAB
    (klucze poza repo).
 5. **Ciekawostki według nowych zasad** (po 3 o kraju, stolicy i fladze):
-   flagi przepisane (0.2.0, 444 fakty, 2026-11-15); dalej nowa paczka o stolicach
-   (pokazywana po pytaniach o stolice) i przepisanie paczki o krajach — zasady w
+   gotowe 2026-11-15: kraje (0.3.0), stolice (0.1.0) i flagi (0.2.0), po 444
+   fakty z przypiętych wersji Wikipedii. Dalej: przegląd człowieka i sprawdzenie
+   na urządzeniu, jak czyta się karta ciekawostki — zasady w
    [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne).
 6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.

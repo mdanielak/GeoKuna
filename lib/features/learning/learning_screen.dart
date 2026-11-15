@@ -653,8 +653,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   }
 
   /// One local fact for the current question: about the flag in flag
-  /// questions, otherwise about the country. Skips facts naming countries
-  /// asked later in this series.
+  /// questions, the capital in capital questions, otherwise the country.
+  /// Skips facts naming countries asked later in this series.
   CountryTriviaFact? _trivia(
     Catalog catalog,
     LearningSession session,
@@ -662,6 +662,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   ) {
     final provider = session.isFlagAt(session.index)
         ? flagTriviaProvider
+        : session.isCapitalAt(session.index)
+        ? capitalTriviaProvider
         : countryTriviaProvider;
     final upcoming = [
       for (final id in session.countryIds.skip(session.index + 1))

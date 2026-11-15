@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the source-backed, offline trivia packs: countries and flags."""
+"""Validate the source-backed, offline trivia packs: countries, flags, capitals."""
 import argparse
 import json
 import re
@@ -12,6 +12,7 @@ CONTENT = ROOT / 'assets/content'
 PACKS = {
     'country-trivia': CONTENT / 'country_trivia.json',
     'flag-trivia': CONTENT / 'flag_trivia.json',
+    'capital-trivia': CONTENT / 'capital_trivia.json',
 }
 
 

@@ -23,6 +23,7 @@ class CountryTriviaCatalog {
 
   static const countryAsset = 'assets/content/country_trivia.json';
   static const flagAsset = 'assets/content/flag_trivia.json';
+  static const capitalAsset = 'assets/content/capital_trivia.json';
 
   static Future<CountryTriviaCatalog> load({
     String asset = countryAsset,
