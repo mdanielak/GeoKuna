@@ -8,7 +8,6 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/providers.dart';
 import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
-import '../learning/learning_reset.dart';
 import 'app_preferences.dart';
 import 'progress_backup.dart';
 
@@ -58,7 +57,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _export() => _backupAction(() async {
-    final backup = ProgressBackup(ref.read(databaseProvider));
+    final backup = ref.read(backupProvider);
     final saved = await FilePicker.saveFile(
       fileName: backup.fileName(DateTime.now()),
       bytes: utf8.encode(await backup.export()),
@@ -96,7 +95,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       ),
     );
     if (confirmed != true) return null;
-    final summary = await ProgressBackup(ref.read(databaseProvider))
+    final summary = await ref
+        .read(backupProvider)
         .import(utf8.decode(await file.readAsBytes()));
     ref.invalidate(appPreferencesProvider);
     _invalidateProgress();
@@ -173,7 +173,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       _error = null;
     });
     try {
-      final reset = LearningReset(ref.read(databaseProvider));
+      final reset = ref.read(resetProvider);
       if (_all) {
         await reset.all();
       } else {

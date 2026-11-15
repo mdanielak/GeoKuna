@@ -12,7 +12,9 @@ import '../features/learning/learning_progress.dart';
 import '../features/learning/achievements.dart';
 import '../features/learning/streaks.dart';
 import '../features/learning/country_trivia.dart';
+import '../features/learning/learning_reset.dart';
 import '../features/settings/app_preferences.dart';
+import '../features/settings/progress_backup.dart';
 
 class SelectedContinent extends Notifier<Continent> {
   @override
@@ -55,6 +57,12 @@ final databaseProvider = Provider<AppDatabase>((ref) {
   ref.onDispose(db.close);
   return db;
 });
+final backupProvider = Provider<ProgressBackup>(
+  (ref) => ProgressBackup(ref.watch(databaseProvider)),
+);
+final resetProvider = Provider<LearningReset>(
+  (ref) => LearningReset(ref.watch(databaseProvider)),
+);
 final repositoryProvider = Provider<SessionRepository>(
   (ref) => SessionRepository(
     ref.watch(databaseProvider),

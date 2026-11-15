@@ -17,6 +17,7 @@ import 'flags.dart';
 import 'learning_levels.dart';
 import 'answer_feedback.dart';
 import 'mascot_feedback.dart';
+import 'quiz_controller.dart';
 import 'session_repository.dart';
 
 class LearningScreen extends ConsumerStatefulWidget {
@@ -50,53 +51,24 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     _initial = _load();
   }
 
-  Future<(Catalog, LearningSession?)> _load() async {
-    await ref.read(appPreferencesProvider.future);
-    final repository = ref.read(repositoryProvider);
-    final catalogFuture = ref.read(catalogProvider.future);
-    final catalog = await catalogFuture;
-    Future<LearningSession?> open() async {
-      if (widget.daily) {
-        return await repository.startDaily(
-          catalog,
-          await ref.read(capitalsProvider.future),
-          flags: await ref.read(flagsProvider.future),
-          mode: widget.dailyMode,
-        );
-      } else if (widget.flagDifficulty != null) {
-        return await repository.startFlags(
-          await ref.read(flagsProvider.future),
-          widget.flagDifficulty!,
-        );
-      } else if (widget.capitalDifficulty != null) {
-        return await repository.startCapitals(
-          await ref.read(capitalsProvider.future),
-          widget.capitalDifficulty!,
-        );
-      } else {
-        return await repository.start(
-          catalog.countries.map((c) => c.id).toList(),
-        );
-      }
-    }
+  QuizController get _quiz => ref.read(quizControllerProvider);
 
-    var session = await open();
-    // A series started before a catalog change (e.g. countries moved to
-    // another continent) is closed with its answers kept, then replaced.
-    final known = catalog.countries.map((c) => c.id).toSet();
-    if (session != null && !session.countryIds.every(known.contains)) {
-      await repository.finish(session.row.id);
-      session = await open();
-    }
+  Future<(Catalog, LearningSession?)> _load() async {
+    final loaded = await _quiz.open(
+      QuizKind(
+        daily: widget.daily,
+        dailyMode: widget.dailyMode,
+        flags: widget.flagDifficulty,
+        capitals: widget.capitalDifficulty,
+      ),
+    );
     if (mounted) {
-      ref.invalidate(dashboardProvider);
-      ref.invalidate(dailyOverviewProvider);
       setState(() {
-        _session = session;
+        _session = loaded.$2;
         _hasLoadedSession = true;
       });
     }
-    return (catalog, session);
+    return loaded;
   }
 
   bool _canSubmit(LearningSession session) =>
@@ -115,17 +87,12 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     if (_busy || session.currentAttempt != null) return;
     setState(() => _busy = true);
     try {
-      final updated = await ref
-          .read(repositoryProvider)
-          .guessMap(
-            session.row.id,
-            session.index,
-            id,
-            catalog.countries.map((c) => c.id).toSet(),
-            expectedGuessIndex: session.currentMapGuesses.length,
-            assisted:
-                _assisted || session.assistedIndices.contains(session.index),
-          );
+      final updated = await _quiz.guess(
+        catalog,
+        session,
+        id,
+        assisted: _assisted,
+      );
       if (!mounted) return;
       if (updated.currentMapGuesses.length ==
           session.currentMapGuesses.length) {
@@ -135,13 +102,6 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           ),
         );
       }
-      ref.invalidate(dashboardProvider);
-      ref.invalidate(dailyOverviewProvider);
-      ref.invalidate(learningProgressProvider);
-      ref.invalidate(streakProvider);
-      ref.invalidate(
-        continentAchievementsProvider(ref.read(selectedContinentProvider)),
-      );
       setState(() {
         _session = updated;
         _selected = id;
@@ -165,41 +125,14 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     FocusScope.of(context).unfocus();
     setState(() => _busy = true);
     try {
-      final repository = ref.read(repositoryProvider);
-      final LearningSession updated;
-      if (session.currentAttempt != null) {
-        updated = await repository.advance(session.row.id, session.index);
-      } else if (session.isFlagAt(session.index)) {
-        updated = await repository.answerFlag(
-          session.row.id,
-          session.index,
-          session.flagDifficulty == FlagDifficulty.choice ? _selected! : _typed,
-        );
-      } else if (session.isCapitalAt(session.index)) {
-        updated = await repository.answerCapital(
-          session.row.id,
-          session.index,
-          session.difficultyAt(session.index) == CapitalDifficulty.choice
-              ? _selected!
-              : _typed,
-        );
-      } else {
-        updated = await repository.answer(
-          session.row.id,
-          session.index,
-          _selected!,
-          catalog.countries.map((c) => c.id).toSet(),
-          assisted: _assisted,
-        );
-      }
+      final updated = await _quiz.submit(
+        catalog,
+        session,
+        selected: _selected,
+        typed: _typed,
+        assisted: _assisted,
+      );
       if (mounted) {
-        ref.invalidate(dashboardProvider);
-        ref.invalidate(dailyOverviewProvider);
-        ref.invalidate(learningProgressProvider);
-        ref.invalidate(streakProvider);
-        ref.invalidate(
-          continentAchievementsProvider(ref.read(selectedContinentProvider)),
-        );
         setState(() {
           _session = updated;
           _selected = null;
@@ -247,13 +180,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
       );
       if (shouldFinish != true || !mounted) return;
 
-      final finished = await ref
-          .read(repositoryProvider)
-          .finish(session.row.id);
+      final finished = await _quiz.finish(session);
       if (!mounted) return;
-      ref.invalidate(dashboardProvider);
-      ref.invalidate(dailyOverviewProvider);
-      ref.invalidate(learningProgressProvider);
       setState(() {
         _session = finished;
         _selected = null;
