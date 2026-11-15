@@ -38,7 +38,11 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(find.text('Mapa'), 180);
+      await tester.scrollUntilVisible(
+        find.text('Mapa'),
+        180,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.ensureVisible(find.text('Mapa'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Mapa'));

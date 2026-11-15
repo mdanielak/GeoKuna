@@ -20,7 +20,11 @@ void main() {
     );
     await tester.pump();
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    await tester.scrollUntilVisible(find.text('Mapa'), 160);
+    await tester.scrollUntilVisible(
+      find.text('Mapa'),
+      160,
+      scrollable: find.byType(Scrollable).first,
+    );
     // Atlas and "Moja nauka" stay in the bottom bar whatever the data state.
     expect(find.widgetWithText(NavigationBar, 'Atlas'), findsOneWidget);
     expect(find.widgetWithText(NavigationBar, 'Moja nauka'), findsOneWidget);
@@ -31,7 +35,11 @@ void main() {
       findsOneWidget,
     );
     expect(find.widgetWithText(NavigationBar, 'Atlas'), findsOneWidget);
-    await tester.scrollUntilVisible(find.text('Ponów odczyt'), -160);
+    await tester.scrollUntilVisible(
+      find.text('Ponów odczyt'),
+      -160,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('Ponów odczyt'), findsOneWidget);
   });
 }

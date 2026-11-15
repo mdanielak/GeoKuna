@@ -1,0 +1,2 @@
+# A hanging widget test fails fast with its name instead of blocking the run.
+timeout: 60s

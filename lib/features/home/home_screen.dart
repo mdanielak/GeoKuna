@@ -8,7 +8,8 @@ import '../learning/session_repository.dart';
 import '../learning/streaks.dart';
 import '../settings/app_preferences.dart';
 
-/// Today: one expedition card with the kuna, then free training and level.
+/// Today: one expedition card with the kuna, its level, map progress and
+/// free training.
 /// Atlas and "Moja nauka" live in the bottom navigation bar.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class HomeScreen extends ConsumerWidget {
         MediaQuery.textScalerOf(context).scale(14) > 18;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dziś'),
+        title: const Text('GeoKuna'),
         actions: [
           IconButton(
             tooltip: 'Ustawienia',
@@ -42,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                 child: ListView(
                   padding: EdgeInsets.fromLTRB(side, 4, side, 24),
                   children: [
-                    _ContinentPicker(continent: continent, compact: compact),
+                    _ContinentPicker(continent: continent),
                     const SizedBox(height: 16),
                     daily.when(
                       loading: () => const _CardShell(
@@ -58,18 +59,24 @@ class HomeScreen extends ConsumerWidget {
                         compact: compact,
                       ),
                     ),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Trening dowolny',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 10),
-                    _TrainingRow(compact: compact),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 4),
                     _LevelRow(
                       continent: continent,
                       activeSession: daily.asData?.value.activeSession != null,
                     ),
+                    _MapProgress(continent: continent),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Trening dowolny',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Wybierz temat. Odpowiedzi liczą się do passy i powtórek.',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 10),
+                    _TrainingRow(compact: compact),
                   ],
                 ),
               ),
@@ -87,56 +94,65 @@ Future<void> _openAndRefresh(
   String path,
 ) async {
   await context.push(path);
-  if (context.mounted) ref.invalidate(dailyOverviewProvider);
+  if (context.mounted) {
+    ref.invalidate(dailyOverviewProvider);
+    ref.invalidate(achievementsProvider);
+  }
 }
 
+/// Continents without content yet, shown greyed out as a promise.
+const _upcomingContinents = [
+  'Ameryka Północna',
+  'Ameryka Południowa',
+  'Australia i Oceania',
+];
+
+/// One scrollable row of chips: the three playable continents, then the
+/// upcoming ones disabled. Chips keep one row at any width and text size.
 class _ContinentPicker extends ConsumerWidget {
-  const _ContinentPicker({required this.continent, required this.compact});
+  const _ContinentPicker({required this.continent});
   final Continent continent;
-  final bool compact;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void select(Continent option) =>
-        ref.read(selectedContinentProvider.notifier).select(option);
     return Semantics(
       label: 'Wybierz kontynent',
-      child: compact
-          ? Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final option in Continent.values)
-                  ChoiceChip(
-                    label: Text(option.label),
-                    selected: continent == option,
-                    showCheckmark: false,
+      container: true,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
+        child: Row(
+          children: [
+            for (final option in Continent.values) ...[
+              ChoiceChip(
+                label: Text(option.label),
+                selected: continent == option,
+                showCheckmark: false,
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+                onSelected: (_) =>
+                    ref.read(selectedContinentProvider.notifier).select(option),
+              ),
+              const SizedBox(width: 8),
+            ],
+            for (final name in _upcomingContinents) ...[
+              Tooltip(
+                message: '$name: wkrótce',
+                child: Semantics(
+                  label: '$name, wkrótce',
+                  excludeSemantics: true,
+                  child: ChoiceChip(
+                    label: Text(name),
+                    selected: false,
                     materialTapTargetSize: MaterialTapTargetSize.padded,
-                    onSelected: (_) => select(option),
+                    onSelected: null,
                   ),
-              ],
-            )
-          : SegmentedButton<Continent>(
-              segments: [
-                for (final option in Continent.values)
-                  ButtonSegment<Continent>(
-                    value: option,
-                    label: Text(option.label),
-                    icon: Icon(switch (option) {
-                      Continent.europe => Icons.public_outlined,
-                      Continent.africa => Icons.landscape_outlined,
-                      Continent.asia => Icons.travel_explore_outlined,
-                    }),
-                  ),
-              ],
-              selected: {continent},
-              showSelectedIcon: false,
-              onSelectionChanged: (selection) {
-                if (selection.isNotEmpty && selection.single != continent) {
-                  select(selection.single);
-                }
-              },
-            ),
+                ),
+              ),
+              if (name != _upcomingContinents.last) const SizedBox(width: 8),
+            ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -264,23 +280,28 @@ class _ExpeditionCard extends ConsumerWidget {
           ],
           if (canStart || extra) ...[
             const SizedBox(height: 18),
-            FilledButton.icon(
-              onPressed: () => _openAndRefresh(
-                context,
-                ref,
-                extra ? '/daily?mode=extra' : '/daily',
+            // The extra round is optional, so it never looks like the
+            // day's main task.
+            if (extra)
+              FilledButton.tonalIcon(
+                onPressed: () =>
+                    _openAndRefresh(context, ref, '/daily?mode=extra'),
+                icon: const Icon(Icons.replay),
+                label: const Text('Kolejna runda'),
+              )
+            else
+              FilledButton.icon(
+                onPressed: () => _openAndRefresh(context, ref, '/daily'),
+                icon: const Icon(Icons.explore_outlined),
+                label: Text(
+                  active == null ? 'Rozpocznij wyprawę' : 'Wznów wyprawę',
+                ),
               ),
-              icon: Icon(extra ? Icons.replay : Icons.explore_outlined),
-              label: Text(
-                extra
-                    ? 'Kolejna runda'
-                    : active == null
-                    ? 'Rozpocznij wyprawę'
-                    : 'Wznów wyprawę',
-              ),
-            ),
           ],
-          if (active == null && overview.newAvailable > 0) ...[
+          // Placement helps at the start of a continent; later it is noise.
+          if (active == null &&
+              overview.newAvailable > 0 &&
+              overview.learnedCount < placementUntilLearned) ...[
             const SizedBox(height: 4),
             TextButton.icon(
               style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
@@ -305,13 +326,14 @@ class _StreakLine extends ConsumerWidget {
     final current = streak?.current ?? 0;
     final today = streak?.practisedToday == true;
     final text = current == 0
-        ? 'Odpowiedz dziś, aby zacząć passę'
+        ? 'Zacznij dziś passę'
         : today
-        ? 'Passa: ${daysLabel(current)}, dziś zaliczone'
+        ? 'Passa: ${daysLabel(current)}'
         : 'Passa: ${daysLabel(current)}, odpowiedz dziś';
+    final spoken = today ? '$text, dzisiaj zaliczona' : text;
     return Semantics(
       liveRegion: true,
-      label: '$text. Rekord: ${daysLabel(streak?.best ?? 0)}.',
+      label: '$spoken. Rekord: ${daysLabel(streak?.best ?? 0)}.',
       excludeSemantics: true,
       child: Row(
         children: [
@@ -479,10 +501,68 @@ class _LevelRow extends ConsumerWidget {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 4),
       leading: const Icon(Icons.tune),
-      title: Text('Poziom: ${current.label}'),
+      title: Text('Poziom dla ${continent.genitive}: ${current.label}'),
       subtitle: Text(current.description),
       trailing: const Icon(Icons.chevron_right),
       onTap: () => _choose(context, ref, current),
+    );
+  }
+}
+
+/// Map progress toward the next medal at the continent's current level.
+class _MapProgress extends ConsumerWidget {
+  const _MapProgress({required this.continent});
+  final Continent continent;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final level =
+        ref
+            .watch(appPreferencesProvider)
+            .asData
+            ?.value
+            .difficultyFor(continent) ??
+        LearningDifficulty.normal;
+    final map = ref
+        .watch(achievementsProvider)
+        .asData
+        ?.value
+        .where((a) => a.topic == 'map' && a.level == level)
+        .firstOrNull;
+    if (map == null || map.totalCount == 0) return const SizedBox.shrink();
+    final next = [(50, 'brązowego'), (80, 'srebrnego'), (100, 'złotego')]
+        .where((t) => map.qualifiedCount * 100 < map.totalCount * t.$1)
+        .firstOrNull;
+    final missing = next == null
+        ? 0
+        : (map.totalCount * next.$1 + 99) ~/ 100 - map.qualifiedCount;
+    final theme = Theme.of(context);
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+      leading: const Icon(Icons.emoji_events_outlined),
+      title: Text(
+        'Mapa ${continent.genitive}: ${map.qualifiedCount} z ${map.totalCount}',
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 6),
+          LinearProgressIndicator(
+            value: map.qualifiedCount / map.totalCount,
+            borderRadius: BorderRadius.circular(4),
+            semanticsLabel: 'Postęp mapy',
+          ),
+          const SizedBox(height: 6),
+          Text(
+            next == null
+                ? 'Złoty medal zdobyty.'
+                : 'Do ${next.$2} medalu: jeszcze $missing.',
+            style: theme.textTheme.bodySmall,
+          ),
+        ],
+      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => context.push('/learning/${continent.name}'),
     );
   }
 }
@@ -499,7 +579,8 @@ String _planText(BuildContext context, MemoryOverview overview) {
         'w rozpoczętej serii.';
   }
   if (overview.plannedCount == 0) {
-    return _calmMessage(context, overview.nextDue);
+    final calm = _calmMessage(context, overview.nextDue);
+    return overview.canStartExtra ? '$calm Możesz jeszcze poćwiczyć.' : calm;
   }
   final parts = [
     if (overview.plannedNewCount > 0)
@@ -511,6 +592,9 @@ String _planText(BuildContext context, MemoryOverview overview) {
   ];
   return '${parts.join(' i ')}.';
 }
+
+/// The placement link disappears once this many cards have answers.
+const placementUntilLearned = 10;
 
 String _plural(int n, String one, String few, String many) {
   if (n == 1) return one;

@@ -48,7 +48,11 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(find.text('Zresetuj naukę'), 160);
+      await tester.scrollUntilVisible(
+        find.text('Zresetuj naukę'),
+        160,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.ensureVisible(find.text('Zresetuj naukę'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Zresetuj naukę'));
@@ -56,11 +60,19 @@ void main() {
       await tester.tap(find.text('Zachowaj naukę'));
       await tester.pumpAndSettle();
       expect(await db.select(db.sessions).get(), hasLength(1));
-      await tester.scrollUntilVisible(find.text('Cała nauka'), -160);
+      await tester.scrollUntilVisible(
+        find.text('Cała nauka'),
+        -160,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.ensureVisible(find.text('Cała nauka'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Cała nauka'));
-      await tester.scrollUntilVisible(find.text('Zresetuj naukę'), 160);
+      await tester.scrollUntilVisible(
+        find.text('Zresetuj naukę'),
+        160,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.ensureVisible(find.text('Zresetuj naukę'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Zresetuj naukę'));

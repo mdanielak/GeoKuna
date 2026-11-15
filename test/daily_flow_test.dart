@@ -48,7 +48,11 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('3 nowe pytania.'), findsOneWidget);
-    await tester.scrollUntilVisible(find.text('Rozpocznij wyprawę'), 150);
+    await tester.scrollUntilVisible(
+      find.text('Rozpocznij wyprawę'),
+      150,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.ensureVisible(find.text('Rozpocznij wyprawę'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Rozpocznij wyprawę'));

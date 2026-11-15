@@ -22,6 +22,10 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 ## Pułapki
 - Testy widgetów: Drift i assety wymagają `tester.runAsync`; po `ensureVisible` wywołaj `pumpAndSettle`
 - `pumpAndSettle` wisi przy `CircularProgressIndicator` — użyj pętli `pump(Duration)`
+- Provider widoczny na Dziś nie może wczytywać assetów sam (`Catalog.load`) — użyj
+  `catalogProvider`; inaczej transakcja Drift blokuje bazę i testy przepływów wiszą
+  (`dart_test.yaml` przerywa test po 60 s)
+- Dziś ma dwa Scrollable (rząd kontynentów) — `scrollUntilVisible(..., scrollable: find.byType(Scrollable).first)`
 - W `session_repository.dart` `min` z Drift przesłania `dart:math` — używaj porównania
 - Kadr quizu stosuj po `initialCameraFit` (post-frame po `onMapReady`)
 - Zmiana reguł harmonogramu przesuwa terminy w testach — szukaj `Duration(days:` w `test/`

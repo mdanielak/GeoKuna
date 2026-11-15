@@ -73,7 +73,11 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(find.bySemanticsLabel('Kuna z globusem'), findsOneWidget);
-        await tester.scrollUntilVisible(find.text('Stolice'), 200);
+        await tester.scrollUntilVisible(
+          find.text('Stolice'),
+          200,
+          scrollable: find.byType(Scrollable).first,
+        );
         await tester.tap(find.text('Stolice'));
         await tester.pumpAndSettle();
         expect(find.text('Poziom: ${preference.label}'), findsOneWidget);

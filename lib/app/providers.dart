@@ -100,12 +100,13 @@ final continentAchievementsProvider = FutureProvider.autoDispose
       return AchievementStore(db).refresh(catalog);
     });
 
+/// Medals of the selected continent. Reuses the loaded catalog instead of
+/// reading the map asset again (Today shows it on every visit).
 final achievementsProvider =
-    FutureProvider.autoDispose<List<CategoryAchievement>>((ref) {
-      return ref.watch(
-        continentAchievementsProvider(ref.watch(selectedContinentProvider))
-            .future,
-      );
+    FutureProvider.autoDispose<List<CategoryAchievement>>((ref) async {
+      final db = ref.watch(databaseProvider);
+      final catalog = await ref.watch(catalogProvider.future);
+      return AchievementStore(db).refresh(catalog);
     });
 
 final dailyOverviewProvider = FutureProvider.autoDispose<MemoryOverview>((
