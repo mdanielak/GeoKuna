@@ -56,6 +56,13 @@ nie gwarantuje 90% pamięci.
   **3 ocenione trafienia z rzędu** — rozłożone w czasie przez FSRS (seria,
   kolejna runda, kolejne dni). Kolejny błąd zeruje licznik. Trudne karty mają
   pierwszeństwo wśród zaległych; feedback pokazuje „Trudny kraj: 2 z 3”.
+- **Drabinka:** karta pomylona **2 razy** od ostatniego opanowania (3 trafienia
+  z rzędu) dostaje w serii dziennej najpierw **łatwiejszy krok** — wpisywanie i
+  pierwsza litera → wybór A–D, mapa normalna/łatwa → mapa z przybliżeniem
+  bardzo łatwego poziomu. Krok jest ćwiczeniem (`origin=scaffold`, bez oceny
+  FSRS, poza wynikiem, oznaczony „z podpowiedzią”), a właściwe pytanie wraca
+  kilka pozycji dalej i to ono jest oceniane. Najwyżej 2 kroki na serię; A–D i
+  mapa bardzo łatwa nie mają łatwiejszego formatu. Dalsze szczeble: ROADMAP.
 - Zapisujemy wskazany błędny kraj. Gdy ten sam kraj ponownie zostanie wskazany
   zamiast celu, feedback podpowiada: „Ta para już się myliła: Norwegia i Szwecja”.
 - Historyczne odpowiedzi z pomocą (lista usunięta z quizu) i dawne nieocenione

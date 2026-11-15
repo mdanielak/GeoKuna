@@ -166,6 +166,7 @@ class MemoryStore {
         !practice &&
         origin != 'assisted' &&
         origin != 'retry' &&
+        origin != 'scaffold' &&
         (fresh ||
             !attempt.correct ||
             origin == 'control' ||
@@ -228,6 +229,36 @@ class MemoryStore {
 /// Correct answers needed in a row after a miss before a skill stops being
 /// treated as a problem.
 const recoveryTarget = 3;
+
+/// Graded misses since a skill was last recovered ([recoveryTarget] correct
+/// in a row). Drives the ladder: a stubborn skill gets an easier step first.
+Map<String, int> missesSinceRecovery(Iterable<MemoryReview> reviews) {
+  final ordered = reviews.where((r) => r.applied).toList()
+    ..sort((a, b) => a.reviewedAt.compareTo(b.reviewedAt));
+  final misses = <String, int>{};
+  final run = <String, int>{};
+  for (final review in ordered) {
+    final id = review.skillId;
+    if (review.rating == 1) {
+      misses[id] = (misses[id] ?? 0) + 1;
+      run[id] = 0;
+    } else if ((run[id] = (run[id] ?? 0) + 1) >= recoveryTarget) {
+      misses.remove(id);
+    }
+  }
+  return misses;
+}
+
+/// Misses after which a due skill is preceded by an easier, unscored step.
+const scaffoldAfterMisses = 2;
+
+/// The easier format used as the ladder step, or null when none is easier.
+String? scaffoldDifficulty(String topic, String difficulty) =>
+    switch ((topic, difficulty)) {
+      ('capitals' || 'flags', 'write' || 'firstLetter') => 'choice',
+      ('map' || 'flags', 'map' || 'mapEasy') => 'mapVeryEasy',
+      _ => null,
+    };
 
 /// Skills with a graded miss that are not yet recovered, mapped to the number
 /// of graded correct answers since that miss (0–2).

@@ -13,7 +13,8 @@ nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
   (A–D, pierwsza litera, pełne wpisanie z tolerancją jednej literówki),
   flaga → mapa.
 - **Dziś:** codzienna wyprawa do 10 pytań — zaległe powtórki, potem najwyżej
-  3 nowe karty dziennie; ręczny trening zawsze dostępny.
+  3 nowe karty dziennie; błąd wraca w tej samej serii, uparcie mylony kraj
+  najpierw w łatwiejszej formie; ręczny trening zawsze dostępny.
 - **Poziomy** bardzo łatwy / łatwy / normalny ustawiane osobno dla kontynentu.
 - **Motywacja, która nie przeszkadza w nauce:** medale za 50/80/100% utrwalonych
   faktów, passa dni nauki per kontynent, ciekawostki po trafieniu, pięć reakcji kuny.
@@ -37,7 +38,7 @@ Weryfikacja, testy i telefon: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 |---|---|
 | [LEARNING.md](docs/LEARNING.md) | zasady nauki: karty, FSRS, ocena, Dziś, postęp, medale, passa, kuna, reset |
 | [CONTENT.md](docs/CONTENT.md) | źródła, polityka granic, wyjątki stolic, flagi, relief, ciekawostki, odtwarzanie paczek |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | moduły, decyzje, schemat SQLite v7 i migracje |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | moduły, decyzje, schemat SQLite v8 i migracje |
 | [DEVELOPMENT.md](docs/DEVELOPMENT.md) | uruchamianie, weryfikacja, zasady testów, Chrome vs Android, agenci |
 | [ROADMAP.md](docs/ROADMAP.md) | stan, najbliższe kroki, przyszłe przyrosty, otwarte ryzyka |
 | [AGENTS.md](AGENTS.md) | zasady pracy agentów |

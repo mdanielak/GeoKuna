@@ -81,7 +81,11 @@ class LearningSession {
   bool isRetryAt(int i) =>
       isDaily && i < _questions.length && _questions[i]['retry'] == true;
 
-  /// Special origin stored in the daily snapshot (`control`, `placement`).
+  /// An easier, unscored ladder step before a stubborn skill's real question.
+  bool isScaffoldAt(int i) => originAt(i) == 'scaffold';
+
+  /// Special origin stored in the daily snapshot (`control`, `placement`,
+  /// `scaffold`).
   String? originAt(int i) => isDaily && i < _questions.length
       ? _questions[i]['origin'] as String?
       : null;
@@ -91,7 +95,8 @@ class LearningSession {
       .where(
         (a) =>
             !assistedIndices.contains(a.questionIndex) &&
-            !isRetryAt(a.questionIndex),
+            !isRetryAt(a.questionIndex) &&
+            !isScaffoldAt(a.questionIndex),
       )
       .toList();
   int get correctCount => scoredAttempts.where((attempt) {
@@ -112,6 +117,9 @@ const maxRetriesPerSeries = 3;
 
 /// A repeat comes after this many other questions (3–5), never right away.
 const retryGapMin = 3, retryGapMax = 5;
+
+/// At most this many ladder steps per series, so it stays a review.
+const maxScaffoldsPerSeries = 2;
 
 /// New cards an extra round may introduce beyond the daily budget.
 const extraNewPerRound = 3;
@@ -438,7 +446,12 @@ class SessionRepository {
   /// again after 3–5 other questions. The repeat is practice, never graded.
   /// Without room for the gap, the next round or day takes it via FSRS.
   Future<void> _queueRetry(LearningSession session, int index) async {
-    if (!session.isDaily || session.isRetryAt(index)) return;
+    // A missed ladder step needs no retry: the real question follows.
+    if (!session.isDaily ||
+        session.isRetryAt(index) ||
+        session.isScaffoldAt(index)) {
+      return;
+    }
     final questions = jsonDecode(session.row.questionData) as List;
     final question = Map<String, dynamic>.of(
       questions[index] as Map<String, dynamic>,
@@ -815,40 +828,57 @@ class SessionRepository {
     DailyMode mode = DailyMode.regular,
   }) async {
     await _memory.importHistoryOnce();
-    await db.batch(
-      (batch) => batch.insertAll(db.memoryCards, [
-        for (final country in catalog.countries) ...[
-          for (final difficulty in mapDifficulties)
+    final wanted = <MemoryCardsCompanion>[
+      for (final country in catalog.countries) ...[
+        for (final difficulty in mapDifficulties)
+          MemoryCardsCompanion.insert(
+            id: 'map:${country.id}:$difficulty',
+            countryId: country.id,
+            topic: 'map',
+            difficulty: difficulty,
+          ),
+        if (capitals.facts.any((f) => f.countryId == country.id))
+          for (final mode in CapitalDifficulty.values)
             MemoryCardsCompanion.insert(
-              id: 'map:${country.id}:$difficulty',
+              id: 'capitals:${country.id}:${mode.name}',
               countryId: country.id,
-              topic: 'map',
+              topic: 'capitals',
+              difficulty: mode.name,
+            ),
+      ],
+      if (flags != null)
+        for (final fact in flags.facts)
+          for (final difficulty in [
+            ...FlagDifficulty.values.map((m) => m.name),
+            'mapEasy',
+            'mapVeryEasy',
+          ])
+            MemoryCardsCompanion.insert(
+              id: 'flags:${fact.countryId}:$difficulty',
+              countryId: fact.countryId,
+              topic: 'flags',
               difficulty: difficulty,
             ),
-          if (capitals.facts.any((f) => f.countryId == country.id))
-            for (final mode in CapitalDifficulty.values)
-              MemoryCardsCompanion.insert(
-                id: 'capitals:${country.id}:${mode.name}',
-                countryId: country.id,
-                topic: 'capitals',
-                difficulty: mode.name,
-              ),
-        ],
-        if (flags != null)
-          for (final fact in flags.facts)
-            for (final difficulty in [
-              ...FlagDifficulty.values.map((m) => m.name),
-              'mapEasy',
-              'mapVeryEasy',
-            ])
-              MemoryCardsCompanion.insert(
-                id: 'flags:${fact.countryId}:$difficulty',
-                countryId: fact.countryId,
-                topic: 'flags',
-                difficulty: difficulty,
-              ),
-      ], mode: InsertMode.insertOrIgnore),
-    );
+    ];
+    // Cards exist after the first visit; insert only what a content update
+    // added instead of rewriting hundreds of rows on every Today view.
+    final existing =
+        (await (db.selectOnly(db.memoryCards)..addColumns([db.memoryCards.id]))
+                .map((r) => r.read(db.memoryCards.id)!)
+                .get())
+            .toSet();
+    final missing = wanted
+        .where((c) => !existing.contains(c.id.value))
+        .toList();
+    if (missing.isNotEmpty) {
+      await db.batch(
+        (batch) => batch.insertAll(
+          db.memoryCards,
+          missing,
+          mode: InsertMode.insertOrIgnore,
+        ),
+      );
+    }
     final now = _clock();
     final start = DateTime(now.year, now.month, now.day).toUtc();
     final end = DateTime(now.year, now.month, now.day + 1).toUtc();
@@ -920,6 +950,7 @@ class SessionRepository {
             .get();
     final qualified = qualifiedSkillIds(appliedReviews);
     final recovering = recoveringSkills(appliedReviews);
+    final misses = missesSinceRecovery(appliedReviews);
     final lastReviewed = <String, DateTime>{};
     for (final review in appliedReviews) {
       final last = lastReviewed[review.skillId];
@@ -1040,6 +1071,14 @@ class SessionRepository {
             .map((c) => c.due!)
             .toList()
           ..sort();
+    // Stubborn due skills get an easier step first (see startDaily).
+    final struggling = {
+      for (final card in selected)
+        if (card.state != null &&
+            (misses[card.id] ?? 0) >= scaffoldAfterMisses &&
+            scaffoldDifficulty(card.topic, card.difficulty) != null)
+          card.id,
+    };
     return _MemoryPlan(
       selected,
       origins,
@@ -1060,6 +1099,7 @@ class SessionRepository {
           )
           .length,
       cards.where((c) => c.state != null).length,
+      struggling,
     );
   }
 
@@ -1088,13 +1128,16 @@ class SessionRepository {
           },
         )
         .toList();
+    _addScaffolds(questions, plan.struggling);
     final id = const Uuid().v4();
     await db
         .into(db.sessions)
         .insert(
           SessionsCompanion.insert(
             id: id,
-            countryIds: jsonEncode(plan.cards.map((c) => c.countryId).toList()),
+            countryIds: jsonEncode(
+              questions.map((q) => q['country_id'] as String).toList(),
+            ),
             createdAt: _clock().toUtc(),
             continent: Value(continent.name),
             topic: const Value('daily'),
@@ -1107,6 +1150,37 @@ class SessionRepository {
         );
     return byId(id);
   });
+
+  /// Ladder: a stubborn skill is first asked in an easier format (A–D or a
+  /// zoomed map) as unscored practice; its real question moves a few places
+  /// later, so recall follows the reminder without being a copy of it.
+  void _addScaffolds(
+    List<Map<String, dynamic>> questions,
+    Set<String> struggling,
+  ) {
+    var added = 0;
+    for (final skill in struggling) {
+      if (added == maxScaffoldsPerSeries) break;
+      final at = questions.indexWhere((q) => q['skill_id'] == skill);
+      final others = questions.length - at - 1;
+      if (at < 0 || others < 2) continue;
+      final original = questions.removeAt(at);
+      final topic = original['topic'] as String;
+      final easier = scaffoldDifficulty(
+        topic,
+        original['difficulty'] as String,
+      )!;
+      questions.insert(at, {
+        ...original,
+        'difficulty': easier,
+        'skill_id': '$topic:${original['country_id']}:$easier',
+        'origin': 'scaffold',
+      });
+      final gap = others < retryGapMin ? others : retryGapMin;
+      questions.insert(at + 1 + gap, original);
+      added++;
+    }
+  }
 
   Future<List<Attempt>> history() async {
     final sessions = await (db.select(
@@ -1164,8 +1238,12 @@ class _MemoryPlan {
     this.reservedNewElsewhere,
     this.otherDueCount,
     this.learnedCount,
+    this.struggling,
   );
   final List<MemoryCard> cards;
+
+  /// Selected skills missed [scaffoldAfterMisses]+ times since recovery.
+  final Set<String> struggling;
   final Map<String, String> origins;
   final int dueCount,
       newAvailable,

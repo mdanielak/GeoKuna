@@ -61,7 +61,16 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          7,
+          8,
+        );
+        expect(
+          await db
+              .customSelect(
+                "SELECT name FROM sqlite_master WHERE type = 'index' "
+                "AND name = 'memory_reviews_skill'",
+              )
+              .get(),
+          hasLength(1),
         );
       } finally {
         await db.close();
@@ -104,7 +113,16 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          7,
+          8,
+        );
+        expect(
+          await db
+              .customSelect(
+                "SELECT name FROM sqlite_master WHERE type = 'index' "
+                "AND name = 'memory_reviews_skill'",
+              )
+              .get(),
+          hasLength(1),
         );
       } finally {
         await db.close();

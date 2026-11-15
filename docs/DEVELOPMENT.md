@@ -30,7 +30,8 @@ flutter build web --no-web-resources-cdn   # przy wydaniu
 ```
 
 W trakcie pracy uruchamiaj testy związane ze zmianą; pełny zestaw raz przy
-integracji. Po zmianach samej dokumentacji wystarczy kontrola odwołań.
+integracji. `dart_test.yaml` przerywa każdy test po 60 s — zawieszony test
+pada z nazwą zamiast blokować przebieg. Po zmianach samej dokumentacji wystarczy kontrola odwołań.
 
 ## Zasady testów
 
@@ -81,6 +82,12 @@ Porty parowania i debugowania różnią się i zmieniają. Po pracy wyłącz deb
 bezprzewodowe. Szczegóły: [dokumentacja ADB](https://developer.android.com/tools/adb).
 
 ## Agenci i narzędzia
+
+Claude Code: `CLAUDE.md` (komendy, pułapki), Dart MCP w `.mcp.json`, hook formatowania
+`.claude/hooks/dart-format.sh`, skille w `.claude/skills/` (`/shots` — zrzuty bez
+Chrome; oficjalne `flutter/skills` i `flutter-ui`, źródła w `CLAUDE.md`).
+
+Codex:
 
 Role i delegowanie: `AGENTS.md`, `.codex/agents/*.toml`, `.codex/config.toml`
 (limit dwóch wykonawców). Lokalny skill mechanik nauki:

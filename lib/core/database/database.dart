@@ -3,6 +3,7 @@ import 'package:drift_flutter/drift_flutter.dart';
 
 part 'database.g.dart';
 
+@TableIndex(name: 'sessions_open', columns: {#topic, #completedAt})
 class Sessions extends Table {
   TextColumn get id => text()();
   TextColumn get countryIds => text()();
@@ -19,6 +20,7 @@ class Sessions extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@TableIndex(name: 'attempts_country', columns: {#countryId})
 class Attempts extends Table {
   TextColumn get sessionId => text().references(Sessions, #id)();
   IntColumn get questionIndex => integer()();
@@ -34,6 +36,7 @@ class Attempts extends Table {
 }
 
 @DataClassName('MapGuess')
+@TableIndex(name: 'map_guesses_selected', columns: {#selectedCountryId})
 class MapGuesses extends Table {
   TextColumn get sessionId => text().references(Sessions, #id)();
   IntColumn get questionIndex => integer()();
@@ -46,6 +49,7 @@ class MapGuesses extends Table {
   Set<Column> get primaryKey => {sessionId, questionIndex, guessIndex};
 }
 
+@TableIndex(name: 'memory_cards_country', columns: {#countryId})
 class MemoryCards extends Table {
   TextColumn get id => text()();
   TextColumn get countryId => text()();
@@ -59,6 +63,8 @@ class MemoryCards extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@TableIndex(name: 'memory_reviews_skill', columns: {#skillId, #reviewedAt})
+@TableIndex(name: 'memory_reviews_time', columns: {#reviewedAt})
 class MemoryReviews extends Table {
   TextColumn get sessionId => text().references(Sessions, #id)();
   IntColumn get questionIndex => integer()();
@@ -134,7 +140,7 @@ class AppDatabase extends _$AppDatabase {
         ),
       );
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
@@ -166,6 +172,19 @@ class AppDatabase extends _$AppDatabase {
       if (from < 7) {
         await m.createTable(activityDays);
         await m.createTable(awardedMedals);
+      }
+      if (from < 8) {
+        // Lookups by skill, country and day; history grows every answer.
+        for (final index in [
+          sessionsOpen,
+          attemptsCountry,
+          mapGuessesSelected,
+          memoryCardsCountry,
+          memoryReviewsSkill,
+          memoryReviewsTime,
+        ]) {
+          await m.createIndex(index);
+        }
       }
     },
     beforeOpen: (_) async {

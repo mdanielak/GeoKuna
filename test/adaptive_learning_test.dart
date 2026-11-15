@@ -141,6 +141,57 @@ void main() {
     expect(next.insight?.recovery, 1);
   });
 
+  test(
+    'ladder: a skill missed twice is first asked in an easier format',
+    () async {
+      final db = AppDatabase(NativeDatabase.memory());
+      addTearDown(db.close);
+      var now = DateTime(2026, 11, 1, 9);
+      final repo = SessionRepository(db, clock: () => now);
+      String? stubborn;
+      for (var day = 0; day < 14; day++) {
+        now = DateTime(2026, 11, 1 + day, 9);
+        var s = await repo.startDaily(catalog, capitals, flags: flags);
+        if (s == null) continue;
+        stubborn ??= s.skillIdAt(0);
+        final scaffold = List.generate(
+          s.countryIds.length,
+          (i) => i,
+        ).where((i) => s.isScaffoldAt(i)).firstOrNull;
+        if (scaffold != null) {
+          final real = List.generate(
+            s.countryIds.length,
+            (i) => i,
+          ).firstWhere((i) => s.skillIdAt(i) == stubborn && !s.isScaffoldAt(i));
+          expect(s.countryIds[scaffold], s.countryIds[real]);
+          expect(s.skillIdAt(scaffold), isNot(stubborn));
+          expect(
+            real - scaffold,
+            greaterThan(2),
+            reason: 'recall follows later',
+          );
+          await finishSeries(repo, s);
+          final step = await (db.select(
+            db.memoryReviews,
+          )..where((r) => r.questionIndex.equals(scaffold))).get();
+          expect(
+            step.where((r) => r.sessionId == s.row.id).single.applied,
+            isFalse,
+            reason: 'the easier step is practice, not a grade',
+          );
+          return;
+        }
+        await finishSeries(
+          repo,
+          s,
+          correct: (s) =>
+              s.skillIdAt(s.index) != stubborn || s.isRetryAt(s.index),
+        );
+      }
+      fail('no ladder step within two weeks');
+    },
+  );
+
   test('extra round checks known facts once the daily plan is done', () async {
     final db = AppDatabase(NativeDatabase.memory());
     addTearDown(db.close);

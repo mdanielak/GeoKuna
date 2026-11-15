@@ -30,118 +30,136 @@ class AchievementStore {
   const AchievementStore(this.db);
   final AppDatabase db;
 
-  Future<List<CategoryAchievement>> refresh(Catalog catalog, {DateTime? now}) =>
-      db.transaction(() async {
-        final countryIds = catalog.countries.map((c) => c.id).toSet();
-        final cards = await (db.select(
-          db.memoryCards,
-        )..where((c) => c.countryId.isIn(countryIds))).get();
-        final reviews =
-            await (db.select(db.memoryReviews)
-                  ..where(
-                    (r) =>
-                        r.applied.equals(true) &
-                        r.skillId.isIn(cards.map((c) => c.id)),
-                  )
-                  ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
-                .get();
-        final milestones = <String, DateTime>{};
-        final qualified = qualifiedSkillIds(
-          reviews,
-          onQualified: (skills, at) {
-            for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
-              for (final level in LearningDifficulty.values) {
-                final count = _effectiveCountries(
-                  skills,
-                  countryIds,
-                  topic,
-                  level,
-                ).length;
-                for (final (medal, threshold) in [(1, 50), (2, 80), (3, 100)]) {
-                  if (countryIds.isNotEmpty &&
-                      count * 100 >= countryIds.length * threshold) {
-                    milestones.putIfAbsent(
-                      '$topic:${level.name}:$medal',
-                      () => at,
-                    );
-                  }
-                }
-              }
-            }
-          },
-        );
-        final earned = await (db.select(
-          db.awardedMedals,
-        )..where((m) => m.continent.equals(catalog.continent.name))).get();
-        final answered = reviews.map((r) => r.skillId).toSet();
-        final result = <CategoryAchievement>[];
+  /// Computes medals; with [persist] newly reached ones are stored. Today
+  /// reads without writing (no lock on every visit); Moja nauka persists.
+  Future<List<CategoryAchievement>> refresh(
+    Catalog catalog, {
+    DateTime? now,
+    bool persist = true,
+  }) => persist
+      ? db.transaction(() => _compute(catalog, true))
+      : _compute(catalog, false);
+
+  Future<List<CategoryAchievement>> _compute(
+    Catalog catalog,
+    bool persist,
+  ) async {
+    final countryIds = catalog.countries.map((c) => c.id).toSet();
+    final cards = await (db.select(
+      db.memoryCards,
+    )..where((c) => c.countryId.isIn(countryIds))).get();
+    final reviews =
+        await (db.select(db.memoryReviews)
+              ..where(
+                (r) =>
+                    r.applied.equals(true) &
+                    r.skillId.isIn(cards.map((c) => c.id)),
+              )
+              ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
+            .get();
+    final milestones = <String, DateTime>{};
+    final qualified = qualifiedSkillIds(
+      reviews,
+      onQualified: (skills, at) {
         for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
           for (final level in LearningDifficulty.values) {
-            final direct = _effectiveCountries(
-              qualified,
+            final count = _effectiveCountries(
+              skills,
+              countryIds,
+              topic,
+              level,
+            ).length;
+            for (final (medal, threshold) in [(1, 50), (2, 80), (3, 100)]) {
+              if (countryIds.isNotEmpty &&
+                  count * 100 >= countryIds.length * threshold) {
+                milestones.putIfAbsent('$topic:${level.name}:$medal', () => at);
+              }
+            }
+          }
+        }
+      },
+    );
+    final earned = await (db.select(
+      db.awardedMedals,
+    )..where((m) => m.continent.equals(catalog.continent.name))).get();
+    final answered = reviews.map((r) => r.skillId).toSet();
+    final result = <CategoryAchievement>[];
+    for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
+      for (final level in LearningDifficulty.values) {
+        final direct = _effectiveCountries(
+          qualified,
+          countryIds,
+          topic,
+          level,
+          directOnly: true,
+        );
+        final effective = _effectiveCountries(
+          qualified,
+          countryIds,
+          topic,
+          level,
+        );
+        for (final medal in [1, 2, 3]) {
+          final earnedAt = milestones['$topic:${level.name}:$medal'];
+          if (earnedAt != null &&
+              !earned.any(
+                (m) =>
+                    m.topic == topic &&
+                    m.level == level.name &&
+                    m.medal == medal,
+              )) {
+            final row = !persist
+                ? AwardedMedal(
+                    continent: catalog.continent.name,
+                    topic: topic,
+                    level: level.name,
+                    medal: medal,
+                    earnedAt: earnedAt.toUtc(),
+                    catalogVersion: catalog.version,
+                  )
+                : await db
+                      .into(db.awardedMedals)
+                      .insertReturning(
+                        AwardedMedalsCompanion.insert(
+                          continent: catalog.continent.name,
+                          topic: topic,
+                          level: level.name,
+                          medal: medal,
+                          earnedAt: earnedAt.toUtc(),
+                          catalogVersion: catalog.version,
+                        ),
+                        mode: InsertMode.insertOrIgnore,
+                      );
+            earned.add(row);
+          }
+        }
+        final awards =
+            earned
+                .where((m) => m.topic == topic && m.level == level.name)
+                .toList()
+              ..sort((a, b) => b.medal.compareTo(a.medal));
+        result.add(
+          CategoryAchievement(
+            topic: topic,
+            level: level,
+            earnedMedal: awards.firstOrNull?.medal ?? 0,
+            earnedAt: awards.firstOrNull?.earnedAt,
+            qualifiedCount: effective.length,
+            totalCount: countryIds.length,
+            inheritedCount: effective.difference(direct).length,
+            learningCount: _effectiveCountries(
+              answered,
               countryIds,
               topic,
               level,
               directOnly: true,
-            );
-            final effective = _effectiveCountries(
-              qualified,
-              countryIds,
-              topic,
-              level,
-            );
-            for (final medal in [1, 2, 3]) {
-              final earnedAt = milestones['$topic:${level.name}:$medal'];
-              if (earnedAt != null &&
-                  !earned.any(
-                    (m) =>
-                        m.topic == topic &&
-                        m.level == level.name &&
-                        m.medal == medal,
-                  )) {
-                final row = await db
-                    .into(db.awardedMedals)
-                    .insertReturning(
-                      AwardedMedalsCompanion.insert(
-                        continent: catalog.continent.name,
-                        topic: topic,
-                        level: level.name,
-                        medal: medal,
-                        earnedAt: earnedAt.toUtc(),
-                        catalogVersion: catalog.version,
-                      ),
-                      mode: InsertMode.insertOrIgnore,
-                    );
-                earned.add(row);
-              }
-            }
-            final awards =
-                earned
-                    .where((m) => m.topic == topic && m.level == level.name)
-                    .toList()
-                  ..sort((a, b) => b.medal.compareTo(a.medal));
-            result.add(
-              CategoryAchievement(
-                topic: topic,
-                level: level,
-                earnedMedal: awards.firstOrNull?.medal ?? 0,
-                earnedAt: awards.firstOrNull?.earnedAt,
-                qualifiedCount: effective.length,
-                totalCount: countryIds.length,
-                inheritedCount: effective.difference(direct).length,
-                learningCount: _effectiveCountries(
-                  answered,
-                  countryIds,
-                  topic,
-                  level,
-                  directOnly: true,
-                ).difference(effective).length,
-              ),
-            );
-          }
-        }
-        return result;
-      });
+            ).difference(effective).length,
+          ),
+        );
+      }
+    }
+    return result;
+  }
 }
 
 /// Uses only real, applied first-answer reviews. An early successful practice

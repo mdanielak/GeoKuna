@@ -31,6 +31,12 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 - Zmiana reguł harmonogramu przesuwa terminy w testach — szukaj `Duration(days:` w `test/`
 - Hook po edycji formatuje pliki `.dart` (`.claude/hooks/dart-format.sh`)
 
+## Skille zewnętrzne (`.claude/skills/`)
+14 oficjalnych z `flutter/skills` @e5a88d2 (BSD, `LICENSE-flutter-skills`) i `flutter-ui` z
+`Naimehossein77/claude-flutter-ui-skills` @da647c4 (MIT). Kopie, nie submoduły; aktualizacja =
+ponowne skopiowanie. Zasady projektu mają pierwszeństwo: offline (bez `http`), zwięzłe testy
+(skille testowe proponują więcej), kolory jako tokeny dopiero w etapie motywu.
+
 ## Zrzuty ekranu bez Chrome
 Skill `/shots`: test złoty w scratchpadzie z `--update-goldens`; fonty Roboto i MaterialIcons
 z `$SDK/bin/cache/artifacts/material_fonts/`. Zrzutów nie dodawaj do repozytorium.

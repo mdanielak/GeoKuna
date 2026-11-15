@@ -3958,6 +3958,30 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $AppPreferenceEntriesTable(this);
   late final $ActivityDaysTable activityDays = $ActivityDaysTable(this);
   late final $AwardedMedalsTable awardedMedals = $AwardedMedalsTable(this);
+  late final Index sessionsOpen = Index(
+    'sessions_open',
+    'CREATE INDEX sessions_open ON sessions (topic, completed_at)',
+  );
+  late final Index attemptsCountry = Index(
+    'attempts_country',
+    'CREATE INDEX attempts_country ON attempts (country_id)',
+  );
+  late final Index memoryCardsCountry = Index(
+    'memory_cards_country',
+    'CREATE INDEX memory_cards_country ON memory_cards (country_id)',
+  );
+  late final Index memoryReviewsSkill = Index(
+    'memory_reviews_skill',
+    'CREATE INDEX memory_reviews_skill ON memory_reviews (skill_id, reviewed_at)',
+  );
+  late final Index memoryReviewsTime = Index(
+    'memory_reviews_time',
+    'CREATE INDEX memory_reviews_time ON memory_reviews (reviewed_at)',
+  );
+  late final Index mapGuessesSelected = Index(
+    'map_guesses_selected',
+    'CREATE INDEX map_guesses_selected ON map_guesses (selected_country_id)',
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -3972,6 +3996,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     appPreferenceEntries,
     activityDays,
     awardedMedals,
+    sessionsOpen,
+    attemptsCountry,
+    memoryCardsCountry,
+    memoryReviewsSkill,
+    memoryReviewsTime,
+    mapGuessesSelected,
   ];
 }
 

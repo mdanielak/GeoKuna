@@ -106,7 +106,7 @@ final achievementsProvider =
     FutureProvider.autoDispose<List<CategoryAchievement>>((ref) async {
       final db = ref.watch(databaseProvider);
       final catalog = await ref.watch(catalogProvider.future);
-      return AchievementStore(db).refresh(catalog);
+      return AchievementStore(db).refresh(catalog, persist: false);
     });
 
 final dailyOverviewProvider = FutureProvider.autoDispose<MemoryOverview>((

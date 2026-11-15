@@ -41,7 +41,7 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.
 - Relief to lokalny `OverlayImage` pod interaktywnymi poligonami.
 
-## Schemat SQLite (wersja 7)
+## Schemat SQLite (wersja 8)
 
 | Tabela | Klucz | Zawartość |
 |---|---|---|
@@ -49,13 +49,20 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 | `attempts` | `(session_id, question_index)` | `country_id`, `answer`, `correct`, `typo_accepted`, `topic`, `difficulty`, `answered_at` |
 | `map_guesses` | `(session_id, question_index, guess_index)` | do 3 wyborów: `selected_country_id`, `correct`, `assisted`, `guessed_at` |
 | `memory_cards` | `id` = `topic:country:difficulty` | `state` (JSON FSRS lub null), `due` (UTC), `introduced_at`, `review_count` |
-| `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/historyczne `assisted`, `recognition`), `review_log` |
+| `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/`retry`/`scaffold`/`control`/`placement`/historyczne `assisted`, `recognition`), `review_log` |
 | `memory_meta` | `key` | m.in. znacznik jednorazowego importu historii |
 | `app_preference_entries` | `key` | `map_appearance`, `difficulty_{europe,africa,asia}`; nieznane wartości → relief/normal |
 | `activity_days` | `(continent, local_date)` | `recorded_at` (UTC), `offset_minutes` |
 | `awarded_medals` | `(continent, topic, level, medal)` | `earned_at`, `catalog_version`; medal 1/2/3 = 50/80/100% |
 
+Indeksy (v8): `memory_reviews(skill_id, reviewed_at)`, `memory_reviews(reviewed_at)`,
+`memory_cards(country_id)`, `attempts(country_id)`, `map_guesses(selected_country_id)`,
+`sessions(topic, completed_at)`.
+
 Uwagi:
+
+- Otwarcie Dziś tylko czyta: medale liczy bez zapisu (`refresh(persist: false)`),
+  a karty wstawia jedynie, gdy paczka dodała nowe. Medale zapisuje Moja nauka.
 
 - Jedna aktywna sesja mapy, po jednej na każdy poziom stolic i flag, jedna `daily`
   na kontynent. `byId` odrzuca sesję innego kontynentu.
@@ -78,6 +85,7 @@ Uwagi:
 | 4→5 | `sessions.continent` (domyślnie `europe`) |
 | 5→6 | `app_preference_entries` |
 | 6→7 | `activity_days`, `awarded_medals`; poziomy mapy `mapEasy`/`mapVeryEasy`, stary `map` = normalny |
+| 7→8 | indeksy historii (bez zmian danych) |
 
 `test/database_migration_test.dart` otwiera prawdziwe pliki schematu 1 i 2
 i sprawdza przejście do bieżącej wersji.

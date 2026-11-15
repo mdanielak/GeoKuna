@@ -751,6 +751,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   String _questionLabel(LearningSession session) {
     final label = 'Pytanie ${session.index + 1} z ${session.countryIds.length}';
     if (session.isRetryAt(session.index)) return '$label, powtórka błędu';
+    if (session.isScaffoldAt(session.index)) return '$label, z podpowiedzią';
     return session.originAt(session.index) == 'control'
         ? '$label, kontrola'
         : label;
@@ -764,7 +765,11 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         .where((a) => session.assistedIndices.contains(a.questionIndex))
         .length;
     final retryCount = session.attempts
-        .where((a) => session.isRetryAt(a.questionIndex))
+        .where(
+          (a) =>
+              session.isRetryAt(a.questionIndex) ||
+              session.isScaffoldAt(a.questionIndex),
+        )
         .length;
     final isChoiceOnly = List.generate(
       session.countryIds.length,
@@ -817,7 +822,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             if (retryCount > 0) ...[
               const SizedBox(height: 8),
               Text(
-                'Powtórzone w serii: $retryCount — to ćwiczenie, wynik liczy pierwszą odpowiedź.',
+                'Ćwiczenia w serii (powtórki błędów i podpowiedzi): $retryCount — nie liczą się do wyniku.',
               ),
             ],
             if (unscoredCount > 0) ...[
@@ -927,7 +932,9 @@ class _InsightNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final insight = session.insight;
-    if (insight == null || session.isRetryAt(session.index)) {
+    if (insight == null ||
+        session.isRetryAt(session.index) ||
+        session.isScaffoldAt(session.index)) {
       return const SizedBox.shrink();
     }
     final lines = [
@@ -1005,7 +1012,11 @@ typedef _Result = ({bool correct, String title, String detail});
 _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   final i = attempt.questionIndex;
   final typo = attempt.typoAccepted ? ', literówka' : '';
-  final retry = session.isRetryAt(i) ? 'powtórka, ' : '';
+  final retry = session.isRetryAt(i)
+      ? 'powtórka, '
+      : session.isScaffoldAt(i)
+      ? 'podpowiedź, '
+      : '';
   final String detail;
   if (session.assistedIndices.contains(i)) {
     detail = 'z pomocą';

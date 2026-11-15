@@ -1,6 +1,6 @@
 # Stan i plan
 
-## Stan — 2026-11-14 (wersja 0.4)
+## Stan — 2026-11-15 (wersja 0.4)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
@@ -15,13 +15,16 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 - Dolny pasek Dziś / Atlas / Moja nauka (Dziś: jedna karta wyprawy z kuną i passą,
   poziom kontynentu w arkuszu, postęp mapy do następnego medalu, trening w jednym
   rzędzie; Ameryki i Australia z Oceanią jako wyszarzone „wkrótce”); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
-- SQLite v7 z migracjami od v1.
+- SQLite v8 (indeksy historii) z migracjami od v1.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
   pewniaków, „Kuna sprawdzi, co już wiesz”, ciekawostka z żarówką także po błędzie.
+- Drabinka trudnych kart, szczebel 1 (2026-11-15): po 2 błędach łatwiejszy krok
+  przed właściwym pytaniem. Ciekawostki o flagach (3 na flagę), Europa bez
+  Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief WebP.
 
-Ostatnie przyrosty (poziomy, medale, passa, nauka adaptacyjna) nie przeszły
-jeszcze kontroli wizualnej w Chrome.
+Ostatnie przyrosty sprawdzono zrzutami testowymi (`/shots`, 390×844 i 320×640/160%),
+nie w Chrome ani na telefonie.
 
 Ograniczenia: brak testu na fizycznym Androidzie (gesty, Wstecz, TalkBack,
 cykl życia, wydajność reliefu, SQLite natywne), brak eksportu postępu, FSRS
@@ -40,6 +43,22 @@ nie dowodzi retencji w miesiącach.
    (klucze poza repo).
 5. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.
+
+## Plan: drabinka trudnych kart (dalsze szczeble)
+
+Cel: kraj mylony uparcie nie wraca codziennie w tej samej formie, tylko zmienia
+się sposób nauki. Pierwszy szczebel działa (LEARNING.md → „Drabinka”). Dalej:
+
+| Szczebel | Kiedy | Co widzi użytkownik |
+|---|---|---|
+| 1 ✓ | 2 błędy od opanowania | łatwiejszy format jako ćwiczenie, potem właściwe pytanie |
+| 2 | mylona para (ten sam błędny kraj 2×) | pytanie o parę kolejno: „Słowacja” i „Słowenia”, z różnicą na mapie lub we flagach; w A–D drugi kraj pary zawsze wśród odpowiedzi |
+| 3 | 4+ błędy | karta przypomnienia przed pytaniem: kraj, sąsiedzi, ciekawostka; potem łatwiejszy krok i pytanie |
+| 4 | opanowanie po drabince | krótsze odstępy przez pierwsze 2 powtórki (np. limit 7 dni), zanim FSRS wróci do pełnych odstępów |
+
+Otwarte decyzje: czy szczebel 2 dotyczy też stolic i flag (wymaga zapisu, z którym
+krajem pomylono wpisaną odpowiedź); czy łatwiejszy krok ma się zaliczać do passy
+(obecnie tak, jak każda odpowiedź); jak liczyć „opanowanie” przy zmianie poziomu.
 
 ## Dalsze przyrosty
 
