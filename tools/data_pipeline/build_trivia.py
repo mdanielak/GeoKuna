@@ -20,7 +20,8 @@ def validate(prefix, path, require_complete=True):
     data = json.loads(path.read_text(encoding='utf-8'))
     assert re.fullmatch(prefix + r'-\d+\.\d+\.\d+(?:-draft)?', data['version'])
     expected = set()
-    for path in ['countries.json', 'africa/countries.json', 'asia/countries.json']:
+    for path in ['countries.json', 'africa/countries.json', 'asia/countries.json',
+                 'northAmerica/countries.json', 'southAmerica/countries.json', 'oceania/countries.json']:
         expected.update(c['id'] for c in json.loads((CONTENT / path).read_text())['countries'])
     countries = data['countries']
     missing = expected - countries.keys()

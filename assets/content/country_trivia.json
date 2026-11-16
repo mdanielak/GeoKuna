@@ -1,5 +1,5 @@
 {
-  "version": "country-trivia-0.3.0",
+  "version": "country-trivia-0.4.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -3404,6 +3404,1133 @@
         "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385794891",
         "source_title": "Wikipedia (en): Zimbabwe, wersja 1385794891",
         "checked": "2026-11-15"
+      }
+    ],
+    "ATG": [
+      {
+        "id": "country-atg-dockyard",
+        "text": "Stocznia Nelsona (Nelson's Dockyard) na Antigui została wpisana na listę światowego dziedzictwa UNESCO w 2016 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385819639",
+        "source_title": "Wikipedia (en): Antigua and Barbuda, wersja 1385819639",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-atg-klaas",
+        "text": "Niepodległość Antigui pierwszy zaproponował w 1728 r. zniewolony Prince Klaas, który chciał uczynić z wyspy niezależne królestwo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385819639",
+        "source_title": "Wikipedia (en): Antigua and Barbuda, wersja 1385819639",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-atg-straz",
+        "text": "Pierwsze siły zbrojne na Antigui założyli w 1897 r. plantatorzy cukru do ochrony pól przed podpalaczami — dlatego straż pożarna do dziś działa w ramach policji.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81011560",
+        "source_title": "Wikipedia (pl): Antigua i Barbuda, wersja 81011560",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BHS": [
+      {
+        "id": "country-bhs-kolumb",
+        "text": "To na Bahamach, na wyspie Guanahaní nazwanej przez niego San Salvador, Krzysztof Kolumb w 1492 r. po raz pierwszy postawił stopę w Nowym Świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385632035",
+        "source_title": "Wikipedia (en): The Bahamas, wersja 1385632035",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bhs-turyn",
+        "text": "Nazwa „Bahama” pojawia się po raz pierwszy na mapie z Turynu z 1523 r. — wtedy oznaczała tylko wyspę Wielka Bahama, a nie cały archipelag.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385632035",
+        "source_title": "Wikipedia (en): The Bahamas, wersja 1385632035",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bhs-fifa",
+        "text": "W 2017 r. Bahamy zorganizowały mistrzostwa świata w piłce plażowej — pierwszy męski seniorski turniej FIFA rozegrany na Karaibach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385632035",
+        "source_title": "Wikipedia (en): The Bahamas, wersja 1385632035",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BRB": [
+      {
+        "id": "country-brb-izba",
+        "text": "W 1639 r. na Barbadosie zebrała się Izba Zgromadzenia (House of Assembly) — pierwsze ciało ustawodawcze na półkuli zachodniej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80241197",
+        "source_title": "Wikipedia (pl): Barbados, wersja 80241197",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-brb-rum",
+        "text": "Destylarnia Mount Gay na Barbadosie uważa się za najstarszą działającą wytwórnię rumu na świecie; jej najstarszy potwierdzony akt pochodzi z 1703 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385425404",
+        "source_title": "Wikipedia (en): Barbados, wersja 1385425404",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-brb-dziki",
+        "text": "Portugalczycy rościli sobie prawo do Barbadosu w latach 1532–1536; jedynym śladem ich obecności były dziki, wypuszczone jako zapas mięsa dla żeglarzy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385425404",
+        "source_title": "Wikipedia (en): Barbados, wersja 1385425404",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BLZ": [
+      {
+        "id": "country-blz-rafa",
+        "text": "Rafa koralowa Belize to druga co do wielkości rafa barierowa świata, po Wielkiej Rafie Koralowej; od 1996 r. jest na liście UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385821174",
+        "source_title": "Wikipedia (en): Belize, wersja 1385821174",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-blz-jaguar",
+        "text": "Rezerwat Cockscomb Basin w Belize, założony w 1986 r., był pierwszym na świecie obszarem chronionym stworzonym specjalnie dla jaguarów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385821174",
+        "source_title": "Wikipedia (en): Belize, wersja 1385821174",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-blz-wallace",
+        "text": "Według legendy z lat 20. XIX w. nazwa Belize to hiszpańska wymowa nazwiska szkockiego bukaniera Petera Wallace'a, który miał tu osiąść w 1638 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385821174",
+        "source_title": "Wikipedia (en): Belize, wersja 1385821174",
+        "checked": "2026-11-16"
+      }
+    ],
+    "DMA": [
+      {
+        "id": "country-dma-jezioro",
+        "text": "Boiling Lake („wrzące jezioro”) na Dominice to drugie co do wielkości gorące źródło na świecie; wyspa wciąż powstaje dzięki aktywności wulkanicznej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385880614",
+        "source_title": "Wikipedia (en): Dominica, wersja 1385880614",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-dma-niedziela",
+        "text": "Kolumb nazwał wyspę Dominica (z łac. „dzień Pański”, czyli niedziela), bo dostrzegł ją w niedzielę, w listopadzie 1493 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385880614",
+        "source_title": "Wikipedia (en): Dominica, wersja 1385880614",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-dma-papugi",
+        "text": "Na Dominice żyją dwa gatunki papug, które nie występują nigdzie indziej na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81027024",
+        "source_title": "Wikipedia (pl): Dominika, wersja 81027024",
+        "checked": "2026-11-16"
+      }
+    ],
+    "DOM": [
+      {
+        "id": "country-dom-uchodzcy",
+        "text": "W 1938 r. Dominikana była jedynym państwem na świecie, które zadeklarowało gotowość przyjęcia żydowskich uchodźców z Niemiec i Austrii.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81093370",
+        "source_title": "Wikipedia (pl): Dominikana, wersja 81093370",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-dom-zloto",
+        "text": "W Dominikanie działa kopalnia Pueblo Viejo — trzecia na świecie kopalnia złota pod względem wydobycia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385466752",
+        "source_title": "Wikipedia (en): Dominican Republic, wersja 1385466752",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-dom-1697",
+        "text": "W 1697 r. Hiszpania uznała władzę Francji nad zachodnią jedną trzecią wyspy Haiti; ta część stała się w 1804 r. niepodległym państwem Haiti.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385466752",
+        "source_title": "Wikipedia (en): Dominican Republic, wersja 1385466752",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GRD": [
+      {
+        "id": "country-grd-galka",
+        "text": "W latach 1951–1955 Grenada była największym na świecie producentem i eksporterem gałki muszkatołowej i kwiatu muszkatołowego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81028418",
+        "source_title": "Wikipedia (pl): Grenada, wersja 81028418",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-grd-concepcion",
+        "text": "Kolumb dostrzegł Grenadę w 1498 r., podczas trzeciej wyprawy, i nazwał ją La Concepción na cześć Najświętszej Marii Panny.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384929972",
+        "source_title": "Wikipedia (en): Grenada, wersja 1384929972",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-grd-1609",
+        "text": "Pierwsza znana próba osadnictwa na Grenadzie — angielska, z 1609 r. — skończyła się klęską: osadników wypędzili rdzenni Karaibowie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384929972",
+        "source_title": "Wikipedia (en): Grenada, wersja 1384929972",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GTM": [
+      {
+        "id": "country-gtm-tikal",
+        "text": "Park narodowy Tikal w Gwatemali był pierwszym w historii mieszanym (przyrodniczo-kulturowym) obiektem światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383601366",
+        "source_title": "Wikipedia (en): Guatemala, wersja 1383601366",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-gtm-muzyka",
+        "text": "Gwatemala była jednym z pierwszych regionów Nowego Świata, do których dotarła muzyka europejska — od 1524 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383601366",
+        "source_title": "Wikipedia (en): Guatemala, wersja 1383601366",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-gtm-galeon",
+        "text": "Dzięki wybrzeżu pacyficznemu Gwatemala należała do szlaku galeonów manilskich, które w latach 1565–1815 łączyły hiszpańskie kolonie w Azji i Ameryce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383601366",
+        "source_title": "Wikipedia (en): Guatemala, wersja 1383601366",
+        "checked": "2026-11-16"
+      }
+    ],
+    "HTI": [
+      {
+        "id": "country-hti-rewolucja",
+        "text": "Haiti to jedyne państwo w historii powstałe w wyniku buntu niewolników; rewolucja z lat 1791–1804 uczyniła je też pierwszym krajem Ameryk, który zniósł niewolnictwo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385519348",
+        "source_title": "Wikipedia (en): Haiti, wersja 1385519348",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-hti-cytadela",
+        "text": "Twierdzę Citadelle Laferrière budowano w latach 1805–1820; część Haitańczyków nazywa ją ósmym cudem świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385519348",
+        "source_title": "Wikipedia (en): Haiti, wersja 1385519348",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-hti-szpital",
+        "text": "Po trzęsieniu ziemi z 2010 r. w Mirebalais na Haiti powstał szpital uniwersytecki — największy na świecie szpital zasilany energią słoneczną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385519348",
+        "source_title": "Wikipedia (en): Haiti, wersja 1385519348",
+        "checked": "2026-11-16"
+      }
+    ],
+    "HND": [
+      {
+        "id": "country-hnd-banan",
+        "text": "Określenie „republika bananowa” wymyślono pierwotnie, by opisać Honduras — kraj niestabilny politycznie i zdominowany przez koncerny owocowe.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385672061",
+        "source_title": "Wikipedia (en): Honduras, wersja 1385672061",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-hnd-glebie",
+        "text": "Nazwa Honduras (hiszp. „głębie”) może pochodzić od słów przypisywanych Kolumbowi: „Dzięki Bogu, że wydostaliśmy się z tych głębin”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385672061",
+        "source_title": "Wikipedia (en): Honduras, wersja 1385672061",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-hnd-copan",
+        "text": "Najlepiej poznanym państwem Majów na terenie Hondurasu był Copán, położony na pograniczu ziem Majów; podupadł w IX w.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385672061",
+        "source_title": "Wikipedia (en): Honduras, wersja 1385672061",
+        "checked": "2026-11-16"
+      }
+    ],
+    "JAM": [
+      {
+        "id": "country-jam-xaymaca",
+        "text": "Nazwa Jamajki pochodzi od tainoskiego słowa Xaymaca, czyli „kraina drewna i wody” albo „kraina źródeł”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384311289",
+        "source_title": "Wikipedia (en): Jamaica, wersja 1384311289",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-jam-reggae",
+        "text": "Jamajka jest kolebką religii rastafari i muzyki reggae, a także pokrewnych gatunków: dubu, ska i dancehallu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384311289",
+        "source_title": "Wikipedia (en): Jamaica, wersja 1384311289",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-jam-santiago",
+        "text": "Do 1655 r. wyspa należała do Hiszpanii pod nazwą Santiago; nazwę Jamajka nadali jej Anglicy, którzy ją wtedy zdobyli.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384311289",
+        "source_title": "Wikipedia (en): Jamaica, wersja 1384311289",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CAN": [
+      {
+        "id": "country-can-wybrzeze",
+        "text": "Kanada ma najdłuższą linię brzegową ze wszystkich państw świata, a jej granica ze Stanami Zjednoczonymi to najdłuższa granica lądowa między dwoma krajami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385747734",
+        "source_title": "Wikipedia (en): Canada, wersja 1385747734",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-can-jeziora",
+        "text": "Kanada ma największą na świecie powierzchnię jezior słodkowodnych — dlatego pod względem samego lądu spada z 2. na 4. miejsce wśród największych krajów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385747734",
+        "source_title": "Wikipedia (en): Canada, wersja 1385747734",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-can-superior",
+        "text": "Utworzony w 2015 r. morski obszar chroniony na Jeziorze Górnym (Lake Superior) to największy na świecie chroniony obszar wód słodkich.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385747734",
+        "source_title": "Wikipedia (en): Canada, wersja 1385747734",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CRI": [
+      {
+        "id": "country-cri-armia",
+        "text": "Po powstaniu w 1948 r. zwycięska junta w Kostaryce całkowicie zlikwidowała wojsko; kraj do dziś nie ma armii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384270216",
+        "source_title": "Wikipedia (en): Costa Rica, wersja 1384270216",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-cri-bogate",
+        "text": "W 1502 r. do wybrzeża dotarł Kolumb, który spodziewał się znaleźć tu krainę złota — stąd nazwa Costa Rica, czyli „bogate wybrzeże”.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80910998",
+        "source_title": "Wikipedia (pl): Kostaryka, wersja 80910998",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-cri-znaczek",
+        "text": "Kostaryka wydała swój pierwszy znaczek pocztowy w 1862 r.; niepodległość jako suwerenne państwo ogłosiła w 1838 r., opuszczając federację Ameryki Środkowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384270216",
+        "source_title": "Wikipedia (en): Costa Rica, wersja 1384270216",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CUB": [
+      {
+        "id": "country-cub-wyspa",
+        "text": "Kuba to największa wyspa Karaibów i 17. co do wielkości wyspa świata; otacza ją około 1600 wysepek, skał i raf.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80870433",
+        "source_title": "Wikipedia (pl): Kuba, wersja 80870433",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-cub-hiv",
+        "text": "W 2015 r. Kuba jako pierwszy kraj na świecie wyeliminowała przenoszenie HIV i kiły z matki na dziecko — WHO nazwała to jednym z największych osiągnięć zdrowia publicznego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384302894",
+        "source_title": "Wikipedia (en): Cuba, wersja 1384302894",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-cub-turquino",
+        "text": "Wzdłuż południowego wybrzeża Kuby ciągną się góry Sierra Maestra z najwyższym szczytem kraju, Pico Turquino (1974 m n.p.m.).",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80870433",
+        "source_title": "Wikipedia (pl): Kuba, wersja 80870433",
+        "checked": "2026-11-16"
+      }
+    ],
+    "MEX": [
+      {
+        "id": "country-mex-unesco",
+        "text": "Meksyk ma najwięcej obiektów światowego dziedzictwa UNESCO w obu Amerykach i siódme miejsce pod tym względem na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385499064",
+        "source_title": "Wikipedia (en): Mexico, wersja 1385499064",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-mex-kuchnia",
+        "text": "W 2005 r. Meksyk jako pierwszy kraj zgłosił swoją tradycję kulinarną jako kandydata do światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385499064",
+        "source_title": "Wikipedia (en): Mexico, wersja 1385499064",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-mex-mundial",
+        "text": "Po mundialach z 1970 i 1986 r. Meksyk jako pierwszy kraj na świecie został gospodarzem lub współgospodarzem męskich mistrzostw świata w piłce nożnej po raz trzeci.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385499064",
+        "source_title": "Wikipedia (en): Mexico, wersja 1385499064",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NIC": [
+      {
+        "id": "country-nic-rekiny",
+        "text": "Jezioro Nikaragua to największe jezioro słodkowodne Ameryki Środkowej; żyje w nim rzadki rekin — żarłacz nikaraguański.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384877986",
+        "source_title": "Wikipedia (en): Nicaragua, wersja 1384877986",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nic-nazwa",
+        "text": "Nazwa Nikaragua pochodzi od Nicānāhuac — tak lud Nicarao, mówiący językiem nawat, nazywał region Nicoya; Hiszpanie przekształcili ją, kojarząc z agua („woda”).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384877986",
+        "source_title": "Wikipedia (en): Nicaragua, wersja 1384877986",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nic-bosawas",
+        "text": "Nikaragua, zwana „krainą jezior i wulkanów”, ma rezerwat biosfery Bosawás — drugi co do wielkości tropikalny las deszczowy obu Ameryk.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384877986",
+        "source_title": "Wikipedia (en): Nicaragua, wersja 1384877986",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PAN": [
+      {
+        "id": "country-pan-gatun",
+        "text": "Jezioro Gatún, utworzone przy budowie Kanału Panamskiego, było wtedy największym sztucznym jeziorem świata, a jego tama — największą tamą ziemną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383708592",
+        "source_title": "Wikipedia (en): Panama, wersja 1383708592",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pan-balboa",
+        "text": "W 1513 r. Vasco Núñez de Balboa przeszedł przez Przesmyk Panamski od Atlantyku do Pacyfiku i dowiódł, że to droga między dwoma oceanami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383708592",
+        "source_title": "Wikipedia (en): Panama, wersja 1383708592",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pan-kokosy",
+        "text": "Kokosy z Filipin docierały na pacyficzne wybrzeże Panamy jeszcze przed Kolumbem — to ślad sieci handlowej ludów austronezyjskich.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383708592",
+        "source_title": "Wikipedia (en): Panama, wersja 1383708592",
+        "checked": "2026-11-16"
+      }
+    ],
+    "KNA": [
+      {
+        "id": "country-kna-brimstone",
+        "text": "Twierdza Brimstone Hill na Saint Kitts została parkiem narodowym w 1985 r., a w 1999 r. wpisano ją na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384461517",
+        "source_title": "Wikipedia (en): Saint Kitts and Nevis, wersja 1384461517",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-kna-krzysztof",
+        "text": "Kolumb, który jako pierwszy Europejczyk zobaczył wyspy w 1493 r., nazwał większą z nich na cześć św. Krzysztofa — swojego patrona i patrona podróżnych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384461517",
+        "source_title": "Wikipedia (en): Saint Kitts and Nevis, wersja 1384461517",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-kna-collins",
+        "text": "W 2003 r. sprinter z Saint Kitts i Nevis Kim Collins został mistrzem świata w biegu na 100 metrów.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79263949",
+        "source_title": "Wikipedia (pl): Saint Kitts i Nevis, wersja 79263949",
+        "checked": "2026-11-16"
+      }
+    ],
+    "LCA": [
+      {
+        "id": "country-lca-wulkan",
+        "text": "Na Saint Lucia znajduje się Sulphur Springs — jedyny na świecie wulkan, do którego można wjechać samochodem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385938827",
+        "source_title": "Wikipedia (en): Saint Lucia, wersja 1385938827",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-lca-nobel",
+        "text": "Saint Lucia ma najwięcej laureatów Nagrody Nobla w przeliczeniu na liczbę mieszkańców ze wszystkich suwerennych państw świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385938827",
+        "source_title": "Wikipedia (en): Saint Lucia, wersja 1385938827",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-lca-uboot",
+        "text": "9 marca 1942 r. niemiecki U-Boot wpłynął do portu Castries na Saint Lucia i zatopił dwa brytyjskie statki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385938827",
+        "source_title": "Wikipedia (en): Saint Lucia, wersja 1385938827",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VCT": [
+      {
+        "id": "country-vct-maranta",
+        "text": "Saint Vincent i Grenadyny to największy na świecie producent maranty trzcinowej — rośliny, z której kłączy wytwarza się mączkę skrobiową (arrowroot).",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80241217",
+        "source_title": "Wikipedia (pl): Saint Vincent i Grenadyny, wersja 80241217",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-vct-wincenty",
+        "text": "Wyspa nosi imię św. Wincentego z Saragossy, bo Kolumb miał ją zobaczyć 22 stycznia — w dniu jego wspomnienia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385799992",
+        "source_title": "Wikipedia (en): Saint Vincent and the Grenadines, wersja 1385799992",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-vct-soufriere",
+        "text": "Wybuch wulkanu La Soufrière w 1902 r. zabił na Saint Vincent 1500–2000 osób; w 2021 r. kolejna erupcja zmusiła do ewakuacji 16 tys. mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385799992",
+        "source_title": "Wikipedia (en): Saint Vincent and the Grenadines, wersja 1385799992",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SLV": [
+      {
+        "id": "country-slv-izalco",
+        "text": "Salwadorski wulkan Izalco (1965 m) należy do najbardziej aktywnych wulkanów świata.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80596027",
+        "source_title": "Wikipedia (pl): Salwador, wersja 80596027",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-slv-kuskatan",
+        "text": "Lud Pipil nazywał swoją ziemię Kuskatan — w języku nawat „miejsce drogocennych klejnotów”; stąd dawna nazwa regionu Cuzcatlán.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385390596",
+        "source_title": "Wikipedia (en): El Salvador, wersja 1385390596",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-slv-niepodleglosc",
+        "text": "Po uzyskaniu niepodległości od Hiszpanii w 1821 r. Salwador na krótko wcielono do Cesarstwa Meksyku; w 1823 r. odłączył się i dołączył do federacji Ameryki Środkowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385390596",
+        "source_title": "Wikipedia (en): El Salvador, wersja 1385390596",
+        "checked": "2026-11-16"
+      }
+    ],
+    "USA": [
+      {
+        "id": "country-usa-ameryka",
+        "text": "Nazwa „America” to żeńska forma łacińskiego imienia Amerigo Vespucciego; jako nazwy miejsca użyli jej po raz pierwszy w 1507 r. kartografowie Waldseemüller i Ringmann.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385853817",
+        "source_title": "Wikipedia (en): United States, wersja 1385853817",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-usa-federacja",
+        "text": "Stany Zjednoczone to najstarsza istniejąca federacja na świecie; ich system prezydencki przejęło w całości lub części wiele państw.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385853817",
+        "source_title": "Wikipedia (en): United States, wersja 1385853817",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-usa-ksiezyc",
+        "text": "Amerykańska misja Apollo 11 z 1969 r. była pierwszym z sześciu załogowych lądowań na Księżycu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385853817",
+        "source_title": "Wikipedia (en): United States, wersja 1385853817",
+        "checked": "2026-11-16"
+      }
+    ],
+    "ARG": [
+      {
+        "id": "country-arg-radio",
+        "text": "27 sierpnia 1920 r. w Buenos Aires nadano „Parsifala” Wagnera — od tej audycji studentów medycyny Argentyna zaczęła pierwsze na świecie regularne nadawanie radiowe.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385959088",
+        "source_title": "Wikipedia (en): Argentina, wersja 1385959088",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-arg-animacja",
+        "text": "Pierwsze na świecie pełnometrażowe filmy animowane powstały w Argentynie — zrobił je rysownik Quirino Cristiani w latach 1917 i 1918.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385959088",
+        "source_title": "Wikipedia (en): Argentina, wersja 1385959088",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-arg-srebro",
+        "text": "Nazwa Argentyna pochodzi od łacińskiego argentum („srebro”) i wiąże się z legendą o górach pełnych srebra, w którą wierzyli pierwsi europejscy odkrywcy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81011448",
+        "source_title": "Wikipedia (pl): Argentyna, wersja 81011448",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BOL": [
+      {
+        "id": "country-bol-uyuni",
+        "text": "W Boliwii leży Salar de Uyuni — największe solnisko świata i ważne źródło litu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385267508",
+        "source_title": "Wikipedia (en): Bolivia, wersja 1385267508",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bol-titicaca",
+        "text": "Jezioro Titicaca na granicy Boliwii to najwyżej położone jezioro żeglowne świata i największe jezioro Ameryki Południowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385267508",
+        "source_title": "Wikipedia (en): Bolivia, wersja 1385267508",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bol-oruro",
+        "text": "Karnawał w Oruro w Boliwii znalazł się wśród pierwszych 19 „arcydzieł ustnego i niematerialnego dziedzictwa ludzkości” ogłoszonych przez UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385267508",
+        "source_title": "Wikipedia (en): Bolivia, wersja 1385267508",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BRA": [
+      {
+        "id": "country-bra-rownik",
+        "text": "Brazylia to jedyny kraj na świecie, przez który przebiegają jednocześnie równik i zwrotnik Koziorożca.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81140542",
+        "source_title": "Wikipedia (pl): Brazylia, wersja 81140542",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bra-amazonka",
+        "text": "Brazylia obejmuje większość dorzecza Amazonki — największego systemu rzecznego świata i najrozleglejszego dziewiczego lasu tropikalnego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385424411",
+        "source_title": "Wikipedia (en): Brazil, wersja 1385424411",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-bra-prasa",
+        "text": "Prasa w Brazylii narodziła się oficjalnie 13 maja 1808 r. w Rio de Janeiro, gdy książę regent Jan założył Królewską Drukarnię.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385424411",
+        "source_title": "Wikipedia (en): Brazil, wersja 1385424411",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CHL": [
+      {
+        "id": "country-chl-trzesienie",
+        "text": "W Chile w 1960 r. doszło do najsilniejszego trzęsienia ziemi, jakie kiedykolwiek zarejestrowano na Ziemi.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81214470",
+        "source_title": "Wikipedia (pl): Chile, wersja 81214470",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-chl-ojos",
+        "text": "Najwyższy szczyt Chile, Nevado Ojos del Salado (6891 m), jest zarazem najwyższym wulkanem świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385023801",
+        "source_title": "Wikipedia (en): Chile, wersja 1385023801",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-chl-fiba",
+        "text": "Chile zorganizowało w 1953 r. pierwsze mistrzostwa świata koszykarek i zdobyło na nich srebrny medal.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385023801",
+        "source_title": "Wikipedia (en): Chile, wersja 1385023801",
+        "checked": "2026-11-16"
+      }
+    ],
+    "ECU": [
+      {
+        "id": "country-ecu-natura",
+        "text": "Konstytucja Ekwadoru z 2008 r. jako pierwsza na świecie przyznała przyrodzie prawa, których można dochodzić przed sądem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385779728",
+        "source_title": "Wikipedia (en): Ecuador, wersja 1385779728",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ecu-galapagos",
+        "text": "Do Ekwadoru należą Galapagos — wyspy z wyjątkową fauną, na których narodziła się teoria ewolucji Darwina; są na liście UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385779728",
+        "source_title": "Wikipedia (en): Ecuador, wersja 1385779728",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ecu-banany",
+        "text": "Ekwador jest pierwszym na świecie eksporterem bananów, a w 2020 r. został też największym eksporterem krewetek.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385779728",
+        "source_title": "Wikipedia (en): Ecuador, wersja 1385779728",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GUY": [
+      {
+        "id": "country-guy-zaginiony",
+        "text": "Góra Roraima i stołowe góry Gujany (tepui) miały zainspirować Arthura Conan Doyle'a do napisania powieści „Zaginiony świat” z 1912 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384679424",
+        "source_title": "Wikipedia (en): Guyana, wersja 1384679424",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-guy-ropa",
+        "text": "W 2025 r. Gujana była największym na świecie producentem ropy naftowej w przeliczeniu na mieszkańca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384679424",
+        "source_title": "Wikipedia (en): Guyana, wersja 1384679424",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-guy-amazonia",
+        "text": "Część Gujany porasta Amazonia — największy i najbardziej różnorodny biologicznie las tropikalny świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384679424",
+        "source_title": "Wikipedia (en): Guyana, wersja 1384679424",
+        "checked": "2026-11-16"
+      }
+    ],
+    "COL": [
+      {
+        "id": "country-col-ceramika",
+        "text": "Najstarszą ceramikę obu Ameryk znaleziono w San Jacinto w Kolumbii; pochodzi z lat 5000–4000 p.n.e.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384319500",
+        "source_title": "Wikipedia (en): Colombia, wersja 1384319500",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-col-szmaragdy",
+        "text": "W Kolumbii wydobywa się najwięcej szmaragdów na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81229832",
+        "source_title": "Wikipedia (pl): Kolumbia, wersja 81229832",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-col-bioroznorodnosc",
+        "text": "Kolumbia ma największą na świecie bioróżnorodność w przeliczeniu na powierzchnię i drugą ogółem — ustępuje tylko około 7 razy większej Brazylii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384319500",
+        "source_title": "Wikipedia (en): Colombia, wersja 1384319500",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PRY": [
+      {
+        "id": "country-pry-guarani",
+        "text": "Ponad 90% mieszkańców Paragwaju mówi obok hiszpańskiego dialektami języka guarani — to najwyższy w Ameryce Łacińskiej odsetek władających językiem rdzennym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385509205",
+        "source_title": "Wikipedia (en): Paraguay, wersja 1385509205",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pry-itaipu",
+        "text": "Zapora Itaipu na Paranie, na granicy Paragwaju z Brazylią, to trzecia na świecie elektrownia wodna pod względem wytwarzanej energii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385509205",
+        "source_title": "Wikipedia (en): Paraguay, wersja 1385509205",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pry-wojna",
+        "text": "W wojnie z Trójprzymierzem (1864–1870) Paragwaj stracił połowę ludności sprzed wojny i 25–33% terytorium.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385509205",
+        "source_title": "Wikipedia (en): Paraguay, wersja 1385509205",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PER": [
+      {
+        "id": "country-per-ziemniak",
+        "text": "W Peru, uznawanym za ojczyznę ziemniaka, działa największy na świecie bank genów tej rośliny.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80943099",
+        "source_title": "Wikipedia (pl): Peru, wersja 80943099",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-per-malinowski",
+        "text": "Kolej Lima–La Oroya, sięgającą 4749 m n.p.m. i przez lata najwyżej położoną na świecie, zbudował polski inżynier Ernest Malinowski.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80943099",
+        "source_title": "Wikipedia (pl): Peru, wersja 80943099",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-per-chanchan",
+        "text": "W pobliżu Trujillo w Peru leży Chan Chan — największa na świecie cytadela zbudowana z cegły adobe, dzieło kultury Chimú.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385814421",
+        "source_title": "Wikipedia (en): Peru, wersja 1385814421",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SUR": [
+      {
+        "id": "country-sur-nesty",
+        "text": "Na igrzyskach w Seulu w 1988 r. Anthony Nesty zdobył złoto na 100 m stylem motylkowym — był to pierwszy w historii medal olimpijski Surinamu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385534613",
+        "source_title": "Wikipedia (en): Suriname, wersja 1385534613",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-sur-las",
+        "text": "Lasy Surinamu w 2019 r. zajęły 5. miejsce na świecie (na 172 kraje) we wskaźniku nienaruszenia krajobrazu leśnego (9,39/10).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385534613",
+        "source_title": "Wikipedia (en): Suriname, wersja 1385534613",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-sur-1630",
+        "text": "Brytyjscy osadnicy założyli w 1630 r. pierwszą europejską kolonię nad rzeką Surinam, przy Marshall's Creek; to oni utrwalili pisownię „Surinam”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385534613",
+        "source_title": "Wikipedia (en): Suriname, wersja 1385534613",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TTO": [
+      {
+        "id": "country-tto-asfalt",
+        "text": "Na Trynidadzie leży Pitch Lake — największe naturalne złoże asfaltu na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385678801",
+        "source_title": "Wikipedia (en): Trinidad and Tobago, wersja 1385678801",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-tto-steelpan",
+        "text": "Trynidad i Tobago to kolebka steelpanu (bębna ze stalowej beczki), tańca limbo i muzyki calypso oraz soca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385678801",
+        "source_title": "Wikipedia (en): Trinidad and Tobago, wersja 1385678801",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-tto-mundial",
+        "text": "Awansując na mundial 2006, Trynidad i Tobago stał się drugim najmniej ludnym krajem w historii, który zagrał w mistrzostwach świata — po Islandii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385678801",
+        "source_title": "Wikipedia (en): Trinidad and Tobago, wersja 1385678801",
+        "checked": "2026-11-16"
+      }
+    ],
+    "URY": [
+      {
+        "id": "country-ury-mundial",
+        "text": "Urugwaj był gospodarzem pierwszych mistrzostw świata w piłce nożnej w 1930 r. i je wygrał.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80917799",
+        "source_title": "Wikipedia (pl): Urugwaj, wersja 80917799",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ury-konopie",
+        "text": "Urugwaj jako pierwszy kraj na świecie w pełni zalegalizował konopie indyjskie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385721279",
+        "source_title": "Wikipedia (en): Uruguay, wersja 1385721279",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ury-zwrotnik",
+        "text": "Urugwaj to jedyny kraj Ameryki Południowej leżący w całości na południe od zwrotnika Koziorożca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385721279",
+        "source_title": "Wikipedia (en): Uruguay, wersja 1385721279",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VEN": [
+      {
+        "id": "country-ven-wenecja",
+        "text": "Domy na palach nad jeziorem Maracaibo przypominały Amerigo Vespucciemu Wenecję, więc nazwał region Veneziola — „Mała Wenecja”; stąd nazwa Wenezuela.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383749751",
+        "source_title": "Wikipedia (en): Venezuela, wersja 1383749751",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ven-salto",
+        "text": "W Wyżynie Gujańskiej w Wenezueli spada Salto Ángel — najwyższy wodospad na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383749751",
+        "source_title": "Wikipedia (en): Venezuela, wersja 1383749751",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ven-ropa",
+        "text": "Wenezuela ma największe znane zasoby ropy naftowej na świecie; w 1960 r. była jednym z założycieli OPEC.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383749751",
+        "source_title": "Wikipedia (en): Venezuela, wersja 1383749751",
+        "checked": "2026-11-16"
+      }
+    ],
+    "AUS": [
+      {
+        "id": "country-aus-kontynent",
+        "text": "Australia to jedyne państwo na świecie, które obejmuje cały kontynent.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81051254",
+        "source_title": "Wikipedia (pl): Australia, wersja 81051254",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-aus-kosciuszko",
+        "text": "Najwyższy szczyt Australii, Górę Kościuszki (2228 m), odkrył, zdobył i nazwał polski podróżnik Paweł Edmund Strzelecki.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81051254",
+        "source_title": "Wikipedia (pl): Australia, wersja 81051254",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-aus-flinders",
+        "text": "Nazwa Australia pochodzi od łacińskiej Terra Australis, hipotetycznego lądu południowego; spopularyzował ją Matthew Flinders, który opłynął kontynent w 1803 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385626763",
+        "source_title": "Wikipedia (en): Australia, wersja 1385626763",
+        "checked": "2026-11-16"
+      }
+    ],
+    "FJI": [
+      {
+        "id": "country-fji-viti",
+        "text": "Nazwa Fidżi pochodzi od głównej wyspy, Viti Levu; jej angielska wymowa wzięła się jednak z wymowy sąsiadów z Tonga.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385419410",
+        "source_title": "Wikipedia (en): Fiji, wersja 1385419410",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-fji-tasman",
+        "text": "Pierwszym Europejczykiem, który dotarł do Fidżi, był Holender Abel Tasman w 1643 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79831265",
+        "source_title": "Wikipedia (pl): Fidżi, wersja 79831265",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-fji-siodemki",
+        "text": "Reprezentacja Fidżi dwukrotnie wygrała Puchar Świata w rugby siedmioosobowym — w 1997 i 2005 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385419410",
+        "source_title": "Wikipedia (en): Fiji, wersja 1385419410",
+        "checked": "2026-11-16"
+      }
+    ],
+    "KIR": [
+      {
+        "id": "country-kir-cwiartki",
+        "text": "Przez Kiribati przechodzi 180. południk, a także równik — to jedyny kraj na świecie położony we wszystkich czterech ćwiartkach kuli ziemskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80744307",
+        "source_title": "Wikipedia (pl): Kiribati, wersja 80744307",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-kir-kiritimati",
+        "text": "Kiritimati (dawniej Wyspa Bożego Narodzenia) w Kiribati to atol o największej powierzchni lądu na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380925512",
+        "source_title": "Wikipedia (en): Kiribati, wersja 1380925512",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-kir-81m",
+        "text": "Kiribati to jedno z najniżej położonych państw świata — najwyższy punkt kraju wznosi się tylko 81 m nad poziom oceanu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80744307",
+        "source_title": "Wikipedia (pl): Kiribati, wersja 80744307",
+        "checked": "2026-11-16"
+      }
+    ],
+    "FSM": [
+      {
+        "id": "country-fsm-nanmadol",
+        "text": "Nan Madol na Pohnpei — zespół sztucznych wysepek połączonych kanałami — nazywany jest Wenecją Pacyfiku; jest na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385218603",
+        "source_title": "Wikipedia (en): Federated States of Micronesia, wersja 1385218603",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-fsm-deszcz",
+        "text": "Na wyspie Pohnpei w Mikronezji spada rocznie około 8,4 m deszczu — to jedno z najwilgotniejszych miejsc na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81226045",
+        "source_title": "Wikipedia (pl): Mikronezja, wersja 81226045",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-fsm-strefa",
+        "text": "Mikronezja ma bardzo mało lądu, ale jej wody zajmują ogromną część Pacyfiku — to 14. co do wielkości wyłączna strefa ekonomiczna świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385218603",
+        "source_title": "Wikipedia (en): Federated States of Micronesia, wersja 1385218603",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NRU": [
+      {
+        "id": "country-nru-pleasant",
+        "text": "Brytyjski kapitan John Fearn, pierwszy człowiek Zachodu, który zgłosił dostrzeżenie Nauru (1798), nazwał ją „Pleasant Island” — Przyjemną Wyspą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385814755",
+        "source_title": "Wikipedia (en): Nauru, wersja 1385814755",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nru-maly",
+        "text": "Nauru to trzecie najmniejsze państwo świata i najmniejszy członek Wspólnoty Narodów zarówno pod względem powierzchni, jak i ludności.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385814755",
+        "source_title": "Wikipedia (en): Nauru, wersja 1385814755",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nru-fosforyty",
+        "text": "Fosforyty odkrył na Nauru w 1900 r. Albert Fuller Ellis; dochody z ich wydobycia dały wyspie w latach 60. i 70. XX w. jeden z najwyższych dochodów na mieszkańca na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385814755",
+        "source_title": "Wikipedia (en): Nauru, wersja 1385814755",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NZL": [
+      {
+        "id": "country-nzl-kobiety",
+        "text": "W 1893 r. Nowa Zelandia jako pierwszy kraj na świecie przyznała wszystkim kobietom prawo głosu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385934979",
+        "source_title": "Wikipedia (en): New Zealand, wersja 1385934979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nzl-placa",
+        "text": "W 1894 r. Nowa Zelandia jako pierwsza na świecie zagwarantowała płacę minimalną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385934979",
+        "source_title": "Wikipedia (en): New Zealand, wersja 1385934979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-nzl-taupo",
+        "text": "Największe jezioro Nowej Zelandii, Taupō, wypełnia kalderę jednego z najaktywniejszych superwulkanów świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385934979",
+        "source_title": "Wikipedia (en): New Zealand, wersja 1385934979",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PLW": [
+      {
+        "id": "country-plw-rekiny",
+        "text": "W 2009 r. Palau utworzyło pierwszy na świecie rezerwat rekinów, zakazując komercyjnych połowów tych ryb na swoich wodach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384880264",
+        "source_title": "Wikipedia (en): Palau, wersja 1384880264",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-plw-konstytucja",
+        "text": "W 1981 r. Palau przyjęło w głosowaniu pierwszą na świecie konstytucję wolną od broni jądrowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384880264",
+        "source_title": "Wikipedia (en): Palau, wersja 1384880264",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-plw-przysiega",
+        "text": "Od 2017 r. przyjezdni na Palau dostają w paszporcie stempel z ekologiczną przysięgą (Palau Pledge) — to pierwsze takie zobowiązanie na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384880264",
+        "source_title": "Wikipedia (en): Palau, wersja 1384880264",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PNG": [
+      {
+        "id": "country-png-jezyki",
+        "text": "W Papui-Nowej Gwinei mówi się 840 znanymi językami — to najbardziej zróżnicowany językowo kraj na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385798866",
+        "source_title": "Wikipedia (en): Papua New Guinea, wersja 1385798866",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-png-rolnictwo",
+        "text": "Rolnictwo w górach Nowej Gwinei narodziło się samodzielnie około 7000 r. p.n.e. — to jedno z nielicznych miejsc na świecie, gdzie ludzie sami udomowili rośliny.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385798866",
+        "source_title": "Wikipedia (en): Papua New Guinea, wersja 1385798866",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-png-kuk",
+        "text": "Jedynym obiektem UNESCO w Papui-Nowej Gwinei jest stanowisko wczesnego rolnictwa Kuk, wpisane na listę w 2008 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385798866",
+        "source_title": "Wikipedia (en): Papua New Guinea, wersja 1385798866",
+        "checked": "2026-11-16"
+      }
+    ],
+    "WSM": [
+      {
+        "id": "country-wsm-piatek",
+        "text": "Pod koniec grudnia 2011 r. Samoa przeszło ze strefy UTC−11 na UTC+13 i ominęło jeden dzień — w kalendarzu zabrakło piątku 30 grudnia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800074",
+        "source_title": "Wikipedia (en): Samoa, wersja 1385800074",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-wsm-roggeveen",
+        "text": "Pierwszym znanym nie-Polinezyjczykiem, który dostrzegł wyspy Samoa, był Holender Jacob Roggeveen w 1722 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800074",
+        "source_title": "Wikipedia (en): Samoa, wersja 1385800074",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-wsm-silisili",
+        "text": "Najwyższym szczytem Samoa jest góra Silisili (1858 m n.p.m.) na wyspie Savaiʻi; duże wyspy są wulkaniczne, mniejsze — koralowe.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80789695",
+        "source_title": "Wikipedia (pl): Samoa, wersja 80789695",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TON": [
+      {
+        "id": "country-ton-suwerennosc",
+        "text": "Tonga nigdy nie oddała swojej suwerenności żadnemu obcemu mocarstwu; Wielka Brytania prowadziła tylko jej sprawy zagraniczne na mocy traktatu przyjaźni.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385946637",
+        "source_title": "Wikipedia (en): Tonga, wersja 1385946637",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ton-1616",
+        "text": "Pierwszy kontakt Tonga z Europejczykami nastąpił w 1616 r., gdy holenderscy żeglarze Willem Schouten i Jacob Le Maire dotarli do wysp Niua.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80239603",
+        "source_title": "Wikipedia (pl): Tonga, wersja 80239603",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-ton-1845",
+        "text": "W 1845 r. młody wojownik i mówca Tāufaʻāhau zjednoczył wyspy Tonga w jedno królestwo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385946637",
+        "source_title": "Wikipedia (en): Tonga, wersja 1385946637",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TUV": [
+      {
+        "id": "country-tuv-maly",
+        "text": "Tuvalu to czwarte najmniejsze państwo świata — mniejsze są tylko Monako, Nauru i Watykan.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385801553",
+        "source_title": "Wikipedia (en): Tuvalu, wersja 1385801553",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-tuv-metaverse",
+        "text": "15 listopada 2022 r. Tuvalu, zagrożone podnoszeniem się oceanu, ogłosiło jako pierwszy kraj świata budowę swojej cyfrowej kopii w metawersum, by ocalić dziedzictwo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385801553",
+        "source_title": "Wikipedia (en): Tuvalu, wersja 1385801553",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-tuv-ellice",
+        "text": "Atol Funafuti nazwano w 1819 r. Wyspą Ellice'a; do 1976 r. Tuvalu i Kiribati tworzyły jedną brytyjską kolonię Wysp Gilberta i Ellice.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385801553",
+        "source_title": "Wikipedia (en): Tuvalu, wersja 1385801553",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VUT": [
+      {
+        "id": "country-vut-jezyki",
+        "text": "Vanuatu ma największą na świecie liczbę języków na mieszkańca — średnio jednym językiem mówi tylko 2000 osób.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385801729",
+        "source_title": "Wikipedia (en): Vanuatu, wersja 1385801729",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-vut-roimata",
+        "text": "Dominium wodza Roi Maty na wyspach Efate, Artok i Lelepy było w 2008 r. pierwszym obiektem z Vanuatu wpisanym na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81010825",
+        "source_title": "Wikipedia (pl): Vanuatu, wersja 81010825",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-vut-quiros",
+        "text": "Pierwsi Europejczycy przybyli na Vanuatu w 1606 r. — hiszpańska wyprawa Portugalczyka Fernandesa de Queirósa wylądowała na Espíritu Santo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385801729",
+        "source_title": "Wikipedia (en): Vanuatu, wersja 1385801729",
+        "checked": "2026-11-16"
+      }
+    ],
+    "MHL": [
+      {
+        "id": "country-mhl-mike",
+        "text": "1 listopada 1952 r. na atolu Enewetak na Wyspach Marshalla przetestowano pierwszą na świecie bombę wodorową o kryptonimie „Mike”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385797483",
+        "source_title": "Wikipedia (en): Marshall Islands, wersja 1385797483",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-mhl-kryptowaluta",
+        "text": "W lutym 2018 r. Wyspy Marshalla jako pierwszy kraj na świecie uznały swoją kryptowalutę za prawny środek płatniczy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385797483",
+        "source_title": "Wikipedia (en): Marshall Islands, wersja 1385797483",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-mhl-rejestr",
+        "text": "W 2017 r. rejestr statków Wysp Marshalla był drugim co do wielkości na świecie, po panamskim.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385797483",
+        "source_title": "Wikipedia (en): Marshall Islands, wersja 1385797483",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SLB": [
+      {
+        "id": "country-slb-salomon",
+        "text": "Nazwę Wyspy Salomona nadali nie Mendaña, lecz inni, którzy wiązali jego wyprawę z opowieściami o bogactwach biblijnego króla Salomona i krainie Ofir.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800532",
+        "source_title": "Wikipedia (en): Solomon Islands, wersja 1385800532",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-slb-koralowce",
+        "text": "Wody Wysp Salomona mają drugą na świecie różnorodność koralowców — ustępują tylko wyspom Raja Ampat w Indonezji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800532",
+        "source_title": "Wikipedia (en): Solomon Islands, wersja 1385800532",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-slb-futsal",
+        "text": "Reprezentacja futsalu Wysp Salomona, Kurukuru, ma rekord świata w najszybciej strzelonym golu w oficjalnym meczu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800532",
+        "source_title": "Wikipedia (en): Solomon Islands, wersja 1385800532",
+        "checked": "2026-11-16"
       }
     ]
   }

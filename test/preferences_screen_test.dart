@@ -44,7 +44,7 @@ void main() {
     expect(find.text('Rzeźba terenu'), findsOneWidget);
     expect(
       find.byType(DropdownButtonFormField<LearningDifficulty>),
-      findsNWidgets(3),
+      findsNWidgets(Continent.values.length),
     );
     expect(tester.takeException(), isNull);
 

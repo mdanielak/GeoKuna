@@ -1,5 +1,5 @@
 {
-  "version": "capital-trivia-0.1.0",
+  "version": "capital-trivia-0.2.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -3404,6 +3404,1133 @@
         "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383090425",
         "source_title": "Wikipedia (en): Harare, wersja 1383090425",
         "checked": "2026-11-15"
+      }
+    ],
+    "ATG": [
+      {
+        "id": "capital-atg-1666",
+        "text": "Saint John's rozplanowano po francuskiej inwazji z 1666 r., bo miejsce dobrze strzegło portu; z czasem miasto wyparło Falmouth jako główny ośrodek Antigui.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384371729",
+        "source_title": "Wikipedia (en): St. John's, Antigua and Barbuda, wersja 1384371729",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-atg-1675",
+        "text": "16 września 1675 r. zgromadzenie Antigui wyznaczyło sześć miejsc handlu — jednym z nich było Saint John's.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384371729",
+        "source_title": "Wikipedia (en): St. John's, Antigua and Barbuda, wersja 1384371729",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-atg-1736",
+        "text": "W 1736 r. w Saint John's zaplanowano wielkie powstanie niewolników; poza tym miasto w dużej mierze ominęły walki zbrojne.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384371729",
+        "source_title": "Wikipedia (en): St. John's, Antigua and Barbuda, wersja 1384371729",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BHS": [
+      {
+        "id": "capital-bhs-wilhelm",
+        "text": "Nassau nazwano w 1695 r. na cześć króla Anglii Wilhelma III z dynastii Orańskiej-Nassau; wcześniej miasto nosiło nazwę Charles Town.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78884203",
+        "source_title": "Wikipedia (pl): Nassau (Bahamy), wersja 78884203",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bhs-1703",
+        "text": "W 1703 r. flota hiszpańsko-francuska doszczętnie zburzyła Nassau, a żołnierze splądrowali ruiny; wcześniej, w 1684 r., miasto zniszczył hiszpański rajd.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78884203",
+        "source_title": "Wikipedia (pl): Nassau (Bahamy), wersja 78884203",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bhs-bond",
+        "text": "W 1981 r. Nassau zagrało Grecję w morskiej scenie filmu o Jamesie Bondzie „Tylko dla twoich oczu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385869168",
+        "source_title": "Wikipedia (en): Nassau, Bahamas, wersja 1385869168",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BRB": [
+      {
+        "id": "capital-brb-bridge",
+        "text": "Nazwa Bridgetown wzięła się od mostu nad Careenage zbudowanego po 1654 r. i od nazwiska sir Tobiasa Bridge'a; wcześniej było to Miasto Świętego Michała.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375155845",
+        "source_title": "Wikipedia (en): Bridgetown, wersja 1375155845",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-brb-unesco",
+        "text": "25 czerwca 2011 r. historyczne Bridgetown wraz z garnizonem wpisano na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375155845",
+        "source_title": "Wikipedia (en): Bridgetown, wersja 1375155845",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-brb-kolonie",
+        "text": "Dzięki położeniu na wschodnim skraju Karaibów Bridgetown było kiedyś najważniejszym miastem wszystkich brytyjskich posiadłości w Nowym Świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375155845",
+        "source_title": "Wikipedia (en): Bridgetown, wersja 1375155845",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BLZ": [
+      {
+        "id": "capital-blz-hattie",
+        "text": "Belmopan zbudowano, bo huragan Hattie w 1961 r. zniszczył około 75% domów w nadmorskim Belize City, dawnej stolicy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380351540",
+        "source_title": "Wikipedia (en): Belmopan, wersja 1380351540",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-blz-1970",
+        "text": "Belmopan założono jako miasto planowane w 1970 r. — to jedna z najmłodszych stolic świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380351540",
+        "source_title": "Wikipedia (en): Belmopan, wersja 1380351540",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-blz-koszt",
+        "text": "Pierwszy etap budowy Belmopanu ukończono w 1970 r. kosztem 24 mln dolarów belizeńskich (12 mln USD); miejsce pod stolicę poświęcono 9 października 1965 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380351540",
+        "source_title": "Wikipedia (en): Belmopan, wersja 1380351540",
+        "checked": "2026-11-16"
+      }
+    ],
+    "DMA": [
+      {
+        "id": "capital-dma-sairi",
+        "text": "Roseau zbudowano na miejscu dawnej wioski Karaibów wyspiarskich o nazwie Sairi; to najstarsza i najważniejsza osada miejska Dominiki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377927771",
+        "source_title": "Wikipedia (en): Roseau, wersja 1377927771",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-dma-fort",
+        "text": "W 1770 r. Brytyjczycy zbudowali w Roseau Fort Young na miejscu fortu francuskiego z 1699 r.; w 1778 r. Francuzi zdobyli go wraz z miastem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377927771",
+        "source_title": "Wikipedia (en): Roseau, wersja 1377927771",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-dma-rzeka",
+        "text": "Przez Roseau płynie rzeka Roseau — jedna z największych rzek przepływających przez stolicę któregokolwiek kraju Karaibów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377927771",
+        "source_title": "Wikipedia (en): Roseau, wersja 1377927771",
+        "checked": "2026-11-16"
+      }
+    ],
+    "DOM": [
+      {
+        "id": "capital-dom-najstarsze",
+        "text": "Santo Domingo założyli Hiszpanie w 1496 r.; to najstarsza nieprzerwanie zamieszkana osada europejska w obu Amerykach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385038900",
+        "source_title": "Wikipedia (en): Santo Domingo, wersja 1385038900",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-dom-pierwsze",
+        "text": "W Santo Domingo powstały pierwsze w Nowym Świecie uniwersytet, katedra, zamek, klasztor i forteca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385038900",
+        "source_title": "Wikipedia (en): Santo Domingo, wersja 1385038900",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-dom-trujillo",
+        "text": "W latach 1936–1961 Santo Domingo nosiło nazwę Ciudad Trujillo — na cześć dyktatora Rafaela Trujillo.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80121504",
+        "source_title": "Wikipedia (pl): Santo Domingo, wersja 80121504",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GRD": [
+      {
+        "id": "capital-grd-1650",
+        "text": "Saint George's założyli Francuzi w 1650 r., gdy Grenadę skolonizował Jacques Dyel du Parquet, gubernator Martyniki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384457201",
+        "source_title": "Wikipedia (en): St. George's, Grenada, wersja 1384457201",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-grd-fort",
+        "text": "Od 1705 r. Francuzi budowali nad portem Saint George's gwiaździsty fort z czterema bastionami; Brytyjczycy przemianowali go na Fort George.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384457201",
+        "source_title": "Wikipedia (en): St. George's, Grenada, wersja 1384457201",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-grd-nazwa",
+        "text": "Po przejęciu Grenady przez Wielką Brytanię w 1763 r. miasto nazwano Saint George's Town — od św. Jerzego, patrona Anglii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384457201",
+        "source_title": "Wikipedia (en): St. George's, Grenada, wersja 1384457201",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GTM": [
+      {
+        "id": "capital-gtm-kaminaljuyu",
+        "text": "Na terenie miasta Gwatemala leży Kaminaljuyu — miasto Majów zamieszkane głównie od 1500 r. p.n.e. do 1200 r. n.e.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384912724",
+        "source_title": "Wikipedia (en): Guatemala City, wersja 1384912724",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-gtm-1773",
+        "text": "Obecną stolicę Gwatemali założyli Hiszpanie, bo poprzednią — dzisiejszą Antigua Guatemala — zniszczyło trzęsienie ziemi Santa Marta w 1773 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384912724",
+        "source_title": "Wikipedia (en): Guatemala City, wersja 1384912724",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-gtm-1821",
+        "text": "We wrześniu 1821 r. w mieście Gwatemala ogłoszono Akt Niepodległości Ameryki Środkowej od Hiszpanii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384912724",
+        "source_title": "Wikipedia (en): Guatemala City, wersja 1384912724",
+        "checked": "2026-11-16"
+      }
+    ],
+    "HTI": [
+      {
+        "id": "capital-hti-brown",
+        "text": "Port-au-Prince to jedyne miasto na świecie, którego główna aleja nosi imię amerykańskiego abolicjonisty Johna Browna.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384223387",
+        "source_title": "Wikipedia (en): Port-au-Prince, wersja 1384223387",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-hti-prince",
+        "text": "Według jednej z teorii nazwa Port-au-Prince pochodzi od statku Le Prince, który przypłynął tu w 1706 r. pod dowództwem de Saint-André.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384223387",
+        "source_title": "Wikipedia (en): Port-au-Prince, wersja 1384223387",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-hti-republicain",
+        "text": "23 września 1793 r. komisarz Étienne Polverel przemianował miasto na Port-Républicain, by przypominało mieszkańcom o obowiązkach wobec rewolucji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384223387",
+        "source_title": "Wikipedia (en): Port-au-Prince, wersja 1384223387",
+        "checked": "2026-11-16"
+      }
+    ],
+    "HND": [
+      {
+        "id": "capital-hnd-srebrna",
+        "text": "Nazwa Tegucigalpa oznacza w miejscowym języku indiańskim „srebrną górę”; miasto założone w 1578 r. było ośrodkiem wydobycia srebra i złota.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79811122",
+        "source_title": "Wikipedia (pl): Tegucigalpa, wersja 79811122",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-hnd-1880",
+        "text": "Po niepodległości Tegucigalpa dzieliła rolę stolicy z Comayaguą; jedyną stolicą Hondurasu została dopiero w 1880 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79811122",
+        "source_title": "Wikipedia (pl): Tegucigalpa, wersja 79811122",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-hnd-most",
+        "text": "W 1817 r. burmistrz Narciso Mallol zaczął budować w Tegucigalpie pierwszy most — murowany, dziesięcioprzęsłowy, nad rzeką Choluteca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384639511",
+        "source_title": "Wikipedia (en): Tegucigalpa, wersja 1384639511",
+        "checked": "2026-11-16"
+      }
+    ],
+    "JAM": [
+      {
+        "id": "capital-jam-1692",
+        "text": "Kingston założono 22 lipca 1692 r., tuż po trzęsieniu ziemi, które zniszczyło Port Royal — pierwsze ulice wytyczono dla ocalałych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380196167",
+        "source_title": "Wikipedia (en): Kingston, Jamaica, wersja 1380196167",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-jam-1703",
+        "text": "Kingston zaczęło naprawdę rosnąć dopiero po 1703 r., gdy Port Royal, zniszczony już trzęsieniem ziemi, strawił jeszcze pożar.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380196167",
+        "source_title": "Wikipedia (en): Kingston, Jamaica, wersja 1380196167",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-jam-angielski",
+        "text": "Kingston to największe anglojęzyczne miasto półkuli zachodniej na południe od Stanów Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380196167",
+        "source_title": "Wikipedia (en): Kingston, Jamaica, wersja 1380196167",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CAN": [
+      {
+        "id": "capital-can-bytown",
+        "text": "Ottawę założono w 1826 r. jako Bytown — od pułkownika Johna By, budowniczego Kanału Rideau; obecną nazwę przyjęto w 1855 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383790914",
+        "source_title": "Wikipedia (en): Ottawa, wersja 1383790914",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-can-handel",
+        "text": "Nazwa Ottawa pochodzi od rzeki Ottawa, a ta — od algonkińskiego słowa oznaczającego „handlować”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383790914",
+        "source_title": "Wikipedia (en): Ottawa, wersja 1383790914",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-can-wiktoria",
+        "text": "31 grudnia 1857 r. królowa Wiktoria wybrała Ottawę na nową stolicę Kanady.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80238409",
+        "source_title": "Wikipedia (pl): Ottawa, wersja 80238409",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CRI": [
+      {
+        "id": "capital-cri-jozef",
+        "text": "San José nazwano na cześć św. Józefa z Nazaretu, wybranego na patrona parafii przy założeniu miasta w 1736 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385873981",
+        "source_title": "Wikipedia (en): San José, Costa Rica, wersja 1385873981",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-cri-kadyks",
+        "text": "San José nie miało aktu założycielskiego ani władz miejskich; pierwszą radę miasta dostało dopiero w 1812 r., z konstytucją z Kadyksu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385873981",
+        "source_title": "Wikipedia (en): San José, Costa Rica, wersja 1385873981",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-cri-1823",
+        "text": "San José jest stolicą Kostaryki od 1823 r.; wcześniej stolicą było pobliskie Cartago.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77910899",
+        "source_title": "Wikipedia (pl): San José, wersja 77910899",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CUB": [
+      {
+        "id": "capital-cub-krzysztof",
+        "text": "W 1514 r. Diego Velázquez de Cuéllar założył osadę San Cristóbal de la Habana, czyli „Święty Krzysztof z Habany” — stąd nazwa Hawany.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384821487",
+        "source_title": "Wikipedia (en): Havana, wersja 1384821487",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-cub-1552",
+        "text": "Dzięki dogodnemu portowi Hawana w połowie XVI w. prześcignęła Santiago i w 1552 r. została stolicą wyspy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384821487",
+        "source_title": "Wikipedia (en): Havana, wersja 1384821487",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-cub-maine",
+        "text": "Zatonięcie pancernika USS Maine w porcie Hawany 15 lutego 1898 r. stało się pretekstem do wybuchu wojny amerykańsko-hiszpańskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80282200",
+        "source_title": "Wikipedia (pl): Hawana, wersja 80282200",
+        "checked": "2026-11-16"
+      }
+    ],
+    "MEX": [
+      {
+        "id": "capital-mex-najstarsza",
+        "text": "Meksyk to najstarsza stolica obu Ameryk i jedna z zaledwie dwóch założonych przez ludy rdzenne.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384624247",
+        "source_title": "Wikipedia (en): Mexico City, wersja 1384624247",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-mex-tenochtitlan",
+        "text": "Miasto Meksyk zaczęło się jako Tenochtitlan — miasto Mexików zbudowane około 1325 r. na wyspach jeziora Texcoco.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384624247",
+        "source_title": "Wikipedia (en): Mexico City, wersja 1384624247",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-mex-xochimilco",
+        "text": "Historyczne centrum Meksyku i pobliskie pływające ogrody Xochimilco wpisano w 1987 r. na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80514313",
+        "source_title": "Wikipedia (pl): Meksyk (miasto), wersja 80514313",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NIC": [
+      {
+        "id": "capital-nic-woda",
+        "text": "Nazwa Managua oznacza w języku nahuatl „miejsce, gdzie jest duża woda”; zanim powstało miasto, istniała tu duża osada indiańska.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77910925",
+        "source_title": "Wikipedia (pl): Managua, wersja 77910925",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nic-trzesienia",
+        "text": "Managuę niszczyły silne trzęsienia ziemi 31 marca 1931 r. i 23 grudnia 1972 r.; miasto za każdym razem odbudowywano.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77910925",
+        "source_title": "Wikipedia (pl): Managua, wersja 77910925",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nic-oviedo",
+        "text": "Hiszpański kronikarz Gonzalo Fernández de Oviedo odwiedził indiańskie miasto Managua w 1529 r. — leżało nieco w innym miejscu niż dzisiejsze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385939180",
+        "source_title": "Wikipedia (en): Managua, wersja 1385939180",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PAN": [
+      {
+        "id": "capital-pan-ryby",
+        "text": "W miejscu Panamy istniała indiańska wioska rybacka o tej nazwie — „Panama” oznacza „wiele ryb”.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80159279",
+        "source_title": "Wikipedia (pl): Panama (miasto), wersja 80159279",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pan-morgan",
+        "text": "28 stycznia 1671 r. korsarz Henry Morgan złupił i podpalił pierwotną Panamę; miasto odbudowano 21 stycznia 1673 r. na pobliskim półwyspie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384910634",
+        "source_title": "Wikipedia (en): Panama City, wersja 1384910634",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pan-1519",
+        "text": "Panamę założył 15 sierpnia 1519 r. hiszpański konkwistador Pedro Arias Dávila (Pedrarias).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384910634",
+        "source_title": "Wikipedia (en): Panama City, wersja 1384910634",
+        "checked": "2026-11-16"
+      }
+    ],
+    "KNA": [
+      {
+        "id": "capital-kna-stolica",
+        "text": "Basseterre, założone przez Francuzów w 1627 r., było za gubernatora de Poincy stolicą całych Francuskich Indii Zachodnich, w tym Gwadelupy i Martyniki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383629274",
+        "source_title": "Wikipedia (en): Basseterre, wersja 1383629274",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-kna-pozar",
+        "text": "Większość budynków w Basseterre powstała po wielkim pożarze z 1867 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383629274",
+        "source_title": "Wikipedia (en): Basseterre, wersja 1383629274",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-kna-najstarsze",
+        "text": "Basseterre to jedno z najstarszych miast wschodnich Karaibów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383629274",
+        "source_title": "Wikipedia (en): Basseterre, wersja 1383629274",
+        "checked": "2026-11-16"
+      }
+    ],
+    "LCA": [
+      {
+        "id": "capital-lca-nobel",
+        "text": "W Castries urodzili się dwaj nobliści: ekonomista Arthur Lewis (1979) i poeta Derek Walcott (literatura, 1992).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375332329",
+        "source_title": "Wikipedia (en): Castries, wersja 1375332329",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-lca-carenage",
+        "text": "Castries nosiło pierwotnie nazwę Carénage (fr. „bezpieczne kotwicowisko”) — od głębokiego portu; nadali ją Francuzi przy założeniu w 1650 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375332329",
+        "source_title": "Wikipedia (en): Castries, wersja 1375332329",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-lca-markiz",
+        "text": "W 1785 r. Carénage przemianowano na Castries — na cześć markiza de Castries, francuskiego ministra marynarki i kolonii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375332329",
+        "source_title": "Wikipedia (en): Castries, wersja 1375332329",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VCT": [
+      {
+        "id": "capital-vct-ogrod",
+        "text": "Ogród botaniczny w Kingstown, założony w 1765 r. przez Roberta Melville'a, jest uważany za najstarszy na półkuli zachodniej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79999387",
+        "source_title": "Wikipedia (pl): Kingstown, wersja 79999387",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-vct-bligh",
+        "text": "W 1793 r. kapitan William Bligh przywiózł do ogrodu botanicznego na Saint Vincent sadzonki chlebowca z Tahiti.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79999387",
+        "source_title": "Wikipedia (pl): Kingstown, wersja 79999387",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-vct-1722",
+        "text": "Kingstown założyli osadnicy francuscy w 1722 r.; obecną nazwę nadali mu Brytyjczycy po 1763 r., gdy wyspa stała się ich kolonią.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79999387",
+        "source_title": "Wikipedia (pl): Kingstown, wersja 79999387",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SLV": [
+      {
+        "id": "capital-slv-zbawiciel",
+        "text": "Misję San Salvador („Święty Zbawiciel”) założył w 1525 r. Gonzalo de Alvarado; nazwa nawiązuje zapewne do święta Przemienienia Pańskiego (6 sierpnia).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377476653",
+        "source_title": "Wikipedia (en): San Salvador, wersja 1377476653",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-slv-zniszczenia",
+        "text": "San Salvador kilkanaście razy niszczyły wybuchy wulkanu i trzęsienia ziemi; po trzęsieniu z 1854 r. stolicę przeniesiono na krótko do Nueva San Salvador.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79999553",
+        "source_title": "Wikipedia (pl): San Salvador, wersja 79999553",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-slv-miss",
+        "text": "San Salvador był gospodarzem wyborów Miss Universe w 1975 i 2023 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377476653",
+        "source_title": "Wikipedia (en): San Salvador, wersja 1377476653",
+        "checked": "2026-11-16"
+      }
+    ],
+    "USA": [
+      {
+        "id": "capital-usa-kolumbia",
+        "text": "Dystrykt Kolumbii nazwano od Kolumbii — kobiecej personifikacji narodu amerykańskiego; człon „Washington” upamiętnia pierwszego prezydenta USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385306914",
+        "source_title": "Wikipedia (en): Washington, D.C., wersja 1385306914",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-usa-1790",
+        "text": "Za datę założenia Waszyngtonu uważa się 16 lipca 1790 r., gdy uchwalono ustawę Residence Act o dystrykcie stołecznym nad Potomakiem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385306914",
+        "source_title": "Wikipedia (en): Washington, D.C., wersja 1385306914",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-usa-adams",
+        "text": "W 1800 r. stolicę przeniesiono z Filadelfii do Waszyngtonu; Kongres obradował w niedokończonym Kapitolu, a John Adams wprowadził się do Białego Domu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385306914",
+        "source_title": "Wikipedia (en): Washington, D.C., wersja 1385306914",
+        "checked": "2026-11-16"
+      }
+    ],
+    "ARG": [
+      {
+        "id": "capital-arg-dwukrotnie",
+        "text": "Buenos Aires zakładano dwa razy: w 1536 r. Pedro de Mendoza nazwał osadę Nuestra Señora Santa María del Buen Aire, a w 1580 r. miasto odbudował Juan de Garay.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80948855",
+        "source_title": "Wikipedia (pl): Buenos Aires, wersja 80948855",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-arg-metro",
+        "text": "Na początku XX w. w Buenos Aires stanęły najwyższe budynki Ameryki Południowej i powstało pierwsze na kontynencie metro.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385288985",
+        "source_title": "Wikipedia (en): Buenos Aires, wersja 1385288985",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-arg-barrios",
+        "text": "Mówi się o „stu dzielnicach” Buenos Aires — od tanga śpiewanego w latach 40. przez Alberta Castillo — choć oficjalnie miasto ma ich tylko 48.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385288985",
+        "source_title": "Wikipedia (en): Buenos Aires, wersja 1385288985",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BOL": [
+      {
+        "id": "capital-bol-wysokosc",
+        "text": "Sucre to druga najwyżej położona stolica świata — po Quito.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379426346",
+        "source_title": "Wikipedia (en): Sucre, wersja 1379426346",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bol-cztery",
+        "text": "Sucre nazywa się „miastem czterech nazw”: było osadą Charcas, potem m.in. La Platą i Chuquisaką; obecną nazwę nosi oficjalnie od 1839 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80603655",
+        "source_title": "Wikipedia (pl): Sucre, wersja 80603655",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bol-chuquisaca",
+        "text": "Inkaska nazwa miasta, Chuquisaca, pochodzi zapewne od keczuańskich słów chuqi („srebro”) i saqa („stos”) — czyli „stos szlachetnego metalu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379426346",
+        "source_title": "Wikipedia (en): Sucre, wersja 1379426346",
+        "checked": "2026-11-16"
+      }
+    ],
+    "BRA": [
+      {
+        "id": "capital-bra-niemeyer",
+        "text": "Brasílię zaprojektowali Lúcio Costa, Oscar Niemeyer i Joaquim Cardozo; budowę zaczęto w 1956 r., a nową stolicę zainaugurowano już w 1960 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80614118",
+        "source_title": "Wikipedia (pl): Brasília, wersja 80614118",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bra-xviii",
+        "text": "Pomysł przeniesienia stolicy Brazylii w głąb kraju pojawił się już na początku XVIII w., ale decyzję podjęto dopiero w 1955 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80614118",
+        "source_title": "Wikipedia (pl): Brasília, wersja 80614118",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-bra-unesco",
+        "text": "Architektura Brasílii uchodzi za arcydzieło modernizmu XX w. i została wpisana na listę światowego dziedzictwa UNESCO.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80614118",
+        "source_title": "Wikipedia (pl): Brasília, wersja 80614118",
+        "checked": "2026-11-16"
+      }
+    ],
+    "CHL": [
+      {
+        "id": "capital-chl-valdivia",
+        "text": "Konkwistador Pedro de Valdivia założył 12 lutego 1541 r. Santiago del Nuevo Extremo, wytyczając siatkę ulic wokół dzisiejszego Plaza de Armas.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384966845",
+        "source_title": "Wikipedia (en): Santiago, wersja 1384966845",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-chl-huelen",
+        "text": "Ceremonia założenia Santiago odbyła się na wzgórzu Huelén, przemianowanym później na Santa Lucía.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80207685",
+        "source_title": "Wikipedia (pl): Santiago, wersja 80207685",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-chl-alameda",
+        "text": "Południowe koryto rzeki Mapocho w Santiago zasypano i zamieniono w promenadę Alameda — dziś aleję Libertador Bernardo O'Higgins.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80207685",
+        "source_title": "Wikipedia (pl): Santiago, wersja 80207685",
+        "checked": "2026-11-16"
+      }
+    ],
+    "ECU": [
+      {
+        "id": "capital-ecu-unesco",
+        "text": "W 1978 r. Quito i Kraków jako pierwsze zostały wpisane na listę światowego dziedzictwa kulturowego UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380948688",
+        "source_title": "Wikipedia (en): Quito, wersja 1380948688",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ecu-wulkan",
+        "text": "Quito jest jedyną stolicą na świecie bezpośrednio zagrożoną przez czynny wulkan — Pichinchę; w 1660 r. pokrył on miasto warstwą ponad 25 cm popiołu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77897178",
+        "source_title": "Wikipedia (pl): Quito, wersja 77897178",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ecu-najstarsza",
+        "text": "Hiszpanie zdobyli Quito w 1534 r. — ta data uchodzi za datę założenia, co czyni Quito najstarszą stolicą Ameryki Południowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380948688",
+        "source_title": "Wikipedia (en): Quito, wersja 1380948688",
+        "checked": "2026-11-16"
+      }
+    ],
+    "GUY": [
+      {
+        "id": "capital-guy-nazwy",
+        "text": "Georgetown założyli w 1782 r. Francuzi jako Longchamps; w 1784 r. Holendrzy nazwali je Stabroek, a w 1812 r. Brytyjczycy — Georgetown, na cześć Jerzego III.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381242673",
+        "source_title": "Wikipedia (en): Georgetown, Guyana, wersja 1381242673",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-guy-1748",
+        "text": "W 1748 r. gubernator Laurens Storm van 's Gravesande zbudował posterunek przy ujściu Demerary, gdzie później wyrosło Georgetown.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381242673",
+        "source_title": "Wikipedia (en): Georgetown, Guyana, wersja 1381242673",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-guy-drewno",
+        "text": "Georgetown ma liczne bulwary oraz wiele drewnianych budynków i targowisk z czasów kolonialnych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381242673",
+        "source_title": "Wikipedia (en): Georgetown, Guyana, wersja 1381242673",
+        "checked": "2026-11-16"
+      }
+    ],
+    "COL": [
+      {
+        "id": "capital-col-bolivar",
+        "text": "To Simón Bolívar nadał miastu nazwę Bogotá — na cześć ludu Muisca i na znak zerwania z koroną hiszpańską.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384523707",
+        "source_title": "Wikipedia (en): Bogotá, wersja 1384523707",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-col-1538",
+        "text": "Bogotę założył 6 sierpnia 1538 r. Gonzalo Jiménez de Quesada jako stolicę Królestwa Nowej Granady, po wyprawie w Andy i podboju ludu Muisca.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384523707",
+        "source_title": "Wikipedia (en): Bogotá, wersja 1384523707",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-col-boyaca",
+        "text": "Po bitwie pod Boyacá 7 sierpnia 1819 r. Bogota została stolicą niepodległej Wielkiej Kolumbii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384523707",
+        "source_title": "Wikipedia (en): Bogotá, wersja 1384523707",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PRY": [
+      {
+        "id": "capital-pry-matka",
+        "text": "Asunción to jedno z najstarszych miast Ameryki Południowej i najdłużej zamieszkane miejsce w dorzeczu La Platy — stąd przydomek „Matka Miast”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385935019",
+        "source_title": "Wikipedia (en): Asunción, wersja 1385935019",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pry-wniebowziecie",
+        "text": "Fort, z którego wyrosło Asunción, założył Juan de Salazar de Espinosa 15 sierpnia 1537 r., w święto Wniebowzięcia — stąd nazwa Nuestra Señora de la Asunción.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385935019",
+        "source_title": "Wikipedia (en): Asunción, wersja 1385935019",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pry-1731",
+        "text": "W 1731 r. w Asunción wybuchło pierwsze powstanie przeciw władzy hiszpańskich kolonistów, pod wodzą José de Antequery y Castro.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=71919991",
+        "source_title": "Wikipedia (pl): Asunción, wersja 71919991",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PER": [
+      {
+        "id": "capital-per-krolowie",
+        "text": "Limę założono w 1535 r. jako Miasto Królów (Ciudad de los Reyes), bo decyzję o założeniu podjęto 6 stycznia, w święto Trzech Króli.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385350016",
+        "source_title": "Wikipedia (en): Lima, wersja 1385350016",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-per-limaq",
+        "text": "Nazwa Lima to prawdopodobnie hiszpańska wymowa rdzennej nazwy Limaq, którą tubylcy nazywali tę rolniczą okolicę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385350016",
+        "source_title": "Wikipedia (en): Lima, wersja 1385350016",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-per-garua",
+        "text": "W Limie prawie nigdy nie pada deszcz; od czerwca do września poranki przynoszą za to uporczywą mżawkę garúa, która zwykle wysycha do popołudnia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385350016",
+        "source_title": "Wikipedia (en): Lima, wersja 1385350016",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SUR": [
+      {
+        "id": "capital-sur-tecza",
+        "text": "Najbardziej prawdopodobne wyjaśnienie nazwy Paramaribo to paramaru-bo: paramaru znaczy „tęcza”, a bo — „miejsce”.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79957250",
+        "source_title": "Wikipedia (pl): Paramaribo, wersja 79957250",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-sur-1613",
+        "text": "Pierwszą holenderską osadą w miejscu Paramaribo była faktoria założona w 1613 r. przez Nicolaesa Baliestela i Dircka Claeszoona van Sanena.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384152541",
+        "source_title": "Wikipedia (en): Paramaribo, wersja 1384152541",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-sur-unesco",
+        "text": "Historyczne śródmieście Paramaribo jest od 2002 r. na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384152541",
+        "source_title": "Wikipedia (en): Paramaribo, wersja 1384152541",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TTO": [
+      {
+        "id": "capital-tto-cumucurapo",
+        "text": "Pierwsza osada Port-of-Spain powstała obok indiańskiej wioski rybackiej Cumucurapo — „miejsca drzew puchowca”; dziś to dzielnica Mucurapo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383999435",
+        "source_title": "Wikipedia (en): Port of Spain, wersja 1383999435",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-tto-1797",
+        "text": "Do 1797 r. miasto nosiło hiszpańską nazwę Puerto de España; od tego roku nazywa się Port-of-Spain.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79536291",
+        "source_title": "Wikipedia (pl): Port-of-Spain, wersja 79536291",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-tto-1757",
+        "text": "Port-of-Spain jest stolicą Trynidadu od 1757 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383999435",
+        "source_title": "Wikipedia (en): Port of Spain, wersja 1383999435",
+        "checked": "2026-11-16"
+      }
+    ],
+    "URY": [
+      {
+        "id": "capital-ury-zabala",
+        "text": "Według dziennika Bruna Mauricia de Zabali Montevideo założono 24 grudnia 1726 r.; nie zachował się żaden oficjalny akt założenia miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383030737",
+        "source_title": "Wikipedia (en): Montevideo, wersja 1383030737",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ury-mundial",
+        "text": "Montevideo było gospodarzem pierwszych mistrzostw świata w piłce nożnej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80663062",
+        "source_title": "Wikipedia (pl): Montevideo, wersja 80663062",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ury-mercosur",
+        "text": "W Montevideo mieści się siedziba administracyjna Mercosuru i ALADI, dlatego miasto porównuje się do roli Brukseli w Europie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383030737",
+        "source_title": "Wikipedia (en): Montevideo, wersja 1383030737",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VEN": [
+      {
+        "id": "capital-ven-losada",
+        "text": "Caracas założył w 1567 r. hiszpański odkrywca Diego de Losada jako Santiago de León de Caracas — to do dziś oficjalna nazwa miasta.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79777920",
+        "source_title": "Wikipedia (pl): Caracas, wersja 79777920",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ven-1812",
+        "text": "W 1812 r. trzęsienie ziemi zniszczyło Caracas, a w 1814 r. ćwierć mieszkańców opuściła miasto; wojna o niepodległość trwała do bitwy pod Carabobo w 1821 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382696841",
+        "source_title": "Wikipedia (en): Caracas, wersja 1382696841",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ven-bolivar",
+        "text": "W 1810 r. Caracas było pierwszym ośrodkiem buntu Simóna Bolívara przeciw władzy hiszpańskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79777920",
+        "source_title": "Wikipedia (pl): Caracas, wersja 79777920",
+        "checked": "2026-11-16"
+      }
+    ],
+    "AUS": [
+      {
+        "id": "capital-aus-kompromis",
+        "text": "Canberrę zbudowano jako kompromis między Sydney a Melbourne — dwoma największymi miastami Australii, które rywalizowały o rolę stolicy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385909981",
+        "source_title": "Wikipedia (en): Canberra, wersja 1385909981",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-aus-griffin",
+        "text": "Canberra to w całości miasto planowane według projektu amerykańskich architektów Waltera Burleya Griffina i Marion Mahony Griffin; nazwę nadano jej w 1913 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385909981",
+        "source_title": "Wikipedia (en): Canberra, wersja 1385909981",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-aus-cmy",
+        "text": "Nazwa Canberra odwoływała się najpewniej do spotkań ludu Ngunnawal, który co wiosnę świętował przelot ciem bogong przez ten region.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77462042",
+        "source_title": "Wikipedia (pl): Canberra, wersja 77462042",
+        "checked": "2026-11-16"
+      }
+    ],
+    "FJI": [
+      {
+        "id": "capital-fji-levuka",
+        "text": "W 1877 r. stolicę Fidżi przeniesiono do Suvy z Levuki, bo Levuka, ściśnięta między stromą górą a morzem, nie miała miejsca na rozbudowę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380653319",
+        "source_title": "Wikipedia (en): Suva, wersja 1380653319",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-fji-cakobau",
+        "text": "W 1868 r., gdy Suva była małą wioską, wódz Seru Epenisa Cakobau oddał tu ziemię spółce Polynesia Company w zamian za spłatę długów wobec USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380653319",
+        "source_title": "Wikipedia (en): Suva, wersja 1380653319",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-fji-uniwersytet",
+        "text": "Uniwersytet Południowego Pacyfiku w Suvie zbudowały i sfinansowały w 1968 r. wspólnie m.in. Fidżi, Tonga, Samoa, Vanuatu, Kiribati i Wyspy Salomona.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79831266",
+        "source_title": "Wikipedia (pl): Suva, wersja 79831266",
+        "checked": "2026-11-16"
+      }
+    ],
+    "KIR": [
+      {
+        "id": "capital-kir-grobla",
+        "text": "Bairiki łączy z Betio grobla Nippon Causeway, otwarta w 1989 r.; część ciągłej drogi przez Tarawę Południową aż do lotniska Bonriki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381539669",
+        "source_title": "Wikipedia (en): Bairiki, wersja 1381539669",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-kir-parlament",
+        "text": "Bairiki to faktyczna stolica Kiribati z siedzibą prezydenta i większości ministerstw, ale parlament przeniesiono na wyspę Ambo.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79267481",
+        "source_title": "Wikipedia (pl): Bairiki, wersja 79267481",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-kir-state",
+        "text": "W centrum Bairiki stoi State House — oficjalna rezydencja głowy państwa Kiribati.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381539669",
+        "source_title": "Wikipedia (en): Bairiki, wersja 1381539669",
+        "checked": "2026-11-16"
+      }
+    ],
+    "FSM": [
+      {
+        "id": "capital-fsm-1989",
+        "text": "Palikir na wyspie Pohnpei ogłoszono stolicą Mikronezji w 1989 r.; największym miastem wyspy jest jednak pobliska Kolonia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373593286",
+        "source_title": "Wikipedia (en): Palikir, wersja 1373593286",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-fsm-hiszpania",
+        "text": "Portugalczycy i Hiszpanie dotarli na Pohnpei w XV w., ale osadnictwo kolonialne zaczęło się tu dopiero w 1886 r., za Hiszpanów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373593286",
+        "source_title": "Wikipedia (en): Palikir, wersja 1373593286",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-fsm-niemcy",
+        "text": "Pod koniec wojny amerykańsko-hiszpańskiej w 1898 r. Niemcy kupiły od Hiszpanii Karoliny, w tym wyspę Pohnpei z dzisiejszym Palikirem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373593286",
+        "source_title": "Wikipedia (en): Palikir, wersja 1373593286",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NRU": [
+      {
+        "id": "capital-nru-brak",
+        "text": "Nauru formalnie nie ma ani miast, ani oficjalnej stolicy; Yaren jest jedynie uznawany przez ONZ za „główny dystrykt” i siedzibę rządu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378308676",
+        "source_title": "Wikipedia (en): Yaren, wersja 1378308676",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nru-moqua",
+        "text": "Dawna nazwa Yaren, Makwa (Moqua), pochodzi od studni Moqua — podziemnego jeziora, głównego źródła wody pitnej Nauruańczyków.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378308676",
+        "source_title": "Wikipedia (en): Yaren, wersja 1378308676",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nru-1968",
+        "text": "Dystrykt Yaren utworzono w 1968 r.; znajduje się w nim m.in. parlament, kwatera policji i lotnisko Nauru.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378308676",
+        "source_title": "Wikipedia (en): Yaren, wersja 1378308676",
+        "checked": "2026-11-16"
+      }
+    ],
+    "NZL": [
+      {
+        "id": "capital-nzl-waterloo",
+        "text": "Nazwa Wellington upamiętnia Arthura Wellesleya, pierwszego księcia Wellington i zwycięzcę spod Waterloo (1815).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385586756",
+        "source_title": "Wikipedia (en): Wellington, wersja 1385586756",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nzl-maui",
+        "text": "Jedna z maoryskich nazw Wellington nawiązuje do legendy o bogu Māui, który miał łowić ryby u wybrzeży Wyspy Północnej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79383647",
+        "source_title": "Wikipedia (pl): Wellington, wersja 79383647",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-nzl-1865",
+        "text": "Wellington jest stolicą Nowej Zelandii od 1865 r., ale żadna ustawa tego nie określa — to wyłącznie zwyczaj.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385586756",
+        "source_title": "Wikipedia (en): Wellington, wersja 1385586756",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PLW": [
+      {
+        "id": "capital-plw-ryba",
+        "text": "Nazwa Ngerulmud pochodzi z palauańskiego wyrażenia oznaczającego „miejsce sfermentowanej ryby ustniczki” i odnosi się do wzgórza nad oceanem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381852377",
+        "source_title": "Wikipedia (en): Ngerulmud, wersja 1381852377",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-plw-kod",
+        "text": "Ngerulmud to jedyna miejscowość na Palau z własnym kodem pocztowym (96939); reszta kraju używa kodu 96940.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381852377",
+        "source_title": "Wikipedia (en): Ngerulmud, wersja 1381852377",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-plw-konstytucja",
+        "text": "Konstytucja Palau z 1979 r. nakazała utworzyć stałą stolicę na wyspie Babeldaob w ciągu dziesięciu lat; projekt powierzono firmie z Hawajów w 1986 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381852377",
+        "source_title": "Wikipedia (en): Ngerulmud, wersja 1381852377",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TUV": [
+      {
+        "id": "capital-tuv-funafuti",
+        "text": "Vaiaku nie jest formalnie stolicą Tuvalu — tę rolę pełni cały atol Funafuti; w Vaiaku mieszczą się jednak niemal wszystkie urzędy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379297215",
+        "source_title": "Wikipedia (en): Vaiaku, wersja 1379297215",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-tuv-hotel",
+        "text": "W Vaiaku działa jedyny hotel Tuvalu, Vaiaku Langi Hotel, oraz Narodowy Bank Tuvalu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379297215",
+        "source_title": "Wikipedia (en): Vaiaku, wersja 1379297215",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-tuv-0-11",
+        "text": "Vaiaku zajmuje zaledwie 0,11 km²; mieszka w nim kilkaset osób.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=74248889",
+        "source_title": "Wikipedia (pl): Vaiaku, wersja 74248889",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PNG": [
+      {
+        "id": "capital-png-moresby",
+        "text": "Pierwszym Brytyjczykiem, który zobaczył to miejsce, był w 1873 r. kapitan John Moresby; nazwał je na cześć swojego ojca, admirała Fairfaxa Moresby'ego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384648377",
+        "source_title": "Wikipedia (en): Port Moresby, wersja 1384648377",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-png-protektorat",
+        "text": "6 listopada 1884 r. w Hanuabadzie, dziś części Port Moresby, ogłoszono brytyjski protektorat nad częścią Nowej Gwinei.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81039792",
+        "source_title": "Wikipedia (pl): Port Moresby, wersja 81039792",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-png-japonia",
+        "text": "W latach 1942–1943 Port Moresby był głównym celem Japończyków, którzy chcieli zrobić z niego bazę lotniczą i odciąć Australię od Azji i Ameryki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384648377",
+        "source_title": "Wikipedia (en): Port Moresby, wersja 1384648377",
+        "checked": "2026-11-16"
+      }
+    ],
+    "WSM": [
+      {
+        "id": "capital-wsm-tajfun",
+        "text": "15 marca 1889 r. siedem okrętów Niemiec, USA i Wielkiej Brytanii nie chciało opuścić portu Apia przed tajfunem, by żaden nie „stracił twarzy” — uciekł tylko brytyjski Calliope.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375634293",
+        "source_title": "Wikipedia (en): Apia, wersja 1375634293",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-wsm-1959",
+        "text": "Współczesne Apia założono w latach 50. XIX w.; oficjalną stolicą Samoa jest od 1959 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375634293",
+        "source_title": "Wikipedia (en): Apia, wersja 1375634293",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-wsm-niemcy",
+        "text": "W latach 1900–1914 Apia była stolicą Samoa Niemieckiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375634293",
+        "source_title": "Wikipedia (en): Apia, wersja 1375634293",
+        "checked": "2026-11-16"
+      }
+    ],
+    "TON": [
+      {
+        "id": "capital-ton-cook",
+        "text": "James Cook narysował pierwszą mapę zatoki Nukuʻalofa, choć w relacjach z podróży nigdy nie użył nazwy miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385008054",
+        "source_title": "Wikipedia (en): Nukuʻalofa, wersja 1385008054",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ton-vason",
+        "text": "Pierwszy zapis nazwy Nukuʻalofa pochodzi z książki misjonarza George'a Vasona z 1810 r.; alfabet tongański opracowano dopiero w latach 1826–1827.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385008054",
+        "source_title": "Wikipedia (en): Nukuʻalofa, wersja 1385008054",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-ton-1845",
+        "text": "Pierwsze wzmianki o Nukuʻalofa pochodzą z 1795 r., gdy pobliskie wzgórze wybrano na siedzibę rodziny królewskiej; stolicą Tonga miasto jest od 1845 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77911972",
+        "source_title": "Wikipedia (pl): Nukuʻalofa, wersja 77911972",
+        "checked": "2026-11-16"
+      }
+    ],
+    "VUT": [
+      {
+        "id": "capital-vut-sandwich",
+        "text": "James Cook opisał wyspę Efate, na której leży Port Vila, w 1774 r. i nazwał ją Wyspą Sandwich.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377098234",
+        "source_title": "Wikipedia (en): Port Vila, wersja 1377098234",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-vut-pam",
+        "text": "13 marca 2015 r. w Vanuatu i Port Vila uderzył cyklon tropikalny Pam piątej kategorii; już w 1987 r. miasto poważnie zniszczył inny cyklon.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=75490454",
+        "source_title": "Wikipedia (pl): Port Vila, wersja 75490454",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-vut-burmistrz",
+        "text": "W sierpniu 2024 r. burmistrzynią Port Vila została Jenny Regenvanu — pierwsza kobieta na tym stanowisku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377098234",
+        "source_title": "Wikipedia (en): Port Vila, wersja 1377098234",
+        "checked": "2026-11-16"
+      }
+    ],
+    "MHL": [
+      {
+        "id": "capital-mhl-groble",
+        "text": "Groble łączące wysepki Delap, Uliga i Djarrit na atolu Majuro zbudowano w 1944 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375772763",
+        "source_title": "Wikipedia (en): Delap-Uliga-Djarrit, wersja 1375772763",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-mhl-hydroplany",
+        "text": "W 1940 r. Japonia zbudowała na wysepce Djarrit bazę wodnosamolotów; 31 stycznia 1944 r. wylądowali tu Amerykanie i założyli bazę marynarki Majuro.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375772763",
+        "source_title": "Wikipedia (en): Delap-Uliga-Djarrit, wersja 1375772763",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-mhl-1885",
+        "text": "Atol Majuro, z dzisiejszym Delap-Uliga-Djarrit, wszedł w skład Cesarstwa Niemieckiego w 1885 r.; w 1914 r. zdobyła go Japonia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375772763",
+        "source_title": "Wikipedia (en): Delap-Uliga-Djarrit, wersja 1375772763",
+        "checked": "2026-11-16"
+      }
+    ],
+    "SLB": [
+      {
+        "id": "capital-slb-wiatr",
+        "text": "Nazwa Honiara pochodzi od nagho ni ara — w jednym z języków Guadalcanalu „miejsce wschodniego wiatru”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385920866",
+        "source_title": "Wikipedia (en): Honiara, wersja 1385920866",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-slb-henderson",
+        "text": "Lotnisko na wschód od Honiary było w 1942 r. polem bitwy o Henderson Field — jednej z walk kampanii na Guadalcanalu, wygranej przez USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385920866",
+        "source_title": "Wikipedia (en): Honiara, wersja 1385920866",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-slb-1952",
+        "text": "Honiara została oficjalnie stolicą brytyjskiego protektoratu Wysp Salomona w 1952 r.; od 1983 r. tworzy osobne terytorium stołeczne.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385920866",
+        "source_title": "Wikipedia (en): Honiara, wersja 1385920866",
+        "checked": "2026-11-16"
       }
     ]
   }

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/providers.dart';
+import '../../app/version.dart';
 import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
 import 'app_preferences.dart';
@@ -369,6 +370,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       : const Icon(Icons.restart_alt),
                   label: Text(_busy ? 'Zapisuję…' : 'Zresetuj naukę'),
                 ),
+                const SizedBox(height: 32),
+                const _AboutApp(),
               ],
             ),
           ),
@@ -461,4 +464,43 @@ class _DifficultyPreference extends StatelessWidget {
       ),
     ),
   );
+}
+
+/// App and content versions, so a reported mistake can be traced to a pack.
+class _AboutApp extends ConsumerWidget {
+  const _AboutApp();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    String pack(String? version) =>
+        version == null ? '…' : version.split('-').last;
+    final continent = ref.watch(selectedContinentProvider);
+    final small = Theme.of(context).textTheme.bodySmall;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'GeoKuna $appVersion ($appBuild)',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Ciekawostki: o krajach '
+          '${pack(ref.watch(countryTriviaProvider).asData?.value.version)}, '
+          'o stolicach '
+          '${pack(ref.watch(capitalTriviaProvider).asData?.value.version)}, '
+          'o flagach '
+          '${pack(ref.watch(flagTriviaProvider).asData?.value.version)}.',
+          style: small,
+        ),
+        Text(
+          '${continent.label}: mapa '
+          '${pack(ref.watch(catalogProvider).asData?.value.version)}, '
+          'stolice ${pack(ref.watch(capitalsProvider).asData?.value.version)}, '
+          'flagi ${pack(ref.watch(flagsProvider).asData?.value.version)}.',
+          style: small,
+        ),
+      ],
+    );
+  }
 }

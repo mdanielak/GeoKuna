@@ -2,7 +2,7 @@ name: geokuna
 description: "GeoKuna — offline nauka geografii przez mapę i quizy."
 publish_to: 'none'
 
-version: 0.4.0+4
+version: 0.5.0+5
 
 environment:
   sdk: ^3.14.0
@@ -41,6 +41,9 @@ flutter:
     - assets/content/
     - assets/content/africa/
     - assets/content/asia/
+    - assets/content/northAmerica/
+    - assets/content/southAmerica/
+    - assets/content/oceania/
     - assets/maps/
     - assets/maps/context/
     - assets/maps/styles/relief/
@@ -48,3 +51,6 @@ flutter:
     - assets/flags/europe-0.1.0/
     - assets/flags/africa-0.1.0/
     - assets/flags/asia-0.1.0/
+    - assets/flags/northAmerica-0.1.0/
+    - assets/flags/southAmerica-0.1.0/
+    - assets/flags/oceania-0.1.0/

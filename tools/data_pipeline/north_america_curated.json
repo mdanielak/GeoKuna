@@ -1,0 +1,426 @@
+{
+  "version": "north-america-0.1.0",
+  "source": {
+    "name": "KSNG — Urzędowy wykaz nazw państw i terytoriów niesamodzielnych, wydanie VIII zaktualizowane, 2025 z aktualizacją 2026",
+    "url": "https://www.gov.pl/attachment/1cde0699-e88f-4401-bca5-c9909d0fe526",
+    "sha256": "4645f3f84b46920b7e9bb480a265f70a52da5d429977eb650709d84dfabd08eb"
+  },
+  "countries": [
+    {
+      "id": "ATG",
+      "name": "Antigua i Barbuda",
+      "iso2": "AG",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Antigua and Barbuda"
+      ]
+    },
+    {
+      "id": "BHS",
+      "name": "Bahamy",
+      "iso2": "BS",
+      "plural": true,
+      "small": false,
+      "aliases": [
+        "The Bahamas"
+      ]
+    },
+    {
+      "id": "BRB",
+      "name": "Barbados",
+      "iso2": "BB",
+      "plural": false,
+      "small": true,
+      "aliases": []
+    },
+    {
+      "id": "BLZ",
+      "name": "Belize",
+      "iso2": "BZ",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "DMA",
+      "name": "Dominika",
+      "iso2": "DM",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Dominica"
+      ]
+    },
+    {
+      "id": "DOM",
+      "name": "Dominikana",
+      "iso2": "DO",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Dominican Republic"
+      ]
+    },
+    {
+      "id": "GRD",
+      "name": "Grenada",
+      "iso2": "GD",
+      "plural": false,
+      "small": true,
+      "aliases": []
+    },
+    {
+      "id": "GTM",
+      "name": "Gwatemala",
+      "iso2": "GT",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Guatemala"
+      ]
+    },
+    {
+      "id": "HTI",
+      "name": "Haiti",
+      "iso2": "HT",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "HND",
+      "name": "Honduras",
+      "iso2": "HN",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "JAM",
+      "name": "Jamajka",
+      "iso2": "JM",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Jamaica"
+      ]
+    },
+    {
+      "id": "CAN",
+      "name": "Kanada",
+      "iso2": "CA",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Canada"
+      ]
+    },
+    {
+      "id": "CRI",
+      "name": "Kostaryka",
+      "iso2": "CR",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Costa Rica"
+      ]
+    },
+    {
+      "id": "CUB",
+      "name": "Kuba",
+      "iso2": "CU",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Cuba"
+      ]
+    },
+    {
+      "id": "MEX",
+      "name": "Meksyk",
+      "iso2": "MX",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Mexico"
+      ]
+    },
+    {
+      "id": "NIC",
+      "name": "Nikaragua",
+      "iso2": "NI",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "Nicaragua"
+      ]
+    },
+    {
+      "id": "PAN",
+      "name": "Panama",
+      "iso2": "PA",
+      "plural": false,
+      "small": false,
+      "aliases": []
+    },
+    {
+      "id": "KNA",
+      "name": "Saint Kitts i Nevis",
+      "iso2": "KN",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Saint Kitts and Nevis"
+      ]
+    },
+    {
+      "id": "LCA",
+      "name": "Saint Lucia",
+      "iso2": "LC",
+      "plural": false,
+      "small": true,
+      "aliases": []
+    },
+    {
+      "id": "VCT",
+      "name": "Saint Vincent i Grenadyny",
+      "iso2": "VC",
+      "plural": false,
+      "small": true,
+      "aliases": [
+        "Saint Vincent and the Grenadines"
+      ]
+    },
+    {
+      "id": "SLV",
+      "name": "Salwador",
+      "iso2": "SV",
+      "plural": false,
+      "small": false,
+      "aliases": [
+        "El Salvador"
+      ]
+    },
+    {
+      "id": "USA",
+      "name": "Stany Zjednoczone",
+      "iso2": "US",
+      "plural": true,
+      "small": false,
+      "aliases": [
+        "United States of America"
+      ]
+    }
+  ],
+  "capitals": [
+    {
+      "id": "capital:ATG",
+      "country_id": "ATG",
+      "name": "Saint John’s",
+      "aliases": [],
+      "source_page": 19,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:BHS",
+      "country_id": "BHS",
+      "name": "Nassau",
+      "aliases": [],
+      "source_page": 21,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:BRB",
+      "country_id": "BRB",
+      "name": "Bridgetown",
+      "aliases": [],
+      "source_page": 21,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:BLZ",
+      "country_id": "BLZ",
+      "name": "Belmopan",
+      "aliases": [],
+      "source_page": 22,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:DMA",
+      "country_id": "DMA",
+      "name": "Roseau",
+      "aliases": [],
+      "source_page": 26,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:DOM",
+      "country_id": "DOM",
+      "name": "Santo Domingo",
+      "aliases": [],
+      "source_page": 27,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:GRD",
+      "country_id": "GRD",
+      "name": "Saint George’s",
+      "aliases": [],
+      "source_page": 30,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:GTM",
+      "country_id": "GTM",
+      "name": "Gwatemala",
+      "aliases": [
+        "Guatemala City"
+      ],
+      "source_page": 31,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:HTI",
+      "country_id": "HTI",
+      "name": "Port-au-Prince",
+      "aliases": [],
+      "source_page": 32,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:HND",
+      "country_id": "HND",
+      "name": "Tegucigalpa",
+      "aliases": [],
+      "source_page": 32,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:JAM",
+      "country_id": "JAM",
+      "name": "Kingston",
+      "aliases": [],
+      "source_page": 34,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:CAN",
+      "country_id": "CAN",
+      "name": "Ottawa",
+      "aliases": [],
+      "source_page": 36,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:CRI",
+      "country_id": "CRI",
+      "name": "San José",
+      "aliases": [],
+      "source_page": 39,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:CUB",
+      "country_id": "CUB",
+      "name": "Hawana",
+      "aliases": [
+        "Havana"
+      ],
+      "source_page": 39,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:MEX",
+      "country_id": "MEX",
+      "name": "Meksyk",
+      "aliases": [
+        "Mexico City"
+      ],
+      "source_page": 44,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:NIC",
+      "country_id": "NIC",
+      "name": "Managua",
+      "aliases": [],
+      "source_page": 47,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:PAN",
+      "country_id": "PAN",
+      "name": "Panama",
+      "aliases": [
+        "Panama City"
+      ],
+      "source_page": 48,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:KNA",
+      "country_id": "KNA",
+      "name": "Basseterre",
+      "aliases": [],
+      "source_page": 51,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:LCA",
+      "country_id": "LCA",
+      "name": "Castries",
+      "aliases": [],
+      "source_page": 51,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:VCT",
+      "country_id": "VCT",
+      "name": "Kingstown",
+      "aliases": [],
+      "source_page": 51,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:SLV",
+      "country_id": "SLV",
+      "name": "San Salvador",
+      "aliases": [],
+      "source_page": 51,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:USA",
+      "country_id": "USA",
+      "name": "Waszyngton",
+      "aliases": [
+        "Washington"
+      ],
+      "source_page": 54,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    }
+  ]
+}

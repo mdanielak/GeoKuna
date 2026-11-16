@@ -28,6 +28,9 @@ flutter test
 for s in map capitals flags africa asia relief trivia context; do
   python3 tools/data_pipeline/build_$s.py --check
 done
+for r in north_america south_america oceania; do
+  python3 tools/data_pipeline/build_region.py $r --check
+done
 flutter build web --no-web-resources-cdn   # przy wydaniu
 ```
 
@@ -82,6 +85,17 @@ flutter run -d IDENTYFIKATOR
 
 Porty parowania i debugowania różnią się i zmieniają. Po pracy wyłącz debugowanie
 bezprzewodowe. Szczegóły: [dokumentacja ADB](https://developer.android.com/tools/adb).
+
+## Wersje
+
+`version:` w `pubspec.yaml` ma postać `MAJOR.MINOR.PATCH+BUILD` i musi zgadzać się
+z `lib/app/version.dart` (pilnuje `test/version_test.dart`); Ustawienia → na dole
+pokazują wersję aplikacji i paczek treści.
+
+- MINOR — większa paczka funkcji; PATCH — same poprawki;
+- BUILD rośnie przy każdym wydaniu (Android odrzuca APK z niższym lub równym numerem);
+- wydanie = tag gita `vX.Y.Z` na commicie z podbitą wersją;
+- paczki treści (`assets/content/*.json`) mają osobne wersje w polu `version`.
 
 ## Agenci i narzędzia
 

@@ -34,6 +34,9 @@ jest granicą). Państwa transkontynentalne można wskazać w każdym widocznym 
 | Europa | 32°W–65°E, 34°N–72°N | 47 |
 | Afryka | 26°W–65°E, 36°S–38°N | 54 |
 | Azja | 20°E–180°E, 12°S–82°N | 50 |
+| Ameryka Północna | 170°W–50°W, 5°N–84°N | 22 |
+| Ameryka Południowa | 95°W–30°W, 57°S–15°N | 13 |
+| Australia i Oceania | 110°E–150°W, 50°S–22°N | 14 |
 
 **Europa (47):** 44 państwa europejskie ONZ, Kosowo oraz Cypr i Turcja
 (wspólne z Azją: Cypr jako członek UE, Turcja jako kraj transkontynentalny).
@@ -63,6 +66,15 @@ ujęcie w quizie nie rozstrzyga statusu. Cypr Północny → Cypr; Hongkong i Ma
 Chiny; Gaza i Zachodni Brzeg tworzą Palestynę. Pominięto fragmenty Rosji za
 południkiem 180°.
 
+**Ameryki i Oceania (49):** państwa ONZ według przydziału kontynentów w KSNG
+(Trynidad i Tobago w Ameryce Południowej); bez terytoriów zależnych (Grenlandia,
+Portoryko, Gujana Francuska, Nowa Kaledonia — ląd kontekstowy) oraz bez Wysp
+Cooka i Niue. Jeden generator: `build_region.py REGION --check`. Oceania leży po
+obu stronach 180°, więc jej geometria, ląd kontekstowy i rzeźba mają długości
+przesunięte o 180° (`build_map.shift_lon`; okno 70°W–30°E w układzie
+przesuniętym). Małe państwa wyspiarskie mają znaczniki (7 w Ameryce Północnej,
+1 w Południowej, 8 w Oceanii).
+
 **Ląd kontekstowy:** pozostały ląd w oknie każdej mapy (kraje spoza quizu tego
 kontynentu oraz obszary wycięte przez politykę, np. Krym na mapie Azji, Sahara
 Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`,
@@ -76,11 +88,11 @@ najpierw przybliżają mapę, dopiero potem wybierają kraj.
 | Zakres | Źródło | Weryfikacja |
 |---|---|---|
 | Europa (paczka 0.3) | [KSNG, wyd. VIII zaktualizowane, 2025](https://www.gov.pl/attachment/2b559c83-4ef7-403b-9063-76a364994597) | `build_capitals.py` |
-| Afryka, Azja (0.1.0) | [KSNG 2025, aktualizacja 2026](https://www.gov.pl/attachment/1cde0699-e88f-4401-bca5-c9909d0fe526), SHA-256 `4645f3f84b46920b7e9bb480a265f70a52da5d429977eb650709d84dfabd08eb` | 2026-11-13 |
+| Afryka, Azja, Ameryki, Oceania (0.1.0) | [KSNG 2025, aktualizacja 2026](https://www.gov.pl/attachment/1cde0699-e88f-4401-bca5-c9909d0fe526), SHA-256 `4645f3f84b46920b7e9bb480a265f70a52da5d429977eb650709d84dfabd08eb` | 2026-11-13 |
 
 Każdy fakt ma stronę PDF, status, datę i jawne aliasy. Build sprawdza SHA PDF
 i obecność stolicy (pozycja `stol.`) oraz aliasów na zapisanej stronie.
-Angielskie aliasy stolic Afryki i Azji pochodzą wyłącznie z przypiętego
+Angielskie aliasy stolic spoza Europy pochodzą wyłącznie z przypiętego
 [Natural Earth populated places 1:50m](https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_50m_populated_places.geojson)
 (SHA-256 `da4662b7bbfeb897d02f228c5839131dce27acff5717630f91ccff4f67828ee7`),
 przy zgodnym państwie i polskiej nazwie.
@@ -114,7 +126,7 @@ czarno-czerwono-zielony; to nie stanowisko polityczne).
 - PNG 500 px szerokości w oryginalnych proporcjach (Nepal 500×610),
   renderowane systemowym librsvg/Cairo; manifest zapisuje SHA źródeł i PNG.
 - Mapowanie ADM0_A3 → ISO z Natural Earth; Kosowo: kod roboczy XK.
-- Assety: `assets/flags/{europe,africa,asia}-0.1.0/`; źródłowe SVG w `tools/data_pipeline/*flags_sources/`.
+- Assety: `assets/flags/<kontynent>-0.1.0/`; źródłowe SVG w `tools/data_pipeline/*flags_sources/`.
 - Nazwa kraju nie występuje w opisie semantycznym flagi ani w nagłówku pytania mapowego.
 - Nazwy państw nie mają źródłowych aliasów: obowiązuje nazwa z katalogu
   (z normalizacją i jedną literówką). Kierunek państwo → flaga — nie wdrożony.
@@ -129,7 +141,8 @@ SHA-256 `ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934`.
 Generator przelicza raster z WGS84 do EPSG:3857 (interpolacja dwuliniowa),
 rozjaśnia paletę i ustawia morze na RGB `218, 238, 244`. Szerokość to natywna
 rozdzielczość źródła (1/30°), najwyżej 3072 px; zapis WebP (jakość 90, pełny kolor).
-Europa 2910 px, Afryka 2730 px, Azja 3072 px szerokości; łącznie ok. 1,8 MB
+Europa 2910 px, Afryka 2730, Azja 3072, Ameryka Północna 3072, Południowa 1950,
+Oceania 3000 px szerokości; łącznie ok. 2,9 MB
 (manifest w `assets/maps/styles/relief/`, wersja 0.2.0). Raster jest tylko tłem —
 wybór i ocenianie wynikają z wektorów. Przy dużym zoomie możliwe drobne różnice
 wybrzeży (różne wersje generalizacji).
@@ -141,8 +154,8 @@ Koszt pamięci na Androidzie wymaga sprawdzenia na telefonie.
 
 ## Ciekawostki
 
-`assets/content/country_trivia.json` (wersja 0.3.0, 2026-11-15): po 3 fakty
-o każdym z 148 krajów (444) — rekordy w skali świata lub kontynentu, wynalazki,
+`assets/content/country_trivia.json` (wersja 0.4.0, 2026-11-16): po 3 fakty
+o każdym ze 197 krajów (591) — rekordy w skali świata lub kontynentu, wynalazki,
 „pierwsze” i „jedyne”, przyroda i zabytki UNESCO. Rekord: trwałe `id`, tekst,
 tytuł i URL źródła, data `checked`.
 
@@ -160,20 +173,20 @@ ta wymaga przeglądu człowieka. `--allow-incomplete` służy tylko roboczej kon
 
 ### Ciekawostki o flagach
 
-`assets/content/flag_trivia.json` (wersja 0.2.0): po 3 fakty o fladze każdego
-z 148 krajów (444), według zasad poniżej — geneza barw i symboli, pierwsze
+`assets/content/flag_trivia.json` (wersja 0.3.0): po 3 fakty o fladze każdego
+ze 197 krajów (591), według zasad poniżej — geneza barw i symboli, pierwsze
 użycie i rok przyjęcia, co przedstawia godło, nietypowości. Źródło każdego
 faktu: artykuł Wikipedii o fladze (polski lub angielski) w przypiętej wersji
-(`?oldid=`), pobrany 2026-11-15 przez API MediaWiki; tekst to polska parafraza
+(`?oldid=`), pobrany 2026-11-15 (Ameryki i Oceania: 2026-11-16) przez API MediaWiki; tekst to polska parafraza
 wyłącznie tego, co jest w tej wersji. Wersja 0.1.0 (CIA Factbook) dawała głównie
 znaczenia barw. Pokazywane po pytaniach o flagę (także flaga → mapa); aplikacja
 pomija fakt, który wspomina kraj pytany dalej w tej samej serii. Walidator:
-`build_trivia.py --check` (obie paczki). Fakty sprawdza się z linkiem do wersji.
+`build_trivia.py --check` (trzy paczki). Fakty sprawdza się z linkiem do wersji.
 
 ### Ciekawostki o stolicach
 
-`assets/content/capital_trivia.json` (0.1.0, 2026-11-15): po 3 fakty o stolicy
-każdego z 148 krajów (444) — założenie i dawne nazwy, „pierwsze” i rekordy,
+`assets/content/capital_trivia.json` (0.2.0, 2026-11-16): po 3 fakty o stolicy
+każdego ze 197 krajów (591) — założenie i dawne nazwy, „pierwsze” i rekordy,
 wydarzenia z datą. Źródła jak przy flagach: artykuł Wikipedii o mieście (pl lub
 en) w przypiętej wersji (`?oldid=`), tekst to parafraza tylko tego, co w niej
 jest. Klucz to kraj (jak w innych paczkach), więc kraj z dwoma stolicami ma

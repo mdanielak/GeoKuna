@@ -80,6 +80,11 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                         : catalog.continent == Continent.asia
                         ? 'Azja: ${catalog.countries.length} państw. '
                               'Szczegóły granic i źródeł: dokumentacja Azji.'
+                        : catalog.continent != Continent.europe
+                        ? '${catalog.continent.label}: '
+                              '${catalog.countries.length} państw (lista KSNG). '
+                              'Geometria: Natural Earth 1:50m. Terytoria zależne, '
+                              'np. Grenlandia czy Portoryko, są tłem mapy.'
                         : 'Geometria: Natural Earth 1:50m, v5.1.2 · domena publiczna. '
                               '51 państw w szerokim zakresie edukacyjnym: Europa, Kosowo, Cypr, '
                               'Turcja, Gruzja, Armenia, Azerbejdżan i Kazachstan. '

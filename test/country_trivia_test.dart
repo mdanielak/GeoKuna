@@ -22,6 +22,9 @@ void main() {
         'assets/content/countries.json',
         'assets/content/africa/countries.json',
         'assets/content/asia/countries.json',
+        'assets/content/northAmerica/countries.json',
+        'assets/content/southAmerica/countries.json',
+        'assets/content/oceania/countries.json',
       ]) {
         final data = jsonDecode(
           await rootBundle.loadString(path),
@@ -30,7 +33,7 @@ void main() {
           ids.add((raw as Map<String, dynamic>)['id'] as String);
         }
       }
-      expect(ids, hasLength(148));
+      expect(ids, hasLength(197));
       for (final id in ids) {
         expect(flags.factsFor(id), hasLength(3), reason: 'flag $id');
         expect(capitals.factsFor(id), hasLength(3), reason: 'capital $id');

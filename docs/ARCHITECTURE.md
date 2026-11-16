@@ -61,7 +61,7 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 | `memory_cards` | `id` = `topic:country:difficulty` | `state` (JSON FSRS lub null), `due` (UTC), `introduced_at`, `review_count` |
 | `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/`retry`/`scaffold`/`control`/`placement`/historyczne `assisted`, `recognition`), `review_log` |
 | `memory_meta` | `key` | m.in. znacznik jednorazowego importu historii |
-| `app_preference_entries` | `key` | `map_appearance`, `difficulty_{europe,africa,asia}`; nieznane wartości → relief/normal |
+| `app_preference_entries` | `key` | `map_appearance`, `difficulty_<kontynent>`; nieznane wartości → relief/normal |
 | `activity_days` | `(continent, local_date)` | `recorded_at` (UTC), `offset_minutes` |
 | `awarded_medals` | `(continent, topic, level, medal)` | `earned_at`, `catalog_version`; medal 1/2/3 = 50/80/100% |
 | `streak_saves` | `(continent, local_date)` | `kept` (żeton użyty / odmowa), `decided_at`; saldo żetonów liczone z dni nauki |
@@ -104,7 +104,7 @@ i sprawdza przejście do bieżącej wersji.
 
 ## Paczki
 
-`assets/content/` (katalogi, stolice, ciekawostki; `africa/`, `asia/`),
+`assets/content/` (katalogi, stolice, ciekawostki; podkatalog na kontynent spoza Europy, np. `oceania/`),
 `assets/maps/*.geojson`, `assets/maps/styles/relief/`, `assets/flags/*-0.1.0/`.
 Manifesty SHA-256 paczek są niezależne od wersji schematu. Komponenty bazy
 Web (`web/sqlite3.wasm`, `web/drift_worker.dart.js`) pochodzą z

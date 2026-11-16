@@ -39,6 +39,28 @@ def polygons(feature):
     return [geom['coordinates']] if geom['type'] == 'Polygon' else geom['coordinates']
 
 
+def shift_lon(lon, shift):
+    """Longitude moved east by `shift` degrees and wrapped to [-180, 180).
+
+    Oceania straddles the 180° meridian; shifted by 180° it becomes one
+    continuous map. Mercator x is linear in longitude, so shapes are unchanged."""
+    return ((lon + shift + 180) % 360) - 180 if shift else lon
+
+
+def shift_polygons(polygons, shift):
+    """Shifted polygons; rings that would wrap across the new seam (i.e. cross
+    the 0° meridian before shifting) are dropped — they lie far outside."""
+    if not shift:
+        return polygons
+    out = []
+    for polygon in polygons:
+        rings = [[[round(shift_lon(x, shift), 6), y] for x, y in ring] for ring in polygon]
+        if any(abs(a[0] - b[0]) > 180 for ring in rings for a, b in zip(ring, ring[1:])):
+            continue
+        out.append(rings)
+    return out
+
+
 def clip_ring(ring):
     """Sutherland-Hodgman clipping to the rectangular rendering window."""
     points = ring[:-1]

@@ -11,6 +11,7 @@ import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/country_trivia.dart';
 import 'package:geokuna/features/learning/flags.dart';
 import 'package:geokuna/features/atlas/continent.dart';
 import 'package:geokuna/features/settings/app_preferences.dart';
@@ -33,9 +34,12 @@ void main() {
             await Catalog.load(),
             await CapitalCatalog.load(),
             await FlagCatalog.load(),
+            await CountryTriviaCatalog.load(
+              asset: CountryTriviaCatalog.capitalAsset,
+            ),
           ),
         ))!;
-        final (catalog, capitals, flags) = data;
+        final (catalog, capitals, flags, capitalTrivia) = data;
         final question = capitals.questions(['POL'], Random(3)).single;
         final db = AppDatabase(NativeDatabase.memory());
         final preference = LearningDifficulty.values.firstWhere(
@@ -67,6 +71,7 @@ void main() {
               catalogProvider.overrideWith((ref) async => catalog),
               capitalsProvider.overrideWith((ref) async => capitals),
               flagsProvider.overrideWith((ref) async => flags),
+              capitalTriviaProvider.overrideWith((ref) async => capitalTrivia),
             ],
             child: const GeoKunaApp(),
           ),
@@ -141,6 +146,14 @@ void main() {
             findsOneWidget,
           );
         }
+        // After a capital question the fact is about the capital (Warsaw).
+        expect(find.text('Ciekawostka'), findsOneWidget);
+        expect(
+          capitalTrivia
+              .factsFor('POL')
+              .where((f) => find.text(f.text).evaluate().isNotEmpty),
+          hasLength(1),
+        );
         final attempt = (await db.select(db.attempts).get()).single;
         expect(attempt.correct, isTrue);
         expect(attempt.topic, 'capitals');

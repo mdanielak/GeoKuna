@@ -1,10 +1,10 @@
 # Stan i plan
 
-## Stan — 2026-11-15 (wersja 0.4)
+## Stan — 2026-11-16 (wersja 0.5.0)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
-- Europa 47, Afryka 54, Azja 50; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
+- Europa 47, Afryka 54, Azja 50, Ameryka Północna 22, Południowa 13, Oceania 14; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
 - Mapa, stolice, flaga → nazwa, flaga → mapa; trzy poziomy i 12 kart FSRS na kraj;
   A–D z własnym FSRS rozpoznawania.
 - Dziś: zaległe najpierw, globalny limit 3 nowości, poziom per kontynent.
@@ -45,8 +45,8 @@ nie dowodzi retencji w miesiącach.
    klawiatura, TalkBack, trwałość bazy, płynność; potem podpisywanie APK/AAB
    (klucze poza repo).
 5. **Ciekawostki według nowych zasad** (po 3 o kraju, stolicy i fladze):
-   gotowe 2026-11-15: kraje (0.3.0), stolice (0.1.0) i flagi (0.2.0), po 444
-   fakty z przypiętych wersji Wikipedii. Dalej: przegląd człowieka i sprawdzenie
+   gotowe 2026-11-16: kraje (0.4.0), stolice (0.2.0) i flagi (0.3.0), po 591
+   faktów z przypiętych wersji Wikipedii (wszystkie 6 kontynentów). Dalej: przegląd człowieka i sprawdzenie
    na urządzeniu, jak czyta się karta ciekawostki — zasady w
    [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne).
 6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
@@ -74,7 +74,6 @@ Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
 |---|---|---|
 | GK-003b | waluty i języki urzędowe | źródła pierwotne, wiele wartości, daty obowiązywania |
 | GK-010 | typowane encje + Polska: województwa (TERYT) | rozdzielić `entity_id` od `country_id`; nowy przydział liczbowych ID FSRS |
-| GK-012b | pozostałe kontynenty | osobne paczki ze źródłami |
 | GK-013 | miasta wojewódzkie, parki, rzeki, góry Polski | jawna rola siedziby władz; rzeki jako linie z tolerancją dotyku |
 | GK-014 | mały katalog rzek i gór świata | zdefiniować „największe” przed budową paczki |
 | GK-017 | mapa: projekcje regionalne, warstwa kontekstu dla pominiętych obszarów (np. Sahara Zachodnia) | najpierw prototyp z hit-testem |

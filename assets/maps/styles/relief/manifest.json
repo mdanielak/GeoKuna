@@ -66,6 +66,42 @@
       "width": 3072,
       "height": 3159,
       "sha256": "61c33926c1b2d9e5e5765b77ef98eface0e03068cfc6918dca588749ed65fa84"
+    },
+    "northAmerica": {
+      "asset_path": "assets/maps/styles/relief/northAmerica.webp",
+      "bounds_wsen": [
+        -170.0,
+        5.0,
+        -50.0,
+        84.0
+      ],
+      "width": 3072,
+      "height": 4197,
+      "sha256": "f5da74df680986fff140599b9427f8cd81c3531465df0bdecc304dfb8e0e1f8f"
+    },
+    "southAmerica": {
+      "asset_path": "assets/maps/styles/relief/southAmerica.webp",
+      "bounds_wsen": [
+        -95.0,
+        -57.0,
+        -30.0,
+        15.0
+      ],
+      "width": 1950,
+      "height": 2547,
+      "sha256": "4bf052404f6aa932101cd232fa03b3e3fd7307d00d2831e5e131b73b0ce810b5"
+    },
+    "oceania": {
+      "asset_path": "assets/maps/styles/relief/oceania.webp",
+      "bounds_wsen": [
+        -70.0,
+        -50.0,
+        30.0,
+        22.0
+      ],
+      "width": 3000,
+      "height": 2414,
+      "sha256": "0842fa2ab994b84f6173e156c1a419fb1543fdb357631d7f8ae40c8ccba84573"
     }
   }
 }

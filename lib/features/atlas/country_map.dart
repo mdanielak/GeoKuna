@@ -72,6 +72,19 @@ class _CountryMapState extends State<CountryMap> {
       const LatLng(-12, 20),
       const LatLng(82, 180),
     ),
+    Continent.northAmerica => LatLngBounds(
+      const LatLng(5, -170),
+      const LatLng(84, -50),
+    ),
+    Continent.southAmerica => LatLngBounds(
+      const LatLng(-57, -95),
+      const LatLng(15, -30),
+    ),
+    // Shifted longitudes: 110°E → -70, 150°W → 30.
+    Continent.oceania => LatLngBounds(
+      const LatLng(-50, -70),
+      const LatLng(22, 30),
+    ),
   };
 
   // On a portrait phone the whole continent leaves most of the screen as sea:
@@ -88,6 +101,20 @@ class _CountryMapState extends State<CountryMap> {
     Continent.asia => LatLngBounds(
       const LatLng(-11, 26),
       const LatLng(56, 146),
+    ),
+    // Without Alaska and the far north, which a portrait phone cannot fit.
+    Continent.northAmerica => LatLngBounds(
+      const LatLng(7, -128),
+      const LatLng(60, -58),
+    ),
+    Continent.southAmerica => LatLngBounds(
+      const LatLng(-56, -82),
+      const LatLng(13, -34),
+    ),
+    // Australia, New Guinea, New Zealand and Fiji; far atolls by panning.
+    Continent.oceania => LatLngBounds(
+      const LatLng(-47, -68),
+      const LatLng(3, 5),
     ),
   };
 

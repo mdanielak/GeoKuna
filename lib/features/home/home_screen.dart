@@ -156,11 +156,7 @@ Future<void> _openAndRefresh(
 }
 
 /// Continents without content yet, shown greyed out as a promise.
-const _upcomingContinents = [
-  'Ameryka Północna',
-  'Ameryka Południowa',
-  'Australia i Oceania',
-];
+const _upcomingContinents = <String>[];
 
 /// One scrollable row of chips: the three playable continents, then the
 /// upcoming ones disabled. Chips keep one row at any width and text size.

@@ -26,7 +26,12 @@ REGIONS = {
     'europe': ((-32, 34, 65, 72), 'assets/content/countries.json'),
     'africa': ((-26, -36, 65, 38), 'assets/content/africa/countries.json'),
     'asia': ((20, -12, 180, 82), 'assets/content/asia/countries.json'),
+    'northAmerica': ((-170, 5, -50, 84), 'assets/content/northAmerica/countries.json'),
+    'southAmerica': ((-95, -57, -30, 15), 'assets/content/southAmerica/countries.json'),
+    # Shifted by 180° like the Oceania quiz geometry (build_map.shift_lon).
+    'oceania': ((-70, -50, 30, 22), 'assets/content/oceania/countries.json'),
 }
+SHIFT = {'oceania': 180}
 ALWAYS = {'RUS', 'MAR'}
 # Points that must be covered by neutral context land on each map (lon, lat).
 CONTROL = {
@@ -34,6 +39,10 @@ CONTROL = {
                ('DZA', (3.0, 35.0))],
     'africa': [('SAH', (-13.2, 25.0)), ('ESP', (-4.0, 37.5))],
     'asia': [('UKR', (30.5, 50.45)), ('RUS', (34.1, 44.95))],
+    'northAmerica': [('GRL', (-60.0, 78.0)), ('COL', (-74.0, 6.0)), ('PRI', (-66.5, 18.2))],
+    'southAmerica': [('PAN', (-80.0, 8.5)), ('GUF', (-53.0, 4.0))],
+    # Shifted: New Caledonia 165.5°E → -14.5, Indonesian Papua 138°E → -42.
+    'oceania': [('NCL', (-14.5, -21.5)), ('IDN', (-42.0, -4.0))],
 }
 
 
@@ -60,7 +69,7 @@ def build(source):
             if code == 'ATA' or (code in targets and code not in ALWAYS):
                 continue
             clipped = []
-            for polygon in build_map.polygons(feature):
+            for polygon in build_map.shift_polygons(build_map.polygons(feature), SHIFT.get(region, 0)):
                 outer = build_map.clip_ring(polygon[0])
                 if outer:
                     clipped.append([outer] + [r for hole in polygon[1:] if (r := build_map.clip_ring(hole))])
@@ -96,7 +105,7 @@ def check():
             assert any(build_map.contains_country(f, point) for f in features), (region, label)
         total += len(features)
     assert {p.name for p in DEST.iterdir()} == {f'{r}.geojson' for r in REGIONS} | {'manifest.json'}
-    print(f'OK: context land for 3 maps ({total} features), windows, control points, checksums')
+    print(f'OK: context land for {len(REGIONS)} maps ({total} features), windows, control points, checksums')
 
 
 if __name__ == '__main__':

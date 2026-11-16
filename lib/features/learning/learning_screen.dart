@@ -487,7 +487,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               ),
             if (attempt != null)
               _InsightNote(catalog: catalog, session: session),
-            if (attempt != null && flag)
+            // Flag questions show a flag fact, capital questions a capital fact.
+            if (attempt != null)
               if (_trivia(
                     catalog,
                     session,

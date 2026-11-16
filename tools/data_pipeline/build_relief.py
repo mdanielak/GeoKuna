@@ -32,7 +32,12 @@ REGIONS = {
     'europe': (-32.0, 34.0, 65.0, 72.0),
     'africa': (-26.0, -36.0, 65.0, 38.0),
     'asia': (20.0, -12.0, 180.0, 82.0),
+    'northAmerica': (-170.0, 5.0, -50.0, 84.0),
+    'southAmerica': (-95.0, -57.0, -30.0, 15.0),
+    # In coordinates shifted by 180° (build_map.shift_lon), like its geometry.
+    'oceania': (-70.0, -50.0, 30.0, 22.0),
 }
+SHIFT = {'oceania': 180}
 OCEAN = (218, 238, 244)
 LAND_TINT = (220, 233, 201)
 TINT_STRENGTH = 0.20
@@ -43,6 +48,10 @@ CONTROL_POINTS = {
     'europe': [('land', 19.0, 52.0), ('water', -20.0, 50.0), ('land', 10.0, 46.0)],
     'africa': [('land', 20.0, 0.0), ('water', -20.0, 0.0), ('land', 47.0, -20.0), ('water', 37.0, 23.0)],
     'asia': [('land', 85.0, 28.0), ('water', 140.0, 30.0), ('land', 53.0, 33.0)],
+    'northAmerica': [('land', -100.0, 40.0), ('water', -140.0, 30.0), ('land', -75.0, 45.0)],
+    'southAmerica': [('land', -60.0, -10.0), ('water', -40.0, -30.0), ('land', -65.0, -25.0)],
+    # Shifted: Australia 134°E → -46, Tasman Sea 160°E → -20, New Zealand 175.5°E → -4.5.
+    'oceania': [('land', -46.0, -25.0), ('water', -20.0, -35.0), ('land', -4.5, -39.5)],
 }
 
 
@@ -134,7 +143,7 @@ def check():
         total += path.stat().st_size
     actual = {p.name for p in DEST.iterdir() if p.name != 'manifest.json'}
     assert actual == {f'{r}.webp' for r in REGIONS}, 'Unexpected or missing image'
-    print(f'OK: 3 offline Mercator relief overlays, control points, hashes/bounds/dimensions; {total:,} bytes')
+    print(f'OK: {len(REGIONS)} offline Mercator relief overlays, control points, hashes/bounds/dimensions; {total:,} bytes')
 
 
 def build(archive):
@@ -155,7 +164,9 @@ def build(archive):
             for region, bounds in REGIONS.items():
                 print(f'Rendering {region}…', flush=True)
                 path = DEST / f'{region}.webp'
-                image = render(source, bounds)
+                shifted = (ImageChops.offset(source, -SHIFT[region] * 30, 0)
+                           if region in SHIFT else source)
+                image = render(shifted, bounds)
                 image.save(path, format='WEBP', quality=QUALITY, method=6)
                 regions[region] = {
                     'asset_path': str(path.relative_to(ROOT)),

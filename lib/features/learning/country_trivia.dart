@@ -17,9 +17,12 @@ class CountryTriviaFact {
 
 /// Read-only country facts. No network is required when answering questions.
 class CountryTriviaCatalog {
-  CountryTriviaCatalog._(this._facts);
+  CountryTriviaCatalog._(this._facts, this.version);
 
   final Map<String, List<CountryTriviaFact>> _facts;
+
+  /// Pack version, e.g. `flag-trivia-0.2.0`.
+  final String version;
 
   static const countryAsset = 'assets/content/country_trivia.json';
   static const flagAsset = 'assets/content/flag_trivia.json';
@@ -45,6 +48,7 @@ class CountryTriviaCatalog {
             }),
           ),
       }),
+      decoded['version'] as String,
     );
   }
 
