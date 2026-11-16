@@ -40,7 +40,7 @@ class MemoryScheduler {
     bool typo = false,
   }) {
     final card = previousState == null
-        ? fsrs.Card(cardId: _cardId(skillId), due: now.toUtc())
+        ? fsrs.Card(cardId: fsrsCardId(skillId), due: now.toUtc())
         : fsrs.Card.fromMap(jsonDecode(previousState) as Map<String, dynamic>);
     final time =
         card.lastReview != null && card.lastReview!.isAfter(now.toUtc())
@@ -65,32 +65,6 @@ class MemoryScheduler {
       rating.value,
       jsonEncode(result.reviewLog.toMap()),
     );
-  }
-
-  int _cardId(String id) {
-    final parts = id.split(':');
-    if (parts.length != 3 ||
-        !['map', 'capitals', 'flags'].contains(parts[0]) ||
-        ![
-          'map',
-          'choice',
-          'firstLetter',
-          'write',
-          'mapEasy',
-          'mapVeryEasy',
-        ].contains(parts[2])) {
-      throw ArgumentError('Nieobsługiwana umiejętność: $id');
-    }
-    final country = parts[1].codeUnits.fold(0, (int n, c) => n * 128 + c);
-    if (parts[2] == 'mapEasy' || parts[2] == 'mapVeryEasy') {
-      return 2000000000 +
-          (parts[0] == 'flags' ? 1000000000 : 0) +
-          country * 2 +
-          (parts[2] == 'mapEasy' ? 0 : 1);
-    }
-    return (parts[0] == 'flags' ? 1000000000 : 0) +
-        country * 4 +
-        ['map', 'choice', 'firstLetter', 'write'].indexOf(parts[2]);
   }
 }
 
@@ -278,4 +252,43 @@ Map<String, int> recoveringSkills(Iterable<MemoryReview> reviews) {
     for (final MapEntry(:key, :value) in since.entries)
       if (value < recoveryTarget) key: value,
   };
+}
+
+const _formats = [
+  'map',
+  'choice',
+  'firstLetter',
+  'write',
+  'mapEasy',
+  'mapVeryEasy',
+];
+
+/// Stable numeric FSRS id of a skill `topic:areaId:difficulty`.
+/// Three-letter country ids keep their original packing (saved cards keep
+/// their history); longer ids (`PL-14`, `US-CA`) get their own range from
+/// 10^13 (flags +5·10^12; up to 5 characters, 128^5·8 < 5·10^12), below 2^53 so the Web build counts them exactly.
+int fsrsCardId(String id) {
+  final parts = id.split(':');
+  if (parts.length != 3 ||
+      !['map', 'capitals', 'flags'].contains(parts[0]) ||
+      !_formats.contains(parts[2])) {
+    throw ArgumentError('Nieobsługiwana umiejętność: $id');
+  }
+  final area = parts[1].codeUnits.fold(0, (int n, c) => n * 128 + c);
+  if (parts[1].length != 3) {
+    if (parts[1].length > 5) throw ArgumentError('Za długi kod obszaru: $id');
+    return 10000000000000 +
+        (parts[0] == 'flags' ? 5000000000000 : 0) +
+        area * 8 +
+        _formats.indexOf(parts[2]);
+  }
+  if (parts[2] == 'mapEasy' || parts[2] == 'mapVeryEasy') {
+    return 2000000000 +
+        (parts[0] == 'flags' ? 1000000000 : 0) +
+        area * 2 +
+        (parts[2] == 'mapEasy' ? 0 : 1);
+  }
+  return (parts[0] == 'flags' ? 1000000000 : 0) +
+      area * 4 +
+      ['map', 'choice', 'firstLetter', 'write'].indexOf(parts[2]);
 }

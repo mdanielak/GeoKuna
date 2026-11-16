@@ -80,6 +80,28 @@ kontynentu oraz obszary wycięte przez politykę, np. Krym na mapie Azji, Sahara
 Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`,
 `build_context.py`). Krym nie jest Rosją także na mapie Azji (walidator to sprawdza).
 
+## Województwa i stany USA (0.6.0, etap 1: mapa)
+
+`Continent.poland` i `Continent.usa` — mapy „gdzie leży?” bez stolic i flag
+(etap 2). Generator: `build_subdivisions.py poland|usa`.
+
+- **Geometria:** Natural Earth 1:10m admin-1 v5.1.2 (SHA-256 `22d0e3ad…`),
+  ląd kontekstowy z NE 1:10m admin-0 (`239eec57…`), żeby granice się zgadzały.
+  Okna: Polska 13,5–24,5°E, 48,6–55,3°N; USA 128–64°W, 16–51°N.
+- **ID:** ISO 3166-2 — `PL-02`…`PL-32` (kody TERYT, ISO od 2018), `US-AL`…`US-WY`.
+  Karty FSRS dla ID dłuższych niż 3 znaki mają osobny zakres (`fsrsCardId`).
+- **Nazwy województw:** art. 2 ust. 1 ustawy o trójstopniowym podziale
+  (Dz.U. 1998 nr 96 poz. 603, PDF z dziennikustaw.gov.pl, SHA-256 `5a80569e…`);
+  pytanie „Gdzie leży województwo mazowieckie?”.
+- **Nazwy stanów:** polskie egzonimy z KSNG, *Urzędowy wykaz polskich nazw
+  geograficznych świata*, wyd. 2, 2019, s. 595 (17 stanów, SHA-256 `8389e875…`);
+  pozostałe — nazwa oryginalna. „stan Waszyngton” i „stan Nowy Jork” w pytaniu,
+  bo to także nazwy miast. Dystrykt Kolumbii jest lądem kontekstowym.
+- **Wstawki:** Alaska (skala 0,24) i Hawaje (1,47) przesunięte w Web Mercatorze
+  do ramek w lewym dolnym rogu, z podpisem „inna skala”; wyspy NW Hawajów
+  (na zachód od 161°W) pominięte. W stylu Rzeźba wstawki mają jasne wypełnienie.
+- Znaczniki: Rhode Island i Delaware.
+
 Mikropaństwa (7 w Europie) mają znaczniki 48×48 dp; nakładające się znaczniki
 najpierw przybliżają mapę, dopiero potem wybierają kraj.
 
@@ -147,6 +169,13 @@ przesuniętego o 180°. Razem 3753 kafelki, ok. 12,6 MB (manifest: suma kontroln
 wszystkich kafelków, wersja 0.3.0). Poza oknem kontynentu mapa pokazuje gładkie
 morze. Raster jest tylko tłem — wybór i ocenianie wynikają z wektorów.
 
+**Wyższa jakość dla Polski i USA** (`build_relief_hd.py`, manifest
+`manifest_hd.json`): kafelki z7–8 (Polska) i z7 (USA) łączą kolory NE 1:10m,
+cieniowanie z modelu wysokości [ETOPO 2022 15″](https://www.ncei.noaa.gov/products/etopo-global-relief-model)
+(NOAA, domena publiczna; przewyższenie 2,5×, dno morza bez cieniowania) i ostre
+wektorowe rzeki i jeziora NE 1:10m. Dla kontynentów nie ma praktycznej drogi wyżej:
+z7 wymagałby ok. 10 GB źródeł ETOPO i kilkudziesięciu MB kafelków.
+
 **Style wektorowe:** nowoczesny i papierowy atlas mają po 5 wypełnień; sąsiednie
 kraje (wspólne wierzchołki granicy) zawsze dostają różne kolory (kolorowanie grafu
 w `countryColoring`). Granice 1,2–1,3 px, ciemniejsze niż wypełnienia.
@@ -157,8 +186,8 @@ Koszt pamięci na Androidzie wymaga sprawdzenia na telefonie.
 
 ## Ciekawostki
 
-`assets/content/country_trivia.json` (wersja 0.4.0, 2026-11-16): po 3 fakty
-o każdym ze 197 krajów (591) — rekordy w skali świata lub kontynentu, wynalazki,
+`assets/content/country_trivia.json` (wersja 0.5.0, 2026-11-16): po 3 fakty
+o każdym ze 197 krajów oraz 16 województw i 50 stanów (789) — rekordy w skali świata lub kontynentu, wynalazki,
 „pierwsze” i „jedyne”, przyroda i zabytki UNESCO. Rekord: trwałe `id`, tekst,
 tytuł i URL źródła, data `checked`.
 
@@ -251,6 +280,8 @@ python3 tools/data_pipeline/build_flags.py               # Europa: pobiera przyp
 python3 tools/data_pipeline/build_africa.py --build --pdf /ścieżka/KSNG-2026.pdf
 python3 tools/data_pipeline/build_asia.py   --build --pdf /ścieżka/KSNG-2026.pdf
 python3 tools/data_pipeline/build_relief.py --build [--source /ścieżka/NE1_HR_LC_SR_W_DR.zip]
+python3 tools/data_pipeline/build_relief_hd.py --build --ne NE1_HR_LC_SR_W_DR.zip --dem ETOPO/ --water NE10m/
+python3 tools/data_pipeline/build_subdivisions.py poland --build --src ŹRÓDŁA/   # też: usa
 python3 tools/data_pipeline/build_trivia.py --check
 ```
 

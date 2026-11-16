@@ -1,5 +1,5 @@
 {
-  "version": "country-trivia-0.4.0",
+  "version": "country-trivia-0.5.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -4530,6 +4530,1524 @@
         "text": "Reprezentacja futsalu Wysp Salomona, Kurukuru, ma rekord świata w najszybciej strzelonym golu w oficjalnym meczu.",
         "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385800532",
         "source_title": "Wikipedia (en): Solomon Islands, wersja 1385800532",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-02": [
+      {
+        "id": "country-pl-02-zlotoryja",
+        "text": "To na Dolnym Śląsku po raz pierwszy w Polsce nadano prawa miejskie — Henryk Brodaty przyznał je Złotoryi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380272013",
+        "source_title": "Wikipedia (en): Lower Silesian Voivodeship, wersja 1380272013",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-02-lancelot",
+        "text": "W Wieży Książęcej w Siedlęcinie zachowało się jedyne na świecie przedstawienie sir Lancelota namalowane w miejscu, w którym powstało.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380272013",
+        "source_title": "Wikipedia (en): Lower Silesian Voivodeship, wersja 1380272013",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-02-wierzchowice",
+        "text": "W Wierzchowicach na Dolnym Śląsku znajduje się największy w Polsce podziemny magazyn gazu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80971755",
+        "source_title": "Wikipedia (pl): Województwo dolnośląskie, wersja 80971755",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-04": [
+      {
+        "id": "country-pl-04-drumliny",
+        "text": "W okolicy Zbójna w województwie kujawsko-pomorskim leży najokazalsze w Polsce pole drumlinów — podłużnych wzgórz uformowanych przez lodowiec.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80824682",
+        "source_title": "Wikipedia (pl): Województwo kujawsko-pomorskie, wersja 80824682",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-04-opady",
+        "text": "Część województwa kujawsko-pomorskiego to najsuchsze tereny Polski — rocznie spada tu miejscami mniej niż 500 mm deszczu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80824682",
+        "source_title": "Wikipedia (pl): Województwo kujawsko-pomorskie, wersja 80824682",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-04-zuzel",
+        "text": "KS Toruń i Polonia Bydgoszcz to jedne z najbardziej utytułowanych klubów żużlowych w Polsce; ich mecze to Derby Pomorza i Kujaw.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378632821",
+        "source_title": "Wikipedia (en): Kuyavian–Pomeranian Voivodeship, wersja 1378632821",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-06": [
+      {
+        "id": "country-pl-06-pojezierze",
+        "text": "Pojezierze Łęczyńsko-Włodawskie to jedyne pojezierze w Polsce leżące poza zasięgiem ostatniego zlodowacenia.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80291280",
+        "source_title": "Wikipedia (pl): Województwo lubelskie, wersja 80291280",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-06-parczew",
+        "text": "W 1564 r. w Parczewie obradował sejm, który przesądził o pozostaniu Polski przy katolicyzmie w czasie reformacji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378742216",
+        "source_title": "Wikipedia (en): Lublin Voivodeship, wersja 1378742216",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-06-judaizm",
+        "text": "Przed II wojną światową Lubelszczyzna była jednym z czołowych ośrodków judaizmu na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378742216",
+        "source_title": "Wikipedia (en): Lublin Voivodeship, wersja 1378742216",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-08": [
+      {
+        "id": "country-pl-08-muzakowski",
+        "text": "XIX-wieczny Park Mużakowski, leżący po obu stronach granicy polsko-niemieckiej, jest na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385893414",
+        "source_title": "Wikipedia (en): Lubusz Voivodeship, wersja 1385893414",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-08-winobranie",
+        "text": "Winobranie w Zielonej Górze to największe święto wina w Polsce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385893414",
+        "source_title": "Wikipedia (en): Lubusz Voivodeship, wersja 1385893414",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-08-kuna",
+        "text": "W porcie rzecznym w Gorzowie Wielkopolskim cumuje lodołamacz „Kuna” — najstarszy wciąż sprawny rzeczny lodołamacz na świecie, dziś statek-muzeum.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385893414",
+        "source_title": "Wikipedia (en): Lubusz Voivodeship, wersja 1385893414",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-10": [
+      {
+        "id": "country-pl-10-gaz",
+        "text": "Pod Bolimowem 31 stycznia 1915 r. po raz pierwszy w historii użyto broni gazowej — Niemcy ostrzelali wojska rosyjskie bromkiem ksylilu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376962790",
+        "source_title": "Wikipedia (en): Łódź Voivodeship, wersja 1376962790",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-10-wielun",
+        "text": "Niemieckie bombardowanie Wielunia 1 września 1939 r. uważa się za pierwsze duże bombardowanie II wojny światowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376962790",
+        "source_title": "Wikipedia (en): Łódź Voivodeship, wersja 1376962790",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-10-derby",
+        "text": "ŁKS Łódź i Widzew Łódź rozgrywają derby Łodzi — jedną z najbardziej zaciętych rywalizacji piłkarskich w Polsce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376962790",
+        "source_title": "Wikipedia (en): Łódź Voivodeship, wersja 1376962790",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-12": [
+      {
+        "id": "country-pl-12-romowie",
+        "text": "W Tarnowie działa jedyna w Europie stała wystawa poświęcona pamięci Romów.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228632",
+        "source_title": "Wikipedia (pl): Województwo małopolskie, wersja 81228632",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-12-uj",
+        "text": "W Małopolsce działa Uniwersytet Jagielloński — najstarsza uczelnia Polski i jedna z najstarszych na świecie, założona w 1364 r. jako Akademia Krakowska.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384299844",
+        "source_title": "Wikipedia (en): Lesser Poland Voivodeship, wersja 1384299844",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-12-lotnisko",
+        "text": "W Małopolsce działa drugi co do wielkości międzynarodowy port lotniczy Polski — Kraków-Balice im. Jana Pawła II.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384299844",
+        "source_title": "Wikipedia (en): Lesser Poland Voivodeship, wersja 1384299844",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-14": [
+      {
+        "id": "country-pl-14-najwieksze",
+        "text": "Mazowieckie to największe województwo w Polsce; jego najwyższym punktem jest Altana (408 m n.p.m.) na skraju Wyżyny Kieleckiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81181530",
+        "source_title": "Wikipedia (pl): Województwo mazowieckie, wersja 81181530",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-14-deepspot",
+        "text": "W Mszczonowie znajduje się Deepspot — drugi najgłębszy basen na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380760682",
+        "source_title": "Wikipedia (en): Masovian Voivodeship, wersja 1380760682",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-14-pultusk",
+        "text": "Pułtusk na Mazowszu to jedno z najstarszych miast w Polsce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380760682",
+        "source_title": "Wikipedia (en): Masovian Voivodeship, wersja 1380760682",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-16": [
+      {
+        "id": "country-pl-16-najmniejsze",
+        "text": "Opolskie, o powierzchni 9412 km², jest najmniejszym województwem w Polsce.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80631165",
+        "source_title": "Wikipedia (pl): Województwo opolskie, wersja 80631165",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-16-woka",
+        "text": "Wieża Woka w Prudniku to najstarsza prywatna budowla obronna na terenie Polski.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80631165",
+        "source_title": "Wikipedia (pl): Województwo opolskie, wersja 80631165",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-16-szczakiel",
+        "text": "Z Opola pochodził Jerzy Szczakiel — pierwszy polski indywidualny mistrz świata na żużlu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80631165",
+        "source_title": "Wikipedia (pl): Województwo opolskie, wersja 80631165",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-18": [
+      {
+        "id": "country-pl-18-dolina",
+        "text": "Na Podkarpaciu działa Dolina Lotnicza — największy w Polsce klaster przemysłu lotniczego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81075245",
+        "source_title": "Wikipedia (pl): Województwo podkarpackie, wersja 81075245",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-18-gaz",
+        "text": "W okolicach Rzeszowa i Sanoka leżą największe w Polsce podziemne magazyny gazu ziemnego, m.in. w Strachocinie i Husowie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81075245",
+        "source_title": "Wikipedia (pl): Województwo podkarpackie, wersja 81075245",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-18-resovia",
+        "text": "Siatkarska Resovia była w 1974 r. klubowym wicemistrzem świata.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81075245",
+        "source_title": "Wikipedia (pl): Województwo podkarpackie, wersja 81075245",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-20": [
+      {
+        "id": "country-pl-20-bialowieza",
+        "text": "W Podlaskiem leży najstarszy polski park narodowy — Białowieski — i największy — Biebrzański.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80801952",
+        "source_title": "Wikipedia (pl): Województwo podlaskie, wersja 80801952",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-20-roznorodne",
+        "text": "Podlaskie to województwo najbardziej zróżnicowane w Polsce pod względem etnicznym i kulturowym.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80801952",
+        "source_title": "Wikipedia (pl): Województwo podlaskie, wersja 80801952",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-20-krowy",
+        "text": "Podlaskie ma najwięcej bydła w Polsce, a razem z Mazowszem przoduje w kraju w produkcji mleka.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380238845",
+        "source_title": "Wikipedia (en): Podlaskie Voivodeship, wersja 1380238845",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-22": [
+      {
+        "id": "country-pl-22-gdansk",
+        "text": "Gdańsk był największym miastem Polski przez ponad 250 lat — od połowy XV do początku XVIII w., gdy wyprzedziła go Warszawa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377093911",
+        "source_title": "Wikipedia (en): Pomeranian Voivodeship, wersja 1377093911",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-22-szkoci",
+        "text": "W 1380 r. w Gdańsku osiedlili się pierwsi Szkoci, dając początek znaczącej szkockiej diasporze w Polsce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377093911",
+        "source_title": "Wikipedia (en): Pomeranian Voivodeship, wersja 1377093911",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-22-malbork",
+        "text": "Zamek w Malborku w województwie pomorskim jest na liście światowego dziedzictwa UNESCO; do regionu należą też Półwysep Helski i polska część Mierzei Wiślanej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377093911",
+        "source_title": "Wikipedia (en): Pomeranian Voivodeship, wersja 1377093911",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-24": [
+      {
+        "id": "country-pl-24-gestosc",
+        "text": "Śląskie ma najwyższą gęstość zaludnienia w Polsce (346 osób na km²) i jako jedyne więcej miast na prawach powiatu (19) niż powiatów (17).",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80910058",
+        "source_title": "Wikipedia (pl): Województwo śląskie, wersja 80910058",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-24-tramwaje",
+        "text": "Tramwaje Śląskie tworzą najdłuższą sieć tramwajową w Polsce i jedną z największych na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373536617",
+        "source_title": "Wikipedia (en): Silesian Voivodeship, wersja 1373536617",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-24-srebro",
+        "text": "Zabytkowa Kopalnia Srebra w Tarnowskich Górach jest na liście światowego dziedzictwa UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373536617",
+        "source_title": "Wikipedia (en): Silesian Voivodeship, wersja 1373536617",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-26": [
+      {
+        "id": "country-pl-26-krzemionki",
+        "text": "W Krzemionkach od 3900 do 1600 r. p.n.e. wydobywano krzemień pasiasty — to jeden z największych prehistorycznych zespołów kopalń krzemienia w Europie, wpisany na listę UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376965286",
+        "source_title": "Wikipedia (en): Świętokrzyskie Voivodeship, wersja 1376965286",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-26-cement",
+        "text": "Trzy cementownie świętokrzyskie — w Ożarowie, Małogoszczy i Nowinach — wytwarzają jedną czwartą cementu produkowanego w Polsce.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81059466",
+        "source_title": "Wikipedia (pl): Województwo świętokrzyskie, wersja 81059466",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-26-gips",
+        "text": "Pokłady kamienia gipsowego w województwie świętokrzyskim należą do najbogatszych w Europie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81059466",
+        "source_title": "Wikipedia (pl): Województwo świętokrzyskie, wersja 81059466",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-28": [
+      {
+        "id": "country-pl-28-wilczy",
+        "text": "W Gierłoży na Mazurach mieściła się Wilczy Szaniec — pierwsza kwatera Adolfa Hitlera na froncie wschodnim.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378266782",
+        "source_title": "Wikipedia (en): Warmian–Masurian Voivodeship, wersja 1378266782",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-28-paslek",
+        "text": "Pasłęk uchodzi za pierwsze miejsce na terenie dzisiejszej Polski, w którym w 1297 r. osiedlili się imigranci z Holandii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378266782",
+        "source_title": "Wikipedia (en): Warmian–Masurian Voivodeship, wersja 1378266782",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-28-piska",
+        "text": "Największym kompleksem leśnym Warmii i Mazur jest Puszcza Piska, zajmująca prawie 1000 km².",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80404509",
+        "source_title": "Wikipedia (pl): Województwo warmińsko-mazurskie, wersja 80404509",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-30": [
+      {
+        "id": "country-pl-30-powstanie",
+        "text": "Powstanie wielkopolskie (1918–1919) sprawiło, że większość regionu weszła w skład odrodzonego państwa polskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383720233",
+        "source_title": "Wikipedia (en): Greater Poland Voivodeship, wersja 1383720233",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-30-wegetacja",
+        "text": "Okres wegetacyjny w Wielkopolsce należy do najdłuższych w Polsce — na zachodzie regionu zaczyna się około 28 marca.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80291296",
+        "source_title": "Wikipedia (pl): Województwo wielkopolskie, wersja 80291296",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-30-kolej",
+        "text": "Linia kolejowa przez Wielkopolskę jako pierwsza w Polsce została dostosowana do europejskiego systemu szybkich przewozów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383720233",
+        "source_title": "Wikipedia (en): Greater Poland Voivodeship, wersja 1383720233",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-32": [
+      {
+        "id": "country-pl-32-latarnia",
+        "text": "Latarnia morska w Świnoujściu to najwyższa ceglana latarnia morska na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379601152",
+        "source_title": "Wikipedia (en): West Pomeranian Voivodeship, wersja 1379601152",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-32-krzywy",
+        "text": "Pod Gryfinem rośnie Krzywy Las — sosny o wygiętych pniach, zjawisko na skalę światową.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379601152",
+        "source_title": "Wikipedia (en): West Pomeranian Voivodeship, wersja 1379601152",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-pl-32-wolin",
+        "text": "Wolin to największa wyspa w Polsce i miejsce najwyższego wybrzeża klifowego w kraju.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80291297",
+        "source_title": "Wikipedia (pl): Województwo zachodniopomorskie, wersja 80291297",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AK": [
+      {
+        "id": "country-us-ak-najwiekszy",
+        "text": "Alaska jest największym stanem USA — ma większą powierzchnię niż kolejne trzy: Teksas, Kalifornia i Montana razem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894736",
+        "source_title": "Wikipedia (en): Alaska, wersja 1385894736",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ak-miasta",
+        "text": "Na Alasce leżą cztery największe pod względem powierzchni miasta Stanów Zjednoczonych, w tym stolica stanu — Juneau.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894736",
+        "source_title": "Wikipedia (en): Alaska, wersja 1385894736",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ak-iran",
+        "text": "Gdyby Alaska była niepodległym państwem, zajmowałaby 18. miejsce na świecie pod względem powierzchni — prawie tyle co Iran.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894736",
+        "source_title": "Wikipedia (en): Alaska, wersja 1385894736",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AL": [
+      {
+        "id": "country-us-al-konstytucja",
+        "text": "Konstytucja Alabamy z 1901 r. — ponad 850 poprawek i prawie 87 tys. słów — była według niektórych ocen najdłuższą konstytucją świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385747923",
+        "source_title": "Wikipedia (en): Alabama, wersja 1385747923",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-al-mardigras",
+        "text": "W Mobile w Alabamie od 1703 r. odbywają się najstarsze zorganizowane obchody Mardi Gras w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385747923",
+        "source_title": "Wikipedia (en): Alabama, wersja 1385747923",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-al-alibamo",
+        "text": "Nazwa Alabama pojawia się po raz pierwszy w relacjach z wyprawy Hernanda de Soto z 1540 r. — jako Alibamo, Alibamu lub Limamu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80400909",
+        "source_title": "Wikipedia (pl): Alabama, wersja 80400909",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AR": [
+      {
+        "id": "country-us-ar-diamenty",
+        "text": "Park stanowy Crater of Diamonds w Arkansas to jedyne na świecie złoże diamentów, w którym każdy może sam szukać kamieni.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385410979",
+        "source_title": "Wikipedia (en): Arkansas, wersja 1385410979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ar-walmart",
+        "text": "W Bentonville w Arkansas ma siedzibę Walmart — największa firma świata pod względem przychodów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385410979",
+        "source_title": "Wikipedia (en): Arkansas, wersja 1385410979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ar-1686",
+        "text": "Placówka Arkansas Post, założona w 1686 r. w wiosce ludu Quapaw, była pierwszą europejską osadą na tym terytorium.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385410979",
+        "source_title": "Wikipedia (en): Arkansas, wersja 1385410979",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AZ": [
+      {
+        "id": "country-us-az-kanion",
+        "text": "Wielki Kanion, w większości w Arizonie, zalicza się do siedmiu naturalnych cudów świata; jego park narodowy był jednym z pierwszych w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384789938",
+        "source_title": "Wikipedia (en): Arizona, wersja 1384789938",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-az-sosny",
+        "text": "W Arizonie rośnie największy na świecie drzewostan sosny żółtej (ponderosa).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384789938",
+        "source_title": "Wikipedia (en): Arizona, wersja 1384789938",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-az-saguaro",
+        "text": "Park Narodowy Saguaro pod Tucson chroni największe na świecie skupisko kaktusów saguaro.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384789938",
+        "source_title": "Wikipedia (en): Arizona, wersja 1384789938",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CA": [
+      {
+        "id": "country-us-ca-sosna",
+        "text": "W Górach Białych w Kalifornii rosną najstarsze drzewa świata — jedna z sosen długowiecznych ma ponad 5000 lat.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384325156",
+        "source_title": "Wikipedia (en): California, wersja 1384325156",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ca-golden",
+        "text": "Most Golden Gate od otwarcia w 1937 r. do 1964 r. miał najdłuższe przęsło główne spośród mostów wiszących na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384325156",
+        "source_title": "Wikipedia (en): California, wersja 1384325156",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ca-cabrillo",
+        "text": "Wybrzeże Kalifornii odkrył dla Europejczyków żeglarz Juan Rodríguez Cabrillo w 1542 r.; pierwszą hiszpańską misję założono w San Diego w 1769 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81049668",
+        "source_title": "Wikipedia (pl): Kalifornia, wersja 81049668",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CO": [
+      {
+        "id": "country-us-co-czterech",
+        "text": "Pomnik Four Corners w Kolorado stoi w jedynym miejscu w USA, gdzie stykają się cztery stany: Kolorado, Nowy Meksyk, Arizona i Utah.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385607118",
+        "source_title": "Wikipedia (en): Colorado, wersja 1385607118",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-co-winnice",
+        "text": "W Kolorado rosną najwyżej położone winnice w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385607118",
+        "source_title": "Wikipedia (en): Colorado, wersja 1385607118",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-co-kolej",
+        "text": "W 1996 r. połączenie kolei przez Union Pacific w Kolorado stworzyło największą sieć kolejową w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385607118",
+        "source_title": "Wikipedia (en): Colorado, wersja 1385607118",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CT": [
+      {
+        "id": "country-us-ct-telefon",
+        "text": "W 1875 r. w New Haven w Connecticut uruchomiono pierwszą na świecie centralę telefoniczną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385846262",
+        "source_title": "Wikipedia (en): Connecticut, wersja 1385846262",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ct-konstytucja",
+        "text": "Przydomek Connecticut, „Stan Konstytucji”, nawiązuje do kolonialnej konstytucji z lat 1638–1639 — pierwszej w Ameryce, a być może i na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385846262",
+        "source_title": "Wikipedia (en): Connecticut, wersja 1385846262",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ct-prom",
+        "text": "Prom Rocky Hill–Glastonbury na rzece Connecticut kursuje od 1655 r. — to najstarszy nieprzerwanie działający prom w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385846262",
+        "source_title": "Wikipedia (en): Connecticut, wersja 1385846262",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-DE": [
+      {
+        "id": "country-us-de-pierwszy",
+        "text": "7 grudnia 1787 r. Delaware jako pierwszy stan ratyfikowało Konstytucję Stanów Zjednoczonych — stąd przydomek „The First State”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385669281",
+        "source_title": "Wikipedia (en): Delaware, wersja 1385669281",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-de-delawarr",
+        "text": "Nazwa Delaware pochodzi od Zatoki Delaware, nazwanej na cześć Thomasa Westa, barona De La Warr — pierwszego gubernatora kolonii Wirginia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385669281",
+        "source_title": "Wikipedia (en): Delaware, wersja 1385669281",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-de-prywatne",
+        "text": "W 2010 r. Delaware miało największy w USA odsetek uczniów uczęszczających do szkół prywatnych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385669281",
+        "source_title": "Wikipedia (en): Delaware, wersja 1385669281",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-FL": [
+      {
+        "id": "country-us-fl-augustine",
+        "text": "St. Augustine na Florydzie to najstarsza nieprzerwanie zamieszkana osada założona przez Europejczyków na terenie dzisiejszych USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385507844",
+        "source_title": "Wikipedia (en): Florida, wersja 1385507844",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-fl-rafa",
+        "text": "Rafa Florydzka to jedyna żywa rafa barierowa w kontynentalnych Stanach Zjednoczonych i trzecia co do wielkości na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385507844",
+        "source_title": "Wikipedia (en): Florida, wersja 1385507844",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-fl-everglades",
+        "text": "Park Narodowy Everglades na Florydzie to największy obszar dzikiej przyrody tropikalnej w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385507844",
+        "source_title": "Wikipedia (en): Florida, wersja 1385507844",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-GA": [
+      {
+        "id": "country-us-ga-akwarium",
+        "text": "Georgia Aquarium w Atlancie było w 2010 r. według Księgi Rekordów Guinnessa największym akwarium na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382543021",
+        "source_title": "Wikipedia (en): Georgia (U.S. state), wersja 1382543021",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ga-swiatynia",
+        "text": "W Lilburn pod Atlantą stoi druga co do wielkości świątynia hinduistyczna w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382543021",
+        "source_title": "Wikipedia (en): Georgia (U.S. state), wersja 1382543021",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ga-gospodarka",
+        "text": "Gdyby Georgia była osobnym państwem, według danych z 2005 r. miałaby 28. gospodarkę świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382543021",
+        "source_title": "Wikipedia (en): Georgia (U.S. state), wersja 1382543021",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-HI": [
+      {
+        "id": "country-us-hi-cook",
+        "text": "Pierwszym Europejczykiem, który dotarł na Hawaje, był w 1778 r. brytyjski podróżnik James Cook.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80695396",
+        "source_title": "Wikipedia (pl): Hawaje, wersja 80695396",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-hi-deszcz",
+        "text": "Na górze Waiʻaleʻale na wyspie Kauaʻi spada rocznie 11,7 m deszczu — to drugie najwyższe opady na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80695396",
+        "source_title": "Wikipedia (pl): Hawaje, wersja 80695396",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-hi-papahanaumokuakea",
+        "text": "Niezamieszkane Północno-Zachodnie Wyspy Hawajskie tworzą większość Papahānaumokuākea — największego obszaru chronionego w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385994011",
+        "source_title": "Wikipedia (en): Hawaii, wersja 1385994011",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IA": [
+      {
+        "id": "country-us-ia-kurhany",
+        "text": "Pomnik narodowy Effigy Mounds w Iowa chroni największy na świecie zespół prehistorycznych kurhanów w kształcie zwierząt.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383707463",
+        "source_title": "Wikipedia (en): Iowa, wersja 1383707463",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ia-truckstop",
+        "text": "Przy autostradzie I-80 pod Walcott w Iowa działa Iowa 80 — największy postój dla ciężarówek na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383707463",
+        "source_title": "Wikipedia (en): Iowa, wersja 1383707463",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ia-kukurydza",
+        "text": "Iowa, serce pasa kukurydzianego, jest największym w USA producentem wieprzowiny i kukurydzy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79448772",
+        "source_title": "Wikipedia (pl): Iowa, wersja 79448772",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ID": [
+      {
+        "id": "country-us-id-ziemniaki",
+        "text": "Idaho daje około jednej trzeciej wszystkich zbiorów ziemniaków w Stanach Zjednoczonych.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80933331",
+        "source_title": "Wikipedia (pl): Idaho, wersja 80933331",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-id-ser",
+        "text": "W Gooding w Idaho działa największa na świecie fabryka sera beczkowego — surowca do serów topionych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385625993",
+        "source_title": "Wikipedia (en): Idaho, wersja 1385625993",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-id-kobalt",
+        "text": "W tzw. Pasie Kobaltowym Idaho leżą jedne z największych złóż kobaltu w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385625993",
+        "source_title": "Wikipedia (en): Idaho, wersja 1385625993",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IL": [
+      {
+        "id": "country-us-il-argonne",
+        "text": "W 1957 r. w Argonne National Laboratory pod Chicago uruchomiono pierwszy w USA doświadczalny system wytwarzania energii jądrowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385683824",
+        "source_title": "Wikipedia (en): Illinois, wersja 1385683824",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-il-atom",
+        "text": "Illinois ma najwięcej elektrowni jądrowych spośród wszystkich stanów USA.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79327135",
+        "source_title": "Wikipedia (pl): Illinois, wersja 79327135",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-il-cboe",
+        "text": "Giełda Cboe Global Markets w Illinois to największa w USA giełda handlu opcjami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385683824",
+        "source_title": "Wikipedia (en): Illinois, wersja 1385683824",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IN": [
+      {
+        "id": "country-us-in-baseball",
+        "text": "4 maja 1871 r. w Fort Wayne w Indianie rozegrano pierwszy zawodowy mecz baseballu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80104614",
+        "source_title": "Wikipedia (pl): Indiana, wersja 80104614",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-in-indy",
+        "text": "Indianapolis 500, wyścig na torze Indianapolis Motor Speedway, przyciąga co roku ponad 350 tys. widzów — to największe jednodniowe wydarzenie sportowe na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385625747",
+        "source_title": "Wikipedia (en): Indiana, wersja 1385625747",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-in-deby",
+        "text": "W bazie Crane w Indianie rośnie Constitution Grove — dęby wybrane do napraw USS Constitution, najstarszego pływającego okrętu wojennego w służbie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385625747",
+        "source_title": "Wikipedia (en): Indiana, wersja 1385625747",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KS": [
+      {
+        "id": "country-us-ks-autostrada",
+        "text": "Pierwszy w USA odcinek autostrady międzystanowej otwarto 14 listopada 1956 r. na I-70 na zachód od Topeki w Kansas.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363607",
+        "source_title": "Wikipedia (en): Kansas, wersja 1384363607",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ks-kino",
+        "text": "Plaza Cinema w Ottawie w Kansas, zbudowane w 1907 r., jest według Księgi Rekordów Guinnessa najstarszym działającym kinem na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363607",
+        "source_title": "Wikipedia (en): Kansas, wersja 1384363607",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ks-1861",
+        "text": "Kansas przyjęto do Unii 29 stycznia 1861 r. jako stan wolny od niewolnictwa — 34. stan USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363607",
+        "source_title": "Wikipedia (en): Kansas, wersja 1384363607",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KY": [
+      {
+        "id": "country-us-ky-jaskinia",
+        "text": "W Kentucky leży Jaskinia Mamucia — najdłuższy znany system jaskiń na świecie, od 1941 r. park narodowy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79725510",
+        "source_title": "Wikipedia (pl): Kentucky, wersja 79725510",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ky-corvette",
+        "text": "W Bowling Green w Kentucky działa jedyna na świecie fabryka Chevroleta Corvette; od 1994 r. jest tam też Narodowe Muzeum Corvette.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384855303",
+        "source_title": "Wikipedia (en): Kentucky, wersja 1384855303",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ky-most",
+        "text": "Big Four Bridge nad rzeką Ohio, po otwarciu w 2014 r. ramp od strony Indiany, stał się drugim najdłuższym mostem tylko dla pieszych na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384855303",
+        "source_title": "Wikipedia (en): Kentucky, wersja 1384855303",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-LA": [
+      {
+        "id": "country-us-la-lasalle",
+        "text": "W 1682 r. René-Robert de La Salle dotarł do ujścia Missisipi i ogłosił przyległe ziemie własnością Francji.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80353248",
+        "source_title": "Wikipedia (pl): Luizjana, wersja 80353248",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-la-1699",
+        "text": "Pierwszą stałą francuską kolonię w Luizjanie założył w 1699 r. Pierre Le Moyne d'Iberville.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80353248",
+        "source_title": "Wikipedia (pl): Luizjana, wersja 80353248",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-la-port",
+        "text": "W 2004 r. Port of South Louisiana nad Missisipi był największym pod względem przeładunków portem półkuli zachodniej i czwartym na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384967855",
+        "source_title": "Wikipedia (en): Louisiana, wersja 1384967855",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MA": [
+      {
+        "id": "country-us-ma-harvard",
+        "text": "Harvard w Cambridge w Massachusetts to najstarsza uczelnia w USA, z największym funduszem żelaznym spośród uniwersytetów świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383291825",
+        "source_title": "Wikipedia (en): Massachusetts, wersja 1383291825",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ma-plymouth",
+        "text": "Kolonię Plymouth w Massachusetts założyli w 1620 r. pielgrzymi z „Mayflower”; po pierwszych żniwach obchodzili trzydniowe „pierwsze Święto Dziękczynienia”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383291825",
+        "source_title": "Wikipedia (en): Massachusetts, wersja 1383291825",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ma-salem",
+        "text": "Dzięki handlowi przyprawami Salem w Massachusetts miało na początku XIX w. najwyższy dochód na mieszkańca w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383291825",
+        "source_title": "Wikipedia (en): Massachusetts, wersja 1383291825",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MD": [
+      {
+        "id": "country-us-md-biskup",
+        "text": "W Baltimore w Marylandzie była siedziba pierwszego katolickiego biskupa w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384716915",
+        "source_title": "Wikipedia (en): Maryland, wersja 1384716915",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-md-stal",
+        "text": "W Sparrows Point w Marylandzie działała kiedyś największa huta stali na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384716915",
+        "source_title": "Wikipedia (en): Maryland, wersja 1384716915",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-md-hoye",
+        "text": "Najwyższym punktem Marylandu jest Hoye Crest na Backbone Mountain — 1024 m n.p.m.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81078718",
+        "source_title": "Wikipedia (pl): Maryland, wersja 81078718",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ME": [
+      {
+        "id": "country-us-me-homary",
+        "text": "Maine jest największym producentem homarów w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384530808",
+        "source_title": "Wikipedia (en): Maine, wersja 1384530808",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-me-1604",
+        "text": "Pierwszą europejską osadę na terenie dzisiejszego Maine założyli Francuzi w 1604 r. na wyspie Saint Croix, pod wodzą Pierre'a Dugua de Monsa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384530808",
+        "source_title": "Wikipedia (en): Maine, wersja 1384530808",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-me-smith",
+        "text": "Margaret Chase Smith z Maine jako pierwsza kobieta zasiadała w obu izbach Kongresu USA — do Senatu wybrano ją w 1948 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384530808",
+        "source_title": "Wikipedia (en): Maine, wersja 1384530808",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MI": [
+      {
+        "id": "country-us-mi-radio",
+        "text": "W 1920 r. stacja WWJ w Detroit jako pierwsza w USA zaczęła regularnie nadawać audycje komercyjne.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385582140",
+        "source_title": "Wikipedia (en): Michigan, wersja 1385582140",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mi-miedz",
+        "text": "W latach 1847–1887 Michigan było największym producentem miedzi w Stanach Zjednoczonych.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80835369",
+        "source_title": "Wikipedia (pl): Michigan, wersja 80835369",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mi-porcupine",
+        "text": "Porcupine Mountains w Michigan należą do jednego z najstarszych łańcuchów górskich na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385582140",
+        "source_title": "Wikipedia (en): Michigan, wersja 1385582140",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MN": [
+      {
+        "id": "country-us-mn-49",
+        "text": "Fragment Minnesoty odcięty od reszty kraju przez Jezioro Leśne to jedyne miejsce 48 stanów kontynentalnych leżące na północ od 49. równoleżnika.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79966950",
+        "source_title": "Wikipedia (pl): Minnesota, wersja 79966950",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mn-itasca",
+        "text": "Missisipi, największa rzeka Minnesoty, zaczyna bieg w jeziorze Itasca w tym stanie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79966950",
+        "source_title": "Wikipedia (pl): Minnesota, wersja 79966950",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mn-cargill",
+        "text": "W Minnesocie ma siedzibę Cargill — największa prywatna firma w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384374606",
+        "source_title": "Wikipedia (en): Minnesota, wersja 1384374606",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MO": [
+      {
+        "id": "country-us-mo-olimpiada",
+        "text": "W 1904 r. w St. Louis w Missouri odbyły się letnie igrzyska olimpijskie — pierwsze w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384660508",
+        "source_title": "Wikipedia (en): Missouri, wersja 1384660508",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mo-osteopatia",
+        "text": "A.T. Still University w Missouri była pierwszą na świecie szkołą medycyny osteopatycznej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384660508",
+        "source_title": "Wikipedia (en): Missouri, wersja 1384660508",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mo-piwo",
+        "text": "W Missouri ma siedzibę Anheuser-Busch — największy producent piwa na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384660508",
+        "source_title": "Wikipedia (en): Missouri, wersja 1384660508",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MS": [
+      {
+        "id": "country-us-ms-rzeka",
+        "text": "Stan Missisipi wziął nazwę od rzeki, która wyznacza jego zachodnią granicę; jej nazwa pochodzi od słowa w języku odżibwe oznaczającego „wielka rzeka”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383857236",
+        "source_title": "Wikipedia (en): Mississippi, wersja 1383857236",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ms-desoto",
+        "text": "Pierwszą dużą europejską wyprawą na ziemie Missisipi była ekspedycja Hernanda de Soto, który przeszedł przez północny wschód stanu w 1540 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383857236",
+        "source_title": "Wikipedia (en): Mississippi, wersja 1383857236",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ms-muzyka",
+        "text": "Czarni i biali mieszkańcy Missisipi stworzyli tradycje gospel, country, jazzu, bluesa i rock and rolla.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383857236",
+        "source_title": "Wikipedia (en): Mississippi, wersja 1383857236",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MT": [
+      {
+        "id": "country-us-mt-rankin",
+        "text": "Jeannette Rankin z Montany, wybrana do Kongresu w 1916 r., była pierwszą kobietą na stanowisku federalnym w USA; jako jedyna głosowała przeciw udziałowi USA w obu wojnach światowych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385602955",
+        "source_title": "Wikipedia (en): Montana, wersja 1385602955",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mt-rzeka",
+        "text": "Hell Roaring Creek w Montanie to początek najdłuższej rzeki Ameryki Północnej — razem z Missouri i Missisipi tworzy czwartą najdłuższą rzekę świata.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385602955",
+        "source_title": "Wikipedia (en): Montana, wersja 1385602955",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-mt-fortpeck",
+        "text": "Zbiornik Fort Peck w Montanie zamyka druga co do wielkości zapora ziemna na świecie i największa zapora usypywana hydraulicznie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385602955",
+        "source_title": "Wikipedia (en): Montana, wersja 1385602955",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NC": [
+      {
+        "id": "country-us-nc-wright",
+        "text": "17 grudnia 1903 r. pod Kitty Hawk w Karolinie Północnej bracia Wright wykonali pierwszy na świecie kontrolowany lot samolotu z napędem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385614376",
+        "source_title": "Wikipedia (en): North Carolina, wersja 1385614376",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nc-roanoke",
+        "text": "W 1585 r. na wyspie Roanoke w Karolinie Północnej założono pierwszą angielską kolonię, która jednak nie przetrwała.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79179043",
+        "source_title": "Wikipedia (pl): Karolina Północna, wersja 79179043",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nc-triangle",
+        "text": "Research Triangle Park w Karolinie Północnej, założony w 1959 r., to największy park badawczy w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385614376",
+        "source_title": "Wikipedia (en): North Carolina, wersja 1385614376",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ND": [
+      {
+        "id": "country-us-nd-wegiel",
+        "text": "W zachodniej części Dakoty Północnej leży największe znane złoże węgla brunatnego na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80764211",
+        "source_title": "Wikipedia (pl): Dakota Północna, wersja 80764211",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nd-sakakawea",
+        "text": "Rzeka Missouri tworzy w Dakocie Północnej jezioro Sakakawea — trzeci co do wielkości sztuczny zbiornik w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385654803",
+        "source_title": "Wikipedia (en): North Dakota, wersja 1385654803",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nd-ropa",
+        "text": "Dakota Północna jest drugim największym producentem ropy naftowej w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385654803",
+        "source_title": "Wikipedia (en): North Dakota, wersja 1385654803",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NE": [
+      {
+        "id": "country-us-ne-lad",
+        "text": "Nebraska to jedyny stan USA „potrójnie śródlądowy” — od morza dzielą ją co najmniej trzy stany.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385738592",
+        "source_title": "Wikipedia (en): Nebraska, wersja 1385738592",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ne-bailey",
+        "text": "W North Platte w Nebrasce leży Bailey Yard — największa stacja rozrządowa na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385738592",
+        "source_title": "Wikipedia (en): Nebraska, wersja 1385738592",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ne-kawasaki",
+        "text": "Fabryka Kawasaki w Lincoln w Nebrasce jako jedyna na świecie produkuje skutery wodne Jet Ski, quady i pojazdy MULE.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385738592",
+        "source_title": "Wikipedia (en): Nebraska, wersja 1385738592",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NH": [
+      {
+        "id": "country-us-nh-prawybory",
+        "text": "New Hampshire słynie z tego, że jako pierwszy stan USA przeprowadza prawybory prezydenckie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383859884",
+        "source_title": "Wikipedia (en): New Hampshire, wersja 1383859884",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nh-dewiza",
+        "text": "Dewiza New Hampshire „Żyj wolny albo zgiń” nawiązuje do wojny o niepodległość, a przydomek „Granitowy Stan” — do licznych kamieniołomów granitu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383859884",
+        "source_title": "Wikipedia (en): New Hampshire, wersja 1383859884",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nh-starzec",
+        "text": "W Górach Białych w New Hampshire do maja 2003 r., gdy się rozpadła, istniała skała Old Man of the Mountain o kształcie ludzkiej twarzy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383859884",
+        "source_title": "Wikipedia (en): New Hampshire, wersja 1383859884",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NJ": [
+      {
+        "id": "country-us-nj-savannah",
+        "text": "W 1962 r. w Camden w New Jersey zwodowano NS Savannah — pierwszy na świecie statek handlowy z napędem jądrowym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385908753",
+        "source_title": "Wikipedia (en): New Jersey, wersja 1385908753",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nj-boardwalk",
+        "text": "Promenada w Atlantic City w New Jersey, otwarta w 1870 r., była pierwszą taką drewnianą promenadą na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385908753",
+        "source_title": "Wikipedia (en): New Jersey, wersja 1385908753",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nj-edison",
+        "text": "Christie Street w Menlo Park w New Jersey, przy laboratorium Edisona, była pierwszą ulicą na świecie z oświetleniem elektrycznym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385908753",
+        "source_title": "Wikipedia (en): New Jersey, wersja 1385908753",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NM": [
+      {
+        "id": "country-us-nm-trinity",
+        "text": "W Nowym Meksyku działały kluczowe ośrodki Projektu Manhattan, a 16 lipca 1945 r. przeprowadzono tu pierwszy test jądrowy — Trinity.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383731399",
+        "source_title": "Wikipedia (en): New Mexico, wersja 1383731399",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nm-gila",
+        "text": "Gila Wilderness w Nowym Meksyku ustanowiono w 1924 r. jako pierwszy na świecie obszar dzikiej przyrody (wilderness area).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383731399",
+        "source_title": "Wikipedia (en): New Mexico, wersja 1383731399",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nm-esteban",
+        "text": "W 1539 r. Esteban de Dorantes jako pierwszy człowiek ze Starego Świata dotarł do Nowego Meksyku; zginął z rąk ludów Pueblo.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383731399",
+        "source_title": "Wikipedia (en): New Mexico, wersja 1383731399",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NV": [
+      {
+        "id": "country-us-nv-zloto",
+        "text": "Nevada jest czwartym producentem złota na świecie; największym pracodawcą stanu pozostaje jednak turystyka.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385091852",
+        "source_title": "Wikipedia (en): Nevada, wersja 1385091852",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nv-kobiety",
+        "text": "18 grudnia 2018 r. Nevada jako pierwszy stan USA miała legislaturę, w której kobiety stanowiły większość.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385091852",
+        "source_title": "Wikipedia (en): Nevada, wersja 1385091852",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-nv-virginia",
+        "text": "W 1859 r. odkryto w Nevadzie złoża złota i srebra; przy nich zbudowano Virginia City.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78233938",
+        "source_title": "Wikipedia (pl): Nevada, wersja 78233938",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NY": [
+      {
+        "id": "country-us-ny-niagara",
+        "text": "Niagara Falls State Park, założony w 1885 r., to najstarszy park stanowy w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385704987",
+        "source_title": "Wikipedia (en): New York (state), wersja 1385704987",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ny-adirondack",
+        "text": "Adirondack Park, utworzony w 1892 r. i wielki mniej więcej jak stan Vermont, to największy park stanowy w USA, chroniony jako „na zawsze dziki”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385704987",
+        "source_title": "Wikipedia (en): New York (state), wersja 1385704987",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ny-verrazzano",
+        "text": "Pierwszym Europejczykiem na terytorium przyszłego stanu Nowy Jork był Giovanni da Verrazzano w 1524 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79976213",
+        "source_title": "Wikipedia (pl): Nowy Jork (stan), wersja 79976213",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OH": [
+      {
+        "id": "country-us-oh-wright",
+        "text": "Bracia Wright zbudowali swój samolot Wright Flyer w warsztacie w Dayton w Ohio, zanim w 1903 r. polecieli nim pod Kitty Hawk.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385061860",
+        "source_title": "Wikipedia (en): Ohio, wersja 1385061860",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-oh-hopewell",
+        "text": "Ceremonialne wały ziemne kultury Hopewell w Ohio, wznoszone około 1–400 r. n.e., wpisano w 2023 r. na listę UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385061860",
+        "source_title": "Wikipedia (en): Ohio, wersja 1385061860",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-oh-marietta",
+        "text": "Pierwszą stałą osadą w Ohio była Marietta, założona w 1788 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78248499",
+        "source_title": "Wikipedia (pl): Ohio, wersja 78248499",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OK": [
+      {
+        "id": "country-us-ok-alabaster",
+        "text": "W parku stanowym Alabaster Caverns koło Freedom w Oklahomie znajdują się największe na świecie złoża alabastru.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80170292",
+        "source_title": "Wikipedia (pl): Oklahoma, wersja 80170292",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ok-tornada",
+        "text": "W Oklahomę uderza średnio 62 tornada rocznie — to jeden z najwyższych wskaźników na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385620125",
+        "source_title": "Wikipedia (en): Oklahoma, wersja 1385620125",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ok-tulsa",
+        "text": "W Tulsie w Oklahomie działa największa na świecie baza obsługi technicznej samolotów linii lotniczych — centrala techniczna American Airlines.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385620125",
+        "source_title": "Wikipedia (en): Oklahoma, wersja 1385620125",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OR": [
+      {
+        "id": "country-us-or-grzyb",
+        "text": "Pod Lasem Narodowym Malheur w Oregonie rośnie opieńka uchodząca za największy pojedynczy organizm na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363191",
+        "source_title": "Wikipedia (en): Oregon, wersja 1384363191",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-or-kraterowe",
+        "text": "Jezioro Kraterowe w jedynym parku narodowym Oregonu to najgłębsze jezioro w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363191",
+        "source_title": "Wikipedia (en): Oregon, wersja 1384363191",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-or-butelki",
+        "text": "Uchwalona w Oregonie w 1971 r. ustawa o kaucji za butelki (Bottle Bill) była pierwszym takim prawem w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384363191",
+        "source_title": "Wikipedia (en): Oregon, wersja 1384363191",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-PA": [
+      {
+        "id": "country-us-pa-lasy",
+        "text": "Nazwa Pensylwania znaczy „lasy Penna” — od nazwiska Williama Penna i łacińskiego silvae; król Karol II przyznał mu prawo do kolonii 4 marca 1681 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79598063",
+        "source_title": "Wikipedia (pl): Pensylwania, wersja 79598063",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-pa-medycyna",
+        "text": "Szkoła medyczna University of Pennsylvania, założona w 1765 r., była pierwszą szkołą medyczną w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384669696",
+        "source_title": "Wikipedia (en): Pennsylvania, wersja 1384669696",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-pa-grzyby",
+        "text": "Pensylwania zajmuje pierwsze miejsce w USA pod względem produkcji grzybów.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79598063",
+        "source_title": "Wikipedia (pl): Pensylwania, wersja 79598063",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-RI": [
+      {
+        "id": "country-us-ri-niewolnictwo",
+        "text": "Rhode Island było pierwszym miejscem w Ameryce Północnej, gdzie zniesiono niewolnictwo — 18 maja 1652 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80790981",
+        "source_title": "Wikipedia (pl): Rhode Island, wersja 80790981",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ri-touro",
+        "text": "Synagoga Touro w Newport na Rhode Island, poświęcona 2 grudnia 1763 r., uchodzi za pierwszą synagogę w USA i wciąż działa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385953880",
+        "source_title": "Wikipedia (en): Rhode Island, wersja 1385953880",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ri-baseball",
+        "text": "Drużyna Providence Grays z Rhode Island zdobyła w 1884 r. pierwsze w historii mistrzostwo świata w baseballu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385953880",
+        "source_title": "Wikipedia (en): Rhode Island, wersja 1385953880",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SC": [
+      {
+        "id": "country-us-sc-secesja",
+        "text": "Karolina Południowa była w grudniu 1860 r. pierwszym stanem, który zagłosował za odłączeniem się od Stanów Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385334509",
+        "source_title": "Wikipedia (en): South Carolina, wersja 1385334509",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-sc-kanal",
+        "text": "Kanał Santee, który w 1800 r. połączył Columbię z Charlestonem, był jednym z pierwszych kanałów w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385334509",
+        "source_title": "Wikipedia (en): South Carolina, wersja 1385334509",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-sc-sassafras",
+        "text": "Najwyższym szczytem Karoliny Południowej jest Sassafras Mountain — 1077 m n.p.m.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78119246",
+        "source_title": "Wikipedia (pl): Karolina Południowa, wersja 78119246",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SD": [
+      {
+        "id": "country-us-sd-rushmore",
+        "text": "Pomnik Mount Rushmore w Górach Czarnych w Dakocie Południowej ustanowiono w 1925 r.; Góry Czarne są świętym miejscem Siuksów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385655174",
+        "source_title": "Wikipedia (en): South Dakota, wersja 1385655174",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-sd-mamuty",
+        "text": "Stanowisko Mammoth Site w Dakocie Południowej to czynne wykopaliska z jednym z największych na świecie skupisk szczątków mamutów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385655174",
+        "source_title": "Wikipedia (en): South Dakota, wersja 1385655174",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-sd-zloto",
+        "text": "W 1874 r. podczas wyprawy wojskowej odkryto złoto w Górach Czarnych w Dakocie Południowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385655174",
+        "source_title": "Wikipedia (en): South Dakota, wersja 1385655174",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TN": [
+      {
+        "id": "country-us-tn-opry",
+        "text": "Grand Ole Opry z Nashville nadaje bez przerwy od 1925 r. — to najdłużej emitowana audycja radiowa w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385912294",
+        "source_title": "Wikipedia (en): Tennessee, wersja 1385912294",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-tn-salamandry",
+        "text": "W Great Smoky Mountains w Tennessee żyje najwięcej gatunków salamander na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385912294",
+        "source_title": "Wikipedia (en): Tennessee, wersja 1385912294",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-tn-prohibicja",
+        "text": "W latach 1907–1917 Tennessee jako pierwszy stan USA skutecznie zakazało sprzedaży, przewozu i produkcji alkoholu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385912294",
+        "source_title": "Wikipedia (en): Tennessee, wersja 1385912294",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TX": [
+      {
+        "id": "country-us-tx-gwiazda",
+        "text": "Przydomek Teksasu „Stan Samotnej Gwiazdy” pochodzi od jedynej gwiazdy na fladze Republiki Teksasu z 1836 r., z czasów walki o niepodległość od Meksyku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384647318",
+        "source_title": "Wikipedia (en): Texas, wersja 1384647318",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-tx-republika",
+        "text": "Rewolucja teksańska, z bitwą o Alamo, doprowadziła w 1836 r. do powstania niepodległej Republiki Teksasu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384647318",
+        "source_title": "Wikipedia (en): Texas, wersja 1384647318",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-tx-ropa",
+        "text": "Pierwszy duży szyb naftowy w Teksasie odkryto 10 stycznia 1901 r.; według badania z 2014 r. jako osobny kraj Teksas byłby szóstym producentem ropy na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384647318",
+        "source_title": "Wikipedia (en): Texas, wersja 1384647318",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-UT": [
+      {
+        "id": "country-us-ut-mroz",
+        "text": "1 lutego 1985 r. w Peter Sinks na północy Utah zmierzono −56 °C.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79824134",
+        "source_title": "Wikipedia (pl): Utah, wersja 79824134",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ut-hazard",
+        "text": "Utah i Hawaje to jedyne stany USA, które zakazują wszystkich form hazardu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385913784",
+        "source_title": "Wikipedia (en): Utah, wersja 1385913784",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-ut-autostrada",
+        "text": "Odcinek I-70 z Saliny do Green River w Utah to najdłuższy w USA fragment autostrady międzystanowej bez żadnych usług po drodze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385913784",
+        "source_title": "Wikipedia (en): Utah, wersja 1385913784",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VA": [
+      {
+        "id": "country-us-va-1607",
+        "text": "W 1607 r. Kompania Londyńska założyła kolonię Wirginia — pierwszą stałą angielską kolonię w Nowym Świecie; stąd przydomek „Old Dominion”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383622219",
+        "source_title": "Wikipedia (en): Virginia, wersja 1383622219",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-va-norfolk",
+        "text": "W Hampton Roads w Wirginii leży Naval Station Norfolk — największa baza marynarki wojennej na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383622219",
+        "source_title": "Wikipedia (en): Virginia, wersja 1383622219",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-va-wilder",
+        "text": "W 1989 r. Douglas Wilder z Wirginii jako pierwszy Afroamerykanin w historii USA został wybrany na gubernatora stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383622219",
+        "source_title": "Wikipedia (en): Virginia, wersja 1383622219",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VT": [
+      {
+        "id": "country-us-vt-republika",
+        "text": "Vermont było w latach 1777–1791 niezależną republiką, zanim przystąpiło do Stanów Zjednoczonych.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79243049",
+        "source_title": "Wikipedia (pl): Vermont, wersja 79243049",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-vt-przysiega",
+        "text": "Vermont jako jedyny stan USA wymaga od wyborców złożenia przysięgi — wprowadził ją w 1777 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385744127",
+        "source_title": "Wikipedia (en): Vermont, wersja 1385744127",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-vt-granit",
+        "text": "W Barre w Vermoncie działa kamieniołom Rock of Ages — największa w USA kopalnia granitu blokowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385744127",
+        "source_title": "Wikipedia (en): Vermont, wersja 1385744127",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WA": [
+      {
+        "id": "country-us-wa-coulee",
+        "text": "Zapora Grand Coulee w stanie Waszyngton, ukończona w 1941 r., była w chwili budowy największą zaporą na świecie i do dziś jest największą konstrukcją betonową w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385799493",
+        "source_title": "Wikipedia (en): Washington (state), wersja 1385799493",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wa-deszcz",
+        "text": "Zalesiony półwysep Olympic w stanie Waszyngton to jeden z najbardziej deszczowych regionów na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81045305",
+        "source_title": "Wikipedia (pl): Waszyngton (stan), wersja 81045305",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wa-wulkany",
+        "text": "W stanie Waszyngton leżą wielkie wulkany Gór Kaskadowych, m.in. Mount Baker, Glacier Peak i Mount Rainier.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385799493",
+        "source_title": "Wikipedia (en): Washington (state), wersja 1385799493",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WI": [
+      {
+        "id": "country-us-wi-milwaukee",
+        "text": "Milwaukee Mile, owalny tor otwarty w 1903 r., to najstarszy działający obiekt sportów motorowych na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384530058",
+        "source_title": "Wikipedia (en): Wisconsin, wersja 1384530058",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wi-ser",
+        "text": "Wisconsin jest największym producentem sera w USA; w 1890 r. uniwersytet w Madison otworzył pierwszą w kraju szkołę mleczarską.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79574909",
+        "source_title": "Wikipedia (pl): Wisconsin, wersja 79574909",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wi-limburger",
+        "text": "Wisconsin to jedyny producent sera limburskiego w Stanach Zjednoczonych; ser colby powstał tu w 1885 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384530058",
+        "source_title": "Wikipedia (en): Wisconsin, wersja 1384530058",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WV": [
+      {
+        "id": "country-us-wv-oderwanie",
+        "text": "Wirginia Zachodnia, przyjęta do Unii w 1863 r., to jedyny stan powstały przez oderwanie się od stanu Konfederacji podczas wojny secesyjnej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79668767",
+        "source_title": "Wikipedia (pl): Wirginia Zachodnia, wersja 79668767",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wv-wheeling",
+        "text": "Most wiszący w Wheeling z 1849 r. był pierwszym mostem przez rzekę Ohio i przez pewien czas najdłuższym mostem wiszącym na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385748040",
+        "source_title": "Wikipedia (en): West Virginia, wersja 1385748040",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wv-weston",
+        "text": "Główny budynek szpitala w Weston w Wirginii Zachodniej to największa budowla z ręcznie ciosanego piaskowca na półkuli zachodniej — większy jest tylko moskiewski Kreml.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385748040",
+        "source_title": "Wikipedia (en): West Virginia, wersja 1385748040",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WY": [
+      {
+        "id": "country-us-wy-yellowstone",
+        "text": "Park Narodowy Yellowstone, utworzony w 1872 r., był pierwszym parkiem narodowym na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385523874",
+        "source_title": "Wikipedia (en): Wyoming, wersja 1385523874",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wy-glos",
+        "text": "5 listopada 1889 r. wyborcy Wyoming przyjęli pierwszą na świecie konstytucję dającą kobietom pełne prawa wyborcze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385523874",
+        "source_title": "Wikipedia (en): Wyoming, wersja 1385523874",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "country-us-wy-ross",
+        "text": "W 1925 r. Nellie Tayloe Ross z Wyoming została pierwszą kobietą na stanowisku gubernatora stanu w USA.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78061651",
+        "source_title": "Wikipedia (pl): Wyoming, wersja 78061651",
         "checked": "2026-11-16"
       }
     ]

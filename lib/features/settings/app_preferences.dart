@@ -26,6 +26,15 @@ enum LearningDifficulty {
   final String label;
   final String description;
   final String mode;
+
+  /// Areas with the map only (voivodeships, US states) describe the map frame.
+  String descriptionFor(Continent area) => area.hasCapitalsAndFlags
+      ? description
+      : switch (this) {
+          veryEasy => 'Mapa ustawiona blisko szukanego miejsca',
+          easy => 'Mapa przesunięta w stronę szukanego miejsca',
+          normal => 'Cała mapa, bez podpowiedzi',
+        };
 }
 
 class AppPreferences {

@@ -29,6 +29,8 @@ transakcji. Zapis i odczyt pliku: `file_picker` (Android SAF, pobranie w Web).
 Przepływ: UI → Riverpod → repozytorium → Drift. Reguły nauki są czystymi
 funkcjami/klasami poza widgetami. `Continent` wybiera paczki, providery
 i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu).
+`Continent.poland` i `Continent.usa` to obszary województw/stanów (ID ISO 3166-2,
+`hasCapitalsAndFlags == false` → puste katalogi stolic i flag, tylko mapa).
 
 ## Kluczowe decyzje
 
@@ -49,7 +51,7 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Błąd ładowania Dziś dotyczy tylko karty wyprawy; nawigacja pozostaje dostępna.
 - Repozytorium nie zastępuje uszkodzonej bazy pustą.
 - Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.
-- Relief to lokalne kafelki XYZ (`TileLayer` + `AssetTileProvider`, z2–6, `reliefTileTemplate`) pod interaktywnymi poligonami; poza oknem kontynentu maska morza.
+- Relief to lokalne kafelki XYZ (`TileLayer` + `AssetTileProvider`, z2–6; Polska do z8, USA do z7; `reliefTileTemplate`) pod interaktywnymi poligonami; poza oknem kontynentu maska morza.
 - Papierowy atlas: `coastRings` (linie wody), `MapGraticule`, `PaperAtlasFrame`, `CompassRose` (lewy górny róg) — wszystko w `map_style.dart`, bez gestów.
 
 ## Schemat SQLite (wersja 8)

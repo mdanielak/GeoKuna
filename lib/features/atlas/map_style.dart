@@ -54,6 +54,9 @@ class MapPalette {
     MapAppearance.relief => const [],
   };
 
+  /// Relief style: fill of moved insets, where the tiles show only sea.
+  Color get insetLand => const Color(0xFFE6E2C6);
+
   /// Ink of the paper atlas frame, compass rose and vignette.
   Color get ink => const Color(0xFF5B4A31);
   Color get paperLight => const Color(0xFFF4ECD6);

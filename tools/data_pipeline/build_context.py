@@ -104,7 +104,8 @@ def check():
             # Labels name the area; any context feature may cover it (NE is de facto).
             assert any(build_map.contains_country(f, point) for f in features), (region, label)
         total += len(features)
-    assert {p.name for p in DEST.iterdir()} == {f'{r}.geojson' for r in REGIONS} | {'manifest.json'}
+    # poland/usa context comes from build_subdivisions.py (1:10m), checked there.
+    assert {p.name for p in DEST.iterdir()} == {f'{r}.geojson' for r in REGIONS} | {'manifest.json', 'poland.geojson', 'usa.geojson'}
     print(f'OK: context land for {len(REGIONS)} maps ({total} features), windows, control points, checksums')
 
 

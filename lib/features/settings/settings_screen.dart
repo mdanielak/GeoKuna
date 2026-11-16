@@ -459,7 +459,7 @@ class _DifficultyPreference extends StatelessWidget {
                 : null,
           ),
           const SizedBox(height: 8),
-          Text(value.description),
+          Text(value.descriptionFor(continent)),
         ],
       ),
     ),

@@ -85,6 +85,15 @@ class _CountryMapState extends State<CountryMap> {
       const LatLng(-50, -70),
       const LatLng(22, 30),
     ),
+    // Must match tools/data_pipeline/build_subdivisions.py windows.
+    Continent.poland => LatLngBounds(
+      const LatLng(48.6, 13.5),
+      const LatLng(55.3, 24.5),
+    ),
+    Continent.usa => LatLngBounds(
+      const LatLng(16, -128),
+      const LatLng(51, -64),
+    ),
   };
 
   // On a portrait phone the whole continent leaves most of the screen as sea:
@@ -115,6 +124,15 @@ class _CountryMapState extends State<CountryMap> {
     Continent.oceania => LatLngBounds(
       const LatLng(-47, -68),
       const LatLng(3, 5),
+    ),
+    Continent.poland => LatLngBounds(
+      const LatLng(49, 14.1),
+      const LatLng(54.9, 24.2),
+    ),
+    // Contiguous states plus the Alaska and Hawaii insets below them.
+    Continent.usa => LatLngBounds(
+      const LatLng(16.2, -128.6),
+      const LatLng(49.5, -66),
     ),
   };
 
@@ -231,8 +249,12 @@ class _CountryMapState extends State<CountryMap> {
     if (id == widget.selectedId) {
       return widget.correctId == null ? palette.selected : palette.wrong;
     }
-    return widget.appearance == MapAppearance.relief
+    // Relief tiles show sea under the moved insets: they need a fill.
+    return widget.appearance == MapAppearance.relief &&
+            !widget.catalog.insetFrames.any((f) => f.areaId == id)
         ? Colors.transparent
+        : widget.appearance == MapAppearance.relief
+        ? _palette.insetLand
         : _palette.fills[countryColoring(
             widget.catalog,
             _palette.fills.length,
@@ -310,7 +332,7 @@ class _CountryMapState extends State<CountryMap> {
             container: true,
             explicitChildNodes: true,
             focusable: true,
-            label: 'Mapa państw. Klawisze strzałek przesuwają mapę, plus i minus zmieniają powiększenie, zero przywraca widok.',
+            label: 'Mapa. Klawisze strzałek przesuwają mapę, plus i minus zmieniają powiększenie, zero przywraca widok.',
             child: Stack(
               children: [
                 Positioned.fill(
@@ -349,7 +371,7 @@ class _CountryMapState extends State<CountryMap> {
                     bottom: 8,
                     child: IgnorePointer(
                       child: Text(
-                        'Natural Earth · ${widget.catalog.countries.length} państw',
+                        'Natural Earth · ${widget.catalog.countries.length} ${widget.catalog.continent.areaNoun}',
                         style: const TextStyle(fontSize: 10),
                       ),
                     ),
@@ -390,7 +412,13 @@ class _CountryMapState extends State<CountryMap> {
               urlTemplate: reliefTileTemplate(widget.catalog.continent),
               tileProvider: AssetTileProvider(),
               minNativeZoom: 2,
-              maxNativeZoom: 6,
+              // Sharper ETOPO hillshade tiles exist for the subdivision maps
+              // (tools/data_pipeline/build_relief_hd.py).
+              maxNativeZoom: switch (widget.catalog.continent) {
+                Continent.poland => 8,
+                Continent.usa => 7,
+                _ => 6,
+              },
               tileBounds: _bounds,
             ),
           ),
@@ -442,6 +470,7 @@ class _CountryMapState extends State<CountryMap> {
             ],
           ),
         ),
+      if (widget.catalog.insetFrames.isNotEmpty) ..._insetFrames(),
       GestureDetector(
         onTap: () {
           final hits = _hits.value?.hitValues;
@@ -596,6 +625,48 @@ class _CountryMapState extends State<CountryMap> {
     }
     return result;
   }
+
+  /// Framed boxes of the moved insets (Alaska, Hawaii) with a scale note.
+  List<Widget> _insetFrames() => [
+    IgnorePointer(
+      child: PolygonLayer(
+        polygons: [
+          for (final frame in widget.catalog.insetFrames)
+            Polygon(
+              points: [
+                frame.bounds.northWest,
+                frame.bounds.northEast,
+                frame.bounds.southEast,
+                frame.bounds.southWest,
+              ],
+              color: _palette.ocean,
+              borderColor: _palette.boundary.withValues(alpha: .7),
+              borderStrokeWidth: 1.2,
+            ),
+        ],
+      ),
+    ),
+    IgnorePointer(
+      child: MarkerLayer(
+        markers: [
+          for (final frame in widget.catalog.insetFrames)
+            Marker(
+              point: frame.bounds.northWest,
+              width: 150,
+              height: 16,
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 4, top: 2),
+                child: Text(
+                  frame.label,
+                  style: TextStyle(fontSize: 10, color: _palette.boundary),
+                ),
+              ),
+            ),
+        ],
+      ),
+    ),
+  ];
 
   /// Sea around the data window, up to the edge of the world. Boxes stay
   /// under 180° wide: flutter_map unwraps wider ones as antimeridian-crossing.

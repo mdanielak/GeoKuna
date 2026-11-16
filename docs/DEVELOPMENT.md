@@ -31,6 +31,9 @@ done
 for r in north_america south_america oceania; do
   python3 tools/data_pipeline/build_region.py $r --check
 done
+python3 tools/data_pipeline/build_subdivisions.py poland --check
+python3 tools/data_pipeline/build_subdivisions.py usa --check
+python3 tools/data_pipeline/build_relief_hd.py --check
 flutter build web --no-web-resources-cdn   # przy wydaniu
 ```
 

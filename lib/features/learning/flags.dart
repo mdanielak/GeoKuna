@@ -53,6 +53,8 @@ class FlagQuestion {
 }
 
 class FlagCatalog {
+  /// No pack for this area (voivodeships, US states — stage 2).
+  const FlagCatalog.empty() : version = 'none', facts = const [];
   FlagCatalog(this.version, this.facts) {
     if (facts.length < 4 ||
         facts.map((f) => f.countryId).toSet().length != facts.length ||
@@ -97,6 +99,7 @@ class FlagCatalog {
   static Future<FlagCatalog> load({
     Continent continent = Continent.europe,
   }) async {
+    if (!continent.hasCapitalsAndFlags) return const FlagCatalog.empty();
     final json = jsonDecode(
       await rootBundle.loadString(continent.contentPath('flags.json')),
     ) as Map<String, dynamic>;

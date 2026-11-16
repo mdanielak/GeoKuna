@@ -34,6 +34,20 @@ void main() {
         }
       }
       expect(ids, hasLength(197));
+      for (final path in [
+        'assets/content/poland/countries.json',
+        'assets/content/usa/countries.json',
+      ]) {
+        final data = jsonDecode(
+          await rootBundle.loadString(path),
+        ) as Map<String, dynamic>;
+        for (final raw in data['countries'] as List<dynamic>) {
+          final id = (raw as Map<String, dynamic>)['id'] as String;
+          // Voivodeships and states: location facts only (stage 1).
+          expect(catalog.factsFor(id), hasLength(3), reason: id);
+          expect(capitals.factsFor(id), isEmpty, reason: id);
+        }
+      }
       for (final id in ids) {
         expect(flags.factsFor(id), hasLength(3), reason: 'flag $id');
         expect(capitals.factsFor(id), hasLength(3), reason: 'capital $id');

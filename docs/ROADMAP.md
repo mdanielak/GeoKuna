@@ -1,10 +1,11 @@
 # Stan i plan
 
-## Stan — 2026-11-16 (wersja 0.5.1)
+## Stan — 2026-11-16 (wersja 0.6.0)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
-- Europa 47, Afryka 54, Azja 50, Ameryka Północna 22, Południowa 13, Oceania 14; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
+- Europa 47, Afryka 54, Azja 50, Ameryka Północna 22, Południowa 13, Oceania 14;
+  województwa (16) i stany USA (50) — tylko mapa, z ciekawostkami; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
 - Mapa, stolice, flaga → nazwa, flaga → mapa; trzy poziomy i 12 kart FSRS na kraj;
   A–D z własnym FSRS rozpoznawania.
 - Dziś: zaległe najpierw, globalny limit 3 nowości, poziom per kontynent.
@@ -51,6 +52,68 @@ nie dowodzi retencji w miesiącach.
    [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne).
 6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.
+
+## Plan: województwa i stany USA — etap 1, mapa (wersja 0.6.0) — wykonany; etap 2: stolice, flagi/herby
+
+**Cel.** Dwie nowe mapy do nauki: 16 województw Polski i 50 stanów USA, pytanie
+„gdzie leży?” na mapie, po odpowiedzi jedna z 3 ciekawostek. Etap 2 (osobno):
+miasta wojewódzkie i stolice stanów, flagi i herby.
+
+**Nie robimy teraz:** stolic, flag, herbów, powiatów, miast, Dystryktu Kolumbii
+jako celu, poziomu „Automatyczny”, zmian kafelków rzeźby.
+**Porażka mimo działania:** pomieszany postęp istniejących kart; wstawki
+Alaski i Hawajów czytane jako prawdziwe położenie; pusty ekran stolic/flag.
+
+**Podejście (wybrane: A).** Polska i USA to dwa nowe obszary w `Continent`
+(kod nadal mówi „kontynent”), z tym samym przepływem co państwa: Dziś, FSRS,
+poziomy mapy, medale, passa, atlas, ciekawostki.
+Odrzucone: B — osobny typ obiektu (GK-010, migracja bazy i większości zapytań,
+kilka razy więcej pracy przed pierwszą mapą; wrócimy przy rzekach i górach);
+C — osobny tryb bez powtórek (bez sedna aplikacji).
+
+**Dane**
+- Identyfikatory: ISO 3166-2 — `PL-02`…`PL-32` (kody TERYT), `US-AL`…`US-WY`.
+  Trafiają do kolumn `countryId` bez migracji.
+- Geometria: Natural Earth 1:10m admin-1 (states/provinces), wersja i SHA-256
+  przypięte jak przy państwach; nowe okna `poland` i `usa`; walidator: liczba
+  obiektów, punkty kontrolne, sumy kontrolne. Ląd kontekstowy: sąsiednie państwa
+  (Polska: DEU, CZE, SVK, UKR, BLR, LTU, RUS-Kaliningrad; USA: CAN, MEX).
+- Nazwy: województwa — urzędowe nazwy z TERYT (GUS); stany — polskie nazwy
+  z urzędowego wykazu KSNG nazw geograficznych świata (np. Kalifornia, Nowy Jork,
+  Karolina Północna); każdy wpis z odnośnikiem i stroną źródła.
+- Pytanie: „Gdzie leży województwo mazowieckie?”, „Gdzie leży Kalifornia?” —
+  pole `question_name` w katalogu (nazwa w atlasie: „mazowieckie”).
+- Znaczniki małych obszarów: Rhode Island, Delaware (jak mikropaństwa).
+- **Wstawki USA:** Alaska i Hawaje przesunięte i przeskalowane w danych
+  (`build_region.py`) do lewego dolnego rogu okna USA, każda w ramce z podpisem
+  „Alaska — inna skala”; w stylu Rzeźba wstawki mają jasne wypełnienie, bo kafelki
+  pod nimi pokazują ocean. Trafienie liczy się po przesuniętej geometrii.
+
+**Aplikacja**
+- `Continent`: `poland('Polska', 'Polski', 'Polsce')`,
+  `usa('Stany Zjednoczone', 'Stanów Zjednoczonych', 'Stanach Zjednoczonych')`;
+  okna i kadry pionowe w `country_map.dart`; rzeźba z istniejącego zestawu `world`.
+- Rzeczownik obszaru w napisach („państw” → „województw”/„stanów”): pole w
+  katalogu, nie `if` w widokach.
+- Stolice i flagi: brak pliku = pusty katalog; ekrany i wybór trybu na Dziś
+  pokazują tylko mapę dla tych obszarów.
+- **ID kart FSRS:** dzisiejszy wzór pakuje 3 znaki; kody 5-znakowe dostają
+  osobny zakres (od 10¹³, w granicy 2⁵³ dla Web), bez zmiany istniejących ID —
+  test na kolizje i stabilność starych ID.
+- Ciekawostki: 3 na obszar (198), w `country_trivia.json` (wersja 0.5.0),
+  źródło — artykuł Wikipedii o województwie/stanie w przypiętej wersji, zasady
+  z [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne);
+  losowanie 1 z 3 już działa. Walidator obejmuje nowe foldery.
+- Kopia postępu, reset, medale i passa działają bez zmian (klucz obszaru).
+
+**Weryfikacja:** `build_region.py poland|usa --check`, `build_trivia.py --check`,
+testy: katalog (16/50, unikalne ID), ID kart bez kolizji, przepływ quizu mapy dla
+Polski i USA (w tym wstawka), ekran Dziś bez stolic/flag dla tych obszarów;
+zrzuty `/shots` trzech stylów; telefon: dotyk małych województw i wstawek.
+
+**Decyzje budującego (moje):** ISO 3166-2 zamiast własnych kodów; DC jako ląd
+kontekstowy; nazwa w atlasie bez słowa „województwo”; wstawki w lewym dolnym rogu;
+jedna paczka ciekawostek zamiast osobnej.
 
 ## Plan: poziom „Automatyczny” (projekt, wstrzymany 2026-11-16)
 
@@ -105,7 +168,7 @@ Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
 | ID | Zakres | Uwagi |
 |---|---|---|
 | GK-003b | waluty i języki urzędowe | źródła pierwotne, wiele wartości, daty obowiązywania |
-| GK-010 | typowane encje + Polska: województwa (TERYT) | rozdzielić `entity_id` od `country_id`; nowy przydział liczbowych ID FSRS |
+| GK-010 | typowane encje (rzeki, góry, miasta) | rozdzielić `entity_id` od `country_id`; województwa i stany działają jako obszary `Continent` (0.6.0) |
 | GK-013 | miasta wojewódzkie, parki, rzeki, góry Polski | jawna rola siedziby władz; rzeki jako linie z tolerancją dotyku |
 | GK-014 | mały katalog rzek i gór świata | zdefiniować „największe” przed budową paczki |
 | GK-017 | mapa: projekcje regionalne, warstwa kontekstu dla pominiętych obszarów (np. Sahara Zachodnia) | najpierw prototyp z hit-testem |

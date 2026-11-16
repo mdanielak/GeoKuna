@@ -49,7 +49,7 @@ class _CountryPickerState extends State<CountryPicker> {
           textInputAction: TextInputAction.search,
           onChanged: (value) => setState(() => _query = value),
           decoration: InputDecoration(
-            labelText: 'Szukaj państwa',
+            labelText: 'Szukaj na mapie',
             prefixIcon: const Icon(Icons.search),
             suffixIcon: _query.isEmpty
                 ? null
@@ -69,7 +69,7 @@ class _CountryPickerState extends State<CountryPicker> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              'Nie znaleziono państwa. Zmień wyszukiwaną nazwę.',
+              'Nic nie znaleziono. Zmień wyszukiwaną nazwę.',
               textAlign: TextAlign.center,
             ),
           )

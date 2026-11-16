@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 
 import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
+import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 import 'learning_levels.dart';
 
@@ -61,7 +62,7 @@ class AchievementStore {
     final qualified = qualifiedSkillIds(
       reviews,
       onQualified: (skills, at) {
-        for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
+        for (final topic in _topics(catalog.continent)) {
           for (final level in LearningDifficulty.values) {
             final count = _effectiveCountries(
               skills,
@@ -84,7 +85,7 @@ class AchievementStore {
     )..where((m) => m.continent.equals(catalog.continent.name))).get();
     final answered = reviews.map((r) => r.skillId).toSet();
     final result = <CategoryAchievement>[];
-    for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
+    for (final topic in _topics(catalog.continent)) {
       for (final level in LearningDifficulty.values) {
         final direct = _effectiveCountries(
           qualified,
@@ -220,3 +221,8 @@ Set<String> _effectiveCountries(
         country,
   };
 }
+
+/// Medal categories; map-only areas (voivodeships, US states) have just one.
+List<String> _topics(Continent area) => area.hasCapitalsAndFlags
+    ? const ['map', 'capitals', 'flags', 'flagMap']
+    : const ['map'];

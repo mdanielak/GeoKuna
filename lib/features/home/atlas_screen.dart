@@ -80,6 +80,13 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                         : catalog.continent == Continent.asia
                         ? 'Azja: ${catalog.countries.length} państw. '
                               'Szczegóły granic i źródeł: dokumentacja Azji.'
+                        : catalog.continent == Continent.poland
+                        ? 'Polska: 16 województw (Dz.U. 1998 nr 96 poz. 603). '
+                              'Geometria: Natural Earth 1:10m, v5.1.2 · domena publiczna.'
+                        : catalog.continent == Continent.usa
+                        ? 'Stany Zjednoczone: 50 stanów; polskie nazwy według KSNG. '
+                              'Alaska i Hawaje są pokazane we wstawkach w innej skali; '
+                              'Dystrykt Kolumbii jest tłem mapy. Geometria: Natural Earth 1:10m.'
                         : catalog.continent != Continent.europe
                         ? '${catalog.continent.label}: '
                               '${catalog.countries.length} państw (lista KSNG). '

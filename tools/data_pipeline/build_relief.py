@@ -123,6 +123,7 @@ def build(archive):
         with Image.open(raster_path) as source:
             assert source.size == SOURCE_SIZE and source.mode == 'RGB'
             source.load()
+            # Removes the high-zoom tiles too: run build_relief_hd.py afterwards.
             if TILES.exists():
                 shutil.rmtree(TILES)
             TILES.mkdir(parents=True)
@@ -173,8 +174,9 @@ def check():
     assert manifest['parameters']['zooms'] == [ZOOMS.start, ZOOMS.stop - 1]
     assert manifest['regions'] == {r: {'tile_set': tile_set(r), 'bounds_wsen': list(b)}
                                    for r, b in REGIONS.items()}
+    import build_relief_hd  # high-zoom Poland/USA tiles share the folder
     wanted = {name(k) for k in wanted_tiles()}
-    actual = {p.name for p in TILES.iterdir()}
+    actual = {p.name for p in TILES.iterdir()} - {name(k) for k in build_relief_hd.hd_tiles()}
     assert actual == wanted, f'Unexpected {sorted(actual - wanted)[:3]} / missing {sorted(wanted - actual)[:3]}'
     assert not list(DEST.glob('*.webp')), 'Old single-image overlays left behind'
     assert manifest['tiles_sha256'] == tiles_digest(), 'Tile checksum mismatch'
@@ -186,7 +188,7 @@ def check():
                 r, g, b = im.convert('RGB').getpixel((int(fx % 1 * 256), int(fy % 1 * 256)))
                 water = b > r + 25 and b > g  # Natural Earth water is blue; land is not
                 assert water == (kind == 'water'), (region, lon, lat, (r, g, b))
-    total = sum(p.stat().st_size for p in TILES.iterdir())
+    total = sum((TILES / n).stat().st_size for n in wanted)
     print(f'OK: {len(wanted)} offline relief tiles (z{ZOOMS.start}–{ZOOMS.stop - 1}, '
           f'{len(REGIONS)} regions), control points, checksums; {total:,} bytes')
 

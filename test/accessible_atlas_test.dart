@@ -41,7 +41,7 @@ void main() {
     await tester.enterText(find.byType(TextField), 'nieistniejace');
     await tester.pumpAndSettle();
     expect(
-      find.text('Nie znaleziono państwa. Zmień wyszukiwaną nazwę.'),
+      find.text('Nic nie znaleziono. Zmień wyszukiwaną nazwę.'),
       findsOneWidget,
     );
     await tester.tap(find.byTooltip('Wyczyść wyszukiwanie'));
@@ -51,7 +51,7 @@ void main() {
       isEmpty,
     );
     expect(
-      find.text('Nie znaleziono państwa. Zmień wyszukiwaną nazwę.'),
+      find.text('Nic nie znaleziono. Zmień wyszukiwaną nazwę.'),
       findsNothing,
     );
   });

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'continent.dart';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_map/flutter_map.dart' show LatLngBounds;
 import 'package:latlong2/latlong.dart';
 
 class Country {
@@ -12,20 +13,33 @@ class Country {
     this.center,
     this.small, {
     required this.plural,
-  });
+    String? questionName,
+  }) : questionName = questionName ?? name;
   final String id;
   final String name;
+
+  /// Name in the question, e.g. „województwo mazowieckie”, „stan Nowy Jork”.
+  final String questionName;
   final LatLng center;
   final bool small;
   final bool plural;
 
-  String get locationQuestion => 'Gdzie ${plural ? 'leżą' : 'leży'} $name?';
+  String get locationQuestion =>
+      'Gdzie ${plural ? 'leżą' : 'leży'} $questionName?';
 }
 
 class CountryShape {
   const CountryShape(this.countryId, this.rings);
   final String countryId;
   final List<List<LatLng>> rings;
+}
+
+/// A framed inset with its own scale (Alaska, Hawaii), in map coordinates.
+class InsetFrame {
+  const InsetFrame(this.areaId, this.label, this.bounds);
+  final String areaId;
+  final String label;
+  final LatLngBounds bounds;
 }
 
 class Catalog {
@@ -35,6 +49,7 @@ class Catalog {
     this.continent = Continent.europe,
     this.version = 'custom',
     this.context = const [],
+    this.insetFrames = const [],
   }) {
     if (countries.length != countries.map((c) => c.id).toSet().length ||
         countries.any((c) => !shapes.any((s) => s.countryId == c.id)) ||
@@ -51,6 +66,7 @@ class Catalog {
   /// Neutral land around the quiz countries (never selectable): polygons as
   /// rings, outer first.
   final List<List<List<LatLng>>> context;
+  final List<InsetFrame> insetFrames;
   Country country(String id) => countries.firstWhere((c) => c.id == id);
 
   static Future<Catalog> load({Continent continent = Continent.europe}) async {
@@ -71,6 +87,7 @@ class Catalog {
         ),
         c['small'] as bool,
         plural: c['plural'] as bool,
+        questionName: c['question_name'] as String?,
       );
     }).toList();
     final shapes = <CountryShape>[];
@@ -105,6 +122,23 @@ class Catalog {
       shapes,
       continent: continent,
       version: content['version'] as String,
+      insetFrames: [
+        for (final f in (content['inset_frames'] as List?) ?? const [])
+          InsetFrame(
+            f['id'] as String,
+            f['label'] as String,
+            LatLngBounds(
+              LatLng(
+                (f['bounds_wsen'][1] as num).toDouble(),
+                (f['bounds_wsen'][0] as num).toDouble(),
+              ),
+              LatLng(
+                (f['bounds_wsen'][3] as num).toDouble(),
+                (f['bounds_wsen'][2] as num).toDouble(),
+              ),
+            ),
+          ),
+      ],
       context: [
         for (final feature in contextData['features'] as List)
           for (final polygon in feature['geometry']['coordinates'] as List)

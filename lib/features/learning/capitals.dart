@@ -58,6 +58,8 @@ class CapitalQuestion {
 }
 
 class CapitalCatalog {
+  /// No pack for this area (voivodeships, US states — stage 2).
+  const CapitalCatalog.empty() : version = 'none', facts = const [];
   CapitalCatalog(this.version, this.facts) {
     if (facts.length < 4 ||
         facts.map((f) => f.countryId).toSet().length != facts.length ||
@@ -90,6 +92,7 @@ class CapitalCatalog {
   static Future<CapitalCatalog> load({
     Continent continent = Continent.europe,
   }) async {
+    if (!continent.hasCapitalsAndFlags) return const CapitalCatalog.empty();
     final json = jsonDecode(
       await rootBundle.loadString(continent.contentPath('capitals.json')),
     ) as Map<String, dynamic>;
