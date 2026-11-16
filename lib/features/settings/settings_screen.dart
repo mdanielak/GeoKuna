@@ -391,15 +391,15 @@ class _AppearanceCard extends StatelessWidget {
     final (icon, description) = switch (appearance) {
       MapAppearance.atlas => (
         Icons.public,
-        'Wyraźne granice i spokojne kolory atlasu.',
+        'Żywe kolory państw i miękki cień wybrzeży.',
       ),
       MapAppearance.paper => (
         Icons.map_outlined,
-        'Jasna mapa w stylu papierowego atlasu.',
+        'Stary druk: sepia, linie wody i róża wiatrów.',
       ),
       MapAppearance.relief => (
         Icons.terrain,
-        'Cieniowanie podkreślające ukształtowanie terenu.',
+        'Góry, rzeki i jeziora jak na mapie terenu.',
       ),
     };
     return Card.outlined(

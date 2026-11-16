@@ -49,7 +49,8 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Błąd ładowania Dziś dotyczy tylko karty wyprawy; nawigacja pozostaje dostępna.
 - Repozytorium nie zastępuje uszkodzonej bazy pustą.
 - Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.
-- Relief to lokalny `OverlayImage` pod interaktywnymi poligonami.
+- Relief to lokalne kafelki XYZ (`TileLayer` + `AssetTileProvider`, z2–6, `reliefTileTemplate`) pod interaktywnymi poligonami; poza oknem kontynentu maska morza.
+- Papierowy atlas: `coastRings` (linie wody), `MapGraticule`, `PaperAtlasFrame`, `CompassRose` (lewy górny róg) — wszystko w `map_style.dart`, bez gestów.
 
 ## Schemat SQLite (wersja 8)
 

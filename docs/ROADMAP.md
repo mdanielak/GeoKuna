@@ -1,6 +1,6 @@
 # Stan i plan
 
-## Stan — 2026-11-16 (wersja 0.5.0)
+## Stan — 2026-11-16 (wersja 0.5.1)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
@@ -23,7 +23,7 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 - Drabinka trudnych kart, szczebele 1–2 (2026-11-15), kopia postępu w Ustawieniach,
   tokeny kolorów i typografii (`GeoColors`): po 2 błędach łatwiejszy krok
   przed właściwym pytaniem. Ciekawostki o flagach (3 na flagę), Europa bez
-  Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief WebP.
+  Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief z kafelków 1:10m z rzekami i jeziorami.
 
 Ostatnie przyrosty sprawdzono zrzutami testowymi (`/shots`, 390×844 i 320×640/160%),
 nie w Chrome ani na telefonie.
@@ -51,6 +51,38 @@ nie dowodzi retencji w miesiącach.
    [CONTENT.md](CONTENT.md#jaka-ma-być-ciekawostka-zasady-redakcyjne).
 6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.
+
+## Plan: poziom „Automatyczny” (projekt, wstrzymany 2026-11-16)
+
+Cel: trudność dopasowuje się do jednego hasła, nie do całego kontynentu — kto
+myli Gwatemalę, dostaje ją łatwiej, a reszta zostaje na normalnym. Zastępuje
+pierwszy szczebel drabinki (łatwiejszy krok po 2 błędach); jeden mechanizm, nie dwa.
+
+- **Gdzie:** czwarta opcja poziomu kontynentu, domyślna, gdy użytkownik nic nie
+  wybrał. Zapisane wybory (bardzo łatwy/łatwy/normalny) zostają i działają jak dziś.
+- **Hasło** = kraj × kategoria (mapa, stolica, flaga → nazwa, flaga → mapa).
+  Start: normalny.
+- **W dół:** 3 błędne odpowiedzi z rzędu na tym haśle → poziom niżej
+  (normalny → łatwy → bardzo łatwy). Liczy się pierwsza odpowiedź każdego pytania,
+  także powtórki błędu w serii; kolejne kliknięcia na mapie w tym samym pytaniu nie.
+- **W górę:** 2 trafienia z rzędu → poziom wyżej (najwyżej normalny).
+  Zmiana poziomu zeruje oba liczniki.
+- **Ocena:** odpowiedź ocenia kartę poziomu, na którym padło pytanie; FSRS
+  i medale bez zmian (trafienie na bardzo łatwym nie daje medalu za normalny).
+- **Planowanie:** w trybie automatycznym z każdego hasła pytamy tylko o kartę
+  jego bieżącego poziomu. Karta łatwiejsza po zejściu jest od razu do powtórki
+  i nie zużywa budżetu nowości; karty innych poziomów zachowują terminy.
+- **Stan:** tabela `auto_levels` (hasło, poziom, licznik), zapis w tej samej
+  transakcji co odpowiedź; schemat v10, kopia postępu ją obejmuje.
+- **Widoczność:** chip w pytaniu „Łatwiej: Gwatemala” i w feedbacku
+  „Jeszcze 1 trafienie — wrócisz do normalnego”; po zejściu „Następnym razem łatwiej”.
+- **Usuwamy** łatwiejszy krok drabinki (`origin=scaffold`) we wszystkich trybach;
+  mylone pary (szczebel 2), 3 próby na mapie i przybliżenie po 3. błędzie zostają.
+- **Testy:** maszyna stanów poziomu, planer (zejście, powrót, budżet),
+  symulacja ucznia w `adaptive_learning_test`.
+
+Odrzucone: poziom wyliczany z historii odpowiedzi (wolny przy każdym planie,
+powtórki w serii nie są ocenami FSRS); osobny „automat” obok drabinki (dwa mechanizmy).
 
 ## Plan: drabinka trudnych kart (dalsze szczeble)
 

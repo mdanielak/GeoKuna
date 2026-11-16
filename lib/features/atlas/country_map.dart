@@ -322,6 +322,8 @@ class _CountryMapState extends State<CountryMap> {
                     return _map();
                   },
                 ),
+                if (widget.appearance == MapAppearance.paper)
+                  const Positioned(left: 12, top: 12, child: CompassRose()),
                 Positioned(
                   right: 8,
                   // In a quiz the top and bottom belong to the question and
@@ -384,19 +386,47 @@ class _CountryMapState extends State<CountryMap> {
       if (widget.appearance == MapAppearance.relief)
         IgnorePointer(
           child: ExcludeSemantics(
-            child: OverlayImageLayer(
-              overlayImages: [
-                OverlayImage(
-                  bounds: _bounds,
-                  imageProvider: AssetImage(
-                    'assets/maps/styles/relief/${widget.catalog.continent.name}.webp',
-                  ),
-                ),
-              ],
+            child: TileLayer(
+              urlTemplate: reliefTileTemplate(widget.catalog.continent),
+              tileProvider: AssetTileProvider(),
+              minNativeZoom: 2,
+              maxNativeZoom: 6,
+              tileBounds: _bounds,
             ),
           ),
         ),
+      // Tiles overhang the window; outside it the map is plain sea again.
+      if (widget.appearance == MapAppearance.relief)
+        IgnorePointer(
+          child: PolygonLayer(
+            polygons: [
+              for (final band in _outsideWindow())
+                Polygon(
+                  points: band,
+                  color: _palette.ocean,
+                  borderStrokeWidth: 0,
+                ),
+            ],
+          ),
+        ),
       if (widget.appearance == MapAppearance.paper) const MapGraticule(),
+      for (final (width, color) in _palette.coastRings)
+        IgnorePointer(
+          child: PolygonLayer(
+            polygons: [
+              for (final rings in [
+                ...widget.catalog.context,
+                for (final shape in widget.catalog.shapes) shape.rings,
+              ])
+                Polygon(
+                  points: rings.first,
+                  color: Colors.transparent,
+                  borderColor: color,
+                  borderStrokeWidth: width,
+                ),
+            ],
+          ),
+        ),
       if (widget.catalog.context.isNotEmpty)
         IgnorePointer(
           child: PolygonLayer(
@@ -435,6 +465,7 @@ class _CountryMapState extends State<CountryMap> {
         ),
       ),
       IgnorePointer(child: PolygonLayer(polygons: _edgeFade())),
+      if (widget.appearance == MapAppearance.paper) const PaperAtlasFrame(),
       MarkerLayer(
         markers: [
           for (final country in widget.catalog.countries.where((c) => c.small))
@@ -564,6 +595,31 @@ class _CountryMapState extends State<CountryMap> {
           : camera.screenOffsetToLatLng(offset);
     }
     return result;
+  }
+
+  /// Sea around the data window, up to the edge of the world. Boxes stay
+  /// under 180° wide: flutter_map unwraps wider ones as antimeridian-crossing.
+  List<List<LatLng>> _outsideWindow() {
+    final b = _bounds;
+    final boxes = <List<LatLng>>[];
+    void box(double s, double w, double n, double e) {
+      for (var west = w; west < e; west += 60) {
+        // Half a degree of overlap hides anti-aliasing seams.
+        final east = west + 60 < e ? west + 60.5 : e;
+        boxes.add([
+          LatLng(n, west),
+          LatLng(n, east),
+          LatLng(s, east),
+          LatLng(s, west),
+        ]);
+      }
+    }
+
+    box(b.north, -180, 85, 180);
+    box(-85, -180, b.south, 180);
+    box(b.south, -180, b.north, b.west);
+    box(b.south, b.east, b.north, 180);
+    return boxes;
   }
 
   /// Soft edge of the data window: stacked translucent sea bands so land cut

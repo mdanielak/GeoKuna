@@ -134,22 +134,25 @@ czarno-czerwono-zielony; to nie stanowisko polityczne).
 
 ## Rzeźba terenu
 
-[Natural Earth I with Shaded Relief 1:50m, v3.2.0](https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/),
-domena publiczna; archiwum `https://naciscdn.org/naturalearth/50m/raster/NE1_50M_SR.zip`,
-SHA-256 `ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934`.
+[Natural Earth I with Shaded Relief, Water, and Drainages 1:10m, v2.0.0](https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/),
+domena publiczna; archiwum `https://naciscdn.org/naturalearth/10m/raster/NE1_HR_LC_SR_W_DR.zip`
+(324 MB, tylko do budowania), SHA-256 `8841d08155415f0556462846dcb845a4ccb8f12390b0e0ba36ffde55efadeb56`.
+Raster ma już rzeki, jeziora i batymetrię.
 
-Generator przelicza raster z WGS84 do EPSG:3857 (interpolacja dwuliniowa),
-rozjaśnia paletę i ustawia morze na RGB `218, 238, 244`. Szerokość to natywna
-rozdzielczość źródła (1/30°), najwyżej 3072 px; zapis WebP (jakość 90, pełny kolor).
-Europa 2910 px, Afryka 2730, Azja 3072, Ameryka Północna 3072, Południowa 1950,
-Oceania 3000 px szerokości; łącznie ok. 2,9 MB
-(manifest w `assets/maps/styles/relief/`, wersja 0.2.0). Raster jest tylko tłem —
-wybór i ocenianie wynikają z wektorów. Przy dużym zoomie możliwe drobne różnice
-wybrzeży (różne wersje generalizacji).
+Generator tnie raster na kafelki Web Mercator 256 px, zoom 2–6 (z6 ≈ natywna
+rozdzielczość 1/60°; wyżej aplikacja powiększa), WebP jakość 80, rozjaśnione o 12%.
+Jeden płaski katalog `assets/maps/styles/relief/tiles/<zestaw>_<z>_<x>_<y>.webp`:
+zestaw `world` jest wspólny dla pięciu kontynentów, `oceania` powstaje z rastra
+przesuniętego o 180°. Razem 3753 kafelki, ok. 12,6 MB (manifest: suma kontrolna
+wszystkich kafelków, wersja 0.3.0). Poza oknem kontynentu mapa pokazuje gładkie
+morze. Raster jest tylko tłem — wybór i ocenianie wynikają z wektorów.
 
 **Style wektorowe:** nowoczesny i papierowy atlas mają po 5 wypełnień; sąsiednie
 kraje (wspólne wierzchołki granicy) zawsze dostają różne kolory (kolorowanie grafu
 w `countryColoring`). Granice 1,2–1,3 px, ciemniejsze niż wypełnienia.
+Nowoczesny: nasycone, jasne kolory i miękki cień wzdłuż wybrzeży. Papierowy:
+sepia, ziarno i włókna papieru, rytowane linie wody przy brzegach (`coastRings`),
+siatka 15°/10°, podwójna ramka z podziałką co 5°, winieta i róża wiatrów.
 Koszt pamięci na Androidzie wymaga sprawdzenia na telefonie.
 
 ## Ciekawostki
@@ -247,7 +250,7 @@ python3 tools/data_pipeline/build_capitals.py --source /ścieżka/KSNG-2025.pdf
 python3 tools/data_pipeline/build_flags.py               # Europa: pobiera przypięte SVG
 python3 tools/data_pipeline/build_africa.py --build --pdf /ścieżka/KSNG-2026.pdf
 python3 tools/data_pipeline/build_asia.py   --build --pdf /ścieżka/KSNG-2026.pdf
-python3 tools/data_pipeline/build_relief.py --build [--source /ścieżka/NE1_50M_SR.zip]
+python3 tools/data_pipeline/build_relief.py --build [--source /ścieżka/NE1_HR_LC_SR_W_DR.zip]
 python3 tools/data_pipeline/build_trivia.py --check
 ```
 

@@ -1,107 +1,83 @@
 {
-  "version": "natural-earth-relief-0.2.0",
+  "version": "natural-earth-relief-0.3.0",
   "source": {
-    "name": "Natural Earth I with Shaded Relief 1:50m",
-    "version": "3.2.0",
-    "url": "https://naciscdn.org/naturalearth/50m/raster/NE1_50M_SR.zip",
-    "page": "https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/",
-    "sha256": "ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934",
+    "name": "Natural Earth I with Shaded Relief, Water, and Drainages 1:10m",
+    "version": "2.0.0",
+    "url": "https://naciscdn.org/naturalearth/10m/raster/NE1_HR_LC_SR_W_DR.zip",
+    "page": "https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/",
+    "sha256": "8841d08155415f0556462846dcb845a4ccb8f12390b0e0ba36ffde55efadeb56",
     "license": "public-domain",
     "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-    "verified_at": "2026-11-13"
+    "verified_at": "2026-11-16"
   },
   "projection": "EPSG:3857",
   "parameters": {
-    "max_width": 3072,
-    "resampling": "bilinear",
-    "rows": "inverse-mercator",
+    "tile_size": 256,
+    "zooms": [
+      2,
+      6
+    ],
+    "resampling": "lanczos per zoom, bilinear inverse-mercator rows",
     "format": "webp",
-    "quality": 90,
-    "land_tint_rgb": [
-      220,
-      233,
-      201
-    ],
-    "land_tint_strength": 0.2,
-    "ocean_rgb": [
-      218,
-      238,
-      244
-    ],
+    "quality": 80,
+    "lighten": 0.12,
     "pillow_version": "10.2.0"
   },
   "regions": {
     "europe": {
-      "asset_path": "assets/maps/styles/relief/europe.webp",
+      "tile_set": "world",
       "bounds_wsen": [
         -32.0,
         34.0,
         65.0,
         72.0
-      ],
-      "width": 2910,
-      "height": 2082,
-      "sha256": "53a0f9a8a92740166c92cb928c5c6b2fad664b8e42322bf1815647b090914a3b"
+      ]
     },
     "africa": {
-      "asset_path": "assets/maps/styles/relief/africa.webp",
+      "tile_set": "world",
       "bounds_wsen": [
         -26.0,
         -36.0,
         65.0,
         38.0
-      ],
-      "width": 2730,
-      "height": 2393,
-      "sha256": "575d2e865fe06dc2c05643599063501313860f00f307d65da3505623dd4fc211"
+      ]
     },
     "asia": {
-      "asset_path": "assets/maps/styles/relief/asia.webp",
+      "tile_set": "world",
       "bounds_wsen": [
         20.0,
         -12.0,
         180.0,
         82.0
-      ],
-      "width": 3072,
-      "height": 3159,
-      "sha256": "61c33926c1b2d9e5e5765b77ef98eface0e03068cfc6918dca588749ed65fa84"
+      ]
     },
     "northAmerica": {
-      "asset_path": "assets/maps/styles/relief/northAmerica.webp",
+      "tile_set": "world",
       "bounds_wsen": [
         -170.0,
         5.0,
         -50.0,
         84.0
-      ],
-      "width": 3072,
-      "height": 4197,
-      "sha256": "f5da74df680986fff140599b9427f8cd81c3531465df0bdecc304dfb8e0e1f8f"
+      ]
     },
     "southAmerica": {
-      "asset_path": "assets/maps/styles/relief/southAmerica.webp",
+      "tile_set": "world",
       "bounds_wsen": [
         -95.0,
         -57.0,
         -30.0,
         15.0
-      ],
-      "width": 1950,
-      "height": 2547,
-      "sha256": "4bf052404f6aa932101cd232fa03b3e3fd7307d00d2831e5e131b73b0ce810b5"
+      ]
     },
     "oceania": {
-      "asset_path": "assets/maps/styles/relief/oceania.webp",
+      "tile_set": "oceania",
       "bounds_wsen": [
         -70.0,
         -50.0,
         30.0,
         22.0
-      ],
-      "width": 3000,
-      "height": 2414,
-      "sha256": "0842fa2ab994b84f6173e156c1a419fb1543fdb357631d7f8ae40c8ccba84573"
+      ]
     }
-  }
+  },
+  "tiles_sha256": "2229bb6dfe31321701eb4bc2af7c97b3ce3ec8137a5c851d8c3def01ae96dc5c"
 }

@@ -33,6 +33,8 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 - W `session_repository.dart` i `daily_planner.dart` `min` z Drift przesłania `dart:math` — używaj porównania
 - Kadr quizu stosuj po `initialCameraFit` (post-frame po `onMapReady`)
 - Zmiana reguł harmonogramu przesuwa terminy w testach — szukaj `Duration(days:` w `test/`
+- Wielokąt flutter_map szerszy niż 180° długości jest „rozwijany” jak przez antypołudnik — dziel na pasy (`_outsideWindow`)
+- Zrzuty z kafelkami rzeźby: najpierw `precacheImage` kafelków w `runAsync` i większy `imageCache`, inaczej mapa pusta
 - Hook po edycji formatuje pliki `.dart` (`.claude/hooks/dart-format.sh`)
 
 ## Skille zewnętrzne (`.claude/skills/`)

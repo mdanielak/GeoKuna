@@ -43,13 +43,9 @@ void main() {
           isTrue,
         );
         if (style == MapAppearance.relief) {
-          final overlay = tester.widget<OverlayImageLayer>(
-            find.byType(OverlayImageLayer),
-          );
           expect(
-            (overlay.overlayImages.single.imageProvider as AssetImage)
-                .assetName,
-            'assets/maps/styles/relief/europe.webp',
+            tester.widget<TileLayer>(find.byType(TileLayer)).urlTemplate,
+            'assets/maps/styles/relief/tiles/world_{z}_{x}_{y}.webp',
           );
           expect(
             polygons
@@ -58,12 +54,14 @@ void main() {
             isTrue,
           );
         } else {
-          expect(find.byType(OverlayImageLayer), findsNothing);
+          expect(find.byType(TileLayer), findsNothing);
         }
-        expect(
-          find.byType(MapGraticule),
-          style == MapAppearance.paper ? findsOneWidget : findsNothing,
-        );
+        final paper = style == MapAppearance.paper
+            ? findsOneWidget
+            : findsNothing;
+        expect(find.byType(MapGraticule), paper);
+        expect(find.byType(PaperAtlasFrame), paper);
+        expect(find.byType(CompassRose), paper);
         expect(tester.takeException(), isNull);
       }
     },

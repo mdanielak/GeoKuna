@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Create regional offline shaded-relief overlays; --check works without network.
+"""Offline shaded-relief tiles with rivers and lakes; --check works without network.
 
-The pinned Natural Earth TIFF is WGS84/equirectangular. The app's map uses a
-single Web Mercator world. Each output pixel row is mapped through the inverse
-Mercator projection to the source raster, preserving alignment with map vectors.
+Source: Natural Earth I with Shaded Relief, Water and Drainages, 1:10m (WGS84,
+1/60° per pixel). Output: Web Mercator XYZ tiles (256 px, zoom 2–6) in one flat
+folder, `<set>_<z>_<x>_<y>.webp`, read by flutter_map's AssetTileProvider.
+Set `world` covers every unshifted region window (tiles are shared); set
+`oceania` is rendered from the source rolled by 180°, like its geometry
+(build_map.shift_lon). Each output row maps through inverse Mercator.
 """
 import argparse
 import hashlib
@@ -17,16 +20,19 @@ import zipfile
 
 from PIL import Image, ImageChops
 
+Image.MAX_IMAGE_PIXELS = None
 ROOT = Path(__file__).resolve().parents[2]
 DEST = ROOT / 'assets/maps/styles/relief'
-SOURCE_URL = 'https://naciscdn.org/naturalearth/50m/raster/NE1_50M_SR.zip'
-SOURCE_PAGE = 'https://www.naturalearthdata.com/downloads/50m-raster-data/50m-natural-earth-1/'
+TILES = DEST / 'tiles'
+SOURCE_URL = 'https://naciscdn.org/naturalearth/10m/raster/NE1_HR_LC_SR_W_DR.zip'
+SOURCE_PAGE = 'https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/'
 LICENSE_URL = 'https://www.naturalearthdata.com/about/terms-of-use/'
-SOURCE_SHA = 'ae930744c0cf3d10e73c292726b74c81a40490a75829f8299dec9069e5d0e934'
-MEMBER = 'NE1_50M_SR/NE1_50M_SR.tif'
-SOURCE_WIDTH = 10800  # 1/30 degree per pixel
-MAX_WIDTH = 3072  # native source resolution, capped for package size
-QUALITY = 90  # lossy WebP: full colour without palette banding
+SOURCE_SHA = '8841d08155415f0556462846dcb845a4ccb8f12390b0e0ba36ffde55efadeb56'
+MEMBER = 'NE1_HR_LC_SR_W_DR.tif'
+SOURCE_SIZE = (21600, 10800)  # 1/60 degree per pixel
+ZOOMS = range(2, 7)  # z6 ≈ native source resolution; the app upscales above it
+QUALITY = 80
+LIGHTEN = 0.12  # blend towards white so borders and answer colours stay legible
 # west, south, east, north in degrees WGS84. These match CountryMap._bounds.
 REGIONS = {
     'europe': (-32.0, 34.0, 65.0, 72.0),
@@ -38,15 +44,16 @@ REGIONS = {
     'oceania': (-70.0, -50.0, 30.0, 22.0),
 }
 SHIFT = {'oceania': 180}
-OCEAN = (218, 238, 244)
-LAND_TINT = (220, 233, 201)
-TINT_STRENGTH = 0.20
-# A land and an ocean control point per region, inside the output bounds.
-# These catch projection inversion and incorrect geographic extent. They do not
-# define borders or replace the separately verified interactive geometries.
+
+
+def tile_set(region):
+    return 'oceania' if region in SHIFT else 'world'
+
+
+# A land and a water control point per region, checked in its z4 tile.
 CONTROL_POINTS = {
     'europe': [('land', 19.0, 52.0), ('water', -20.0, 50.0), ('land', 10.0, 46.0)],
-    'africa': [('land', 20.0, 0.0), ('water', -20.0, 0.0), ('land', 47.0, -20.0), ('water', 37.0, 23.0)],
+    'africa': [('land', 20.0, 0.0), ('water', -20.0, 0.0), ('land', 47.0, -20.0)],
     'asia': [('land', 85.0, 28.0), ('water', 140.0, 30.0), ('land', 53.0, 33.0)],
     'northAmerica': [('land', -100.0, 40.0), ('water', -140.0, 30.0), ('land', -75.0, 45.0)],
     'southAmerica': [('land', -60.0, -10.0), ('water', -40.0, -30.0), ('land', -65.0, -25.0)],
@@ -63,134 +70,125 @@ def digest(path):
     return h.hexdigest()
 
 
-def mercator_y(latitude):
-    return math.asinh(math.tan(math.radians(latitude)))
+def tile_x(lon, z):
+    return (lon + 180.0) / 360.0 * 2 ** z
 
 
-def dimensions(bounds):
+def tile_y(lat, z):
+    return (1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2 * 2 ** z
+
+
+def tile_range(bounds, z):
+    """Tiles touching the window plus a one-tile margin (no missing edge tiles)."""
     west, south, east, north = bounds
-    width = min(MAX_WIDTH, round((east - west) / 360.0 * SOURCE_WIDTH))
-    height = round(width * (mercator_y(north) - mercator_y(south)) /
-                   math.radians(east - west))
-    return width, height
+    last = 2 ** z - 1
+    xs = range(max(0, int(tile_x(west, z)) - 1), min(last, int(tile_x(east, z))) + 2)
+    ys = range(max(0, int(tile_y(north, z)) - 1), min(last, int(tile_y(south, z))) + 2)
+    return [(x, y) for x in xs if x <= last for y in ys if y <= last]
 
 
-def render(source, bounds):
-    west, south, east, north = bounds
-    width, height = dimensions(bounds)
-    src_width, src_height = source.size
-    left = (west + 180.0) / 360.0 * src_width
-    right = (east + 180.0) / 360.0 * src_width
-    north_y, south_y = mercator_y(north), mercator_y(south)
-    # One output row per quadrilateral: nonlinear inverse Mercator interpolation
-    # is exact at row boundaries, with less than one-pixel interpolation error.
-    rows = []
-    for y in range(height):
-        def source_y(boundary):
-            projected = north_y - (north_y - south_y) * boundary / height
-            latitude = math.degrees(math.atan(math.sinh(projected)))
-            return (90.0 - latitude) / 180.0 * src_height
-        top, bottom = source_y(y), source_y(y + 1)
-        rows.append(((0, y, width, y + 1),
-                     (left, top, left, bottom, right, bottom, right, top)))
-    raster = source.transform((width, height), Image.Transform.MESH, rows,
-                              Image.Resampling.BILINEAR).convert('RGB')
-    # Original ocean is exactly (251,251,251). Replace it before tinting land;
-    # natural snow and coast pixels retain their source color and are not masked
-    # by a broad luminance threshold. Polygons remain the interactive layer.
-    channels = raster.split()
-    distances = [ImageChops.difference(channel, Image.new('L', raster.size, 251))
-                 for channel in channels]
-    distance = ImageChops.lighter(ImageChops.lighter(distances[0], distances[1]), distances[2])
-    water_mask = distance.point([255] + [0] * 255)
-    pastel = Image.blend(raster, Image.new('RGB', raster.size, LAND_TINT), TINT_STRENGTH)
-    pastel.paste(Image.new('RGB', raster.size, OCEAN), mask=water_mask)
-    return pastel
-
-
-def check():
-    manifest_path = DEST / 'manifest.json'
-    manifest = json.loads(manifest_path.read_text())
-    assert manifest['source']['url'] == SOURCE_URL
-    assert manifest['source']['sha256'] == SOURCE_SHA
-    assert manifest['source']['license'] == 'public-domain'
-    assert manifest['projection'] == 'EPSG:3857'
-    assert manifest['parameters']['max_width'] == MAX_WIDTH
-    assert manifest['parameters']['ocean_rgb'] == list(OCEAN)
-    assert set(manifest['regions']) == set(REGIONS)
-    total = 0
+def wanted_tiles():
+    tiles = {}
     for region, bounds in REGIONS.items():
-        item = manifest['regions'][region]
-        path = DEST / f'{region}.webp'
-        assert item['asset_path'] == str(path.relative_to(ROOT))
-        assert item['bounds_wsen'] == list(bounds)
-        assert item['sha256'] == digest(path), region
-        with Image.open(path) as im:
-            assert im.format == 'WEBP' and im.size == dimensions(bounds), region
-            assert [item['width'], item['height']] == list(im.size), region
-            im.verify()
-        with Image.open(path) as im:
-            raster = im.convert('RGB')
-            west, south, east, north = bounds
-            for kind, lon, lat in CONTROL_POINTS[region]:
-                x = int((lon - west) / (east - west) * raster.width)
-                y = int((mercator_y(north) - mercator_y(lat)) /
-                        (mercator_y(north) - mercator_y(south)) * raster.height)
-                assert 0 <= x < raster.width and 0 <= y < raster.height
-                pixel = raster.getpixel((x, y))
-                distance = sum(abs(a - b) for a, b in zip(pixel, OCEAN))
-                assert (distance < 12) if kind == 'water' else (distance > 12), (region, lon, lat, pixel)
-        total += path.stat().st_size
-    actual = {p.name for p in DEST.iterdir() if p.name != 'manifest.json'}
-    assert actual == {f'{r}.webp' for r in REGIONS}, 'Unexpected or missing image'
-    print(f'OK: {len(REGIONS)} offline Mercator relief overlays, control points, hashes/bounds/dimensions; {total:,} bytes')
+        for z in ZOOMS:
+            for x, y in tile_range(bounds, z):
+                tiles[(tile_set(region), z, x, y)] = True
+    return sorted(tiles)
+
+
+def name(key):
+    return '{}_{}_{}_{}.webp'.format(*key)
+
+
+def render(level, z, x, y):
+    width, height = level.size
+    lat = lambda row: math.degrees(math.atan(math.sinh(math.pi * (1 - 2 * row / 2 ** z))))
+    left = x / 2 ** z * width
+    right = (x + 1) / 2 ** z * width
+    rows = []
+    for r in range(256):
+        top = (90 - lat(y + r / 256)) / 180 * height
+        bottom = (90 - lat(y + (r + 1) / 256)) / 180 * height
+        rows.append(((0, r, 256, r + 1), (left, top, left, bottom, right, bottom, right, top)))
+    tile = level.transform((256, 256), Image.Transform.MESH, rows, Image.Resampling.BILINEAR)
+    return Image.blend(tile, Image.new('RGB', tile.size, (255, 255, 255)), LIGHTEN)
 
 
 def build(archive):
     assert digest(archive) == SOURCE_SHA, 'Natural Earth source SHA-256 mismatch'
-    DEST.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='geokuna-relief-') as temp:
         raster_path = Path(temp) / 'source.tif'
         with zipfile.ZipFile(archive) as zf, zf.open(MEMBER) as src, raster_path.open('wb') as dst:
             shutil.copyfileobj(src, dst)
         with Image.open(raster_path) as source:
-            assert source.size == (10800, 5400) and source.mode == 'RGB'
-            # Verify GeoTIFF scale/tie point instead of silently assuming a projection.
-            scale = source.tag_v2.get(33550)
-            tie = source.tag_v2.get(33922)
-            assert scale and tie and abs(scale[0] - 1/30) < 1e-9 and abs(scale[1] - 1/30) < 1e-9
-            assert abs(tie[3] + 180) < 1e-8 and abs(tie[4] - 90) < 1e-8
-            regions = {}
-            for region, bounds in REGIONS.items():
-                print(f'Rendering {region}…', flush=True)
-                path = DEST / f'{region}.webp'
-                shifted = (ImageChops.offset(source, -SHIFT[region] * 30, 0)
-                           if region in SHIFT else source)
-                image = render(shifted, bounds)
-                image.save(path, format='WEBP', quality=QUALITY, method=6)
-                regions[region] = {
-                    'asset_path': str(path.relative_to(ROOT)),
-                    'bounds_wsen': list(bounds),
-                    'width': image.width,
-                    'height': image.height,
-                    'sha256': digest(path),
-                }
-                image.close()
+            assert source.size == SOURCE_SIZE and source.mode == 'RGB'
+            source.load()
+            if TILES.exists():
+                shutil.rmtree(TILES)
+            TILES.mkdir(parents=True)
+            for old in DEST.glob('*.webp'):
+                old.unlink()
+            wanted = wanted_tiles()
+            for set_ in ('world', 'oceania'):
+                base = ImageChops.offset(source, -180 * 60, 0) if set_ == 'oceania' else source
+                for z in ZOOMS:
+                    # Downsample once per zoom so low zooms are not aliased.
+                    size = (256 * 2 ** z, 128 * 2 ** z)
+                    level = base.resize(size, Image.Resampling.LANCZOS) if size[0] < base.width else base
+                    keys = [k for k in wanted if k[0] == set_ and k[1] == z]
+                    print(f'Rendering {set_} z{z}: {len(keys)} tiles', flush=True)
+                    for key in keys:
+                        render(level, *key[1:]).save(TILES / name(key), format='WEBP', quality=QUALITY, method=6)
     manifest = {
-        'version': 'natural-earth-relief-0.2.0',
-        'source': {'name': 'Natural Earth I with Shaded Relief 1:50m',
-                   'version': '3.2.0', 'url': SOURCE_URL, 'page': SOURCE_PAGE,
+        'version': 'natural-earth-relief-0.3.0',
+        'source': {'name': 'Natural Earth I with Shaded Relief, Water, and Drainages 1:10m',
+                   'version': '2.0.0', 'url': SOURCE_URL, 'page': SOURCE_PAGE,
                    'sha256': SOURCE_SHA, 'license': 'public-domain',
-                   'license_url': LICENSE_URL, 'verified_at': '2026-11-13'},
+                   'license_url': LICENSE_URL, 'verified_at': '2026-11-16'},
         'projection': 'EPSG:3857',
-        'parameters': {'max_width': MAX_WIDTH, 'resampling': 'bilinear', 'rows': 'inverse-mercator',
-                       'format': 'webp', 'quality': QUALITY, 'land_tint_rgb': list(LAND_TINT),
-                       'land_tint_strength': TINT_STRENGTH, 'ocean_rgb': list(OCEAN),
+        'parameters': {'tile_size': 256, 'zooms': [ZOOMS.start, ZOOMS.stop - 1],
+                       'resampling': 'lanczos per zoom, bilinear inverse-mercator rows',
+                       'format': 'webp', 'quality': QUALITY, 'lighten': LIGHTEN,
                        'pillow_version': Image.__version__},
-        'regions': regions,
+        'regions': {r: {'tile_set': tile_set(r), 'bounds_wsen': list(b)} for r, b in REGIONS.items()},
+        'tiles_sha256': tiles_digest(),
     }
     (DEST / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     check()
+
+
+def tiles_digest():
+    h = hashlib.sha256()
+    for key in wanted_tiles():
+        h.update(name(key).encode() + b'\0' + digest(TILES / name(key)).encode() + b'\n')
+    return h.hexdigest()
+
+
+def check():
+    manifest = json.loads((DEST / 'manifest.json').read_text())
+    assert manifest['source']['url'] == SOURCE_URL
+    assert manifest['source']['sha256'] == SOURCE_SHA
+    assert manifest['source']['license'] == 'public-domain'
+    assert manifest['projection'] == 'EPSG:3857'
+    assert manifest['parameters']['zooms'] == [ZOOMS.start, ZOOMS.stop - 1]
+    assert manifest['regions'] == {r: {'tile_set': tile_set(r), 'bounds_wsen': list(b)}
+                                   for r, b in REGIONS.items()}
+    wanted = {name(k) for k in wanted_tiles()}
+    actual = {p.name for p in TILES.iterdir()}
+    assert actual == wanted, f'Unexpected {sorted(actual - wanted)[:3]} / missing {sorted(wanted - actual)[:3]}'
+    assert not list(DEST.glob('*.webp')), 'Old single-image overlays left behind'
+    assert manifest['tiles_sha256'] == tiles_digest(), 'Tile checksum mismatch'
+    for region, points in CONTROL_POINTS.items():
+        for kind, lon, lat in points:
+            fx, fy = tile_x(lon, 4), tile_y(lat, 4)
+            with Image.open(TILES / name((tile_set(region), 4, int(fx), int(fy)))) as im:
+                assert im.size == (256, 256)
+                r, g, b = im.convert('RGB').getpixel((int(fx % 1 * 256), int(fy % 1 * 256)))
+                water = b > r + 25 and b > g  # Natural Earth water is blue; land is not
+                assert water == (kind == 'water'), (region, lon, lat, (r, g, b))
+    total = sum(p.stat().st_size for p in TILES.iterdir())
+    print(f'OK: {len(wanted)} offline relief tiles (z{ZOOMS.start}–{ZOOMS.stop - 1}, '
+          f'{len(REGIONS)} regions), control points, checksums; {total:,} bytes')
 
 
 def main():
@@ -208,7 +206,7 @@ def main():
         with tempfile.TemporaryDirectory(prefix='geokuna-relief-download-') as temp:
             archive = Path(temp) / 'source.zip'
             print('Downloading pinned Natural Earth source…', flush=True)
-            with urllib.request.urlopen(SOURCE_URL, timeout=120) as src, archive.open('wb') as dst:
+            with urllib.request.urlopen(SOURCE_URL, timeout=600) as src, archive.open('wb') as dst:
                 shutil.copyfileobj(src, dst)
             build(archive)
 
