@@ -52,6 +52,7 @@ void main() {
         find.text('Zresetuj naukę'),
         160,
         scrollable: find.byType(Scrollable).first,
+        maxScrolls: 200,
       );
       await tester.ensureVisible(find.text('Zresetuj naukę'));
       await tester.pumpAndSettle();
