@@ -1,4 +1,5 @@
 import '../atlas/catalog.dart';
+import '../atlas/continent.dart';
 
 // These describe observed practice, never a percentage of mastered geography.
 enum LearningProgressStatus {
@@ -31,22 +32,23 @@ class LearningProgressEntry {
   final DateTime? lastReview;
 
   String get skillKey => '$topic:$difficulty';
+  Continent get _area => Continent.ofArea(country.id);
   String get skillLabel => topic == 'flags'
       ? switch (difficulty) {
-          'map' => 'Flaga · państwo na mapie',
-          'mapEasy' => 'Flaga → mapa · łatwy',
-          'mapVeryEasy' => 'Flaga → mapa · bardzo łatwy',
-          'choice' => 'Flaga · wybór państwa A–D',
-          'firstLetter' => 'Flaga · pierwsza litera',
-          _ => 'Flaga · samodzielne pisanie',
+          'map' => '${_area.symbolLabel} · ${_area.areaAccusative} na mapie',
+          'mapEasy' => '${_area.symbolLabel} → mapa · łatwy',
+          'mapVeryEasy' => '${_area.symbolLabel} → mapa · bardzo łatwy',
+          'choice' => '${_area.symbolLabel} · wybór ${_area.areaGenitive} A–D',
+          'firstLetter' => '${_area.symbolLabel} · pierwsza litera',
+          _ => '${_area.symbolLabel} · samodzielne pisanie',
         }
       : switch (difficulty) {
           'map' => 'Lokalizacja na mapie',
           'mapEasy' => 'Mapa · łatwy',
           'mapVeryEasy' => 'Mapa · bardzo łatwy',
-          'choice' => 'Stolica · wybór A–D',
-          'firstLetter' => 'Stolica · pierwsza litera',
-          'write' => 'Stolica · samodzielne pisanie',
+          'choice' => '${_area.capitalSubject} · wybór A–D',
+          'firstLetter' => '${_area.capitalSubject} · pierwsza litera',
+          'write' => '${_area.capitalSubject} · samodzielne pisanie',
           _ => difficulty,
         };
 }

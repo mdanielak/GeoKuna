@@ -20,9 +20,7 @@ def validate(prefix, path, require_complete=True):
     data = json.loads(path.read_text(encoding='utf-8'))
     assert re.fullmatch(prefix + r'-\d+\.\d+\.\d+(?:-draft)?', data['version'])
     expected = set()
-    folders = ['africa', 'asia', 'northAmerica', 'southAmerica', 'oceania']
-    if prefix == 'country-trivia':  # voivodeships and US states: location facts only
-        folders += ['poland', 'usa']
+    folders = ['africa', 'asia', 'northAmerica', 'southAmerica', 'oceania', 'poland', 'usa']
     for path in ['countries.json'] + [f'{f}/countries.json' for f in folders]:
         expected.update(c['id'] for c in json.loads((CONTENT / path).read_text())['countries'])
     countries = data['countries']

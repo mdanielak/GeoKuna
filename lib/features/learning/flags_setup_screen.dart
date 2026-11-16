@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 import 'flags.dart';
 
@@ -14,7 +15,9 @@ class FlagsSetupScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
     return Scaffold(
-      appBar: AppBar(title: Text('Flagi ${continent.genitive}')),
+      appBar: AppBar(
+        title: Text('${continent.symbolsLabel} ${continent.genitive}'),
+      ),
       body: SafeArea(
         top: false,
         child: ref
@@ -58,14 +61,16 @@ class FlagsSetupScreen extends ConsumerWidget {
                                   padding: const EdgeInsets.all(24),
                                   children: [
                                     Text(
-                                      'Rozpoznawaj flagi państw.',
+                                      continent == Continent.poland
+                                          ? 'Rozpoznawaj herby województw.'
+                                          : 'Rozpoznawaj flagi ${continent.areaNoun}.',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall,
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      '${flags.facts.length} flag · lokalne grafiki · 10 pytań',
+                                      '${flags.facts.length} ${continent == Continent.poland ? 'herbów' : 'flag'} · lokalne grafiki · 10 pytań',
                                     ),
                                     const SizedBox(height: 16),
                                     Card.filled(
@@ -75,7 +80,11 @@ class FlagsSetupScreen extends ConsumerWidget {
                                           'Poziom: ${selectedDifficulty.label}',
                                         ),
                                         subtitle: Text(
-                                          selectedDifficulty.description,
+                                          selectedDifficulty.description
+                                              .replaceAll(
+                                                'państwo',
+                                                continent.areaAccusative,
+                                              ),
                                         ),
                                         trailing: const Icon(
                                           Icons.chevron_right,
@@ -109,20 +118,20 @@ class FlagsSetupScreen extends ConsumerWidget {
                                       ),
                                       child: Text(
                                         pending
-                                            ? 'Wznów quiz flag'
-                                            : 'Rozpocznij quiz flag',
+                                            ? 'Wznów quiz: ${continent.symbolsLabel.toLowerCase()}'
+                                            : 'Rozpocznij quiz: ${continent.symbolsLabel.toLowerCase()}',
                                       ),
                                     ),
                                     const SizedBox(height: 28),
                                     Text(
-                                      'Flaga → mapa',
+                                      '${continent.symbolLabel} → mapa',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge,
                                     ),
                                     const SizedBox(height: 8),
-                                    const Text(
-                                      'Rozpoznaj flagę i wskaż państwo na mapie. Masz trzy próby.',
+                                    Text(
+                                      'Rozpoznaj ${continent == Continent.poland ? 'herb' : 'flagę'} i wskaż ${continent.areaAccusative} na mapie. Masz trzy próby.',
                                     ),
                                     const SizedBox(height: 12),
                                     FilledButton.tonalIcon(

@@ -43,9 +43,9 @@ void main() {
         ) as Map<String, dynamic>;
         for (final raw in data['countries'] as List<dynamic>) {
           final id = (raw as Map<String, dynamic>)['id'] as String;
-          // Voivodeships and states: location facts only (stage 1).
           expect(catalog.factsFor(id), hasLength(3), reason: id);
-          expect(capitals.factsFor(id), isEmpty, reason: id);
+          expect(capitals.factsFor(id), hasLength(3), reason: 'capital $id');
+          expect(flags.factsFor(id), hasLength(3), reason: 'symbol $id');
         }
       }
       for (final id in ids) {

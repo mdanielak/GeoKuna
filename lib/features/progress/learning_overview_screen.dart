@@ -26,11 +26,11 @@ class KnowledgeSummary {
       entries.isEmpty ? 0 : (ready * 100 / entries.length).floor();
 }
 
-String _topicLabel(String topic) => switch (topic) {
-  'map' => 'Państwo → mapa',
-  'capitals' => 'Państwo → stolica',
-  'flags' => 'Flaga → państwo',
-  'flagMap' => 'Flaga → mapa',
+String _topicLabel(String topic, Continent area) => switch (topic) {
+  'map' => '${area.areaSubject} → mapa',
+  'capitals' => '${area.areaSubject} → ${area.capitalSubject.toLowerCase()}',
+  'flags' => '${area.symbolLabel} → ${area.areaAccusative}',
+  'flagMap' => '${area.symbolLabel} → mapa',
   _ => topic,
 };
 
@@ -255,7 +255,7 @@ class LearningOverviewScreen extends ConsumerWidget {
                 for (final topic in ['map', 'capitals', 'flags', 'flagMap'])
                   ExpansionTile(
                     key: PageStorageKey('medals-$topic-${region.name}'),
-                    title: Text(_topicLabel(topic)),
+                    title: Text(_topicLabel(topic, region)),
                     children: [
                       for (final level in achievements.where(
                         (achievement) => achievement.topic == topic,

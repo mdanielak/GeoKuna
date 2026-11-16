@@ -99,8 +99,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
       if (updated.currentMapGuesses.length ==
           session.currentMapGuesses.length) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('To państwo już wskazywano. Wybierz inne.'),
+          SnackBar(
+            content: Text(
+              'To ${ref.read(selectedContinentProvider).areaAccusative} już wskazywano. Wybierz inne.',
+            ),
           ),
         );
       }
@@ -210,10 +212,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         widget.daily
             ? 'Dzisiejsza wyprawa po ${ref.watch(selectedContinentProvider).journey}'
             : widget.flagDifficulty != null
-            ? 'Flagi ${ref.watch(selectedContinentProvider).genitive}'
+            ? '${ref.watch(selectedContinentProvider).symbolsLabel} ${ref.watch(selectedContinentProvider).genitive}'
             : widget.capitalDifficulty == null
             ? 'Wyprawa po ${ref.watch(selectedContinentProvider).journey}'
-            : 'Stolice ${ref.watch(selectedContinentProvider).genitive}',
+            : '${ref.watch(selectedContinentProvider).capitalsLabel} ${ref.watch(selectedContinentProvider).genitive}',
       ),
       actions: _hasLoadedSession && _session != null && !_session!.completed
           ? [
@@ -290,7 +292,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                 _flagImage(session.flagQuestionAt(session.index), height: 56),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Text('Wskaż to państwo', style: textTheme.titleLarge),
+                  child: Text(
+                    'Wskaż to ${ref.watch(selectedContinentProvider).areaAccusative}',
+                    style: textTheme.titleLarge,
+                  ),
                 ),
               ],
             )
@@ -453,20 +458,20 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               _flagImage(session.flagQuestionAt(session.index)),
               const SizedBox(height: 12),
               Text(
-                'Jakie to państwo?',
+                catalog.continent.symbolQuestion,
                 // The prompt stays regular; the subject above it is bold.
                 style: Theme.of(context).textTheme.headlineSmall
                     ?.copyWith(fontWeight: FontWeight.w400),
               ),
             ] else ...[
               Text(
-                catalog.country(session.targetId).name,
+                _capitalized(catalog.country(session.targetId).questionName),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 4),
               Text(
                 question!.fact.prompt == defaultPrompt
-                    ? 'Stolica?'
+                    ? catalog.continent.capitalPrompt
                     : question.fact.prompt,
                 style: Theme.of(context).textTheme.titleLarge
                     ?.copyWith(fontWeight: FontWeight.w400),
@@ -483,7 +488,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                     ? session.flagQuestionAt(session.index).countryName
                     : question!.fact.name,
                 note: flag ? '' : question!.fact.note,
-                subject: flag ? 'Państwo' : 'Stolica',
+                subject: flag
+                    ? catalog.continent.areaSubject
+                    : catalog.continent.capitalSubject,
               ),
             if (attempt != null)
               _InsightNote(catalog: catalog, session: session),
@@ -557,7 +564,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           hint
               ? 'Pierwsza litera: $firstLetter. Dopisz pozostałe litery.'
               : flag
-              ? 'Wpisz całą nazwę państwa.'
+              ? 'Wpisz całą nazwę ${ref.watch(selectedContinentProvider).areaGenitive}.'
               : 'Wpisz całą nazwę stolicy.',
         ),
         const SizedBox(height: 16),
@@ -578,7 +585,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             labelText: hint
                 ? 'Pozostałe litery'
                 : flag
-                ? 'Nazwa państwa'
+                ? 'Nazwa ${ref.watch(selectedContinentProvider).areaGenitive}'
                 : 'Nazwa stolicy',
             prefixIcon: hint
                 ? Padding(
@@ -636,7 +643,8 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     child: Image.asset(
       question.assetPath,
       fit: BoxFit.contain,
-      semanticLabel: 'Flaga do rozpoznania',
+      semanticLabel:
+          '${ref.read(selectedContinentProvider).symbolLabel} do rozpoznania',
     ),
   );
 
@@ -647,7 +655,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         ? guesses.length > 1
               ? 'Odnaleziono za ${guesses.length}. próbą. To ${catalog.country(session.targetId).name}.\nPóźniejsze próby są ćwiczeniem.'
               : 'Dobrze! To ${catalog.country(session.targetId).name}.'
-        : 'Wskazane państwo: ${catalog.country(attempt.answer).name}. Poprawna odpowiedź: ${catalog.country(session.targetId).name} — zaznaczona na zielono.';
+        : 'Wskazane ${catalog.continent.areaAccusative}: ${catalog.country(attempt.answer).name}. Poprawna odpowiedź: ${catalog.country(session.targetId).name} — zaznaczona na zielono.';
     return session.assistedIndices.contains(session.index)
         ? 'Z pomocą — bez oceny pamięci mapy.\n$result'
         : result;
@@ -1095,3 +1103,6 @@ class _TokenEarned extends StatelessWidget {
     ),
   );
 }
+
+String _capitalized(String text) =>
+    text.isEmpty ? text : text[0].toUpperCase() + text.substring(1);

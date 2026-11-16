@@ -29,8 +29,8 @@ transakcji. Zapis i odczyt pliku: `file_picker` (Android SAF, pobranie w Web).
 Przepływ: UI → Riverpod → repozytorium → Drift. Reguły nauki są czystymi
 funkcjami/klasami poza widgetami. `Continent` wybiera paczki, providery
 i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu).
-`Continent.poland` i `Continent.usa` to obszary województw/stanów (ID ISO 3166-2,
-`hasCapitalsAndFlags == false` → puste katalogi stolic i flag, tylko mapa).
+`Continent.poland` i `Continent.usa` to obszary województw/stanów (ID ISO 3166-2);
+`Continent` niesie też słownictwo pytań (herb/flaga, miasto wojewódzkie/stolica).
 
 ## Kluczowe decyzje
 

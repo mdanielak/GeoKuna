@@ -80,7 +80,7 @@ kontynentu oraz obszary wycięte przez politykę, np. Krym na mapie Azji, Sahara
 Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`,
 `build_context.py`). Krym nie jest Rosją także na mapie Azji (walidator to sprawdza).
 
-## Województwa i stany USA (0.6.0, etap 1: mapa)
+## Województwa i stany USA (0.6.0 mapa, 0.7.0 stolice i symbole)
 
 `Continent.poland` i `Continent.usa` — mapy „gdzie leży?” bez stolic i flag
 (etap 2). Generator: `build_subdivisions.py poland|usa`.
@@ -101,6 +101,19 @@ Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`
   do ramek w lewym dolnym rogu, z podpisem „inna skala”; wyspy NW Hawajów
   (na zachód od 161°W) pominięte. W stylu Rzeźba wstawki mają jasne wypełnienie.
 - Znaczniki: Rhode Island i Delaware.
+- **Miasta wojewódzkie** (`build_subdivision_symbols.py`): art. 3 tej samej ustawy.
+  Kujawsko-pomorskie (wojewoda — Bydgoszcz, sejmik — Toruń) i lubuskie (Gorzów
+  Wielkopolski, Zielona Góra): zaliczane oba miasta, wyjaśnienie w `note`.
+  Natural Earth ma tu błędy (Elbląg, brak Torunia), więc nie jest źródłem.
+- **Stolice stanów:** Natural Earth 1:10m populated places (`Admin-1 capital`,
+  SHA-256 `9b8e3de0…`); KSNG nie podaje polskich nazw tych miast (sprawdzane).
+- **Herby województw i flagi stanów:** SVG z Wikimedia Commons, licencja każdego
+  pliku z API Commons: „Public domain” (Missisipi: „Copyrighted free use”);
+  polskie herby to urzędowe symbole wyłączone z prawa autorskiego (art. 4).
+  Kopie SVG w `tools/data_pipeline/{poland,usa}_symbols_sources/` są przypięciem
+  (sha1 zgodne z Commons), PNG 500 px w `assets/flags/{poland,usa}-0.1.0/`.
+- Słownictwo pytań (`Continent`): „Którego województwa to herb?”, „Stolica stanu?”,
+  „Miasto wojewódzkie?”; kategorie „Herby”, „Miasta wojewódzkie”, „Stolice stanów”.
 
 Mikropaństwa (7 w Europie) mają znaczniki 48×48 dp; nakładające się znaczniki
 najpierw przybliżają mapę, dopiero potem wybierają kraj.
@@ -205,8 +218,8 @@ ta wymaga przeglądu człowieka. `--allow-incomplete` służy tylko roboczej kon
 
 ### Ciekawostki o flagach
 
-`assets/content/flag_trivia.json` (wersja 0.3.0): po 3 fakty o fladze każdego
-ze 197 krajów (591), według zasad poniżej — geneza barw i symboli, pierwsze
+`assets/content/flag_trivia.json` (wersja 0.4.0): po 3 fakty o fladze każdego
+ze 197 krajów oraz o herbie województwa i fladze stanu (789), według zasad poniżej — geneza barw i symboli, pierwsze
 użycie i rok przyjęcia, co przedstawia godło, nietypowości. Źródło każdego
 faktu: artykuł Wikipedii o fladze (polski lub angielski) w przypiętej wersji
 (`?oldid=`), pobrany 2026-11-15 (Ameryki i Oceania: 2026-11-16) przez API MediaWiki; tekst to polska parafraza
@@ -217,8 +230,8 @@ pomija fakt, który wspomina kraj pytany dalej w tej samej serii. Walidator:
 
 ### Ciekawostki o stolicach
 
-`assets/content/capital_trivia.json` (0.2.0, 2026-11-16): po 3 fakty o stolicy
-każdego ze 197 krajów (591) — założenie i dawne nazwy, „pierwsze” i rekordy,
+`assets/content/capital_trivia.json` (0.3.0, 2026-11-16): po 3 fakty o stolicy
+każdego ze 197 krajów oraz o mieście wojewódzkim i stolicy stanu (789) — założenie i dawne nazwy, „pierwsze” i rekordy,
 wydarzenia z datą. Źródła jak przy flagach: artykuł Wikipedii o mieście (pl lub
 en) w przypiętej wersji (`?oldid=`), tekst to parafraza tylko tego, co w niej
 jest. Klucz to kraj (jak w innych paczkach), więc kraj z dwoma stolicami ma
@@ -282,6 +295,7 @@ python3 tools/data_pipeline/build_asia.py   --build --pdf /ścieżka/KSNG-2026.p
 python3 tools/data_pipeline/build_relief.py --build [--source /ścieżka/NE1_HR_LC_SR_W_DR.zip]
 python3 tools/data_pipeline/build_relief_hd.py --build --ne NE1_HR_LC_SR_W_DR.zip --dem ETOPO/ --water NE10m/
 python3 tools/data_pipeline/build_subdivisions.py poland --build --src ŹRÓDŁA/   # też: usa
+python3 tools/data_pipeline/build_subdivision_symbols.py poland --build --src ŹRÓDŁA/   # stolice i symbole
 python3 tools/data_pipeline/build_trivia.py --check
 ```
 

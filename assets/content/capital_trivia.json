@@ -1,5 +1,5 @@
 {
-  "version": "capital-trivia-0.2.0",
+  "version": "capital-trivia-0.3.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -4530,6 +4530,1524 @@
         "text": "Honiara została oficjalnie stolicą brytyjskiego protektoratu Wysp Salomona w 1952 r.; od 1983 r. tworzy osobne terytorium stołeczne.",
         "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385920866",
         "source_title": "Wikipedia (en): Honiara, wersja 1385920866",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-02": [
+      {
+        "id": "capital-pl-02-zoo",
+        "text": "We Wrocławiu działa najstarszy ogród zoologiczny w Polsce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385753868",
+        "source_title": "Wikipedia (en): Wrocław, wersja 1385753868",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-02-1000",
+        "text": "Wrocław jest siedzibą diecezji od roku 1000, a archidiecezji — od 1930 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81145245",
+        "source_title": "Wikipedia (pl): Wrocław, wersja 81145245",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-02-literatura",
+        "text": "W 2019 r. Wrocław otrzymał tytuł Miasta Literatury UNESCO.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385753868",
+        "source_title": "Wikipedia (en): Wrocław, wersja 1385753868",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-04": [
+      {
+        "id": "capital-pl-04-muzyka",
+        "text": "W 2023 r. Bydgoszcz dołączyła do Sieci Miast Kreatywnych UNESCO jako Miasto Muzyki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383200700",
+        "source_title": "Wikipedia (en): Bydgoszcz, wersja 1383200700",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-04-bydgost",
+        "text": "Nazwa Bydgoszcz pochodzi od imienia Bydgost z przyrostkiem oznaczającym własność; niemiecka nazwa Bromberg znaczy „wzgórze nad Brdą”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383200700",
+        "source_title": "Wikipedia (en): Bydgoszcz, wersja 1383200700",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-04-myslecinek",
+        "text": "W Bydgoszczy leży Myślęcinek — największy w Polsce leśny park kultury i wypoczynku.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81133662",
+        "source_title": "Wikipedia (pl): Bydgoszcz, wersja 81133662",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-06": [
+      {
+        "id": "capital-pl-06-unia",
+        "text": "Sejm obradujący w Lublinie w 1569 r. zawarł unię realną Korony z Litwą — tak powstała Rzeczpospolita Obojga Narodów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383272263",
+        "source_title": "Wikipedia (en): Lublin, wersja 1383272263",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-06-1198",
+        "text": "Pierwsze wzmianki o Lublinie pochodzą z 1198 r., a nazwa może pochodzić od imienia Lubla.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81230344",
+        "source_title": "Wikipedia (pl): Lublin, wersja 81230344",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-06-wisla",
+        "text": "Lublin to największe polskie miasto na wschód od Wisły.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383272263",
+        "source_title": "Wikipedia (en): Lublin, wersja 1383272263",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-08": [
+      {
+        "id": "capital-pl-08-landsberg",
+        "text": "Do 1945 r. Gorzów nosił niemiecką nazwę Landsberg an der Warthe, znaną od 1257 r.: „gród na wzgórzu nad Wartą”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384044210",
+        "source_title": "Wikipedia (en): Gorzów Wielkopolski, wersja 1384044210",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-08-gorzew",
+        "text": "Polska nazwa miasta w formie Gorzew pojawia się w XIX w., m.in. w kompendium Samuela Orgelbranda z 1848 r.; pisownia „Gorzów” — na mapie z 1900 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384044210",
+        "source_title": "Wikipedia (en): Gorzów Wielkopolski, wersja 1384044210",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-08-nowa",
+        "text": "Gorzów, lokowany w 1257 r., do 1945 r. należał do niemieckiej Nowej Marchii.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81142525",
+        "source_title": "Wikipedia (pl): Gorzów Wielkopolski, wersja 81142525",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-10": [
+      {
+        "id": "capital-pl-10-1423",
+        "text": "Łódź otrzymała prawa miejskie w 1423 r. od Władysława Jagiełły i do końca XVIII w. była miastem prywatnym biskupów kujawskich.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384601267",
+        "source_title": "Wikipedia (en): Łódź, wersja 1384601267",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-10-muzeum",
+        "text": "Muzeum Sztuki w Łodzi, założone w 1931 r., było pierwszym w Europie muzeum kolekcjonującym sztukę nowoczesną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384601267",
+        "source_title": "Wikipedia (en): Łódź, wersja 1384601267",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-10-1945",
+        "text": "W 1945 r. Łódź była przejściową siedzibą władz państwowych.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81232857",
+        "source_title": "Wikipedia (pl): Łódź, wersja 81232857",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-12": [
+      {
+        "id": "capital-pl-12-1596",
+        "text": "Kraków był oficjalną stolicą Polski do 1596 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385666189",
+        "source_title": "Wikipedia (en): Kraków, wersja 1385666189",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-12-unesco",
+        "text": "Stare Miasto w Krakowie wpisano na listę UNESCO w 1978 r. — jako jedno z pierwszych miejsc na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385666189",
+        "source_title": "Wikipedia (en): Kraków, wersja 1385666189",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-12-papiez",
+        "text": "W 1978 r. arcybiskup krakowski Karol Wojtyła został papieżem Janem Pawłem II — pierwszym od 455 lat papieżem spoza Włoch.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385666189",
+        "source_title": "Wikipedia (en): Kraków, wersja 1385666189",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-14": [
+      {
+        "id": "capital-pl-14-zygmunt",
+        "text": "Warszawa wyrosła z małej osady rybackiej; stolicą została po 1596 r., gdy Zygmunt III Waza przeniósł tu dwór z Krakowa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385748672",
+        "source_title": "Wikipedia (en): Warsaw, wersja 1385748672",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-14-ustawa",
+        "text": "Warszawa to jedyne polskie miasto, którego ustrój określa osobna ustawa.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81232070",
+        "source_title": "Wikipedia (pl): Warszawa, wersja 81232070",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-14-sejmy",
+        "text": "Od unii lubelskiej z 1569 r. w Warszawie obradowały sejmy Rzeczypospolitej Obojga Narodów.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81232070",
+        "source_title": "Wikipedia (pl): Warszawa, wersja 81232070",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-16": [
+      {
+        "id": "capital-pl-16-festiwal",
+        "text": "W Opolu od 1963 r. co roku odbywa się Krajowy Festiwal Piosenki Polskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385552881",
+        "source_title": "Wikipedia (en): Opole, wersja 1385552881",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-16-nazwa",
+        "text": "Nazwa Opole pochodzi zapewne od średniowiecznego słowiańskiego określenia grupy osad.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385552881",
+        "source_title": "Wikipedia (en): Opole, wersja 1385552881",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-16-1217",
+        "text": "Opole, jedno z najstarszych miast Polski, lokował na prawie magdeburskim przed 1217 r. książę Kazimierz I opolski.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81227979",
+        "source_title": "Wikipedia (pl): Opole, wersja 81227979",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-18": [
+      {
+        "id": "capital-pl-18-1354",
+        "text": "Rzeszów otrzymał prawa miejskie 19 stycznia 1354 r. od Kazimierza Wielkiego, a do 1845 r. był formalnie miastem prywatnym.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81227947",
+        "source_title": "Wikipedia (pl): Rzeszów, wersja 81227947",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-18-silniki",
+        "text": "Przemysłowy rozwój Rzeszowa zaczął się w 1937 r. od fabryki silników lotniczych w ramach Centralnego Okręgu Przemysłowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385040911",
+        "source_title": "Wikipedia (en): Rzeszów, wersja 1385040911",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-18-asseco",
+        "text": "W Rzeszowie ma siedzibę Asseco Poland, które kieruje szóstym największym producentem oprogramowania w Europie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385040911",
+        "source_title": "Wikipedia (en): Rzeszów, wersja 1385040911",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-20": [
+      {
+        "id": "capital-pl-20-biala",
+        "text": "Nazwa Białystok pochodzi od rzeki Białej (Białki), która płynie przez centrum miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382223438",
+        "source_title": "Wikipedia (en): Białystok, wersja 1382223438",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-20-who",
+        "text": "Białystok jako pierwsze miasto w Polsce przystąpił do Sieci Zdrowych Miast Światowej Organizacji Zdrowia.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81138007",
+        "source_title": "Wikipedia (pl): Białystok, wersja 81138007",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-20-1692",
+        "text": "Białystok otrzymał prawa miejskie w 1692 r.; osada powstała w latach 1440–1444.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382223438",
+        "source_title": "Wikipedia (en): Białystok, wersja 1382223438",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-22": [
+      {
+        "id": "capital-pl-22-997",
+        "text": "Gdańsk wspomniano po raz pierwszy w 997 r. jako część państwa Piastów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385719788",
+        "source_title": "Wikipedia (en): Gdańsk, wersja 1385719788",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-22-amberif",
+        "text": "W Gdańsku odbywają się Amberif — największe na świecie międzynarodowe targi bursztynu.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81074058",
+        "source_title": "Wikipedia (pl): Gdańsk, wersja 81074058",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-22-westerplatte",
+        "text": "1 września 1939 r. na Westerplatte w Gdańsku doszło do starcia, które było jednym z pierwszych wydarzeń II wojny światowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385719788",
+        "source_title": "Wikipedia (en): Gdańsk, wersja 1385719788",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-24": [
+      {
+        "id": "capital-pl-24-stalinogrod",
+        "text": "W latach 1953–1956 Katowice nosiły nazwę Stalinogród.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81091871",
+        "source_title": "Wikipedia (pl): Katowice, wersja 81091871",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-24-1865",
+        "text": "Katowice to młode miasto — prawa miejskie otrzymały 11 września 1865 r., choć pierwsza wzmianka pochodzi z 1598 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81091871",
+        "source_title": "Wikipedia (pl): Katowice, wersja 81091871",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-24-kuznica",
+        "text": "Pierwsza kuźnica na terenie dzisiejszych Katowic, Kuźnica Bogucka, wzmiankowana jest w 1397 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383087949",
+        "source_title": "Wikipedia (en): Katowice, wersja 1383087949",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-26": [
+      {
+        "id": "capital-pl-26-kly",
+        "text": "Według legendy nazwa Kielce upamiętnia tajemnicze kły, które znalazł tu Mieszko, syn Bolesława Szczodrego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81176647",
+        "source_title": "Wikipedia (pl): Kielce, wersja 81176647",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-26-biskupi",
+        "text": "Na początku XII w. Kielce stały się własnością biskupów krakowskich; w latach 1637–1642 biskup Jakub Zadzik zbudował tu manierystyczny pałac.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379265804",
+        "source_title": "Wikipedia (en): Kielce, wersja 1379265804",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-26-1259",
+        "text": "Kielce uzyskały prawa miejskie przed 1259 r.; w latach 1919–1939 i 1945–1998 były stolicą województwa kieleckiego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81176647",
+        "source_title": "Wikipedia (pl): Kielce, wersja 81176647",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-28": [
+      {
+        "id": "capital-pl-28-kopernik",
+        "text": "W Olsztynie mieszkał Mikołaj Kopernik; w 1521 r. dowodził udaną obroną miasta przed Krzyżakami, a na zamku zachowała się jego tablica astronomiczna.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384601979",
+        "source_title": "Wikipedia (en): Olsztyn, wersja 1384601979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-28-1353",
+        "text": "Olsztyn (Allenstein) otrzymał prawa miejskie od kapituły warmińskiej w październiku 1353 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384601979",
+        "source_title": "Wikipedia (en): Olsztyn, wersja 1384601979",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-28-straznica",
+        "text": "Historia Olsztyna zaczyna się w 1334 r. od strażnicy nad rzeką Łyną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384601979",
+        "source_title": "Wikipedia (en): Olsztyn, wersja 1384601979",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-30": [
+      {
+        "id": "capital-pl-30-diecezja",
+        "text": "Poznań jest siedzibą najstarszej polskiej diecezji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385700034",
+        "source_title": "Wikipedia (en): Poznań, wersja 1385700034",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-30-wieniawski",
+        "text": "W Poznaniu odbywa się Międzynarodowy Konkurs Skrzypcowy im. Henryka Wieniawskiego — najstarszy konkurs skrzypcowy na świecie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228455",
+        "source_title": "Wikipedia (pl): Poznań, wersja 81228455",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-30-targi",
+        "text": "Międzynarodowe Targi Poznańskie to największe i najstarsze centrum wystawiennicze w Polsce.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228455",
+        "source_title": "Wikipedia (pl): Poznań, wersja 81228455",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-32": [
+      {
+        "id": "capital-pl-32-szwecja",
+        "text": "W 1630 r. Szczecin przeszedł pod panowanie Szwecji, a od 1648 do 1720 r. był stolicą Pomorza Szwedzkiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385954008",
+        "source_title": "Wikipedia (en): Szczecin, wersja 1385954008",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-32-protesty",
+        "text": "W Szczecinie w 1970 i 1980 r. odbyły się wielkie protesty robotnicze.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385954008",
+        "source_title": "Wikipedia (en): Szczecin, wersja 1385954008",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-pl-32-stettin",
+        "text": "Szczecin, znany po niemiecku jako Stettin, po raz pierwszy wszedł w skład rodzącego się państwa polskiego w X w.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385954008",
+        "source_title": "Wikipedia (en): Szczecin, wersja 1385954008",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AK": [
+      {
+        "id": "capital-us-ak-drogi",
+        "text": "Juneau to jedna z dwóch stolic stanów USA bez połączenia drogowego z resztą stanu — drugą jest Honolulu; powodem jest bardzo trudny teren.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080932",
+        "source_title": "Wikipedia (en): Juneau, Alaska, wersja 1385080932",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ak-joe",
+        "text": "Juneau nazwano od poszukiwacza złota z Quebecu Joego Juneau; wcześniej miasto nosiło nazwy Rockwell i Harrisburg.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080932",
+        "source_title": "Wikipedia (en): Juneau, Alaska, wersja 1385080932",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ak-1906",
+        "text": "Juneau zostało stolicą Alaski w 1906 r., gdy władze ówczesnego Dystryktu Alaski przeniesiono z Sitki.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080932",
+        "source_title": "Wikipedia (en): Juneau, Alaska, wersja 1385080932",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AL": [
+      {
+        "id": "capital-us-al-konfederacja",
+        "text": "W lutym 1861 r. Montgomery zostało pierwszą stolicą Skonfederowanych Stanów Ameryki; w maju tego roku stolicę przeniesiono do Richmond.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385939081",
+        "source_title": "Wikipedia (en): Montgomery, Alabama, wersja 1385939081",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-al-richard",
+        "text": "Montgomery nazwano na cześć generała Armii Kontynentalnej Richarda Montgomery'ego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385939081",
+        "source_title": "Wikipedia (en): Montgomery, Alabama, wersja 1385939081",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-al-1846",
+        "text": "Montgomery zastąpiło Tuscaloosę jako stolica Alabamy w 1846 r., gdy rosło znaczenie bawełny.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385939081",
+        "source_title": "Wikipedia (en): Montgomery, Alabama, wersja 1385939081",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AR": [
+      {
+        "id": "capital-us-ar-skala",
+        "text": "Little Rock nazwano od formacji skalnej nad rzeką Arkansas, którą w 1722 r. francuski odkrywca Jean-Baptiste Bénard de la Harpe nazwał „Małą Skałą”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377310452",
+        "source_title": "Wikipedia (en): Little Rock, Arkansas, wersja 1377310452",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ar-1957",
+        "text": "W 1957 r. desegregacja szkoły Little Rock Central High stała się jednym z kluczowych wydarzeń ruchu praw obywatelskich.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377310452",
+        "source_title": "Wikipedia (en): Little Rock, Arkansas, wersja 1377310452",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ar-1821",
+        "text": "Little Rock założono w 1821 r. jako stolicę Terytorium Arkansas.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377310452",
+        "source_title": "Wikipedia (en): Little Rock, Arkansas, wersja 1377310452",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AZ": [
+      {
+        "id": "capital-us-az-hohokam",
+        "text": "Lud Hohokam zamieszkiwał okolice Phoenix przez 2000 lat i zbudował kanały nawadniające, których trasy wykorzystano potem przy budowie współczesnych kanałów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385856716",
+        "source_title": "Wikipedia (en): Phoenix, Arizona, wersja 1385856716",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-az-1867",
+        "text": "Phoenix założono w 1867 r. jako osadę rolniczą u zbiegu rzek Salt i Gila; stolicą Terytorium Arizony zostało w 1889 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385856716",
+        "source_title": "Wikipedia (en): Phoenix, Arizona, wersja 1385856716",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-az-powierzchnia",
+        "text": "Phoenix to największe pod względem powierzchni miasto Arizony i 11. w Stanach Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385856716",
+        "source_title": "Wikipedia (en): Phoenix, Arizona, wersja 1385856716",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CA": [
+      {
+        "id": "capital-us-ca-moraga",
+        "text": "W 1808 r. hiszpański kawalerzysta Gabriel Moraga nazwał rzekę Río del Santísimo Sacramento — od Najświętszego Sakramentu; od niej pochodzi nazwa miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384489169",
+        "source_title": "Wikipedia (en): Sacramento, California, wersja 1384489169",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ca-sutter",
+        "text": "W 1839 r. Szwajcar John Augustus Sutter dostał zadanie skolonizowania doliny Sacramento i założył Fort Sutter.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384489169",
+        "source_title": "Wikipedia (en): Sacramento, California, wersja 1384489169",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ca-1850",
+        "text": "Po przejęciu Kalifornii przez USA i traktacie z Guadalupe Hidalgo z 1848 r. Sacramento uzyskało prawa miejskie w 1850 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384489169",
+        "source_title": "Wikipedia (en): Sacramento, California, wersja 1384489169",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CO": [
+      {
+        "id": "capital-us-co-mila",
+        "text": "Denver nazywa się „Mile High City”, bo leży dokładnie jedną milę nad poziomem morza.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385465750",
+        "source_title": "Wikipedia (en): Denver, wersja 1385465750",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-co-1858",
+        "text": "Denver założono w 1858 r., w czasie gorączki złota, u zbiegu Cherry Creek i rzeki South Platte.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385465750",
+        "source_title": "Wikipedia (en): Denver, wersja 1385465750",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-co-gubernator",
+        "text": "Denver nazwano na cześć ówczesnego gubernatora Terytorium Kansas o nazwisku Denver; odwiedził on swoje miasto w 1875 i 1882 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385465750",
+        "source_title": "Wikipedia (en): Denver, wersja 1385465750",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CT": [
+      {
+        "id": "capital-us-ct-1635",
+        "text": "Hartford założono w 1635 r. — to jedno z najstarszych miast Stanów Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894429",
+        "source_title": "Wikipedia (en): Hartford, Connecticut, wersja 1385894429",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ct-twain",
+        "text": "W Hartford stoi dom Marka Twaina, w którym pisarz napisał swoje najsłynniejsze dzieła.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894429",
+        "source_title": "Wikipedia (en): Hartford, Connecticut, wersja 1385894429",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ct-ubezpieczenia",
+        "text": "Hartford nazywa się „ubezpieczeniową stolicą świata” — ma tu siedziby wiele firm ubezpieczeniowych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385894429",
+        "source_title": "Wikipedia (en): Hartford, Connecticut, wersja 1385894429",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-DE": [
+      {
+        "id": "capital-us-de-penn",
+        "text": "Dover nazwał William Penn na cześć Dover w angielskim hrabstwie Kent.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385947108",
+        "source_title": "Wikipedia (en): Dover, Delaware, wersja 1385947108",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-de-1777",
+        "text": "Stolicę Delaware przeniesiono do Dover z New Castle w 1777 r. — ze względu na centralne położenie i bezpieczeństwo przed brytyjskimi najazdami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385947108",
+        "source_title": "Wikipedia (en): Dover, Delaware, wersja 1385947108",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-de-woda",
+        "text": "Nazwa Dover pochodzi od brytańskiego słowa oznaczającego wody; najstarszy zapis to łacińskie Portus Dubris.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385947108",
+        "source_title": "Wikipedia (en): Dover, Delaware, wersja 1385947108",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-FL": [
+      {
+        "id": "capital-us-fl-1824",
+        "text": "Tallahassee zostało stolicą Florydy — wówczas Terytorium Floryda — w 1824 r.; trzecia sesja legislatury obradowała w prymitywnym budynku z bali.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385483090",
+        "source_title": "Wikipedia (en): Tallahassee, Florida, wersja 1385483090",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-fl-kopce",
+        "text": "Około 1200 r. kultura Missisipi usypała w pobliżu jeziora Jackson kopce ziemne, które przetrwały do dziś w parku archeologicznym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385483090",
+        "source_title": "Wikipedia (en): Tallahassee, Florida, wersja 1385483090",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-fl-leon",
+        "text": "Tallahassee jest jedyną miejscowością z prawami miejskimi w hrabstwie Leon.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385483090",
+        "source_title": "Wikipedia (en): Tallahassee, Florida, wersja 1385483090",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-GA": [
+      {
+        "id": "capital-us-ga-kolej",
+        "text": "Atlanta powstała jako stacja końcowa kolei stanowej; jej nazwa pochodzi od Western and Atlantic Railroad.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385420556",
+        "source_title": "Wikipedia (en): Atlanta, wersja 1385420556",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ga-lotnisko",
+        "text": "Lotnisko Hartsfield-Jackson w Atlancie stało się w 1998 r. najbardziej ruchliwym portem lotniczym świata pod względem liczby pasażerów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385420556",
+        "source_title": "Wikipedia (en): Atlanta, wersja 1385420556",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ga-olimpiada",
+        "text": "Atlanta zorganizowała letnie igrzyska olimpijskie w 1996 r.; w latach 60. była ośrodkiem ruchu praw obywatelskich z Martinem Lutherem Kingiem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385420556",
+        "source_title": "Wikipedia (en): Atlanta, wersja 1385420556",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-HI": [
+      {
+        "id": "capital-us-hi-port",
+        "text": "Nazwa Honolulu znaczy po hawajsku „osłonięta przystań” albo „spokojny port”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382450091",
+        "source_title": "Wikipedia (en): Honolulu, wersja 1382450091",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-hi-1845",
+        "text": "Honolulu jest stolicą od 1845 r. — najpierw niepodległego Królestwa Hawajów, potem terytorium USA, a od 1959 r. stanu Hawaje.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382450091",
+        "source_title": "Wikipedia (en): Honolulu, wersja 1382450091",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-hi-pearlharbor",
+        "text": "Honolulu stało się znane na świecie po japońskim ataku na pobliski Pearl Harbor 7 grudnia 1941 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382450091",
+        "source_title": "Wikipedia (en): Honolulu, wersja 1382450091",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IA": [
+      {
+        "id": "capital-us-ia-mnisi",
+        "text": "Des Moines nazwano od rzeki Des Moines — jej nazwa pochodzi zapewne od francuskiego „rzeka mnichów”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382573303",
+        "source_title": "Wikipedia (en): Des Moines, Iowa, wersja 1382573303",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ia-fort",
+        "text": "Des Moines uzyskało prawa miejskie w 1851 r. jako Fort Des Moines; nazwę skrócono w 1857 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382573303",
+        "source_title": "Wikipedia (en): Des Moines, Iowa, wersja 1382573303",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ia-kokusy",
+        "text": "W Des Moines, stolicy Iowa, odbywają się pierwsze w cyklu prawyborów prezydenckich zebrania wyborcze (kokusy).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382573303",
+        "source_title": "Wikipedia (en): Des Moines, Iowa, wersja 1382573303",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ID": [
+      {
+        "id": "capital-us-id-las",
+        "text": "Francuscy traperzy nazwali dolinę z topolami nad rzeką Boise „zalesioną rzeką” — stąd nazwa miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385916916",
+        "source_title": "Wikipedia (en): Boise, Idaho, wersja 1385916916",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-id-drzewa",
+        "text": "Boise zyskało przydomek „Miasto Drzew” dzięki akcjom sadzenia drzew.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385916916",
+        "source_title": "Wikipedia (en): Boise, Idaho, wersja 1385916916",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-id-wymowa",
+        "text": "Wymowa nazwy Boise bywa sprawdzianem — przyjezdni mówią często „Boj-zi”, a mieszkańcy inaczej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385916916",
+        "source_title": "Wikipedia (en): Boise, Idaho, wersja 1385916916",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IL": [
+      {
+        "id": "capital-us-il-lincoln",
+        "text": "W Springfield mieszkał Abraham Lincoln — od 1837 r. do 1861 r., gdy został prezydentem USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379134353",
+        "source_title": "Wikipedia (en): Springfield, Illinois, wersja 1379134353",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-il-1839",
+        "text": "Springfield zostało stolicą Illinois w 1839 r., w dużej mierze dzięki staraniom Lincolna i innych miejscowych polityków.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379134353",
+        "source_title": "Wikipedia (en): Springfield, Illinois, wersja 1379134353",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-il-calhoun",
+        "text": "Osadnicy nazwali najpierw osadę „Calhoun”, na cześć senatora Johna C. Calhouna.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379134353",
+        "source_title": "Wikipedia (en): Springfield, Illinois, wersja 1379134353",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IN": [
+      {
+        "id": "capital-us-in-planowane",
+        "text": "Indianapolis założono w 1821 r. jako miasto planowane — specjalnie na nową siedzibę władz Indiany.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385523515",
+        "source_title": "Wikipedia (en): Indianapolis, wersja 1385523515",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-in-muzeum",
+        "text": "W Indianapolis działa największe na świecie muzeum dziecięce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385523515",
+        "source_title": "Wikipedia (en): Indianapolis, wersja 1385523515",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-in-unigov",
+        "text": "Od połączenia miasta z hrabstwem w 1970 r. (Unigov) Indianapolis zarządza 25-osobowa rada z burmistrzem na czele.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385523515",
+        "source_title": "Wikipedia (en): Indianapolis, wersja 1385523515",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KS": [
+      {
+        "id": "capital-us-ks-ziemniaki",
+        "text": "Nazwa Topeka to słowo z języka Kansa-Osage oznaczające „miejsce, gdzie kopiemy ziemniaki”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385402566",
+        "source_title": "Wikipedia (en): Topeka, Kansas, wersja 1385402566",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ks-brown",
+        "text": "Z Topeki pochodził Oliver Brown — powód w sprawie Brown przeciw Radzie Edukacji Topeki, która zakończyła segregację w szkołach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385402566",
+        "source_title": "Wikipedia (en): Topeka, Kansas, wersja 1385402566",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ks-wolnostan",
+        "text": "Topekę założyli w 1854 r. przeciwnicy niewolnictwa ze Wschodu — jako jedno z miast „wolnego stanu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385402566",
+        "source_title": "Wikipedia (en): Topeka, Kansas, wersja 1385402566",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KY": [
+      {
+        "id": "capital-us-ky-frank",
+        "text": "Nazwa Frankfort pochodzi od brodu Franka — pionier Stephen Frank zginął tu w 1780 r. w potyczce z rdzennymi Amerykanami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913372",
+        "source_title": "Wikipedia (en): Frankfort, Kentucky, wersja 1383913372",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ky-bizony",
+        "text": "Zanim powstał Frankfort, było tu przejście przez rzekę Kentucky na jednym z wielkich szlaków bizonów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913372",
+        "source_title": "Wikipedia (en): Frankfort, Kentucky, wersja 1383913372",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ky-1792",
+        "text": "Frankfort wyznaczono na miasto w 1786 r., a po przyjęciu Kentucky do Unii w 1792 r. wybrano go na stolicę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913372",
+        "source_title": "Wikipedia (en): Frankfort, Kentucky, wersja 1383913372",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-LA": [
+      {
+        "id": "capital-us-la-czerwony",
+        "text": "Nazwa Baton Rouge to francuskie „czerwony kij” — tłumaczenie rdzennego Istrouma, być może od choctawskiego iti humma („czerwony słup”).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385980860",
+        "source_title": "Wikipedia (en): Baton Rouge, Louisiana, wersja 1385980860",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-la-iberville",
+        "text": "Baton Rouge nazwał francuski odkrywca Pierre Le Moyne d'Iberville, który w 1698 r. poprowadził wyprawę w górę Missisipi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385980860",
+        "source_title": "Wikipedia (en): Baton Rouge, Louisiana, wersja 1385980860",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-la-wzgorze",
+        "text": "Baton Rouge leży na Istrouma Bluff — pierwszej naturalnej skarpie w górę Missisipi od jej ujścia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385980860",
+        "source_title": "Wikipedia (en): Baton Rouge, Louisiana, wersja 1385980860",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MA": [
+      {
+        "id": "capital-us-ma-pierwsze",
+        "text": "W Bostonie powstały pierwszy w USA park publiczny (Boston Common, 1634), pierwsza szkoła publiczna (1635) i pierwsze metro (1897).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549279",
+        "source_title": "Wikipedia (en): Boston, wersja 1385549279",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ma-1630",
+        "text": "Boston założyli w 1630 r. angielscy purytanie na półwyspie Shawmut i nazwali go od miasteczka Boston w Lincolnshire.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549279",
+        "source_title": "Wikipedia (en): Boston, wersja 1385549279",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ma-herbata",
+        "text": "W Bostonie miały miejsce m.in. masakra bostońska (1770), bostońska herbatka (1773) i bitwa pod Bunker Hill (1775).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549279",
+        "source_title": "Wikipedia (en): Boston, wersja 1385549279",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MD": [
+      {
+        "id": "capital-us-md-kongres",
+        "text": "Annapolis było w latach 1783–1784 siedzibą Kongresu i tymczasową stolicą Stanów Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385413800",
+        "source_title": "Wikipedia (en): Annapolis, Maryland, wersja 1385413800",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-md-paryz",
+        "text": "W Annapolis Kongres ratyfikował traktat paryski z 1783 r., kończący wojnę o niepodległość.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385413800",
+        "source_title": "Wikipedia (en): Annapolis, Maryland, wersja 1385413800",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-md-akademia",
+        "text": "Tuż obok Annapolis działa Akademia Marynarki Wojennej USA, założona w 1845 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385413800",
+        "source_title": "Wikipedia (en): Annapolis, Maryland, wersja 1385413800",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ME": [
+      {
+        "id": "capital-us-me-harrington",
+        "text": "Augusta nosiła najpierw nazwę Harrington; 9 czerwca 1797 r. zmieniono ją na Augusta, a w 1827 r. miasto zostało stolicą Maine.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382496347",
+        "source_title": "Wikipedia (en): Augusta, Maine, wersja 1382496347",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-me-cushnoc",
+        "text": "W 1625 r. przybysze z kolonii Plymouth wybrali brzeg rzeki Kennebec na faktorię Cushnoc, w miejscu dzisiejszej Augusty.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382496347",
+        "source_title": "Wikipedia (en): Augusta, Maine, wersja 1382496347",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-me-fort",
+        "text": "W 1754 r. w miejscu dawnej faktorii zbudowano Fort Western, od którego zaczęło się osadnictwo w Auguście.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382496347",
+        "source_title": "Wikipedia (en): Augusta, Maine, wersja 1382496347",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MI": [
+      {
+        "id": "capital-us-mi-1847",
+        "text": "Lansing zostało stolicą Michigan w 1847 r. — wybrano je ze względu na centralne położenie, bo Detroit uznano za zbyt narażone na atak Brytyjczyków.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384355111",
+        "source_title": "Wikipedia (en): Lansing, Michigan, wersja 1384355111",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mi-biddle",
+        "text": "Według legendy dwaj bracia z Nowego Jorku sprzedawali w Lansing w stanie Nowy Jork działki w nieistniejącym „Biddle City”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384355111",
+        "source_title": "Wikipedia (en): Lansing, Michigan, wersja 1384355111",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mi-oldsmobile",
+        "text": "W Lansing powstały firmy samochodowe Oldsmobile i REO, założone przez Ransoma E. Oldsa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384355111",
+        "source_title": "Wikipedia (en): Lansing, Michigan, wersja 1384355111",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MN": [
+      {
+        "id": "capital-us-mn-kaplica",
+        "text": "Nazwa Saint Paul pochodzi od drewnianej kaplicy, którą założył ksiądz Lucien Galtier.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384830366",
+        "source_title": "Wikipedia (en): Saint Paul, Minnesota, wersja 1384830366",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mn-1849",
+        "text": "W listopadzie 1849 r. legislatura Terytorium Minnesoty ustanowiła miasteczko Saint Paul swoją stolicą.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384830366",
+        "source_title": "Wikipedia (en): Saint Paul, Minnesota, wersja 1384830366",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mn-pike",
+        "text": "W 1805 r. porucznik Zebulon Pike wynegocjował od Dakotów ziemię pod fort w okolicy dzisiejszego Saint Paul.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384830366",
+        "source_title": "Wikipedia (en): Saint Paul, Minnesota, wersja 1384830366",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MO": [
+      {
+        "id": "capital-us-mo-jefferson",
+        "text": "Jefferson City nazwano na cześć Thomasa Jeffersona — trzeciego prezydenta USA i głównego autora Deklaracji Niepodległości.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384888114",
+        "source_title": "Wikipedia (en): Jefferson City, Missouri, wersja 1384888114",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mo-boone",
+        "text": "Jefferson City wytyczył na początku XIX w. Daniel Morgan Boone — syn słynnego odkrywcy Daniela Boone'a.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384888114",
+        "source_title": "Wikipedia (en): Jefferson City, Missouri, wersja 1384888114",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mo-sekretarz",
+        "text": "Patron Jefferson City, Thomas Jefferson, był pierwszym sekretarzem stanu USA w gabinecie George'a Washingtona.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384888114",
+        "source_title": "Wikipedia (en): Jefferson City, Missouri, wersja 1384888114",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MS": [
+      {
+        "id": "capital-us-ms-andrew",
+        "text": "Jackson założono w 1821 r. jako nową stolicę Missisipi i nazwano na cześć generała Andrew Jacksona, bohatera bitwy o Nowy Orlean i późniejszego prezydenta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549722",
+        "source_title": "Wikipedia (en): Jackson, Mississippi, wersja 1385549722",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ms-deby",
+        "text": "Osada Czoktawów w miejscu dzisiejszego Jackson nosiła nazwę oznaczającą „wśród dębów”; leżała przy szlaku handlowym Natchez Trace.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549722",
+        "source_title": "Wikipedia (en): Jackson, Mississippi, wersja 1385549722",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ms-sherman",
+        "text": "W 1863 r., po bitwie pod Vicksburgiem, wojska Unii gen. Williama T. Shermana oblegały Jackson.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385549722",
+        "source_title": "Wikipedia (en): Jackson, Mississippi, wersja 1385549722",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MT": [
+      {
+        "id": "capital-us-mt-zloto",
+        "text": "Helena powstała 14 lipca 1864 r. jako obóz poszukiwaczy złota, po odkryciu kruszcu w wąwozie Last Chance Gulch.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384118831",
+        "source_title": "Wikipedia (en): Helena, Montana, wersja 1384118831",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mt-milionerzy",
+        "text": "Dzięki gorączce złota Helena była bogatym miastem — w 1888 r. mieszkało tu około 50 milionerów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384118831",
+        "source_title": "Wikipedia (en): Helena, Montana, wersja 1384118831",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-mt-terytorium",
+        "text": "Gorączka złota ściągnęła tylu ludzi, że w maju 1864 r. rząd federalny utworzył nowe Terytorium Montany.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384118831",
+        "source_title": "Wikipedia (en): Helena, Montana, wersja 1384118831",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NC": [
+      {
+        "id": "capital-us-nc-raleigh",
+        "text": "Raleigh nazwano na cześć sir Waltera Raleigha, który założył zaginioną kolonię Roanoke.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913666",
+        "source_title": "Wikipedia (en): Raleigh, North Carolina, wersja 1383913666",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nc-1788",
+        "text": "Miejsce na stolicę Karoliny Północnej wybrano w 1788 r., a Raleigh uzyskało prawa miejskie w 1792 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913666",
+        "source_title": "Wikipedia (en): Raleigh, North Carolina, wersja 1383913666",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nc-bath",
+        "text": "Pierwszą stolicą kolonii Karolina Północna było w latach 1705–1722 Bath — najstarsze miasto stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913666",
+        "source_title": "Wikipedia (en): Raleigh, North Carolina, wersja 1383913666",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ND": [
+      {
+        "id": "capital-us-nd-otto",
+        "text": "W 1873 r. kolej Northern Pacific nazwała miasto Bismarck na cześć kanclerza Niemiec Ottona von Bismarcka, licząc na niemieckich osadników i inwestycje.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383841536",
+        "source_title": "Wikipedia (en): Bismarck, North Dakota, wersja 1383841536",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nd-wierzby",
+        "text": "W języku Hidatsa Bismarck nazywa się „miejscem wysokich wierzb”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383841536",
+        "source_title": "Wikipedia (en): Bismarck, North Dakota, wersja 1383841536",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nd-lewisclark",
+        "text": "Osadę założono w 1872 r. w miejscu zwanym Missouri Crossing — tam rzekę przekroczyła wyprawa Lewisa i Clarka.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383841536",
+        "source_title": "Wikipedia (en): Bismarck, North Dakota, wersja 1383841536",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NE": [
+      {
+        "id": "capital-us-ne-lancaster",
+        "text": "Lincoln założono w 1856 r. jako wioskę Lancaster; po przemianowaniu na cześć prezydenta Lincolna zostało stolicą Nebraski w 1869 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385711498",
+        "source_title": "Wikipedia (en): Lincoln, Nebraska, wersja 1385711498",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ne-kapitol",
+        "text": "Kapitol w Lincoln, ukończony w 1932 r., jest drugim najwyższym kapitolem stanowym w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385711498",
+        "source_title": "Wikipedia (en): Lincoln, Nebraska, wersja 1385711498",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ne-uniwersytet",
+        "text": "Uniwersytet Nebraski założono w Lincoln w 1869 r.; to największa uczelnia stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385711498",
+        "source_title": "Wikipedia (en): Lincoln, Nebraska, wersja 1385711498",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NH": [
+      {
+        "id": "capital-us-nh-zgoda",
+        "text": "Nazwę Concord („zgoda”) nadał miastu w 1765 r. gubernator Benning Wentworth, by zaznaczyć pojednanie po sporze granicznym z sąsiednim Bow.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377967280",
+        "source_title": "Wikipedia (en): Concord, New Hampshire, wersja 1377967280",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nh-rumford",
+        "text": "Concord uzyskało prawa miasta 9 lutego 1734 r. jako Rumford.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377967280",
+        "source_title": "Wikipedia (en): Concord, New Hampshire, wersja 1377967280",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nh-1819",
+        "text": "Concord jest siedzibą władz New Hampshire od 1808 r.; siedzibę legislatury ukończono w 1819 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1377967280",
+        "source_title": "Wikipedia (en): Concord, New Hampshire, wersja 1377967280",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NJ": [
+      {
+        "id": "capital-us-nj-stolica",
+        "text": "Trenton był stolicą Stanów Zjednoczonych od 1 listopada do 24 grudnia 1784 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385349673",
+        "source_title": "Wikipedia (en): Trenton, New Jersey, wersja 1385349673",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nj-bitwa",
+        "text": "W czasie wojny o niepodległość pod Trenton rozegrała się bitwa pod Trenton.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385349673",
+        "source_title": "Wikipedia (en): Trenton, New Jersey, wersja 1385349673",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nj-koleje",
+        "text": "Trenton to jedyne miasto New Jersey obsługiwane przez trzy systemy kolei podmiejskiej: Amtrak, NJ Transit i SEPTA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385349673",
+        "source_title": "Wikipedia (en): Trenton, New Jersey, wersja 1385349673",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NM": [
+      {
+        "id": "capital-us-nm-1610",
+        "text": "Santa Fe założono w 1610 r. jako stolicę prowincji Nowej Hiszpanii — to najstarsza stolica stanowa w USA i najstarsza europejska osada na zachód od Missisipi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384999087",
+        "source_title": "Wikipedia (en): Santa Fe, New Mexico, wersja 1384999087",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nm-wiara",
+        "text": "Nazwa Santa Fe znaczy po hiszpańsku „Święta Wiara” — to skrót pierwotnej nazwy Królewskie Miasto Świętej Wiary św. Franciszka z Asyżu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384999087",
+        "source_title": "Wikipedia (en): Santa Fe, New Mexico, wersja 1384999087",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nm-wysokosc",
+        "text": "Santa Fe leży u podnóża gór Sangre de Cristo — najwyżej spośród wszystkich stolic stanów USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384999087",
+        "source_title": "Wikipedia (en): Santa Fe, New Mexico, wersja 1384999087",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NV": [
+      {
+        "id": "capital-us-nv-kit",
+        "text": "Carson City nazwano na cześć trapera Kita Carsona (1809–1868).",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385834547",
+        "source_title": "Wikipedia (en): Carson City, Nevada, wersja 1385834547",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nv-1861",
+        "text": "Carson City jest stolicą Nevady od 1861 r., gdy Nevada była jeszcze terytorium.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385834547",
+        "source_title": "Wikipedia (en): Carson City, Nevada, wersja 1385834547",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-nv-kolej",
+        "text": "Carson City przez większość swojej historii było węzłem kolei Virginia and Truckee; tory rozebrano w 1950 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385834547",
+        "source_title": "Wikipedia (en): Carson City, Nevada, wersja 1385834547",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NY": [
+      {
+        "id": "capital-us-ny-najstarsze",
+        "text": "Albany to najstarsze miasto stanu Nowy Jork; Holendrzy zbudowali tu Fort Nassau w 1614 r. i Fort Orange w 1624 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080689",
+        "source_title": "Wikipedia (en): Albany, New York, wersja 1385080689",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ny-york",
+        "text": "W 1664 r. Anglicy przejęli holenderskie osady i nazwali miasto Albany — od szkockiego tytułu księcia Yorku, późniejszego króla Jakuba II.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080689",
+        "source_title": "Wikipedia (en): Albany, New York, wersja 1385080689",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ny-1797",
+        "text": "Albany otrzymało prawa miejskie w 1686 r., a stolicą stanu Nowy Jork zostało w 1797 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385080689",
+        "source_title": "Wikipedia (en): Albany, New York, wersja 1385080689",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OH": [
+      {
+        "id": "capital-us-oh-1812",
+        "text": "Columbus założono w 1812 r. u zbiegu rzek Scioto i Olentangy specjalnie jako stolicę Ohio; stolicą zostało w 1816 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384246631",
+        "source_title": "Wikipedia (en): Columbus, Ohio, wersja 1384246631",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-oh-franklinton",
+        "text": "Pierwszą europejską osadą w Columbus było Franklinton (1797), dziś jedna z dzielnic miasta.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384246631",
+        "source_title": "Wikipedia (en): Columbus, Ohio, wersja 1384246631",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-oh-seminarium",
+        "text": "W Columbus działa Pontifical College Josephinum — jedyne papieskie seminarium w Ameryce Północnej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384246631",
+        "source_title": "Wikipedia (en): Columbus, Ohio, wersja 1384246631",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OK": [
+      {
+        "id": "capital-us-ok-powierzchnia",
+        "text": "Oklahoma City jest drugą co do powierzchni stolicą stanu w USA — po Juneau na Alasce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913823",
+        "source_title": "Wikipedia (en): Oklahoma City, wersja 1383913823",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ok-bydlo",
+        "text": "W Oklahoma City działa jeden z największych targów bydła na świecie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913823",
+        "source_title": "Wikipedia (en): Oklahoma City, wersja 1383913823",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ok-ropa",
+        "text": "Ropa, gaz ziemny i przemysł z nimi związany to największy sektor gospodarki Oklahoma City.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383913823",
+        "source_title": "Wikipedia (en): Oklahoma City, wersja 1383913823",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OR": [
+      {
+        "id": "capital-us-or-1842",
+        "text": "Salem założono w 1842 r. w dolinie Willamette; w 1851 r. zostało stolicą Terytorium Oregonu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379674246",
+        "source_title": "Wikipedia (en): Salem, Oregon, wersja 1379674246",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-or-chimikiti",
+        "text": "Lud Kalapuya nazywał okolice Salem Chim-i-ki-ti, co oznacza zapewne „miejsce spotkań lub odpoczynku”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379674246",
+        "source_title": "Wikipedia (en): Salem, Oregon, wersja 1379674246",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-or-1857",
+        "text": "Salem uzyskało prawa miejskie w 1857 r.; największym pracodawcą w mieście jest stan Oregon.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379674246",
+        "source_title": "Wikipedia (en): Salem, Oregon, wersja 1379674246",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-PA": [
+      {
+        "id": "capital-us-pa-farmshow",
+        "text": "W Harrisburgu od 1917 r. odbywa się Pennsylvania Farm Show — największa w USA kryta wystawa rolnicza.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383639012",
+        "source_title": "Wikipedia (en): Harrisburg, Pennsylvania, wersja 1383639012",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-pa-threemile",
+        "text": "28 marca 1979 r. w pobliskim Middletown, koło Harrisburga, doszło do awarii elektrowni jądrowej Three Mile Island.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383639012",
+        "source_title": "Wikipedia (en): Harrisburg, Pennsylvania, wersja 1383639012",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-pa-harris",
+        "text": "W 1719 r. osiadł tu angielski kupiec John Harris senior; miasto Harrisburg wytyczył na ziemi ojca jego syn, a w 1812 r. zostało stolicą Pensylwanii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383639012",
+        "source_title": "Wikipedia (en): Harrisburg, Pennsylvania, wersja 1383639012",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-RI": [
+      {
+        "id": "capital-us-ri-opatrznosc",
+        "text": "Providence założył w 1636 r. Roger Williams, wygnaniec z kolonii Massachusetts, i nazwał je na cześć „miłosiernej Opatrzności Bożej”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383770421",
+        "source_title": "Wikipedia (en): Providence, Rhode Island, wersja 1383770421",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ri-baptysci",
+        "text": "W Providence działa najstarsza wspólnota baptystyczna w Ameryce, założona przez Rogera Williamsa w 1638 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383770421",
+        "source_title": "Wikipedia (en): Providence, Rhode Island, wersja 1383770421",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ri-przemysl",
+        "text": "Providence było jednym z pierwszych uprzemysłowionych miast USA — słynęło z włókiennictwa, jubilerstwa i wyrobów ze srebra.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383770421",
+        "source_title": "Wikipedia (en): Providence, Rhode Island, wersja 1383770421",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SC": [
+      {
+        "id": "capital-us-sc-soda",
+        "text": "Nazwa Columbia pochodzi od poetyckiej personifikacji Stanów Zjednoczonych; skrót „Cola” dał miastu przydomek „Soda City”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384098056",
+        "source_title": "Wikipedia (en): Columbia, South Carolina, wersja 1384098056",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-sc-1786",
+        "text": "Columbię założono w 1786 r. jako pierwszą planowaną stolicę Karoliny Południowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384098056",
+        "source_title": "Wikipedia (en): Columbia, South Carolina, wersja 1384098056",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-sc-1865",
+        "text": "W czasie wojny secesyjnej, w 1865 r., większa część Columbii spłonęła; miasto odbudowano w okresie rekonstrukcji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384098056",
+        "source_title": "Wikipedia (en): Columbia, South Carolina, wersja 1384098056",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SD": [
+      {
+        "id": "capital-us-sd-male",
+        "text": "Pierre jest drugą najmniej ludną stolicą stanu w USA — mniej mieszkańców ma tylko Montpelier w Vermoncie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378789937",
+        "source_title": "Wikipedia (en): Pierre, South Dakota, wersja 1378789937",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-sd-chouteau",
+        "text": "Nazwa Pierre pochodzi od Fortu Pierre Chouteau, nazwanego od kupca futer Pierre'a Chouteau juniora.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378789937",
+        "source_title": "Wikipedia (en): Pierre, South Dakota, wersja 1378789937",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-sd-1889",
+        "text": "Pierre założono w 1880 r. nad Missouri; stolicą zostało 2 listopada 1889 r., gdy Dakota Południowa stała się stanem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378789937",
+        "source_title": "Wikipedia (en): Pierre, South Dakota, wersja 1378789937",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TN": [
+      {
+        "id": "capital-us-tn-nash",
+        "text": "Nashville nazwano na cześć gen. Francisa Nasha z Armii Kontynentalnej; miasto założono w 1779 r., gdy tereny te należały do Karoliny Północnej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385668400",
+        "source_title": "Wikipedia (en): Nashville, Tennessee, wersja 1385668400",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-tn-1862",
+        "text": "W 1862 r. Nashville było pierwszą stolicą stanu Konfederacji zdobytą przez wojska Unii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385668400",
+        "source_title": "Wikipedia (en): Nashville, Tennessee, wersja 1385668400",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-tn-muzyka",
+        "text": "Nashville to ważny ośrodek przemysłu muzycznego, zwłaszcza country — nazywa się je „Music City”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385668400",
+        "source_title": "Wikipedia (en): Nashville, Tennessee, wersja 1385668400",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TX": [
+      {
+        "id": "capital-us-tx-1839",
+        "text": "Austin uzyskało prawa miejskie 27 grudnia 1839 r.; od 2010 r. należy do najszybciej rosnących dużych miast USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1386036567",
+        "source_title": "Wikipedia (en): Austin, Texas, wersja 1386036567",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-tx-ibm",
+        "text": "W 1967 r. IBM otworzył w Austin zakład produkujący maszyny do pisania Selectric — jeden z początków technologicznego Austin.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1386036567",
+        "source_title": "Wikipedia (en): Austin, Texas, wersja 1386036567",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-tx-motorola",
+        "text": "Motorola zaczęła w Austin produkcję półprzewodników w 1974 r., a Texas Instruments działał tu od 1969 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1386036567",
+        "source_title": "Wikipedia (en): Austin, Texas, wersja 1386036567",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-UT": [
+      {
+        "id": "capital-us-ut-young",
+        "text": "Salt Lake City założyli w 1847 r. osadnicy pod wodzą Brighama Younga, uciekający przed prześladowaniami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385720311",
+        "source_title": "Wikipedia (en): Salt Lake City, wersja 1385720311",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ut-great",
+        "text": "Miasto nazywało się początkowo Great Salt Lake City; słowo „Great” usunięto z nazwy w 1868 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385720311",
+        "source_title": "Wikipedia (en): Salt Lake City, wersja 1385720311",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-ut-lincoln",
+        "text": "W 1913 r. przez Salt Lake City poprowadzono Lincoln Highway — pierwszą drogę przecinającą całe Stany Zjednoczone.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385720311",
+        "source_title": "Wikipedia (en): Salt Lake City, wersja 1385720311",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VA": [
+      {
+        "id": "capital-us-va-henry",
+        "text": "W Richmond w 1775 r. Patrick Henry wygłosił słynne przemówienie „Dajcie mi wolność albo dajcie mi śmierć!”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384644884",
+        "source_title": "Wikipedia (en): Richmond, Virginia, wersja 1384644884",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-va-1780",
+        "text": "Richmond, założone w 1737 r., zastąpiło Williamsburg jako stolica Wirginii w 1780 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384644884",
+        "source_title": "Wikipedia (en): Richmond, Virginia, wersja 1384644884",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-va-powhatan",
+        "text": "Na miejscu Richmond istniała ważna wieś konfederacji Powhatanów; w latach 1609–1611 krótko osiedlili się tu Anglicy z Jamestown.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384644884",
+        "source_title": "Wikipedia (en): Richmond, Virginia, wersja 1384644884",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VT": [
+      {
+        "id": "capital-us-vt-francja",
+        "text": "Montpelier nazwano od francuskiego Montpellier — w czasie wojny o niepodległość sojusz z Francją wywołał modę na wszystko, co francuskie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382634895",
+        "source_title": "Wikipedia (en): Montpelier, Vermont, wersja 1382634895",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-vt-najmniejsza",
+        "text": "Montpelier jest najmniej ludną stolicą stanu w USA; bywa nazywane „miastem na siedmiu wzgórzach”, jak Rzym.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382634895",
+        "source_title": "Wikipedia (en): Montpelier, Vermont, wersja 1382634895",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-vt-1805",
+        "text": "Montpelier wybrano na stolicę Vermontu w 1805 r., a mieszkańcy złożyli się na budowę pierwszej siedziby władz.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382634895",
+        "source_title": "Wikipedia (en): Montpelier, Vermont, wersja 1382634895",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WA": [
+      {
+        "id": "capital-us-wa-niedzwiedz",
+        "text": "Półwysep, na którym zbudowano Olympię, nosił w języku lushootseed nazwę oznaczającą „miejsce czarnego niedźwiedzia”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384729284",
+        "source_title": "Wikipedia (en): Olympia, Washington, wersja 1384729284",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wa-1853",
+        "text": "Olympię ogłoszono stolicą Terytorium Waszyngtonu w 1853 r., a prawa miasta uzyskała 28 stycznia 1859 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384729284",
+        "source_title": "Wikipedia (en): Olympia, Washington, wersja 1384729284",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wa-traktaty",
+        "text": "Traktaty z Medicine Creek (1854) i z Olympii (1856) zmusiły lud Squaxin do przeniesienia się do rezerwatu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384729284",
+        "source_title": "Wikipedia (en): Olympia, Washington, wersja 1384729284",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WI": [
+      {
+        "id": "capital-us-wi-madison",
+        "text": "Madison założono w 1836 r. i nazwano na cześć prezydenta Jamesa Madisona, jednego z Ojców Założycieli.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385951533",
+        "source_title": "Wikipedia (en): Madison, Wisconsin, wersja 1385951533",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wi-jeziora",
+        "text": "Lud Ho-Chunk nazywał okolice Madison „krainą czterech jezior” — Mendota, Monona, Waubesa i Kegonsa.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385951533",
+        "source_title": "Wikipedia (en): Madison, Wisconsin, wersja 1385951533",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wi-parki",
+        "text": "Madison ma jedną z najwyższych liczb parków i placów zabaw na mieszkańca wśród 100 największych miast USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385951533",
+        "source_title": "Wikipedia (en): Madison, Wisconsin, wersja 1385951533",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WV": [
+      {
+        "id": "capital-us-wv-boone",
+        "text": "Charleston uzyskało prawa miejskie w 1794 r.; jednym z jego powierników był Daniel Boone.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382448270",
+        "source_title": "Wikipedia (en): Charleston, West Virginia, wersja 1382448270",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wv-sol",
+        "text": "Charleston rozwinęło się w XIX w. dzięki przemysłowi solnemu, potem górnictwu węgla i pierwszemu szybowi gazu ziemnego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382448270",
+        "source_title": "Wikipedia (en): Charleston, West Virginia, wersja 1382448270",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wv-1885",
+        "text": "Po oddzieleniu Wirginii Zachodniej od Wirginii Charleston stał się jej stałą stolicą w 1885 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382448270",
+        "source_title": "Wikipedia (en): Charleston, West Virginia, wersja 1382448270",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WY": [
+      {
+        "id": "capital-us-wy-kolej",
+        "text": "Cheyenne założono w 1867 r. jako węzeł kolei Union Pacific; teren miasta wytyczono 5 lipca 1867 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382118042",
+        "source_title": "Wikipedia (en): Cheyenne, Wyoming, wersja 1382118042",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wy-czejeni",
+        "text": "Mieszkańcy nazwali miasto Cheyenne na cześć ludu Czejenów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382118042",
+        "source_title": "Wikipedia (en): Cheyenne, Wyoming, wersja 1382118042",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "capital-us-wy-dakota",
+        "text": "Cheyenne powstało w 1867 r. na terenie ówczesnego Terytorium Dakoty.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382118042",
+        "source_title": "Wikipedia (en): Cheyenne, Wyoming, wersja 1382118042",
         "checked": "2026-11-16"
       }
     ]

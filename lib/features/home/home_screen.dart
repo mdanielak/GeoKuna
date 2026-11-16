@@ -456,19 +456,16 @@ class _TrainingRow extends ConsumerWidget {
   const _TrainingRow({required this.compact});
   final bool compact;
 
-  static const _items = [
-    ('Mapa', Icons.public_outlined, '/learn'),
-    ('Stolice', Icons.location_city_outlined, '/capitals'),
-    ('Flagi', Icons.flag_outlined, '/flags'),
-  ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
-    // Voivodeships and US states have no capital/flag packs yet (stage 2).
-    final items = ref.watch(selectedContinentProvider).hasCapitalsAndFlags
-        ? _items
-        : _items.take(1).toList();
+    final area = ref.watch(selectedContinentProvider);
+    final items = [
+      ('Mapa', Icons.public_outlined, '/learn'),
+      // Short on the tile; the screen title says „Miasta wojewódzkie”.
+      ('Stolice', Icons.location_city_outlined, '/capitals'),
+      (area.symbolsLabel, Icons.flag_outlined, '/flags'),
+    ];
     Widget tile((String, IconData, String) item) {
       final (label, icon, path) = item;
       final shape = RoundedRectangleBorder(
@@ -565,7 +562,7 @@ class _LevelRow extends ConsumerWidget {
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                   title: Text(level.label),
-                  subtitle: Text(level.descriptionFor(continent)),
+                  subtitle: Text(level.description),
                   selected: level == current,
                   trailing: level == current ? const Icon(Icons.check) : null,
                   onTap: () => Navigator.pop(context, level),
@@ -604,7 +601,7 @@ class _LevelRow extends ConsumerWidget {
       contentPadding: const EdgeInsets.symmetric(horizontal: 4),
       leading: const Icon(Icons.tune),
       title: Text('Poziom dla ${continent.genitive}: ${current.label}'),
-      subtitle: Text(current.descriptionFor(continent)),
+      subtitle: Text(current.description),
       trailing: const Icon(Icons.chevron_right),
       onTap: () => _choose(context, ref, current),
     );

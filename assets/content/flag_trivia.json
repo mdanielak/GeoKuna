@@ -1,5 +1,5 @@
 {
-  "version": "flag-trivia-0.3.0",
+  "version": "flag-trivia-0.4.0",
   "status": "verified",
   "countries": {
     "AFG": [
@@ -4530,6 +4530,1524 @@
         "text": "Flaga Wysp Salomona obowiązuje od 18 listopada 1977 r. — osiem miesięcy przed niepodległością.",
         "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385794153",
         "source_title": "Wikipedia (en): Flag of Solomon Islands, wersja 1385794153",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-02": [
+      {
+        "id": "flag-pl-02-henryk",
+        "text": "Czarny orzeł z półksiężycem i krzyżem w herbie Dolnego Śląska to herb księcia Henryka II Pobożnego; księżyc z krzyżem odziedziczył on po ojcu, Henryku Brodatym.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77737848",
+        "source_title": "Wikipedia (pl): Herb województwa dolnośląskiego, wersja 77737848",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-02-piecz",
+        "text": "Wzór herbu Dolnego Śląska pojawił się po raz pierwszy na pieczęci Henryka II Pobożnego, używanej w latach 1224–1240.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337635008",
+        "source_title": "Wikipedia (en): Coat of arms of the Lower Silesian Voivodeship, wersja 1337635008",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-02-2009",
+        "text": "Herb województwa dolnośląskiego ustanowiono w 2000 r., a w 2009 r. — po uwagach Komisji Heraldycznej — sejmik przyjął nowy kształt orła.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77737848",
+        "source_title": "Wikipedia (pl): Herb województwa dolnośląskiego, wersja 77737848",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-04": [
+      {
+        "id": "flag-pl-04-hybryda",
+        "text": "Herb kujawsko-pomorskiego przedstawia hybrydę kujawską — pół czerwonego orła i pół czarnego lwa pod wspólną złotą koroną.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=72117485",
+        "source_title": "Wikipedia (pl): Herb województwa kujawsko-pomorskiego, wersja 72117485",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-04-inowroclaw",
+        "text": "Hybryda kujawska pochodzi z herbów dawnych województw inowrocławskiego i brzeskokujawskiego, używanych od XIV do XVIII w.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337633710",
+        "source_title": "Wikipedia (en): Coat of arms of the Kuyavian–Pomeranian Voivodeship, wersja 1337633710",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-04-chelmno",
+        "text": "Biała tarcza w herbie kujawsko-pomorskiego nawiązuje do herbu dawnego województwa chełmińskiego; herb przyjęto 10 lipca 2000 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=72117485",
+        "source_title": "Wikipedia (pl): Herb województwa kujawsko-pomorskiego, wersja 72117485",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-06": [
+      {
+        "id": "flag-pl-06-grunwald",
+        "text": "W bitwie pod Grunwaldem w 1410 r. ziemia lubelska walczyła pod czerwoną chorągwią z białym jeleniem w skoku, ze złotą koroną na szyi — tym samym, co dziś w herbie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1334370633",
+        "source_title": "Wikipedia (en): Coat of arms of the Lublin Voivodeship, wersja 1334370633",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-06-dlugosz",
+        "text": "Jeleń ziemi lubelskiej pojawia się w kronice Jana Długosza, pisanej w latach 1464–1480: „rogaty jeleń gotowy do skoku na czerwonym polu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1334370633",
+        "source_title": "Wikipedia (en): Coat of arms of the Lublin Voivodeship, wersja 1334370633",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-06-heidrich",
+        "text": "Obecny herb województwa lubelskiego zaprojektował Andrzej Heidrich; przyjęto go w 2002 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1334370633",
+        "source_title": "Wikipedia (en): Coat of arms of the Lublin Voivodeship, wersja 1334370633",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-08": [
+      {
+        "id": "flag-pl-08-gwiazdy",
+        "text": "Dwie złote gwiazdy w herbie lubuskiego to dwie stolice województwa — Gorzów Wielkopolski i Zielona Góra.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77976176",
+        "source_title": "Wikipedia (pl): Herb województwa lubuskiego, wersja 77976176",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-08-zielen",
+        "text": "Zieleń w herbie lubuskiego symbolizuje lasy, które pokrywają połowę województwa, a orzeł — związki regionu z Polską.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77976176",
+        "source_title": "Wikipedia (pl): Herb województwa lubuskiego, wersja 77976176",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-08-strzyzewski",
+        "text": "Herb województwa lubuskiego zaprojektował prof. Wojciech Strzyżewski z Uniwersytetu Zielonogórskiego; sejmik zatwierdził go 26 czerwca 2000 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77976176",
+        "source_title": "Wikipedia (pl): Herb województwa lubuskiego, wersja 77976176",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-10": [
+      {
+        "id": "flag-pl-10-r",
+        "text": "W herbie łódzkiego czarny orzeł ma na piersi złotą literę R — a nad nim stoją dwie hybrydy kujawskie: pół orła i pół lwa.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582554",
+        "source_title": "Wikipedia (pl): Herb województwa łódzkiego, wersja 77582554",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-10-leczyca",
+        "text": "Zanim w 2002 r. województwo łódzkie przyjęło własny herb, bezprawnie posługiwało się herbem powiatu łęczyckiego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582554",
+        "source_title": "Wikipedia (pl): Herb województwa łódzkiego, wersja 77582554",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-10-adamczewski",
+        "text": "Herb łódzkiego zaprojektował dr Marek Adamczewski z Uniwersytetu Łódzkiego; ma nietypowy układ — barwne pasy zamiast podziału tarczy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582554",
+        "source_title": "Wikipedia (pl): Herb województwa łódzkiego, wersja 77582554",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-12": [
+      {
+        "id": "flag-pl-12-kazimierz",
+        "text": "Herb małopolskiego nawiązuje do herbu województwa krakowskiego, który powstał już za Kazimierza Wielkiego w XIV w.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228615",
+        "source_title": "Wikipedia (pl): Herb województwa małopolskiego, wersja 81228615",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-12-uj",
+        "text": "Herb Małopolski ustanowiony 24 maja 1999 r. opracowali historycy Uniwersytetu Jagiellońskiego Wojciech Drelicharz i Zenon Piech.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228615",
+        "source_title": "Wikipedia (pl): Herb województwa małopolskiego, wersja 81228615",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-12-renesans",
+        "text": "Orzeł w herbie Małopolski ma formę renesansową — z czasów, gdy zaczęto odróżniać herb województwa od herbu państwa.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=81228615",
+        "source_title": "Wikipedia (pl): Herb województwa małopolskiego, wersja 81228615",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-14": [
+      {
+        "id": "flag-pl-14-siemowit",
+        "text": "Wzór orła w herbie mazowieckiego pochodzi z XIV-wiecznej pieczęci księcia Mazowsza Siemowita III.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1349371244",
+        "source_title": "Wikipedia (en): Coat of arms of the Masovian Voivodeship, wersja 1349371244",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-14-komisja",
+        "text": "W 2006 r. komisja heraldyczna przy MSWiA uznała, że orzeł z pierwszego herbu mazowieckiego (z 2002 r.) nie ma nic wspólnego z tradycją Mazowsza.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=72117486",
+        "source_title": "Wikipedia (pl): Herb województwa mazowieckiego, wersja 72117486",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-14-heidrich",
+        "text": "Obecną wersję herbu województwa mazowieckiego zaprojektował Andrzej Heidrich; przyjęto ją w 2006 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1349371244",
+        "source_title": "Wikipedia (en): Coat of arms of the Masovian Voivodeship, wersja 1349371244",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-16": [
+      {
+        "id": "flag-pl-16-jan",
+        "text": "Złoty orzeł górnośląski w herbie opolskiego pochodzi z czasów ostatniego księcia opolskiego, Jana II Dobrego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79879186",
+        "source_title": "Wikipedia (pl): Herb województwa opolskiego, wersja 79879186",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-16-kazimierz",
+        "text": "Najstarszy znany herb z orłem na Górnym Śląsku należał do księcia Kazimierza I opolskiego — widnieje na jego pieczęci z 1222 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337635030",
+        "source_title": "Wikipedia (en): Coat of arms of the Opole Voivodeship, wersja 1337635030",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-16-2001",
+        "text": "Herb województwa opolskiego ustanowiono w kwietniu 2001 r.; widnieje też na urzędowej fladze województwa.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=79879186",
+        "source_title": "Wikipedia (pl): Herb województwa opolskiego, wersja 79879186",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-18": [
+      {
+        "id": "flag-pl-18-gryf",
+        "text": "Srebrny gryf w herbie podkarpackiego symbolizuje dawne województwo bełskie, a złoty lew — województwo ruskie.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587238",
+        "source_title": "Wikipedia (pl): Herb województwa podkarpackiego, wersja 77587238",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-18-krzyz",
+        "text": "Srebrny krzyż kawalerski nad gryfem i lwem w herbie podkarpackiego pochodzi z herbu Rzeszowa.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587238",
+        "source_title": "Wikipedia (pl): Herb województwa podkarpackiego, wersja 77587238",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-18-2000",
+        "text": "Herb województwa podkarpackiego ustanowił sejmik 28 sierpnia 2000 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587238",
+        "source_title": "Wikipedia (pl): Herb województwa podkarpackiego, wersja 77587238",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-20": [
+      {
+        "id": "flag-pl-20-pogon",
+        "text": "Herb podlaskiego łączy Orła Białego i litewską Pogoń — bo Podlasie należało i do Korony, i do Litwy.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587214",
+        "source_title": "Wikipedia (pl): Herb województwa podlaskiego, wersja 77587214",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-20-1513",
+        "text": "W latach 1513–1795 herbem województwa podlaskiego były połączone herby Polski i Litwy: orzeł bez korony i Pogoń.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587214",
+        "source_title": "Wikipedia (pl): Herb województwa podlaskiego, wersja 77587214",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-20-gajl",
+        "text": "Herb województwa podlaskiego zaprojektował Tadeusz Gajl; sejmik ustanowił go 19 lutego 2001 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77587214",
+        "source_title": "Wikipedia (pl): Herb województwa podlaskiego, wersja 77587214",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-22": [
+      {
+        "id": "flag-pl-22-oliwa",
+        "text": "Pierwowzorem czarnego gryfa w herbie pomorskiego jest XVI-wieczny fresk w prezbiterium archikatedry oliwskiej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78160459",
+        "source_title": "Wikipedia (pl): Herb województwa pomorskiego, wersja 78160459",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-22-kaszuby",
+        "text": "Czarny gryf na złotym polu uchodzi też za herb Kaszub — dlatego oba herby często się utożsamia.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78160459",
+        "source_title": "Wikipedia (pl): Herb województwa pomorskiego, wersja 78160459",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-22-komisja",
+        "text": "Herb województwa pomorskiego, zaprojektowany przez Wawrzyńca Sampa, ustanowiono w 2002 r. mimo negatywnej opinii Komisji Heraldycznej.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=78160459",
+        "source_title": "Wikipedia (pl): Herb województwa pomorskiego, wersja 78160459",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-24": [
+      {
+        "id": "flag-pl-24-1222",
+        "text": "Orzeł w herbie śląskiego nawiązuje do herbu Piastów górnośląskich; orła widać już na pieczęci z 1222 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77737854",
+        "source_title": "Wikipedia (pl): Herb województwa śląskiego, wersja 77737854",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-24-grazynski",
+        "text": "W 1928 r. wojewoda śląski Michał Grażyński zabiegał o herb województwa ze złotym orłem księcia Bolesława I Opolskiego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77737854",
+        "source_title": "Wikipedia (pl): Herb województwa śląskiego, wersja 77737854",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-24-2001",
+        "text": "Herb województwa śląskiego — złoty orzeł bez korony na błękitnym polu — ustanowiono 11 czerwca 2001 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77737854",
+        "source_title": "Wikipedia (pl): Herb województwa śląskiego, wersja 77737854",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-26": [
+      {
+        "id": "flag-pl-26-lysogory",
+        "text": "W herbie świętokrzyskiego jest krzyż łysogórskich benedyktynów oraz herby dawnych województw sandomierskiego i krakowskiego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77568773",
+        "source_title": "Wikipedia (pl): Herb województwa świętokrzyskiego, wersja 77568773",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-26-2013",
+        "text": "Obecny herb świętokrzyskiego obowiązuje od 2013 r.; wcześniej, od 1999 r., województwo miało inny herb.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77568773",
+        "source_title": "Wikipedia (pl): Herb województwa świętokrzyskiego, wersja 77568773",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-26-kieleckie",
+        "text": "Pierwowzór herbu świętokrzyskiego zaprojektowano dla województwa kieleckiego, które używało go w latach 1997–1998.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337635058",
+        "source_title": "Wikipedia (en): Coat of arms of Świętokrzyskie Voivodeship, wersja 1337635058",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-28": [
+      {
+        "id": "flag-pl-28-baranek",
+        "text": "Baranek Boży w herbie warmińsko-mazurskiego nawiązuje do Warmii, a orzeł biały — do herbu Polski z czasów Władysława Jagiełły.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80921236",
+        "source_title": "Wikipedia (pl): Herb województwa warmińsko-mazurskiego, wersja 80921236",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-28-s",
+        "text": "Czarny orzeł pruski w herbie warmińsko-mazurskiego ma na piersi literę S — od imienia króla Zygmunta I Starego.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=80921236",
+        "source_title": "Wikipedia (pl): Herb województwa warmińsko-mazurskiego, wersja 80921236",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-28-dudzinski",
+        "text": "Herb województwa warmińsko-mazurskiego zaprojektował Paweł Dudziński; przyjęto go w 2002 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337635047",
+        "source_title": "Wikipedia (en): Coat of arms of the Warmian–Masurian Voivodeship, wersja 1337635047",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-30": [
+      {
+        "id": "flag-pl-30-przemysl",
+        "text": "Orzeł w herbie wielkopolskiego, bez korony, wzorowany jest na herbie z pieczęci majestatycznej księcia Przemysła II.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582588",
+        "source_title": "Wikipedia (pl): Herb województwa wielkopolskiego, wersja 77582588",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-30-gotycka",
+        "text": "Herb wielkopolskiego umieszczono na trójkątnej, gotyckiej tarczy; sejmik ustanowił go 31 stycznia 2000 r.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582588",
+        "source_title": "Wikipedia (pl): Herb województwa wielkopolskiego, wersja 77582588",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-30-ziemia",
+        "text": "Biały orzeł na czerwieni był najpierw symbolem średniowiecznej ziemi poznańskiej, a od XIV w. — województwa poznańskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1337634992",
+        "source_title": "Wikipedia (en): Coat of arms of the Greater Poland Voivodeship, wersja 1337634992",
+        "checked": "2026-11-16"
+      }
+    ],
+    "PL-32": [
+      {
+        "id": "flag-pl-32-gryfici",
+        "text": "Czerwony gryf w herbie zachodniopomorskiego to od XII w. symbol dynastii Gryfitów, władców Pomorza.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582581",
+        "source_title": "Wikipedia (pl): Herb województwa zachodniopomorskiego, wersja 77582581",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-32-grunwald",
+        "text": "Gryf w herbie zachodniopomorskiego wzorowany jest na gryfie ze sztandaru księcia szczecińskiego Kazimierza V, zdobytego przez Jagiełłę pod Grunwaldem.",
+        "source_url": "https://pl.wikipedia.org/w/index.php?oldid=77582581",
+        "source_title": "Wikipedia (pl): Herb województwa zachodniopomorskiego, wersja 77582581",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-pl-32-bak",
+        "text": "Herb województwa zachodniopomorskiego zaprojektował Jerzy Bąk; przyjęto go w 2000 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1348411294",
+        "source_title": "Wikipedia (en): Coat of arms of the West Pomeranian Voivodeship, wersja 1348411294",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AK": [
+      {
+        "id": "flag-us-ak-benson",
+        "text": "Flagę Alaski zaprojektował w 1927 r. czternastoletni Benny Benson z Seward; jego projekt wygrał wśród około 700 zgłoszeń.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382099746",
+        "source_title": "Wikipedia (en): Flag of Alaska, wersja 1382099746",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ak-wielkiwoz",
+        "text": "Gwiazdy na fladze Alaski tworzą Wielki Wóz z Wielkiej Niedźwiedzicy — symbolu niedźwiedzia żyjącego na Alasce.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382099746",
+        "source_title": "Wikipedia (en): Flag of Alaska, wersja 1382099746",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ak-nava",
+        "text": "W ankiecie Północnoamerykańskiego Towarzystwa Weksylologicznego z 2001 r. flaga Alaski zajęła 5. miejsce na 72 flagi stanów i prowincji USA i Kanady.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382099746",
+        "source_title": "Wikipedia (en): Flag of Alaska, wersja 1382099746",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AL": [
+      {
+        "id": "flag-us-al-1895",
+        "text": "Flagę Alabamy z karmazynowym krzyżem św. Andrzeja na białym polu przyjęto ustawą z 16 lutego 1895 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382829328",
+        "source_title": "Wikipedia (en): Flag of Alabama, wersja 1382829328",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-al-burgundia",
+        "text": "Ukośny krzyż na fladze Alabamy wywodzi się według głównych teorii z flagi bojowej Konfederacji albo z krzyża burgundzkiego hiszpańskiej Florydy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382829328",
+        "source_title": "Wikipedia (en): Flag of Alabama, wersja 1382829328",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-al-prawo",
+        "text": "Prawo Alabamy wymaga minimalnej szerokości ramion krzyża, więc małe wizerunki flagi formalnie nie spełniają jej definicji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382829328",
+        "source_title": "Wikipedia (en): Flag of Alabama, wersja 1382829328",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AR": [
+      {
+        "id": "flag-us-ar-diament",
+        "text": "Romb na fladze Arkansas oznacza według ustawy z 1987 r. „jedyny stan Unii z diamentami”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911669",
+        "source_title": "Wikipedia (en): Flag of Arkansas, wersja 1379911669",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ar-25",
+        "text": "25 białych gwiazd wokół rombu na fladze Arkansas oznacza, że był to 25. stan przyjęty do Unii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911669",
+        "source_title": "Wikipedia (en): Flag of Arkansas, wersja 1379911669",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ar-konfederacja",
+        "text": "Gwiazda nad napisem ARKANSAS oznacza Konfederację, do której stan przystąpił 18 maja 1861 r.; trzy gwiazdy pod nim — m.in. Francję, Hiszpanię i USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911669",
+        "source_title": "Wikipedia (en): Flag of Arkansas, wersja 1379911669",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-AZ": [
+      {
+        "id": "flag-us-az-promienie",
+        "text": "13 czerwono-złotych promieni na fladze Arizony to trzynaście kolonii, a ich barwy — hołd dla hiszpańskich odkrywców, jak Coronado.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383785820",
+        "source_title": "Wikipedia (en): Flag of Arizona, wersja 1383785820",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-az-miedz",
+        "text": "Miedziana gwiazda pośrodku flagi Arizony symbolizuje górnictwo, a dolna, granatowa połowa — rzekę Kolorado.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383785820",
+        "source_title": "Wikipedia (en): Flag of Arizona, wersja 1383785820",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-az-koperta",
+        "text": "Pierwszą flagę Arizony uszyła podobno Mae Stewart według szkicu męża zrobionego na odwrocie koperty — na zawody strzeleckie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383785820",
+        "source_title": "Wikipedia (en): Flag of Arizona, wersja 1383785820",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CA": [
+      {
+        "id": "flag-us-ca-bear",
+        "text": "Pierwowzór flagi Kalifornii powiewał podczas Bear Flag Revolt w 1846 r. — stąd nazwa Bear Flag.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384324259",
+        "source_title": "Wikipedia (en): Flag of California, wersja 1384324259",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ca-grizzly",
+        "text": "Niedźwiedź na jednej z wersji flagi Kalifornii z 1911 r. miał być wzorowany na ostatnim grizzly kalifornijskim żyjącym w niewoli.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384324259",
+        "source_title": "Wikipedia (en): Flag of California, wersja 1384324259",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ca-gwiazda",
+        "text": "Czerwona gwiazda na fladze Kalifornii pochodzi z flagi Lone Star z 1836 r., z wcześniejszego ruchu niepodległościowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384324259",
+        "source_title": "Wikipedia (en): Flag of California, wersja 1384324259",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CO": [
+      {
+        "id": "flag-us-co-carson",
+        "text": "Flagę Kolorado zaprojektował Andrew Carlisle Carson; przyjęto ją 5 czerwca 1911 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384348094",
+        "source_title": "Wikipedia (en): Flag of Colorado, wersja 1384348094",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-co-symbole",
+        "text": "Na fladze Kolorado błękit to niebo, złoto — słońce, biel — ośnieżone Góry Skaliste, a czerwień — rdzawa ziemia.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384348094",
+        "source_title": "Wikipedia (en): Flag of Colorado, wersja 1384348094",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-co-kopalnie",
+        "text": "Złoty i biały element flagi Kolorado oznaczają też stanowe kopalnie złota i srebra.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384348094",
+        "source_title": "Wikipedia (en): Flag of Colorado, wersja 1384348094",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-CT": [
+      {
+        "id": "flag-us-ct-winorosl",
+        "text": "Na fladze Connecticut widnieje biała barokowa tarcza z trzema krzewami winorośli, każdy z trzema kiściami winogron.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379949434",
+        "source_title": "Wikipedia (en): Flag of Connecticut, wersja 1379949434",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ct-motto",
+        "text": "Dewiza na fladze Connecticut, „Qui Transtulit Sustinet”, znaczy po łacinie „Kto przesadził, ten podtrzymuje”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379949434",
+        "source_title": "Wikipedia (en): Flag of Connecticut, wersja 1379949434",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ct-1838",
+        "text": "Pierwsza wzmianka o fladze Connecticut pochodzi z 1838 r. — niósł ją szeryf podczas parady stulecia New Haven.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379949434",
+        "source_title": "Wikipedia (en): Flag of Connecticut, wersja 1379949434",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-DE": [
+      {
+        "id": "flag-us-de-data",
+        "text": "Pod rombem na fladze Delaware widnieje data 7 grudnia 1787 r. — dzień, w którym stan jako pierwszy ratyfikował Konstytucję USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378684241",
+        "source_title": "Wikipedia (en): Flag of Delaware, wersja 1378684241",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-de-washington",
+        "text": "Kolory flagi Delaware — kolonialny błękit i płowożółty — nawiązują do barw munduru generała George'a Washingtona.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378684241",
+        "source_title": "Wikipedia (en): Flag of Delaware, wersja 1378684241",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-de-1861",
+        "text": "W grudniu 1861 r. izba stanowa Delaware uchwaliła zakup flagi stanowej do sali senatu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378684241",
+        "source_title": "Wikipedia (en): Flag of Delaware, wersja 1378684241",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-FL": [
+      {
+        "id": "flag-us-fl-1900",
+        "text": "Obecną flagę Florydy z czerwonym krzyżem św. Andrzeja przyjęto 6 listopada 1900 r.; zmieniono ją tylko raz — w 1985 r. ujednolicono pieczęć.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381431999",
+        "source_title": "Wikipedia (en): Flag of Florida, wersja 1381431999",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-fl-locastro",
+        "text": "Przy poprawie pieczęci na fladze Florydy w 1985 r. usunięto błędy obecne od 1868 r. — m.in. źle rozpoznaną palmę kokosową i wątpliwy parowiec.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381431999",
+        "source_title": "Wikipedia (en): Flag of Florida, wersja 1381431999",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-fl-ponce",
+        "text": "Historia flag Florydy zaczyna się od sztandarów hiszpańskich — w 1513 r. Juan Ponce de León ogłosił Florydę ziemią Hiszpanii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381431999",
+        "source_title": "Wikipedia (en): Flag of Florida, wersja 1381431999",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-GA": [
+      {
+        "id": "flag-us-ga-2003",
+        "text": "Obecną wersję flagi Georgii przyjęto 19 lutego 2003 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375427756",
+        "source_title": "Wikipedia (en): Flag of Georgia (U.S. state), wersja 1375427756",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ga-starsandbars",
+        "text": "Flaga Georgii wzorowana jest na pierwszej fladze narodowej Konfederacji, zwanej „Stars and Bars”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375427756",
+        "source_title": "Wikipedia (en): Flag of Georgia (U.S. state), wersja 1375427756",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ga-konfederacja",
+        "text": "Od zmiany flagi Missisipi w 2020 r. flaga Georgii jest jedną z nielicznych flag stanowych nawiązujących do Konfederacji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375427756",
+        "source_title": "Wikipedia (en): Flag of Georgia (U.S. state), wersja 1375427756",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-HI": [
+      {
+        "id": "flag-us-hi-unionjack",
+        "text": "Union Jack na fladze Hawajów to ślad dawnych więzi Królestwa Hawajów z brytyjską marynarką i probrytyjskich sympatii króla Kamehamehy I.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382500417",
+        "source_title": "Wikipedia (en): Flag of Hawaii, wersja 1382500417",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-hi-pasy",
+        "text": "Osiem pasów na fladze Hawajów oznacza osiem głównych wysp archipelagu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382500417",
+        "source_title": "Wikipedia (en): Flag of Hawaii, wersja 1382500417",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-hi-ciaglosc",
+        "text": "Flagę Hawajów zachowano po obaleniu monarchii w 1893 r., po aneksji przez USA w 1898 r. i po uzyskaniu statusu stanu w 1959 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382500417",
+        "source_title": "Wikipedia (en): Flag of Hawaii, wersja 1382500417",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IA": [
+      {
+        "id": "flag-us-ia-gebhardt",
+        "text": "Flagę Iowa zaprojektowała w 1917 r. Dixie Cornell Gebhardt; legislatura przyjęła ją oficjalnie w 1921 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382407681",
+        "source_title": "Wikipedia (en): Flag of Iowa, wersja 1382407681",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ia-francja",
+        "text": "Układ barw flagi Iowa — niebieski, biały, czerwony — według gazety Des Moines Register nawiązuje do przeszłości Iowa jako terytorium francuskiego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382407681",
+        "source_title": "Wikipedia (en): Flag of Iowa, wersja 1382407681",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ia-75",
+        "text": "Przez pierwsze 75 lat istnienia Iowa nie miało flagi — po wojnie secesyjnej stawiano na jedność narodową.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382407681",
+        "source_title": "Wikipedia (en): Flag of Iowa, wersja 1382407681",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ID": [
+      {
+        "id": "flag-us-id-green",
+        "text": "Pieczęć Idaho zaprojektowała w latach 90. XIX w. Emma Edwards Green — jedyna kobieta, która zaprojektowała pieczęć stanu USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383711982",
+        "source_title": "Wikipedia (en): Flag and seal of Idaho, wersja 1383711982",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-id-gornik",
+        "text": "Pieczęć Idaho przedstawia górnika i kobietę symbolizującą równość, wolność i sprawiedliwość; reszta motywów to kopalnie, lasy, pola i zwierzyna.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383711982",
+        "source_title": "Wikipedia (en): Flag and seal of Idaho, wersja 1383711982",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-id-fredzle",
+        "text": "Według oficjalnego opisu flaga Idaho powinna mieć złote frędzle wokół krawędzi.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383711982",
+        "source_title": "Wikipedia (en): Flag and seal of Idaho, wersja 1383711982",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IL": [
+      {
+        "id": "flag-us-il-1970",
+        "text": "Flagę Illinois z elementami pieczęci na białym tle przyjęto w 1915 r., a słowo ILLINOIS dodano do niej dopiero w 1970 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380792203",
+        "source_title": "Wikipedia (en): Flag and seal of Illinois, wersja 1380792203",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-il-motto",
+        "text": "Orzeł z flagi Illinois trzyma w dziobie wstęgę z dewizą „Suwerenność stanu, jedność narodu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380792203",
+        "source_title": "Wikipedia (en): Flag and seal of Illinois, wersja 1380792203",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-il-daty",
+        "text": "Daty na pieczęci Illinois to 1818 — rok przyjęcia do Unii — i 1868 — rok, w którym Sharon Tyndale przeprojektował pieczęć.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380792203",
+        "source_title": "Wikipedia (en): Flag and seal of Illinois, wersja 1380792203",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-IN": [
+      {
+        "id": "flag-us-in-hadley",
+        "text": "Flagę Indiany zaprojektował Paul Hadley; przyjęto ją 31 maja 1917 r. i od tamtej pory się nie zmieniła.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911821",
+        "source_title": "Wikipedia (en): Flag of Indiana, wersja 1379911821",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-in-pochodnia",
+        "text": "Złota pochodnia na fladze Indiany oznacza wolność i oświecenie, a promienie wokół — ich szeroki zasięg.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911821",
+        "source_title": "Wikipedia (en): Flag of Indiana, wersja 1379911821",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-in-sztandar",
+        "text": "Do 1955 r. flagę Indiany oficjalnie nazywano „sztandarem stanowym”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911821",
+        "source_title": "Wikipedia (en): Flag of Indiana, wersja 1379911821",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KS": [
+      {
+        "id": "flag-us-ks-avery",
+        "text": "Flagę Kansas zaprojektowała w 1925 r. Hazel Avery; przyjęto ją w 1927 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382460514",
+        "source_title": "Wikipedia (en): Flag of Kansas, wersja 1382460514",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ks-slonecznik",
+        "text": "Na fladze Kansas widnieje słonecznik — kwiat stanowy — nad pieczęcią stanu na niebieskim tle.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382460514",
+        "source_title": "Wikipedia (en): Flag of Kansas, wersja 1382460514",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ks-1961",
+        "text": "W 1961 r. do flagi Kansas dodano u dołu nazwę stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382460514",
+        "source_title": "Wikipedia (en): Flag of Kansas, wersja 1382460514",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-KY": [
+      {
+        "id": "flag-us-ky-uscisk",
+        "text": "Pieczęć na fladze Kentucky przedstawia pioniera i męża stanu w uścisku; legenda widzi w nich Daniela Boone'a i Henry'ego Claya.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383122357",
+        "source_title": "Wikipedia (en): Flag of Kentucky, wersja 1383122357",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ky-burgess",
+        "text": "Flagę Kentucky zaprojektował Jesse Cox Burgess, nauczyciel rysunku z Frankfort; przyjęto ją 26 marca 1918 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383122357",
+        "source_title": "Wikipedia (en): Flag of Kentucky, wersja 1383122357",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ky-1962",
+        "text": "W czerwcu 1962 r. ujednolicono flagę Kentucky — jej rozmiar i wygląd pieczęci.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383122357",
+        "source_title": "Wikipedia (en): Flag of Kentucky, wersja 1383122357",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-LA": [
+      {
+        "id": "flag-us-la-pelikan",
+        "text": "Flagę Luizjany przyjęto oficjalnie 1 lipca 1912 r.; często nazywa się ją „flagą z pelikanem”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382905932",
+        "source_title": "Wikipedia (en): Flag of Louisiana, wersja 1382905932",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-la-1861",
+        "text": "11 lutego 1861 r. Luizjana przyjęła flagę z bladożółtą gwiazdą w czerwonym kantonie i trzynastoma pasami — używaną do końca wojny secesyjnej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382905932",
+        "source_title": "Wikipedia (en): Flag of Louisiana, wersja 1382905932",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-la-13pasow",
+        "text": "13 pasów na pierwszej fladze Luizjany nawiązywało do 13 pasów flagi Stanów Zjednoczonych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382905932",
+        "source_title": "Wikipedia (en): Flag of Louisiana, wersja 1382905932",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MA": [
+      {
+        "id": "flag-us-ma-1908",
+        "text": "Flagę Massachusetts przyjęto 18 marca 1908 r.; zmieniono ją tylko raz — w 1971 r. usunięto inną stronę odwrotną.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383884416",
+        "source_title": "Wikipedia (en): Flag of Massachusetts, wersja 1383884416",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ma-littleshell",
+        "text": "Głowę postaci rdzennego Amerykanina na fladze Massachusetts wzorowano na wodzu Odżibwejów Thomasie Little Shellu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383884416",
+        "source_title": "Wikipedia (en): Flag of Massachusetts, wersja 1383884416",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ma-motto",
+        "text": "Dewiza na fladze Massachusetts, „Ense Petit Placidam, Sub Libertate Quietem”, znaczy: „Mieczem szukamy pokoju, ale tylko pokoju w wolności”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383884416",
+        "source_title": "Wikipedia (en): Flag of Massachusetts, wersja 1383884416",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MD": [
+      {
+        "id": "flag-us-md-calvert",
+        "text": "Flaga Marylandu łączy herb rodu Calvertów (baronów Baltimore) z herbem rodu Crosslandów — babki drugiego barona.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383640367",
+        "source_title": "Wikipedia (en): Flag of Maryland, wersja 1383640367",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-md-wojna",
+        "text": "W wojnie secesyjnej oddziały Unii z Marylandu używały żółto-czarnych barw Calvertów, a konfederaci — czerwono-białego krzyża Crosslandów.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383640367",
+        "source_title": "Wikipedia (en): Flag of Maryland, wersja 1383640367",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-md-1904",
+        "text": "Flagę Marylandu przyjęto oficjalnie w 1904 r.; jedyną dozwoloną ozdobą jej drzewca jest złoty krzyż.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383640367",
+        "source_title": "Wikipedia (en): Flag of Maryland, wersja 1383640367",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ME": [
+      {
+        "id": "flag-us-me-dirigo",
+        "text": "Gwiazda Polarna na fladze Maine nawiązuje do dewizy stanu „Dirigo” — „Prowadzę”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384460846",
+        "source_title": "Wikipedia (en): Flag of Maine, wersja 1384460846",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-me-losz",
+        "text": "Na tarczy we fladze Maine łoś odpoczywa pod wysoką sosną; obok stoją rolnik i marynarz.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384460846",
+        "source_title": "Wikipedia (en): Flag of Maine, wersja 1384460846",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-me-1901",
+        "text": "Pierwsza flaga Maine z 1901 r. przedstawiała zieloną sosnę i niebieską Gwiazdę Polarną na płowożółtym tle.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384460846",
+        "source_title": "Wikipedia (en): Flag of Maine, wersja 1384460846",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MI": [
+      {
+        "id": "flag-us-mi-motto",
+        "text": "Na fladze Michigan widnieje dewiza „Si quaeris peninsulam amoenam, circumspice” — „Jeśli szukasz pięknego półwyspu, rozejrzyj się wokół”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384093053",
+        "source_title": "Wikipedia (en): Flag of Michigan, wersja 1384093053",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mi-strzaly",
+        "text": "Bielik na fladze Michigan trzyma 13 gałązek oliwnych i 13 strzał — symbole trzynastu kolonii i gotowości do obrony.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384093053",
+        "source_title": "Wikipedia (en): Flag of Michigan, wersja 1384093053",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mi-1911",
+        "text": "Michigan miało już trzy flagi stanowe; obecną przyjęto 1 sierpnia 1911 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384093053",
+        "source_title": "Wikipedia (en): Flag of Michigan, wersja 1384093053",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MN": [
+      {
+        "id": "flag-us-mn-ksztalt",
+        "text": "Ciemnoniebieski obszar na nowej fladze Minnesoty z 2024 r. ma kształt samego stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385539503",
+        "source_title": "Wikipedia (en): Flag of Minnesota, wersja 1385539503",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mn-gwiazda",
+        "text": "Ośmioramienna gwiazda na fladze Minnesoty to Gwiazda Polarna; taki sam wzór zdobi posadzkę rotundy Kapitolu stanowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385539503",
+        "source_title": "Wikipedia (en): Flag of Minnesota, wersja 1385539503",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mn-komisja",
+        "text": "Nową flagę Minnesoty wybrała w 2024 r. komisja powołana rok wcześniej; pierwszą oficjalną flagę stan przyjął w 1893 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385539503",
+        "source_title": "Wikipedia (en): Flag of Minnesota, wersja 1385539503",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MO": [
+      {
+        "id": "flag-us-mo-oliver",
+        "text": "Flagę Missouri zaprojektowała Mary Elizabeth Oliver z Cape Girardeau; przyjęto ją 22 marca 1913 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911750",
+        "source_title": "Wikipedia (en): Flag of Missouri, wersja 1379911750",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mo-barwy",
+        "text": "Czerwony pas flagi Missouri oznacza męstwo, biały — czystość, a niebieski — trwałość, czujność i sprawiedliwość.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911750",
+        "source_title": "Wikipedia (en): Flag of Missouri, wersja 1379911750",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mo-herb",
+        "text": "Flaga Missouri to trzy równe poziome pasy — czerwony, biały i niebieski — z herbem stanu pośrodku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911750",
+        "source_title": "Wikipedia (en): Flag of Missouri, wersja 1379911750",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MS": [
+      {
+        "id": "flag-us-ms-magnolia",
+        "text": "Na fladze Missisipi z 2021 r. widnieje biały kwiat magnolii otoczony 21 gwiazdami i napis „In God We Trust”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384439104",
+        "source_title": "Wikipedia (en): Flag of Mississippi, wersja 1384439104",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ms-20",
+        "text": "Złota gwiazda na fladze Missisipi oznacza sam stan, a 20 białych — że był to 20. stan USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384439104",
+        "source_title": "Wikipedia (en): Flag of Mississippi, wersja 1384439104",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ms-2021",
+        "text": "Obecną flagę Missisipi przyjęto 11 stycznia 2021 r., gdy w 2020 r. wycofano poprzednią; zaprojektował ją Rocky Vaughan z zespołem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384439104",
+        "source_title": "Wikipedia (en): Flag of Mississippi, wersja 1384439104",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-MT": [
+      {
+        "id": "flag-us-mt-oroyplata",
+        "text": "Wstęga na fladze Montany głosi „Oro y Plata” — po hiszpańsku „Złoto i srebro”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762755",
+        "source_title": "Wikipedia (en): Flag of Montana, wersja 1373762755",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mt-kessler",
+        "text": "Flaga Montany z 1905 r. przypomina flagę wykonaną w 1895 r. przez Harry'ego Kesslera, którą potem dostali ochotnicy z Montany w wojnie z Hiszpanią.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762755",
+        "source_title": "Wikipedia (en): Flag of Montana, wersja 1373762755",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-mt-helvetica",
+        "text": "W 1981 r. na fladze Montany umieszczono nazwę stanu, a w 1985 r. ustalono, że będzie pisana krojem Helvetica Bold.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762755",
+        "source_title": "Wikipedia (en): Flag of Montana, wersja 1373762755",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NC": [
+      {
+        "id": "flag-us-nc-1861",
+        "text": "Karolina Północna nie miała oficjalnej flagi aż do konwencji z 1861 r.; pierwszą flagę ratyfikowano 22 czerwca 1861 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380682113",
+        "source_title": "Wikipedia (en): Flag of North Carolina, wersja 1380682113",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nc-mecklenburg",
+        "text": "Na pierwszej fladze Karoliny Północnej widniała data 20 maja 1775 r. — sporna data tzw. deklaracji niepodległości z Mecklenburga.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380682113",
+        "source_title": "Wikipedia (en): Flag of North Carolina, wersja 1380682113",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nc-1885",
+        "text": "Obecną flagę Karoliny Północnej przyjęło zgromadzenie stanowe w 1885 r.; wcześniej używano wielu nieoficjalnych flag z herbem stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380682113",
+        "source_title": "Wikipedia (en): Flag of North Carolina, wersja 1380682113",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-ND": [
+      {
+        "id": "flag-us-nd-piechota",
+        "text": "Zgodnie z prawem stanowym flaga Dakoty Północnej powtarza sztandar 1. Pułku Piechoty Dakoty Północnej z wojny z Hiszpanią i wojny filipińsko-amerykańskiej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385236833",
+        "source_title": "Wikipedia (en): Flag of North Dakota, wersja 1385236833",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nd-paryz",
+        "text": "W 1889 r. członkinie miejscowego koła abstynentów uszyły flagę stanu na swoje stoisko na wystawie w Paryżu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385236833",
+        "source_title": "Wikipedia (en): Flag of North Dakota, wersja 1385236833",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nd-herb",
+        "text": "Flaga Dakoty Północnej przedstawia herb Stanów Zjednoczonych — taki sztandar nosiły wszystkie pułki piechoty w latach 1890–1904.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385236833",
+        "source_title": "Wikipedia (en): Flag of North Dakota, wersja 1385236833",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NE": [
+      {
+        "id": "flag-us-ne-1963",
+        "text": "Nebraska przyjęła oficjalną flagę dopiero w 1963 r. — jako jeden z ostatnich stanów; od 1925 r. był to „sztandar stanowy”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384881242",
+        "source_title": "Wikipedia (en): Flag of Nebraska, wersja 1384881242",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ne-mcmaster",
+        "text": "Flagę Nebraski wprowadzono z inicjatywy posła J. Lloyda McMastera.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384881242",
+        "source_title": "Wikipedia (en): Flag of Nebraska, wersja 1384881242",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ne-pieczec",
+        "text": "Na fladze Nebraski widnieje wielka pieczęć stanu w złocie i srebrze na niebieskim polu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384881242",
+        "source_title": "Wikipedia (en): Flag of Nebraska, wersja 1384881242",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NH": [
+      {
+        "id": "flag-us-nh-fregata",
+        "text": "Pieczęć na fladze New Hampshire, ustalona prawem w 1931 r., przedstawia fregatę w wieńcu laurowym z dziewięcioma gwiazdami.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385401249",
+        "source_title": "Wikipedia (en): Flag and seal of New Hampshire, wersja 1385401249",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nh-granit",
+        "text": "Na pieczęci New Hampshire na pierwszym planie leży granitowy głaz, a woda oznacza port w Portsmouth.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385401249",
+        "source_title": "Wikipedia (en): Flag and seal of New Hampshire, wersja 1385401249",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nh-1909",
+        "text": "Flagę New Hampshire — pieczęć stanu na niebieskim polu — przyjęto w 1909 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385401249",
+        "source_title": "Wikipedia (en): Flag and seal of New Hampshire, wersja 1385401249",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NJ": [
+      {
+        "id": "flag-us-nj-washington",
+        "text": "Płowożółte tło flagi New Jersey nawiązuje do mundurów: takie wyłogi zarezerwował wcześniej Washington dla siebie i generałów Armii Kontynentalnej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1365085057",
+        "source_title": "Wikipedia (en): Coat of arms and flag of New Jersey, wersja 1365085057",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nj-pluga",
+        "text": "Trzy pługi na tarczy w herbie z flagi New Jersey symbolizują rolnicze tradycje stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1365085057",
+        "source_title": "Wikipedia (en): Coat of arms and flag of New Jersey, wersja 1365085057",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nj-1896",
+        "text": "Flagę New Jersey przyjęto 11 maja 1896 r.; herb na niej pochodzi z 1777 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1365085057",
+        "source_title": "Wikipedia (en): Coat of arms and flag of New Jersey, wersja 1365085057",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NM": [
+      {
+        "id": "flag-us-nm-zia",
+        "text": "Na fladze Nowego Meksyku widnieje czerwony symbol słońca ludu Zia na złotym tle.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384380945",
+        "source_title": "Wikipedia (en): Flag of New Mexico, wersja 1384380945",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nm-cztery",
+        "text": "Liczba cztery w symbolu Zia na fladze Nowego Meksyku to cztery strony świata, pory dnia, etapy życia i pory roku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384380945",
+        "source_title": "Wikipedia (en): Flag of New Mexico, wersja 1384380945",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nm-mera",
+        "text": "Flagę Nowego Meksyku zaprojektował Harry Mera z Santa Fe, a uszyła jego żona Reba; obowiązuje bez zmian od 1925 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384380945",
+        "source_title": "Wikipedia (en): Flag of New Mexico, wersja 1384380945",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NV": [
+      {
+        "id": "flag-us-nv-silver",
+        "text": "Srebrna gwiazda na fladze Nevady nawiązuje do przydomka stanu — „Silver State”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1374104168",
+        "source_title": "Wikipedia (en): Flag of Nevada, wersja 1374104168",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nv-bylica",
+        "text": "Gwiazdę na fladze Nevady otaczają dwie skrzyżowane gałązki bylicy — kwiatu stanowego.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1374104168",
+        "source_title": "Wikipedia (en): Flag of Nevada, wersja 1374104168",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-nv-1929",
+        "text": "Flagę Nevady przyjęto w 1929 r., gdy gubernator Fred B. Balzar podpisał ustawę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1374104168",
+        "source_title": "Wikipedia (en): Flag of Nevada, wersja 1374104168",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-NY": [
+      {
+        "id": "flag-us-ny-korona",
+        "text": "Postać Wolności w herbie z flagi Nowego Jorku depcze lewą stopą koronę — znak niepodległości od brytyjskiej monarchii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762787",
+        "source_title": "Wikipedia (en): Coat of arms of New York, wersja 1373762787",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ny-excelsior",
+        "text": "Dewiza na fladze stanu Nowy Jork, „Excelsior”, to łacińskie „wyżej”, tłumaczone jako „Zawsze w górę”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762787",
+        "source_title": "Wikipedia (en): Coat of arms of New York, wersja 1373762787",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ny-hudson",
+        "text": "Tarcza w herbie z flagi Nowego Jorku pokazuje żaglowiec i slup na rzece Hudson — symbole handlu wewnętrznego i zagranicznego; herb przyjęto w 1778 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373762787",
+        "source_title": "Wikipedia (en): Coat of arms of New York, wersja 1373762787",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OH": [
+      {
+        "id": "flag-us-oh-jaskolka",
+        "text": "Flaga Ohio ma kształt trójkątnego proporca z wcięciem (jaskółczego ogona) — to jedyna nieprostokątna flaga stanowa w USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383666145",
+        "source_title": "Wikipedia (en): Flag of Ohio, wersja 1383666145",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-oh-o",
+        "text": "Krąg przy drzewcu flagi Ohio przypomina literę O — pierwszą literę nazwy stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383666145",
+        "source_title": "Wikipedia (en): Flag of Ohio, wersja 1383666145",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-oh-eisenmann",
+        "text": "Flagę Ohio zaprojektował John Eisenmann w 1901 r. na Wystawę Panamerykańską; przyjęto ją rok później.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383666145",
+        "source_title": "Wikipedia (en): Flag of Ohio, wersja 1383666145",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OK": [
+      {
+        "id": "flag-us-ok-osage",
+        "text": "Na fladze Oklahomy widnieje tarcza wojenna ludu Osage z sześcioma krzyżami i siedmioma piórami orła.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911881",
+        "source_title": "Wikipedia (en): Flag of Oklahoma, wersja 1379911881",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ok-komunizm",
+        "text": "Pierwszą, czerwoną flagę Oklahomy z 1911 r. zastąpiono w 1925 r., bo czerwone flagi kojarzyły się z komunizmem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911881",
+        "source_title": "Wikipedia (en): Flag of Oklahoma, wersja 1379911881",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ok-fluke",
+        "text": "Obecną flagę Oklahomy zaprojektowała Louise Fluke z Shawnee; jej projekt wygrał konkurs i przyjęto go 2 kwietnia 1925 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379911881",
+        "source_title": "Wikipedia (en): Flag of Oklahoma, wersja 1379911881",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-OR": [
+      {
+        "id": "flag-us-or-bobr",
+        "text": "Flaga Oregonu jako jedyna flaga stanowa ma różne strony: z przodu tarcza z pieczęci, z tyłu złoty bóbr — zwierzę stanowe.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380462579",
+        "source_title": "Wikipedia (en): Flag of Oregon, wersja 1380462579",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-or-33",
+        "text": "33 gwiazdy na fladze Oregonu oznaczają, że był to 33. stan przyjęty do Unii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380462579",
+        "source_title": "Wikipedia (en): Flag of Oregon, wersja 1380462579",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-or-1859",
+        "text": "Pod tarczą na fladze Oregonu widnieje data 1859 — rok, w którym Oregon został stanem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380462579",
+        "source_title": "Wikipedia (en): Flag of Oregon, wersja 1380462579",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-PA": [
+      {
+        "id": "flag-us-pa-1907",
+        "text": "Oficjalną flagę Pensylwanii ustanowiono ustawą z 13 czerwca 1907 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382934005",
+        "source_title": "Wikipedia (en): Flag of Pennsylvania, wersja 1382934005",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-pa-1799",
+        "text": "9 kwietnia 1799 r. zgromadzenie Pensylwanii zezwoliło na umieszczanie herbu stanu na flagach milicji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382934005",
+        "source_title": "Wikipedia (en): Flag of Pennsylvania, wersja 1382934005",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-pa-konie",
+        "text": "Barwy tarczy herbowej na fladze Pensylwanii zmieniono w 1809 r., a kolor koni ujednolicono dopiero w 1875 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382934005",
+        "source_title": "Wikipedia (en): Flag of Pennsylvania, wersja 1382934005",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-RI": [
+      {
+        "id": "flag-us-ri-kotwica",
+        "text": "Złota kotwica na fladze Rhode Island to symbol nadziei; otacza ją 13 gwiazd — Rhode Island był 13. stanem.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380085832",
+        "source_title": "Wikipedia (en): Flag of Rhode Island, wersja 1380085832",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ri-1840",
+        "text": "4 lipca 1840 r. nad siedzibą władz Rhode Island po raz pierwszy zawisła flaga stanowa; jej wzór nie jest znany.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380085832",
+        "source_title": "Wikipedia (en): Flag of Rhode Island, wersja 1380085832",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ri-delaware",
+        "text": "W 1835 r. pracownicy gazety Journal w Wilmington flagę stanową wywiesili na dachu swojej redakcji.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380085832",
+        "source_title": "Wikipedia (en): Flag of Rhode Island, wersja 1380085832",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SC": [
+      {
+        "id": "flag-us-sc-palma",
+        "text": "Na fladze Karoliny Południowej widnieje biała palma sabałowa (palmetto) i biały półksiężyc na niebieskim tle.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382897344",
+        "source_title": "Wikipedia (en): Flag of South Carolina, wersja 1382897344",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-sc-moultrie",
+        "text": "Wzór flagi Karoliny Południowej pochodzi z 1775 r.: płk William Moultrie wziął błękit mundurów milicji i półksiężyc z odznak na czapkach.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382897344",
+        "source_title": "Wikipedia (en): Flag of South Carolina, wersja 1382897344",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-sc-jasper",
+        "text": "W bitwie 28 czerwca 1776 r. flaga Moultriego została zestrzelona, ale sierżant William Jasper wybiegł na otwarty teren i podniósł ją.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382897344",
+        "source_title": "Wikipedia (en): Flag of South Carolina, wersja 1382897344",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-SD": [
+      {
+        "id": "flag-us-sd-slonce",
+        "text": "Słońce na fladze Dakoty Południowej oznacza pogodę typową dla stanu; pierwszą flagę zaprojektowano i przyjęto w 1909 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359175425",
+        "source_title": "Wikipedia (en): Flag of South Dakota, wersja 1359175425",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-sd-rushmore",
+        "text": "W 1992 r. zmieniono napis na fladze Dakoty Południowej po przyjęciu nowego przydomka stanu — „Stan Mount Rushmore”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359175425",
+        "source_title": "Wikipedia (en): Flag of South Dakota, wersja 1359175425",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-sd-1963",
+        "text": "W 1963 r. pieczęć stanu umieszczono w motywie słońca z pierwszej flagi Dakoty Południowej.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359175425",
+        "source_title": "Wikipedia (en): Flag of South Dakota, wersja 1359175425",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TN": [
+      {
+        "id": "flag-us-tn-gwiazdy",
+        "text": "Trzy gwiazdy na fladze Tennessee to trzy odrębne historycznie i prawnie Wielkie Regiony stanu, a niebieskie koło wokół nich — ich jedność.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383862718",
+        "source_title": "Wikipedia (en): Flag of Tennessee, wersja 1383862718",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-tn-logo",
+        "text": "Środkowy motyw flagi Tennessee stał się nieoficjalnym logo stanu; używają go m.in. drużyna Tennessee Titans i bank First Horizon.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383862718",
+        "source_title": "Wikipedia (en): Flag of Tennessee, wersja 1383862718",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-tn-pas",
+        "text": "Niebieski pas przy krawędzi flagi Tennessee nie ma znaczenia symbolicznego — to tylko zabieg projektowy.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383862718",
+        "source_title": "Wikipedia (en): Flag of Tennessee, wersja 1383862718",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-TX": [
+      {
+        "id": "flag-us-tx-1839",
+        "text": "Flagę Teksasu przyjęto 25 stycznia 1839 r. jako flagę narodową Republiki Teksasu; jej autor nie jest pewny.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378012551",
+        "source_title": "Wikipedia (en): Flag of Texas, wersja 1378012551",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-tx-gwiazda",
+        "text": "Według prawa Teksasu samotna gwiazda na fladze „oznacza cały Teksas” i jedność wobec Boga, stanu i kraju.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378012551",
+        "source_title": "Wikipedia (en): Flag of Texas, wersja 1378012551",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-tx-nava",
+        "text": "W ankiecie Północnoamerykańskiego Towarzystwa Weksylologicznego z 2001 r. flaga Teksasu zajęła 2. miejsce wśród 72 flag — po fladze Nowego Meksyku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378012551",
+        "source_title": "Wikipedia (en): Flag of Texas, wersja 1378012551",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-UT": [
+      {
+        "id": "flag-us-ut-2024",
+        "text": "Obecną flagę Utah przyjęto 9 marca 2024 r.; poprzednia, z lat 1913–2024, pozostaje współoficjalną „Historyczną flagą stanu”.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385697259",
+        "source_title": "Wikipedia (en): Flag of Utah, wersja 1385697259",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ut-ul",
+        "text": "Ul pośrodku flagi Utah nawiązuje do przydomka „Stan Ula”, a złoty sześciokąt — do plastra miodu i siły mieszkańców.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385697259",
+        "source_title": "Wikipedia (en): Flag of Utah, wersja 1385697259",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-ut-szczyty",
+        "text": "Biały pas na fladze Utah tworzy pięć szczytów — ośnieżone góry stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1385697259",
+        "source_title": "Wikipedia (en): Flag of Utah, wersja 1385697259",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VA": [
+      {
+        "id": "flag-us-va-tyrania",
+        "text": "Na fladze Wirginii postać Cnoty stoi nad pokonanym królem leżącym u jej stóp — symbolem pokonanej tyranii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380481906",
+        "source_title": "Wikipedia (en): Flag and seal of Virginia, wersja 1380481906",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-va-1861",
+        "text": "Flagę Wirginii przyjęto po raz pierwszy w kwietniu 1861 r., na początku wojny secesyjnej; ponownie w 1912 r., a ujednolicono w 1950 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380481906",
+        "source_title": "Wikipedia (en): Flag and seal of Virginia, wersja 1380481906",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-va-kobieta",
+        "text": "Wirginia to jeden z sześciu stanów, których flaga przedstawia kobietę — obok m.in. Florydy, Nowego Jorku i Wyoming.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380481906",
+        "source_title": "Wikipedia (en): Flag and seal of Virginia, wersja 1380481906",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-VT": [
+      {
+        "id": "flag-us-vt-1923",
+        "text": "Flagę Vermontu przyjęło zgromadzenie stanowe 1 czerwca 1923 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382457823",
+        "source_title": "Wikipedia (en): Flag of Vermont, wersja 1382457823",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-vt-krowa",
+        "text": "Krowa i trzy snopy pszenicy na fladze Vermontu oznaczają mleczarstwo i rolnictwo, a głowa jelenia — dziką przyrodę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382457823",
+        "source_title": "Wikipedia (en): Flag of Vermont, wersja 1382457823",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-vt-greenmountain",
+        "text": "Proponowano przywrócenie Vermontowi flagi Green Mountain Boys, ale żadna z tych prób się nie udała.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382457823",
+        "source_title": "Wikipedia (en): Flag of Vermont, wersja 1382457823",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WA": [
+      {
+        "id": "flag-us-wa-zielona",
+        "text": "Flaga stanu Waszyngton jako jedyna flaga stanowa ma zielone tło i jako jedyna przedstawia wizerunek prezydenta USA.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380927114",
+        "source_title": "Wikipedia (en): Flag of Washington, wersja 1380927114",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wa-dar",
+        "text": "Zieloną flagę z pieczęcią stanu zaprojektowały w 1915 r. Córy Rewolucji Amerykańskiej z Waszyngtonu; przyjęto ją 5 marca 1923 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380927114",
+        "source_title": "Wikipedia (en): Flag of Washington, wersja 1380927114",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wa-1889",
+        "text": "Stan Waszyngton przyjął pieczęć 21 sierpnia 1889 r., na konwencji konstytucyjnej, kilka miesięcy przed przyjęciem do Unii.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380927114",
+        "source_title": "Wikipedia (en): Flag of Washington, wersja 1380927114",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WI": [
+      {
+        "id": "flag-us-wi-borsuk",
+        "text": "Nad herbem na fladze Wisconsin siedzi borsuk — zwierzę stanowe — z dewizą „Forward”, a pod herbem widnieje rok 1848.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373434918",
+        "source_title": "Wikipedia (en): Flag of Wisconsin, wersja 1373434918",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wi-tarcza",
+        "text": "Tarcza na fladze Wisconsin ma pług, kilof z łopatą, ramię z młotem i kotwicę — rolnictwo, górnictwo, przemysł i żeglugę.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373434918",
+        "source_title": "Wikipedia (en): Flag of Wisconsin, wersja 1373434918",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wi-nava",
+        "text": "W ankiecie Północnoamerykańskiego Towarzystwa Weksylologicznego z 2001 r. flaga Wisconsin znalazła się wśród najgorzej zaprojektowanych.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1373434918",
+        "source_title": "Wikipedia (en): Flag of Wisconsin, wersja 1373434918",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WV": [
+      {
+        "id": "flag-us-wv-1929",
+        "text": "Obecną flagę Wirginii Zachodniej przyjęła legislatura 7 marca 1929 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384321637",
+        "source_title": "Wikipedia (en): Flag of West Virginia, wersja 1384321637",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wv-rododendron",
+        "text": "Flaga Wirginii Zachodniej z 1907 r. miała z tyłu gałązkę rododendronu, a z przodu herb stanu.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384321637",
+        "source_title": "Wikipedia (en): Flag of West Virginia, wersja 1384321637",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wv-1904",
+        "text": "Pierwszą oficjalną flagę Wirginii Zachodniej z 1905 r. oparto na fladze komisji stanowej z Wystawy Zakupu Luizjany w 1904 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384321637",
+        "source_title": "Wikipedia (en): Flag of West Virginia, wersja 1384321637",
+        "checked": "2026-11-16"
+      }
+    ],
+    "US-WY": [
+      {
+        "id": "flag-us-wy-bizon",
+        "text": "Na fladze Wyoming widnieje biała sylwetka bizona z pieczęcią stanu na boku.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456218",
+        "source_title": "Wikipedia (en): Flag of Wyoming, wersja 1384456218",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wy-keays",
+        "text": "Flagę Wyoming zaprojektowała Verna Keays, absolwentka Art Institute of Chicago; według niej pomysł przyszedł jej we śnie.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456218",
+        "source_title": "Wikipedia (en): Flag of Wyoming, wersja 1384456218",
+        "checked": "2026-11-16"
+      },
+      {
+        "id": "flag-us-wy-1917",
+        "text": "Flagę Wyoming przyjęto 31 stycznia 1917 r.",
+        "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384456218",
+        "source_title": "Wikipedia (en): Flag of Wyoming, wersja 1384456218",
         "checked": "2026-11-16"
       }
     ]

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 
 class CapitalSetupScreen extends ConsumerWidget {
@@ -13,7 +14,9 @@ class CapitalSetupScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
     return Scaffold(
-      appBar: AppBar(title: Text('Stolice ${continent.genitive}')),
+      appBar: AppBar(
+        title: Text('${continent.capitalsLabel} ${continent.genitive}'),
+      ),
       body: ref
           .watch(appPreferencesProvider)
           .when(
@@ -54,14 +57,18 @@ class CapitalSetupScreen extends ConsumerWidget {
                                 padding: const EdgeInsets.all(24),
                                 children: [
                                   Text(
-                                    'Trenuj przypominanie stolic państw.',
+                                    continent == Continent.poland
+                                        ? 'Trenuj miasta wojewódzkie.'
+                                        : continent == Continent.usa
+                                        ? 'Trenuj stolice stanów.'
+                                        : 'Trenuj przypominanie stolic państw.',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall,
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    '${capitals.facts.length} państw · 10 pytań w sesji · offline',
+                                    '${capitals.facts.length} ${continent.areaNoun} · 10 pytań w sesji · offline',
                                   ),
                                   const SizedBox(height: 20),
                                   Card.filled(

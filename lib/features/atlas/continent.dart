@@ -37,9 +37,36 @@ enum Continent {
   /// Genitive plural of what the map holds, e.g. „16 województw”.
   final String areaNoun;
 
-  /// Countries have capital and flag packs; subdivisions are map-only
-  /// until stage 2.
-  bool get hasCapitalsAndFlags => this != poland && this != usa;
+  // Words of the questions: countries, voivodeships (coats of arms, seats
+  // of the regional authorities) or US states (flags, state capitals).
+  bool get _poland => this == poland;
+  bool get _usa => this == usa;
+
+  /// „Wskaż to państwo”, „Wpisz całą nazwę województwa”.
+  String get areaAccusative =>
+      _poland ? 'województwo' : (_usa ? 'stan' : 'państwo');
+  String get areaGenitive =>
+      _poland ? 'województwa' : (_usa ? 'stanu' : 'państwa');
+
+  /// Feedback label of the correct area: „Państwo: Czechy”.
+  String get areaSubject =>
+      _poland ? 'Województwo' : (_usa ? 'Stan' : 'Państwo');
+  String get symbolsLabel => _poland ? 'Herby' : 'Flagi';
+  String get symbolLabel => _poland ? 'Herb' : 'Flaga';
+  String get symbolQuestion => _poland
+      ? 'Którego województwa to herb?'
+      : (_usa ? 'Którego stanu to flaga?' : 'Jakie to państwo?');
+  String get capitalsLabel =>
+      _poland ? 'Miasta wojewódzkie' : (_usa ? 'Stolice stanów' : 'Stolice');
+  String get capitalSubject => _poland ? 'Miasto wojewódzkie' : 'Stolica';
+
+  /// Short prompt under the area name in a capital question.
+  String get capitalPrompt =>
+      _poland ? 'Miasto wojewódzkie?' : (_usa ? 'Stolica stanu?' : 'Stolica?');
+
+  /// Area of an id: voivodeship, US state or (all alike) a country.
+  static Continent ofArea(String id) =>
+      id.startsWith('PL-') ? poland : (id.startsWith('US-') ? usa : europe);
 
   String contentPath(String file) =>
       this == europe ? 'assets/content/$file' : 'assets/content/$name/$file';

@@ -756,13 +756,10 @@ class SessionRepository {
       for (final country in catalog.countries)
         for (final spec in [
           for (final difficulty in mapDifficulties) ('map', difficulty),
-          // Voivodeships and US states: map only (no capital/flag packs).
-          if (catalog.continent.hasCapitalsAndFlags) ...[
-            ('capitals', 'choice'),
-            ('capitals', 'firstLetter'),
-            ('capitals', 'write'),
-          ],
-          if (flags != null && catalog.continent.hasCapitalsAndFlags) ...[
+          ('capitals', 'choice'),
+          ('capitals', 'firstLetter'),
+          ('capitals', 'write'),
+          if (flags != null) ...[
             ('flags', 'choice'),
             ('flags', 'firstLetter'),
             ('flags', 'write'),

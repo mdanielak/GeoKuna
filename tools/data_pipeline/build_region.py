@@ -153,8 +153,8 @@ def renderer():
         if vb:
             _, _, width, height = map(float, re.split(r'[,\s]+', vb.strip()))
         else:
-            width = float(re.sub(r'px$', '', svg.attrib['width']))
-            height = float(re.sub(r'px$', '', svg.attrib['height']))
+            width = float(re.sub(r'(px|pt|mm)$', '', svg.attrib['width']))
+            height = float(re.sub(r'(px|pt|mm)$', '', svg.attrib['height']))
         w, h = 500, round(500 * height / width)
         surface = cairo.cairo_image_surface_create(0, w, h)
         ctx = cairo.cairo_create(surface)

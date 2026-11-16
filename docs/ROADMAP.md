@@ -1,11 +1,12 @@
 # Stan i plan
 
-## Stan — 2026-11-16 (wersja 0.6.0)
+## Stan — 2026-11-16 (wersja 0.7.0)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
 - Europa 47, Afryka 54, Azja 50, Ameryka Północna 22, Południowa 13, Oceania 14;
-  województwa (16) i stany USA (50) — tylko mapa, z ciekawostkami; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
+  województwa (16) i stany USA (50) — mapa, miasta wojewódzkie / stolice stanów,
+  herby / flagi, z ciekawostkami; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
 - Mapa, stolice, flaga → nazwa, flaga → mapa; trzy poziomy i 12 kart FSRS na kraj;
   A–D z własnym FSRS rozpoznawania.
 - Dziś: zaległe najpierw, globalny limit 3 nowości, poziom per kontynent.
@@ -53,7 +54,7 @@ nie dowodzi retencji w miesiącach.
 6. **Obserwacja powtórek w praktyce** przez kilka dni, zanim zmienimy budżet nowości
    lub parametry FSRS.
 
-## Plan: województwa i stany USA — etap 1, mapa (wersja 0.6.0) — wykonany; etap 2: stolice, flagi/herby
+## Plan: województwa i stany USA — etap 1, mapa (wersja 0.6.0) — wykonany; etap 2 (stolice, herby/flagi) wykonany w 0.7.0
 
 **Cel.** Dwie nowe mapy do nauki: 16 województw Polski i 50 stanów USA, pytanie
 „gdzie leży?” na mapie, po odpowiedzi jedna z 3 ciekawostek. Etap 2 (osobno):
