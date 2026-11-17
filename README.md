@@ -4,7 +4,7 @@
 offline, bez konta i backendu. Zamiast losowych quizów uczy tego, czego jeszcze
 nie wiesz: każda umiejętność ma własną kartę powtórek FSRS.
 
-![Kuna z globusem](assets/mascot/kuna-globe.png)
+![Kuna z globusem](assets/v2/kuna_happy.webp)
 
 ## Co potrafi
 

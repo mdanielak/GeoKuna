@@ -64,7 +64,8 @@ enum Continent {
   String get capitalPrompt =>
       _poland ? 'Miasto wojewódzkie?' : (_usa ? 'Stolica stanu?' : 'Stolica?');
 
-  /// Id of the illustrations in `assets/home/` (`hero_<id>`, `tile_<id>_<kind>`).
+  /// Region id of the v2 illustrations (`assets/v2/banner_<id>_<n>`,
+  /// `quiz_header_<id>`).
   String get artId => switch (this) {
     europe => 'europa',
     africa => 'afryka',

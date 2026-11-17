@@ -43,11 +43,9 @@ void main() {
 
     expect(find.text('Europa'), findsOneWidget);
     expect(find.textContaining('Europa · '), findsOneWidget);
-    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
-    expect(
-      find.textContaining('Nowe pytania czekają już w rozpoczętej wyprawie'),
-      findsOneWidget,
-    );
+    expect(find.text('0 dni'), findsOneWidget);
+    // Reserved questions elsewhere are not announced on Today.
+    expect(find.textContaining('rozpoczętej wyprawie'), findsNothing);
     expect(
       tester
           .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Europa'))
@@ -60,7 +58,7 @@ void main() {
 
     expect(find.text('Afryka'), findsOneWidget);
     expect(find.textContaining('Afryka · '), findsOneWidget);
-    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
+    expect(find.text('0 dni'), findsOneWidget);
     expect(
       tester
           .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Afryka'))
@@ -71,7 +69,22 @@ void main() {
     await tester.tap(find.text('Azja'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Azja · '), findsOneWidget);
-    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
+    expect(find.text('0 dni'), findsOneWidget);
+    // Swiping the banner: left goes to the next area, right comes back.
+    await tester.fling(
+      find.textContaining('Azja · '),
+      const Offset(-250, 0),
+      800,
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Ameryka Północna · '), findsOneWidget);
+    await tester.fling(
+      find.textContaining('Ameryka Północna · '),
+      const Offset(250, 0),
+      800,
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Azja · '), findsOneWidget);
     tester.view.physicalSize = const Size(320, 640);
     tester.platformDispatcher.textScaleFactorTestValue = 2;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);

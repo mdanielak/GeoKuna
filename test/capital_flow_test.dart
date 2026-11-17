@@ -79,14 +79,14 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.text('Gotowy na wyprawę?'), findsOneWidget);
         await tester.scrollUntilVisible(
-          find.text('Stolice'),
+          find.bySemanticsLabel('Trening: Stolice'),
           200,
           scrollable: find.byType(Scrollable).first,
         );
         // Clear the bottom navigation bar, which would take the tap.
         await tester.drag(find.byType(Scrollable).first, const Offset(0, -200));
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Stolice'));
+        await tester.tap(find.bySemanticsLabel('Trening: Stolice'));
         await tester.pumpAndSettle();
         expect(find.text('Poziom: ${preference.label}'), findsOneWidget);
         await tester.ensureVisible(find.text('Wznów trening stolic'));
@@ -173,6 +173,14 @@ void main() {
             find.text('1 z 1 ocenianych odpowiedzi poprawnych.'),
             findsOneWidget,
           );
+        }
+        if (difficulty == CapitalDifficulty.write) {
+          // A row with a typo opens to show what was typed.
+          expect(find.text('Wpisano: Warszaqa'), findsNothing);
+          await tester.ensureVisible(find.text('Polska'));
+          await tester.tap(find.text('Polska'));
+          await tester.pumpAndSettle();
+          expect(find.text('Wpisano: Warszaqa'), findsOneWidget);
         }
         expect(tester.takeException(), isNull);
       },

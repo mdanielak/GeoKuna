@@ -4,14 +4,17 @@ import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/atlas/continent.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/session_repository.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  late CapitalCatalog capitals;
+  late CapitalCatalog capitals, africa, poland;
   setUpAll(() async {
     capitals = await CapitalCatalog.load();
+    africa = await CapitalCatalog.load(continent: Continent.africa);
+    poland = await CapitalCatalog.load(continent: Continent.poland);
   });
 
   test(
@@ -169,4 +172,23 @@ void main() {
       }
     },
   );
+
+  test('English names count everywhere, also with one typo', () async {
+    CapitalFact of(CapitalCatalog c, String id) =>
+        c.facts.firstWhere((f) => f.countryId == id);
+    final cyprus = of(capitals, 'CYP');
+    for (final input in ['Nikozja', 'Nicosia', 'Nicosa', 'Makozia']) {
+      expect(
+        evaluateCapitalAnswer(input, cyprus).correct,
+        input != 'Makozia',
+        reason: input,
+      );
+    }
+    expect(evaluateCapitalAnswer('Viena', of(capitals, 'AUT')).correct, isTrue);
+    expect(evaluateCapitalAnswer('Cairo', of(africa, 'EGY')).correct, isTrue);
+    expect(
+      evaluateCapitalAnswer('Warsaw', of(poland, 'PL-14')).correct,
+      isTrue,
+    );
+  });
 }

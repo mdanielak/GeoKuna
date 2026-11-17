@@ -98,7 +98,9 @@ i ponowne kliknięcie tego samego kraju nie zużywają szansy.
 - Jedna operacja edycyjna jest literówką: zamiana, wstawienie, usunięcie
   lub przestawienie sąsiednich liter (Warszaqa → Warszawa). Dwie to błąd.
 - Wielkość liter, diakrytyka (także znaki złożone Unicode) i spacje nie wpływają
-  na ocenę. Jawne endonimy z paczki (Bern, Andorra la Vella) są poprawne.
+  na ocenę. Jawne endonimy z paczki (Bern, Andorra la Vella) i nazwy angielskie
+  (Vienna, Warsaw; [CONTENT.md](CONTENT.md#stolice)) są poprawne — wszędzie,
+  także z jedną literówką.
 - Zaakceptowana literówka liczy się jako poprawna; zawsze pokazujemy poprawną pisownię.
 - Pierwsza litera: widoczna, nieedytowalna; użytkownik dopisuje resztę.
 - A–D: wybór innej opcji jest zawsze błędem; tolerancja pisowni go nie dotyczy.
@@ -106,6 +108,10 @@ i ponowne kliknięcie tego samego kraju nie zużywają szansy.
 
 Feedback: błąd czerwony, rozwiązanie zielone, literówka żółta — zawsze z tekstem
 i ikoną, nie tylko kolorem.
+
+Podsumowanie serii: kuna mówi w dymku (duży tekst), pod nią lista pytań. Wiersz
+z błędem lub literówką rozwija się po dotknięciu i pokazuje, co wpisano,
+wybrano lub wskazano na mapie (np. „Wpisano: Makozia”).
 
 ## Dzisiejsza wyprawa
 
@@ -120,9 +126,11 @@ i ikoną, nie tylko kolorem.
   zaległe i trudne, do 3 nowych, a resztę do 10 wypełniają **pytania kontrolne**
   — najsłabsze opanowane karty, każda najwyżej raz na ~20 h. To okresowa
   kontrola pewniaków i sposób na utrzymanie passy, gdy wszystko jest opanowane.
-- **Kuna sprawdzi, co już wiesz:** seria do 10 niewidzianych kart poziomu.
-  Trafienia od razu dostają Easy i **nie zużywają limitu nowości**; zużywają
-  go tylko błędy. Znawca może więc odkryć znany kontynent w jeden wieczór.
+- **Wstępny quiz:** główny przycisk Dziś przy pierwszej wizycie obszaru (żadna
+  seria jeszcze nie ruszyła). Zawsze na poziomie Łatwym: seria do 10
+  niewidzianych kart. Trafienia od razu dostają Easy i **nie zużywają limitu
+  nowości**; zużywają go tylko błędy. Znawca może więc odkryć znany kontynent
+  w jeden wieczór.
 - Kraj pojawia się w serii najwyżej raz, aby pytania nie podpowiadały odpowiedzi.
 - Zaliczony normalny poziom nie wprowadza zbędnej nowej karty łatwiejszego poziomu.
 - Rozpoczęta seria zachowuje swój format, kolejność i migawkę pytań, także po
@@ -199,8 +207,8 @@ dostępu do powtórek, nie opóźnia kolejnego kroku.
 |---|---|---:|---:|
 | 0–30% | smutna | 0–3 | 0–1 |
 | >30–45% | zamyślona | 4 | 2 |
-| >45–60% | zachęcająca | 5–6 | 3 |
-| >60%, <100% | wesoła | 7–9 | 4 |
+| >45–60% | mrugająca | 5–6 | 3 |
+| >60%, <100% | wesoła, z pięścią | 7–9 | 4 |
 | dokładnie 100% | z serduszkiem | 10 | 5 |
 
 - Bez zaokrąglania (249/250 = wesoła). Literówka liczy się jako poprawna.
@@ -208,15 +216,16 @@ dostępu do powtórek, nie opóźnia kolejnego kroku.
   ogólna zachęta, bez serduszka.
 - Każda emocja ma trzy miłe, dopingujące teksty; wariant zależy od ID sesji,
   więc wznowienie go nie zmienia.
-- Grafiki: `assets/mascot/kuna-{sad,thoughtful,encouraging,happy-v2,heart}.png`,
-  neutralna `kuna-globe.png`. Prompty: `output/imagegen/`.
+- Grafiki: `assets/v2/kuna_{sad,thinking,wink,determined,love}.webp`, neutralna
+  `kuna_neutral.webp`, wesoła (seria A–D) `kuna_happy.webp` — z paczek wyglądu v2
+  ([CONTENT.md](CONTENT.md#grafiki-wygląd-v2)). Tekst w dużym dymku obok kuny.
 
 ## Ciekawostki
 
 Po trafieniu **lub po trzecim błędzie** (razem z ujawnionym krajem) pokazujemy
 jedną z trzech lokalnych, źródłowych ciekawostek na kremowo-bursztynowej karcie
-z żarówką i podpisem „Ciekawostka” (sam kolor nie jest sygnałem — żółty oznacza
-literówkę). Docelowo w miejscu żarówki kuna z lupą.
+z kuną z lupą i podpisem „Ciekawostka” (sam kolor nie jest sygnałem — żółty oznacza
+literówkę).
 Po pytaniach o stolicę ciekawostka dotyczy stolicy, po pytaniach o flagę — flagi (geneza barw, pierwsze
 użycie, godło), po pozostałych — kraju. Fakt wspominający kraj pytany dalej w serii jest pomijany. Wybór jest deterministyczny dla sesji i pytania, nie
 wpływa na FSRS i nie zdradza odpowiedzi przyszłych pytań. Źródła: [CONTENT.md](CONTENT.md#ciekawostki).

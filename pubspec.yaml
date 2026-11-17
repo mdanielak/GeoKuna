@@ -50,8 +50,7 @@ flutter:
     - assets/maps/context/
     - assets/maps/styles/relief/
     - assets/maps/styles/relief/tiles/
-    - assets/mascot/
-    - assets/home/
+    - assets/v2/
     - assets/flags/europe-0.1.0/
     - assets/flags/africa-0.1.0/
     - assets/flags/asia-0.1.0/

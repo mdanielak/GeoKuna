@@ -11,6 +11,8 @@ import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/learning_levels.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -47,17 +49,28 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Europa · 3 nowe pytania'), findsOneWidget);
+    // First visit: the main button is the easy placement quiz.
+    expect(
+      find.text('Europa · krótki quiz na start, poziom łatwy'),
+      findsOneWidget,
+    );
     await tester.scrollUntilVisible(
-      find.text('Rozpocznij wyprawę'),
+      find.text('Wstępny quiz'),
       150,
       scrollable: find.byType(Scrollable).first,
     );
-    await tester.ensureVisible(find.text('Rozpocznij wyprawę'));
+    await tester.ensureVisible(find.text('Wstępny quiz'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Rozpocznij wyprawę'));
+    await tester.tap(find.text('Wstępny quiz'));
     await tester.pumpAndSettle();
-    expect(find.text('Pytanie 1 z 3'), findsOneWidget);
+    expect(find.text('Pytanie 1 z 10'), findsOneWidget);
+    final series = await db.select(db.sessions).getSingle();
+    for (final q in jsonDecode(series.questionData) as List) {
+      expect(
+        levelForDifficulty((q as Map)['difficulty'] as String),
+        LearningDifficulty.easy,
+      );
+    }
     expect(await db.select(db.attempts).get(), isEmpty);
     expect(await db.select(db.memoryReviews).get(), isEmpty);
     expect(tester.takeException(), isNull);

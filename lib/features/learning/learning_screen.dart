@@ -11,6 +11,7 @@ import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
+import '../atlas/continent.dart';
 import '../atlas/country_map.dart';
 import 'capitals.dart';
 import 'flags.dart';
@@ -62,6 +63,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         dailyMode: widget.dailyMode,
         flags: widget.flagDifficulty,
         capitals: widget.capitalDifficulty,
+        // The placement quiz is always easy: it checks what is already known.
+        level: widget.dailyMode == DailyMode.placement
+            ? LearningDifficulty.easy
+            : null,
       ),
     );
     if (mounted) {
@@ -208,6 +213,33 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      toolbarHeight: 52,
+      // Region landscape (look v2); the title sits in its calm left part.
+      flexibleSpace: ExcludeSemantics(
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/v2/quiz_header_${ref.watch(selectedContinentProvider).artId}.webp',
+              fit: BoxFit.cover,
+              alignment: Alignment.bottomRight,
+              cacheWidth: 1080,
+            ),
+            // Long titles stay readable where the landscape begins.
+            DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  stops: const [.35, .8],
+                  colors: [
+                    GeoTheme.paper.withValues(alpha: .75),
+                    GeoTheme.paper.withValues(alpha: 0),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       title: Text(
         widget.daily
             ? 'Dzisiejsza wyprawa po ${ref.watch(selectedContinentProvider).journey}'
@@ -215,13 +247,24 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             ? '${ref.watch(selectedContinentProvider).symbolsLabel} ${ref.watch(selectedContinentProvider).genitive}'
             : widget.capitalDifficulty == null
             ? 'Wyprawa po ${ref.watch(selectedContinentProvider).journey}'
+            // „Stolice stanów Stanów Zjednoczonych” repeats itself.
+            : ref.watch(selectedContinentProvider) == Continent.usa
+            ? 'Stolice stanów USA'
             : '${ref.watch(selectedContinentProvider).capitalsLabel} ${ref.watch(selectedContinentProvider).genitive}',
+        // Smaller than the default, so long titles stay on the calm part
+        // of the landscape.
+        style: Theme.of(context).textTheme.titleMedium
+            ?.copyWith(fontWeight: FontWeight.w700),
       ),
       actions: _hasLoadedSession && _session != null && !_session!.completed
           ? [
               IconButton(
                 tooltip: 'Zakończ quiz',
                 onPressed: _busy ? null : _finishQuiz,
+                // A cream disc keeps the cross visible on the landscape.
+                style: IconButton.styleFrom(
+                  backgroundColor: GeoTheme.paper.withValues(alpha: .9),
+                ),
                 icon: const Icon(Icons.close),
               ),
             ]
@@ -927,7 +970,13 @@ class _TriviaCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.lightbulb, color: colors.triviaIcon, size: 28),
+              // The kuna with a magnifying glass (v2.5) marks the fact.
+              Image.asset(
+                'assets/v2/kuna_lupa.webp',
+                width: 52,
+                height: 52,
+                cacheWidth: 156,
+              ),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(
@@ -956,7 +1005,9 @@ class _TriviaCard extends StatelessWidget {
   }
 }
 
-typedef _Result = ({bool correct, String title, String detail});
+/// One summary line; [given] is what the learner typed, chose or pointed
+/// at, shown after a tap on a wrong (or typo) answer.
+typedef _Result = ({bool correct, String title, String detail, String? given});
 
 _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   final i = attempt.questionIndex;
@@ -968,77 +1019,151 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
       : session.isContrastAt(i)
       ? 'para, '
       : '';
+  String nameOf(String id) =>
+      catalog.countries.any((c) => c.id == id) ? catalog.country(id).name : id;
+  final verb = attempt.difficulty == 'choice' ? 'Wybrano' : 'Wpisano';
   final String detail;
+  String? given;
   if (session.assistedIndices.contains(i)) {
     detail = 'z pomocą';
   } else if (attempt.topic == 'capitals') {
     detail = '${session.capitalQuestionAt(i).fact.name}$typo';
+    given = '$verb: ${attempt.answer}';
   } else if (attempt.topic == 'flags' &&
       !mapDifficulties.contains(attempt.difficulty)) {
     detail = 'flaga$typo';
+    given = '$verb: ${nameOf(attempt.answer)}';
   } else {
-    final tries = session.mapGuesses.where((g) => g.questionIndex == i).length;
+    final guesses = session.mapGuesses
+        .where((g) => g.questionIndex == i)
+        .toList();
     detail = !attempt.correct
         ? 'nie odnaleziono'
-        : tries > 1
-        ? 'za $tries. razem'
+        : guesses.length > 1
+        ? 'za ${guesses.length}. razem'
         : 'od razu';
+    final wrong = [
+      for (final g in guesses)
+        if (g.selectedCountryId != attempt.countryId)
+          nameOf(g.selectedCountryId),
+    ];
+    if (wrong.isNotEmpty) given = 'Wskazano: ${wrong.join(', ')}';
   }
   return (
     correct: attempt.correct,
     title: catalog.country(attempt.countryId).name,
     detail: '$retry$detail',
+    // Only mistakes and typos open; a clean answer has nothing to add.
+    given:
+        !attempt.correct ||
+            attempt.typoAccepted ||
+            given?.startsWith('Wskazano') == true
+        ? given
+        : null,
   );
 }
 
-/// Compact result table: one short line per question.
-class _ResultList extends StatelessWidget {
+/// Compact result table: one short line per question. A mistake opens on
+/// tap and shows what was typed, chosen or pointed at.
+class _ResultList extends StatefulWidget {
   const _ResultList({required this.rows});
   final List<_Result> rows;
 
   @override
+  State<_ResultList> createState() => _ResultListState();
+}
+
+class _ResultListState extends State<_ResultList> {
+  final _open = <int>{};
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colors = GeoColors.of(context);
     return Card.outlined(
       margin: const EdgeInsets.only(top: 20),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-        child: Column(
-          children: [
-            for (final (index, row) in rows.indexed) ...[
-              if (index > 0) const Divider(height: 1),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: [
+          for (final (index, row) in widget.rows.indexed) ...[
+            if (index > 0) const Divider(height: 1),
+            InkWell(
+              onTap: row.given == null
+                  ? null
+                  : () => setState(
+                      () => _open.contains(index)
+                          ? _open.remove(index)
+                          : _open.add(index),
+                    ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      row.correct ? Icons.check_circle : Icons.cancel,
-                      size: 20,
-                      color: row.correct
-                          ? GeoColors.of(context).correct
-                          : GeoColors.of(context).wrong,
-                      semanticLabel: row.correct ? 'Dobrze' : 'Błąd',
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(row.title, style: theme.textTheme.bodyLarge),
-                    ),
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: Text(
-                        row.detail,
-                        textAlign: TextAlign.end,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                    Row(
+                      children: [
+                        Icon(
+                          row.correct ? Icons.check_circle : Icons.cancel,
+                          size: 20,
+                          color: row.correct ? colors.correct : colors.wrong,
+                          semanticLabel: row.correct ? 'Dobrze' : 'Błąd',
                         ),
-                      ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            row.title,
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            row.detail,
+                            textAlign: TextAlign.end,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ),
+                        if (row.given != null)
+                          Icon(
+                            _open.contains(index)
+                                ? Icons.expand_less
+                                : Icons.expand_more,
+                            size: 20,
+                            semanticLabel: _open.contains(index)
+                                ? 'Zwiń'
+                                : 'Pokaż odpowiedź',
+                          ),
+                      ],
+                    ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 180),
+                      alignment: Alignment.topCenter,
+                      child: _open.contains(index)
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 30, top: 4),
+                              child: Text(
+                                row.given!,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: row.correct
+                                      ? theme.colorScheme.onSurfaceVariant
+                                      : colors.onWrongContainer,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          : const SizedBox(width: double.infinity),
                     ),
                   ],
                 ),
               ),
-            ],
+            ),
           ],
-        ),
+        ],
       ),
     );
   }

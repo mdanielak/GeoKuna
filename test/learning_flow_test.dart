@@ -39,13 +39,13 @@ void main() {
       );
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(
-        find.text('Mapa'),
+        find.bySemanticsLabel('Trening: Mapa'),
         180,
         scrollable: find.byType(Scrollable).first,
       );
-      await tester.ensureVisible(find.text('Mapa'));
+      await tester.ensureVisible(find.bySemanticsLabel('Trening: Mapa'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Mapa'));
+      await tester.tap(find.bySemanticsLabel('Trening: Mapa'));
       await tester.pumpAndSettle();
       expect(find.text('Gdzie leży Liechtenstein?'), findsOneWidget);
       expect(find.text('Potwierdź'), findsNothing);

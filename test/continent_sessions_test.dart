@@ -21,4 +21,15 @@ void main() {
     expect(await europe.history(), hasLength(1));
     await expectLater(africa.byId(eu.row.id), throwsStateError);
   });
+
+  test('the first visit of an area ends with its first series', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    final africa = SessionRepository(db, continent: Continent.africa);
+    expect(await africa.firstVisit(), isTrue);
+    await SessionRepository(db).start(['POL']);
+    expect(await africa.firstVisit(), isTrue);
+    await africa.start(['EGY']);
+    expect(await africa.firstVisit(), isFalse);
+  });
 }

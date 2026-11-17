@@ -12,11 +12,11 @@ void main() {
       );
 
   test('approved bands for 10 and 5 questions, heart only at 100%', () {
-    const sad = 'assets/mascot/kuna-sad.png';
-    const thoughtful = 'assets/mascot/kuna-thoughtful.png';
-    const encouraging = 'assets/mascot/kuna-encouraging.png';
-    const happy = 'assets/mascot/kuna-happy-v2.png';
-    const heart = 'assets/mascot/kuna-heart.png';
+    const sad = 'assets/v2/kuna_sad.webp';
+    const thoughtful = 'assets/v2/kuna_thinking.webp';
+    const encouraging = 'assets/v2/kuna_wink.webp';
+    const happy = 'assets/v2/kuna_determined.webp';
+    const heart = 'assets/v2/kuna_love.webp';
     const expected = <int, List<String>>{
       10: [
         sad,
@@ -72,14 +72,14 @@ void main() {
       correctCount: 0,
     );
     expect(partial.mood, QuizMascotMood.neutral);
-    expect(partial.assetPath, 'assets/mascot/kuna-globe.png');
+    expect(partial.assetPath, 'assets/v2/kuna_neutral.webp');
     final choice = quizMascotFeedback(
       completedAllQuestions: true,
       choiceOnly: true,
       scoredAttempts: 1,
       correctCount: 1,
     );
-    expect(choice.assetPath, isNot('assets/mascot/kuna-heart.png'));
+    expect(choice.assetPath, isNot('assets/v2/kuna_love.webp'));
     expect(choice.message, contains('trening'));
   });
 }

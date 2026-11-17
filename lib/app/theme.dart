@@ -1,15 +1,21 @@
 import 'package:material_ui/material_ui.dart';
 
-/// GeoKuna design tokens. Material roles come from one forest-green seed on
-/// warm paper; [GeoColors] holds the few app-specific roles Material lacks
-/// (answer states, trivia, medals, streak). Map palettes live in
+/// GeoKuna design tokens (look v2: GeoKuna_Production_v2_1
+/// `design/color_tokens.json`). Material roles come from the brand green on
+/// cream paper; [GeoColors] holds the few app-specific roles Material lacks
+/// (answer states, trivia, streak). Map palettes live in
 /// `map_style.dart`, because each map style has its own cartographic colours.
 abstract final class GeoTheme {
-  static const seed = Color(0xFF335C45);
-  static const paper = Color(0xFFFAF8F0);
+  static const seed = Color(0xFF0B6B3A);
+  static const paper = Color(0xFFFFF9E9);
+  static const ink = Color(0xFF0F3D27);
+  static const border = Color(0xFFCFE4B2);
 
   static ThemeData light() {
-    final scheme = ColorScheme.fromSeed(seedColor: seed, surface: paper);
+    final scheme = ColorScheme.fromSeed(
+      seedColor: seed,
+      surface: paper,
+    ).copyWith(primary: seed, onSurface: ink, outlineVariant: border);
     final base = ThemeData(useMaterial3: true, colorScheme: scheme);
     // Type scale: Roboto (bundled, offline). Headings that carry the
     // question or a screen's subject are bold; app bar titles stay regular.
@@ -38,6 +44,39 @@ abstract final class GeoTheme {
           color: scheme.onSurface,
         ),
       ),
+      chipTheme: ChipThemeData(
+        shape: const StadiumBorder(side: BorderSide(color: border)),
+        backgroundColor: const Color(0xFFFFFDF5),
+        selectedColor: seed,
+        secondarySelectedColor: seed,
+        labelStyle: base.textTheme.labelLarge?.copyWith(
+          fontWeight: FontWeight.w700,
+          color: WidgetStateColor.resolveWith(
+            (states) =>
+                states.contains(WidgetState.selected) ? Colors.white : ink,
+          ),
+        ),
+      ),
+      // Compact bottom bar: icons and labels, without the tall M3 default.
+      navigationBarTheme: NavigationBarThemeData(
+        height: 56,
+        backgroundColor: const Color(0xFFF6EFD9),
+        indicatorColor: const Color(0xFFDDEFC6),
+        labelPadding: const EdgeInsets.only(top: 2),
+        labelTextStyle: WidgetStatePropertyAll(
+          base.textTheme.labelSmall?.copyWith(
+            fontWeight: FontWeight.w700,
+            color: ink,
+          ),
+        ),
+        iconTheme: const WidgetStatePropertyAll(
+          IconThemeData(size: 22, color: ink),
+        ),
+      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Color(0xFF6DB33F),
+        linearTrackColor: Color(0xFFE9E4D2),
+      ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           minimumSize: const Size(48, 52),
@@ -65,23 +104,12 @@ class GeoColors extends ThemeExtension<GeoColors> {
     required this.onTypoContainer,
     required this.triviaContainer,
     required this.triviaBorder,
-    required this.triviaIcon,
     required this.triviaTitle,
     required this.onTriviaContainer,
     required this.flagFrame,
     required this.flagFrameBorder,
     required this.speechBubble,
     required this.streak,
-    required this.bronze,
-    required this.silver,
-    required this.gold,
-    required this.brandMint,
-    required this.warmCard,
-    required this.warmCardBorder,
-    required this.streakCard,
-    required this.streakCardBorder,
-    required this.streakPill,
-    required this.sunRays,
   });
 
   static const light = GeoColors(
@@ -95,7 +123,6 @@ class GeoColors extends ThemeExtension<GeoColors> {
     onTypoContainer: Color(0xFF624700),
     triviaContainer: Color(0xFFFCF0CF),
     triviaBorder: Color(0xFFE5C46B),
-    triviaIcon: Color(0xFFB07800),
     triviaTitle: Color(0xFF5C3F00),
     onTriviaContainer: Color(0xFF3B2F12),
     // Barely grey so white flag fields (Netherlands, Poland) stay visible.
@@ -103,40 +130,17 @@ class GeoColors extends ThemeExtension<GeoColors> {
     flagFrameBorder: Color(0xFF7C887E),
     speechBubble: Color(0xFFEFECE3),
     streak: Color(0xFFC25A00),
-    bronze: Color(0xFF9A6339),
-    silver: Color(0xFF6F777D),
-    gold: Color(0xFF9A7420),
-    // Launcher icon background (tools/build_icons.py) and the wordmark.
-    brandMint: Color(0xFFD6EEDC),
-    // Today screen (assets_mockups GeoKuna Assets v1.1 UI pieces).
-    warmCard: Color(0xFFFFFAF1),
-    warmCardBorder: Color(0xFFD7D1C5),
-    streakCard: Color(0xFFFFF3D9),
-    streakCardBorder: Color(0xFFF1DCAE),
-    streakPill: Color(0xFFFBE3A6),
-    sunRays: Color(0xFFF2B630),
   );
 
   final Color correct, correctContainer, onCorrectContainer;
   final Color wrong, wrongContainer, onWrongContainer;
   final Color typoContainer, onTypoContainer;
-  final Color triviaContainer, triviaBorder, triviaIcon, triviaTitle;
+  final Color triviaContainer, triviaBorder, triviaTitle;
   final Color onTriviaContainer;
   final Color flagFrame, flagFrameBorder, speechBubble, streak;
-  final Color bronze, silver, gold, brandMint;
-  final Color warmCard, warmCardBorder, streakCard, streakCardBorder;
-  final Color streakPill, sunRays;
 
   static GeoColors of(BuildContext context) =>
       Theme.of(context).extension<GeoColors>() ?? light;
-
-  /// Medal colour for 1–3, null when not earned.
-  Color? medal(int level) => switch (level) {
-    1 => bronze,
-    2 => silver,
-    3 => gold,
-    _ => null,
-  };
 
   @override
   GeoColors copyWith() => this;

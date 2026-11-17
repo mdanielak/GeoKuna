@@ -1,0 +1,70 @@
+{
+  "version": "capitals-en-0.1.0",
+  "source": {
+    "name": "Natural Earth 1:10m populated places, NAME_EN",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson",
+    "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b"
+  },
+  "names": {
+    "europe": {
+      "AUT": [
+        "Vienna"
+      ],
+      "BEL": [
+        "Brussels"
+      ],
+      "CYP": [
+        "Nicosia"
+      ],
+      "CZE": [
+        "Prague"
+      ],
+      "DNK": [
+        "Copenhagen"
+      ],
+      "GRC": [
+        "Athens"
+      ],
+      "ESP": [
+        "Madrid"
+      ],
+      "LUX": [
+        "Luxembourg"
+      ],
+      "LVA": [
+        "Riga"
+      ],
+      "POL": [
+        "Warsaw"
+      ],
+      "PRT": [
+        "Lisbon"
+      ],
+      "RUS": [
+        "Moscow"
+      ],
+      "ROU": [
+        "Bucharest"
+      ],
+      "SRB": [
+        "Belgrade"
+      ],
+      "VAT": [
+        "Vatican City"
+      ],
+      "ITA": [
+        "Rome"
+      ]
+    },
+    "northAmerica": {
+      "GRD": [
+        "St. George's"
+      ]
+    },
+    "poland": {
+      "PL-14": [
+        "Warsaw"
+      ]
+    }
+  }
+}

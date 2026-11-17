@@ -14,8 +14,12 @@ class QuizKind {
     this.dailyMode = DailyMode.regular,
     this.flags,
     this.capitals,
+    this.level,
   });
   final bool daily;
+
+  /// Level of a daily series that ignores the area's setting (placement).
+  final LearningDifficulty? level;
   final DailyMode dailyMode;
   final FlagDifficulty? flags;
   final CapitalDifficulty? capitals;
@@ -37,7 +41,14 @@ class QuizController {
     final catalog = await ref.read(catalogProvider.future);
     Future<LearningSession?> start() async {
       if (kind.daily) {
-        return repository.startDaily(
+        final daily = kind.level == null
+            ? repository
+            : SessionRepository(
+                repository.db,
+                continent: repository.continent,
+                level: kind.level!,
+              );
+        return daily.startDaily(
           catalog,
           await ref.read(capitalsProvider.future),
           flags: await ref.read(flagsProvider.future),

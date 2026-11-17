@@ -131,6 +131,15 @@ Angielskie aliasy stolic spoza Europy pochodzą wyłącznie z przypiętego
 [Natural Earth populated places 1:50m](https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_50m_populated_places.geojson)
 (SHA-256 `da4662b7bbfeb897d02f228c5839131dce27acff5717630f91ccff4f67828ee7`),
 przy zgodnym państwie i polskiej nazwie.
+Dla wszystkich obszarów aplikacja dodaje do akceptowanych odpowiedzi nazwy
+angielskie z `assets/content/capitals_en.json` (`build_capitals_en.py`):
+`NAME_EN` jedynej stolicy państwa (Admin-0) w przypiętym
+[Natural Earth populated places 1:10m](https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_populated_places.geojson)
+(SHA-256 `9b8e3de0…116b`) o polskiej, lokalnej lub angielskiej nazwie zgodnej
+z paczką; dla Polski — siedziba o tej polskiej nazwie. Zapisywane są tylko
+nazwy jeszcze nieakceptowane (18: m.in. Vienna, Prague, Warsaw, Rome). Astana
+pominięta (Natural Earth ma jeszcze „Nur-Sultan”). Zweryfikowane paczki stolic
+pozostają bez zmian.
 
 Przypadki szczególne:
 
@@ -167,13 +176,17 @@ czarno-czerwono-zielony; to nie stanowisko polityczne).
   (z normalizacją i jedną literówką). Kierunek państwo → flaga — nie wdrożony.
 - Nowa wersja grafiki = nowa ścieżka wersji; stare assety zostają dla aktywnych sesji.
 
-## Grafiki ekranu Dziś
+## Grafiki (wygląd v2)
 
-`assets/home/`: ilustracje regionów (`hero_<region>.webp`), kafelki treningu
-(`tile_<region>_{mapa,stolice,flagi}.webp`, przekonwertowane z PNG) i ikona gór —
-z paczki projektowej GeoKuna Assets v1.1 (`assets_mockups/`, dostarczona przez
-właściciela projektu). To dekoracje: nie są źródłem geometrii ani faktów; flagi
-i herby na kafelkach są tylko ozdobą (pytania używają paczek z sekcji Flagi).
+`assets/v2/` (WebP, ok. 5,9 MB): logo, kuna w 7 emocjach (reakcje po
+quizie), bannery Dziś (`banner_<region>_{1,2}`, wariant
+zmienia się co dzień), paski nagłówków quizu (`quiz_header_<region>`), kafelki treningu bez napisu
+(`tile_*`, nazwę dopisuje aplikacja), medale, żeton Nieprzykunowanie i kuna z
+lupą (karta ciekawostki). Źródło: paczki GeoKuna v2.3, v2.4 i v2.5 dostarczone przez
+właściciela projektu (oryginały PNG poza repozytorium, przeskalowane do 1080 px /
+768 px). Teksty i przyciski rysuje aplikacja. To dekoracje: nie są źródłem
+geometrii ani faktów. Stare `assets/mascot/` zostaje tylko jako źródło ikony
+aplikacji (`tools/build_icons.py`).
 
 ## Rzeźba terenu
 

@@ -10,9 +10,9 @@ import '../learning/streaks.dart';
 import '../learning/token_icon.dart';
 import '../settings/app_preferences.dart';
 
-/// Today (layout of assets_mockups reference_europa): continent chips, the
-/// region illustration, the call to start, map progress, the streak and
-/// three illustrated training tiles. Atlas and "Moja nauka" live in the
+/// Today (look v2, GeoKuna_Concept_Assets_Pack): continent chips, the region
+/// banner with the day's call to start, map progress, the streak and three
+/// illustrated training tiles. Atlas and "Moja nauka" live in the
 /// bottom navigation bar.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -21,11 +21,9 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
     final daily = ref.watch(dailyOverviewProvider);
-    final compact =
-        MediaQuery.sizeOf(context).width < 360 ||
-        MediaQuery.textScalerOf(context).scale(14) > 18;
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 48,
         title: const _Wordmark(),
         actions: [
           IconButton(
@@ -44,45 +42,55 @@ class HomeScreen extends ConsumerWidget {
             return Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 720),
-                child: ListView(
-                  padding: const EdgeInsets.only(top: 4, bottom: 24),
+                // Training tiles stay pinned above the bottom bar; the rest
+                // scrolls.
+                child: Column(
                   children: [
-                    Padding(
-                      padding: padded,
-                      child: _ContinentPicker(continent: continent),
-                    ),
-                    const SizedBox(height: 8),
-                    _Hero(continent: continent),
-                    Padding(
-                      padding: padded,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                    Expanded(
+                      child: ListView(
+                        padding: const EdgeInsets.only(top: 0, bottom: 8),
                         children: [
-                          _StreakRescueCard(continent: continent),
-                          daily.when(
-                            loading: () => const Padding(
-                              padding: EdgeInsets.all(24),
-                              child: Center(child: CircularProgressIndicator()),
-                            ),
-                            error: (_, _) => _LoadFailed(ref: ref),
-                            data: (overview) => _Expedition(
-                              continent: continent,
-                              overview: overview,
-                            ),
+                          Padding(
+                            padding: padded,
+                            child: _ContinentPicker(continent: continent),
                           ),
-                          const SizedBox(height: 16),
-                          _MapProgress(continent: continent),
-                          const SizedBox(height: 12),
-                          const _StreakCard(),
-                          const SizedBox(height: 16),
-                          _TrainingRow(compact: compact),
-                          const SizedBox(height: 8),
-                          _LevelRow(
-                            continent: continent,
-                            activeSession:
-                                daily.asData?.value.activeSession != null,
+                          const SizedBox(height: 4),
+                          Padding(
+                            padding: padded,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                _StreakRescueCard(continent: continent),
+                                daily.when(
+                                  loading: () => const Padding(
+                                    padding: EdgeInsets.all(24),
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  ),
+                                  error: (_, _) => _LoadFailed(ref: ref),
+                                  data: (overview) => _Expedition(
+                                    continent: continent,
+                                    overview: overview,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                _LevelRow(
+                                  continent: continent,
+                                  activeSession:
+                                      daily.asData?.value.activeSession != null,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(side, 6, side, 6),
+                      // Low screens (landscape) keep the tiles small.
+                      child: _TrainingRow(
+                        maxTile: constraints.maxHeight < 520 ? 72 : 150,
                       ),
                     ),
                   ],
@@ -96,112 +104,23 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-/// Full-width illustration of the region; its lower edge is a soft wave
-/// that fades into the page. Purely decorative.
-class _Hero extends StatelessWidget {
-  const _Hero({required this.continent});
-  final Continent continent;
-
-  @override
-  Widget build(BuildContext context) {
-    final page = Theme.of(context).scaffoldBackgroundColor;
-    return ExcludeSemantics(
-      child: AspectRatio(
-        aspectRatio: 941 / 404,
-        child: ClipPath(
-          clipper: const _WaveClipper(),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.asset(
-                'assets/home/hero_${continent.artId}.webp',
-                fit: BoxFit.cover,
-                cacheWidth: 1200,
-              ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: const [.72, 1],
-                    colors: [page.withValues(alpha: 0), page],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _WaveClipper extends CustomClipper<Path> {
-  const _WaveClipper();
-  @override
-  Path getClip(Size size) {
-    final h = size.height, w = size.width;
-    return Path()
-      ..lineTo(w, 0)
-      ..lineTo(w, h * .9)
-      ..quadraticBezierTo(w * .75, h * .8, w * .5, h * .92)
-      ..quadraticBezierTo(w * .25, h * 1.04, 0, h * .9)
-      ..close();
-  }
-
-  @override
-  bool shouldReclip(_WaveClipper oldClipper) => false;
-}
-
-/// App name with the same kuna as the launcher icon: one image, one name.
+/// The v2 logo: globe, name and the green swoosh in one picture.
 class _Wordmark extends StatelessWidget {
   const _Wordmark();
 
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Semantics(
-      header: true,
-      label: 'GeoKuna',
-      excludeSemantics: true,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: GeoColors.of(context).brandMint,
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(3),
-              child: Image.asset(
-                'assets/mascot/kuna-globe.png',
-                width: 34,
-                height: 34,
-                cacheWidth: 102,
-              ),
-            ),
-          ),
-          const SizedBox(width: 10),
-          // A logo may shrink on narrow screens with very large text.
-          Flexible(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                'GeoKuna',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -0.4,
-                  color: scheme.primary,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Semantics(
+    header: true,
+    label: 'GeoKuna',
+    excludeSemantics: true,
+    child: Image.asset(
+      'assets/v2/logo_wordmark.webp',
+      height: 32,
+      cacheHeight: 96,
+      fit: BoxFit.contain,
+      alignment: Alignment.centerLeft,
+    ),
+  );
 }
 
 Future<void> _openAndRefresh(
@@ -219,13 +138,38 @@ Future<void> _openAndRefresh(
 
 /// One scrollable row of chips (one row at any width and text size) and a
 /// hint that more areas are hidden to the side.
-class _ContinentPicker extends ConsumerWidget {
+class _ContinentPicker extends ConsumerStatefulWidget {
   const _ContinentPicker({required this.continent});
   final Continent continent;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final hint = Theme.of(context).textTheme.bodySmall;
+  ConsumerState<_ContinentPicker> createState() => _ContinentPickerState();
+}
+
+class _ContinentPickerState extends ConsumerState<_ContinentPicker> {
+  final _chips = {for (final c in Continent.values) c: GlobalKey()};
+
+  @override
+  void didUpdateWidget(_ContinentPicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.continent == widget.continent) return;
+    // After a swipe on the banner the chosen chip may be off-screen.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final chip = _chips[widget.continent]!.currentContext;
+      if (chip != null && chip.mounted) {
+        Scrollable.ensureVisible(
+          chip,
+          alignment: .5,
+          duration: const Duration(milliseconds: 250),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final continent = widget.continent;
+    final hint = Theme.of(context).textTheme.labelSmall;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -239,6 +183,7 @@ class _ContinentPicker extends ConsumerWidget {
               children: [
                 for (final option in Continent.values) ...[
                   ChoiceChip(
+                    key: _chips[option],
                     label: Text(option.label),
                     selected: continent == option,
                     showCheckmark: false,
@@ -257,9 +202,9 @@ class _ContinentPicker extends ConsumerWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.west, size: 16, color: hint?.color),
+              Icon(Icons.west, size: 13, color: hint?.color),
               const SizedBox(width: 6),
-              Icon(Icons.swipe, size: 18, color: hint?.color),
+              Icon(Icons.swipe, size: 14, color: hint?.color),
               const SizedBox(width: 4),
               Flexible(
                 child: Text(
@@ -269,7 +214,7 @@ class _ContinentPicker extends ConsumerWidget {
                 ),
               ),
               const SizedBox(width: 6),
-              Icon(Icons.east, size: 16, color: hint?.color),
+              Icon(Icons.east, size: 13, color: hint?.color),
             ],
           ),
         ),
@@ -342,20 +287,53 @@ class _Expedition extends ConsumerWidget {
         : canStart
         ? 'Gotowy na wyprawę?'
         : 'Na dziś wszystko!';
+    // First visit of an area: the main button is the easy placement quiz.
+    final placement =
+        overview.firstVisit && active == null && overview.newAvailable > 0;
+    final subtitle = placement
+        ? '${continent.label} · krótki quiz na start, poziom łatwy'
+        // The plan is one sentence; under the headline it reads as a tag.
+        : '${continent.label} · '
+              // The headline already says „Na dziś wszystko!”.
+              '${_planText(context, overview).replaceFirst('Na dziś wszystko. ', '').replaceFirst(RegExp(r'\.$'), '')}';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _Headline(headline),
-        const SizedBox(height: 4),
-        Text(
-          // The plan is one sentence; under the headline it reads as a tag.
-          '${continent.label} · '
-          '${_planText(context, overview).replaceFirst(RegExp(r'\.$'), '')}',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-            fontWeight: FontWeight.w400,
-          ),
+        _Banner(
+          continent: continent,
+          headline: headline,
+          subtitle: subtitle,
+          onSwipe: (area) =>
+              ref.read(selectedContinentProvider.notifier).select(area),
+          action: placement
+              ? _StartButton(
+                  label: 'Wstępny quiz',
+                  onPressed: () =>
+                      _openAndRefresh(context, ref, '/daily?mode=placement'),
+                )
+              : !(canStart || extra)
+              ? null
+              // The extra round is optional, so it never looks like the
+              // day's main task.
+              : extra
+              ? FilledButton.tonalIcon(
+                  // Cream on the picture: optional, but still readable.
+                  style: FilledButton.styleFrom(
+                    backgroundColor: GeoTheme.paper.withValues(alpha: .92),
+                    minimumSize: const Size.fromHeight(48),
+                    shape: const StadiumBorder(),
+                  ),
+                  onPressed: () =>
+                      _openAndRefresh(context, ref, '/daily?mode=extra'),
+                  icon: const Icon(Icons.replay),
+                  label: const Text('Kolejna runda'),
+                )
+              : _StartButton(
+                  label: active == null
+                      ? 'Rozpocznij wyprawę'
+                      : 'Wznów wyprawę',
+                  onPressed: () => _openAndRefresh(context, ref, '/daily'),
+                ),
         ),
         if (overview.otherDueCount > 0) ...[
           const SizedBox(height: 8),
@@ -366,115 +344,270 @@ class _Expedition extends ConsumerWidget {
             style: theme.textTheme.bodySmall,
           ),
         ],
-        if (overview.reservedNewElsewhere > 0 && active == null) ...[
-          const SizedBox(height: 8),
-          Text(
-            'Nowe pytania czekają już w rozpoczętej wyprawie na innym '
-            'kontynencie. Wróć do niej lub zakończ ją, aby zmienić zakres.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium,
-          ),
-        ],
-        if (canStart || extra) ...[
-          const SizedBox(height: 16),
-          // The extra round is optional, so it never looks like the
-          // day's main task.
-          if (extra)
-            FilledButton.tonalIcon(
-              onPressed: () =>
-                  _openAndRefresh(context, ref, '/daily?mode=extra'),
-              icon: const Icon(Icons.replay),
-              label: const Text('Kolejna runda'),
-            )
-          else
-            _StartButton(
-              label: active == null ? 'Rozpocznij wyprawę' : 'Wznów wyprawę',
-              onPressed: () => _openAndRefresh(context, ref, '/daily'),
-            ),
-        ],
-        // Placement helps at the start of a continent; later it is noise.
-        if (active == null &&
-            overview.newAvailable > 0 &&
-            overview.learnedCount < placementUntilLearned)
-          TextButton.icon(
-            style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
-            onPressed: () =>
-                _openAndRefresh(context, ref, '/daily?mode=placement'),
-            icon: const Icon(Icons.travel_explore),
-            label: const Text('Kuna sprawdzi, co już wiesz'),
-          ),
       ],
     );
   }
 }
 
-/// Big headline between two small bursts of sun rays.
-class _Headline extends StatelessWidget {
-  const _Headline(this.text);
-  final String text;
+/// Region banner (look v2): the headline and plan above a rounded region
+/// picture. On the picture: the streak (top right), map progress and the
+/// main button (bottom). The headline is real text on the page, so it stays
+/// readable whatever the picture shows and grows with the font.
+/// Swipe left: next area, right: the previous one (the chips do the same
+/// for screen readers).
+class _Banner extends StatelessWidget {
+  const _Banner({
+    required this.continent,
+    required this.headline,
+    required this.subtitle,
+    required this.onSwipe,
+    this.action,
+  });
+  final Continent continent;
+  final String headline, subtitle;
+  final ValueChanged<Continent> onSwipe;
+  final Widget? action;
+
+  static String art(Continent area) {
+    // Two variants per region; the picture changes from day to day.
+    final day = DateTime.now().difference(DateTime(2026)).inDays;
+    return 'assets/v2/banner_${area.artId}_${day % 2 + 1}.webp';
+  }
+
+  void _swiped(DragEndDetails details) {
+    final velocity = details.primaryVelocity ?? 0;
+    if (velocity.abs() < 200) return;
+    final next = continent.index + (velocity < 0 ? 1 : -1);
+    if (next < 0 || next >= Continent.values.length) return;
+    onSwipe(Continent.values[next]);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final rays = GeoColors.of(context).sunRays;
-    Widget burst(bool left) => ExcludeSemantics(
-      child: CustomPaint(
-        size: const Size(22, 30),
-        painter: _RaysPainter(rays, mirrored: !left),
-      ),
-    );
-    return Semantics(
-      header: true,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+    final theme = Theme.of(context);
+    return GestureDetector(
+      onHorizontalDragEnd: _swiped,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          burst(true),
-          const SizedBox(width: 8),
-          Flexible(
+          Semantics(
+            header: true,
             child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.w800, letterSpacing: -0.5),
+              headline,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.3,
+                color: GeoTheme.ink,
+              ),
             ),
           ),
-          const SizedBox(width: 8),
-          burst(false),
+          Text(
+            subtitle,
+            style: theme.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 8),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              // Decoded at the size it is shown, not at 1080 px: a third of
+              // the memory on a typical phone. The neighbours are decoded
+              // ahead, so a swipe shows the next picture at once.
+              final decodeWidth =
+                  (constraints.maxWidth *
+                          MediaQuery.devicePixelRatioOf(context))
+                      .round()
+                      .clamp(1, 1080);
+              ImageProvider provider(Continent area) =>
+                  ResizeImage(AssetImage(art(area)), width: decodeWidth);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (!context.mounted) return;
+                for (final step in const [-1, 1]) {
+                  final i = continent.index + step;
+                  if (i >= 0 && i < Continent.values.length) {
+                    precacheImage(provider(Continent.values[i]), context);
+                  }
+                }
+              });
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: AspectRatio(
+                  aspectRatio: 1.45,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ExcludeSemantics(
+                        child: Image(
+                          image: provider(continent),
+                          fit: BoxFit.cover,
+                          // Keeps the kuna's face in the frame.
+                          alignment: const Alignment(0, -.35),
+                          gaplessPlayback: true,
+                        ),
+                      ),
+                      const Positioned(
+                        top: 10,
+                        right: 10,
+                        child: _StreakBadge(),
+                      ),
+                      Positioned(
+                        left: 14,
+                        right: 14,
+                        bottom: 12,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _MapBadge(continent: continent),
+                            if (action != null) ...[
+                              const SizedBox(height: 8),
+                              SizedBox(width: double.infinity, child: action),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
 
-class _RaysPainter extends CustomPainter {
-  const _RaysPainter(this.color, {required this.mirrored});
-  final Color color;
-  final bool mirrored;
+/// Small cream pill on the banner picture.
+class _Pill extends StatelessWidget {
+  const _Pill({required this.child, this.onTap});
+  final Widget child;
+  final VoidCallback? onTap;
 
   @override
-  void paint(Canvas canvas, Size size) {
-    final pen = Paint()
-      ..color = color
-      ..strokeWidth = 3.2
-      ..strokeCap = StrokeCap.round;
-    final x0 = mirrored ? 2.0 : size.width - 2;
-    final dir = mirrored ? 1.0 : -1.0;
-    final mid = size.height / 2;
-    canvas
-      ..drawLine(Offset(x0, mid - 3), Offset(x0 + dir * 14, mid - 12), pen)
-      ..drawLine(
-        Offset(x0 + dir * 2, mid + 2),
-        Offset(x0 + dir * 18, mid + 2),
-        pen,
-      )
-      ..drawLine(Offset(x0, mid + 7), Offset(x0 + dir * 14, mid + 16), pen);
-  }
-
-  @override
-  bool shouldRepaint(_RaysPainter oldDelegate) => oldDelegate.color != color;
+  Widget build(BuildContext context) => Material(
+    color: GeoTheme.paper.withValues(alpha: .9),
+    shape: const StadiumBorder(),
+    clipBehavior: Clip.antiAlias,
+    child: InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: child,
+      ),
+    ),
+  );
 }
 
-/// The main call to action: a tall rounded green button with a compass and
-/// a chevron, like the mockup.
+/// „Passa nauki” on the banner: the flame and the day count.
+class _StreakBadge extends ConsumerWidget {
+  const _StreakBadge();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors = GeoColors.of(context);
+    final text = Theme.of(context).textTheme.labelLarge
+        ?.copyWith(fontWeight: FontWeight.w800, color: GeoTheme.ink);
+    final streak = ref.watch(streakProvider).asData?.value;
+    final current = streak?.current ?? 0;
+    final tokens = streak?.tokens ?? 0;
+    final next = streak?.nextReward;
+    final state = current == 0
+        ? 'Zacznij dziś i zdobądź pierwsze dni!'
+        : streak!.practisedToday
+        ? 'Dzisiaj zaliczone.'
+        : 'Odpowiedz dziś, aby jej nie stracić.';
+    return Semantics(
+      label:
+          'Passa nauki: ${daysLabel(current)}. $state '
+          'Rekord: ${daysLabel(streak?.best ?? 0)}.'
+          '${tokens > 0 ? ' Żetony Nieprzykunowanie: $tokens.' : ''}'
+          '${next == null ? '' : ' Nagroda za $next dni z rzędu: jeszcze ${daysLabel(streak!.daysToNextReward!)}.'}',
+      excludeSemantics: true,
+      child: _Pill(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.local_fire_department, size: 20, color: colors.streak),
+            const SizedBox(width: 2),
+            Text(daysLabel(current), style: text),
+            if (tokens > 0) ...[
+              const SizedBox(width: 8),
+              const TokenIcon(size: 16),
+              Text(' $tokens', style: text),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Map progress of the area at its current level, toward the next medal.
+class _MapBadge extends ConsumerWidget {
+  const _MapBadge({required this.continent});
+  final Continent continent;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final level =
+        ref
+            .watch(appPreferencesProvider)
+            .asData
+            ?.value
+            .difficultyFor(continent) ??
+        LearningDifficulty.normal;
+    final map = ref
+        .watch(achievementsProvider)
+        .asData
+        ?.value
+        .where((a) => a.topic == 'map' && a.level == level)
+        .firstOrNull;
+    if (map == null || map.totalCount == 0) return const SizedBox.shrink();
+    final next = [(50, 'brązowego'), (80, 'srebrnego'), (100, 'złotego')]
+        .where((t) => map.qualifiedCount * 100 < map.totalCount * t.$1)
+        .firstOrNull;
+    final missing = next == null
+        ? 0
+        : (map.totalCount * next.$1 + 99) ~/ 100 - map.qualifiedCount;
+    final label =
+        '${continent.label}: ${map.qualifiedCount}/${map.totalCount} '
+        '${continent.areaNoun}';
+    return Semantics(
+      button: true,
+      label:
+          'Postęp mapy: $label. '
+          '${next == null ? 'Złoty medal zdobyty.' : 'Do ${next.$2} medalu: jeszcze $missing.'}',
+      excludeSemantics: true,
+      child: _Pill(
+        onTap: () => context.push('/learning/${continent.name}'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: Theme.of(context).textTheme.labelMedium
+                  ?.copyWith(fontWeight: FontWeight.w800, color: GeoTheme.ink),
+            ),
+            const SizedBox(height: 3),
+            SizedBox(
+              width: 120,
+              child: LinearProgressIndicator(
+                value: map.qualifiedCount / map.totalCount,
+                minHeight: 4,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The main call to action: a tall green pill with a white rim and a play
+/// sign, like the v2 component sheet.
 class _StartButton extends StatelessWidget {
   const _StartButton({required this.label, required this.onPressed});
   final String label;
@@ -484,257 +617,115 @@ class _StartButton extends StatelessWidget {
   Widget build(BuildContext context) => FilledButton(
     onPressed: onPressed,
     style: FilledButton.styleFrom(
-      minimumSize: const Size.fromHeight(64),
-      shape: const StadiumBorder(),
+      minimumSize: const Size.fromHeight(54),
+      shape: const StadiumBorder(
+        side: BorderSide(color: Colors.white, width: 2.5),
+      ),
       textStyle: Theme.of(context).textTheme.titleLarge
           ?.copyWith(fontWeight: FontWeight.w700),
     ),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.explore_outlined, size: 30),
-        const SizedBox(width: 12),
-        Expanded(child: Text(label, textAlign: TextAlign.center)),
-        const Icon(Icons.chevron_right, size: 28),
+        const Icon(Icons.play_arrow_rounded, size: 34),
+        const SizedBox(width: 8),
+        // Very large text shrinks the label instead of breaking a word.
+        Flexible(
+          child: FittedBox(fit: BoxFit.scaleDown, child: Text(label)),
+        ),
       ],
     ),
   );
 }
 
-/// Warm card with a soft border, shared by map progress and the tiles.
-class _WarmCard extends StatelessWidget {
-  const _WarmCard({
-    required this.child,
-    this.color,
-    this.border,
-    this.onTap,
-    this.radius = 24,
-  });
-  final Widget child;
-  final Color? color, border;
-  final VoidCallback? onTap;
-  final double radius;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = GeoColors.of(context);
-    return Material(
-      color: color ?? colors.warmCard,
-      elevation: 1,
-      shadowColor: Colors.black26,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(radius),
-        side: BorderSide(color: border ?? colors.warmCardBorder),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(onTap: onTap, child: child),
-    );
-  }
-}
-
-/// „Passa nauki”: the streak in a warm yellow card with a day counter.
-class _StreakCard extends ConsumerWidget {
-  const _StreakCard();
+/// Training tiles (v2.5 pack): the picture without text, the name as real
+/// text on the tile's calm lower band, so it scales with the font size
+/// (down to fit) and follows the area (Herby, maps of Poland and the USA).
+class _TrainingRow extends ConsumerWidget {
+  const _TrainingRow({required this.maxTile});
+  final double maxTile;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = GeoColors.of(context);
-    final theme = Theme.of(context);
-    final streak = ref.watch(streakProvider).asData?.value;
-    final current = streak?.current ?? 0;
-    final today = streak?.practisedToday == true;
-    final tokens = streak?.tokens ?? 0;
-    final text = current == 0
-        ? 'Zacznij dziś i zdobądź pierwsze dni!'
-        : today
-        ? 'Dzisiaj zaliczone — tak trzymaj!'
-        : 'Odpowiedz dziś, aby jej nie stracić.';
-    final next = streak?.nextReward;
-    final reward = next == null
-        ? null
-        : 'Nagroda za $next dni z rzędu: '
-              'jeszcze ${daysLabel(streak!.daysToNextReward!)}';
-    return Semantics(
-      liveRegion: true,
-      label:
-          'Passa nauki: ${daysLabel(current)}. $text '
-          'Rekord: ${daysLabel(streak?.best ?? 0)}.'
-          '${tokens > 0 ? ' Żetony Nieprzykunowanie: $tokens.' : ''}'
-          '${reward == null ? '' : ' $reward.'}',
-      excludeSemantics: true,
-      child: _WarmCard(
-        color: colors.streakCard,
-        border: colors.streakCardBorder,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final title = Text(
-                'Passa nauki',
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w800,
-                ),
-              );
-              final flame = Icon(
-                Icons.local_fire_department,
-                size: 40,
-                color: colors.streak,
-              );
-              final counter = Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  DecoratedBox(
-                    decoration: ShapeDecoration(
-                      color: colors.streakPill,
-                      shape: const StadiumBorder(),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 6,
+    final area = ref.watch(selectedContinentProvider);
+    final items = [
+      (
+        'Mapa',
+        switch (area) {
+          Continent.poland => 'mapa_polska',
+          Continent.usa => 'mapa_usa',
+          _ => 'mapa',
+        },
+        '/learn',
+      ),
+      // Short on the tile; the screen title says „Miasta wojewódzkie”.
+      ('Stolice', 'stolice', '/capitals'),
+      (
+        area.symbolsLabel,
+        switch (area) {
+          Continent.poland => 'herby',
+          Continent.europe => 'flagi_europa',
+          Continent.usa => 'flagi_usa',
+          _ => 'flagi_swiat',
+        },
+        '/flags',
+      ),
+    ];
+    final label = Theme.of(context).textTheme.titleMedium
+        ?.copyWith(fontWeight: FontWeight.w800, color: GeoTheme.ink);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        for (final (name, art, path) in items)
+          Flexible(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: maxTile),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
+                child: Semantics(
+                  button: true,
+                  label: 'Trening: $name',
+                  excludeSemantics: true,
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: InkWell(
+                      customBorder: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      child: Text(
-                        daysLabel(current),
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w800,
+                      onTap: () => _openAndRefresh(context, ref, path),
+                      // Square before the picture loads: no layout jump.
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            Image.asset(
+                              'assets/v2/tile_$art.webp',
+                              cacheWidth: 432,
+                            ),
+                            // The lower band between the leaves is left
+                            // free for the name.
+                            FractionallySizedBox(
+                              alignment: Alignment.bottomCenter,
+                              heightFactor: .3,
+                              widthFactor: .66,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(name, style: label),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  if (tokens > 0) ...[
-                    const SizedBox(height: 4),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [const TokenIcon(size: 18), Text(' $tokens')],
-                    ),
-                  ],
-                ],
-              );
-              final details = [
-                Text(text, style: theme.textTheme.bodyMedium),
-                if (reward != null)
-                  Text(reward, style: theme.textTheme.bodySmall),
-              ];
-              // Narrow screen or large text: the counter goes below.
-              final narrow =
-                  constraints.maxWidth <
-                  MediaQuery.textScalerOf(context).scale(14) * 22;
-              if (narrow) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        flame,
-                        const SizedBox(width: 8),
-                        Expanded(child: title),
-                      ],
-                    ),
-                    ...details,
-                    const SizedBox(height: 8),
-                    counter,
-                  ],
-                );
-              }
-              return Row(
-                children: [
-                  flame,
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [title, ...details],
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  counter,
-                ],
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _TrainingRow extends ConsumerWidget {
-  const _TrainingRow({required this.compact});
-  final bool compact;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final area = ref.watch(selectedContinentProvider);
-    final items = [
-      ('Mapa', 'mapa', '/learn'),
-      // Short on the tile; the screen title says „Miasta wojewódzkie”.
-      ('Stolice', 'stolice', '/capitals'),
-      (area.symbolsLabel, 'flagi', '/flags'),
-    ];
-    Widget tile((String, String, String) item) {
-      final (label, art, path) = item;
-      final image = ExcludeSemantics(
-        // The art is 3:2 with a white margin; scale it to the tile width.
-        child: AspectRatio(
-          aspectRatio: 3 / 2,
-          child: Transform.scale(
-            scale: 1.25,
-            child: Image.asset(
-              'assets/home/tile_${area.artId}_$art.webp',
-              fit: BoxFit.contain,
-              cacheWidth: 384,
+                ),
+              ),
             ),
           ),
-        ),
-      );
-      final text = Text(
-        label,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: theme.textTheme.titleMedium?.copyWith(
-          fontWeight: FontWeight.w800,
-        ),
-      );
-      return Semantics(
-        button: true,
-        label: 'Trening: $label',
-        excludeSemantics: true,
-        child: _WarmCard(
-          radius: 22,
-          onTap: () => _openAndRefresh(context, ref, path),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
-            child: compact
-                ? Row(
-                    children: [
-                      SizedBox(width: 96, child: image),
-                      const SizedBox(width: 12),
-                      Expanded(child: text),
-                    ],
-                  )
-                : Column(children: [image, const SizedBox(height: 6), text]),
-          ),
-        ),
-      );
-    }
-
-    if (compact) {
-      return Column(
-        children: [
-          for (final item in items) ...[
-            tile(item),
-            if (item != items.last) const SizedBox(height: 8),
-          ],
-        ],
-      );
-    }
-    return Row(
-      children: [
-        for (final item in items) ...[
-          Expanded(child: tile(item)),
-          if (item != items.last) const SizedBox(width: 10),
-        ],
       ],
     );
   }
@@ -820,97 +811,6 @@ class _LevelRow extends ConsumerWidget {
   }
 }
 
-/// Map progress toward the next medal at the continent's current level.
-class _MapProgress extends ConsumerWidget {
-  const _MapProgress({required this.continent});
-  final Continent continent;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final level =
-        ref
-            .watch(appPreferencesProvider)
-            .asData
-            ?.value
-            .difficultyFor(continent) ??
-        LearningDifficulty.normal;
-    final map = ref
-        .watch(achievementsProvider)
-        .asData
-        ?.value
-        .where((a) => a.topic == 'map' && a.level == level)
-        .firstOrNull;
-    if (map == null || map.totalCount == 0) return const SizedBox.shrink();
-    final next = [(50, 'brązowego'), (80, 'srebrnego'), (100, 'złotego')]
-        .where((t) => map.qualifiedCount * 100 < map.totalCount * t.$1)
-        .firstOrNull;
-    final missing = next == null
-        ? 0
-        : (map.totalCount * next.$1 + 99) ~/ 100 - map.qualifiedCount;
-    final theme = Theme.of(context);
-    return Semantics(
-      button: true,
-      child: _WarmCard(
-        onTap: () => context.push('/learning/${continent.name}'),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 14, 8, 14),
-          child: Row(
-            children: [
-              ExcludeSemantics(
-                child: Image.asset(
-                  'assets/home/icon_mountain.png',
-                  width: 52,
-                  height: 52,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Container(
-                width: 1,
-                height: 56,
-                color: GeoColors.of(context).warmCardBorder,
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${continent.label}: ${map.qualifiedCount}/'
-                      '${map.totalCount} ${continent.areaNoun}',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    LinearProgressIndicator(
-                      value: map.qualifiedCount / map.totalCount,
-                      minHeight: 8,
-                      borderRadius: BorderRadius.circular(8),
-                      semanticsLabel: 'Postęp mapy',
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      [
-                        if (map.learningCount > 0)
-                          'W nauce: ${map.learningCount}.',
-                        next == null
-                            ? 'Złoty medal zdobyty.'
-                            : 'Do ${next.$2} medalu: jeszcze $missing.',
-                      ].join(' '),
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              ),
-              const Icon(Icons.chevron_right),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 String _planText(BuildContext context, MemoryOverview overview) {
   final active = overview.activeSession;
   if (active != null) {
@@ -936,9 +836,6 @@ String _planText(BuildContext context, MemoryOverview overview) {
   ];
   return '${parts.join(' i ')}.';
 }
-
-/// The placement link disappears once this many cards have answers.
-const placementUntilLearned = 10;
 
 String _plural(int n, String one, String few, String many) {
   if (n == 1) return one;
@@ -1024,7 +921,7 @@ class _StreakRescueCardState extends ConsumerState<_StreakRescueCard> {
                 runSpacing: 8,
                 children: [
                   Image.asset(
-                    'assets/mascot/kuna-sad.png',
+                    'assets/v2/kuna_sad.webp',
                     width: 64,
                     height: 64,
                     cacheWidth: 192,

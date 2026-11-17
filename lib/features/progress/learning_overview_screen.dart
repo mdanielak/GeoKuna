@@ -261,15 +261,16 @@ class LearningOverviewScreen extends ConsumerWidget {
                         (achievement) => achievement.topic == topic,
                       ))
                         ListTile(
-                          leading: Builder(
-                            builder: (context) => Icon(
-                              level.earnedMedal == 0
-                                  ? Icons.workspace_premium_outlined
-                                  : Icons.workspace_premium,
-                              color: GeoColors.of(context)
-                                  .medal(level.earnedMedal),
-                            ),
-                          ),
+                          // Earned: the painted medal (v2.5); not yet: an
+                          // outline in the text colour.
+                          leading: level.earnedMedal == 0
+                              ? const Icon(Icons.workspace_premium_outlined)
+                              : Image.asset(
+                                  'assets/v2/medal_${const ['braz', 'srebro', 'zloto'][level.earnedMedal - 1]}.webp',
+                                  width: 36,
+                                  height: 36,
+                                  cacheWidth: 108,
+                                ),
                           title: Text(
                             '${level.level.label} · ${_medalLabel(level.earnedMedal)}',
                           ),

@@ -97,10 +97,27 @@ class CapitalCatalog {
     if (records.any((r) => r['status'] != 'verified')) {
       throw const FormatException('Niezweryfikowany fakt');
     }
-    return CapitalCatalog(
-      json['version'] as String,
-      records.map(CapitalFact.fromJson).toList(),
-    );
+    // English names (Natural Earth, see build_capitals_en.py) are accepted
+    // answers too; the bundled facts keep their verified Polish names.
+    final english =
+        ((jsonDecode(
+                  await rootBundle.loadString(
+                    'assets/content/capitals_en.json',
+                  ),
+                ) as Map<String, dynamic>)['names']
+                as Map<String, dynamic>)[continent.name]
+            as Map<String, dynamic>? ??
+        const {};
+    return CapitalCatalog(json['version'] as String, [
+      for (final record in records)
+        CapitalFact.fromJson({
+          ...record,
+          'aliases': [
+            ...(record['aliases'] as List),
+            ...(english[record['country_id']] as List? ?? const []),
+          ],
+        }),
+    ]);
   }
 }
 

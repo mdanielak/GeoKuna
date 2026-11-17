@@ -21,7 +21,7 @@ void main() {
     await tester.pump();
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     await tester.scrollUntilVisible(
-      find.text('Mapa'),
+      find.bySemanticsLabel('Trening: Mapa'),
       160,
       scrollable: find.byType(Scrollable).first,
     );

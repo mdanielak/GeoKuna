@@ -21,11 +21,20 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 - Nagrody za passę (3–90 dni) i żetony Nieprzykunowanie per kontynent; plan Dziś wydzielony do `daily_planner.dart`.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
-  pewniaków, „Kuna sprawdzi, co już wiesz”, ciekawostka z żarówką także po błędzie.
+  pewniaków, wstępny quiz (dawniej „Kuna sprawdzi, co już wiesz”), ciekawostka (karta z kuną z lupą) także po błędzie.
 - Drabinka trudnych kart, szczebele 1–2 (2026-11-15), kopia postępu w Ustawieniach,
   tokeny kolorów i typografii (`GeoColors`): po 2 błędach łatwiejszy krok
   przed właściwym pytaniem. Ciekawostki o flagach (3 na flagę), Europa bez
   Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief z kafelków 1:10m z rzekami i jeziorami.
+
+- **Wygląd v2** (branch `wyglad_v2`, grafiki z paczek GeoKuna v2.3–v2.5):
+  paleta kremowo-zielona, logo, banner regionu z kuną (przesunięcie w lewo/prawo
+  zmienia kontynent; na obrazku passa, postęp mapy i główny przycisk), kafelki
+  Mapa/Stolice/Flagi przypięte u dołu, krajobraz w nagłówku quizu, „Wstępny
+  quiz” (łatwy) przy pierwszej wizycie obszaru, rozwijane błędy w podsumowaniu,
+  angielskie nazwy stolic; kafelki bez napisu dla każdego obszaru (mapa
+  Polski/USA, flagi Europy/USA/świata, herby), medale i żeton w „Moja nauka”,
+  kuna z lupą na karcie ciekawostki.
 
 Ostatnie przyrosty sprawdzono zrzutami testowymi (`/shots`, 390×844 i 320×640/160%),
 nie w Chrome ani na telefonie.
@@ -42,7 +51,6 @@ nie dowodzi retencji w miesiącach.
 2. **Sprawdzenie kopii postępu na urządzeniu**: zapis przez systemowy wybór pliku
    (Android SAF) i pobranie w Chrome; przeniesienie Web → telefon.
 3. **Państwo → flaga**: cztery obrazy, osobna karta, jednoznaczne dystraktory.
-   **Kuna z lupą** zamiast żarówki na karcie ciekawostki (grafika w stylu maskotek).
 4. **Fizyczny Android** po uzgodnieniu toolchainu: tryb samolotowy, Wstecz,
    klawiatura, TalkBack, trwałość bazy, płynność; potem podpisywanie APK/AAB
    (klucze poza repo).
@@ -163,6 +171,19 @@ się sposób nauki. Pierwszy szczebel działa (LEARNING.md → „Drabinka”). 
 Rozstrzygnięte: szczebel 2 obejmuje mapę i flagi (stolice nie, bo wpisana stolica
 nie wskazuje kraju); ćwiczenia drabinki liczą się do passy jak każda odpowiedź.
 Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
+
+## Do poprawy później (wygląd v2, przegląd 2026-11-17)
+
+1. Podpowiedź „Przesuń, aby zobaczyć więcej kontynentów” jest niejednoznaczna,
+   odkąd przesuwa się też banner — usunąć lub przeredagować.
+2. Długi podtytuł „Na dziś wszystko!” (godzina powtórki + „Możesz jeszcze
+   poćwiczyć”) — skrócić.
+3. „Moja nauka” i „Ustawienia” w starym stylu Material (szare karty) — przenieść
+   na styl v2.
+4. Pierwsza wizyta zawsze proponuje Wstępny quiz; kto chce od razu zwykłej
+   wyprawy, ma tylko kafelki treningu — rozważyć drugi, mniejszy przycisk.
+5. Pozy przygodowe kuny (lornetka, aparat…) są w paczce, ale aplikacja ich
+   nie używa (nagrody, puste stany?).
 
 ## Dalsze przyrosty
 

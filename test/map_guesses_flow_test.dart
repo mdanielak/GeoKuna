@@ -57,9 +57,18 @@ void main() {
       }
     }
     expect(find.textContaining('Poprawna odpowiedź: Polska'), findsOneWidget);
-    // A fact also follows a miss, on its own bulb card.
+    // A fact also follows a miss, on its own card with the kuna and loupe.
     expect(find.text('Ciekawostka'), findsOneWidget);
-    expect(find.byIcon(Icons.lightbulb), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (w) =>
+            w is Image &&
+            w.image is ResizeImage &&
+            ((w.image as ResizeImage).imageProvider as AssetImage).assetName ==
+                'assets/v2/kuna_lupa.webp',
+      ),
+      findsOneWidget,
+    );
     expect((await db.select(db.memoryReviews).get()).single.rating, 1);
   });
 }

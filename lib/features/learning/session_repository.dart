@@ -791,6 +791,15 @@ class SessionRepository {
     ];
   });
 
+  /// No series (any topic or level) was ever started in this area: Today
+  /// then offers the placement quiz as its main action.
+  Future<bool> firstVisit() async =>
+      await (db.select(db.sessions)
+            ..where((s) => s.continent.equals(continent.name))
+            ..limit(1))
+          .getSingleOrNull() ==
+      null;
+
   Future<MemoryOverview> memoryOverview(
     Catalog catalog,
     CapitalCatalog capitals, {
@@ -809,6 +818,7 @@ class SessionRepository {
       reservedNewElsewhere: plan.reservedNewElsewhere,
       otherDueCount: plan.otherDueCount,
       learnedCount: plan.learnedCount,
+      firstVisit: await firstVisit(),
     );
   });
 
@@ -891,7 +901,11 @@ class MemoryOverview {
     this.reservedNewElsewhere = 0,
     this.otherDueCount = 0,
     this.learnedCount = 0,
+    this.firstVisit = false,
   });
+
+  /// Nothing was ever started in this area (see [SessionRepository.firstVisit]).
+  final bool firstVisit;
 
   /// Cards of this level with at least one graded answer.
   final int learnedCount;

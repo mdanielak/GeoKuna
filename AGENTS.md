@@ -184,7 +184,7 @@ Pełne reguły: `docs/LEARNING.md` (nauka) i `docs/CONTENT.md` (źródła). Nie 
   z losowym przesunięciem, nigdy idealnie na środku.
 - Błąd w serii wraca po 3–5 pytaniach jako nieoceniane ćwiczenie; trudny kraj
   wymaga 3 trafień z rzędu rozłożonych w czasie.
-- Limit 3 nowości dziennie jest globalny (trafienia w „Kuna sprawdzi” go nie zużywają);
+- Limit 3 nowości dziennie jest globalny (trafienia we „Wstępnym quizie” go nie zużywają);
   kolejna runda i pytania kontrolne nie są dopychane na siłę; rozpoczęta seria
   zachowuje format i migawkę.
 - Medale 50/80/100%, zaliczenie: dwie poprawne oceny w różne dni, ≥24 h, bez błędu
