@@ -167,6 +167,14 @@ czarno-czerwono-zielony; to nie stanowisko polityczne).
   (z normalizacją i jedną literówką). Kierunek państwo → flaga — nie wdrożony.
 - Nowa wersja grafiki = nowa ścieżka wersji; stare assety zostają dla aktywnych sesji.
 
+## Grafiki ekranu Dziś
+
+`assets/home/`: ilustracje regionów (`hero_<region>.webp`), kafelki treningu
+(`tile_<region>_{mapa,stolice,flagi}.webp`, przekonwertowane z PNG) i ikona gór —
+z paczki projektowej GeoKuna Assets v1.1 (`assets_mockups/`, dostarczona przez
+właściciela projektu). To dekoracje: nie są źródłem geometrii ani faktów; flagi
+i herby na kafelkach są tylko ozdobą (pytania używają paczek z sekcji Flagi).
+
 ## Rzeźba terenu
 
 [Natural Earth I with Shaded Relief, Water, and Drainages 1:10m, v2.0.0](https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/),

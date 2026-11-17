@@ -77,7 +77,7 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        expect(find.bySemanticsLabel('Kuna z globusem'), findsOneWidget);
+        expect(find.text('Gotowy na wyprawę?'), findsOneWidget);
         await tester.scrollUntilVisible(
           find.text('Stolice'),
           200,

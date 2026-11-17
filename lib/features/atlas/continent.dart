@@ -64,6 +64,18 @@ enum Continent {
   String get capitalPrompt =>
       _poland ? 'Miasto wojewódzkie?' : (_usa ? 'Stolica stanu?' : 'Stolica?');
 
+  /// Id of the illustrations in `assets/home/` (`hero_<id>`, `tile_<id>_<kind>`).
+  String get artId => switch (this) {
+    europe => 'europa',
+    africa => 'afryka',
+    asia => 'azja',
+    northAmerica => 'ameryka_polnocna',
+    southAmerica => 'ameryka_poludniowa',
+    oceania => 'oceania',
+    poland => 'polska',
+    usa => 'usa',
+  };
+
   /// Area of an id: voivodeship, US state or (all alike) a country.
   static Continent ofArea(String id) =>
       id.startsWith('PL-') ? poland : (id.startsWith('US-') ? usa : europe);

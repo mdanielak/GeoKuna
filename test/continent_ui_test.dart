@@ -42,8 +42,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Europa'), findsOneWidget);
-    expect(find.text('Wyprawa po Europie'), findsOneWidget);
-    expect(find.text('Zacznij dziś passę'), findsOneWidget);
+    expect(find.textContaining('Europa · '), findsOneWidget);
+    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
     expect(
       find.textContaining('Nowe pytania czekają już w rozpoczętej wyprawie'),
       findsOneWidget,
@@ -59,8 +59,8 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Afryka'), findsOneWidget);
-    expect(find.text('Wyprawa po Afryce'), findsOneWidget);
-    expect(find.text('Zacznij dziś passę'), findsOneWidget);
+    expect(find.textContaining('Afryka · '), findsOneWidget);
+    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
     expect(
       tester
           .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Afryka'))
@@ -70,8 +70,8 @@ void main() {
 
     await tester.tap(find.text('Azja'));
     await tester.pumpAndSettle();
-    expect(find.text('Wyprawa po Azji'), findsOneWidget);
-    expect(find.text('Zacznij dziś passę'), findsOneWidget);
+    expect(find.textContaining('Azja · '), findsOneWidget);
+    expect(find.text('Zacznij dziś i zdobądź pierwsze dni!'), findsOneWidget);
     tester.view.physicalSize = const Size(320, 640);
     tester.platformDispatcher.textScaleFactorTestValue = 2;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);

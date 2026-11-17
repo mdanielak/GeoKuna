@@ -47,7 +47,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('3 nowe pytania.'), findsOneWidget);
+    expect(find.text('Europa · 3 nowe pytania'), findsOneWidget);
     await tester.scrollUntilVisible(
       find.text('Rozpocznij wyprawę'),
       150,

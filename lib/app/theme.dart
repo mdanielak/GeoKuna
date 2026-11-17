@@ -76,6 +76,12 @@ class GeoColors extends ThemeExtension<GeoColors> {
     required this.silver,
     required this.gold,
     required this.brandMint,
+    required this.warmCard,
+    required this.warmCardBorder,
+    required this.streakCard,
+    required this.streakCardBorder,
+    required this.streakPill,
+    required this.sunRays,
   });
 
   static const light = GeoColors(
@@ -102,6 +108,13 @@ class GeoColors extends ThemeExtension<GeoColors> {
     gold: Color(0xFF9A7420),
     // Launcher icon background (tools/build_icons.py) and the wordmark.
     brandMint: Color(0xFFD6EEDC),
+    // Today screen (assets_mockups GeoKuna Assets v1.1 UI pieces).
+    warmCard: Color(0xFFFFFAF1),
+    warmCardBorder: Color(0xFFD7D1C5),
+    streakCard: Color(0xFFFFF3D9),
+    streakCardBorder: Color(0xFFF1DCAE),
+    streakPill: Color(0xFFFBE3A6),
+    sunRays: Color(0xFFF2B630),
   );
 
   final Color correct, correctContainer, onCorrectContainer;
@@ -111,6 +124,8 @@ class GeoColors extends ThemeExtension<GeoColors> {
   final Color onTriviaContainer;
   final Color flagFrame, flagFrameBorder, speechBubble, streak;
   final Color bronze, silver, gold, brandMint;
+  final Color warmCard, warmCardBorder, streakCard, streakCardBorder;
+  final Color streakPill, sunRays;
 
   static GeoColors of(BuildContext context) =>
       Theme.of(context).extension<GeoColors>() ?? light;
