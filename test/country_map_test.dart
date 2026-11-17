@@ -127,13 +127,17 @@ void main() {
     );
     await tester.pumpWidget(map(null));
     await tester.pumpAndSettle();
+    final overview = MapCamera.of(
+      tester.element(find.byType(PolygonLayer<String>)),
+    ).zoom;
     await tester.pumpWidget(map('ISL'));
     await tester.pumpAndSettle();
     final camera = MapCamera.of(
       tester.element(find.byType(PolygonLayer<String>)),
     );
     expect(camera.center, catalog.country('ISL').center);
-    expect(camera.zoom, 6);
+    // Only ~3% closer: the neighbours stay in view.
+    expect(camera.zoom - overview, closeTo(0.0426, 0.001));
   });
 
   testWidgets('wrong country label shows its name without intercepting taps', (
@@ -170,6 +174,19 @@ void main() {
           camera.latLngToScreenOffset(const LatLng(52, 19)),
     );
     expect(selected, 'POL');
+    // The label fades after ~2 s so it does not hide the map; the country
+    // itself stays red.
+    await tester.pump(const Duration(milliseconds: 2500));
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(find.text('Niemcy'), findsNothing);
+    expect(
+      tester
+          .widget<PolygonLayer<String>>(find.byType(PolygonLayer<String>))
+          .polygons
+          .where((p) => p.hitValue == 'DEU')
+          .every((p) => p.color == const Color(0xFFB85A48)),
+      isTrue,
+    );
     expect(tester.takeException(), isNull);
     semantics.dispose();
   });

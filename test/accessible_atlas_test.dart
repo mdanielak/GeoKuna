@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/atlas/continent.dart';
 import 'package:geokuna/features/atlas/country_map.dart';
 import 'package:geokuna/features/atlas/country_picker.dart';
 import 'package:geokuna/features/home/atlas_screen.dart';
@@ -18,13 +19,26 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     final catalog = (await tester.runAsync(Catalog.load))!;
+    final poland = (await tester.runAsync(
+      () => Catalog.load(continent: Continent.poland),
+    ))!;
     await tester.pumpWidget(
       ProviderScope(
-        overrides: [catalogProvider.overrideWith((ref) async => catalog)],
+        overrides: [
+          catalogProvider.overrideWith(
+            (ref) async =>
+                ref.watch(selectedContinentProvider) == Continent.poland
+                ? poland
+                : catalog,
+          ),
+        ],
         child: const MaterialApp(home: AtlasScreen()),
       ),
     );
     await tester.pumpAndSettle();
+    MapCamera camera() =>
+        MapCamera.of(tester.element(find.byType(PolygonLayer<String>)));
+    final overviewZoom = camera().zoom;
     await tester.ensureVisible(find.byType(TextField));
     await tester.enterText(find.byType(TextField), 'wegry');
     await tester.pumpAndSettle();
@@ -38,6 +52,8 @@ void main() {
     final map = tester.widget<CountryMap>(find.byType(CountryMap));
     expect(map.selectedId, 'HUN');
     expect(map.focusId, 'HUN');
+    // Choosing a country centres it with only a slight (~3%) zoom.
+    expect(camera().zoom - overviewZoom, inInclusiveRange(0.01, 0.1));
     await tester.enterText(find.byType(TextField), 'nieistniejace');
     await tester.pumpAndSettle();
     expect(
@@ -54,6 +70,14 @@ void main() {
       find.text('Nic nie znaleziono. Zmień wyszukiwaną nazwę.'),
       findsNothing,
     );
+    // The selection belongs to its continent: switching to the voivodeships
+    // must not look up 'HUN' there.
+    ProviderScope.containerOf(tester.element(find.byType(AtlasScreen)))
+        .read(selectedContinentProvider.notifier)
+        .select(Continent.poland);
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    expect(find.text('Dokąd dziś wyruszymy?'), findsOneWidget);
   });
 
   testWidgets('klawiatura przesuwa i przybliża mapę', (tester) async {

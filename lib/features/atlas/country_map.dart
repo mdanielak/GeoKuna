@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -17,6 +19,9 @@ class _RegionalMercator extends Epsg3857 {
 }
 
 const _revealZoomGain = 1.5;
+
+/// log2(1.03): the atlas focus zooms in by about 3%.
+const _focusZoomGain = 0.0426;
 
 class CountryMap extends StatefulWidget {
   const CountryMap({
@@ -59,6 +64,37 @@ class _CountryMapState extends State<CountryMap> {
   final LayerHitNotifier<String> _hits = ValueNotifier(null);
   bool _initialQuizFrameApplied = false;
   String? _handledRevealId;
+
+  /// Wrong-answer labels: true while shown, false while fading out. A label
+  /// lives ~2 s, so it never hides the map for long; the red fill stays.
+  final _labels = <String, bool>{};
+  final _labelTimers = <Timer>[];
+  static const _labelVisible = Duration(milliseconds: 1500);
+  static const _labelFade = Duration(milliseconds: 400);
+
+  void _showLabels(Iterable<String> ids) {
+    for (final id in ids) {
+      _labels[id] = true;
+      _labelTimers.add(
+        Timer(_labelVisible, () {
+          if (!mounted || _labels[id] != true) return;
+          setState(() => _labels[id] = false);
+          _labelTimers.add(
+            Timer(_labelFade, () {
+              if (mounted) setState(() => _labels.remove(id));
+            }),
+          );
+        }),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _showLabels(widget.wrongCountryIds);
+  }
+
   LatLngBounds get _bounds => switch (widget.catalog.continent) {
     Continent.europe => LatLngBounds(
       const LatLng(34, -32),
@@ -150,12 +186,20 @@ class _CountryMapState extends State<CountryMap> {
   @override
   void didUpdateWidget(CountryMap oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _labels.removeWhere((id, _) => !widget.wrongCountryIds.contains(id));
+    _showLabels(widget.wrongCountryIds.difference(oldWidget.wrongCountryIds));
     if (widget.catalog.continent != oldWidget.catalog.continent) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _resetView();
       });
     } else if (widget.focusId != oldWidget.focusId && widget.focusId != null) {
-      _controller.move(widget.catalog.country(widget.focusId!).center, 6);
+      // Centre the chosen country with a barely noticeable zoom (~3%), so
+      // its neighbours stay in view.
+      final camera = _controller.camera;
+      _controller.move(
+        widget.catalog.country(widget.focusId!).center,
+        (camera.zoom + _focusZoomGain).clamp(_minZoom, 10),
+      );
     }
     if (widget.revealId != oldWidget.revealId && widget.revealId != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -288,6 +332,9 @@ class _CountryMapState extends State<CountryMap> {
 
   @override
   void dispose() {
+    for (final timer in _labelTimers) {
+      timer.cancel();
+    }
     _hits.dispose();
     _controller.dispose();
     super.dispose();
@@ -532,7 +579,7 @@ class _CountryMapState extends State<CountryMap> {
       Builder(
         builder: (context) {
           final wrong = widget.catalog.countries
-              .where((country) => widget.wrongCountryIds.contains(country.id))
+              .where((country) => _labels.containsKey(country.id))
               .toList();
           final points = _labelPoints(MapCamera.of(context), wrong);
           return MarkerLayer(
@@ -543,40 +590,44 @@ class _CountryMapState extends State<CountryMap> {
                   width: 150,
                   height: 48,
                   child: IgnorePointer(
-                    child: Semantics(
-                      container: true,
-                      liveRegion: true,
-                      excludeSemantics: true,
-                      label: 'Błędna odpowiedź: ${country.name}',
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: _palette.wrongLabel,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Colors.white, width: 2),
-                            boxShadow: [
-                              BoxShadow(
-                                color: _palette.labelShadow,
-                                blurRadius: 4,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
+                    child: AnimatedOpacity(
+                      opacity: _labels[country.id] == true ? 1 : 0,
+                      duration: _labelFade,
+                      child: Semantics(
+                        container: true,
+                        liveRegion: true,
+                        excludeSemantics: true,
+                        label: 'Błędna odpowiedź: ${country.name}',
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: _palette.wrongLabel,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: Colors.white, width: 2),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: _palette.labelShadow,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
                             ),
-                            child: Text(
-                              country.name,
-                              maxLines: 2,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
+                              child: Text(
+                                country.name,
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
                           ),
