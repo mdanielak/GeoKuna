@@ -1,0 +1,81 @@
+{
+  "version": "relief-hd-0.1.0",
+  "sources": {
+    "natural_earth_raster": {
+      "url": "https://naciscdn.org/naturalearth/10m/raster/NE1_HR_LC_SR_W_DR.zip",
+      "sha256": "8841d08155415f0556462846dcb845a4ccb8f12390b0e0ba36ffde55efadeb56"
+    },
+    "etopo_2022_15s": {
+      "url": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO2022/data/15s/15s_surface_elev_gtif/",
+      "license": "public-domain (NOAA NCEI)",
+      "sha256": {
+        "N30W075": "c259b483cbb01be468395046784da8f7968320175c53006d9661b2bd4d79e7f5",
+        "N30W090": "7dec8b97564d9cb940c864843f87b7ec364987a6bf9b0315cf575ad8f55c5925",
+        "N30W105": "0f56a422be03cfb55b3629c72f373a6d2da858f1e3a4954afe7d17cfa298fff7",
+        "N30W120": "a721d683f987ea7c210138a33523983c38c526a9abbfbe34ad332a5e15222a58",
+        "N30W135": "0c8426a7ad059649277b4aadfbb4dc8b6897044152fec9682bbf7e31f7d39234",
+        "N45W075": "34b0423dea21ae03073459c9012378b597093c0ce83ddcf242840e45dba86384",
+        "N45W090": "7132212ec84a2c0382802940622ea383fece86f5808e56a9d641100bac9319fb",
+        "N45W105": "dd4f28c910c29c296f6078bd514c630efff2f469a9812e741d439b9552d39364",
+        "N45W120": "806d5dbc40838e1b89c6afb7836fd62c92c47485bfc9a3aa453c3efa05b01a43",
+        "N45W135": "4ff26df2ad67546a8c6d94e54c31f7080c80f87f1bf16f2f07e64624ec373432",
+        "N60E000": "d69dbf93dcf2f11fb008a57223da41092921ea2f81ef6eeb1807d50609586557",
+        "N60E015": "70f4cc2bb28724db6616182f449ac33b649cc137539d6913a78b8128b4c4eb9c",
+        "N60W075": "7d9e06e9d53d4421cad2074a50882d56630bf1c6d568246ea8d37d6e5e31d333",
+        "N60W090": "b2f8916e109f311616725fa00c44cb47eb70111705618382bfb31c03ddbc659a",
+        "N60W105": "91fef4481560ba09c6f83989aac53e4e50deedcb79066230f80cfb61b1b5bf3b",
+        "N60W120": "69dd0125ca26daa71b4a067cfb65d2042606b940f25fe715309cf02daf71e3ae",
+        "N60W135": "e0eec4056fac1c612cd35fb729f91f535b6e8f50f017d7b9337b976086a8ccb9"
+      }
+    },
+    "natural_earth_water": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/",
+      "files": {
+        "ne_10m_rivers_lake_centerlines": "bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a",
+        "ne_10m_rivers_europe": "90712202ac46985812e90840df9acd5101599a9c649868d5bc55ee96c2fedd4c",
+        "ne_10m_rivers_north_america": "dcd2348655a5f3d0ea7be35024073ab24f09115d2e4efb77e7bc0a33567db682",
+        "ne_10m_lakes": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9",
+        "ne_10m_lakes_europe": "b4dd9e7a5edd0d07b54768b5404d1ebe77f80b9d579c85fff65f90cf50369769",
+        "ne_10m_lakes_north_america": "76f49d4b698f3529e690136a989713bcd3c028ade150346f4b358de9815cfc43"
+      }
+    }
+  },
+  "parameters": {
+    "exaggeration": 2.5,
+    "strength": 0.7,
+    "water_rgb": [
+      106,
+      160,
+      205
+    ],
+    "quality": 80,
+    "pillow_version": "10.2.0"
+  },
+  "regions": {
+    "poland": {
+      "bounds_wsen": [
+        13.5,
+        48.6,
+        24.5,
+        55.3
+      ],
+      "zooms": [
+        7,
+        8
+      ]
+    },
+    "usa": {
+      "bounds_wsen": [
+        -128.0,
+        16.0,
+        -64.0,
+        51.0
+      ],
+      "zooms": [
+        7
+      ]
+    }
+  },
+  "verified_at": "2026-11-16",
+  "tiles_sha256": "35f74bdf483930507790c16f6c714e025221008d2c2de60786cf218acc3fb91a"
+}

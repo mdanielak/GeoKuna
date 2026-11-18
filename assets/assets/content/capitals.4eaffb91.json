@@ -1,0 +1,487 @@
+{
+  "version": "europe-capitals-0.3.0",
+  "source": {
+    "name": "KSNG — Urzędowy wykaz nazw państw i terytoriów niesamodzielnych, VIII wydanie zaktualizowane, 2025",
+    "url": "https://www.gov.pl/attachment/2b559c83-4ef7-403b-9063-76a364994597",
+    "sha256": "0ae270339e81939708fea46130f1579ca2dd443524dc9c4d25dc9d14f551b60a"
+  },
+  "capitals": [
+    {
+      "id": "capital:ALB",
+      "country_id": "ALB",
+      "name": "Tirana",
+      "aliases": [],
+      "source_page": 18,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:AND",
+      "country_id": "AND",
+      "name": "Andora",
+      "aliases": [
+        "Andorra la Vella"
+      ],
+      "source_page": 19,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:AUT",
+      "country_id": "AUT",
+      "name": "Wiedeń",
+      "aliases": [
+        "Wien"
+      ],
+      "source_page": 20,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:BEL",
+      "country_id": "BEL",
+      "name": "Bruksela",
+      "aliases": [
+        "Bruxelles",
+        "Brussel"
+      ],
+      "source_page": 22,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:BLR",
+      "country_id": "BLR",
+      "name": "Mińsk",
+      "aliases": [],
+      "source_page": 23,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:BIH",
+      "country_id": "BIH",
+      "name": "Sarajewo",
+      "aliases": [
+        "Sarajevo"
+      ],
+      "source_page": 23,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:BGR",
+      "country_id": "BGR",
+      "name": "Sofia",
+      "aliases": [],
+      "source_page": 24,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:HRV",
+      "country_id": "HRV",
+      "name": "Zagrzeb",
+      "aliases": [
+        "Zagreb"
+      ],
+      "source_page": 25,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:CYP",
+      "country_id": "CYP",
+      "name": "Nikozja",
+      "aliases": [],
+      "source_page": 25,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:MNE",
+      "country_id": "MNE",
+      "name": "Podgorica",
+      "aliases": [],
+      "source_page": 26,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:CZE",
+      "country_id": "CZE",
+      "name": "Praga",
+      "aliases": [
+        "Praha"
+      ],
+      "source_page": 26,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:DNK",
+      "country_id": "DNK",
+      "name": "Kopenhaga",
+      "aliases": [],
+      "source_page": 26,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:EST",
+      "country_id": "EST",
+      "name": "Tallinn",
+      "aliases": [],
+      "source_page": 28,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:FIN",
+      "country_id": "FIN",
+      "name": "Helsinki",
+      "aliases": [],
+      "source_page": 29,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:FRA",
+      "country_id": "FRA",
+      "name": "Paryż",
+      "aliases": [
+        "Paris"
+      ],
+      "source_page": 29,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:GRC",
+      "country_id": "GRC",
+      "name": "Ateny",
+      "aliases": [],
+      "source_page": 30,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:ESP",
+      "country_id": "ESP",
+      "name": "Madryt",
+      "aliases": [],
+      "source_page": 32,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:NLD",
+      "country_id": "NLD",
+      "name": "Amsterdam",
+      "aliases": [],
+      "source_page": 32,
+      "status": "verified",
+      "verified_at": "2026-11-12",
+      "prompt": "Jaka jest konstytucyjna stolica tego państwa?",
+      "note": "Stolicą jest Amsterdam. Haga jest siedzibą rządu i parlamentu.",
+      "additional_source": "https://european-union.europa.eu/principles-countries-history/eu-countries/netherlands_en"
+    },
+    {
+      "id": "capital:IRL",
+      "country_id": "IRL",
+      "name": "Dublin",
+      "aliases": [],
+      "source_page": 34,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:ISL",
+      "country_id": "ISL",
+      "name": "Reykjavík",
+      "aliases": [],
+      "source_page": 34,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:KOS",
+      "country_id": "KOS",
+      "name": "Prisztina",
+      "aliases": [
+        "Prishtina",
+        "Prishtinë",
+        "Priština"
+      ],
+      "source_page": 39,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:LIE",
+      "country_id": "LIE",
+      "name": "Vaduz",
+      "aliases": [],
+      "source_page": 41,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:LTU",
+      "country_id": "LTU",
+      "name": "Wilno",
+      "aliases": [
+        "Vilnius"
+      ],
+      "source_page": 41,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:LUX",
+      "country_id": "LUX",
+      "name": "Luksemburg",
+      "aliases": [],
+      "source_page": 41,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:LVA",
+      "country_id": "LVA",
+      "name": "Ryga",
+      "aliases": [],
+      "source_page": 41,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:MKD",
+      "country_id": "MKD",
+      "name": "Skopje",
+      "aliases": [],
+      "source_page": 42,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:MLT",
+      "country_id": "MLT",
+      "name": "Valletta",
+      "aliases": [],
+      "source_page": 43,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:MDA",
+      "country_id": "MDA",
+      "name": "Kiszyniów",
+      "aliases": [
+        "Chișinău"
+      ],
+      "source_page": 45,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:MCO",
+      "country_id": "MCO",
+      "name": "Monako",
+      "aliases": [
+        "Monaco"
+      ],
+      "source_page": 45,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:DEU",
+      "country_id": "DEU",
+      "name": "Berlin",
+      "aliases": [],
+      "source_page": 46,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:NOR",
+      "country_id": "NOR",
+      "name": "Oslo",
+      "aliases": [],
+      "source_page": 47,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:POL",
+      "country_id": "POL",
+      "name": "Warszawa",
+      "aliases": [],
+      "source_page": 49,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:PRT",
+      "country_id": "PRT",
+      "name": "Lizbona",
+      "aliases": [
+        "Lisboa"
+      ],
+      "source_page": 49,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:RUS",
+      "country_id": "RUS",
+      "name": "Moskwa",
+      "aliases": [],
+      "source_page": 50,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:ROU",
+      "country_id": "ROU",
+      "name": "Bukareszt",
+      "aliases": [],
+      "source_page": 50,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:SMR",
+      "country_id": "SMR",
+      "name": "San Marino",
+      "aliases": [],
+      "source_page": 52,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:SRB",
+      "country_id": "SRB",
+      "name": "Belgrad",
+      "aliases": [
+        "Beograd"
+      ],
+      "source_page": 52,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:SVK",
+      "country_id": "SVK",
+      "name": "Bratysława",
+      "aliases": [
+        "Bratislava"
+      ],
+      "source_page": 53,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:SVN",
+      "country_id": "SVN",
+      "name": "Lublana",
+      "aliases": [
+        "Ljubljana"
+      ],
+      "source_page": 53,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:CHE",
+      "country_id": "CHE",
+      "name": "Berno",
+      "aliases": [
+        "Bern",
+        "Berne",
+        "Berna"
+      ],
+      "source_page": 55,
+      "status": "verified",
+      "verified_at": "2026-11-12",
+      "prompt": "Które miasto jest siedzibą władz federalnych?",
+      "note": "Berno pełni funkcję stolicy Szwajcarii; oficjalnie określa się je jako miasto federalne.",
+      "additional_source": "https://www.aboutswitzerland.eda.admin.ch/en/political-system"
+    },
+    {
+      "id": "capital:SWE",
+      "country_id": "SWE",
+      "name": "Sztokholm",
+      "aliases": [
+        "Stockholm"
+      ],
+      "source_page": 56,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:TUR",
+      "country_id": "TUR",
+      "name": "Ankara",
+      "aliases": [],
+      "source_page": 58,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:UKR",
+      "country_id": "UKR",
+      "name": "Kijów",
+      "aliases": [
+        "Kyiv",
+        "Kyjiw"
+      ],
+      "source_page": 58,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:VAT",
+      "country_id": "VAT",
+      "name": "Watykan",
+      "aliases": [],
+      "source_page": 59,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:HUN",
+      "country_id": "HUN",
+      "name": "Budapeszt",
+      "aliases": [
+        "Budapest"
+      ],
+      "source_page": 60,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:GBR",
+      "country_id": "GBR",
+      "name": "Londyn",
+      "aliases": [
+        "London"
+      ],
+      "source_page": 60,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    },
+    {
+      "id": "capital:ITA",
+      "country_id": "ITA",
+      "name": "Rzym",
+      "aliases": [
+        "Roma"
+      ],
+      "source_page": 61,
+      "status": "verified",
+      "verified_at": "2026-11-12"
+    }
+  ]
+}

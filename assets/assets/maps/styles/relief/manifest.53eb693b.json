@@ -1,0 +1,83 @@
+{
+  "version": "natural-earth-relief-0.3.0",
+  "source": {
+    "name": "Natural Earth I with Shaded Relief, Water, and Drainages 1:10m",
+    "version": "2.0.0",
+    "url": "https://naciscdn.org/naturalearth/10m/raster/NE1_HR_LC_SR_W_DR.zip",
+    "page": "https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/",
+    "sha256": "8841d08155415f0556462846dcb845a4ccb8f12390b0e0ba36ffde55efadeb56",
+    "license": "public-domain",
+    "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "verified_at": "2026-11-16"
+  },
+  "projection": "EPSG:3857",
+  "parameters": {
+    "tile_size": 256,
+    "zooms": [
+      2,
+      6
+    ],
+    "resampling": "lanczos per zoom, bilinear inverse-mercator rows",
+    "format": "webp",
+    "quality": 80,
+    "lighten": 0.12,
+    "pillow_version": "10.2.0"
+  },
+  "regions": {
+    "europe": {
+      "tile_set": "world",
+      "bounds_wsen": [
+        -32.0,
+        34.0,
+        65.0,
+        72.0
+      ]
+    },
+    "africa": {
+      "tile_set": "world",
+      "bounds_wsen": [
+        -26.0,
+        -36.0,
+        65.0,
+        38.0
+      ]
+    },
+    "asia": {
+      "tile_set": "world",
+      "bounds_wsen": [
+        20.0,
+        -12.0,
+        180.0,
+        82.0
+      ]
+    },
+    "northAmerica": {
+      "tile_set": "world",
+      "bounds_wsen": [
+        -170.0,
+        5.0,
+        -50.0,
+        84.0
+      ]
+    },
+    "southAmerica": {
+      "tile_set": "world",
+      "bounds_wsen": [
+        -95.0,
+        -57.0,
+        -30.0,
+        15.0
+      ]
+    },
+    "oceania": {
+      "tile_set": "oceania",
+      "bounds_wsen": [
+        -70.0,
+        -50.0,
+        30.0,
+        22.0
+      ]
+    }
+  },
+  "tiles_sha256": "2229bb6dfe31321701eb4bc2af7c97b3ce3ec8137a5c851d8c3def01ae96dc5c"
+}

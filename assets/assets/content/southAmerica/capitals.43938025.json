@@ -1,0 +1,129 @@
+{
+  "version": "southAmerica-capitals-0.1.0",
+  "source": {
+    "name": "KSNG — Urzędowy wykaz nazw państw i terytoriów niesamodzielnych, wydanie VIII zaktualizowane, 2025 z aktualizacją 2026",
+    "url": "https://www.gov.pl/attachment/1cde0699-e88f-4401-bca5-c9909d0fe526",
+    "sha256": "4645f3f84b46920b7e9bb480a265f70a52da5d429977eb650709d84dfabd08eb"
+  },
+  "capitals": [
+    {
+      "id": "capital:ARG",
+      "country_id": "ARG",
+      "name": "Buenos Aires",
+      "aliases": [],
+      "source_page": 20,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:BOL",
+      "country_id": "BOL",
+      "name": "Sucre",
+      "aliases": [],
+      "source_page": 23,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:BRA",
+      "country_id": "BRA",
+      "name": "Brasília",
+      "aliases": [],
+      "source_page": 23,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:CHL",
+      "country_id": "CHL",
+      "name": "Santiago",
+      "aliases": [],
+      "source_page": 24,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:ECU",
+      "country_id": "ECU",
+      "name": "Quito",
+      "aliases": [],
+      "source_page": 27,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:GUY",
+      "country_id": "GUY",
+      "name": "Georgetown",
+      "aliases": [],
+      "source_page": 31,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:COL",
+      "country_id": "COL",
+      "name": "Bogota",
+      "aliases": [
+        "Bogotá"
+      ],
+      "source_page": 37,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:PRY",
+      "country_id": "PRY",
+      "name": "Asunción",
+      "aliases": [],
+      "source_page": 49,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:PER",
+      "country_id": "PER",
+      "name": "Lima",
+      "aliases": [],
+      "source_page": 49,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:SUR",
+      "country_id": "SUR",
+      "name": "Paramaribo",
+      "aliases": [],
+      "source_page": 55,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:TTO",
+      "country_id": "TTO",
+      "name": "Port-of-Spain",
+      "aliases": [],
+      "source_page": 57,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:URY",
+      "country_id": "URY",
+      "name": "Montevideo",
+      "aliases": [],
+      "source_page": 59,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "id": "capital:VEN",
+      "country_id": "VEN",
+      "name": "Caracas",
+      "aliases": [],
+      "source_page": 60,
+      "status": "verified",
+      "verified_at": "2026-11-16"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "GeoKuna",
+  "short_name": "GeoKuna",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FAF8F0",
+  "theme_color": "#335C45",
+  "description": "Kuna wie, gdzie! Nauka geografii przez mapę i quizy.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
