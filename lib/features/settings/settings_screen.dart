@@ -529,6 +529,11 @@ class _AboutApp extends ConsumerWidget {
           'flagi ${pack(ref.watch(flagsProvider).asData?.value.version)}.',
           style: small,
         ),
+        const SizedBox(height: 6),
+        Text(
+          'Autor: Maciej Danielak',
+          style: small,
+        ),
       ],
     );
   }
