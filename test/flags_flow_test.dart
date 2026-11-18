@@ -9,9 +9,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/atlas/continent.dart';
 import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/flags_setup_screen.dart';
 import 'package:geokuna/features/learning/learning_screen.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -132,4 +135,54 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   }
+
+  testWidgets(
+    'flags setup detects pending easy map session and switches level inline',
+    (tester) async {
+      final data = (await tester.runAsync(
+        () async => (await Catalog.load(), await FlagCatalog.load()),
+      ))!;
+      final db = AppDatabase(NativeDatabase.memory());
+      addTearDown(() async {
+        await tester.pumpWidget(const SizedBox());
+        await db.close();
+      });
+      await AppPreferencesStore(db)
+          .setDifficulty(Continent.europe, LearningDifficulty.easy);
+      final question = data.$2.questions(['POL'], Random(1)).single;
+      await db
+          .into(db.sessions)
+          .insert(
+            SessionsCompanion.insert(
+              id: 'flags-map-easy',
+              countryIds: '["POL"]',
+              createdAt: DateTime.now(),
+              topic: const Value('flags'),
+              difficulty: const Value('mapEasy'),
+              contentVersion: Value(data.$2.version),
+              questionData: Value(jsonEncode([question.toJson()])),
+            ),
+          );
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            databaseProvider.overrideWithValue(db),
+            catalogProvider.overrideWith((ref) async => data.$1),
+            flagsProvider.overrideWith((ref) async => data.$2),
+          ],
+          child: const MaterialApp(home: FlagsSetupScreen()),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Poziom: Łatwy'), findsOneWidget);
+      expect(find.text('Wznów: flaga na mapie'), findsOneWidget);
+
+      await tester.tap(find.text('Poziom: Łatwy'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Normalny'));
+      await tester.pumpAndSettle();
+      expect(find.text('Poziom: Normalny'), findsOneWidget);
+      expect(find.text('Rozpocznij: flaga na mapie'), findsOneWidget);
+    },
+  );
 }

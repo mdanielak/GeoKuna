@@ -15,7 +15,7 @@ enum FlagDifficulty {
   ),
   firstLetter('Łatwy', 'Pierwsza litera i reszta do wpisania.'),
   write('Normalny', 'Wpisz całą nazwę bez podpowiedzi.'),
-  map('Flaga → mapa', 'Wskaż państwo na mapie.');
+  map('Flaga na mapie', 'Wskaż państwo na mapie.');
 
   const FlagDifficulty(this.label, this.description);
   final String label;

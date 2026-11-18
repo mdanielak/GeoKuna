@@ -82,7 +82,27 @@ class AnswerFeedback extends StatelessWidget {
               child: Text('Twoja odpowiedź: $answer'),
             ),
           if (note.isNotEmpty)
-            Padding(padding: const EdgeInsets.only(top: 12), child: Text(note)),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Card.filled(
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(child: Text(note)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

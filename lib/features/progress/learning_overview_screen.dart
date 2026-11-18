@@ -27,10 +27,10 @@ class KnowledgeSummary {
 }
 
 String _topicLabel(String topic, Continent area) => switch (topic) {
-  'map' => '${area.areaSubject} → mapa',
-  'capitals' => '${area.areaSubject} → ${area.capitalSubject.toLowerCase()}',
-  'flags' => '${area.symbolLabel} → ${area.areaAccusative}',
-  'flagMap' => '${area.symbolLabel} → mapa',
+  'map' => 'Lokalizacja na mapie',
+  'capitals' => area.capitalsLabel,
+  'flags' => '${area.symbolsLabel} · nazwy',
+  'flagMap' => '${area.symbolLabel} na mapie',
   _ => topic,
 };
 
@@ -47,11 +47,13 @@ class LearningOverviewScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
-    appBar: AppBar(
-      title: Text(
-        continent == null ? 'Moja nauka' : 'Nauka · ${continent!.label}',
-      ),
-    ),
+    appBar: continent == null
+        ? AppBar(title: const Text('Moja nauka'))
+        : regionAppBar(
+            context,
+            continent: continent!,
+            title: 'Nauka · ${continent!.label}',
+          ),
     body: SafeArea(
       child: Center(
         child: ConstrainedBox(
@@ -64,86 +66,19 @@ class LearningOverviewScreen extends ConsumerWidget {
                       'Jak idzie nauka?',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Procent pokazuje umiejętności z poprawną ostatnią odpowiedzią i przyszłym terminem powtórki. A–D ma osobny harmonogram rozpoznawania. Z pomocą odpowiedź nie aktualizuje karty. To wskaźnik treningu, nie gwarancja trwałego zapamiętania.',
+                    const SizedBox(height: 8),
+                    Text(
+                      'Procent pokazuje umiejętności z poprawną ostatnią odpowiedzią i przyszłym terminem powtórki. A–D ma osobny harmonogram rozpoznawania. To wskaźnik treningu, nie gwarancja trwałego zapamiętania.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     for (final region in Continent.values)
-                      ref
-                          .watch(continentProgressProvider(region))
-                          .when(
-                            loading: () => ListTile(
-                              title: Text(region.label),
-                              subtitle: const LinearProgressIndicator(),
-                            ),
-                            error: (_, _) => ListTile(
-                              title: Text(region.label),
-                              subtitle: const Text(
-                                'Nie udało się odczytać postępu',
-                              ),
-                              trailing: IconButton(
-                                tooltip: 'Ponów odczyt',
-                                onPressed: () => ref.invalidate(
-                                  continentProgressProvider(region),
-                                ),
-                                icon: const Icon(Icons.refresh),
-                              ),
-                            ),
-                            data: (entries) {
-                              final summary = KnowledgeSummary(entries);
-                              return Card.filled(
-                                child: ListTile(
-                                  contentPadding: const EdgeInsets.all(20),
-                                  title: Text(
-                                    '${region.label} · na bieżąco ${summary.percent}%',
-                                  ),
-                                  subtitle: Padding(
-                                    padding: const EdgeInsets.only(top: 8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        LinearProgressIndicator(
-                                          value: summary.percent / 100,
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          '${summary.ready} / ${summary.entries.length} umiejętności na bieżąco\nDo powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
-                                        ),
-                                        const SizedBox(height: 8),
-                                        ref
-                                            .watch(
-                                              continentAchievementsProvider(
-                                                region,
-                                              ),
-                                            )
-                                            .when(
-                                              loading: () => const Text(
-                                                'Medale: wczytywanie',
-                                              ),
-                                              error: (_, _) => const Text(
-                                                'Medali nie udało się wczytać',
-                                              ),
-                                              data: (items) => Text(
-                                                'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z 36',
-                                              ),
-                                            ),
-                                        Text(
-                                          'Nagrody za passę: '
-                                          '${ref.watch(continentStreakProvider(region)).asData?.value.earnedRewards.length ?? 0}'
-                                          ' z ${streakRewards.length}',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  trailing: const Icon(Icons.chevron_right),
-                                  onTap: () =>
-                                      context.push('/learning/${region.name}'),
-                                ),
-                              );
-                            },
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: _RegionOverviewCard(region: region),
+                      ),
                   ],
                 )
               : _details(context, ref, continent!),
@@ -186,42 +121,55 @@ class LearningOverviewScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Najpierw kraje z powtórkami, potem te z najmniejszą liczbą sprawdzonych umiejętności. Dotknij kraju, aby zobaczyć szczegóły.',
+                'Najpierw obszary z powtórkami, potem te z najmniejszą liczbą sprawdzonych umiejętności. Dotknij wiersza, aby zobaczyć szczegóły.',
               ),
               const SizedBox(height: 16),
               _medalsSection(ref, region),
               const SizedBox(height: 12),
               _StreakRewards(region: region),
-              const SizedBox(height: 12),
-              for (final country in countries)
-                Builder(
-                  builder: (context) {
-                    final summary = KnowledgeSummary(country);
-                    return ListTile(
-                      minTileHeight: 72,
-                      title: Text(
-                        '${country.first.country.name} · ${summary.percent}%',
-                      ),
-                      subtitle: Text(
-                        'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
-                      ),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        ref
-                            .read(selectedContinentProvider.notifier)
-                            .select(region);
-                        context.push(
-                          Uri(
-                            path: '/progress',
-                            queryParameters: {
-                              'country': country.first.country.name,
+              const SizedBox(height: 16),
+              Card.outlined(
+                margin: EdgeInsets.zero,
+                clipBehavior: Clip.antiAlias,
+                child: Column(
+                  children: [
+                    for (final (index, country) in countries.indexed) ...[
+                      if (index > 0) const Divider(height: 1),
+                      Builder(
+                        builder: (context) {
+                          final summary = KnowledgeSummary(country);
+                          return ListTile(
+                            minTileHeight: 68,
+                            title: Text(
+                              '${country.first.country.name} · ${summary.percent}%',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            subtitle: Text(
+                              'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
+                            ),
+                            trailing: const Icon(Icons.chevron_right),
+                            onTap: () {
+                              ref
+                                  .read(selectedContinentProvider.notifier)
+                                  .select(region);
+                              context.push(
+                                Uri(
+                                  path: '/progress',
+                                  queryParameters: {
+                                    'country': country.first.country.name,
+                                  },
+                                ).toString(),
+                              );
                             },
-                          ).toString(),
-                        );
-                      },
-                    );
-                  },
+                          );
+                        },
+                      ),
+                    ],
+                  ],
                 ),
+              ),
             ],
           );
         },
@@ -231,12 +179,14 @@ class LearningOverviewScreen extends ConsumerWidget {
       .watch(continentAchievementsProvider(region))
       .when(
         loading: () => const Card.filled(
+          margin: EdgeInsets.zero,
           child: ListTile(
             title: Text('Medale za naukę'),
             subtitle: LinearProgressIndicator(),
           ),
         ),
         error: (_, _) => const Card.filled(
+          margin: EdgeInsets.zero,
           child: ListTile(
             title: Text('Medale za naukę'),
             subtitle: Text('Nie udało się ich wczytać.'),
@@ -247,6 +197,8 @@ class LearningOverviewScreen extends ConsumerWidget {
               .where((item) => item.earnedMedal > 0)
               .length;
           return Card.filled(
+            margin: EdgeInsets.zero,
+            clipBehavior: Clip.antiAlias,
             child: ExpansionTile(
               leading: const Icon(Icons.workspace_premium_outlined),
               title: const Text('Medale za naukę'),
@@ -261,8 +213,6 @@ class LearningOverviewScreen extends ConsumerWidget {
                         (achievement) => achievement.topic == topic,
                       ))
                         ListTile(
-                          // Earned: the painted medal (v2.5); not yet: an
-                          // outline in the text colour.
                           leading: level.earnedMedal == 0
                               ? const Icon(Icons.workspace_premium_outlined)
                               : Image.asset(
@@ -275,7 +225,7 @@ class LearningOverviewScreen extends ConsumerWidget {
                             '${level.level.label} · ${_medalLabel(level.earnedMedal)}',
                           ),
                           subtitle: Text(
-                            '${level.qualifiedCount} / ${level.totalCount} krajów zaliczonych'
+                            '${level.qualifiedCount} / ${level.totalCount} ${region.areaNoun} zaliczonych'
                             '${level.inheritedCount > 0 ? ' · ${level.inheritedCount} z trudniejszego poziomu' : ''}',
                           ),
                           trailing: Text('${level.percent}%'),
@@ -287,6 +237,173 @@ class LearningOverviewScreen extends ConsumerWidget {
           );
         },
       );
+}
+
+/// Look v2 region progress card with the region's miniature illustration,
+/// practice bar, medals and streak rewards.
+class _RegionOverviewCard extends ConsumerWidget {
+  const _RegionOverviewCard({required this.region});
+  final Continent region;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final colors = GeoColors.of(context);
+    return ref
+        .watch(continentProgressProvider(region))
+        .when(
+          loading: () => Card.filled(
+            margin: EdgeInsets.zero,
+            child: ListTile(
+              title: Text(region.label),
+              subtitle: const LinearProgressIndicator(),
+            ),
+          ),
+          error: (_, _) => Card.filled(
+            margin: EdgeInsets.zero,
+            child: ListTile(
+              title: Text(region.label),
+              subtitle: const Text('Nie udało się odczytać postępu'),
+              trailing: IconButton(
+                tooltip: 'Ponów odczyt',
+                onPressed: () =>
+                    ref.invalidate(continentProgressProvider(region)),
+                icon: const Icon(Icons.refresh),
+              ),
+            ),
+          ),
+          data: (entries) {
+            final summary = KnowledgeSummary(entries);
+            final streakRewardsEarned =
+                ref
+                    .watch(continentStreakProvider(region))
+                    .asData
+                    ?.value
+                    .earnedRewards
+                    .length ??
+                0;
+            return Card.filled(
+              margin: EdgeInsets.zero,
+              clipBehavior: Clip.antiAlias,
+              child: InkWell(
+                onTap: () => context.push('/learning/${region.name}'),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ExcludeSemantics(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: SizedBox(
+                            width: 60,
+                            height: 68,
+                            child: Image(
+                              image: ResizeImage(
+                                AssetImage(
+                                  'assets/v2/banner_${region.artId}_1.webp',
+                                ),
+                                width: 180,
+                              ),
+                              fit: BoxFit.cover,
+                              alignment: const Alignment(0, -.25),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    '${region.label} · na bieżąco ${summary.percent}%',
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                                const Icon(Icons.chevron_right, size: 22),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            LinearProgressIndicator(
+                              value: summary.percent / 100,
+                              minHeight: 6,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '${summary.ready} / ${summary.entries.length} umiejętności na bieżąco\n'
+                              'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
+                              style: theme.textTheme.bodySmall,
+                            ),
+                            const SizedBox(height: 8),
+                            Wrap(
+                              spacing: 12,
+                              runSpacing: 4,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(
+                                      Icons.workspace_premium_outlined,
+                                      size: 16,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    ref
+                                        .watch(
+                                          continentAchievementsProvider(region),
+                                        )
+                                        .when(
+                                          loading: () => Text(
+                                            'Medale: …',
+                                            style: theme.textTheme.labelMedium,
+                                          ),
+                                          error: (_, _) => Text(
+                                            'Medale: błąd',
+                                            style: theme.textTheme.labelMedium,
+                                          ),
+                                          data: (items) => Text(
+                                            'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z 36',
+                                            style: theme.textTheme.labelMedium,
+                                          ),
+                                        ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.local_fire_department,
+                                      size: 16,
+                                      color: streakRewardsEarned > 0
+                                          ? colors.streak
+                                          : theme.colorScheme.onSurfaceVariant,
+                                    ),
+                                    const SizedBox(width: 3),
+                                    Text(
+                                      'Nagrody za passę: $streakRewardsEarned z ${streakRewards.length}',
+                                      style: theme.textTheme.labelMedium,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+  }
 }
 
 /// Streak rewards of one continent: earned ones lit, the rest outlined.
@@ -302,6 +419,7 @@ class _StreakRewards extends ConsumerWidget {
     final toNext = streak == null ? tokenEveryDays : streak.daysToNextToken;
     final colors = GeoColors.of(context);
     return Card.filled(
+      margin: EdgeInsets.zero,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

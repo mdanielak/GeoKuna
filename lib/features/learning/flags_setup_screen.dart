@@ -1,12 +1,15 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
+import '../settings/difficulty_sheet.dart';
 import 'flags.dart';
+import 'learning_levels.dart';
 
 class FlagsSetupScreen extends ConsumerWidget {
   const FlagsSetupScreen({super.key});
@@ -14,9 +17,12 @@ class FlagsSetupScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
+    final symbolLower = continent.symbolLabel.toLowerCase();
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${continent.symbolsLabel} ${continent.genitive}'),
+      appBar: regionAppBar(
+        context,
+        continent: continent,
+        title: '${continent.symbolsLabel} ${continent.genitive}',
       ),
       body: SafeArea(
         top: false,
@@ -50,7 +56,9 @@ class FlagsSetupScreen extends ConsumerWidget {
                                   s.row.difficulty == selectedDifficulty.mode,
                             );
                             final pendingMap = data.flagsSessions.any(
-                              (s) => s.row.difficulty == 'map',
+                              (s) =>
+                                  s.row.difficulty ==
+                                  mapDifficultyFor(selectedDifficulty),
                             );
                             return Center(
                               child: ConstrainedBox(
@@ -86,26 +94,18 @@ class FlagsSetupScreen extends ConsumerWidget {
                                                 continent.areaAccusative,
                                               ),
                                         ),
-                                        trailing: const Icon(
-                                          Icons.chevron_right,
-                                        ),
-                                        onTap: () => context.push('/settings'),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: TextButton.icon(
-                                        onPressed: () =>
-                                            context.push('/settings'),
-                                        icon: const Icon(
-                                          Icons.settings_outlined,
-                                        ),
-                                        label: const Text(
-                                          'Zmień poziom w ustawieniach',
+                                        trailing: const Icon(Icons.expand_more),
+                                        onTap: () => showDifficultySheet(
+                                          context,
+                                          ref,
+                                          continent: continent,
+                                          current: selectedDifficulty,
+                                          activeSession: pending || pendingMap,
+                                          activeNotice: 'Rozpoczęta sesja zachowuje swój poziom; wybór dotyczy innych poziomów i nowych sesji.',
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(height: 8),
+                                    const SizedBox(height: 14),
                                     const Text(
                                       'Przy wpisywaniu dopuszczamy jedną literówkę. Polskie znaki nie są wymagane.',
                                     ),
@@ -124,7 +124,7 @@ class FlagsSetupScreen extends ConsumerWidget {
                                     ),
                                     const SizedBox(height: 28),
                                     Text(
-                                      '${continent.symbolLabel} → mapa',
+                                      '${continent.symbolLabel} na mapie',
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge,
@@ -143,8 +143,8 @@ class FlagsSetupScreen extends ConsumerWidget {
                                       icon: const Icon(Icons.public),
                                       label: Text(
                                         pendingMap
-                                            ? 'Wznów: flaga → mapa'
-                                            : 'Rozpocznij: flaga → mapa',
+                                            ? 'Wznów: $symbolLower na mapie'
+                                            : 'Rozpocznij: $symbolLower na mapie',
                                       ),
                                     ),
                                   ],

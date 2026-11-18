@@ -1,19 +1,22 @@
-import 'package:material_ui/material_ui.dart';
+import 'dart:math' as math;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../atlas/continent.dart';
+import '../atlas/continent_chips.dart';
 import '../learning/session_repository.dart';
 import '../learning/streaks.dart';
 import '../learning/token_icon.dart';
 import '../settings/app_preferences.dart';
+import '../settings/difficulty_sheet.dart';
 
-/// Today (look v2, GeoKuna_Concept_Assets_Pack): continent chips, the region
-/// banner with the day's call to start, map progress, the streak and three
-/// illustrated training tiles. Atlas and "Moja nauka" live in the
-/// bottom navigation bar.
+/// Today (look v2): continent chips, a full-height portrait region banner with
+/// the day's call to start, map progress and streak, the region's difficulty
+/// row and three illustrated training tiles anchored above the bottom bar.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -21,9 +24,18 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
     final daily = ref.watch(dailyOverviewProvider);
+    final overview = daily.asData?.value;
+    final hasPlacementSkip =
+        overview != null &&
+        overview.firstVisit &&
+        overview.activeSession == null &&
+        overview.newAvailable > 0 &&
+        overview.plannedCount > 0;
+    final hasOtherDue = overview != null && overview.otherDueCount > 0;
+
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 48,
+        toolbarHeight: 46,
         title: const _Wordmark(),
         actions: [
           IconButton(
@@ -37,63 +49,95 @@ class HomeScreen extends ConsumerWidget {
         top: false,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final side = constraints.maxWidth >= 600 ? 32.0 : 20.0;
-            final padded = EdgeInsets.symmetric(horizontal: side);
+            final side = constraints.maxWidth >= 600 ? 32.0 : 18.0;
+            final maxContentWidth = math.min(constraints.maxWidth, 720.0);
+            final innerWidth = (maxContentWidth - 2 * side).clamp(180.0, 680.0);
+            final textScale = MediaQuery.textScalerOf(context).scale(1.0);
+            final landscape = constraints.maxHeight < 520;
+            final maxTile = landscape ? 72.0 : 146.0;
+            final tileHeight = ((innerWidth - 18) / 3).clamp(60.0, maxTile);
+
+            // Size the 1080×1350 (4:5) portrait banner to stretch top-to-bottom
+            // across the available viewport while remaining scrollable on small
+            // screens or at 200% text scale.
+            final chipsHeight = 46.0 * textScale.clamp(1.0, 1.3);
+            final titleHeight = 64.0 * textScale;
+            final levelHeight = 52.0 * textScale.clamp(1.0, 1.35);
+            final extrasHeight =
+                (hasPlacementSkip ? 36.0 * textScale.clamp(1.0, 1.3) : 0.0) +
+                (hasOtherDue ? 24.0 * textScale.clamp(1.0, 1.3) : 0.0);
+            final chrome =
+                chipsHeight +
+                titleHeight +
+                levelHeight +
+                tileHeight +
+                extrasHeight +
+                28.0;
+            final minBanner = landscape
+                ? 185.0
+                : (innerWidth * 0.88 + math.max(0.0, textScale - 1.0) * 52.0)
+                      .clamp(245.0, 360.0);
+            final maxBanner = innerWidth * 1.32;
+            final bannerHeight = (constraints.maxHeight - chrome).clamp(
+              minBanner,
+              maxBanner,
+            );
+
             return Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 720),
-                // Training tiles stay pinned above the bottom bar; the rest
-                // scrolls.
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: ListView(
-                        padding: const EdgeInsets.only(top: 0, bottom: 8),
+                child: SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(side, 2, side, 6),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Padding(
-                            padding: padded,
-                            child: _ContinentPicker(continent: continent),
-                          ),
-                          const SizedBox(height: 4),
-                          Padding(
-                            padding: padded,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                _StreakRescueCard(continent: continent),
-                                daily.when(
-                                  loading: () => const Padding(
-                                    padding: EdgeInsets.all(24),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              ContinentChips(continent: continent),
+                              const SizedBox(height: 8),
+                              _StreakRescueCard(continent: continent),
+                              daily.when(
+                                loading: () => const _CardShell(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 32),
                                     child: Center(
                                       child: CircularProgressIndicator(),
                                     ),
                                   ),
-                                  error: (_, _) => _LoadFailed(ref: ref),
-                                  data: (overview) => _Expedition(
-                                    continent: continent,
-                                    overview: overview,
-                                  ),
                                 ),
-                                const SizedBox(height: 4),
-                                _LevelRow(
+                                error: (_, _) => _LoadFailed(ref: ref),
+                                data: (data) => _Expedition(
                                   continent: continent,
-                                  activeSession:
-                                      daily.asData?.value.activeSession != null,
+                                  overview: data,
+                                  bannerHeight: bannerHeight,
+                                  bannerWidth: innerWidth,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              const SizedBox(height: 4),
+                              _LevelRow(
+                                continent: continent,
+                                activeSession: overview?.activeSession != null,
+                              ),
+                              const SizedBox(height: 2),
+                              _TrainingRow(maxTile: maxTile),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(side, 6, side, 6),
-                      // Low screens (landscape) keep the tiles small.
-                      child: _TrainingRow(
-                        maxTile: constraints.maxHeight < 520 ? 72 : 150,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             );
@@ -136,94 +180,7 @@ Future<void> _openAndRefresh(
   }
 }
 
-/// One scrollable row of chips (one row at any width and text size) and a
-/// hint that more areas are hidden to the side.
-class _ContinentPicker extends ConsumerStatefulWidget {
-  const _ContinentPicker({required this.continent});
-  final Continent continent;
-
-  @override
-  ConsumerState<_ContinentPicker> createState() => _ContinentPickerState();
-}
-
-class _ContinentPickerState extends ConsumerState<_ContinentPicker> {
-  final _chips = {for (final c in Continent.values) c: GlobalKey()};
-
-  @override
-  void didUpdateWidget(_ContinentPicker oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.continent == widget.continent) return;
-    // After a swipe on the banner the chosen chip may be off-screen.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final chip = _chips[widget.continent]!.currentContext;
-      if (chip != null && chip.mounted) {
-        Scrollable.ensureVisible(
-          chip,
-          alignment: .5,
-          duration: const Duration(milliseconds: 250),
-        );
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final continent = widget.continent;
-    final hint = Theme.of(context).textTheme.labelSmall;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Semantics(
-          label: 'Wybierz kontynent',
-          container: true,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            clipBehavior: Clip.none,
-            child: Row(
-              children: [
-                for (final option in Continent.values) ...[
-                  ChoiceChip(
-                    key: _chips[option],
-                    label: Text(option.label),
-                    selected: continent == option,
-                    showCheckmark: false,
-                    materialTapTargetSize: MaterialTapTargetSize.padded,
-                    onSelected: (_) => ref
-                        .read(selectedContinentProvider.notifier)
-                        .select(option),
-                  ),
-                  if (option != Continent.values.last) const SizedBox(width: 8),
-                ],
-              ],
-            ),
-          ),
-        ),
-        ExcludeSemantics(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.west, size: 13, color: hint?.color),
-              const SizedBox(width: 6),
-              Icon(Icons.swipe, size: 14, color: hint?.color),
-              const SizedBox(width: 4),
-              Flexible(
-                child: Text(
-                  'Przesuń, aby zobaczyć więcej kontynentów',
-                  style: hint,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              const SizedBox(width: 6),
-              Icon(Icons.east, size: 13, color: hint?.color),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// Light green panel shared by the expedition card and its load states.
+/// Light green panel shared by load and error states of Today's expedition.
 class _CardShell extends StatelessWidget {
   const _CardShell({required this.child});
   final Widget child;
@@ -271,9 +228,16 @@ class _LoadFailed extends StatelessWidget {
 
 /// „Gotowy na wyprawę?”: the day's plan in one line and the main button.
 class _Expedition extends ConsumerWidget {
-  const _Expedition({required this.continent, required this.overview});
+  const _Expedition({
+    required this.continent,
+    required this.overview,
+    required this.bannerHeight,
+    required this.bannerWidth,
+  });
   final Continent continent;
   final MemoryOverview overview;
+  final double bannerHeight;
+  final double bannerWidth;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -292,9 +256,7 @@ class _Expedition extends ConsumerWidget {
         overview.firstVisit && active == null && overview.newAvailable > 0;
     final subtitle = placement
         ? '${continent.label} · krótki quiz na start, poziom łatwy'
-        // The plan is one sentence; under the headline it reads as a tag.
         : '${continent.label} · '
-              // The headline already says „Na dziś wszystko!”.
               '${_planText(context, overview).replaceFirst('Na dziś wszystko. ', '').replaceFirst(RegExp(r'\.$'), '')}';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -303,6 +265,8 @@ class _Expedition extends ConsumerWidget {
           continent: continent,
           headline: headline,
           subtitle: subtitle,
+          height: bannerHeight,
+          width: bannerWidth,
           onSwipe: (area) =>
               ref.read(selectedContinentProvider.notifier).select(area),
           action: placement
@@ -313,13 +277,10 @@ class _Expedition extends ConsumerWidget {
                 )
               : !(canStart || extra)
               ? null
-              // The extra round is optional, so it never looks like the
-              // day's main task.
               : extra
               ? FilledButton.tonalIcon(
-                  // Cream on the picture: optional, but still readable.
                   style: FilledButton.styleFrom(
-                    backgroundColor: GeoTheme.paper.withValues(alpha: .92),
+                    backgroundColor: GeoTheme.paper.withValues(alpha: .94),
                     minimumSize: const Size.fromHeight(48),
                     shape: const StadiumBorder(),
                   ),
@@ -335,8 +296,25 @@ class _Expedition extends ConsumerWidget {
                   onPressed: () => _openAndRefresh(context, ref, '/daily'),
                 ),
         ),
+        if (placement && overview.plannedCount > 0)
+          Align(
+            child: TextButton(
+              style: TextButton.styleFrom(
+                visualDensity: VisualDensity.compact,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
+              ),
+              onPressed: () => _openAndRefresh(context, ref, '/daily'),
+              child: const Text(
+                'Zacznij zwykłą wyprawę',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
         if (overview.otherDueCount > 0) ...[
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
           Text(
             'Na innych poziomach: ${overview.otherDueCount} '
             '${_plural(overview.otherDueCount, 'powtórka', 'powtórki', 'powtórek')}.',
@@ -349,27 +327,26 @@ class _Expedition extends ConsumerWidget {
   }
 }
 
-/// Region banner (look v2): the headline and plan above a rounded region
-/// picture. On the picture: the streak (top right), map progress and the
-/// main button (bottom). The headline is real text on the page, so it stays
-/// readable whatever the picture shows and grows with the font.
-/// Swipe left: next area, right: the previous one (the chips do the same
-/// for screen readers).
+/// Region banner (look v2): the headline and plan above the tall portrait
+/// region picture (1080×1350). On the picture: the streak (top right), map
+/// progress and the main button (bottom over a subtle dark scrim).
 class _Banner extends StatelessWidget {
   const _Banner({
     required this.continent,
     required this.headline,
     required this.subtitle,
+    required this.height,
+    required this.width,
     required this.onSwipe,
     this.action,
   });
   final Continent continent;
   final String headline, subtitle;
+  final double height, width;
   final ValueChanged<Continent> onSwipe;
   final Widget? action;
 
   static String art(Continent area) {
-    // Two variants per region; the picture changes from day to day.
     final day = DateTime.now().difference(DateTime(2026)).inDays;
     return 'assets/v2/banner_${area.artId}_${day % 2 + 1}.webp';
   }
@@ -385,6 +362,24 @@ class _Banner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final decodeWidth = (width * MediaQuery.devicePixelRatioOf(context))
+        .round()
+        .clamp(1, 1080);
+    ImageProvider provider(Continent area) =>
+        ResizeImage(AssetImage(art(area)), width: decodeWidth);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!context.mounted) return;
+      for (final step in const [-1, 1]) {
+        final i = continent.index + step;
+        if (i >= 0 && i < Continent.values.length) {
+          precacheImage(provider(Continent.values[i]), context);
+        }
+      }
+    });
+    // Tall portrait frames show the full illustration from sky to meadow;
+    // compact frames keep the kuna's face clear of the bottom CTA.
+    final alignment = Alignment(0, width / height > 1.05 ? -.32 : -.14);
+
     return GestureDetector(
       onHorizontalDragEnd: _swiped,
       child: Column(
@@ -409,68 +404,52 @@ class _Banner extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              // Decoded at the size it is shown, not at 1080 px: a third of
-              // the memory on a typical phone. The neighbours are decoded
-              // ahead, so a swipe shows the next picture at once.
-              final decodeWidth =
-                  (constraints.maxWidth *
-                          MediaQuery.devicePixelRatioOf(context))
-                      .round()
-                      .clamp(1, 1080);
-              ImageProvider provider(Continent area) =>
-                  ResizeImage(AssetImage(art(area)), width: decodeWidth);
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (!context.mounted) return;
-                for (final step in const [-1, 1]) {
-                  final i = continent.index + step;
-                  if (i >= 0 && i < Continent.values.length) {
-                    precacheImage(provider(Continent.values[i]), context);
-                  }
-                }
-              });
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: AspectRatio(
-                  aspectRatio: 1.45,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      ExcludeSemantics(
-                        child: Image(
-                          image: provider(continent),
-                          fit: BoxFit.cover,
-                          // Keeps the kuna's face in the frame.
-                          alignment: const Alignment(0, -.35),
-                          gaplessPlayback: true,
-                        ),
-                      ),
-                      const Positioned(
-                        top: 10,
-                        right: 10,
-                        child: _StreakBadge(),
-                      ),
-                      Positioned(
-                        left: 14,
-                        right: 14,
-                        bottom: 12,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _MapBadge(continent: continent),
-                            if (action != null) ...[
-                              const SizedBox(height: 8),
-                              SizedBox(width: double.infinity, child: action),
-                            ],
-                          ],
-                        ),
-                      ),
-                    ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(26),
+            child: SizedBox(
+              height: height,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ExcludeSemantics(
+                    child: Image(
+                      image: provider(continent),
+                      fit: BoxFit.cover,
+                      alignment: alignment,
+                      gaplessPlayback: true,
+                    ),
                   ),
-                ),
-              );
-            },
+                  const IgnorePointer(
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          stops: [.58, 1],
+                          colors: [Colors.transparent, GeoTheme.bannerScrim],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Positioned(top: 12, right: 12, child: _StreakBadge()),
+                  Positioned(
+                    left: 14,
+                    right: 14,
+                    bottom: 14,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _MapBadge(continent: continent),
+                        if (action != null) ...[
+                          const SizedBox(height: 10),
+                          SizedBox(width: double.infinity, child: action),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -486,13 +465,13 @@ class _Pill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Material(
-    color: GeoTheme.paper.withValues(alpha: .9),
+    color: GeoTheme.paper.withValues(alpha: .92),
     shape: const StadiumBorder(),
     clipBehavior: Clip.antiAlias,
     child: InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
         child: child,
       ),
     ),
@@ -629,7 +608,6 @@ class _StartButton extends StatelessWidget {
       children: [
         const Icon(Icons.play_arrow_rounded, size: 34),
         const SizedBox(width: 8),
-        // Very large text shrinks the label instead of breaking a word.
         Flexible(
           child: FittedBox(fit: BoxFit.scaleDown, child: Text(label)),
         ),
@@ -639,8 +617,7 @@ class _StartButton extends StatelessWidget {
 }
 
 /// Training tiles (v2.5 pack): the picture without text, the name as real
-/// text on the tile's calm lower band, so it scales with the font size
-/// (down to fit) and follows the area (Herby, maps of Poland and the USA).
+/// text on the tile's calm lower band.
 class _TrainingRow extends ConsumerWidget {
   const _TrainingRow({required this.maxTile});
   final double maxTile;
@@ -658,7 +635,6 @@ class _TrainingRow extends ConsumerWidget {
         },
         '/learn',
       ),
-      // Short on the tile; the screen title says „Miasta wojewódzkie”.
       ('Stolice', 'stolice', '/capitals'),
       (
         area.symbolsLabel,
@@ -693,7 +669,6 @@ class _TrainingRow extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(24),
                       ),
                       onTap: () => _openAndRefresh(context, ref, path),
-                      // Square before the picture loads: no layout jump.
                       child: AspectRatio(
                         aspectRatio: 1,
                         child: Stack(
@@ -703,8 +678,6 @@ class _TrainingRow extends ConsumerWidget {
                               'assets/v2/tile_$art.webp',
                               cacheWidth: 432,
                             ),
-                            // The lower band between the leaves is left
-                            // free for the name.
                             FractionallySizedBox(
                               alignment: Alignment.bottomCenter,
                               heightFactor: .3,
@@ -736,60 +709,6 @@ class _LevelRow extends ConsumerWidget {
   final Continent continent;
   final bool activeSession;
 
-  Future<void> _choose(
-    BuildContext context,
-    WidgetRef ref,
-    LearningDifficulty current,
-  ) async {
-    final chosen = await showModalBottomSheet<LearningDifficulty>(
-      context: context,
-      showDragHandle: true,
-      isScrollControlled: true,
-      useRootNavigator: true,
-      builder: (context) => SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
-                child: Text(
-                  'Poziom: ${continent.label}',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-              for (final level in LearningDifficulty.values)
-                ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                  title: Text(level.label),
-                  subtitle: Text(level.description),
-                  selected: level == current,
-                  trailing: level == current ? const Icon(Icons.check) : null,
-                  onTap: () => Navigator.pop(context, level),
-                ),
-              if (activeSession)
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-                  child: Text(
-                    'Rozpoczęta wyprawa zachowuje zapisany poziom; wybór '
-                    'dotyczy następnej.',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-    if (chosen == null || chosen == current) return;
-    await ref
-        .read(appPreferencesProvider.notifier)
-        .setDifficulty(continent, chosen);
-    ref.invalidate(dailyOverviewProvider);
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final current =
@@ -801,12 +720,25 @@ class _LevelRow extends ConsumerWidget {
         LearningDifficulty.normal;
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+      visualDensity: VisualDensity.compact,
       dense: true,
-      leading: const Icon(Icons.tune),
-      title: Text('Poziom dla ${continent.genitive}: ${current.label}'),
-      subtitle: Text(current.description),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: () => _choose(context, ref, current),
+      leading: const Icon(Icons.tune, size: 20),
+      title: Text(
+        'Poziom dla ${continent.genitive}: ${current.label}',
+        style: Theme.of(context).textTheme.labelLarge
+            ?.copyWith(fontWeight: FontWeight.w700),
+      ),
+      subtitle: Text(
+        current.description.replaceAll('państwo', continent.areaAccusative),
+      ),
+      trailing: const Icon(Icons.chevron_right, size: 20),
+      onTap: () => showDifficultySheet(
+        context,
+        ref,
+        continent: continent,
+        current: current,
+        activeSession: activeSession,
+      ),
     );
   }
 }
@@ -823,8 +755,7 @@ String _planText(BuildContext context, MemoryOverview overview) {
         'w rozpoczętej serii.';
   }
   if (overview.plannedCount == 0) {
-    final calm = _calmMessage(context, overview.nextDue);
-    return overview.canStartExtra ? '$calm Możesz jeszcze poćwiczyć.' : calm;
+    return _calmMessage(context, overview.nextDue);
   }
   final parts = [
     if (overview.plannedNewCount > 0)
@@ -906,7 +837,7 @@ class _StreakRescueCardState extends ConsumerState<_StreakRescueCard> {
     final missed = rescue.missedDays.length;
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 14),
       child: Card.filled(
         color: GeoColors.of(context).speechBubble,
         child: Padding(
@@ -915,7 +846,6 @@ class _StreakRescueCardState extends ConsumerState<_StreakRescueCard> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Wrap(
-                // Wraps below the kuna when large text leaves no room.
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 12,
                 runSpacing: 8,

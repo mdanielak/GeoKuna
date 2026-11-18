@@ -8,13 +8,13 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 
 | Katalog | Odpowiedzialność |
 |---|---|
-| `app/` | motyw i tokeny (`theme.dart`: `GeoTheme`, `GeoColors`), routing (`app.dart`), providery (`providers.dart`) |
+| `app/` | motyw, tokeny i wspólny nagłówek regionalny (`theme.dart`: `GeoTheme`, `GeoColors`, `regionAppBar`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
-| `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
+| `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `ContinentChips`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
 | `features/learning/` | sesje i zapis (`session_repository.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
-| `features/home/` | Dziś i atlas |
+| `features/home/` | Dziś i atlas (z przełącznikiem obszarów i wizytówką kraju) |
 | `features/progress/` | Moja nauka (kontynent → kraje) i szczegóły umiejętności |
-| `features/settings/` | preferencje (`app_preferences.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
+| `features/settings/` | preferencje (`app_preferences.dart`), arkusz wyboru poziomu (`difficulty_sheet.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
 
 Kolory: role Material z jednego ziarna (`GeoTheme.seed`) na papierowym tle;
 role spoza Material (odpowiedź dobra/zła/literówka, ciekawostka, ramka flagi,

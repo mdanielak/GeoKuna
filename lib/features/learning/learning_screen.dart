@@ -211,95 +211,67 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      toolbarHeight: 52,
-      // Region landscape (look v2); the title sits in its calm left part.
-      flexibleSpace: ExcludeSemantics(
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/v2/quiz_header_${ref.watch(selectedContinentProvider).artId}.webp',
-              fit: BoxFit.cover,
-              alignment: Alignment.bottomRight,
-              cacheWidth: 1080,
-            ),
-            // Long titles stay readable where the landscape begins.
-            DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  stops: const [.35, .8],
-                  colors: [
-                    GeoTheme.paper.withValues(alpha: .75),
-                    GeoTheme.paper.withValues(alpha: 0),
-                  ],
+  Widget build(BuildContext context) {
+    final continent = ref.watch(selectedContinentProvider);
+    return Scaffold(
+      appBar: regionAppBar(
+        context,
+        continent: continent,
+        title: widget.daily
+            ? 'Dzisiejsza wyprawa po ${continent.journey}'
+            : widget.flagDifficulty != null
+            ? '${continent.symbolsLabel} ${continent.genitive}'
+            : widget.capitalDifficulty == null
+            ? 'Wyprawa po ${continent.journey}'
+            : continent == Continent.usa
+            ? 'Stolice stanów USA'
+            : '${continent.capitalsLabel} ${continent.genitive}',
+        actions: _hasLoadedSession && _session != null && !_session!.completed
+            ? [
+                IconButton(
+                  tooltip: 'Zakończ quiz',
+                  onPressed: _busy ? null : _finishQuiz,
+                  style: IconButton.styleFrom(
+                    backgroundColor: GeoTheme.paper.withValues(alpha: .9),
+                  ),
+                  icon: const Icon(Icons.close),
                 ),
-              ),
-            ),
-          ],
+              ]
+            : const [],
+      ),
+      body: SafeArea(
+        top: false,
+        child: FutureBuilder<(Catalog, LearningSession?)>(
+          future: _initial,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return LoadError(
+                onRetry: () => setState(() => _initial = _load()),
+              );
+            }
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            final (catalog, initialSession) = snapshot.requireData;
+            final session = _session ?? initialSession;
+            if (session == null) return _emptyDaily();
+            if (session.completed) return _summary(catalog, session);
+            final attempt = session.currentAttempt;
+            final selected =
+                attempt?.answer ??
+                _selected ??
+                (session.currentMapGuesses.isEmpty
+                    ? null
+                    : session.currentMapGuesses.last.selectedCountryId);
+            if (session.isMapAt(session.index)) {
+              return _mapQuestion(catalog, session, selected, attempt);
+            }
+            return _capitalQuestion(catalog, session, attempt);
+          },
         ),
       ),
-      title: Text(
-        widget.daily
-            ? 'Dzisiejsza wyprawa po ${ref.watch(selectedContinentProvider).journey}'
-            : widget.flagDifficulty != null
-            ? '${ref.watch(selectedContinentProvider).symbolsLabel} ${ref.watch(selectedContinentProvider).genitive}'
-            : widget.capitalDifficulty == null
-            ? 'Wyprawa po ${ref.watch(selectedContinentProvider).journey}'
-            // „Stolice stanów Stanów Zjednoczonych” repeats itself.
-            : ref.watch(selectedContinentProvider) == Continent.usa
-            ? 'Stolice stanów USA'
-            : '${ref.watch(selectedContinentProvider).capitalsLabel} ${ref.watch(selectedContinentProvider).genitive}',
-        // Smaller than the default, so long titles stay on the calm part
-        // of the landscape.
-        style: Theme.of(context).textTheme.titleMedium
-            ?.copyWith(fontWeight: FontWeight.w700),
-      ),
-      actions: _hasLoadedSession && _session != null && !_session!.completed
-          ? [
-              IconButton(
-                tooltip: 'Zakończ quiz',
-                onPressed: _busy ? null : _finishQuiz,
-                // A cream disc keeps the cross visible on the landscape.
-                style: IconButton.styleFrom(
-                  backgroundColor: GeoTheme.paper.withValues(alpha: .9),
-                ),
-                icon: const Icon(Icons.close),
-              ),
-            ]
-          : const [],
-    ),
-    body: SafeArea(
-      top: false,
-      child: FutureBuilder<(Catalog, LearningSession?)>(
-        future: _initial,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return LoadError(onRetry: () => setState(() => _initial = _load()));
-          }
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          final (catalog, initialSession) = snapshot.requireData;
-          final session = _session ?? initialSession;
-          if (session == null) return _emptyDaily();
-          if (session.completed) return _summary(catalog, session);
-          final attempt = session.currentAttempt;
-          final selected =
-              attempt?.answer ??
-              _selected ??
-              (session.currentMapGuesses.isEmpty
-                  ? null
-                  : session.currentMapGuesses.last.selectedCountryId);
-          if (session.isMapAt(session.index)) {
-            return _mapQuestion(catalog, session, selected, attempt);
-          }
-          return _capitalQuestion(catalog, session, attempt);
-        },
-      ),
-    ),
-  );
+    );
+  }
 
   Widget _mapQuestion(
     Catalog catalog,
@@ -316,9 +288,12 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     final quizSeed = '${session.row.id}:${session.index}';
     final trivia = _trivia(catalog, session, quizSeed);
     final textTheme = Theme.of(context).textTheme;
+    final colors = GeoColors.of(context);
+    final progress =
+        (session.index + (attempt != null ? 1 : 0)) / session.countryIds.length;
     // The question sits above the map so it never covers countries or labels.
     final header = Padding(
-      padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
+      padding: const EdgeInsets.fromLTRB(20, 4, 20, 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -328,7 +303,13 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 6),
+          LinearProgressIndicator(
+            value: progress,
+            minHeight: 6,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          const SizedBox(height: 8),
           if (session.isFlagAt(session.index))
             Row(
               children: [
@@ -414,7 +395,44 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                                       padding: const EdgeInsets.only(
                                         bottom: 12,
                                       ),
-                                      child: Text(_feedback(catalog, session)),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(12),
+                                        decoration: BoxDecoration(
+                                          color: attempt.correct
+                                              ? colors.correctContainer
+                                              : colors.wrongContainer,
+                                          borderRadius: BorderRadius.circular(
+                                            14,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(
+                                              attempt.correct
+                                                  ? Icons.check_circle_outline
+                                                  : Icons.cancel_outlined,
+                                              color: attempt.correct
+                                                  ? colors.onCorrectContainer
+                                                  : colors.onWrongContainer,
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Expanded(
+                                              child: Text(
+                                                _feedback(catalog, session),
+                                                style: TextStyle(
+                                                  color: attempt.correct
+                                                      ? colors
+                                                            .onCorrectContainer
+                                                      : colors.onWrongContainer,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   _InsightNote(
@@ -441,20 +459,48 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                                   if (session.currentMapGuesses.isNotEmpty)
                                     Semantics(
                                       liveRegion: true,
-                                      child: Text(
-                                        'Jeszcze nie. Pozostało prób: ${3 - session.currentMapGuesses.length}.',
-                                        style: TextStyle(
-                                          color: GeoColors.of(context)
-                                              .onWrongContainer,
-                                          fontWeight: FontWeight.w700,
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 10,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: colors.wrongContainer,
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.touch_app_outlined,
+                                              size: 20,
+                                              color: colors.onWrongContainer,
+                                            ),
+                                            const SizedBox(width: 10),
+                                            Expanded(
+                                              child: Text(
+                                                'Wskazano: ${catalog.country(session.currentMapGuesses.last.selectedCountryId).name}. '
+                                                'Pozostało prób: ${3 - session.currentMapGuesses.length}.',
+                                                style: TextStyle(
+                                                  color:
+                                                      colors.onWrongContainer,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
                                   if (session.assistedIndices.contains(
                                     session.index,
                                   ))
-                                    const Text(
-                                      'Z pomocą — bez oceny pamięci mapy.',
+                                    const Padding(
+                                      padding: EdgeInsets.only(top: 6),
+                                      child: Text(
+                                        'Z pomocą — bez oceny pamięci mapy.',
+                                      ),
                                     ),
                                 ],
                               ],
@@ -480,88 +526,113 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     final flag = session.isFlagAt(session.index);
     final question = flag ? null : session.capitalQuestionAt(session.index);
     final defaultPrompt = 'Jaka jest stolica tego państwa?';
+    final progress =
+        (session.index + (attempt != null ? 1 : 0)) / session.countryIds.length;
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 760),
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              _questionLabel(session),
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-            const SizedBox(height: 8),
-            LinearProgressIndicator(
-              value: session.index / session.countryIds.length,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            const SizedBox(height: 20),
-            if (flag) ...[
-              _flagImage(session.flagQuestionAt(session.index)),
-              const SizedBox(height: 12),
-              Text(
-                catalog.continent.symbolQuestion,
-                // The prompt stays regular; the subject above it is bold.
-                style: Theme.of(context).textTheme.headlineSmall
-                    ?.copyWith(fontWeight: FontWeight.w400),
-              ),
-            ] else ...[
-              Text(
-                _capitalized(catalog.country(session.targetId).questionName),
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                question!.fact.prompt == defaultPrompt
-                    ? catalog.continent.capitalPrompt
-                    : question.fact.prompt,
-                style: Theme.of(context).textTheme.titleLarge
-                    ?.copyWith(fontWeight: FontWeight.w400),
-              ),
-            ],
-            const SizedBox(height: 20),
-            if (attempt == null) _capitalInput(catalog, session),
-            if (attempt != null)
-              AnswerFeedback(
-                correct: attempt.correct,
-                typoAccepted: attempt.typoAccepted,
-                answer: attempt.answer,
-                solution: flag
-                    ? session.flagQuestionAt(session.index).countryName
-                    : question!.fact.name,
-                note: flag ? '' : question!.fact.note,
-                subject: flag
-                    ? catalog.continent.areaSubject
-                    : catalog.continent.capitalSubject,
-              ),
-            if (attempt != null)
-              _InsightNote(catalog: catalog, session: session),
-            // Flag questions show a flag fact, capital questions a capital fact.
-            if (attempt != null)
-              if (_trivia(
-                    catalog,
-                    session,
-                    '${session.row.id}:${session.index}',
-                  )
-                  case final fact?)
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: _TriviaCard(text: fact.text),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      _questionLabel(session),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    LinearProgressIndicator(
+                      value: progress,
+                      minHeight: 6,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    const SizedBox(height: 20),
+                    if (flag) ...[
+                      Center(
+                        child: _flagImage(
+                          session.flagQuestionAt(session.index),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Text(
+                        catalog.continent.symbolQuestion,
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w500),
+                      ),
+                    ] else ...[
+                      Text(
+                        _capitalized(
+                          catalog.country(session.targetId).questionName,
+                        ),
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        question!.fact.prompt == defaultPrompt
+                            ? catalog.continent.capitalPrompt
+                            : question.fact.prompt,
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                    const SizedBox(height: 20),
+                    if (attempt == null) _capitalInput(catalog, session),
+                    if (attempt != null)
+                      AnswerFeedback(
+                        correct: attempt.correct,
+                        typoAccepted: attempt.typoAccepted,
+                        answer: attempt.answer,
+                        solution: flag
+                            ? session.flagQuestionAt(session.index).countryName
+                            : question!.fact.name,
+                        note: flag ? '' : question!.fact.note,
+                        subject: flag
+                            ? catalog.continent.areaSubject
+                            : catalog.continent.capitalSubject,
+                      ),
+                    if (attempt != null)
+                      _InsightNote(catalog: catalog, session: session),
+                    // Flag questions show a flag fact, capital questions a capital fact.
+                    if (attempt != null)
+                      if (_trivia(
+                            catalog,
+                            session,
+                            '${session.row.id}:${session.index}',
+                          )
+                          case final fact?)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: _TriviaCard(text: fact.text),
+                        ),
+                  ],
                 ),
-            const SizedBox(height: 12),
-            FilledButton(
-              onPressed: _busy || !_canSubmit(session)
-                  ? null
-                  : () => _submit(catalog, session),
-              child: Text(
-                _busy
-                    ? 'Zapisuję…'
-                    : attempt == null
-                    ? 'Sprawdź odpowiedź'
-                    : session.index == session.countryIds.length - 1
-                    ? 'Zobacz wynik'
-                    : 'Następne pytanie',
+              ),
+            ),
+            // Pinned above the soft keyboard and bottom inset so the main CTA
+            // stays reachable one-handed at any scroll position.
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 14),
+              child: FilledButton(
+                onPressed: _busy || !_canSubmit(session)
+                    ? null
+                    : () => _submit(catalog, session),
+                child: Text(
+                  _busy
+                      ? 'Zapisuję…'
+                      : attempt == null
+                      ? 'Sprawdź odpowiedź'
+                      : session.index == session.countryIds.length - 1
+                      ? 'Zobacz wynik'
+                      : 'Następne pytanie',
+                ),
               ),
             ),
           ],
@@ -580,6 +651,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         : session.capitalQuestionAt(session.index).fact.firstLetter;
     final difficulty = session.difficultyNameAt(session.index);
     if (difficulty == 'choice') {
+      final scheme = Theme.of(context).colorScheme;
       return RadioGroup<String>(
         groupValue: _selected,
         onChanged: (value) {
@@ -589,10 +661,31 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           children: [
             for (var i = 0; i < options.length; i++)
               Card.filled(
+                margin: const EdgeInsets.only(bottom: 10),
+                color: _selected == options[i]
+                    ? scheme.primaryContainer.withValues(alpha: .45)
+                    : null,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18),
+                  side: BorderSide(
+                    color: _selected == options[i]
+                        ? scheme.primary
+                        : GeoTheme.border,
+                    width: _selected == options[i] ? 2 : 1,
+                  ),
+                ),
+                clipBehavior: Clip.antiAlias,
                 child: RadioListTile<String>(
                   value: options[i],
                   enabled: !_busy,
-                  title: Text('${String.fromCharCode(65 + i)}. ${options[i]}'),
+                  title: Text(
+                    '${String.fromCharCode(65 + i)}. ${options[i]}',
+                    style: TextStyle(
+                      fontWeight: _selected == options[i]
+                          ? FontWeight.w700
+                          : FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
           ],
@@ -856,16 +949,23 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             if (!widget.daily) ...[
               const SizedBox(height: 12),
               OutlinedButton(
-                onPressed: () => context.go(
-                  session.isFlagAt(session.index)
-                      ? '/flags'
-                      : session.isCapitalAt(session.index)
-                      ? '/capitals'
-                      : '/atlas',
-                ),
+                onPressed: () {
+                  if (session.isCapitalAt(0) || session.isFlagAt(0)) {
+                    if (context.canPop()) {
+                      context.pop();
+                    } else {
+                      final setup = session.isFlagAt(0)
+                          ? '/flags'
+                          : '/capitals';
+                      context.go('/');
+                      context.push(setup);
+                    }
+                  } else {
+                    context.go('/atlas');
+                  }
+                },
                 child: Text(
-                  (session.isCapitalAt(session.index) ||
-                          session.isFlagAt(session.index))
+                  (session.isCapitalAt(0) || session.isFlagAt(0))
                       ? 'Wybierz inny poziom'
                       : 'Obejrzyj atlas',
                 ),
@@ -889,8 +989,15 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           shrinkWrap: true,
           padding: const EdgeInsets.all(24),
           children: [
-            const Icon(Icons.check_circle_outline, size: 56),
-            const SizedBox(height: 20),
+            ExcludeSemantics(
+              child: Image.asset(
+                'assets/v2/kuna_happy.webp',
+                height: 120,
+                cacheWidth: 312,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(height: 16),
             Text(
               'Na dziś wszystko.',
               textAlign: TextAlign.center,
@@ -1141,7 +1248,9 @@ class _ResultListState extends State<_ResultList> {
                       ],
                     ),
                     AnimatedSize(
-                      duration: const Duration(milliseconds: 180),
+                      duration: MediaQuery.disableAnimationsOf(context)
+                          ? Duration.zero
+                          : const Duration(milliseconds: 180),
                       alignment: Alignment.topCenter,
                       child: _open.contains(index)
                           ? Padding(

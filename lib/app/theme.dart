@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../features/atlas/continent.dart';
+
 /// GeoKuna design tokens (look v2: GeoKuna_Production_v2_1
 /// `design/color_tokens.json`). Material roles come from the brand green on
 /// cream paper; [GeoColors] holds the few app-specific roles Material lacks
@@ -8,14 +10,28 @@ import 'package:material_ui/material_ui.dart';
 abstract final class GeoTheme {
   static const seed = Color(0xFF0B6B3A);
   static const paper = Color(0xFFFFF9E9);
+  static const ivory = Color(0xFFFFFDF6);
+  static const creamCard = Color(0xFFF6EFD9);
+  static const creamElevated = Color(0xFFFCF5E1);
   static const ink = Color(0xFF0F3D27);
+  static const mutedInk = Color(0xFF3A5745);
   static const border = Color(0xFFCFE4B2);
+  static const bannerScrim = Color(0x59082616);
 
   static ThemeData light() {
-    final scheme = ColorScheme.fromSeed(
-      seedColor: seed,
-      surface: paper,
-    ).copyWith(primary: seed, onSurface: ink, outlineVariant: border);
+    final scheme = ColorScheme.fromSeed(seedColor: seed, surface: paper)
+        .copyWith(
+          primary: seed,
+          onSurface: ink,
+          onSurfaceVariant: mutedInk,
+          outline: const Color(0xFF8AA878),
+          outlineVariant: border,
+          surfaceContainerLowest: ivory,
+          surfaceContainerLow: creamElevated,
+          surfaceContainer: creamCard,
+          surfaceContainerHigh: creamCard,
+          surfaceContainerHighest: creamCard,
+        );
     final base = ThemeData(useMaterial3: true, colorScheme: scheme);
     // Type scale: Roboto (bundled, offline). Headings that carry the
     // question or a screen's subject are bold; app bar titles stay regular.
@@ -38,15 +54,54 @@ abstract final class GeoTheme {
       scaffoldBackgroundColor: paper,
       appBarTheme: AppBarTheme(
         backgroundColor: paper,
+        surfaceTintColor: Colors.transparent,
         centerTitle: false,
+        iconTheme: const IconThemeData(color: ink),
         titleTextStyle: base.textTheme.titleLarge?.copyWith(
           fontSize: 22,
+          fontWeight: FontWeight.w700,
           color: scheme.onSurface,
+        ),
+      ),
+      cardTheme: CardThemeData(
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: border),
+        ),
+      ),
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: ivory,
+        surfaceTintColor: Colors.transparent,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: ivory,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+          side: const BorderSide(color: border),
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: border.withValues(alpha: .7),
+        thickness: 1,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: ivory,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: border),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: border),
         ),
       ),
       chipTheme: ChipThemeData(
         shape: const StadiumBorder(side: BorderSide(color: border)),
-        backgroundColor: const Color(0xFFFFFDF5),
+        backgroundColor: ivory,
         selectedColor: seed,
         secondarySelectedColor: seed,
         labelStyle: base.textTheme.labelLarge?.copyWith(
@@ -60,7 +115,7 @@ abstract final class GeoTheme {
       // Compact bottom bar: icons and labels, without the tall M3 default.
       navigationBarTheme: NavigationBarThemeData(
         height: 56,
-        backgroundColor: const Color(0xFFF6EFD9),
+        backgroundColor: creamCard,
         indicatorColor: const Color(0xFFDDEFC6),
         labelPadding: const EdgeInsets.only(top: 2),
         labelTextStyle: WidgetStatePropertyAll(
@@ -75,7 +130,7 @@ abstract final class GeoTheme {
       ),
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: Color(0xFF6DB33F),
-        linearTrackColor: Color(0xFFE9E4D2),
+        linearTrackColor: Color(0xFFE5DEC8),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
@@ -85,10 +140,60 @@ abstract final class GeoTheme {
           ),
         ),
       ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          minimumSize: const Size(48, 48),
+          side: const BorderSide(color: border, width: 1.5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ),
       extensions: const [GeoColors.light],
     );
   }
 }
+
+/// AppBar with the region's v2 landscape banner and a warm left paper fade so
+/// the back button and title stay legible at any text size.
+AppBar regionAppBar(
+  BuildContext context, {
+  required Continent continent,
+  required String title,
+  List<Widget> actions = const [],
+}) => AppBar(
+  toolbarHeight: 52,
+  flexibleSpace: ExcludeSemantics(
+    child: Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.asset(
+          'assets/v2/quiz_header_${continent.artId}.webp',
+          fit: BoxFit.cover,
+          alignment: Alignment.bottomRight,
+          cacheWidth: 1080,
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              stops: const [.4, .85],
+              colors: [
+                GeoTheme.paper.withValues(alpha: .85),
+                GeoTheme.paper.withValues(alpha: 0),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+  title: Text(
+    title,
+    style: Theme.of(context).textTheme.titleMedium
+        ?.copyWith(fontWeight: FontWeight.w700),
+  ),
+  actions: actions,
+);
 
 /// App-specific colour roles; read with `GeoColors.of(context)`.
 @immutable
@@ -128,7 +233,7 @@ class GeoColors extends ThemeExtension<GeoColors> {
     // Barely grey so white flag fields (Netherlands, Poland) stay visible.
     flagFrame: Color(0xFFE9E8E3),
     flagFrameBorder: Color(0xFF7C887E),
-    speechBubble: Color(0xFFEFECE3),
+    speechBubble: Color(0xFFFFFDF6),
     streak: Color(0xFFC25A00),
   );
 

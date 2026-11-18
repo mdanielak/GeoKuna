@@ -172,17 +172,17 @@ Rozstrzygnięte: szczebel 2 obejmuje mapę i flagi (stolice nie, bo wpisana stol
 nie wskazuje kraju); ćwiczenia drabinki liczą się do passy jak każda odpowiedź.
 Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
 
-## Do poprawy później (wygląd v2, przegląd 2026-11-17)
+## Do poprawy później (wygląd v2)
 
-1. Podpowiedź „Przesuń, aby zobaczyć więcej kontynentów” jest niejednoznaczna,
-   odkąd przesuwa się też banner — usunąć lub przeredagować.
-2. Długi podtytuł „Na dziś wszystko!” (godzina powtórki + „Możesz jeszcze
-   poćwiczyć”) — skrócić.
-3. „Moja nauka” i „Ustawienia” w starym stylu Material (szare karty) — przenieść
-   na styl v2.
-4. Pierwsza wizyta zawsze proponuje Wstępny quiz; kto chce od razu zwykłej
-   wyprawy, ma tylko kafelki treningu — rozważyć drugi, mniejszy przycisk.
-5. Pozy przygodowe kuny (lornetka, aparat…) są w paczce, ale aplikacja ich
+Wdrożone na gałęzi `wyglad-v2-szlif` (2026-11-17):
+- Ekran *Dziś* rozciąga pionowy banner `1080×1350` od góry do dołu ekranu bez pustej luki, z delikatnym cieniem pod przyciskiem i opcją *„Zacznij zwykłą wyprawę”* przy pierwszej wizycie.
+- Usunięto niejednoznaczną podpowiedź *„Przesuń, aby zobaczyć więcej kontynentów”* i skrócono podtytuł *„Na dziś wszystko!”*.
+- *Moja nauka*, *Postępy*, *Ustawienia*, ekrany startowe stolic/flag (z arkuszem wyboru poziomu na miejscu, spójnymi opisami poziomów mapy/pisania, etykietami bez brakującego w Roboto glifu `→` i naprawą wznowienia `flaga na mapie` na łatwych poziomach) przeniesiono na styl v2.
+- *Atlas*: przełącznik obszarów na górze, wizytówka wybranego obszaru (flaga/herb, stolica, ciekawostka), układ dwukolumnowy na szerokich ekranach i jedna przewijalna lista bez zagnieżdżonego skrola na telefonie; poprawiony opis Europy (`47` zamiast `51` państw).
+- Ekran quizu: wspólny pasek postępu we wszystkich typach pytań, semantyczny pasek feedbacku z ikoną na mapie (także przy próbach 1–2), przypięty u dołu przycisk główny w pytaniach pisanych/A–D (dostępny jedną ręką nad klawiaturą), wyraźne obramowanie wybranej opcji A–D oraz naprawa powrotu *„Wybierz inny poziom”* bez czyszczenia stosu nawigacji.
+
+Otwarte:
+1. Pozy przygodowe kuny (lornetka, aparat…) są w paczce, ale aplikacja ich
    nie używa (nagrody, puste stany?).
 
 ## Dalsze przyrosty

@@ -298,77 +298,104 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                 ],
                 const SizedBox(height: 28),
-                Text(
-                  'Kopia zapasowa',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Cała nauka w jednym pliku: postęp, powtórki, passa, medale i '
-                  'ustawienia. Przyda się przy zmianie telefonu lub przeglądarki.',
-                ),
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    FilledButton.tonalIcon(
-                      onPressed: _busy ? null : _export,
-                      icon: const Icon(Icons.save_alt),
-                      label: const Text('Zapisz kopię'),
-                    ),
-                    OutlinedButton.icon(
-                      onPressed: _busy ? null : _import,
-                      icon: const Icon(Icons.upload_file),
-                      label: const Text('Wczytaj kopię'),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 28),
-                Text(
-                  'Nowy początek',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Reset usuwa zapisane postępy na tym urządzeniu i nie da się go cofnąć. Przed resetem możesz zapisać kopię.',
-                ),
-                const SizedBox(height: 12),
-                RadioGroup<bool>(
-                  groupValue: _all,
-                  onChanged: (value) {
-                    if (!_busy && value != null) {
-                      setState(() => _all = value);
-                    }
-                  },
-                  child: Column(
-                    children: [
-                      RadioListTile<bool>(
-                        value: false,
-                        title: Text('Tylko ${continent.label}'),
-                        subtitle: const Text(
-                          'Także wspólne karty krajów transkontynentalnych.',
+                Card.filled(
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Kopia zapasowa',
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
-                      ),
-                      const RadioListTile<bool>(
-                        value: true,
-                        title: Text('Cała nauka'),
-                        subtitle: Text(
-                          'Wszystkie kontynenty i wszystkie rozpoczęte quizy.',
+                        const SizedBox(height: 6),
+                        const Text(
+                          'Cała nauka w jednym pliku: postęp, powtórki, passa, medale i '
+                          'ustawienia. Przyda się przy zmianie telefonu lub przeglądarki.',
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 14),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            FilledButton.tonalIcon(
+                              onPressed: _busy ? null : _export,
+                              icon: const Icon(Icons.save_alt),
+                              label: const Text('Zapisz kopię'),
+                            ),
+                            OutlinedButton.icon(
+                              onPressed: _busy ? null : _import,
+                              icon: const Icon(Icons.upload_file),
+                              label: const Text('Wczytaj kopię'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                OutlinedButton.icon(
-                  onPressed: _busy ? null : _reset,
-                  icon: _busy
-                      ? const SizedBox.square(
-                          dimension: 18,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        )
-                      : const Icon(Icons.restart_alt),
-                  label: Text(_busy ? 'Zapisuję…' : 'Zresetuj naukę'),
+                const SizedBox(height: 20),
+                Card.filled(
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nowy początek',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 6),
+                        const Text(
+                          'Reset usuwa zapisane postępy na tym urządzeniu i nie da się go cofnąć. Przed resetem możesz zapisać kopię.',
+                        ),
+                        const SizedBox(height: 8),
+                        RadioGroup<bool>(
+                          groupValue: _all,
+                          onChanged: (value) {
+                            if (!_busy && value != null) {
+                              setState(() => _all = value);
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              RadioListTile<bool>(
+                                contentPadding: EdgeInsets.zero,
+                                value: false,
+                                title: Text('Tylko ${continent.label}'),
+                                subtitle: const Text(
+                                  'Także wspólne karty krajów transkontynentalnych.',
+                                ),
+                              ),
+                              const RadioListTile<bool>(
+                                contentPadding: EdgeInsets.zero,
+                                value: true,
+                                title: Text('Cała nauka'),
+                                subtitle: Text(
+                                  'Wszystkie kontynenty i wszystkie rozpoczęte quizy.',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        OutlinedButton.icon(
+                          onPressed: _busy ? null : _reset,
+                          icon: _busy
+                              ? const SizedBox.square(
+                                  dimension: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : const Icon(Icons.restart_alt),
+                          label: Text(_busy ? 'Zapisuję…' : 'Zresetuj naukę'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 32),
                 const _AboutApp(),
@@ -402,14 +429,15 @@ class _AppearanceCard extends StatelessWidget {
         'Góry, rzeki i jeziora jak na mapie terenu.',
       ),
     };
-    return Card.outlined(
+    return Card.filled(
+      margin: const EdgeInsets.only(bottom: 10),
       clipBehavior: Clip.antiAlias,
       child: RadioListTile<MapAppearance>(
         value: appearance,
         title: Text(appearance.label),
         subtitle: Text(description),
         secondary: Icon(icon, size: 30),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
         selected: selected,
         controlAffinity: ListTileControlAffinity.trailing,
       ),
@@ -430,7 +458,8 @@ class _DifficultyPreference extends StatelessWidget {
   final ValueChanged<LearningDifficulty> onChanged;
 
   @override
-  Widget build(BuildContext context) => Card.outlined(
+  Widget build(BuildContext context) => Card.filled(
+    margin: const EdgeInsets.only(bottom: 10),
     child: Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
       child: Column(

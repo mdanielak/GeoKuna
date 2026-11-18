@@ -165,8 +165,11 @@ class QuizMascotFeedbackView extends StatelessWidget {
             ),
             child: Text(
               feedback.message,
-              style: Theme.of(context).textTheme.titleLarge
-                  ?.copyWith(fontWeight: FontWeight.w600, height: 1.3),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                height: 1.35,
+              ),
             ),
           );
           // Large text on a narrow screen: the bubble goes below the kuna,

@@ -1,11 +1,13 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../app/app.dart';
 import '../../app/providers.dart';
+import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
+import '../settings/difficulty_sheet.dart';
 
 class CapitalSetupScreen extends ConsumerWidget {
   const CapitalSetupScreen({super.key});
@@ -14,134 +16,143 @@ class CapitalSetupScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final continent = ref.watch(selectedContinentProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${continent.capitalsLabel} ${continent.genitive}'),
+      appBar: regionAppBar(
+        context,
+        continent: continent,
+        title: continent == Continent.usa
+            ? 'Stolice stanów USA'
+            : '${continent.capitalsLabel} ${continent.genitive}',
       ),
-      body: ref
-          .watch(appPreferencesProvider)
-          .when(
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (_, _) => LoadError(
-              onRetry: () => ref.invalidate(appPreferencesProvider),
-            ),
-            data: (preferences) => ref
-                .watch(capitalsProvider)
-                .when(
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  error: (_, _) => LoadError(
-                    onRetry: () => ref.invalidate(capitalsProvider),
-                  ),
-                  data: (capitals) => ref
-                      .watch(dashboardProvider)
-                      .when(
-                        loading: () =>
-                            const Center(child: CircularProgressIndicator()),
-                        error: (_, _) => LoadError(
-                          onRetry: () => ref.invalidate(dashboardProvider),
-                        ),
-                        data: (data) {
-                          final selectedDifficulty = preferences.difficultyFor(
-                            continent,
-                          );
-                          final pending = data.capitalSessions
-                              .where(
-                                (s) =>
-                                    s.row.difficulty == selectedDifficulty.mode,
-                              )
-                              .firstOrNull;
-                          return Center(
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 620),
-                              child: ListView(
-                                padding: const EdgeInsets.all(24),
-                                children: [
-                                  Text(
-                                    continent == Continent.poland
-                                        ? 'Trenuj miasta wojewódzkie.'
-                                        : continent == Continent.usa
-                                        ? 'Trenuj stolice stanów.'
-                                        : 'Trenuj przypominanie stolic państw.',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '${capitals.facts.length} ${continent.areaNoun} · 10 pytań w sesji · offline',
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Card.filled(
-                                    child: ListTile(
-                                      leading: const Icon(Icons.tune),
-                                      title: Text(
-                                        'Poziom: ${selectedDifficulty.label}',
-                                      ),
-                                      subtitle: Text(
-                                        selectedDifficulty.description,
-                                      ),
-                                      trailing: const Icon(Icons.chevron_right),
-                                      onTap: () => context.push('/settings'),
+      body: SafeArea(
+        top: false,
+        child: ref
+            .watch(appPreferencesProvider)
+            .when(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (_, _) => LoadError(
+                onRetry: () => ref.invalidate(appPreferencesProvider),
+              ),
+              data: (preferences) => ref
+                  .watch(capitalsProvider)
+                  .when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (_, _) => LoadError(
+                      onRetry: () => ref.invalidate(capitalsProvider),
+                    ),
+                    data: (capitals) => ref
+                        .watch(dashboardProvider)
+                        .when(
+                          loading: () =>
+                              const Center(child: CircularProgressIndicator()),
+                          error: (_, _) => LoadError(
+                            onRetry: () => ref.invalidate(dashboardProvider),
+                          ),
+                          data: (data) {
+                            final selectedDifficulty = preferences
+                                .difficultyFor(continent);
+                            final pending = data.capitalSessions
+                                .where(
+                                  (s) =>
+                                      s.row.difficulty ==
+                                      selectedDifficulty.mode,
+                                )
+                                .firstOrNull;
+                            return Center(
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 620,
+                                ),
+                                child: ListView(
+                                  padding: const EdgeInsets.all(24),
+                                  children: [
+                                    Text(
+                                      continent == Continent.poland
+                                          ? 'Trenuj miasta wojewódzkie.'
+                                          : continent == Continent.usa
+                                          ? 'Trenuj stolice stanów.'
+                                          : 'Trenuj przypominanie stolic państw.',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall,
                                     ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: TextButton.icon(
-                                      onPressed: () =>
-                                          context.push('/settings'),
-                                      icon: const Icon(Icons.settings_outlined),
-                                      label: const Text(
-                                        'Zmień poziom w ustawieniach',
-                                      ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      '${capitals.facts.length} ${continent.areaNoun} · 10 pytań w sesji · offline',
                                     ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const Text(
-                                    'W odpowiedziach pisanych dopuszczamy jedną literówkę; wielkość liter i polskie znaki nie zmieniają wyniku.',
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: TextButton(
-                                      onPressed: () =>
-                                          _showAnswerRules(context),
-                                      child: const Text(
-                                        'Jak sprawdzamy odpowiedzi?',
+                                    const SizedBox(height: 20),
+                                    Card.filled(
+                                      child: ListTile(
+                                        leading: const Icon(Icons.tune),
+                                        title: Text(
+                                          'Poziom: ${selectedDifficulty.label}',
+                                        ),
+                                        subtitle: Text(
+                                          selectedDifficulty.description,
+                                        ),
+                                        trailing: const Icon(Icons.expand_more),
+                                        onTap: () => showDifficultySheet(
+                                          context,
+                                          ref,
+                                          continent: continent,
+                                          current: selectedDifficulty,
+                                          activeSession: pending != null,
+                                          activeNotice: 'Rozpoczęta sesja zachowuje swój poziom; wybór dotyczy innych poziomów i nowych sesji.',
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  if (pending != null)
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        bottom: 12,
+                                    const SizedBox(height: 16),
+                                    const Text(
+                                      'W odpowiedziach pisanych dopuszczamy jedną literówkę; wielkość liter i polskie znaki nie zmieniają wyniku.',
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: TextButton(
+                                        onPressed: () =>
+                                            _showAnswerRules(context),
+                                        child: const Text(
+                                          'Jak sprawdzamy odpowiedzi?',
+                                        ),
                                       ),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    if (pending != null)
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          bottom: 12,
+                                        ),
+                                        child: Text(
+                                          'Na tym poziomie czeka sesja: pytanie ${pending.index + 1} z ${pending.countryIds.length}.',
+                                        ),
+                                      ),
+                                    FilledButton(
+                                      onPressed: () async {
+                                        await context.push(
+                                          '/learn?topic=capitals&level=${selectedDifficulty.mode}',
+                                        );
+                                        if (context.mounted) {
+                                          ref.invalidate(dashboardProvider);
+                                        }
+                                      },
                                       child: Text(
-                                        'Na tym poziomie czeka sesja: pytanie ${pending.index + 1} z ${pending.countryIds.length}.',
+                                        continent == Continent.poland
+                                            ? (pending == null
+                                                  ? 'Rozpocznij trening miast'
+                                                  : 'Wznów trening miast')
+                                            : (pending == null
+                                                  ? 'Rozpocznij trening stolic'
+                                                  : 'Wznów trening stolic'),
                                       ),
                                     ),
-                                  FilledButton(
-                                    onPressed: () async {
-                                      await context.push(
-                                        '/learn?topic=capitals&level=${selectedDifficulty.mode}',
-                                      );
-                                      if (context.mounted) {
-                                        ref.invalidate(dashboardProvider);
-                                      }
-                                    },
-                                    child: Text(
-                                      pending == null
-                                          ? 'Rozpocznij trening stolic'
-                                          : 'Wznów trening stolic',
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
-                ),
-          ),
+                            );
+                          },
+                        ),
+                  ),
+            ),
+      ),
     );
   }
 

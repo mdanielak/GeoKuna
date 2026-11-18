@@ -36,8 +36,8 @@ class LearningProgressEntry {
   String get skillLabel => topic == 'flags'
       ? switch (difficulty) {
           'map' => '${_area.symbolLabel} · ${_area.areaAccusative} na mapie',
-          'mapEasy' => '${_area.symbolLabel} → mapa · łatwy',
-          'mapVeryEasy' => '${_area.symbolLabel} → mapa · bardzo łatwy',
+          'mapEasy' => '${_area.symbolLabel} · mapa (łatwy)',
+          'mapVeryEasy' => '${_area.symbolLabel} · mapa (bardzo łatwy)',
           'choice' => '${_area.symbolLabel} · wybór ${_area.areaGenitive} A–D',
           'firstLetter' => '${_area.symbolLabel} · pierwsza litera',
           _ => '${_area.symbolLabel} · samodzielne pisanie',

@@ -551,7 +551,9 @@ class _CountryMapState extends State<CountryMap> {
               height: 48,
               child: Semantics(
                 key: ValueKey('country-marker-${country.id}'),
-                label: 'Małe państwo — znacznik',
+                label: widget.quizMode
+                    ? 'Małe państwo — znacznik'
+                    : '${country.name} — małe ${widget.catalog.continent.areaAccusative}',
                 button: true,
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
@@ -592,7 +594,9 @@ class _CountryMapState extends State<CountryMap> {
                   child: IgnorePointer(
                     child: AnimatedOpacity(
                       opacity: _labels[country.id] == true ? 1 : 0,
-                      duration: _labelFade,
+                      duration: MediaQuery.disableAnimationsOf(context)
+                          ? Duration.zero
+                          : _labelFade,
                       child: Semantics(
                         container: true,
                         liveRegion: true,

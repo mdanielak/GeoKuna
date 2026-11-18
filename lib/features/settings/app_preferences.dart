@@ -14,13 +14,9 @@ enum MapAppearance {
 }
 
 enum LearningDifficulty {
-  veryEasy(
-    'Bardzo łatwy',
-    'Wybór A–D · osobne powtórki rozpoznawania',
-    'choice',
-  ),
-  easy('Łatwy', 'Pierwsza litera i reszta do wpisania', 'firstLetter'),
-  normal('Normalny', 'Wpisywanie całej odpowiedzi', 'write');
+  veryEasy('Bardzo łatwy', 'Bliski kadr mapy · wybór A–D', 'choice'),
+  easy('Łatwy', 'Lekkie przybliżenie mapy · pierwsza litera', 'firstLetter'),
+  normal('Normalny', 'Pełna mapa · samodzielne pisanie', 'write');
 
   const LearningDifficulty(this.label, this.description, this.mode);
   final String label;
