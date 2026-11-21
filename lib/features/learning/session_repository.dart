@@ -46,6 +46,10 @@ class LearningSession {
     ..._assistedIndices,
     ...mapGuesses.where((g) => g.assisted).map((g) => g.questionIndex),
   };
+
+  /// The current question was answered with „Nie wiem, pomóż” (only that
+  /// path stores an empty answer).
+  bool get gaveUpCurrent => currentAttempt?.answer.isEmpty ?? false;
   List<MapGuess> get currentMapGuesses =>
       mapGuesses.where((g) => g.questionIndex == index).toList();
   final Session row;
@@ -475,56 +479,68 @@ class SessionRepository {
       ? 'retry'
       : session.originAt(index) ?? (session.isDaily ? 'daily' : 'manual');
 
-  Future<LearningSession> answerFlag(String id, int index, String input) =>
-      db.transaction(() async {
-        final session = await byId(id);
-        if (session.completed ||
-            session.index != index ||
-            !session.isFlagAt(index) ||
-            session.isMapAt(index)) {
-          throw StateError('Nieaktualne pytanie o flagę');
-        }
-        if (session.currentAttempt != null) return session;
-        if (input.trim().isEmpty || input.length > 100) {
-          throw ArgumentError('Pusta lub zbyt długa odpowiedź');
-        }
-        final question = session.flagQuestionAt(index);
-        final difficulty = session.flagDifficulty;
-        if (difficulty == FlagDifficulty.choice &&
-            !question.options.contains(input)) {
-          throw ArgumentError('Odpowiedź spoza listy');
-        }
-        final answer = difficulty == FlagDifficulty.firstLetter
-            ? question.firstLetter + input.trim()
-            : input.trim();
-        final evaluation = difficulty == FlagDifficulty.choice
-            ? AnswerEvaluation(answer == question.countryName)
-            : evaluateFlagAnswer(answer, question);
-        await _memory.importHistoryOnce();
-        await db
-            .into(db.attempts)
-            .insert(
-              AttemptsCompanion.insert(
-                sessionId: id,
-                questionIndex: index,
-                countryId: session.targetId,
-                answer: answer,
-                correct: evaluation.correct,
-                typoAccepted: Value(evaluation.typoAccepted),
-                answeredAt: _clock().toUtc(),
-                topic: const Value('flags'),
-                difficulty: Value(difficulty.name),
-              ),
-            );
-        final answered = await byId(id);
-        await _memory.record(
-          activityTime: _clock(),
-          answered.currentAttempt!,
-          origin: _origin(session, index),
+  /// [gaveUp]: „Nie wiem, pomóż” — a graded error with an empty answer.
+  Future<LearningSession> answerFlag(
+    String id,
+    int index,
+    String input, {
+    bool gaveUp = false,
+  }) => db.transaction(() async {
+    final session = await byId(id);
+    if (session.completed ||
+        session.index != index ||
+        !session.isFlagAt(index) ||
+        session.isMapAt(index)) {
+      throw StateError('Nieaktualne pytanie o flagę');
+    }
+    if (session.currentAttempt != null) return session;
+    final question = session.flagQuestionAt(index);
+    final difficulty = session.flagDifficulty;
+    if (gaveUp && difficulty == FlagDifficulty.choice) {
+      throw ArgumentError('A–D nie ma podpowiedzi');
+    }
+    if (!gaveUp && (input.trim().isEmpty || input.length > 100)) {
+      throw ArgumentError('Pusta lub zbyt długa odpowiedź');
+    }
+    if (difficulty == FlagDifficulty.choice &&
+        !question.options.contains(input)) {
+      throw ArgumentError('Odpowiedź spoza listy');
+    }
+    final answer = gaveUp
+        ? ''
+        : difficulty == FlagDifficulty.firstLetter
+        ? question.firstLetter + input.trim()
+        : input.trim();
+    final evaluation = gaveUp
+        ? const AnswerEvaluation(false)
+        : difficulty == FlagDifficulty.choice
+        ? AnswerEvaluation(answer == question.countryName)
+        : evaluateFlagAnswer(answer, question);
+    await _memory.importHistoryOnce();
+    await db
+        .into(db.attempts)
+        .insert(
+          AttemptsCompanion.insert(
+            sessionId: id,
+            questionIndex: index,
+            countryId: session.targetId,
+            answer: answer,
+            correct: evaluation.correct,
+            typoAccepted: Value(evaluation.typoAccepted),
+            answeredAt: _clock().toUtc(),
+            topic: const Value('flags'),
+            difficulty: Value(difficulty.name),
+          ),
         );
-        if (!evaluation.correct) await _queueRetry(session, index);
-        return byId(id);
-      });
+    final answered = await byId(id);
+    await _memory.record(
+      activityTime: _clock(),
+      answered.currentAttempt!,
+      origin: _origin(session, index),
+    );
+    if (!evaluation.correct) await _queueRetry(session, index);
+    return byId(id);
+  });
 
   Future<LearningSession> guessMap(
     String id,
@@ -651,52 +667,62 @@ class SessionRepository {
     return byId(id);
   });
 
-  Future<LearningSession> answerCapital(String id, int index, String input) =>
-      db.transaction(() async {
-        final session = await byId(id);
-        if (!session.isCapital || session.completed || session.index != index) {
-          throw StateError('Nieaktualne pytanie o stolicę');
-        }
-        if (session.currentAttempt != null) return session;
-        if (input.trim().isEmpty || input.length > 100) {
-          throw ArgumentError('Pusta lub zbyt długa odpowiedź');
-        }
-        final question = session.capitalQuestion;
-        final choice = session.difficulty == CapitalDifficulty.choice;
-        if (choice && !question.options.contains(input)) {
-          throw ArgumentError('Odpowiedź spoza listy');
-        }
-        final answer = session.difficulty == CapitalDifficulty.firstLetter
-            ? question.fact.firstLetter + input.trim()
-            : input.trim();
-        final evaluation = choice
-            ? AnswerEvaluation(answer == question.fact.name)
-            : evaluateCapitalAnswer(answer, question.fact);
-        await _memory.importHistoryOnce();
-        await db
-            .into(db.attempts)
-            .insert(
-              AttemptsCompanion.insert(
-                sessionId: id,
-                questionIndex: index,
-                countryId: session.targetId,
-                answer: answer,
-                correct: evaluation.correct,
-                answeredAt: _clock().toUtc(),
-                typoAccepted: Value(evaluation.typoAccepted),
-                topic: const Value('capitals'),
-                difficulty: Value(session.difficulty.name),
-              ),
-            );
-        final answered = await byId(id);
-        await _memory.record(
-          activityTime: _clock(),
-          answered.currentAttempt!,
-          origin: _origin(session, index),
+  /// [gaveUp]: „Nie wiem, pomóż” — a graded error with an empty answer.
+  Future<LearningSession> answerCapital(
+    String id,
+    int index,
+    String input, {
+    bool gaveUp = false,
+  }) => db.transaction(() async {
+    final session = await byId(id);
+    if (!session.isCapital || session.completed || session.index != index) {
+      throw StateError('Nieaktualne pytanie o stolicę');
+    }
+    if (session.currentAttempt != null) return session;
+    final question = session.capitalQuestion;
+    final choice = session.difficulty == CapitalDifficulty.choice;
+    if (gaveUp && choice) throw ArgumentError('A–D nie ma podpowiedzi');
+    if (!gaveUp && (input.trim().isEmpty || input.length > 100)) {
+      throw ArgumentError('Pusta lub zbyt długa odpowiedź');
+    }
+    if (choice && !question.options.contains(input)) {
+      throw ArgumentError('Odpowiedź spoza listy');
+    }
+    final answer = gaveUp
+        ? ''
+        : session.difficulty == CapitalDifficulty.firstLetter
+        ? question.fact.firstLetter + input.trim()
+        : input.trim();
+    final evaluation = gaveUp
+        ? const AnswerEvaluation(false)
+        : choice
+        ? AnswerEvaluation(answer == question.fact.name)
+        : evaluateCapitalAnswer(answer, question.fact);
+    await _memory.importHistoryOnce();
+    await db
+        .into(db.attempts)
+        .insert(
+          AttemptsCompanion.insert(
+            sessionId: id,
+            questionIndex: index,
+            countryId: session.targetId,
+            answer: answer,
+            correct: evaluation.correct,
+            answeredAt: _clock().toUtc(),
+            typoAccepted: Value(evaluation.typoAccepted),
+            topic: const Value('capitals'),
+            difficulty: Value(session.difficulty.name),
+          ),
         );
-        if (!evaluation.correct) await _queueRetry(session, index);
-        return byId(id);
-      });
+    final answered = await byId(id);
+    await _memory.record(
+      activityTime: _clock(),
+      answered.currentAttempt!,
+      origin: _origin(session, index),
+    );
+    if (!evaluation.correct) await _queueRetry(session, index);
+    return byId(id);
+  });
 
   Future<LearningSession> finish(String id) => db.transaction(() async {
     final session = await byId(id);

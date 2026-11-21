@@ -126,4 +126,59 @@ void main() {
       expect(overview.plannedNewCount, 0);
     },
   );
+
+  test(
+    'giving up on a written answer is a graded error without the first letter',
+    () async {
+      final capitals = await CapitalCatalog.load();
+      final flags = await FlagCatalog.load();
+      Future<void> check(
+        AppDatabase db,
+        Future<LearningSession> Function(LearningSession) giveUp,
+        LearningSession session,
+      ) async {
+        final answered = await giveUp(session);
+        expect(answered.currentAttempt!.correct, isFalse);
+        expect(answered.currentAttempt!.answer, '');
+        expect(answered.gaveUpCurrent, isTrue);
+        final review = await (db.select(
+          db.memoryReviews,
+        )..where((r) => r.sessionId.equals(answered.row.id))).getSingle();
+        expect(review.rating, 1);
+        expect(review.applied, isTrue);
+      }
+
+      for (final difficulty in [
+        CapitalDifficulty.write,
+        CapitalDifficulty.firstLetter,
+      ]) {
+        final db = AppDatabase(NativeDatabase.memory());
+        addTearDown(db.close);
+        final repo = SessionRepository(db);
+        final session = await repo.startCapitals(capitals, difficulty);
+        await check(
+          db,
+          (s) => repo.answerCapital(s.row.id, s.index, '', gaveUp: true),
+          session,
+        );
+      }
+      final db = AppDatabase(NativeDatabase.memory());
+      addTearDown(db.close);
+      final repo = SessionRepository(db);
+      final session = await repo.startFlags(flags, FlagDifficulty.firstLetter);
+      await check(
+        db,
+        (s) => repo.answerFlag(s.row.id, s.index, '', gaveUp: true),
+        session,
+      );
+      final choice = await repo.startCapitals(
+        capitals,
+        CapitalDifficulty.choice,
+      );
+      await expectLater(
+        repo.answerCapital(choice.row.id, choice.index, '', gaveUp: true),
+        throwsArgumentError,
+      );
+    },
+  );
 }
