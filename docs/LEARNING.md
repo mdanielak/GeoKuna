@@ -69,6 +69,9 @@ nie gwarantuje 90% pamięci.
   porównania” (`origin=contrast`). W A–D flag drugi kraj pary jest zawsze wśród
   odpowiedzi. Stolic nie łączymy w pary: wpisana stolica nie wskazuje kraju.
   Najwyżej 2 pary na serię; para nie trafia do serii, w której już jest.
+- **„Nie wiem, pomóż”** (stolica i flaga → nazwa, poziomy pisane): błąd z pustą
+  odpowiedzią — Again jak każdy błąd, z powtórką w serii. Potem na tym samym
+  pytaniu 4 opcje A–D jako ćwiczenie: wybór nie jest zapisywany ani oceniany.
 - Zapisujemy wskazany błędny kraj. Gdy ten sam kraj ponownie zostanie wskazany
   zamiast celu, feedback podpowiada: „Ta para już się myliła: Norwegia i Szwecja”.
 - Historyczne odpowiedzi z pomocą (lista usunięta z quizu) i dawne nieocenione

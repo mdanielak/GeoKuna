@@ -108,6 +108,7 @@ class QuizController {
     required String? selected,
     required String typed,
     required bool assisted,
+    bool gaveUp = false,
   }) async {
     final repository = _repository;
     final id = session.row.id, index = session.index;
@@ -119,6 +120,7 @@ class QuizController {
         id,
         index,
         session.flagDifficulty == FlagDifficulty.choice ? selected! : typed,
+        gaveUp: gaveUp,
       );
     } else if (session.isCapitalAt(index)) {
       updated = await repository.answerCapital(
@@ -127,6 +129,7 @@ class QuizController {
         session.difficultyAt(index) == CapitalDifficulty.choice
             ? selected!
             : typed,
+        gaveUp: gaveUp,
       );
     } else {
       updated = await repository.answer(

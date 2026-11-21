@@ -46,6 +46,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
   String? _selected;
   bool _assisted = false;
   String _typed = '';
+
+  /// Choice in the A–D practice after „Nie wiem, pomóż” (never saved).
+  String? _practicePick;
   bool _busy = false;
 
   @override
@@ -129,8 +132,12 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     }
   }
 
-  Future<void> _submit(Catalog catalog, LearningSession session) async {
-    if (_busy || !_canSubmit(session)) return;
+  Future<void> _submit(
+    Catalog catalog,
+    LearningSession session, {
+    bool gaveUp = false,
+  }) async {
+    if (_busy || (!gaveUp && !_canSubmit(session))) return;
     FocusScope.of(context).unfocus();
     setState(() => _busy = true);
     try {
@@ -138,8 +145,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         catalog,
         session,
         selected: _selected,
-        typed: _typed,
+        typed: gaveUp ? '' : _typed,
         assisted: _assisted,
+        gaveUp: gaveUp,
       );
       if (mounted) {
         setState(() {
@@ -147,6 +155,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
           _selected = null;
           _assisted = false;
           _typed = '';
+          _practicePick = null;
         });
       }
     } catch (_) {
@@ -196,6 +205,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         _selected = null;
         _assisted = false;
         _typed = '';
+        _practicePick = null;
       });
     } catch (_) {
       if (mounted) {
@@ -585,7 +595,9 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                     ],
                     const SizedBox(height: 20),
                     if (attempt == null) _capitalInput(catalog, session),
-                    if (attempt != null)
+                    if (attempt != null && session.gaveUpCurrent)
+                      _gaveUpPractice(catalog, session)
+                    else if (attempt != null)
                       AnswerFeedback(
                         correct: attempt.correct,
                         typoAccepted: attempt.typoAccepted,
@@ -620,24 +632,122 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
             // stays reachable one-handed at any scroll position.
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 14),
-              child: FilledButton(
-                onPressed: _busy || !_canSubmit(session)
-                    ? null
-                    : () => _submit(catalog, session),
-                child: Text(
-                  _busy
-                      ? 'Zapisuję…'
-                      : attempt == null
-                      ? 'Sprawdź odpowiedź'
-                      : session.index == session.countryIds.length - 1
-                      ? 'Zobacz wynik'
-                      : 'Następne pytanie',
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FilledButton(
+                    onPressed: _busy || !_canSubmit(session)
+                        ? null
+                        : () => _submit(catalog, session),
+                    child: Text(
+                      _busy
+                          ? 'Zapisuję…'
+                          : attempt == null
+                          ? 'Sprawdź odpowiedź'
+                          : session.index == session.countryIds.length - 1
+                          ? 'Zobacz wynik'
+                          : 'Następne pytanie',
+                    ),
+                  ),
+                  if (attempt == null &&
+                      session.difficultyNameAt(session.index) != 'choice') ...[
+                    const SizedBox(height: 8),
+                    FilledButton(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: GeoColors.of(context).wrong,
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: _busy
+                          ? null
+                          : () => _submit(catalog, session, gaveUp: true),
+                      child: const Text('Nie wiem, pomóż'),
+                    ),
+                  ],
+                ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  /// After „Nie wiem, pomóż”: the same question as unscored A–D practice.
+  Widget _gaveUpPractice(Catalog catalog, LearningSession session) {
+    final flag = session.isFlagAt(session.index);
+    final options = flag
+        ? session.flagQuestionAt(session.index).options
+        : session.capitalQuestionAt(session.index).options;
+    final solution = flag
+        ? session.flagQuestionAt(session.index).countryName
+        : session.capitalQuestionAt(session.index).fact.name;
+    final subject = flag
+        ? catalog.continent.areaSubject
+        : catalog.continent.capitalSubject;
+    final scheme = Theme.of(context).colorScheme;
+    final colors = GeoColors.of(context);
+    final pick = _practicePick;
+    final right = pick == solution;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Wybierz poprawną odpowiedź:'),
+        const SizedBox(height: 12),
+        RadioGroup<String>(
+          groupValue: pick,
+          onChanged: (value) {
+            if (pick == null) setState(() => _practicePick = value);
+          },
+          child: Column(
+            children: [
+              for (var i = 0; i < options.length; i++)
+                Card.filled(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  color: pick == options[i]
+                      ? scheme.primaryContainer.withValues(alpha: .45)
+                      : null,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    side: BorderSide(
+                      color: pick == options[i]
+                          ? scheme.primary
+                          : GeoTheme.border,
+                      width: pick == options[i] ? 2 : 1,
+                    ),
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: RadioListTile<String>(
+                    value: options[i],
+                    enabled: pick == null,
+                    title: Text(
+                      '${String.fromCharCode(65 + i)}. ${options[i]}',
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        if (pick != null)
+          Semantics(
+            liveRegion: true,
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: right ? colors.correctContainer : colors.wrongContainer,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Text(
+                right ? 'Dobrze! $subject: $solution.' : 'To była $solution.',
+                style: TextStyle(
+                  color: right
+                      ? colors.onCorrectContainer
+                      : colors.onWrongContainer,
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 
@@ -1133,6 +1243,12 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   String? given;
   if (session.assistedIndices.contains(i)) {
     detail = 'z pomocą';
+  } else if (attempt.answer.isEmpty && attempt.topic != 'map') {
+    // „Nie wiem, pomóż” stores no typed answer.
+    detail = attempt.topic == 'capitals'
+        ? session.capitalQuestionAt(i).fact.name
+        : 'flaga';
+    given = 'Nie wiem — pomoc A–D';
   } else if (attempt.topic == 'capitals') {
     detail = '${session.capitalQuestionAt(i).fact.name}$typo';
     given = '$verb: ${attempt.answer}';
