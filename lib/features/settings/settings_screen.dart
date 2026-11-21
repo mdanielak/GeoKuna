@@ -530,10 +530,7 @@ class _AboutApp extends ConsumerWidget {
           style: small,
         ),
         const SizedBox(height: 6),
-        Text(
-          'Autor: Maciej Danielak',
-          style: small,
-        ),
+        Text('Autor: Maciej Danielak', style: small),
       ],
     );
   }

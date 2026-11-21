@@ -82,7 +82,6 @@ final dashboardProvider = FutureProvider((ref) async {
     active: await repository.active(),
     capitalSessions: await repository.activeCapitals(),
     flagsSessions: await repository.activeFlags(),
-    history: await repository.history(),
   );
 });
 

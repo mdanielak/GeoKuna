@@ -46,3 +46,10 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Local design drafts and generator output (prompts stay tracked: THIRD_PARTY.md)
+/GeoKuna_*/
+/GeoKuna_*.zip
+/assets_mockups/
+/output/**/*.png
+codex-session-*.md

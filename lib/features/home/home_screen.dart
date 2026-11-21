@@ -551,11 +551,11 @@ class _MapBadge extends ConsumerWidget {
         : (map.totalCount * next.$1 + 99) ~/ 100 - map.qualifiedCount;
     final label =
         '${continent.label}: ${map.qualifiedCount}/${map.totalCount} '
-        '${continent.areaNoun}';
+        '${continent.areaNoun} zaliczonych';
     return Semantics(
       button: true,
       label:
-          'Postęp mapy: $label. '
+          'Medale mapy: $label. '
           '${next == null ? 'Złoty medal zdobyty.' : 'Do ${next.$2} medalu: jeszcze $missing.'}',
       excludeSemantics: true,
       child: _Pill(
