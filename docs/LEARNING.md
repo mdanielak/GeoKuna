@@ -186,8 +186,9 @@ Osobna dla każdego kontynentu, widoczna na Dziś dla wybranego kontynentu
 - **Nagrody za passę:** 3, 7, 10, 14, 20, 30, 40, 50, 60 i 90 dni z rzędu, osobno
   dla kontynentu (`streakRewards` w `streaks.dart`). Zdobyta, gdy rekord dojdzie
   do progu, więc przerwa jej nie odbiera. Liczone z dni nauki, bez osobnej tabeli.
-  Dziś pokazuje, ile dni brakuje do następnej; podsumowanie serii gratuluje
-  w dniu zdobycia (tylko gdy wcześniejsza passa nie dotarła do progu);
+  Dziś pokazuje, ile dni brakuje do następnej; podsumowanie serii zawsze
+  pokazuje passę („Passa: 5 dni z rzędu · Europa”), a w dniu zdobycia gratuluje
+  zamiast tego (tylko gdy wcześniejsza passa nie dotarła do progu);
   Moja nauka → kontynent ma listę zdobytych i brakujących.
 - **Przerwa przerywa passę**, chyba że użyjesz żetonu **Nieprzykunowanie**
   (na razie złota ikona monety; emoji wymagałoby czcionki z sieci w wersji web).

@@ -189,6 +189,7 @@ void main() {
             findsOneWidget,
           );
         }
+        expect(find.text('Passa: 1 dzień z rzędu · Europa'), findsOneWidget);
         if (difficulty == CapitalDifficulty.write) {
           // A row with a typo opens to show what was typed.
           expect(find.text('Wpisano: Warszaqa'), findsNothing);

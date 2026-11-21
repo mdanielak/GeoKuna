@@ -1004,6 +1004,13 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                 case final days?) ...[
               const SizedBox(height: 16),
               _StreakReward(days: days),
+            ] else if (ref.watch(streakProvider).asData?.value.current
+                case final days? when days > 0) ...[
+              const SizedBox(height: 16),
+              _StreakDays(
+                days: days,
+                continent: ref.watch(selectedContinentProvider),
+              ),
             ],
             if (ref.watch(streakProvider).asData?.value case final streak?
                 when streak.tokenEarnedToday) ...[
@@ -1389,6 +1396,37 @@ class _ResultListState extends State<_ResultList> {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// The current streak, on every summary without a reward that day.
+class _StreakDays extends StatelessWidget {
+  const _StreakDays({required this.days, required this.continent});
+  final int days;
+  final Continent continent;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = GeoColors.of(context);
+    return Semantics(
+      container: true,
+      liveRegion: true,
+      child: Card.filled(
+        color: colors.triviaContainer,
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          leading: Icon(
+            Icons.local_fire_department,
+            color: colors.streak,
+            size: 36,
+          ),
+          title: Text('Passa: ${daysLabel(days)} z rzędu · ${continent.label}'),
+        ),
       ),
     );
   }
