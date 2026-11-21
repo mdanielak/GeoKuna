@@ -538,6 +538,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
     final defaultPrompt = 'Jaka jest stolica tego państwa?';
     final progress =
         (session.index + (attempt != null ? 1 : 0)) / session.countryIds.length;
+    // After „Nie wiem, pomóż” notes and facts wait for the A–D choice:
+    // they could give the answer away.
+    final revealed =
+        attempt != null && (!session.gaveUpCurrent || _practicePick != null);
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 760),
@@ -610,10 +614,10 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
                             ? catalog.continent.areaSubject
                             : catalog.continent.capitalSubject,
                       ),
-                    if (attempt != null)
+                    if (revealed)
                       _InsightNote(catalog: catalog, session: session),
                     // Flag questions show a flag fact, capital questions a capital fact.
-                    if (attempt != null)
+                    if (revealed)
                       if (_trivia(
                             catalog,
                             session,

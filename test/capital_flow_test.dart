@@ -216,6 +216,8 @@ void main() {
     expect(find.byType(TextFormField), findsNothing);
     expect(find.text('Nie wiem, pomóż'), findsNothing);
     expect(find.byType(RadioListTile<String>), findsNWidgets(4));
+    // The fact could name the capital: it waits for the A–D choice.
+    expect(find.text('Ciekawostka'), findsNothing);
     final attempt = (await db.select(db.attempts).get()).single;
     expect((attempt.correct, attempt.answer), (false, ''));
     // Leaving and resuming the series shows the practice again.
@@ -225,6 +227,7 @@ void main() {
     await tester.tap(find.textContaining('. $wrong'));
     await tester.pumpAndSettle();
     expect(find.text('To była Warszawa.'), findsOneWidget);
+    expect(find.text('Ciekawostka'), findsOneWidget);
     expect((await db.select(db.attempts).get()), hasLength(1));
     await tester.ensureVisible(find.text('Zobacz wynik'));
     await tester.tap(find.text('Zobacz wynik'));
