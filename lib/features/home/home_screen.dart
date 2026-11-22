@@ -351,10 +351,9 @@ class _Banner extends StatelessWidget {
     return 'assets/v2/banner_${area.artId}_${day % 2 + 1}.webp';
   }
 
-  void _swiped(DragEndDetails details) {
-    final velocity = details.primaryVelocity ?? 0;
-    if (velocity.abs() < 200) return;
-    final next = continent.index + (velocity < 0 ? 1 : -1);
+  /// [step]: +1 for a swipe to the left (next area), -1 to the right.
+  void _swiped(int step) {
+    final next = continent.index + step;
     if (next < 0 || next >= Continent.values.length) return;
     onSwipe(Continent.values[next]);
   }
@@ -380,8 +379,8 @@ class _Banner extends StatelessWidget {
     // compact frames keep the kuna's face clear of the bottom CTA.
     final alignment = Alignment(0, width / height > 1.05 ? -.32 : -.14);
 
-    return GestureDetector(
-      onHorizontalDragEnd: _swiped,
+    return _HorizontalSwipe(
+      onSwipe: _swiped,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -583,6 +582,38 @@ class _MapBadge extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// Detects a left/right swipe by speed or by distance, so a slow swipe that
+/// pauses before the finger lifts (common on phones) still counts.
+class _HorizontalSwipe extends StatefulWidget {
+  const _HorizontalSwipe({required this.onSwipe, required this.child});
+  final ValueChanged<int> onSwipe;
+  final Widget child;
+
+  @override
+  State<_HorizontalSwipe> createState() => _HorizontalSwipeState();
+}
+
+class _HorizontalSwipeState extends State<_HorizontalSwipe> {
+  static const _minDistance = 60.0, _minVelocity = 200.0;
+  double _dx = 0;
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+    onHorizontalDragStart: (_) => _dx = 0,
+    onHorizontalDragUpdate: (details) => _dx += details.delta.dx,
+    onHorizontalDragEnd: (details) {
+      final velocity = details.primaryVelocity ?? 0;
+      final towards = velocity.abs() >= _minVelocity
+          ? velocity
+          : _dx.abs() >= _minDistance
+          ? _dx
+          : 0.0;
+      if (towards != 0) widget.onSwipe(towards < 0 ? 1 : -1);
+    },
+    child: widget.child,
+  );
 }
 
 /// The main call to action: a tall green pill with a white rim and a play

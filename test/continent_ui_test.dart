@@ -85,6 +85,24 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.textContaining('Azja · '), findsOneWidget);
+    // A slow swipe that pauses before lifting the finger (velocity 0) counts too.
+    Future<void> slowSwipe(String from, double dx) async {
+      final swipe = await tester.startGesture(
+        tester.getCenter(find.textContaining(from)),
+      );
+      for (var i = 0; i < 6; i++) {
+        await swipe.moveBy(Offset(dx / 6, 0));
+        await tester.pump(const Duration(milliseconds: 30));
+      }
+      await tester.pump(const Duration(milliseconds: 300));
+      await swipe.up();
+      await tester.pumpAndSettle();
+    }
+
+    await slowSwipe('Azja · ', -120);
+    expect(find.textContaining('Ameryka Północna · '), findsOneWidget);
+    await slowSwipe('Ameryka Północna · ', 120);
+    expect(find.textContaining('Azja · '), findsOneWidget);
     tester.view.physicalSize = const Size(320, 640);
     tester.platformDispatcher.textScaleFactorTestValue = 2;
     addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
