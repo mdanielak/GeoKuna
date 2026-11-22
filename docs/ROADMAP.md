@@ -1,6 +1,6 @@
 # Stan i plan
 
-## Stan — 2026-11-16 (wersja 0.7.0)
+## Stan — 2026-11-22 (wersja 0.7.0)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
@@ -18,6 +18,9 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
   poziom kontynentu w arkuszu, postęp mapy do następnego medalu, trening w jednym
   rzędzie; Ameryki i Australia z Oceanią jako wyszarzone „wkrótce”); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
 - SQLite v9 (indeksy historii, żetony passy) z migracjami od v1.
+- „Nie wiem, pomóż” w pytaniach pisanych (stolica, flaga → nazwa): błąd bez wpisywania,
+  potem nieoceniane A–D; karta z passą po każdej serii; przesunięcie banera Dziś
+  działa też wolnym ruchem (prędkość lub 60 pkt); PWA na GitHub Pages.
 - Nagrody za passę (3–90 dni) i żetony Nieprzykunowanie per kontynent; plan Dziś wydzielony do `daily_planner.dart`.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
