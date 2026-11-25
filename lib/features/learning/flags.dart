@@ -1,26 +1,13 @@
 import 'dart:convert';
-
-import '../atlas/continent.dart';
-
 import 'dart:math';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart';
 
+import '../atlas/continent.dart';
 import 'capitals.dart';
 
-enum FlagDifficulty {
-  choice(
-    'Bardzo łatwy',
-    'Wybierz państwo spośród A–D. Osobne powtórki rozpoznawania.',
-  ),
-  firstLetter('Łatwy', 'Pierwsza litera i reszta do wpisania.'),
-  write('Normalny', 'Wpisz całą nazwę bez podpowiedzi.'),
-  map('Flaga na mapie', 'Wskaż państwo na mapie.');
-
-  const FlagDifficulty(this.label, this.description);
-  final String label;
-  final String description;
-}
+enum FlagDifficulty { choice, firstLetter, write, map }
 
 class FlagQuestion {
   const FlagQuestion({
@@ -94,9 +81,15 @@ class FlagCatalog {
       options: options,
     );
   }).toList();
-  static Future<FlagCatalog> load({
-    Continent continent = Continent.europe,
-  }) async {
+  static final _cache = <Continent, Future<FlagCatalog>>{};
+
+  @visibleForTesting
+  static void clearCache() => _cache.clear();
+
+  static Future<FlagCatalog> load({Continent continent = Continent.europe}) =>
+      _cache[continent] ??= _loadUncached(continent);
+
+  static Future<FlagCatalog> _loadUncached(Continent continent) async {
     final json = jsonDecode(
       await rootBundle.loadString(continent.contentPath('flags.json')),
     ) as Map<String, dynamic>;

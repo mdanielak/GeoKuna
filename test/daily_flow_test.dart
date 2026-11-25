@@ -11,7 +11,7 @@ import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/flags.dart';
-import 'package:geokuna/features/learning/learning_levels.dart';
+import 'package:geokuna/features/learning/learning_types.dart';
 import 'package:geokuna/features/settings/app_preferences.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -49,11 +49,8 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    // First visit: the main button is the easy placement quiz.
-    expect(
-      find.text('Europa · krótki quiz na start, poziom łatwy'),
-      findsOneWidget,
-    );
+    // First visit: the main button is the placement quiz at the area's active level.
+    expect(find.text('Europa · krótki quiz na start'), findsOneWidget);
     await tester.scrollUntilVisible(
       find.text('Wstępny quiz'),
       150,
@@ -68,7 +65,7 @@ void main() {
     for (final q in jsonDecode(series.questionData) as List) {
       expect(
         levelForDifficulty((q as Map)['difficulty'] as String),
-        LearningDifficulty.easy,
+        LearningDifficulty.normal,
       );
     }
     expect(await db.select(db.attempts).get(), isEmpty);

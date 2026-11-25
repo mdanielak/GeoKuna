@@ -34,6 +34,11 @@ class HomeScreen extends ConsumerWidget {
         title: const _Wordmark(),
         actions: [
           IconButton(
+            tooltip: 'Jak to działa?',
+            onPressed: () => context.push('/how-it-works'),
+            icon: const Icon(Icons.help_outline),
+          ),
+          IconButton(
             tooltip: 'Ustawienia',
             onPressed: () => context.push('/settings'),
             icon: const Icon(Icons.settings_outlined),
@@ -149,14 +154,7 @@ Future<void> _openAndRefresh(
   String path,
 ) async {
   await context.push(path);
-  if (context.mounted) {
-    ref
-      ..invalidate(dailyOverviewProvider)
-      ..invalidate(achievementsProvider)
-      ..invalidate(continentAchievementsProvider)
-      ..invalidate(continentProgressProvider)
-      ..invalidate(continentStreakProvider);
-  }
+  if (context.mounted) invalidateProgressProviders(ref.invalidate);
 }
 
 /// Light green panel shared by load and error states of Today's expedition.
@@ -232,11 +230,11 @@ class _Expedition extends ConsumerWidget {
         : canStart
         ? 'Gotowy na wyprawę?'
         : 'Na dziś wszystko!';
-    // First visit of an area: the main button is the easy placement quiz.
+    // First visit of an area: the main button is the placement quiz.
     final placement =
         overview.firstVisit && active == null && overview.newAvailable > 0;
     final subtitle = placement
-        ? '${continent.label} · krótki quiz na start, poziom łatwy'
+        ? '${continent.label} · krótki quiz na start'
         : '${continent.label} · '
               '${_planText(context, overview).replaceFirst('Na dziś wszystko. ', '').replaceFirst(RegExp(r'\.$'), '')}';
     final banner = _Banner(
@@ -687,7 +685,11 @@ class _TrainingRow extends ConsumerWidget {
         },
         '/learn',
       ),
-      ('Stolice', 'stolice', '/learn?topic=capitals'),
+      (
+        area == Continent.poland ? 'Miasta woj.' : 'Stolice',
+        'stolice',
+        '/learn?topic=capitals',
+      ),
       (
         area.symbolsLabel,
         switch (area) {

@@ -58,7 +58,7 @@ LatLngBounds portraitBoundsFor(Continent continent) => switch (continent) {
   ),
   // Contiguous states plus the Alaska and Hawaii insets below them.
   Continent.usa => LatLngBounds(
-    const LatLng(16.2, -128.6),
+    const LatLng(16.2, -128.0),
     const LatLng(49.5, -66),
   ),
 };

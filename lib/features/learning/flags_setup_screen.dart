@@ -9,7 +9,7 @@ import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 import '../settings/difficulty_sheet.dart';
 import 'flags.dart';
-import 'learning_levels.dart';
+import 'learning_types.dart';
 
 class FlagsSetupScreen extends ConsumerWidget {
   const FlagsSetupScreen({super.key});
@@ -157,13 +157,6 @@ class FlagsSetupScreen extends ConsumerWidget {
 
   Future<void> _start(BuildContext context, WidgetRef ref, String mode) async {
     await context.push('/learn?topic=flags&level=$mode');
-    if (context.mounted) {
-      ref
-        ..invalidate(dashboardProvider)
-        ..invalidate(dailyOverviewProvider)
-        ..invalidate(learningProgressProvider)
-        ..invalidate(continentProgressProvider)
-        ..invalidate(continentStreakProvider);
-    }
+    if (context.mounted) invalidateProgressProviders(ref.invalidate);
   }
 }

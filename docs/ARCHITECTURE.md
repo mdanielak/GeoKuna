@@ -11,8 +11,8 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 | `app/` | motyw, tokeny i wspólny nagłówek regionalny (`theme.dart`: `GeoTheme`, `GeoColors`, `regionAppBar`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
 | `features/atlas/` | katalogi (`Catalog` i lekkie `CatalogMeta` bez GeoJSON) oraz parser GeoJSON (`catalog.dart`), `Continent`, `ContinentChips`, `CountryMap`, granice regionów (`region_bounds.dart`), style map, `QuizMapFrame` (kadr łatwych poziomów) |
-| `features/learning/` | sesje i zapis (`session_repository.dart`), model sesji z cache'owanym `questionData` (`learning_session.dart`), typy domenowe (`learning_types.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu i wydzielone widoki (`widgets/`) |
-| `features/home/` | Dziś i atlas (z przełącznikiem obszarów i wizytówką kraju) |
+| `features/learning/` | sesje i zapis (`session_repository.dart`), model sesji z cache'owanym `questionData` (`learning_session.dart`), typy domenowe (`learning_types.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu i wydzielone widoki (`widgets/`) |
+| `features/home/` | Dziś, atlas (z przełącznikiem obszarów i wizytówką kraju) i ekran „Jak działa GeoKuna?” (`how_it_works_screen.dart`) |
 | `features/progress/` | Moja nauka (kontynent → kraje dla aktywnego poziomu z dziedziczeniem) i szczegóły umiejętności (`/progress?continent=...&country=...`) |
 | `features/settings/` | preferencje (`app_preferences.dart`), arkusz wyboru poziomu (`difficulty_sheet.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
 

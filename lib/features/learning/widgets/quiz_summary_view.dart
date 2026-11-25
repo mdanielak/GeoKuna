@@ -7,8 +7,8 @@ import '../../../app/theme.dart';
 import '../../../core/database/database.dart';
 import '../../atlas/catalog.dart';
 import '../../atlas/continent.dart';
-import '../learning_levels.dart';
 import '../learning_session.dart';
+import '../learning_types.dart';
 import '../mascot_feedback.dart';
 import '../streaks.dart';
 import '../token_icon.dart';
@@ -192,20 +192,21 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   final verb = attempt.difficulty == 'choice' ? 'Wybrano' : 'Wpisano';
   final String detail;
   String? given;
+  final symbolLower = catalog.continent.symbolLabel.toLowerCase();
   if (session.assistedIndices.contains(i)) {
     detail = 'z pomocą';
   } else if (attempt.answer.isEmpty && attempt.topic != 'map') {
     // „Nie wiem, pomóż” stores no typed answer.
     detail = attempt.topic == 'capitals'
         ? session.capitalQuestionAt(i).fact.name
-        : 'flaga';
+        : symbolLower;
     given = 'Nie wiem — pomoc A–D';
   } else if (attempt.topic == 'capitals') {
     detail = '${session.capitalQuestionAt(i).fact.name}$typo';
     given = '$verb: ${attempt.answer}';
   } else if (attempt.topic == 'flags' &&
       !mapDifficulties.contains(attempt.difficulty)) {
-    detail = 'flaga$typo';
+    detail = '$symbolLower$typo';
     given = '$verb: ${nameOf(attempt.answer)}';
   } else {
     final guesses = session.mapGuesses

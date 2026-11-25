@@ -13,10 +13,10 @@ enum Continent {
   /// so the islands on both sides of the 180° meridian form one map.
   oceania('Australia i Oceania', 'Australii i Oceanii', 'Australii i Oceanii'),
 
-  /// Voivodeships (ISO 3166-2 / TERYT ids `PL-02`…), map questions only.
+  /// Voivodeships (ISO 3166-2 / TERYT ids `PL-02`…).
   poland('Polska', 'Polski', 'Polsce', areaNoun: 'województw'),
 
-  /// US states (`US-AL`…), Alaska and Hawaii as framed insets; map only.
+  /// US states (`US-AL`…), Alaska and Hawaii as framed insets.
   usa(
     'Stany Zjednoczone',
     'Stanów Zjednoczonych',
@@ -63,6 +63,24 @@ enum Continent {
   /// Short prompt under the area name in a capital question.
   String get capitalPrompt =>
       _poland ? 'Miasto wojewódzkie?' : (_usa ? 'Stolica stanu?' : 'Stolica?');
+
+  /// Genitive singular for capital input hints: „Nazwa miasta wojewódzkiego”.
+  String get capitalGenitive =>
+      _poland ? 'miasta wojewódzkiego' : (_usa ? 'stolicy stanu' : 'stolicy');
+
+  /// Recovery-note prefix for hard items.
+  String get hardAreaLabel =>
+      _poland ? 'Trudne województwo' : (_usa ? 'Trudny stan' : 'Trudny kraj');
+
+  /// Recovery-note prefix once mastered (3 consecutive graded hits).
+  String get hardAreaMasteredLabel => _poland
+      ? 'Trudne województwo opanowane'
+      : (_usa ? 'Trudny stan opanowany' : 'Trudny kraj opanowany');
+
+  /// Screen-reader label for small-area markers during a map quiz.
+  String get smallAreaMarkerLabel => _poland
+      ? 'Małe województwo — znacznik'
+      : (_usa ? 'Mały stan — znacznik' : 'Małe państwo — znacznik');
 
   /// Region id of the v2 illustrations (`assets/v2/banner_<id>_<n>`,
   /// `quiz_header_<id>`).

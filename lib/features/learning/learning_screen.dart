@@ -7,7 +7,6 @@ import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
-import '../settings/app_preferences.dart';
 import 'capitals.dart';
 import 'country_trivia.dart';
 import 'flags.dart';
@@ -56,10 +55,6 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         dailyMode: widget.dailyMode,
         flags: widget.flagDifficulty,
         capitals: widget.capitalDifficulty,
-        // The placement quiz is always easy: it checks what is already known.
-        level: widget.dailyMode == DailyMode.placement
-            ? LearningDifficulty.easy
-            : null,
       ),
     );
     if (mounted) {

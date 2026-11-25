@@ -130,10 +130,10 @@ wybrano lub wskazano na mapie (np. „Wpisano: Makozia”).
   — najsłabsze opanowane karty, każda najwyżej raz na ~20 h. To okresowa
   kontrola pewniaków i sposób na utrzymanie passy, gdy wszystko jest opanowane.
 - **Wstępny quiz:** główny przycisk Dziś przy pierwszej wizycie obszaru (żadna
-  seria jeszcze nie ruszyła). Zawsze na poziomie Łatwym: seria do 10
-  niewidzianych kart. Trafienia od razu dostają Easy i **nie zużywają limitu
-  nowości**; zużywają go tylko błędy. Znawca może więc odkryć znany kontynent
-  w jeden wieczór.
+  seria jeszcze nie ruszyła). Działa na aktywnym poziomie obszaru (domyślnie
+  normalnym): seria do 10 niewidzianych kart. Trafienia od razu dostają Easy
+  i **nie zużywają limitu nowości**; zużywają go tylko błędy. Znawca może więc
+  odkryć znany kontynent w jeden wieczór.
 - Kraj pojawia się w serii najwyżej raz, aby pytania nie podpowiadały odpowiedzi.
 - Zaliczony normalny poziom nie wprowadza zbędnej nowej karty łatwiejszego poziomu.
 - Rozpoczęta seria zachowuje swój format, kolejność i migawkę pytań, także po

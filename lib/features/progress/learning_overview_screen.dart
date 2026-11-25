@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../atlas/continent.dart';
+import '../learning/achievements.dart';
 import '../learning/learning_progress.dart';
 import '../learning/streaks.dart';
 import '../learning/token_icon.dart';
@@ -49,7 +50,16 @@ class LearningOverviewScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     appBar: continent == null
-        ? AppBar(title: const Text('Moja nauka'))
+        ? AppBar(
+            title: const Text('Moja nauka'),
+            actions: [
+              IconButton(
+                tooltip: 'Jak to działa?',
+                onPressed: () => context.push('/how-it-works'),
+                icon: const Icon(Icons.help_outline),
+              ),
+            ],
+          )
         : regionAppBar(
             context,
             continent: continent!,
@@ -210,7 +220,9 @@ class LearningOverviewScreen extends ConsumerWidget {
             child: ExpansionTile(
               leading: const Icon(Icons.workspace_premium_outlined),
               title: const Text('Medale za naukę'),
-              subtitle: Text('$earned z 36 zdobytych · progi 50%, 80% i 100%'),
+              subtitle: Text(
+                '$earned z $maxMedalPoints zdobytych · progi 50%, 80% i 100%',
+              ),
               children: [
                 for (final topic in ['map', 'capitals', 'flags', 'flagMap'])
                   ExpansionTile(
@@ -385,7 +397,7 @@ class _RegionOverviewCard extends ConsumerWidget {
                                             style: theme.textTheme.labelMedium,
                                           ),
                                           data: (items) => Text(
-                                            'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z 36',
+                                            'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z $maxMedalPoints',
                                             style: theme.textTheme.labelMedium,
                                           ),
                                         ),

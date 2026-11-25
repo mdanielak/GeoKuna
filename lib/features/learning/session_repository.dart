@@ -12,7 +12,6 @@ import 'learning_progress.dart';
 import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
-import 'learning_levels.dart';
 import 'learning_session.dart';
 import 'learning_types.dart';
 import 'daily_planner.dart';
@@ -176,17 +175,19 @@ class SessionRepository {
     return rows.isEmpty ? null : _load(rows.first);
   }
 
-  Future<List<LearningSession>> activeCapitals() async {
+  Future<List<LearningSession>> _activeByTopic(String topic) async {
     final rows =
         await (db.select(db.sessions)..where(
               (s) =>
                   s.continent.equals(continent.name) &
                   s.completedAt.isNull() &
-                  s.topic.equals('capitals'),
+                  s.topic.equals(topic),
             ))
             .get();
     return Future.wait(rows.map(_load));
   }
+
+  Future<List<LearningSession>> activeCapitals() => _activeByTopic('capitals');
 
   Future<LearningSession> byId(String id) async {
     final row = await (db.select(
@@ -264,17 +265,7 @@ class SessionRepository {
     return byId(id);
   });
 
-  Future<List<LearningSession>> activeFlags() async {
-    final rows =
-        await (db.select(db.sessions)..where(
-              (s) =>
-                  s.continent.equals(continent.name) &
-                  s.completedAt.isNull() &
-                  s.topic.equals('flags'),
-            ))
-            .get();
-    return Future.wait(rows.map(_load));
-  }
+  Future<List<LearningSession>> activeFlags() => _activeByTopic('flags');
 
   Future<LearningSession> startFlags(
     FlagCatalog catalog,
@@ -407,38 +398,77 @@ class SessionRepository {
     int index,
     String input, {
     bool gaveUp = false,
+  }) => _answerTextQuestion(
+    id,
+    index,
+    input,
+    topic: QuizTopic.flags,
+    gaveUp: gaveUp,
+  );
+
+  Future<LearningSession> _answerTextQuestion(
+    String id,
+    int index,
+    String input, {
+    required QuizTopic topic,
+    required bool gaveUp,
   }) => db.transaction(() async {
     final session = await byId(id);
+    final isFlag = topic == QuizTopic.flags;
     if (session.completed ||
         session.index != index ||
-        !session.isFlagAt(index) ||
-        session.isMapAt(index)) {
-      throw StateError('Nieaktualne pytanie o flagę');
+        (isFlag
+            ? (!session.isFlagAt(index) || session.isMapAt(index))
+            : !session.isCapital)) {
+      throw StateError(
+        isFlag
+            ? 'Nieaktualne pytanie o flagę'
+            : 'Nieaktualne pytanie o stolicę',
+      );
     }
     if (session.currentAttempt != null) return session;
-    final question = session.flagQuestionAt(index);
-    final difficulty = session.flagDifficulty;
-    if (gaveUp && difficulty == FlagDifficulty.choice) {
-      throw ArgumentError('A–D nie ma podpowiedzi');
+    final String difficultyName;
+    final bool isChoice;
+    final bool isFirstLetter;
+    final List<String> options;
+    final String firstLetter;
+    final String canonicalAnswer;
+    final AnswerEvaluation Function(String candidate) evaluate;
+    if (isFlag) {
+      final q = session.flagQuestionAt(index);
+      final d = session.flagDifficulty;
+      difficultyName = d.name;
+      isChoice = d == FlagDifficulty.choice;
+      isFirstLetter = d == FlagDifficulty.firstLetter;
+      options = q.options;
+      firstLetter = q.firstLetter;
+      canonicalAnswer = q.countryName;
+      evaluate = (c) => evaluateFlagAnswer(c, q);
+    } else {
+      final q = session.capitalQuestion;
+      final d = session.difficulty;
+      difficultyName = d.name;
+      isChoice = d == CapitalDifficulty.choice;
+      isFirstLetter = d == CapitalDifficulty.firstLetter;
+      options = q.options;
+      firstLetter = q.fact.firstLetter;
+      canonicalAnswer = q.fact.name;
+      evaluate = (c) => evaluateCapitalAnswer(c, q.fact);
     }
+    if (gaveUp && isChoice) throw ArgumentError('A–D nie ma podpowiedzi');
     if (!gaveUp && (input.trim().isEmpty || input.length > 100)) {
       throw ArgumentError('Pusta lub zbyt długa odpowiedź');
     }
-    if (difficulty == FlagDifficulty.choice &&
-        !question.options.contains(input)) {
+    if (isChoice && !options.contains(input)) {
       throw ArgumentError('Odpowiedź spoza listy');
     }
     final (String answer, AnswerEvaluation evaluation) = gaveUp
         ? ('', const AnswerEvaluation(false))
-        : difficulty == FlagDifficulty.firstLetter
-        ? resolveFirstLetterAnswer(
-            question.firstLetter,
-            input,
-            (candidate) => evaluateFlagAnswer(candidate, question),
-          )
-        : difficulty == FlagDifficulty.choice
-        ? (input.trim(), AnswerEvaluation(input.trim() == question.countryName))
-        : (input.trim(), evaluateFlagAnswer(input.trim(), question));
+        : isFirstLetter
+        ? resolveFirstLetterAnswer(firstLetter, input, evaluate)
+        : isChoice
+        ? (input.trim(), AnswerEvaluation(input.trim() == canonicalAnswer))
+        : (input.trim(), evaluate(input.trim()));
     await _memory.importHistoryOnce();
     await db
         .into(db.attempts)
@@ -451,8 +481,8 @@ class SessionRepository {
             correct: evaluation.correct,
             typoAccepted: Value(evaluation.typoAccepted),
             answeredAt: _clock().toUtc(),
-            topic: const Value('flags'),
-            difficulty: Value(difficulty.name),
+            topic: Value(topic.name),
+            difficulty: Value(difficultyName),
           ),
         );
     final answered = await byId(id);
@@ -554,57 +584,13 @@ class SessionRepository {
     int index,
     String input, {
     bool gaveUp = false,
-  }) => db.transaction(() async {
-    final session = await byId(id);
-    if (!session.isCapital || session.completed || session.index != index) {
-      throw StateError('Nieaktualne pytanie o stolicę');
-    }
-    if (session.currentAttempt != null) return session;
-    final question = session.capitalQuestion;
-    final choice = session.difficulty == CapitalDifficulty.choice;
-    if (gaveUp && choice) throw ArgumentError('A–D nie ma podpowiedzi');
-    if (!gaveUp && (input.trim().isEmpty || input.length > 100)) {
-      throw ArgumentError('Pusta lub zbyt długa odpowiedź');
-    }
-    if (choice && !question.options.contains(input)) {
-      throw ArgumentError('Odpowiedź spoza listy');
-    }
-    final (String answer, AnswerEvaluation evaluation) = gaveUp
-        ? ('', const AnswerEvaluation(false))
-        : session.difficulty == CapitalDifficulty.firstLetter
-        ? resolveFirstLetterAnswer(
-            question.fact.firstLetter,
-            input,
-            (candidate) => evaluateCapitalAnswer(candidate, question.fact),
-          )
-        : choice
-        ? (input.trim(), AnswerEvaluation(input.trim() == question.fact.name))
-        : (input.trim(), evaluateCapitalAnswer(input.trim(), question.fact));
-    await _memory.importHistoryOnce();
-    await db
-        .into(db.attempts)
-        .insert(
-          AttemptsCompanion.insert(
-            sessionId: id,
-            questionIndex: index,
-            countryId: session.targetId,
-            answer: answer,
-            correct: evaluation.correct,
-            answeredAt: _clock().toUtc(),
-            typoAccepted: Value(evaluation.typoAccepted),
-            topic: const Value('capitals'),
-            difficulty: Value(session.difficulty.name),
-          ),
-        );
-    final answered = await byId(id);
-    await _memory.record(
-      activityTime: _clock(),
-      answered.currentAttempt!,
-      origin: _origin(session, index),
-    );
-    if (!evaluation.correct) await _queueRetry(session, index);
-    return byId(id);
-  });
+  }) => _answerTextQuestion(
+    id,
+    index,
+    input,
+    topic: QuizTopic.capitals,
+    gaveUp: gaveUp,
+  );
 
   Future<LearningSession> finish(String id) => db.transaction(() async {
     final session = await byId(id);
@@ -645,16 +631,25 @@ class SessionRepository {
   Future<List<LearningProgressEntry>> learningProgress(
     AreaCatalog catalog, {
     FlagCatalog? flags,
-  }) => db.transaction(() async {
+  }) async {
     await _memory.importHistoryOnce();
-    final cards = {
-      for (final card in await db.select(db.memoryCards).get()) card.id: card,
-    };
-    final logs =
-        await (db.select(db.memoryReviews)
-              ..where((r) => r.applied.equals(true))
-              ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
-            .get();
+    final countryIds = catalog.countries.map((c) => c.id).toList();
+    final cards = countryIds.isEmpty
+        ? const <String, MemoryCard>{}
+        : {
+            for (final card in await (db.select(
+              db.memoryCards,
+            )..where((c) => c.countryId.isIn(countryIds))).get())
+              card.id: card,
+          };
+    final logs = cards.isEmpty
+        ? const <MemoryReview>[]
+        : await (db.select(db.memoryReviews)
+                ..where(
+                  (r) => r.applied.equals(true) & r.skillId.isIn(cards.keys),
+                )
+                ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
+              .get();
     final latest = <String, MemoryReview>{};
     for (final log in logs) {
       latest[log.skillId] = log;
@@ -697,7 +692,7 @@ class SessionRepository {
             );
           })(),
     ];
-  });
+  }
 
   /// No series (any topic or level) was ever started in this area: Today
   /// then offers the placement quiz as its main action.

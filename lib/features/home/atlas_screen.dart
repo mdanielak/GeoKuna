@@ -350,12 +350,13 @@ class _SelectedAreaCardState extends ConsumerState<_SelectedAreaCard> {
 
 String _sourceNote(Catalog catalog) => switch (catalog.continent) {
   Continent.africa =>
-    'Afryka: ${catalog.countries.length} państw. '
-        'Terytoria zależne nie są osobnymi zadaniami; '
-        'szczegóły granic i źródeł: dokumentacja Afryki.',
+    'Afryka: ${catalog.countries.length} państw ONZ (lista KSNG). '
+        'Terytoria zależne i Sahara Zachodnia są tłem mapy. '
+        'Geometria: Natural Earth 1:50m, v5.1.2 · domena publiczna.',
   Continent.asia =>
-    'Azja: ${catalog.countries.length} państw. '
-        'Szczegóły granic i źródeł: dokumentacja Azji.',
+    'Azja: ${catalog.countries.length} obszarów (państwa ONZ oraz Palestyna '
+        'i Tajwan według KSNG; Cypr i Turcja wspólne z Europą). '
+        'Geometria: Natural Earth 1:50m, v5.1.2 · domena publiczna.',
   Continent.poland =>
     'Polska: 16 województw (Dz.U. 1998 nr 96 poz. 603). '
         'Geometria: Natural Earth 1:10m, v5.1.2 · domena publiczna.',

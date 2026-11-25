@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart' show ProviderOrFamily;
 
 import '../core/database/database.dart';
 import '../features/atlas/catalog.dart';
@@ -170,3 +171,19 @@ final continentProgressProvider = FutureProvider.autoDispose
         continent: continent,
       ).learningProgress(catalog, flags: flags);
     });
+
+/// Invalidates derived progress, streak and medal providers after answers,
+/// resets, backups or lifecycle resumes.
+void invalidateProgressProviders(
+  void Function(ProviderOrFamily) invalidate, {
+  bool includeDashboard = true,
+}) {
+  if (includeDashboard) invalidate(dashboardProvider);
+  invalidate(dailyOverviewProvider);
+  invalidate(learningProgressProvider);
+  invalidate(continentProgressProvider);
+  invalidate(streakProvider);
+  invalidate(continentStreakProvider);
+  invalidate(achievementsProvider);
+  invalidate(continentAchievementsProvider);
+}

@@ -432,23 +432,11 @@ class _CountryMapState extends State<CountryMap> {
           ),
         ),
       if (widget.appearance == MapAppearance.paper) const MapGraticule(),
-      for (final (width, color) in _palette.coastRings)
-        IgnorePointer(
-          child: PolygonLayer(
-            polygons: [
-              for (final rings in [
-                ...widget.catalog.context,
-                for (final shape in widget.catalog.shapes) shape.rings,
-              ])
-                Polygon(
-                  points: rings.first,
-                  color: Colors.transparent,
-                  borderColor: color,
-                  borderStrokeWidth: width,
-                ),
-            ],
-          ),
-        ),
+      ..._coastRingLayers([
+        ...widget.catalog.context,
+        for (final shape in widget.catalog.shapes)
+          if (!_insetAreaIds.contains(shape.countryId)) shape.rings,
+      ]),
       if (widget.catalog.context.isNotEmpty)
         IgnorePointer(
           child: PolygonLayer(
@@ -464,7 +452,12 @@ class _CountryMapState extends State<CountryMap> {
             ],
           ),
         ),
-      if (widget.catalog.insetFrames.isNotEmpty) ..._insetFrames(),
+      if (widget.catalog.insetFrames.isNotEmpty) _insetFillLayer(),
+      if (widget.catalog.insetFrames.isNotEmpty)
+        ..._coastRingLayers([
+          for (final shape in widget.catalog.shapes)
+            if (_insetAreaIds.contains(shape.countryId)) shape.rings,
+        ]),
       GestureDetector(
         onTap: () {
           final hits = _hits.value?.hitValues;
@@ -475,6 +468,18 @@ class _CountryMapState extends State<CountryMap> {
         child: PolygonLayer<String>(
           hitNotifier: _hits,
           polygons: [
+            for (final frame in widget.catalog.insetFrames)
+              Polygon<String>(
+                points: [
+                  frame.bounds.northWest,
+                  frame.bounds.northEast,
+                  frame.bounds.southEast,
+                  frame.bounds.southWest,
+                ],
+                hitValue: frame.areaId,
+                color: Colors.transparent,
+                borderStrokeWidth: 0,
+              ),
             for (final shape in widget.catalog.shapes)
               Polygon<String>(
                 points: shape.rings.first,
@@ -488,6 +493,10 @@ class _CountryMapState extends State<CountryMap> {
         ),
       ),
       IgnorePointer(child: PolygonLayer(polygons: _edgeFade())),
+      if (widget.catalog.insetFrames.isNotEmpty) ...[
+        _insetBorderLayer(),
+        _insetLabels(),
+      ],
       if (widget.appearance == MapAppearance.paper) const PaperAtlasFrame(),
       MarkerLayer(
         markers: [
@@ -499,7 +508,7 @@ class _CountryMapState extends State<CountryMap> {
               child: Semantics(
                 key: ValueKey('country-marker-${country.id}'),
                 label: widget.quizMode
-                    ? 'Małe państwo — znacznik'
+                    ? widget.catalog.continent.smallAreaMarkerLabel
                     : '${country.name} — małe ${widget.catalog.continent.areaAccusative}',
                 button: true,
                 child: GestureDetector(
@@ -511,7 +520,7 @@ class _CountryMapState extends State<CountryMap> {
                     margin: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: _color(country.id) == Colors.transparent
-                          ? MapPalette(widget.appearance).markerFill
+                          ? _palette.markerFill
                           : _color(country.id),
                       shape: BoxShape.circle,
                       border: Border.all(
@@ -628,47 +637,103 @@ class _CountryMapState extends State<CountryMap> {
     return result;
   }
 
-  /// Framed boxes of the moved insets (Alaska, Hawaii) with a scale note.
-  List<Widget> _insetFrames() => [
-    IgnorePointer(
-      child: PolygonLayer(
-        polygons: [
-          for (final frame in widget.catalog.insetFrames)
-            Polygon(
-              points: [
-                frame.bounds.northWest,
-                frame.bounds.northEast,
-                frame.bounds.southEast,
-                frame.bounds.southWest,
-              ],
-              color: _palette.ocean,
-              borderColor: _palette.boundary.withValues(alpha: .7),
-              borderStrokeWidth: 1.2,
-            ),
-        ],
+  List<Widget> _coastRingLayers(Iterable<List<List<LatLng>>> polygons) => [
+    for (final (width, color) in _palette.coastRings)
+      IgnorePointer(
+        child: PolygonLayer(
+          polygons: [
+            for (final rings in polygons)
+              Polygon(
+                points: rings.first,
+                color: Colors.transparent,
+                borderColor: color,
+                borderStrokeWidth: width,
+              ),
+          ],
+        ),
       ),
+  ];
+
+  /// Ocean background fills for moved insets (Alaska, Hawaii).
+  Widget _insetFillLayer() => IgnorePointer(
+    child: PolygonLayer(
+      polygons: [
+        for (final frame in widget.catalog.insetFrames)
+          Polygon(
+            points: [
+              frame.bounds.northWest,
+              frame.bounds.northEast,
+              frame.bounds.southEast,
+              frame.bounds.southWest,
+            ],
+            color: _palette.ocean,
+            borderStrokeWidth: 0,
+          ),
+      ],
     ),
-    IgnorePointer(
-      child: MarkerLayer(
-        markers: [
-          for (final frame in widget.catalog.insetFrames)
+  );
+
+  /// Frame borders drawn above edge fade so inset edges stay crisp.
+  Widget _insetBorderLayer() => IgnorePointer(
+    child: PolygonLayer(
+      polygons: [
+        for (final frame in widget.catalog.insetFrames)
+          Polygon(
+            points: [
+              frame.bounds.northWest,
+              frame.bounds.northEast,
+              frame.bounds.southEast,
+              frame.bounds.southWest,
+            ],
+            color: Colors.transparent,
+            borderColor: _palette.boundary.withValues(alpha: .7),
+            borderStrokeWidth: 1.2,
+          ),
+      ],
+    ),
+  );
+
+  /// Scale labels inside inset boxes. Quiz mode hides area names (no spoilers)
+  /// and omits the label entirely when the box is too narrow to fit cleanly.
+  Widget _insetLabels() => IgnorePointer(
+    child: Builder(
+      builder: (context) {
+        final camera = MapCamera.of(context);
+        final markers = <Marker>[];
+        for (final frame in widget.catalog.insetFrames) {
+          final nw = camera.latLngToScreenOffset(frame.bounds.northWest);
+          final se = camera.latLngToScreenOffset(frame.bounds.southEast);
+          final boxWidth = (se.dx - nw.dx).abs();
+          final boxHeight = (se.dy - nw.dy).abs();
+          if (boxHeight < 14) continue;
+          final text = widget.quizMode
+              ? (boxWidth >= 46 ? 'inna skala' : null)
+              : frame.label;
+          if (text == null) continue;
+          markers.add(
             Marker(
               point: frame.bounds.northWest,
-              width: 150,
+              width: boxWidth.clamp(1.0, 220.0),
               height: 16,
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.only(left: 4, top: 2),
-                child: Text(
-                  frame.label,
-                  style: TextStyle(fontSize: 10, color: _palette.boundary),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    text,
+                    style: TextStyle(fontSize: 10, color: _palette.boundary),
+                  ),
                 ),
               ),
             ),
-        ],
-      ),
+          );
+        }
+        return MarkerLayer(markers: markers);
+      },
     ),
-  ];
+  );
 
   /// Sea around the data window, up to the edge of the world. Boxes stay
   /// under 180° wide: flutter_map unwraps wider ones as antimeridian-crossing.
@@ -701,7 +766,7 @@ class _CountryMapState extends State<CountryMap> {
     final b = _bounds;
     final latStep = (b.north - b.south) * .012;
     final lngStep = (b.east - b.west) * .01;
-    final sea = MapPalette(widget.appearance).ocean.withValues(alpha: .3);
+    final sea = _palette.ocean.withValues(alpha: .3);
     LatLng at(double lat, double lng) =>
         LatLng(lat.clamp(-90, 90), lng.clamp(-180, 180));
     List<LatLng> rect(double inset) => [

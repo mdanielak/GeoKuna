@@ -10,7 +10,6 @@ import '../settings/app_preferences.dart';
 import 'achievements.dart';
 import 'capitals.dart';
 import 'flags.dart';
-import 'learning_levels.dart';
 import 'learning_types.dart';
 import 'memory.dart';
 
@@ -193,8 +192,9 @@ class DailyPlanner {
             ))
             .get();
     final qualified = qualifiedSkillIds(appliedReviews);
-    final recovering = recoveringSkills(appliedReviews);
-    final misses = missesSinceRecovery(appliedReviews);
+    final recovery = analyzeRecovery(appliedReviews);
+    final recovering = recovery.recovering;
+    final misses = recovery.missesSinceRecovery;
     final lastReviewed = <String, DateTime>{};
     for (final review in appliedReviews) {
       final last = lastReviewed[review.skillId];
@@ -352,33 +352,18 @@ class DailyPlanner {
     FlagCatalog? flags,
   ) async {
     final known = catalog.countries.map((c) => c.id).toSet();
-    final appliedReviews =
-        await (db.select(db.memoryReviews)
-              ..where((r) => r.applied.equals(true))
-              ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
-            .get();
+    final appliedReviews = await (db.select(
+      db.memoryReviews,
+    )..where((r) => r.applied.equals(true))).get();
+    final recovery = analyzeRecovery(appliedReviews);
     final lastRecoveredAt = <(String, String), DateTime>{};
-    final hadMiss = <String, bool>{};
-    final hitRun = <String, int>{};
-    for (final review in appliedReviews) {
-      final parts = review.skillId.split(':');
+    for (final MapEntry(key: skillId, value: at)
+        in recovery.lastRecoveredAt.entries) {
+      final parts = skillId.split(':');
       if (parts.length != 3 || !known.contains(parts[1])) continue;
-      if (review.rating == 1) {
-        hadMiss[review.skillId] = true;
-        hitRun[review.skillId] = 0;
-      } else if (hadMiss[review.skillId] == true) {
-        final nextRun = (hitRun[review.skillId] ?? 0) + 1;
-        hitRun[review.skillId] = nextRun;
-        if (nextRun >= recoveryTarget) {
-          final key = (parts[0], parts[1]);
-          final prev = lastRecoveredAt[key];
-          if (prev == null || review.reviewedAt.isAfter(prev)) {
-            lastRecoveredAt[key] = review.reviewedAt;
-          }
-          hadMiss[review.skillId] = false;
-          hitRun[review.skillId] = 0;
-        }
-      }
+      final key = (parts[0], parts[1]);
+      final prev = lastRecoveredAt[key];
+      if (prev == null || at.isAfter(prev)) lastRecoveredAt[key] = at;
     }
     final practiceKeys = {
       for (final r

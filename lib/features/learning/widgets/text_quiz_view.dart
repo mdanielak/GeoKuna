@@ -350,8 +350,8 @@ class _TextQuizViewState extends ConsumerState<TextQuizView> {
           hint
               ? 'Pierwsza litera: $firstLetter. Dopisz pozostałe litery.'
               : flag
-              ? 'Wpisz całą nazwę ${ref.watch(selectedContinentProvider).areaGenitive}.'
-              : 'Wpisz całą nazwę stolicy.',
+              ? 'Wpisz całą nazwę ${widget.catalog.continent.areaGenitive}.'
+              : 'Wpisz całą nazwę ${widget.catalog.continent.capitalGenitive}.',
         ),
         const SizedBox(height: 16),
         TextFormField(
@@ -371,8 +371,8 @@ class _TextQuizViewState extends ConsumerState<TextQuizView> {
             labelText: hint
                 ? 'Pozostałe litery'
                 : flag
-                ? 'Nazwa ${ref.watch(selectedContinentProvider).areaGenitive}'
-                : 'Nazwa stolicy',
+                ? 'Nazwa ${widget.catalog.continent.areaGenitive}'
+                : 'Nazwa ${widget.catalog.continent.capitalGenitive}',
             prefixIcon: hint
                 ? Padding(
                     padding: const EdgeInsets.all(16),

@@ -8,6 +8,7 @@ import '../features/settings/app_preferences.dart';
 
 import '../features/home/home_screen.dart';
 import '../features/home/atlas_screen.dart';
+import '../features/home/how_it_works_screen.dart';
 import '../features/progress/progress_screen.dart';
 import '../features/progress/learning_overview_screen.dart';
 import '../features/settings/settings_screen.dart';
@@ -75,6 +76,7 @@ GoRouter _createRouter() => GoRouter(
       ),
     ),
     GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
+    GoRoute(path: '/how-it-works', builder: (_, _) => const HowItWorksScreen()),
     GoRoute(path: '/flags', builder: (_, _) => const FlagsSetupScreen()),
     GoRoute(path: '/capitals', redirect: (_, _) => '/learn?topic=capitals'),
     GoRoute(
@@ -151,12 +153,7 @@ class _GeoKunaAppState extends ConsumerState<GeoKunaApp>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      ref
-        ..invalidate(dailyOverviewProvider)
-        ..invalidate(streakProvider)
-        ..invalidate(continentStreakProvider)
-        ..invalidate(learningProgressProvider)
-        ..invalidate(continentProgressProvider);
+      invalidateProgressProviders(ref.invalidate, includeDashboard: false);
     }
   }
 

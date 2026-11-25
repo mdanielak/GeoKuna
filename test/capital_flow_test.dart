@@ -11,6 +11,7 @@ import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/learning_types.dart';
 import 'package:geokuna/features/learning/country_trivia.dart';
 import 'package:geokuna/features/learning/flags.dart';
 import 'package:geokuna/features/learning/learning_screen.dart';
@@ -86,7 +87,10 @@ _openCapitals(WidgetTester tester, CapitalDifficulty difficulty) async {
     await tester.pumpAndSettle();
     expect(find.text('Polska'), findsOneWidget);
     expect(find.text('Stolica?'), findsOneWidget);
-    expect(find.text('Polska · ${difficulty.label}'), findsNothing);
+    expect(
+      find.text('Polska · ${levelForDifficulty(difficulty.name).label}'),
+      findsNothing,
+    );
   }
 
   await open();

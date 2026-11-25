@@ -7,18 +7,7 @@ import 'dart:math';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/services.dart';
 
-enum CapitalDifficulty {
-  choice(
-    'Bardzo łatwy',
-    'Wybierz jedną z odpowiedzi A–D. Osobne powtórki rozpoznawania.',
-  ),
-  firstLetter('Łatwy', 'Pierwszą literę dostajesz. Dopisz resztę nazwy.'),
-  write('Normalny', 'Wpisz całą nazwę bez podpowiedzi.');
-
-  const CapitalDifficulty(this.label, this.description);
-  final String label;
-  final String description;
-}
+enum CapitalDifficulty { choice, firstLetter, write }
 
 class CapitalFact {
   CapitalFact.fromJson(Map<String, dynamic> json)

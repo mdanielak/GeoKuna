@@ -3,8 +3,11 @@ import 'package:drift/drift.dart';
 import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
 import '../settings/app_preferences.dart';
-import 'learning_levels.dart';
 import 'learning_types.dart';
+
+/// Maximum medal points per area (categories × difficulty levels × 3 tiers).
+final maxMedalPoints =
+    AchievementCategory.all.length * LearningDifficulty.values.length * 3;
 
 class CategoryAchievement {
   const CategoryAchievement({

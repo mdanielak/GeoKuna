@@ -320,8 +320,8 @@ class InsightNote extends StatelessWidget {
     final lines = [
       if (insight.recovery case final done?)
         done >= recoveryTarget
-            ? 'Trudny kraj opanowany: $done z $recoveryTarget trafień z rzędu.'
-            : 'Trudny kraj: $done z $recoveryTarget trafień z rzędu.',
+            ? '${catalog.continent.hardAreaMasteredLabel}: $done z $recoveryTarget trafień z rzędu.'
+            : '${catalog.continent.hardAreaLabel}: $done z $recoveryTarget trafień z rzędu.',
       if (insight.confusedWithId case final other?)
         'Ta para już się myliła: ${catalog.country(session.targetId).name} '
             'i ${catalog.country(other).name}. Porównaj ich położenie.',

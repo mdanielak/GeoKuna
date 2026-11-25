@@ -30,16 +30,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     _resetContinent = ref.read(selectedContinentProvider);
   }
 
-  void _invalidateProgress() {
-    ref.invalidate(dashboardProvider);
-    ref.invalidate(dailyOverviewProvider);
-    ref.invalidate(learningProgressProvider);
-    ref.invalidate(continentProgressProvider);
-    ref.invalidate(streakProvider);
-    ref.invalidate(continentStreakProvider);
-    ref.invalidate(achievementsProvider);
-    ref.invalidate(continentAchievementsProvider);
-  }
+  void _invalidateProgress() => invalidateProgressProviders(ref.invalidate);
 
   /// Runs one backup action with the shared busy/error state.
   Future<void> _backupAction(Future<String?> Function() action) async {
@@ -318,6 +309,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                 ],
                 const SizedBox(height: 28),
+                Card.filled(
+                  margin: EdgeInsets.zero,
+                  clipBehavior: Clip.antiAlias,
+                  child: ListTile(
+                    leading: const Icon(Icons.help_outline),
+                    title: const Text('Jak działa nauka?'),
+                    subtitle: const Text(
+                      'Powtórki, zaliczenie krajów, medale i passa.',
+                    ),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => context.push('/how-it-works'),
+                  ),
+                ),
+                const SizedBox(height: 16),
                 Card.filled(
                   margin: EdgeInsets.zero,
                   child: Padding(

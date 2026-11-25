@@ -210,24 +210,64 @@ class MemoryStore {
 /// treated as a problem.
 const recoveryTarget = 3;
 
-/// Graded misses since a skill was last recovered ([recoveryTarget] correct
-/// in a row). Drives the ladder: a stubborn skill gets an easier step first.
-Map<String, int> missesSinceRecovery(Iterable<MemoryReview> reviews) {
+/// Recovery state derived from applied graded reviews in chronological order.
+class SkillRecoveryStats {
+  const SkillRecoveryStats({
+    required this.recovering,
+    required this.missesSinceRecovery,
+    required this.lastRecoveredAt,
+  });
+
+  /// Skills with a graded miss that are not yet recovered, mapped to the
+  /// number of graded correct answers since that miss (0–2).
+  final Map<String, int> recovering;
+
+  /// Graded misses since a skill was last recovered ([recoveryTarget] correct
+  /// in a row). Drives the ladder: a stubborn skill gets an easier step first.
+  final Map<String, int> missesSinceRecovery;
+
+  /// Timestamp of the review that completed the most recent recovery per skill.
+  final Map<String, DateTime> lastRecoveredAt;
+}
+
+/// Computes recovery progress, ladder miss counts and latest recovery times
+/// from [reviews] in a single pass.
+SkillRecoveryStats analyzeRecovery(Iterable<MemoryReview> reviews) {
   final ordered = reviews.where((r) => r.applied).toList()
     ..sort((a, b) => a.reviewedAt.compareTo(b.reviewedAt));
   final misses = <String, int>{};
-  final run = <String, int>{};
+  final sinceMiss = <String, int>{};
+  final lastRecoveredAt = <String, DateTime>{};
   for (final review in ordered) {
     final id = review.skillId;
     if (review.rating == 1) {
       misses[id] = (misses[id] ?? 0) + 1;
-      run[id] = 0;
-    } else if ((run[id] = (run[id] ?? 0) + 1) >= recoveryTarget) {
-      misses.remove(id);
+      sinceMiss[id] = 0;
+    } else if (sinceMiss.containsKey(id)) {
+      final hits = sinceMiss[id]! + 1;
+      if (hits >= recoveryTarget) {
+        misses.remove(id);
+        sinceMiss.remove(id);
+        final prev = lastRecoveredAt[id];
+        if (prev == null || review.reviewedAt.isAfter(prev)) {
+          lastRecoveredAt[id] = review.reviewedAt;
+        }
+      } else {
+        sinceMiss[id] = hits;
+      }
     }
   }
-  return misses;
+  return SkillRecoveryStats(
+    recovering: sinceMiss,
+    missesSinceRecovery: misses,
+    lastRecoveredAt: lastRecoveredAt,
+  );
 }
+
+/// Graded misses since a skill was last recovered ([recoveryTarget] correct
+/// in a row). Drives the ladder: a stubborn skill gets an easier step first.
+Map<String, int> missesSinceRecovery(Iterable<MemoryReview> reviews) =>
+    analyzeRecovery(reviews).missesSinceRecovery;
 
 /// Misses after which a due skill is preceded by an easier, unscored step.
 const scaffoldAfterMisses = 2;
@@ -240,22 +280,8 @@ String? scaffoldDifficulty(String topic, String difficulty) =>
 
 /// Skills with a graded miss that are not yet recovered, mapped to the number
 /// of graded correct answers since that miss (0–2).
-Map<String, int> recoveringSkills(Iterable<MemoryReview> reviews) {
-  final ordered = reviews.where((r) => r.applied).toList()
-    ..sort((a, b) => a.reviewedAt.compareTo(b.reviewedAt));
-  final since = <String, int>{};
-  for (final review in ordered) {
-    if (review.rating == 1) {
-      since[review.skillId] = 0;
-    } else if (since.containsKey(review.skillId)) {
-      since[review.skillId] = since[review.skillId]! + 1;
-    }
-  }
-  return {
-    for (final MapEntry(:key, :value) in since.entries)
-      if (value < recoveryTarget) key: value,
-  };
-}
+Map<String, int> recoveringSkills(Iterable<MemoryReview> reviews) =>
+    analyzeRecovery(reviews).recovering;
 
 const _formats = [
   'map',

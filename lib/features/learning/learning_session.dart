@@ -3,7 +3,6 @@ import 'dart:convert';
 import '../../core/database/database.dart';
 import 'capitals.dart';
 import 'flags.dart';
-import 'learning_levels.dart';
 import 'learning_types.dart';
 
 class LearningSession {
