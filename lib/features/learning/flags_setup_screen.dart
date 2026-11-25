@@ -88,11 +88,7 @@ class FlagsSetupScreen extends ConsumerWidget {
                                           'Poziom: ${selectedDifficulty.label}',
                                         ),
                                         subtitle: Text(
-                                          selectedDifficulty.description
-                                              .replaceAll(
-                                                'państwo',
-                                                continent.areaAccusative,
-                                              ),
+                                          selectedDifficulty.description,
                                         ),
                                         trailing: const Icon(Icons.expand_more),
                                         onTap: () => showDifficultySheet(
@@ -162,9 +158,12 @@ class FlagsSetupScreen extends ConsumerWidget {
   Future<void> _start(BuildContext context, WidgetRef ref, String mode) async {
     await context.push('/learn?topic=flags&level=$mode');
     if (context.mounted) {
-      ref.invalidate(dashboardProvider);
-      ref.invalidate(dailyOverviewProvider);
-      ref.invalidate(learningProgressProvider);
+      ref
+        ..invalidate(dashboardProvider)
+        ..invalidate(dailyOverviewProvider)
+        ..invalidate(learningProgressProvider)
+        ..invalidate(continentProgressProvider)
+        ..invalidate(continentStreakProvider);
     }
   }
 }

@@ -9,6 +9,7 @@ import 'catalog.dart';
 import 'continent.dart';
 import 'map_style.dart';
 import 'quiz_map_frame.dart';
+import 'region_bounds.dart';
 import '../settings/app_preferences.dart';
 
 // The offline regional map needs one Mercator world, without repeated copies.
@@ -39,6 +40,7 @@ class CountryMap extends StatefulWidget {
     this.quizMode = false,
     this.appearance = MapAppearance.relief,
     this.locked = false,
+    this.revealBottomInset = 0,
   });
   final Catalog catalog;
   final ValueChanged<String> onSelected;
@@ -53,6 +55,7 @@ class CountryMap extends StatefulWidget {
   final bool quizMode;
   final MapAppearance appearance;
   final bool locked;
+  final double revealBottomInset;
 
   @override
   State<CountryMap> createState() => _CountryMapState();
@@ -68,109 +71,37 @@ class _CountryMapState extends State<CountryMap> {
   /// Wrong-answer labels: true while shown, false while fading out. A label
   /// lives ~2 s, so it never hides the map for long; the red fill stays.
   final _labels = <String, bool>{};
-  final _labelTimers = <Timer>[];
+  final _labelTimers = <String, Timer>{};
+  late Set<String> _insetAreaIds;
   static const _labelVisible = Duration(milliseconds: 1500);
   static const _labelFade = Duration(milliseconds: 400);
 
   void _showLabels(Iterable<String> ids) {
     for (final id in ids) {
+      _labelTimers.remove(id)?.cancel();
       _labels[id] = true;
-      _labelTimers.add(
-        Timer(_labelVisible, () {
-          if (!mounted || _labels[id] != true) return;
-          setState(() => _labels[id] = false);
-          _labelTimers.add(
-            Timer(_labelFade, () {
-              if (mounted) setState(() => _labels.remove(id));
-            }),
-          );
-        }),
-      );
+      _labelTimers[id] = Timer(_labelVisible, () {
+        if (!mounted || _labels[id] != true) return;
+        setState(() => _labels[id] = false);
+        _labelTimers[id] = Timer(_labelFade, () {
+          _labelTimers.remove(id);
+          if (mounted) setState(() => _labels.remove(id));
+        });
+      });
     }
   }
 
   @override
   void initState() {
     super.initState();
+    _insetAreaIds = {for (final f in widget.catalog.insetFrames) f.areaId};
     _showLabels(widget.wrongCountryIds);
   }
 
-  LatLngBounds get _bounds => switch (widget.catalog.continent) {
-    Continent.europe => LatLngBounds(
-      const LatLng(34, -32),
-      const LatLng(72, 65),
-    ),
-    Continent.africa => LatLngBounds(
-      const LatLng(-36, -26),
-      const LatLng(38, 65),
-    ),
-    Continent.asia => LatLngBounds(
-      const LatLng(-12, 20),
-      const LatLng(82, 180),
-    ),
-    Continent.northAmerica => LatLngBounds(
-      const LatLng(5, -170),
-      const LatLng(84, -50),
-    ),
-    Continent.southAmerica => LatLngBounds(
-      const LatLng(-57, -95),
-      const LatLng(15, -30),
-    ),
-    // Shifted longitudes: 110°E → -70, 150°W → 30.
-    Continent.oceania => LatLngBounds(
-      const LatLng(-50, -70),
-      const LatLng(22, 30),
-    ),
-    // Must match tools/data_pipeline/build_subdivisions.py windows.
-    Continent.poland => LatLngBounds(
-      const LatLng(48.6, 13.5),
-      const LatLng(55.3, 24.5),
-    ),
-    Continent.usa => LatLngBounds(
-      const LatLng(16, -128),
-      const LatLng(51, -64),
-    ),
-  };
+  LatLngBounds get _bounds => regionBoundsFor(widget.catalog.continent);
 
-  // On a portrait phone the whole continent leaves most of the screen as sea:
-  // frame its core instead; outlying areas stay reachable by panning.
-  LatLngBounds get _portraitBounds => switch (widget.catalog.continent) {
-    Continent.europe => LatLngBounds(
-      const LatLng(35, -11),
-      const LatLng(71, 50),
-    ),
-    Continent.africa => LatLngBounds(
-      const LatLng(-35, -18),
-      const LatLng(37.5, 52),
-    ),
-    Continent.asia => LatLngBounds(
-      const LatLng(-11, 26),
-      const LatLng(56, 146),
-    ),
-    // Without Alaska and the far north, which a portrait phone cannot fit.
-    Continent.northAmerica => LatLngBounds(
-      const LatLng(7, -128),
-      const LatLng(60, -58),
-    ),
-    Continent.southAmerica => LatLngBounds(
-      const LatLng(-56, -82),
-      const LatLng(13, -34),
-    ),
-    // Australia, New Guinea, New Zealand and Fiji; far atolls by panning.
-    Continent.oceania => LatLngBounds(
-      const LatLng(-47, -68),
-      const LatLng(3, 5),
-    ),
-    Continent.poland => LatLngBounds(
-      const LatLng(49, 14.1),
-      const LatLng(54.9, 24.2),
-    ),
-    // Contiguous states plus the Alaska and Hawaii insets below them.
-    Continent.usa => LatLngBounds(
-      const LatLng(16.2, -128.6),
-      const LatLng(49.5, -66),
-    ),
-  };
+  LatLngBounds get _portraitBounds =>
+      portraitBoundsFor(widget.catalog.continent);
 
   Size? _viewport;
   LatLngBounds get _frameBounds =>
@@ -186,7 +117,16 @@ class _CountryMapState extends State<CountryMap> {
   @override
   void didUpdateWidget(CountryMap oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _labels.removeWhere((id, _) => !widget.wrongCountryIds.contains(id));
+    if (widget.catalog != oldWidget.catalog) {
+      _insetAreaIds = {for (final f in widget.catalog.insetFrames) f.areaId};
+    }
+    for (final removed
+        in _labels.keys
+            .where((id) => !widget.wrongCountryIds.contains(id))
+            .toList()) {
+      _labelTimers.remove(removed)?.cancel();
+      _labels.remove(removed);
+    }
     _showLabels(widget.wrongCountryIds.difference(oldWidget.wrongCountryIds));
     if (widget.catalog.continent != oldWidget.catalog.continent) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -257,10 +197,16 @@ class _CountryMapState extends State<CountryMap> {
       bounds: _frameBounds,
       padding: _initialPadding,
     ).fit(_controller.camera).zoom;
+    final bottom =
+        48.0 +
+        widget.revealBottomInset.clamp(
+          0.0,
+          _controller.camera.size.height * .45,
+        );
     _controller.fitCamera(
       CameraFit.coordinates(
         coordinates: nearbyPoints.length >= 3 ? nearbyPoints : allCountryPoints,
-        padding: const EdgeInsets.all(80),
+        padding: EdgeInsets.fromLTRB(48, 48, 48, bottom),
         maxZoom: overviewZoom + _revealZoomGain,
         minZoom: _minZoom,
       ),
@@ -295,7 +241,7 @@ class _CountryMapState extends State<CountryMap> {
     }
     // Relief tiles show sea under the moved insets: they need a fill.
     return widget.appearance == MapAppearance.relief &&
-            !widget.catalog.insetFrames.any((f) => f.areaId == id)
+            !_insetAreaIds.contains(id)
         ? Colors.transparent
         : widget.appearance == MapAppearance.relief
         ? _palette.insetLand
@@ -332,9 +278,10 @@ class _CountryMapState extends State<CountryMap> {
 
   @override
   void dispose() {
-    for (final timer in _labelTimers) {
+    for (final timer in _labelTimers.values) {
       timer.cancel();
     }
+    _labelTimers.clear();
     _hits.dispose();
     _controller.dispose();
     super.dispose();

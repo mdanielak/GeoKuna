@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/learning_progress.dart';
 import 'package:geokuna/features/progress/learning_overview_screen.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 import 'package:latlong2/latlong.dart';
 
 void main() {
@@ -44,4 +45,57 @@ void main() {
       99,
     );
   });
+
+  test(
+    'effectiveEntriesForLevel collapses to active level and inherits downward',
+    () {
+      const pol = Country(
+        'POL',
+        'Polska',
+        LatLng(52, 19),
+        false,
+        plural: false,
+      );
+      LearningProgressEntry skill(
+        String topic,
+        String difficulty,
+        LearningProgressStatus status,
+      ) => LearningProgressEntry(
+        id: '$topic:POL:$difficulty',
+        country: pol,
+        topic: topic,
+        difficulty: difficulty,
+        status: status,
+        reviewCount: status == LearningProgressStatus.insufficient ? 0 : 1,
+        due: null,
+        lastReview: null,
+      );
+
+      final all = [
+        skill('map', 'mapVeryEasy', LearningProgressStatus.insufficient),
+        skill('map', 'mapEasy', LearningProgressStatus.insufficient),
+        skill('map', 'map', LearningProgressStatus.practising),
+        skill('capitals', 'choice', LearningProgressStatus.insufficient),
+        skill('capitals', 'firstLetter', LearningProgressStatus.review),
+        skill('capitals', 'write', LearningProgressStatus.insufficient),
+      ];
+
+      final normal = KnowledgeSummary(
+        effectiveEntriesForLevel(all, LearningDifficulty.normal),
+      );
+      expect(normal.entries, hasLength(2));
+      expect(normal.ready, 1);
+      expect(normal.unknown, 1);
+      expect(normal.percent, 50);
+
+      // Easy inherits practising from Normal on map, and keeps its own review on capitals.
+      final easy = KnowledgeSummary(
+        effectiveEntriesForLevel(all, LearningDifficulty.easy),
+      );
+      expect(easy.entries, hasLength(2));
+      expect(easy.ready, 1);
+      expect(easy.review, 1);
+      expect(easy.unknown, 0);
+    },
+  );
 }

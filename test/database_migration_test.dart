@@ -45,7 +45,10 @@ void main() {
         expect(restored.currentAttempt!.topic, 'map');
         expect(restored.currentAttempt!.typoAccepted, isFalse);
         await repository.advance('legacy', 0);
-        await repository.answer('legacy', 1, 'DEU', {'POL', 'DEU'});
+        await repository.guessMap('legacy', 1, 'DEU', {
+          'POL',
+          'DEU',
+        }, expectedGuessIndex: 0);
         expect(await repository.history(), hasLength(2));
         final session = await repository.startCapitals(
           await CapitalCatalog.load(),
@@ -108,7 +111,9 @@ void main() {
         expect(history.single.typoAccepted, isTrue);
         expect(history.single.difficulty, 'write');
         final session = await repository.start(['POL']);
-        await repository.answer(session.row.id, 0, 'POL', {'POL'});
+        await repository.guessMap(session.row.id, 0, 'POL', {
+          'POL',
+        }, expectedGuessIndex: 0);
         expect(await repository.history(), hasLength(2));
         expect(
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(

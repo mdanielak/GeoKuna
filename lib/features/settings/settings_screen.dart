@@ -20,8 +20,15 @@ class SettingsScreen extends ConsumerStatefulWidget {
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   bool _all = false;
+  late Continent _resetContinent;
   bool _busy = false;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _resetContinent = ref.read(selectedContinentProvider);
+  }
 
   void _invalidateProgress() {
     ref.invalidate(dashboardProvider);
@@ -29,6 +36,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     ref.invalidate(learningProgressProvider);
     ref.invalidate(continentProgressProvider);
     ref.invalidate(streakProvider);
+    ref.invalidate(continentStreakProvider);
     ref.invalidate(achievementsProvider);
     ref.invalidate(continentAchievementsProvider);
   }
@@ -48,7 +56,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       }
     } on BackupException catch (e) {
       if (mounted) setState(() => _error = e.message);
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('SettingsScreen backup error: $e\n$st');
       if (mounted) {
         setState(() => _error = 'Nie udało się obsłużyć pliku kopii.');
       }
@@ -113,7 +122,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     });
     try {
       await ref.read(appPreferencesProvider.notifier).setAppearance(value);
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('SettingsScreen appearance error: $e\n$st');
       if (mounted) {
         setState(() => _error = 'Nie udało się zapisać ustawienia mapy.');
       }
@@ -135,7 +145,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       await ref
           .read(appPreferencesProvider.notifier)
           .setDifficulty(continent, value);
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('SettingsScreen difficulty error: $e\n$st');
       if (mounted) {
         setState(() => _error = 'Nie udało się zapisać poziomu trudności.');
       }
@@ -145,7 +156,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _reset() async {
-    final continent = ref.read(selectedContinentProvider);
+    final continent = _resetContinent;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -178,7 +189,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       if (_all) {
         await reset.all();
       } else {
-        final catalog = await Catalog.load(continent: continent);
+        final catalog = await CatalogMeta.load(continent: continent);
         await reset.continent(
           continent,
           catalog.countries.map((c) => c.id).toSet(),
@@ -193,7 +204,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         );
         context.go('/');
       }
-    } catch (_) {
+    } catch (e, st) {
+      debugPrint('SettingsScreen reset error: $e\n$st');
       if (mounted) {
         setState(
           () => _error = 'Nie udało się zresetować nauki. Spróbuj ponownie.',
@@ -206,7 +218,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final continent = ref.watch(selectedContinentProvider);
     final preferences = ref.watch(appPreferencesProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Ustawienia')),
@@ -259,29 +270,38 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Poziom nauki',
-                          style: Theme.of(context).textTheme.titleLarge,
+                      Card.filled(
+                        margin: EdgeInsets.zero,
+                        clipBehavior: Clip.antiAlias,
+                        child: ExpansionTile(
+                          title: const Text('Poziom nauki'),
+                          subtitle: Text(
+                            'Osobno dla każdego obszaru (${Continent.values.length})',
+                          ),
+                          childrenPadding: const EdgeInsets.fromLTRB(
+                            16,
+                            0,
+                            16,
+                            12,
+                          ),
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'Dotyczy nowych quizów mapy, stolic i flag na wybranym obszarze. Zaplanowane powtórki zachowują ćwiczony poziom.',
+                              ),
+                            ),
+                            for (final region in Continent.values)
+                              _DifficultyPreference(
+                                continent: region,
+                                value: value.difficultyFor(region),
+                                enabled: !_busy,
+                                onChanged: (difficulty) =>
+                                    _setDifficulty(region, difficulty),
+                              ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Dotyczy nowych quizów mapy, stolic i flag na wybranym kontynencie. Zaplanowane powtórki zachowują ćwiczony poziom.',
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      for (final region in Continent.values)
-                        _DifficultyPreference(
-                          continent: region,
-                          value: value.difficultyFor(region),
-                          enabled: !_busy,
-                          onChanged: (difficulty) =>
-                              _setDifficulty(region, difficulty),
-                        ),
                     ],
                   ),
                 ),
@@ -364,11 +384,38 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                               RadioListTile<bool>(
                                 contentPadding: EdgeInsets.zero,
                                 value: false,
-                                title: Text('Tylko ${continent.label}'),
+                                title: Text('Tylko ${_resetContinent.label}'),
                                 subtitle: const Text(
                                   'Także wspólne karty krajów transkontynentalnych.',
                                 ),
                               ),
+                              if (!_all)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: DropdownButtonFormField<Continent>(
+                                    initialValue: _resetContinent,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Obszar do resetu',
+                                    ),
+                                    isExpanded: true,
+                                    items: [
+                                      for (final region in Continent.values)
+                                        DropdownMenuItem(
+                                          value: region,
+                                          child: Text(region.label),
+                                        ),
+                                    ],
+                                    onChanged: _busy
+                                        ? null
+                                        : (region) {
+                                            if (region != null) {
+                                              setState(
+                                                () => _resetContinent = region,
+                                              );
+                                            }
+                                          },
+                                  ),
+                                ),
                               const RadioListTile<bool>(
                                 contentPadding: EdgeInsets.zero,
                                 value: true,

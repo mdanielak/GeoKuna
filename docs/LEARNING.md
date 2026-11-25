@@ -105,7 +105,7 @@ i ponowne kliknięcie tego samego kraju nie zużywają szansy.
   (Vienna, Warsaw; [CONTENT.md](CONTENT.md#stolice)) są poprawne — wszędzie,
   także z jedną literówką.
 - Zaakceptowana literówka liczy się jako poprawna; zawsze pokazujemy poprawną pisownię.
-- Pierwsza litera: widoczna, nieedytowalna; użytkownik dopisuje resztę.
+- Pierwsza litera: widoczna, nieedytowalna; użytkownik dopisuje resztę (ponowne wpisanie pierwszej litery też jest tolerowane).
 - A–D: wybór innej opcji jest zawsze błędem; tolerancja pisowni go nie dotyczy.
 - Pusta odpowiedź nie może zostać zatwierdzona.
 
@@ -148,13 +148,18 @@ odpowiedzi nie są błędami); Wstecz zostawia serię do wznowienia.
 
 ## Postęp „na bieżąco”
 
-„Na bieżąco X%” = karty w stanie **Ćwiczysz** / wszystkie karty kontynentu
-(Europa 564, Afryka 648, Azja 600; wspólne kraje liczone kanonicznie).
+„Na bieżąco X%” = kategorie w stanie **Ćwiczysz** dla wybranego poziomu obszaru
+(z dziedziczeniem z wyższego poziomu w dół: normalny zalicza łatwy i bardzo
+łatwy tej samej kategorii, analogicznie do medali).
 
 - **Ćwiczysz:** jest zastosowana ocena FSRS, ostatnia odpowiedź poprawna,
   termin w przyszłości.
 - **Do powtórki:** termin minął lub ostatnia odpowiedź była błędna.
 - **Za mało danych:** brak ocenionego przeglądu (wlicza się do mianownika).
+
+Plakietka na *Dziś* pokazuje liczbę krajów zaliczonych na mapie oraz licznik
+**W nauce** (kraje odpowiedziane na tym poziomie, które czekają jeszcze na
+drugą ocenę po ≥ 24 h), więc postęp widać już od pierwszego dnia.
 
 Zaokrąglamy w dół, więc 100% wymaga kompletu. To stan treningu, nie
 prawdopodobieństwo zapamiętania.

@@ -16,7 +16,7 @@ Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
   ciekawostki po trafieniu, pięć emocji kuny z trzema tekstami.
 - Dolny pasek Dziś / Atlas / Moja nauka (Dziś: jedna karta wyprawy z kuną i passą,
   poziom kontynentu w arkuszu, postęp mapy do następnego medalu, trening w jednym
-  rzędzie; Ameryki i Australia z Oceanią jako wyszarzone „wkrótce”); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
+  rzędzie); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
 - SQLite v9 (indeksy historii, żetony passy) z migracjami od v1.
 - „Nie wiem, pomóż” w pytaniach pisanych (stolica, flaga → nazwa): błąd bez wpisywania,
   potem nieoceniane A–D; karta z passą po każdej serii; przesunięcie banera Dziś

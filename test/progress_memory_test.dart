@@ -21,7 +21,9 @@ void main() {
       isTrue,
     );
     final session = await repo.start(['POL']);
-    await repo.answer(session.row.id, 0, 'POL', {'POL'});
+    await repo.guessMap(session.row.id, 0, 'POL', {
+      'POL',
+    }, expectedGuessIndex: 0);
     progress = await repo.learningProgress(catalog);
     expect(
       progress.firstWhere((p) => p.id == 'map:POL:map').status,
@@ -42,7 +44,10 @@ void main() {
     );
     await repo.finish(session.row.id);
     final next = await repo.start(['DEU']);
-    await repo.answer(next.row.id, 0, 'POL', {'POL', 'DEU'});
+    await repo.guessMap(next.row.id, 0, 'POL', {
+      'POL',
+      'DEU',
+    }, expectedGuessIndex: 0);
     expect(
       (await repo.learningProgress(catalog))
           .firstWhere((p) => p.id == 'map:DEU:map')

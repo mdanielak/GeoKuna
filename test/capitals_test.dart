@@ -191,4 +191,23 @@ void main() {
       isTrue,
     );
   });
+
+  test('resolveFirstLetterAnswer tolerates re-typing the initial letter', () {
+    final warsaw = capitals.facts.firstWhere((f) => f.countryId == 'POL');
+    for (final (input, expectedCorrect, expectedTypo) in [
+      ('arszawa', true, false),
+      ('Warszawa', true, false),
+      ('Warszaqa', true, true),
+      ('arszaqa', true, true),
+      ('Krakow', false, false),
+    ]) {
+      final (_, eval) = resolveFirstLetterAnswer(
+        warsaw.firstLetter,
+        input,
+        (candidate) => evaluateCapitalAnswer(candidate, warsaw),
+      );
+      expect(eval.correct, expectedCorrect, reason: input);
+      expect(eval.typoAccepted, expectedTypo, reason: input);
+    }
+  });
 }

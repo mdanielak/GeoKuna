@@ -26,11 +26,12 @@ void main() {
 
   Future<LearningSession> answerCorrect(LearningSession session) {
     if (!session.isCapital) {
-      return repository.answer(
+      return repository.guessMap(
         session.row.id,
         session.index,
         session.targetId,
         catalog.countries.map((c) => c.id).toSet(),
+        expectedGuessIndex: 0,
       );
     }
     final fact = session.capitalQuestion.fact;
@@ -117,7 +118,10 @@ void main() {
           .getSingle();
       expect(early.data['due'], firstDue);
       session = await repository.start(['POL']);
-      await repository.answer(session.row.id, 0, 'DEU', {'POL', 'DEU'});
+      await repository.guessMap(session.row.id, 0, 'DEU', {
+        'POL',
+        'DEU',
+      }, expectedGuessIndex: 0);
       final wrong = await db
           .customSelect("SELECT due FROM memory_cards WHERE id = 'map:POL:map'")
           .getSingle();

@@ -10,10 +10,10 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 |---|---|
 | `app/` | motyw, tokeny i wspólny nagłówek regionalny (`theme.dart`: `GeoTheme`, `GeoColors`, `regionAppBar`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
-| `features/atlas/` | katalogi i parser GeoJSON (`catalog.dart`), `Continent`, `ContinentChips`, `CountryMap`, style map, `QuizMapFrame` (kadr łatwych poziomów) |
-| `features/learning/` | sesje i zapis (`session_repository.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu |
+| `features/atlas/` | katalogi (`Catalog` i lekkie `CatalogMeta` bez GeoJSON) oraz parser GeoJSON (`catalog.dart`), `Continent`, `ContinentChips`, `CountryMap`, granice regionów (`region_bounds.dart`), style map, `QuizMapFrame` (kadr łatwych poziomów) |
+| `features/learning/` | sesje i zapis (`session_repository.dart`), model sesji z cache'owanym `questionData` (`learning_session.dart`), typy domenowe (`learning_types.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, poziomy, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu i wydzielone widoki (`widgets/`) |
 | `features/home/` | Dziś i atlas (z przełącznikiem obszarów i wizytówką kraju) |
-| `features/progress/` | Moja nauka (kontynent → kraje) i szczegóły umiejętności |
+| `features/progress/` | Moja nauka (kontynent → kraje dla aktywnego poziomu z dziedziczeniem) i szczegóły umiejętności (`/progress?continent=...&country=...`) |
 | `features/settings/` | preferencje (`app_preferences.dart`), arkusz wyboru poziomu (`difficulty_sheet.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
 
 Kolory: role Material z jednego ziarna (`GeoTheme.seed`) na papierowym tle;
@@ -49,12 +49,13 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Dziś, Atlas i Moja nauka to gałęzie `StatefulShellRoute` z dolnym paskiem (Wstecz
   wraca do Dziś); quizy, ustawienia i szczegóły otwierają się nad paskiem.
 - Błąd ładowania Dziś dotyczy tylko karty wyprawy; nawigacja pozostaje dostępna.
+- Odświeżanie danych w `GeoKunaApp` reaguje na wznowienie aplikacji (`AppLifecycleState.resumed`) oraz zakończenie serii zamiast cyklicznych timerów w tle.
 - Repozytorium nie zastępuje uszkodzonej bazy pustą.
 - Preferencje: osobna tabela klucz/wartość; `AsyncNotifier` serializuje zapisy.
 - Relief to lokalne kafelki XYZ (`TileLayer` + `AssetTileProvider`, z2–6; Polska do z8, USA do z7; `reliefTileTemplate`) pod interaktywnymi poligonami; poza oknem kontynentu maska morza.
 - Papierowy atlas: `coastRings` (linie wody), `MapGraticule`, `PaperAtlasFrame`, `CompassRose` (lewy górny róg) — wszystko w `map_style.dart`, bez gestów.
 
-## Schemat SQLite (wersja 8)
+## Schemat SQLite (wersja 9)
 
 | Tabela | Klucz | Zawartość |
 |---|---|---|

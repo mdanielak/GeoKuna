@@ -15,7 +15,10 @@ void main() {
       final repo = SessionRepository(source);
       final session = await repo.start(['POL', 'DEU']);
       final target0 = session.targetId;
-      await repo.answer(session.row.id, 0, target0, {'POL', 'DEU'});
+      await repo.guessMap(session.row.id, 0, target0, {
+        'POL',
+        'DEU',
+      }, expectedGuessIndex: 0);
       final file = await ProgressBackup(source).export();
 
       final summary = await ProgressBackup(target).import(file);

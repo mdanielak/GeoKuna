@@ -13,7 +13,12 @@ import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 import 'learning_levels.dart';
+import 'learning_session.dart';
+import 'learning_types.dart';
 import 'daily_planner.dart';
+
+export 'learning_session.dart'
+    show LearningSession, MemoryOverview, QuestionInsight;
 
 export 'daily_planner.dart'
     show
@@ -27,122 +32,6 @@ export 'daily_planner.dart'
         maxContrastsPerSeries,
         extraNewPerRound,
         dailyNewBudget;
-
-class LearningSession {
-  const LearningSession(
-    this.row,
-    this.countryIds,
-    this.attempts, {
-    Set<int> assistedIndices = const {},
-    this.mapGuesses = const [],
-    this.insight,
-    // Preserve the public argument while exposing combined assistance evidence.
-    // ignore: prefer_initializing_formals
-  }) : _assistedIndices = assistedIndices;
-  final Set<int> _assistedIndices;
-  final List<MapGuess> mapGuesses;
-  final QuestionInsight? insight;
-  Set<int> get assistedIndices => {
-    ..._assistedIndices,
-    ...mapGuesses.where((g) => g.assisted).map((g) => g.questionIndex),
-  };
-
-  /// The current question was answered with „Nie wiem, pomóż” (only that
-  /// path stores an empty answer).
-  bool get gaveUpCurrent => currentAttempt?.answer.isEmpty ?? false;
-  List<MapGuess> get currentMapGuesses =>
-      mapGuesses.where((g) => g.questionIndex == index).toList();
-  final Session row;
-  final List<String> countryIds;
-  final List<Attempt> attempts;
-  bool get completed => row.completedAt != null;
-  int get index => row.currentIndex;
-  bool get isDaily => row.topic == 'daily';
-  String topicAt(int i) =>
-      isDaily ? _questions[i]['topic'] as String : row.topic;
-  String difficultyNameAt(int i) =>
-      isDaily ? _questions[i]['difficulty'] as String : row.difficulty;
-  bool isFlagAt(int i) => topicAt(i) == 'flags';
-  bool isMapAt(int i) =>
-      topicAt(i) == 'map' ||
-      (isFlagAt(i) && mapDifficulties.contains(difficultyNameAt(i)));
-  FlagDifficulty get flagDifficulty => isMapAt(index)
-      ? FlagDifficulty.map
-      : FlagDifficulty.values.byName(difficultyNameAt(index));
-  FlagQuestion flagQuestionAt(int i) =>
-      FlagQuestion.fromJson(_questions[i] as Map<String, dynamic>);
-  List<dynamic> get _questions => jsonDecode(row.questionData) as List;
-  bool isCapitalAt(int i) =>
-      isDaily ? _questions[i]['topic'] == 'capitals' : row.topic == 'capitals';
-  bool get isCapital => isCapitalAt(index);
-  CapitalDifficulty difficultyAt(int i) => CapitalDifficulty.values.byName(
-    isDaily ? _questions[i]['difficulty'] as String : row.difficulty,
-  );
-  CapitalQuestion capitalQuestionAt(int i) =>
-      CapitalQuestion.fromJson(_questions[i] as Map<String, dynamic>);
-  CapitalDifficulty get difficulty => difficultyAt(index);
-  List<CapitalQuestion> get capitalQuestions =>
-      (jsonDecode(row.questionData) as List)
-          .map((q) => CapitalQuestion.fromJson(q as Map<String, dynamic>))
-          .toList();
-  CapitalQuestion get capitalQuestion => capitalQuestionAt(index);
-  String get targetId => countryIds[index];
-  Attempt? get currentAttempt {
-    for (final attempt in attempts) {
-      if (attempt.questionIndex == index) return attempt;
-    }
-    return null;
-  }
-
-  /// A repeat of a missed question later in the same daily series.
-  bool isRetryAt(int i) =>
-      isDaily && i < _questions.length && _questions[i]['retry'] == true;
-
-  /// An easier, unscored ladder step before a stubborn skill's real question.
-  bool isScaffoldAt(int i) => originAt(i) == 'scaffold';
-
-  /// The country a stubborn skill keeps being confused with, asked right
-  /// after it as unscored practice (ladder step 2).
-  bool isContrastAt(int i) => originAt(i) == 'contrast';
-
-  /// Practice inside a daily series: never scored and never an FSRS grade.
-  bool isPracticeAt(int i) =>
-      isRetryAt(i) || isScaffoldAt(i) || isContrastAt(i);
-
-  /// Special origin stored in the daily snapshot (`control`, `placement`,
-  /// `scaffold`).
-  String? originAt(int i) => isDaily && i < _questions.length
-      ? _questions[i]['origin'] as String?
-      : null;
-  String skillIdAt(int i) =>
-      '${topicAt(i)}:${countryIds[i]}:${difficultyNameAt(i)}';
-  List<Attempt> get scoredAttempts => attempts
-      .where(
-        (a) =>
-            !assistedIndices.contains(a.questionIndex) &&
-            !isPracticeAt(a.questionIndex),
-      )
-      .toList();
-  int get correctCount => scoredAttempts.where((attempt) {
-    final first = mapGuesses
-        .where(
-          (g) => g.questionIndex == attempt.questionIndex && g.guessIndex == 0,
-        )
-        .firstOrNull;
-    return first?.correct ?? attempt.correct;
-  }).length;
-}
-
-/// Learning hints for the current, already answered question.
-class QuestionInsight {
-  const QuestionInsight({this.recovery, this.confusedWithId});
-
-  /// Correct answers in a row since the last miss of a hard skill (1–3).
-  final int? recovery;
-
-  /// A country chosen by mistake for this target before and again now.
-  final String? confusedWithId;
-}
 
 class SessionRepository {
   SessionRepository(
@@ -167,7 +56,7 @@ class SessionRepository {
       session.countryIds,
       session.attempts,
       mapGuesses: session.mapGuesses,
-      assistedIndices: session._assistedIndices,
+      assistedIndices: session.assistedIndices,
       insight: await _insight(session),
     );
   }
@@ -180,7 +69,7 @@ class SessionRepository {
     )..where((r) => r.skillId.equals(skill) & r.applied.equals(true))).get();
     final hadMiss = reviews.any((r) => r.rating == 1);
     final recovering = recoveringSkills(reviews)[skill];
-    final recovery = !hadMiss || !session.currentAttempt!.correct
+    final recovery = !hadMiss || !session.isFirstTryCorrectAt(index)
         ? null
         : recovering ?? recoveryTarget;
     String? confused;
@@ -211,8 +100,38 @@ class SessionRepository {
           ?.readTable(db.mapGuesses)
           .selectedCountryId;
     }
-    if (recovery == null && confused == null) return null;
-    return QuestionInsight(recovery: recovery, confusedWithId: confused);
+    String? confusedName;
+    final attempt = session.currentAttempt!;
+    if (session.isFlagAt(index) &&
+        !session.isMapAt(index) &&
+        !attempt.correct &&
+        attempt.answer.isNotEmpty) {
+      final wrongFlags =
+          await (db.select(db.attempts)..where(
+                (a) =>
+                    a.sessionId.equals(session.row.id).not() &
+                    a.countryId.equals(session.targetId) &
+                    a.topic.equals(QuizTopic.flags.name) &
+                    a.correct.equals(false),
+              ))
+              .get();
+      final currentNorm = normalizeAnswer(attempt.answer);
+      if (wrongFlags.any(
+        (a) =>
+            !SkillDifficulty.fromDb(a.difficulty).isMap &&
+            normalizeAnswer(a.answer) == currentNorm,
+      )) {
+        confusedName = attempt.answer;
+      }
+    }
+    if (recovery == null && confused == null && confusedName == null) {
+      return null;
+    }
+    return QuestionInsight(
+      recovery: recovery,
+      confusedWithId: confused,
+      confusedWithName: confusedName,
+    );
   }
 
   Future<LearningSession> _loadPlain(Session row) async => LearningSession(
@@ -296,7 +215,7 @@ class SessionRepository {
             .insert(
               SessionsCompanion.insert(
                 id: id,
-                countryIds: jsonEncode(shuffled.take(10).toList()),
+                countryIds: jsonEncode(shuffled.take(seriesSize).toList()),
                 difficulty: Value(mapDifficultyFor(level)),
                 createdAt: _clock().toUtc(),
                 continent: Value(continent.name),
@@ -402,7 +321,7 @@ class SessionRepository {
     String topic,
     String difficulty,
     Random random, {
-    int count = 10,
+    int count = seriesSize,
   }) async {
     final skillIds = [for (final id in ids) '$topic:$id:$difficulty'];
     final cards = {
@@ -474,10 +393,13 @@ class SessionRepository {
 
   String _origin(LearningSession session, int index, {bool assisted = false}) =>
       assisted
-      ? 'assisted'
+      ? ReviewOrigin.assisted.name
       : session.isRetryAt(index)
-      ? 'retry'
-      : session.originAt(index) ?? (session.isDaily ? 'daily' : 'manual');
+      ? ReviewOrigin.retry.name
+      : session.originAt(index) ??
+            (session.isDaily
+                ? ReviewOrigin.daily.name
+                : ReviewOrigin.manual.name);
 
   /// [gaveUp]: „Nie wiem, pomóż” — a graded error with an empty answer.
   Future<LearningSession> answerFlag(
@@ -506,16 +428,17 @@ class SessionRepository {
         !question.options.contains(input)) {
       throw ArgumentError('Odpowiedź spoza listy');
     }
-    final answer = gaveUp
-        ? ''
+    final (String answer, AnswerEvaluation evaluation) = gaveUp
+        ? ('', const AnswerEvaluation(false))
         : difficulty == FlagDifficulty.firstLetter
-        ? question.firstLetter + input.trim()
-        : input.trim();
-    final evaluation = gaveUp
-        ? const AnswerEvaluation(false)
+        ? resolveFirstLetterAnswer(
+            question.firstLetter,
+            input,
+            (candidate) => evaluateFlagAnswer(candidate, question),
+          )
         : difficulty == FlagDifficulty.choice
-        ? AnswerEvaluation(answer == question.countryName)
-        : evaluateFlagAnswer(answer, question);
+        ? (input.trim(), AnswerEvaluation(input.trim() == question.countryName))
+        : (input.trim(), evaluateFlagAnswer(input.trim(), question));
     await _memory.importHistoryOnce();
     await db
         .into(db.attempts)
@@ -625,48 +548,6 @@ class SessionRepository {
         ),
       );
 
-  Future<LearningSession> answer(
-    String id,
-    int index,
-    String selected,
-    Set<String> allowed, {
-    bool assisted = false,
-  }) => db.transaction(() async {
-    final session = await byId(id);
-    if (session.completed || session.index != index) {
-      throw StateError('Nieaktualne pytanie');
-    }
-    if (session.currentAttempt != null) return session;
-    if (!session.isMapAt(index)) throw StateError('To nie jest pytanie mapowe');
-    if (!allowed.contains(selected)) throw ArgumentError('Nieznane państwo');
-    await _memory.importHistoryOnce();
-    await db
-        .into(db.attempts)
-        .insert(
-          AttemptsCompanion.insert(
-            sessionId: id,
-            questionIndex: index,
-            countryId: session.targetId,
-            answer: selected,
-            correct: selected == session.targetId,
-            topic: Value(session.topicAt(index)),
-            difficulty: Value(session.difficultyNameAt(index)),
-            answeredAt: _clock().toUtc(),
-          ),
-        );
-    final answered = await byId(id);
-    await _memory.record(
-      activityTime: _clock(),
-      answered.currentAttempt!,
-      origin: assisted
-          ? 'assisted'
-          : session.isDaily
-          ? 'daily'
-          : 'manual',
-    );
-    return byId(id);
-  });
-
   /// [gaveUp]: „Nie wiem, pomóż” — a graded error with an empty answer.
   Future<LearningSession> answerCapital(
     String id,
@@ -688,16 +569,17 @@ class SessionRepository {
     if (choice && !question.options.contains(input)) {
       throw ArgumentError('Odpowiedź spoza listy');
     }
-    final answer = gaveUp
-        ? ''
+    final (String answer, AnswerEvaluation evaluation) = gaveUp
+        ? ('', const AnswerEvaluation(false))
         : session.difficulty == CapitalDifficulty.firstLetter
-        ? question.fact.firstLetter + input.trim()
-        : input.trim();
-    final evaluation = gaveUp
-        ? const AnswerEvaluation(false)
+        ? resolveFirstLetterAnswer(
+            question.fact.firstLetter,
+            input,
+            (candidate) => evaluateCapitalAnswer(candidate, question.fact),
+          )
         : choice
-        ? AnswerEvaluation(answer == question.fact.name)
-        : evaluateCapitalAnswer(answer, question.fact);
+        ? (input.trim(), AnswerEvaluation(input.trim() == question.fact.name))
+        : (input.trim(), evaluateCapitalAnswer(input.trim(), question.fact));
     await _memory.importHistoryOnce();
     await db
         .into(db.attempts)
@@ -761,7 +643,7 @@ class SessionRepository {
       });
 
   Future<List<LearningProgressEntry>> learningProgress(
-    Catalog catalog, {
+    AreaCatalog catalog, {
     FlagCatalog? flags,
   }) => db.transaction(() async {
     await _memory.importHistoryOnce();
@@ -912,40 +794,4 @@ class SessionRepository {
           ..orderBy([(a) => OrderingTerm.desc(a.answeredAt)]))
         .get();
   }
-}
-
-class MemoryOverview {
-  const MemoryOverview({
-    required this.dueCount,
-    required this.newAvailable,
-    required this.newRemainingToday,
-    required this.reviewedToday,
-    required this.nextDue,
-    required this.plannedCount,
-    required this.plannedNewCount,
-    required this.activeSession,
-    this.reservedNewElsewhere = 0,
-    this.otherDueCount = 0,
-    this.learnedCount = 0,
-    this.firstVisit = false,
-  });
-
-  /// Nothing was ever started in this area (see [SessionRepository.firstVisit]).
-  final bool firstVisit;
-
-  /// Cards of this level with at least one graded answer.
-  final int learnedCount;
-
-  /// Another round today has something worth asking.
-  bool get canStartExtra => newAvailable > 0 || learnedCount > 0;
-  final int dueCount,
-      newAvailable,
-      newRemainingToday,
-      reviewedToday,
-      plannedCount,
-      plannedNewCount;
-  final int reservedNewElsewhere;
-  final int otherDueCount;
-  final DateTime? nextDue;
-  final LearningSession? activeSession;
 }

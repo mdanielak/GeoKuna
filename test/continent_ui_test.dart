@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/app/app.dart';
 import 'package:geokuna/app/providers.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/learning/achievements.dart';
 import 'package:geokuna/features/learning/session_repository.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -126,6 +128,59 @@ void main() {
     for (final level in ['Bardzo łatwy', 'Łatwy', 'Normalny']) {
       expect(find.text(level), findsOneWidget);
     }
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Dziś shows "W nauce" on the map badge from day 1', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          catalogProvider.overrideWith(
+            (ref) async => Catalog(
+              [],
+              [],
+              continent: ref.watch(selectedContinentProvider),
+            ),
+          ),
+          dailyOverviewProvider.overrideWith(
+            (ref) async => const MemoryOverview(
+              dueCount: 0,
+              newAvailable: 0,
+              newRemainingToday: 3,
+              reviewedToday: 0,
+              nextDue: null,
+              plannedCount: 0,
+              plannedNewCount: 0,
+              activeSession: null,
+            ),
+          ),
+          achievementsProvider.overrideWith(
+            (ref) async => const [
+              CategoryAchievement(
+                topic: 'map',
+                level: LearningDifficulty.normal,
+                earnedMedal: 0,
+                earnedAt: null,
+                qualifiedCount: 0,
+                totalCount: 47,
+                inheritedCount: 0,
+                learningCount: 3,
+              ),
+            ],
+          ),
+        ],
+        child: const GeoKunaApp(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Europa: 0/47 państw zaliczonych'), findsOneWidget);
+    expect(find.text('W nauce: 3'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

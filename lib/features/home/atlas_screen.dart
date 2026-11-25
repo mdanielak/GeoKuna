@@ -9,6 +9,7 @@ import '../atlas/continent.dart';
 import '../atlas/continent_chips.dart';
 import '../atlas/country_map.dart';
 import '../atlas/country_picker.dart';
+import '../learning/widgets/quiz_shared_widgets.dart';
 import '../settings/app_preferences.dart';
 
 class AtlasScreen extends ConsumerStatefulWidget {
@@ -18,7 +19,30 @@ class AtlasScreen extends ConsumerStatefulWidget {
 }
 
 class _AtlasScreenState extends ConsumerState<AtlasScreen> {
+  final _scrollController = ScrollController();
   String? _selected;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _selectFromList(String id, {required bool scrollToTop}) {
+    setState(() => _selected = id);
+    if (scrollToTop &&
+        _scrollController.hasClients &&
+        _scrollController.offset > 24) {
+      final disableAnimations = MediaQuery.disableAnimationsOf(context);
+      _scrollController.animateTo(
+        0,
+        duration: disableAnimations
+            ? Duration.zero
+            : const Duration(milliseconds: 250),
+        curve: Curves.easeOutCubic,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +159,7 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 720),
                       child: ListView(
+                        controller: _scrollController,
                         padding: const EdgeInsets.fromLTRB(20, 10, 20, 24),
                         keyboardDismissBehavior:
                             ScrollViewKeyboardDismissBehavior.onDrag,
@@ -159,7 +184,8 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
                             catalog: catalog,
                             selectedId: selected,
                             scrollable: false,
-                            onSelected: (id) => setState(() => _selected = id),
+                            onSelected: (id) =>
+                                _selectFromList(id, scrollToTop: true),
                           ),
                           const SizedBox(height: 20),
                           Text(
@@ -205,18 +231,33 @@ class _AtlasScreenState extends ConsumerState<AtlasScreen> {
 }
 
 /// Compact area fact sheet shown in the Atlas when a country, state or
-/// voivodeship is selected: symbol/flag, name, capital/seat and one local fact.
-class _SelectedAreaCard extends ConsumerWidget {
+/// voivodeship is selected: symbol/flag, name, capital/seat and local facts.
+class _SelectedAreaCard extends ConsumerStatefulWidget {
   const _SelectedAreaCard({required this.catalog, required this.areaId});
   final Catalog catalog;
   final String areaId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final area = catalog.country(areaId);
-    final colors = GeoColors.of(context);
+  ConsumerState<_SelectedAreaCard> createState() => _SelectedAreaCardState();
+}
+
+class _SelectedAreaCardState extends ConsumerState<_SelectedAreaCard> {
+  int _triviaIndex = 0;
+
+  @override
+  void didUpdateWidget(_SelectedAreaCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.areaId != widget.areaId) {
+      _triviaIndex = 0;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final areaId = widget.areaId;
+    final area = widget.catalog.country(areaId);
     final theme = Theme.of(context);
-    final continent = catalog.continent;
+    final continent = widget.catalog.continent;
     final capital = ref
         .watch(capitalsProvider)
         .asData
@@ -231,11 +272,10 @@ class _SelectedAreaCard extends ConsumerWidget {
         .facts
         .where((f) => f.countryId == areaId)
         .firstOrNull;
-    final trivia = ref
-        .watch(countryTriviaProvider)
-        .asData
-        ?.value
-        .pick(areaId, seed: 'atlas:$areaId');
+    final facts =
+        ref.watch(countryTriviaProvider).asData?.value.factsFor(areaId) ??
+        const [];
+    final fact = facts.isEmpty ? null : facts[_triviaIndex % facts.length];
 
     return Card.filled(
       margin: EdgeInsets.zero,
@@ -248,20 +288,13 @@ class _SelectedAreaCard extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (flag != null) ...[
-                  Container(
+                  FlagFrame(
+                    assetPath: flag.assetPath,
+                    semanticLabel: '${continent.symbolLabel}: ${area.name}',
                     width: 68,
                     height: 48,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: colors.flagFrame,
-                      border: Border.all(color: colors.flagFrameBorder),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Image.asset(
-                      flag.assetPath,
-                      fit: BoxFit.contain,
-                      semanticLabel: '${continent.symbolLabel}: ${area.name}',
-                    ),
+                    padding: 4,
+                    borderRadius: 10,
                   ),
                   const SizedBox(width: 14),
                 ],
@@ -289,38 +322,24 @@ class _SelectedAreaCard extends ConsumerWidget {
               const SizedBox(height: 8),
               Text(capital.note, style: theme.textTheme.bodySmall),
             ],
-            if (trivia != null) ...[
+            if (fact != null) ...[
               const SizedBox(height: 12),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: colors.triviaContainer,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: colors.triviaBorder),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/v2/kuna_lupa.webp',
-                        width: 40,
-                        height: 40,
-                        cacheWidth: 120,
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          trivia.text,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: colors.onTriviaContainer,
-                          ),
-                        ),
-                      ),
-                    ],
+              TriviaCard(text: fact.text, compact: true),
+              if (facts.length > 1)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton.icon(
+                    style: TextButton.styleFrom(
+                      minimumSize: const Size(48, 40),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                    onPressed: () => setState(() => _triviaIndex++),
+                    icon: const Icon(Icons.refresh, size: 18),
+                    label: Text(
+                      'Kolejna ciekawostka (${(_triviaIndex % facts.length) + 1}/${facts.length})',
+                    ),
                   ),
                 ),
-              ),
             ],
           ],
         ),

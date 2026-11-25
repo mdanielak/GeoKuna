@@ -152,6 +152,31 @@ AnswerEvaluation evaluateTextAnswer(
   return AnswerEvaluation(typo, typoAccepted: typo);
 }
 
+/// Evaluates `firstLetter` mode, tolerating when the learner re-types the
+/// pre-filled initial letter (e.g. typing "Warszawa" instead of "arszawa").
+(String answer, AnswerEvaluation evaluation) resolveFirstLetterAnswer(
+  String firstLetter,
+  String input,
+  AnswerEvaluation Function(String candidate) evaluate,
+) {
+  final trimmed = input.trim();
+  final prefixed = '$firstLetter$trimmed';
+  final prefixedEval = evaluate(prefixed);
+  if (prefixedEval.correct && !prefixedEval.typoAccepted) {
+    return (prefixed, prefixedEval);
+  }
+  if (normalizeAnswer(trimmed).startsWith(normalizeAnswer(firstLetter))) {
+    final directEval = evaluate(trimmed);
+    if ((directEval.correct && !prefixedEval.correct) ||
+        (directEval.correct &&
+            !directEval.typoAccepted &&
+            prefixedEval.typoAccepted)) {
+      return (trimmed, directEval);
+    }
+  }
+  return (prefixed, prefixedEval);
+}
+
 // Optimal string alignment: insertion, deletion, substitution or ONE adjacent swap.
 int _editDistance(String a, String b) {
   if ((a.length - b.length).abs() > 1) return 2;

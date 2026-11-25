@@ -79,4 +79,36 @@ void main() {
       expect(session.attempts, hasLength(1));
     },
   );
+
+  test('2nd-try map hit after earlier miss sets isFirstTryCorrectAt=false and no 0-of-3 recovery insight', () async {
+    const ids = {'POL', 'DEU', 'CZE'};
+    var first = await repo.start(['POL']);
+    first = await repo.guessMap(
+      first.row.id,
+      0,
+      'DEU',
+      ids,
+      expectedGuessIndex: 0,
+    );
+    await repo.finish(first.row.id);
+
+    var second = await repo.start(['POL']);
+    second = await repo.guessMap(
+      second.row.id,
+      0,
+      'DEU',
+      ids,
+      expectedGuessIndex: 0,
+    );
+    second = await repo.guessMap(
+      second.row.id,
+      0,
+      'POL',
+      ids,
+      expectedGuessIndex: 1,
+    );
+    expect(second.currentAttempt!.correct, isTrue);
+    expect(second.isFirstTryCorrectAt(0), isFalse);
+    expect(second.insight?.recovery, isNull);
+  });
 }

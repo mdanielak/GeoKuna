@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/database/database.dart';
@@ -77,7 +75,14 @@ final repositoryProvider = Provider<SessionRepository>(
   ),
 );
 final dashboardProvider = FutureProvider((ref) async {
-  final repository = ref.watch(repositoryProvider);
+  final continent = ref.watch(selectedContinentProvider);
+  final db = ref.watch(databaseProvider);
+  final preferences = await ref.watch(appPreferencesProvider.future);
+  final repository = SessionRepository(
+    db,
+    continent: continent,
+    level: preferences.difficultyFor(continent),
+  );
   return (
     active: await repository.active(),
     capitalSessions: await repository.activeCapitals(),
@@ -85,9 +90,7 @@ final dashboardProvider = FutureProvider((ref) async {
   );
 });
 
-final streakProvider = FutureProvider.autoDispose<StreakSummary>((ref) async {
-  final timer = Timer(const Duration(minutes: 1), ref.invalidateSelf);
-  ref.onDispose(timer.cancel);
+final streakProvider = FutureProvider.autoDispose<StreakSummary>((ref) {
   return StreakStore(ref.watch(databaseProvider))
       .overview(ref.watch(selectedContinentProvider));
 });
@@ -114,7 +117,7 @@ final capitalTriviaProvider = FutureProvider(
 final continentAchievementsProvider = FutureProvider.autoDispose
     .family<List<CategoryAchievement>, Continent>((ref, continent) async {
       final db = ref.watch(databaseProvider);
-      final catalog = await Catalog.load(continent: continent);
+      final catalog = await CatalogMeta.load(continent: continent);
       return AchievementStore(db).refresh(catalog);
     });
 
@@ -130,22 +133,25 @@ final achievementsProvider =
 final dailyOverviewProvider = FutureProvider.autoDispose<MemoryOverview>((
   ref,
 ) async {
-  final timer = Timer(const Duration(minutes: 1), ref.invalidateSelf);
-  ref.onDispose(timer.cancel);
-  final repository = ref.watch(repositoryProvider);
+  final continent = ref.watch(selectedContinentProvider);
+  final db = ref.watch(databaseProvider);
   final catalogFuture = ref.watch(catalogProvider.future);
   final capitalsFuture = ref.watch(capitalsProvider.future);
   final flagsFuture = ref.watch(flagsProvider.future);
   final catalog = await catalogFuture;
   final capitals = await capitalsFuture;
   final flags = await flagsFuture;
+  final preferences = await ref.watch(appPreferencesProvider.future);
+  final repository = SessionRepository(
+    db,
+    continent: continent,
+    level: preferences.difficultyFor(continent),
+  );
   return repository.memoryOverview(catalog, capitals, flags: flags);
 });
 
 final learningProgressProvider =
     FutureProvider.autoDispose<List<LearningProgressEntry>>((ref) async {
-      final timer = Timer(const Duration(minutes: 1), ref.invalidateSelf);
-      ref.onDispose(timer.cancel);
       final repository = ref.watch(repositoryProvider);
       final catalogFuture = ref.watch(catalogProvider.future);
       final flagsFuture = ref.watch(flagsProvider.future);
@@ -156,10 +162,8 @@ final learningProgressProvider =
 
 final continentProgressProvider = FutureProvider.autoDispose
     .family<List<LearningProgressEntry>, Continent>((ref, continent) async {
-      final timer = Timer(const Duration(minutes: 1), ref.invalidateSelf);
-      ref.onDispose(timer.cancel);
       final db = ref.watch(databaseProvider);
-      final catalog = await Catalog.load(continent: continent);
+      final catalog = await CatalogMeta.load(continent: continent);
       final flags = await FlagCatalog.load(continent: continent);
       return SessionRepository(
         db,

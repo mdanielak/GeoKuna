@@ -8,6 +8,7 @@ import '../atlas/continent.dart';
 import '../learning/learning_progress.dart';
 import '../learning/streaks.dart';
 import '../learning/token_icon.dart';
+import '../settings/app_preferences.dart';
 
 /// A transparent practice indicator, not a claim of long-term mastery.
 class KnowledgeSummary {
@@ -68,7 +69,7 @@ class LearningOverviewScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Procent pokazuje umiejętności z poprawną ostatnią odpowiedzią i przyszłym terminem powtórki. A–D ma osobny harmonogram rozpoznawania. To wskaźnik treningu, nie gwarancja trwałego zapamiętania.',
+                      'Postęp dla aktywnego poziomu każdego obszaru (wyższy poziom zalicza też niższy). Karta jest na bieżąco po poprawnej odpowiedzi z przyszłym terminem powtórki.',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -98,8 +99,16 @@ class LearningOverviewScreen extends ConsumerWidget {
           ),
         ),
         data: (entries) {
+          final level =
+              ref
+                  .watch(appPreferencesProvider)
+                  .asData
+                  ?.value
+                  .difficultyFor(region) ??
+              LearningDifficulty.normal;
+          final levelEntries = effectiveEntriesForLevel(entries, level);
           final groups = <String, List<LearningProgressEntry>>{};
-          for (final entry in entries) {
+          for (final entry in levelEntries) {
             groups.putIfAbsent(entry.country.id, () => []).add(entry);
           }
           final countries = groups.values.toList()
@@ -151,13 +160,11 @@ class LearningOverviewScreen extends ConsumerWidget {
                             ),
                             trailing: const Icon(Icons.chevron_right),
                             onTap: () {
-                              ref
-                                  .read(selectedContinentProvider.notifier)
-                                  .select(region);
                               context.push(
                                 Uri(
                                   path: '/progress',
                                   queryParameters: {
+                                    'continent': region.name,
                                     'country': country.first.country.name,
                                   },
                                 ).toString(),
@@ -193,9 +200,10 @@ class LearningOverviewScreen extends ConsumerWidget {
           ),
         ),
         data: (achievements) {
-          final earned = achievements
-              .where((item) => item.earnedMedal > 0)
-              .length;
+          final earned = achievements.fold<int>(
+            0,
+            (total, item) => total + item.earnedMedal,
+          );
           return Card.filled(
             margin: EdgeInsets.zero,
             clipBehavior: Clip.antiAlias,
@@ -273,7 +281,16 @@ class _RegionOverviewCard extends ConsumerWidget {
             ),
           ),
           data: (entries) {
-            final summary = KnowledgeSummary(entries);
+            final level =
+                ref
+                    .watch(appPreferencesProvider)
+                    .asData
+                    ?.value
+                    .difficultyFor(region) ??
+                LearningDifficulty.normal;
+            final summary = KnowledgeSummary(
+              effectiveEntriesForLevel(entries, level),
+            );
             final streakRewardsEarned =
                 ref
                     .watch(continentStreakProvider(region))
@@ -336,7 +353,7 @@ class _RegionOverviewCard extends ConsumerWidget {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              '${summary.ready} / ${summary.entries.length} umiejętności na bieżąco\n'
+                              'Poziom: ${level.label} · ${summary.ready} / ${summary.entries.length} na bieżąco\n'
                               'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
                               style: theme.textTheme.bodySmall,
                             ),

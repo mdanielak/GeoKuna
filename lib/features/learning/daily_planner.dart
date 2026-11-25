@@ -11,6 +11,7 @@ import 'achievements.dart';
 import 'capitals.dart';
 import 'flags.dart';
 import 'learning_levels.dart';
+import 'learning_types.dart';
 import 'memory.dart';
 
 /// Questions in one series; a series is shorter when nothing useful is left.
@@ -254,10 +255,6 @@ class DailyPlanner {
             .toList()
           ..sort((a, b) => a.id.compareTo(b.id));
     fresh.shuffle(Random(now.year * 10000 + now.month * 100 + now.day));
-    final preferredFresh = [
-      ...fresh.where((c) => c.difficulty == 'write'),
-      ...fresh.where((c) => c.difficulty != 'write'),
-    ];
     final selected = <MemoryCard>[];
     final origins = <String, String>{};
     final countries = <String>{};
@@ -280,7 +277,7 @@ class DailyPlanner {
         final backlog = due.length >= seriesSize;
         final newSlots = backlog ? (budget > 0 ? 1 : 0) : budget;
         take(due, seriesSize - (backlog ? newSlots : 0));
-        take(preferredFresh, newSlots);
+        take(fresh, newSlots);
       case DailyMode.extra:
         // Known facts are checked weakest first, at most once a day each.
         final control =
@@ -298,10 +295,10 @@ class DailyPlanner {
                 .toList()
               ..sort((a, b) => priority(a).compareTo(priority(b)));
         take(due, seriesSize);
-        take(preferredFresh, extraNewPerRound);
-        take(control, seriesSize, 'control');
+        take(fresh, extraNewPerRound);
+        take(control, seriesSize, ReviewOrigin.control.name);
       case DailyMode.placement:
-        take(preferredFresh, seriesSize, 'placement');
+        take(fresh, seriesSize, ReviewOrigin.placement.name);
     }
     final future =
         cards
@@ -347,13 +344,55 @@ class DailyPlanner {
   }
 
   /// Target country → the country most often given instead of it, once the
-  /// same wrong answer happened [confusionThreshold] times. Map guesses and
-  /// flag names are reliable; a typed capital does not name a country.
+  /// same wrong answer happened [confusionThreshold] times since the last
+  /// full recovery (3 consecutive graded hits). Map guesses and flag names
+  /// are reliable; a typed capital does not name a country.
   Future<Map<String, String>> confusions(
     Catalog catalog,
     FlagCatalog? flags,
   ) async {
     final known = catalog.countries.map((c) => c.id).toSet();
+    final appliedReviews =
+        await (db.select(db.memoryReviews)
+              ..where((r) => r.applied.equals(true))
+              ..orderBy([(r) => OrderingTerm.asc(r.reviewedAt)]))
+            .get();
+    final lastRecoveredAt = <(String, String), DateTime>{};
+    final hadMiss = <String, bool>{};
+    final hitRun = <String, int>{};
+    for (final review in appliedReviews) {
+      final parts = review.skillId.split(':');
+      if (parts.length != 3 || !known.contains(parts[1])) continue;
+      if (review.rating == 1) {
+        hadMiss[review.skillId] = true;
+        hitRun[review.skillId] = 0;
+      } else if (hadMiss[review.skillId] == true) {
+        final nextRun = (hitRun[review.skillId] ?? 0) + 1;
+        hitRun[review.skillId] = nextRun;
+        if (nextRun >= recoveryTarget) {
+          final key = (parts[0], parts[1]);
+          final prev = lastRecoveredAt[key];
+          if (prev == null || review.reviewedAt.isAfter(prev)) {
+            lastRecoveredAt[key] = review.reviewedAt;
+          }
+          hadMiss[review.skillId] = false;
+          hitRun[review.skillId] = 0;
+        }
+      }
+    }
+    final practiceKeys = {
+      for (final r
+          in await (db.select(db.memoryReviews)..where(
+                (r) => r.origin.isIn([
+                  ReviewOrigin.retry.name,
+                  ReviewOrigin.scaffold.name,
+                  ReviewOrigin.contrast.name,
+                  ReviewOrigin.assisted.name,
+                ]),
+              ))
+              .get())
+        (r.sessionId, r.questionIndex),
+    };
     final counts = <(String, String), int>{};
     void add(String target, String partner) {
       if (target == partner ||
@@ -372,10 +411,14 @@ class DailyPlanner {
       ),
     ])..where(db.mapGuesses.correct.equals(false))).get();
     for (final row in guesses) {
-      add(
-        row.readTable(db.attempts).countryId,
-        row.readTable(db.mapGuesses).selectedCountryId,
-      );
+      final attempt = row.readTable(db.attempts);
+      final guess = row.readTable(db.mapGuesses);
+      if (practiceKeys.contains((attempt.sessionId, attempt.questionIndex))) {
+        continue;
+      }
+      final recovered = lastRecoveredAt[(attempt.topic, attempt.countryId)];
+      if (recovered != null && !guess.guessedAt.isAfter(recovered)) continue;
+      add(attempt.countryId, guess.selectedCountryId);
     }
     if (flags != null) {
       final byName = {
@@ -387,6 +430,17 @@ class DailyPlanner {
         db.attempts,
       )..where((a) => a.topic.equals('flags') & a.correct.equals(false))).get();
       for (final attempt in wrong) {
+        if (SkillDifficulty.fromDb(attempt.difficulty).isMap ||
+            attempt.answer.isEmpty) {
+          continue;
+        }
+        if (practiceKeys.contains((attempt.sessionId, attempt.questionIndex))) {
+          continue;
+        }
+        final recovered = lastRecoveredAt[('flags', attempt.countryId)];
+        if (recovered != null && !attempt.answeredAt.isAfter(recovered)) {
+          continue;
+        }
         final partner = byName[normalizeAnswer(attempt.answer)];
         if (partner != null) add(attempt.countryId, partner);
       }
@@ -464,16 +518,32 @@ void addContrasts(
       final slot = options.indexWhere((o) => o != answer);
       if (slot >= 0) options[slot] = partnerName;
     }
-    if (question['origin'] == 'scaffold') continue;
+    if (question['origin'] == ReviewOrigin.scaffold.name) continue;
     final difficulty = question['difficulty'] as String;
+    final Map<String, dynamic> contrastData;
+    if (topic == 'flags') {
+      final partnerQuestion = flags!.questions([partner], Random()).single;
+      final partnerOptions = [...partnerQuestion.options];
+      final targetName = question['country_name'] as String?;
+      if (difficulty == SkillDifficulty.choice.name &&
+          targetName != null &&
+          !partnerOptions.contains(targetName)) {
+        final slot = partnerOptions.indexWhere(
+          (o) => o != partnerQuestion.countryName,
+        );
+        if (slot >= 0) partnerOptions[slot] = targetName;
+      }
+      contrastData = {...partnerQuestion.toJson(), 'options': partnerOptions};
+    } else {
+      contrastData = const {};
+    }
     questions.insert(i + 1, {
-      if (topic == 'flags')
-        ...flags!.questions([partner], Random()).single.toJson(),
+      ...contrastData,
       'topic': topic,
       'difficulty': difficulty,
       'skill_id': '$topic:$partner:$difficulty',
       'country_id': partner,
-      'origin': 'contrast',
+      'origin': ReviewOrigin.contrast.name,
     });
     added++;
     i++;

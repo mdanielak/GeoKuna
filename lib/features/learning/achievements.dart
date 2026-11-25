@@ -4,6 +4,7 @@ import '../../core/database/database.dart';
 import '../atlas/catalog.dart';
 import '../settings/app_preferences.dart';
 import 'learning_levels.dart';
+import 'learning_types.dart';
 
 class CategoryAchievement {
   const CategoryAchievement({
@@ -33,7 +34,7 @@ class AchievementStore {
   /// Computes medals; with [persist] newly reached ones are stored. Today
   /// reads without writing (no lock on every visit); Moja nauka persists.
   Future<List<CategoryAchievement>> refresh(
-    Catalog catalog, {
+    AreaCatalog catalog, {
     DateTime? now,
     bool persist = true,
   }) => persist
@@ -41,7 +42,7 @@ class AchievementStore {
       : _compute(catalog, false);
 
   Future<List<CategoryAchievement>> _compute(
-    Catalog catalog,
+    AreaCatalog catalog,
     bool persist,
   ) async {
     final countryIds = catalog.countries.map((c) => c.id).toSet();
@@ -61,18 +62,21 @@ class AchievementStore {
     final qualified = qualifiedSkillIds(
       reviews,
       onQualified: (skills, at) {
-        for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
+        for (final category in AchievementCategory.all) {
           for (final level in LearningDifficulty.values) {
             final count = _effectiveCountries(
               skills,
               countryIds,
-              topic,
+              category.name,
               level,
             ).length;
             for (final (medal, threshold) in [(1, 50), (2, 80), (3, 100)]) {
               if (countryIds.isNotEmpty &&
                   count * 100 >= countryIds.length * threshold) {
-                milestones.putIfAbsent('$topic:${level.name}:$medal', () => at);
+                milestones.putIfAbsent(
+                  '${category.name}:${level.name}:$medal',
+                  () => at,
+                );
               }
             }
           }
@@ -84,7 +88,8 @@ class AchievementStore {
     )..where((m) => m.continent.equals(catalog.continent.name))).get();
     final answered = reviews.map((r) => r.skillId).toSet();
     final result = <CategoryAchievement>[];
-    for (final topic in ['map', 'capitals', 'flags', 'flagMap']) {
+    for (final category in AchievementCategory.all) {
+      final topic = category.name;
       for (final level in LearningDifficulty.values) {
         final direct = _effectiveCountries(
           qualified,

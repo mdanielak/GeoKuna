@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 
 import '../../core/database/database.dart';
+import '../../core/polish_plurals.dart';
 import '../atlas/continent.dart';
 
 /// Streak rewards in days. Earned once the best streak on a continent
@@ -191,11 +192,7 @@ String dateKey(DateTime day) =>
     '-${day.day.toString().padLeft(2, '0')}';
 
 /// Polish day count: „1 dzień”, otherwise „N dni”.
-String daysLabel(int days) => days == 1 ? '1 dzień' : '$days dni';
+String daysLabel(int days) => '$days ${pluralPl(days, 'dzień', 'dni', 'dni')}';
 
 /// Polish token count: „1 żeton”, „2 żetony”, „5 żetonów”.
-String tokensLabel(int n) => n == 1
-    ? '1 żeton'
-    : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20))
-    ? '$n żetony'
-    : '$n żetonów';
+String tokensLabel(int n) => '$n ${pluralPl(n, 'żeton', 'żetony', 'żetonów')}';

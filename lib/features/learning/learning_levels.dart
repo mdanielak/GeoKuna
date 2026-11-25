@@ -1,19 +1,13 @@
 import '../settings/app_preferences.dart';
+import 'learning_types.dart';
 
 const mapDifficulties = ['mapVeryEasy', 'mapEasy', 'map'];
 
-String mapDifficultyFor(LearningDifficulty level) => switch (level) {
-  LearningDifficulty.veryEasy => 'mapVeryEasy',
-  LearningDifficulty.easy => 'mapEasy',
-  LearningDifficulty.normal => 'map',
-};
+String mapDifficultyFor(LearningDifficulty level) =>
+    AchievementCategory.map.difficultyFor(level).name;
 
 LearningDifficulty levelForDifficulty(String difficulty) =>
-    switch (difficulty) {
-      'choice' || 'mapVeryEasy' => LearningDifficulty.veryEasy,
-      'firstLetter' || 'mapEasy' => LearningDifficulty.easy,
-      _ => LearningDifficulty.normal,
-    };
+    SkillDifficulty.fromDb(difficulty).level;
 
 String difficultyForCategory(String topic, LearningDifficulty level) =>
-    topic == 'map' || topic == 'flagMap' ? mapDifficultyFor(level) : level.mode;
+    AchievementCategory.values.byName(topic).difficultyFor(level).name;

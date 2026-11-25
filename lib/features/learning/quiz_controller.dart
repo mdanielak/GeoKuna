@@ -86,16 +86,14 @@ class QuizController {
   Future<LearningSession> guess(
     Catalog catalog,
     LearningSession session,
-    String id, {
-    required bool assisted,
-  }) async {
+    String id,
+  ) async {
     final updated = await _repository.guessMap(
       session.row.id,
       session.index,
       id,
       catalog.countries.map((c) => c.id).toSet(),
       expectedGuessIndex: session.currentMapGuesses.length,
-      assisted: assisted || session.assistedIndices.contains(session.index),
     );
     _answered(updated);
     return updated;
@@ -107,7 +105,6 @@ class QuizController {
     LearningSession session, {
     required String? selected,
     required String typed,
-    required bool assisted,
     bool gaveUp = false,
   }) async {
     final repository = _repository;
@@ -132,13 +129,7 @@ class QuizController {
         gaveUp: gaveUp,
       );
     } else {
-      updated = await repository.answer(
-        id,
-        index,
-        selected!,
-        catalog.countries.map((c) => c.id).toSet(),
-        assisted: assisted,
-      );
+      throw StateError('Pytania mapowe zapisujemy przez guess().');
     }
     _answered(updated);
     return updated;
@@ -147,27 +138,26 @@ class QuizController {
   /// Ends the series early; graded answers stay.
   Future<LearningSession> finish(LearningSession session) async {
     final finished = await _repository.finish(session.row.id);
-    ref
-      ..invalidate(dashboardProvider)
-      ..invalidate(learningProgressProvider);
+    ref.invalidate(dashboardProvider);
     _seriesEnded();
     return finished;
   }
 
-  /// Cheap views refresh after every answer. Today's plan and medals are
-  /// costly (they read the whole history) and Today stays mounted under the
-  /// quiz, so they refresh once: when the series ends, or when Today regains
-  /// focus after the quiz is left early.
+  /// Cheap views refresh after every answer. Today's plan, medals and full
+  /// progress are costly (they read history) and stay mounted under the quiz,
+  /// so they refresh once: when the series ends, or when Today regains focus
+  /// after the quiz is left early.
   void _answered(LearningSession updated) {
     ref
       ..invalidate(dashboardProvider)
-      ..invalidate(learningProgressProvider)
       ..invalidate(streakProvider);
     if (updated.completed) _seriesEnded();
   }
 
   void _seriesEnded() => ref
     ..invalidate(dailyOverviewProvider)
+    ..invalidate(learningProgressProvider)
+    ..invalidate(continentProgressProvider)
     ..invalidate(achievementsProvider)
     ..invalidate(continentAchievementsProvider)
     ..invalidate(continentStreakProvider);

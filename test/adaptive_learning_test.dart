@@ -1,11 +1,15 @@
+import 'dart:math';
+
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
+import 'package:geokuna/features/learning/daily_planner.dart';
 import 'package:geokuna/features/learning/flags.dart';
 import 'package:geokuna/features/learning/memory.dart';
 import 'package:geokuna/features/learning/session_repository.dart';
+import 'package:geokuna/features/settings/app_preferences.dart';
 
 /// Simulated learners checking the core rule: do not ask about what the user
 /// already knows, focus on mistakes, and still re-check known facts.
@@ -24,19 +28,35 @@ void main() {
     SessionRepository repo,
     LearningSession s, {
     required bool correct,
-  }) {
+  }) async {
     final i = s.index;
-    final wrongCountry = catalog.countries
-        .firstWhere((c) => c.id != s.targetId)
-        .id;
+    final all = catalog.countries.map((c) => c.id).toSet();
     if (s.isMapAt(i)) {
-      return repo.guessMap(
-        s.row.id,
-        i,
-        correct ? s.targetId : wrongCountry,
-        catalog.countries.map((c) => c.id).toSet(),
-        expectedGuessIndex: 0,
-      );
+      if (correct) {
+        return repo.guessMap(
+          s.row.id,
+          i,
+          s.targetId,
+          all,
+          expectedGuessIndex: 0,
+        );
+      }
+      final wrongPicks = catalog.countries
+          .where((c) => c.id != s.targetId)
+          .take(3)
+          .map((c) => c.id)
+          .toList();
+      var current = s;
+      for (var g = 0; g < 3; g++) {
+        current = await repo.guessMap(
+          current.row.id,
+          i,
+          wrongPicks[g],
+          all,
+          expectedGuessIndex: g,
+        );
+      }
+      return current;
     }
     if (s.isCapital) {
       return repo.answerCapital(
@@ -261,5 +281,119 @@ void main() {
     now = DateTime(2026, 11, 2, 9);
     s = await repo.start(ids);
     expect(s.targetId, hard);
+  });
+
+  test('placement on easy grants Rating.easy and schedules >= 7 days while misses consume budget', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    final now = DateTime(2026, 11, 1, 9);
+    final repo = SessionRepository(
+      db,
+      level: LearningDifficulty.easy,
+      clock: () => now,
+    );
+    var s = (await repo.startDaily(
+      catalog,
+      capitals,
+      flags: flags,
+      mode: DailyMode.placement,
+    ))!;
+    // First question is correct, second is missed, rest correct.
+    while (!s.completed) {
+      s = await answer(repo, s, correct: s.index != 1);
+      s = await repo.advance(s.row.id, s.index);
+    }
+    final reviews = await db.select(db.memoryReviews).get();
+    final graded = reviews.where((r) => r.applied).toList();
+    expect(graded.where((r) => r.rating == 4), hasLength(seriesSize - 1));
+    expect(graded.where((r) => r.rating == 1), hasLength(1));
+    final cards = {
+      for (final c in await db.select(db.memoryCards).get()) c.id: c,
+    };
+    for (final r in graded.where((r) => r.rating == 4)) {
+      expect(
+        cards[r.skillId]!.due!.difference(now).inDays,
+        greaterThanOrEqualTo(7),
+      );
+    }
+    final after = await repo.memoryOverview(catalog, capitals, flags: flags);
+    expect(after.newRemainingToday, dailyNewBudget - 1);
+  });
+
+  test(
+    'normal daily introduces both write and map skills without starving map',
+    () async {
+      final db = AppDatabase(NativeDatabase.memory());
+      addTearDown(db.close);
+      var now = DateTime(2026, 11, 1, 9);
+      final repo = SessionRepository(db, clock: () => now);
+      final seenTopics = <String>{};
+      for (var day = 0; day < 7; day++) {
+        now = DateTime(2026, 11, 1 + day, 9);
+        final s = (await repo.startDaily(catalog, capitals, flags: flags))!;
+        for (var i = 0; i < s.countryIds.length; i++) {
+          seenTopics.add(s.topicAt(i));
+        }
+        await finishSeries(repo, s);
+      }
+      expect(seenTopics, contains('map'));
+      expect(seenTopics, contains('capitals'));
+      expect(seenTopics, contains('flags'));
+    },
+  );
+
+  test('confusion decays after 3 consecutive graded hits and flag A–D contrast keeps target option', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    var now = DateTime(2026, 11, 1, 9);
+    final repo = SessionRepository(db, clock: () => now);
+    final all = catalog.countries.map((c) => c.id).toSet();
+    for (var day = 0; day < 2; day++) {
+      now = DateTime(2026, 11, 1 + day, 9);
+      var s = await repo.start(['SVN']);
+      for (final (g, pick) in [(0, 'SVK'), (1, 'HRV'), (2, 'AUT')].indexed) {
+        s = await repo.guessMap(
+          s.row.id,
+          0,
+          pick.$2,
+          all,
+          expectedGuessIndex: g,
+        );
+      }
+      await repo.finish(s.row.id);
+    }
+    final planner = DailyPlanner(
+      db,
+      continent: catalog.continent,
+      level: LearningDifficulty.normal,
+      clock: () => now,
+    );
+    expect(
+      await planner.confusions(catalog, flags),
+      containsPair('SVN', 'SVK'),
+    );
+    for (var k = 0; k < 3; k++) {
+      now = now.add(const Duration(days: 30));
+      var s = await repo.start(['SVN']);
+      await repo.guessMap(s.row.id, 0, 'SVN', all, expectedGuessIndex: 0);
+      await repo.finish(s.row.id);
+    }
+    expect(await planner.confusions(catalog, flags), isNot(contains('SVN')));
+
+    // Check symmetric options on flag A–D contrast.
+    final polQuestion = flags.questions(['POL'], Random(1)).single;
+    final mcoQuestions = <Map<String, dynamic>>[
+      {
+        ...polQuestion.toJson(),
+        'topic': 'flags',
+        'difficulty': 'choice',
+        'skill_id': 'flags:POL:choice',
+        'country_id': 'POL',
+      },
+    ];
+    addContrasts(mcoQuestions, {'POL': 'MCO'}, flags);
+    expect(mcoQuestions, hasLength(2));
+    expect(mcoQuestions[0]['options'], contains('Monako'));
+    expect(mcoQuestions[1]['options'], contains('Polska'));
   });
 }

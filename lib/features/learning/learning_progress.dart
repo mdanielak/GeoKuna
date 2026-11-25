@@ -1,5 +1,7 @@
 import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
+import '../settings/app_preferences.dart';
+import 'learning_types.dart';
 
 // These describe observed practice, never a percentage of mastered geography.
 enum LearningProgressStatus {
@@ -51,4 +53,49 @@ class LearningProgressEntry {
           'write' => '${_area.capitalSubject} · samodzielne pisanie',
           _ => difficulty,
         };
+}
+
+/// Collapses the 12 per-country FSRS skills down to the categories for
+/// [level], inheriting stronger levels downward (Normal -> Easy -> VeryEasy)
+/// just like medals do.
+List<LearningProgressEntry> effectiveEntriesForLevel(
+  Iterable<LearningProgressEntry> entries,
+  LearningDifficulty level,
+) {
+  final grouped = <(String, String), List<LearningProgressEntry>>{};
+  for (final entry in entries) {
+    final diff = SkillDifficulty.fromDb(entry.difficulty);
+    if (diff.level.index < level.index) continue;
+    final category = entry.topic == 'flags' && diff.isMap
+        ? 'flagMap'
+        : entry.topic;
+    grouped.putIfAbsent((entry.country.id, category), () => []).add(entry);
+  }
+  int rank(LearningProgressStatus s) => switch (s) {
+    LearningProgressStatus.practising => 2,
+    LearningProgressStatus.review => 1,
+    LearningProgressStatus.insufficient => 0,
+  };
+  return [
+    for (final group in grouped.values)
+      (() {
+        final base = group.firstWhere(
+          (e) => SkillDifficulty.fromDb(e.difficulty).level == level,
+          orElse: () => group.first,
+        );
+        final best = group.reduce(
+          (a, b) => rank(b.status) > rank(a.status) ? b : a,
+        );
+        return LearningProgressEntry(
+          id: base.id,
+          country: base.country,
+          topic: base.topic,
+          difficulty: base.difficulty,
+          status: best.status,
+          reviewCount: best.reviewCount,
+          due: best.due,
+          lastReview: best.lastReview,
+        );
+      })(),
+  ];
 }

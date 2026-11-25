@@ -4,6 +4,7 @@ import 'package:drift/drift.dart';
 import 'package:fsrs/fsrs.dart' as fsrs;
 
 import '../../core/database/database.dart';
+import 'learning_types.dart';
 
 class ScheduledMemory {
   const ScheduledMemory(this.state, this.due, this.rating, this.reviewLog);
@@ -38,6 +39,7 @@ class MemoryScheduler {
     required bool correct,
     required DateTime now,
     bool typo = false,
+    ReviewOrigin? origin,
   }) {
     final card = previousState == null
         ? fsrs.Card(cardId: fsrsCardId(skillId), due: now.toUtc())
@@ -46,12 +48,13 @@ class MemoryScheduler {
         card.lastReview != null && card.lastReview!.isAfter(now.toUtc())
         ? card.lastReview!
         : now.toUtc();
-    // Unaided recall right at first sight means the fact is already known:
-    // skip the short learning steps instead of asking again in minutes.
+    // Unaided recall right at first sight (or a hit in the placement check)
+    // means the fact is already known: skip the short learning steps.
+    final difficulty = SkillDifficulty.fromDb(skillId.split(':').last);
     final knownAtFirstSight =
         previousState == null &&
         correct &&
-        recallFormats.contains(skillId.split(':').last);
+        (difficulty.isRecall || origin == ReviewOrigin.placement);
     // An accepted typo is correct but less certain: one grade lower.
     final rating = !correct
         ? fsrs.Rating.again
@@ -134,17 +137,18 @@ class MemoryStore {
     )..where((c) => c.id.equals(id))).getSingle();
     final fresh = card.state == null;
     // Old recognition history is retained, without manufacturing new reviews.
-    final practice = attempt.difficulty == 'choice' && !scheduleRecognition;
-    if (practice) origin = 'recognition';
+    final practice =
+        SkillDifficulty.fromDb(attempt.difficulty) == SkillDifficulty.choice &&
+        !scheduleRecognition;
+    final parsedOrigin = practice
+        ? ReviewOrigin.recognition
+        : ReviewOrigin.fromDb(origin);
     final applied =
         !practice &&
-        origin != 'assisted' &&
-        origin != 'retry' &&
-        origin != 'scaffold' &&
-        origin != 'contrast' &&
+        !parsedOrigin.isPractice &&
         (fresh ||
             !attempt.correct ||
-            origin == 'control' ||
+            parsedOrigin == ReviewOrigin.control ||
             !card.due!.isAfter(attempt.answeredAt));
     ScheduledMemory? result;
     if (applied) {
@@ -154,6 +158,7 @@ class MemoryStore {
         correct: attempt.correct,
         now: attempt.answeredAt,
         typo: attempt.typoAccepted,
+        origin: parsedOrigin,
       );
       await (db.update(db.memoryCards)..where((c) => c.id.equals(id))).write(
         MemoryCardsCompanion(
@@ -175,7 +180,7 @@ class MemoryStore {
             reviewedAt: attempt.answeredAt,
             wasNew: fresh,
             applied: applied,
-            origin: origin,
+            origin: parsedOrigin.name,
             reviewLog: Value(result?.reviewLog),
           ),
         );
@@ -229,11 +234,9 @@ const scaffoldAfterMisses = 2;
 
 /// The easier format used as the ladder step, or null when none is easier.
 String? scaffoldDifficulty(String topic, String difficulty) =>
-    switch ((topic, difficulty)) {
-      ('capitals' || 'flags', 'write' || 'firstLetter') => 'choice',
-      ('map' || 'flags', 'map' || 'mapEasy') => 'mapVeryEasy',
-      _ => null,
-    };
+    SkillDifficulty.fromDb(difficulty)
+        .scaffoldFor(QuizTopic.fromDb(topic))
+        ?.name;
 
 /// Skills with a graded miss that are not yet recovered, mapped to the number
 /// of graded correct answers since that miss (0–2).

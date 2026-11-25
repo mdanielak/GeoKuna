@@ -86,6 +86,14 @@ void main() {
         'HUN',
       );
       expect(find.text('Stolica: Budapeszt'), findsOneWidget);
+      expect(find.text('Kolejna ciekawostka (1/3)'), findsOneWidget);
+      final firstFact = trivia.factsFor('HUN').first.text;
+      final secondFact = trivia.factsFor('HUN')[1].text;
+      expect(find.text(firstFact), findsOneWidget);
+      await tester.tap(find.text('Kolejna ciekawostka (1/3)'));
+      await tester.pumpAndSettle();
+      expect(find.text('Kolejna ciekawostka (2/3)'), findsOneWidget);
+      expect(find.text(secondFact), findsOneWidget);
       final map = tester.widget<CountryMap>(find.byType(CountryMap));
       expect(map.selectedId, 'HUN');
       expect(map.focusId, 'HUN');

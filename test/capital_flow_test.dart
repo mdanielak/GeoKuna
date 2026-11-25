@@ -13,6 +13,7 @@ import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/country_trivia.dart';
 import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/learning_screen.dart';
 import 'package:geokuna/features/atlas/continent.dart';
 import 'package:geokuna/features/settings/app_preferences.dart';
 
@@ -83,11 +84,6 @@ _openCapitals(WidgetTester tester, CapitalDifficulty difficulty) async {
     await tester.pumpAndSettle();
     await tester.tap(find.bySemanticsLabel('Trening: Stolice'));
     await tester.pumpAndSettle();
-    expect(find.text('Poziom: ${preference.label}'), findsOneWidget);
-    await tester.ensureVisible(find.text('Wznów trening stolic'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Wznów trening stolic'));
-    await tester.pumpAndSettle();
     expect(find.text('Polska'), findsOneWidget);
     expect(find.text('Stolica?'), findsOneWidget);
     expect(find.text('Polska · ${difficulty.label}'), findsNothing);
@@ -126,7 +122,7 @@ void main() {
             );
           }
           final input = find.byType(TextFormField);
-          expect(tester.widget<TextFormField>(input).initialValue, '');
+          expect(tester.widget<TextFormField>(input).controller!.text, '');
           if (difficulty == CapitalDifficulty.firstLetter) {
             expect(
               tester
@@ -226,7 +222,7 @@ void main() {
     final wrong = question.options.firstWhere((o) => o != 'Warszawa');
     await tester.tap(find.textContaining('. $wrong'));
     await tester.pumpAndSettle();
-    expect(find.text('To była Warszawa.'), findsOneWidget);
+    expect(find.text('Poprawna odpowiedź: Warszawa.'), findsOneWidget);
     expect(find.text('Ciekawostka'), findsOneWidget);
     expect((await db.select(db.attempts).get()), hasLength(1));
     await tester.ensureVisible(find.text('Zobacz wynik'));
@@ -240,6 +236,68 @@ void main() {
     await tester.tap(find.text('Polska'));
     await tester.pumpAndSettle();
     expect(find.text('Nie wiem — pomoc A–D'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('capitals "Nie wiem, pomóż" shows fact note after A–D pick', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final data = (await tester.runAsync(
+      () async => (
+        await Catalog.load(),
+        await CapitalCatalog.load(),
+        await FlagCatalog.load(),
+        await CountryTriviaCatalog.load(
+          asset: CountryTriviaCatalog.capitalAsset,
+        ),
+      ),
+    ))!;
+    final (catalog, capitals, flags, capitalTrivia) = data;
+    final nld = capitals.questions(['NLD'], Random(1)).single;
+    expect(nld.fact.note, isNotEmpty);
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox());
+      await db.close();
+    });
+    await db
+        .into(db.sessions)
+        .insert(
+          SessionsCompanion.insert(
+            id: 'capital-note-flow',
+            countryIds: '["NLD"]',
+            createdAt: DateTime.now(),
+            topic: const Value('capitals'),
+            difficulty: const Value('write'),
+            contentVersion: Value(capitals.version),
+            questionData: Value(jsonEncode([nld.toJson()])),
+          ),
+        );
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          databaseProvider.overrideWithValue(db),
+          catalogProvider.overrideWith((ref) async => catalog),
+          capitalsProvider.overrideWith((ref) async => capitals),
+          flagsProvider.overrideWith((ref) async => flags),
+          capitalTriviaProvider.overrideWith((ref) async => capitalTrivia),
+        ],
+        child: const MaterialApp(
+          home: LearningScreen(capitalDifficulty: CapitalDifficulty.write),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('Nie wiem, pomóż'));
+    await tester.tap(find.text('Nie wiem, pomóż'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.textContaining('. ${nld.fact.name}'));
+    await tester.pumpAndSettle();
+    expect(find.text(nld.fact.note), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

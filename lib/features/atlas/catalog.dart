@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'continent.dart';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart' show LatLngBounds;
 import 'package:latlong2/latlong.dart';
@@ -42,7 +43,67 @@ class InsetFrame {
   final LatLngBounds bounds;
 }
 
-class Catalog {
+/// Lightweight area metadata shared by [Catalog] and [CatalogMeta].
+abstract interface class AreaCatalog {
+  Continent get continent;
+  String get version;
+  List<Country> get countries;
+  Country country(String id);
+}
+
+/// Cached countries metadata loaded from `countries.json` without parsing GeoJSON.
+class CatalogMeta implements AreaCatalog {
+  CatalogMeta(
+    this.countries, {
+    this.continent = Continent.europe,
+    this.version = 'custom',
+  });
+
+  static final _cache = <Continent, Future<CatalogMeta>>{};
+
+  @visibleForTesting
+  static void clearCache() => _cache.clear();
+
+  @override
+  final Continent continent;
+  @override
+  final String version;
+  @override
+  final List<Country> countries;
+
+  @override
+  Country country(String id) => countries.firstWhere((c) => c.id == id);
+
+  static Future<CatalogMeta> load({Continent continent = Continent.europe}) =>
+      _cache[continent] ??= _loadUncached(continent);
+
+  static Future<CatalogMeta> _loadUncached(Continent continent) async {
+    final content = jsonDecode(
+      await rootBundle.loadString(continent.contentPath('countries.json')),
+    ) as Map<String, dynamic>;
+    final countries = (content['countries'] as List).map((raw) {
+      final c = raw as Map<String, dynamic>;
+      return Country(
+        c['id'] as String,
+        c['name'] as String,
+        LatLng(
+          (c['latitude'] as num).toDouble(),
+          (c['longitude'] as num).toDouble(),
+        ),
+        c['small'] as bool,
+        plural: c['plural'] as bool,
+        questionName: c['question_name'] as String?,
+      );
+    }).toList();
+    return CatalogMeta(
+      List.unmodifiable(countries),
+      continent: continent,
+      version: content['version'] as String,
+    );
+  }
+}
+
+class Catalog implements AreaCatalog {
   Catalog(
     this.countries,
     this.shapes, {
@@ -58,8 +119,11 @@ class Catalog {
     }
   }
 
+  @override
   final Continent continent;
+  @override
   final String version;
+  @override
   final List<Country> countries;
   final List<CountryShape> shapes;
 
@@ -67,6 +131,7 @@ class Catalog {
   /// rings, outer first.
   final List<List<List<LatLng>>> context;
   final List<InsetFrame> insetFrames;
+  @override
   Country country(String id) => countries.firstWhere((c) => c.id == id);
 
   static Future<Catalog> load({Continent continent = Continent.europe}) async {

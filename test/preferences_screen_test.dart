@@ -42,10 +42,6 @@ void main() {
 
     expect(find.text('Ustawienia'), findsOneWidget);
     expect(find.text('Rzeźba terenu'), findsOneWidget);
-    expect(
-      find.byType(DropdownButtonFormField<LearningDifficulty>),
-      findsNWidgets(Continent.values.length),
-    );
     expect(tester.takeException(), isNull);
 
     await tester.ensureVisible(find.text('Nowoczesny atlas'));
@@ -56,6 +52,20 @@ void main() {
           .singleWhere((entry) => entry.key == 'map_appearance')
           .value,
       MapAppearance.atlas.name,
+    );
+
+    await tester.scrollUntilVisible(
+      find.text('Poziom nauki'),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.ensureVisible(find.text('Poziom nauki'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Poziom nauki'));
+    await tester.pumpAndSettle();
+    expect(
+      find.byType(DropdownButtonFormField<LearningDifficulty>),
+      findsNWidgets(Continent.values.length),
     );
 
     final firstDropdown = find

@@ -14,11 +14,11 @@ void main() {
       try {
         final repository = SessionRepository(db);
         final previous = await repository.start(['POL', 'DEU', 'CZE']);
-        await repository.answer(previous.row.id, 0, previous.targetId, {
+        await repository.guessMap(previous.row.id, 0, previous.targetId, {
           'POL',
           'DEU',
           'CZE',
-        });
+        }, expectedGuessIndex: 0);
         final resumed = await repository.start(
           catalog.countries.map((c) => c.id).toList(),
         );
@@ -69,4 +69,16 @@ void main() {
       }
     },
   );
+
+  test('CatalogMeta loads countries and version without GeoJSON', () async {
+    CatalogMeta.clearCache();
+    final full = await Catalog.load();
+    final meta = await CatalogMeta.load();
+    expect(meta.version, full.version);
+    expect(meta.continent, full.continent);
+    expect(
+      meta.countries.map((c) => (c.id, c.name, c.small, c.plural)).toList(),
+      full.countries.map((c) => (c.id, c.name, c.small, c.plural)).toList(),
+    );
+  });
 }

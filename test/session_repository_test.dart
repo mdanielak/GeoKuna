@@ -45,11 +45,12 @@ void main() {
     expect(await repository.history(), isEmpty);
     session = await repository.start(ids);
     for (var i = 0; i < 10; i++) {
-      session = await repository.answer(
+      session = await repository.guessMap(
         session.row.id,
         i,
         session.targetId,
         ids.toSet(),
+        expectedGuessIndex: 0,
       );
       session = await repository.advance(session.row.id, i);
     }
@@ -64,23 +65,37 @@ void main() {
     'scores correct and incorrect answers, duplicate writes do not overwrite',
     () async {
       final session = await repository.start(ids);
-      final first = await repository.answer(
+      final first = await repository.guessMap(
         session.row.id,
         0,
         session.targetId,
         ids.toSet(),
+        expectedGuessIndex: 0,
       );
       expect(first.currentAttempt!.correct, isTrue);
       final wrong = ids.firstWhere((id) => id != session.targetId);
-      await repository.answer(session.row.id, 0, wrong, ids.toSet());
-      expect(await repository.history(), hasLength(1));
-      final second = await repository.advance(session.row.id, 0);
-      final missed = await repository.answer(
-        second.row.id,
-        1,
-        ids.firstWhere((id) => id != second.targetId),
+      await repository.guessMap(
+        session.row.id,
+        0,
+        wrong,
         ids.toSet(),
+        expectedGuessIndex: 0,
       );
+      expect(await repository.history(), hasLength(1));
+      var missed = await repository.advance(session.row.id, 0);
+      final wrongPicks = ids
+          .where((id) => id != missed.targetId)
+          .take(3)
+          .toList();
+      for (var g = 0; g < 3; g++) {
+        missed = await repository.guessMap(
+          missed.row.id,
+          1,
+          wrongPicks[g],
+          ids.toSet(),
+          expectedGuessIndex: g,
+        );
+      }
       expect(missed.currentAttempt!.correct, isFalse);
       expect(missed.correctCount, 1);
     },
@@ -95,13 +110,31 @@ void main() {
         throwsStateError,
       );
       await expectLater(
-        repository.answer(session.row.id, 0, 'UNKNOWN', ids.toSet()),
+        repository.guessMap(
+          session.row.id,
+          0,
+          'UNKNOWN',
+          ids.toSet(),
+          expectedGuessIndex: 0,
+        ),
         throwsArgumentError,
       );
-      await repository.answer(session.row.id, 0, session.targetId, ids.toSet());
+      await repository.guessMap(
+        session.row.id,
+        0,
+        session.targetId,
+        ids.toSet(),
+        expectedGuessIndex: 0,
+      );
       await repository.advance(session.row.id, 0);
       await expectLater(
-        repository.answer(session.row.id, 0, 'POL', ids.toSet()),
+        repository.guessMap(
+          session.row.id,
+          0,
+          'POL',
+          ids.toSet(),
+          expectedGuessIndex: 0,
+        ),
         throwsStateError,
       );
       final duplicateAdvance = await repository.advance(session.row.id, 0);
@@ -113,11 +146,12 @@ void main() {
     var now = DateTime.utc(2026, 1, 1);
     repository = SessionRepository(db, clock: () => now);
     var session = await repository.start(ids, random: Random(7));
-    session = await repository.answer(
+    session = await repository.guessMap(
       session.row.id,
       0,
       session.targetId,
       ids.toSet(),
+      expectedGuessIndex: 0,
     );
     session = await repository.advance(session.row.id, 0);
     final attempts = await repository.history();
@@ -131,7 +165,13 @@ void main() {
     expect(await db.select(db.memoryReviews).get(), reviews);
     expect(await repository.active(), isNull);
     await expectLater(
-      repository.answer(session.row.id, 1, session.targetId, ids.toSet()),
+      repository.guessMap(
+        session.row.id,
+        1,
+        session.targetId,
+        ids.toSet(),
+        expectedGuessIndex: 0,
+      ),
       throwsStateError,
     );
     now = now.add(const Duration(days: 1));
@@ -153,11 +193,12 @@ void main() {
       final firstRepository = SessionRepository(firstDb);
       try {
         final first = await firstRepository.start(ids, random: Random(1));
-        await firstRepository.answer(
+        await firstRepository.guessMap(
           first.row.id,
           0,
           first.targetId,
           ids.toSet(),
+          expectedGuessIndex: 0,
         );
         await firstDb.close();
         final reopened = AppDatabase(NativeDatabase(path));

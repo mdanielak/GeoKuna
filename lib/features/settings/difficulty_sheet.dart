@@ -39,12 +39,7 @@ Future<void> showDifficultySheet(
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 title: Text(level.label),
-                subtitle: Text(
-                  level.description.replaceAll(
-                    'państwo',
-                    continent.areaAccusative,
-                  ),
-                ),
+                subtitle: Text(level.description),
                 selected: level == current,
                 trailing: level == current ? const Icon(Icons.check) : null,
                 onTap: () => Navigator.pop(context, level),

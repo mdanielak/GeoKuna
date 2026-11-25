@@ -14,7 +14,6 @@ import '../features/settings/settings_screen.dart';
 import '../features/atlas/continent.dart';
 import '../features/learning/learning_screen.dart';
 import '../features/learning/session_repository.dart';
-import '../features/learning/capital_setup_screen.dart';
 import '../features/learning/capitals.dart';
 import '../features/learning/flags.dart';
 import '../features/learning/flags_setup_screen.dart';
@@ -54,8 +53,16 @@ GoRouter _createRouter() => GoRouter(
     ),
     GoRoute(
       path: '/progress',
-      builder: (_, state) =>
-          ProgressScreen(initialCountry: state.uri.queryParameters['country']),
+      builder: (_, state) {
+        final continentParam = state.uri.queryParameters['continent'];
+        final continent = Continent.values
+            .where((c) => c.name == continentParam)
+            .firstOrNull;
+        return ProgressScreen(
+          continent: continent,
+          initialCountry: state.uri.queryParameters['country'],
+        );
+      },
     ),
     GoRoute(
       path: '/learning/:continent',
@@ -69,7 +76,7 @@ GoRouter _createRouter() => GoRouter(
     ),
     GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
     GoRoute(path: '/flags', builder: (_, _) => const FlagsSetupScreen()),
-    GoRoute(path: '/capitals', builder: (_, _) => const CapitalSetupScreen()),
+    GoRoute(path: '/capitals', redirect: (_, _) => '/learn?topic=capitals'),
     GoRoute(
       path: '/learn',
       builder: (_, state) {
@@ -125,16 +132,37 @@ GoRouter _createRouter() => GoRouter(
   ],
 );
 
-class GeoKunaApp extends StatefulWidget {
+class GeoKunaApp extends ConsumerStatefulWidget {
   const GeoKunaApp({super.key});
   @override
-  State<GeoKunaApp> createState() => _GeoKunaAppState();
+  ConsumerState<GeoKunaApp> createState() => _GeoKunaAppState();
 }
 
-class _GeoKunaAppState extends State<GeoKunaApp> {
+class _GeoKunaAppState extends ConsumerState<GeoKunaApp>
+    with WidgetsBindingObserver {
   late final _router = _createRouter();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      ref
+        ..invalidate(dailyOverviewProvider)
+        ..invalidate(streakProvider)
+        ..invalidate(continentStreakProvider)
+        ..invalidate(learningProgressProvider)
+        ..invalidate(continentProgressProvider);
+    }
+  }
+
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _router.dispose();
     super.dispose();
   }

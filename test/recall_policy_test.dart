@@ -4,6 +4,7 @@ import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/memory.dart';
 import 'package:geokuna/features/learning/session_repository.dart';
 
 void main() {
@@ -64,7 +65,7 @@ void main() {
       final flags = await FlagCatalog.load();
       final session = (await repo.startDaily(catalog, capitals, flags: flags))!;
       for (var i = 0; i < session.countryIds.length; i++) {
-        expect(session.difficultyNameAt(i), 'write');
+        expect(recallFormats, contains(session.difficultyNameAt(i)));
       }
       final entries = await repo.learningProgress(catalog, flags: flags);
       expect(entries.any((e) => e.difficulty == 'choice'), isTrue);
