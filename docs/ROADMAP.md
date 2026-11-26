@@ -1,34 +1,48 @@
 # Stan i plan
 
-## Stan — 2026-11-22 (wersja 0.7.0)
+## Stan — 2026-11-26 (wersja 0.7.0)
 
 Wdrożone (szczegóły: [LEARNING.md](LEARNING.md), [CONTENT.md](CONTENT.md)):
 
 - Europa 47, Afryka 54, Azja 50, Ameryka Północna 22, Południowa 13, Oceania 14;
   województwa (16) i stany USA (50) — mapa, miasta wojewódzkie / stolice stanów,
   herby / flagi, z ciekawostkami; wybór kontynentu na Dziś, wspólne karty krajów transkontynentalnych.
-- Mapa, stolice, flaga → nazwa, flaga → mapa; trzy poziomy i 12 kart FSRS na kraj;
-  A–D z własnym FSRS rozpoznawania.
-- Dziś: zaległe najpierw, globalny limit 3 nowości, poziom per kontynent.
+- Mapa, stolice, flaga → nazwa, flaga → mapa; trzy stałe poziomy i 12 kart FSRS
+  na kraj; A–D z własnym FSRS rozpoznawania.
+- **Poziom „Automatyczny”** (domyślny dla każdego obszaru): start od poziomu
+  normalnego; 3 błędy z rzędu na jednym haśle schodzą poziom niżej i od razu
+  wystawiają łatwiejszą kartę bez zużywania budżetu nowości, a 2 trafienia z rzędu
+  wracają wyżej; badge „Łatwiej” w pytaniu (bez nazwy kraju na flagach) i komunikaty
+  w feedbacku; zastąpił dawny krok `origin=scaffold`.
+- Dziś: zaległe najpierw (świeżo ułatwione, potem trudne), globalny limit 3 nowości,
+  poziom per kontynent; mylone pary do porównania jedno po drugim.
 - Quiz mapy: trzy próby, etykieta błędnego kraju, przybliżenie rozwiązania po 3. błędzie,
-  lekki kadr podpowiedzi na łatwych poziomach.
-- Medale 50/80/100% z dziedziczeniem poziomów, passa per kontynent na Dziś,
-  ciekawostki po trafieniu, pięć emocji kuny z trzema tekstami.
-- Dolny pasek Dziś / Atlas / Moja nauka (Dziś: jedna karta wyprawy z kuną i passą,
-  poziom kontynentu w arkuszu, postęp mapy do następnego medalu, trening w jednym
-  rzędzie); atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
-- SQLite v9 (indeksy historii, żetony passy) z migracjami od v1.
+  lekki kadr podpowiedzi na łatwych poziomach, ukrycie nazw stanów we wstawkach
+  Alaski i Hawajów podczas quizu.
+- Medale 50/80/100% z dziedziczeniem poziomów, passa per kontynent na Dziś
+  (pigułka widoczna od `0 dni`, stonowana przy zerze), ciekawostki po trafieniu
+  i po 3. błędzie, pięć emocji kuny z trzema tekstami.
+- Dolny pasek **Dziś / Atlas / Moja nauka**:
+  - przewodnik **„Jak działa GeoKuna?”** (`HowItWorksScreen`, otwierany z Dziś,
+    Mojej nauki i Ustawień; zalecenie „Zaliczony — …” przed „W nauce” i „Na bieżąco”);
+  - uproszczone *Moja nauka* i *Postępy* (zwijane nagrody za passę, filtr trudnych umiejętności);
+  - pełnoszerokościowy pasek postępu mapy pod banerem *Dziś* (nie zasłania ilustracji),
+    naprawiony fade przełącznika obszarów, krótszy tytuł nagłówka quizu/podsumowania
+    z mocniejszym gradientem, ciemne ikony systemowego paska Androida oraz wyrównane
+    podsumowanie serii (kategorie mapy, żółta ikona błędnych powtórek);
+  - atlas z wyszukiwarką i klawiaturą, trzy style map, reset z potwierdzeniem.
+- SQLite v10 (`auto_levels`, indeksy historii, żetony passy) z migracjami od v1
+  oraz kopią postępu zgodną z v9 i v10.
 - „Nie wiem, pomóż” w pytaniach pisanych (stolica, flaga → nazwa): błąd bez wpisywania,
   potem nieoceniane A–D; karta z passą po każdej serii; przesunięcie banera Dziś
-  działa też wolnym ruchem (prędkość lub 60 pkt); PWA na GitHub Pages.
+  działa też wolnym ruchem (prędkość lub 60 pkt); PWA na GitHub Pages z
+  bezciasteczkowym skryptem GoatCounter wyłącznie dla wersji webowej.
 - Nagrody za passę (3–90 dni) i żetony Nieprzykunowanie per kontynent; plan Dziś wydzielony do `daily_planner.dart`.
 - Nauka adaptacyjna (2026-11-14): Easy przy znanym od razu, limit 60 dni,
   powtórka błędu po 3–5 pytaniach, trudny kraj 3/3, kolejna runda z kontrolą
   pewniaków, wstępny quiz (dawniej „Kuna sprawdzi, co już wiesz”), ciekawostka (karta z kuną z lupą) także po błędzie.
-- Drabinka trudnych kart, szczebele 1–2 (2026-11-15), kopia postępu w Ustawieniach,
-  tokeny kolorów i typografii (`GeoColors`): po 2 błędach łatwiejszy krok
-  przed właściwym pytaniem. Ciekawostki o flagach (3 na flagę), Europa bez
-  Kazachstanu i Kaukazu, ląd kontekstowy na mapach, relief z kafelków 1:10m z rzekami i jeziorami.
+- Ciekawostki o flagach (3 na flagę), Europa bez Kazachstanu i Kaukazu, ląd
+  kontekstowy na mapach, relief z kafelków 1:10m z rzekami i jeziorami.
 
 - **Wygląd v2** (branch `wyglad_v2`, grafiki z paczek GeoKuna v2.3–v2.5):
   paleta kremowo-zielona, logo, banner regionu z kuną (przesunięcie w lewo/prawo
@@ -163,17 +177,17 @@ powtórki w serii nie są ocenami FSRS); osobny „automat” obok drabinki (dwa
 ## Plan: drabinka trudnych kart (dalsze szczeble)
 
 Cel: kraj mylony uparcie nie wraca codziennie w tej samej formie, tylko zmienia
-się sposób nauki. Pierwszy szczebel działa (LEARNING.md → „Drabinka”). Dalej:
+się sposób nauki. Dawny szczebel 1 został zastąpiony poziomem **Automatycznym**:
 
 | Szczebel | Kiedy | Co widzi użytkownik |
 |---|---|---|
-| 1 ✓ | 2 błędy od opanowania | łatwiejszy format jako ćwiczenie, potem właściwe pytanie |
+| 1 (zastąpiony) | zastąpiony poziomem „Automatyczny” | zamiast kroku `origin=scaffold`, samo hasło po 3 błędach z rzędu schodzi poziom niżej (`normalny → łatwy → bardzo łatwy`) |
 | 2 ✓ | mylona para (ten sam błędny kraj 2×) | pytanie o parę kolejno: „Słowacja” i „Słowenia”, z różnicą na mapie lub we flagach; w A–D drugi kraj pary zawsze wśród odpowiedzi |
 | 3 ✗ | 4+ błędy (odrzucone) | karta przypomnienia przed pytaniem: kraj, sąsiedzi, ciekawostka — użytkownik nie chce tego szczebla |
-| 4 | opanowanie po drabince | krótsze odstępy przez pierwsze 2 powtórki (np. limit 7 dni), zanim FSRS wróci do pełnych odstępów |
+| 4 | opanowanie po drabince / powrocie | krótsze odstępy przez pierwsze 2 powtórki (np. limit 7 dni), zanim FSRS wróci do pełnych odstępów |
 
 Rozstrzygnięte: szczebel 2 obejmuje mapę i flagi (stolice nie, bo wpisana stolica
-nie wskazuje kraju); ćwiczenia drabinki liczą się do passy jak każda odpowiedź.
+nie wskazuje kraju); ćwiczenia w serii liczą się do passy jak każda odpowiedź.
 Otwarte: jak liczyć „opanowanie” przy zmianie poziomu.
 
 ## Do poprawy później (wygląd v2)
@@ -210,9 +224,10 @@ geometria rzek świata: [Natural Earth physical 1:50m](https://www.naturalearthd
   sesji nie ma kontraktu wersji.
 - Dostępność mapy dla czytnika ekranu: poligony nie mają nazwanych akcji,
   znaczniki mikropaństw mają wspólny opis. Wymaga projektu i testu TalkBack.
-- Koszt odświeżania przeglądu co minutę nie był mierzony na telefonie.
 - Strategia powielania świata w flutter_map do ponownej oceny przed mapą świata.
 
-Nie planujemy kont, synchronizacji, backendu, powiadomień ani analityki.
+Nie planujemy kont, synchronizacji, backendu, powiadomień ani śledzenia
+użytkowników (Android nie ma uprawnienia `INTERNET`; wyłącznie wersja Web/PWA
+korzysta z bezciasteczkowego licznika GoatCounter w `web/index.html`).
 Każdy większy przyrost zaczyna się od krótkiego brainstormingu; plany
 zapisujemy w `superpowers/plans/`.

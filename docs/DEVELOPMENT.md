@@ -14,7 +14,10 @@ W `flutter run`: `r` hot reload, `R` restart, `q` koniec. Baza Web należy do
 profilu i adresu przeglądarki (inny port = osobny magazyn); nie czyść danych
 przeglądarki, jeśli chcesz zachować postęp. Wersja wdrożona (PWA, offline po
 pierwszym wczytaniu) działa na https://mdanielak.github.io/GeoKuna/. Postęp
-przenosi się kopią z Ustawień (plik JSON); synchronizacji nie ma.
+przenosi się kopią z Ustawień (plik JSON); synchronizacji nie ma. Wyłącznie
+wersja Web/PWA ma w `web/index.html` bezciasteczkowy skrypt GoatCounter
+(`brodacz.goatcounter.com`, ignoruje `localhost` i jest pomijany przez `web/sw.js`);
+Android pozostaje całkowicie bez uprawnienia `INTERNET`.
 
 Po zmianie tabel: `dart run build_runner build` (wynik `database.g.dart` jest w repo).
 Ikony Androida i Web: `python3 tools/build_icons.py` (z `assets/mascot/kuna-globe.png`,
@@ -26,7 +29,7 @@ Pillow; `--check` sprawdza rozmiary).
 dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test
-for s in map capitals flags africa asia relief trivia context; do
+for s in map capitals capitals_en flags africa asia relief trivia context; do
   python3 tools/data_pipeline/build_$s.py --check
 done
 for r in north_america south_america oceania; do
@@ -46,10 +49,11 @@ flutter build web --no-web-resources-cdn   # przy wydaniu
 flutter build web --release --no-web-resources-cdn --web-content-hash --base-href /GeoKuna/
 ```
 
-Zawartość `build/web/` zastępuje całą gałąź `gh-pages` (worktree, `git rm -r .`,
-kopia, commit, push). `--web-content-hash` jest konieczne: bez niego telefony
-(zwłaszcza iOS) trzymają starą wersję w pamięci. Po wdrożeniu zamknij zainstalowaną
-PWA i otwórz ją ponownie, czasem dwa razy.
+Zawartość `build/web/` zastępuje całą gałąź `gh-pages` przez tymczasowy worktree
+(`git rm -rf .`, kopia, `.nojekyll`, commit, push) — pełna procedura i kontrole
+paczki są w `.agents/skills/geokuna-release/SKILL.md`. `--web-content-hash` jest
+konieczne: bez niego telefony (zwłaszcza iOS) trzymają starą wersję w pamięci.
+Po wdrożeniu zamknij zainstalowaną PWA i otwórz ją ponownie, czasem dwa razy.
 
 W trakcie pracy uruchamiaj testy związane ze zmianą; pełny zestaw raz przy
 integracji. `dart_test.yaml` przerywa każdy test po 60 s — zawieszony test
@@ -123,8 +127,9 @@ Chrome; oficjalne `flutter/skills` i `flutter-ui`, źródła w `CLAUDE.md`).
 Codex:
 
 Role i delegowanie: `AGENTS.md`, `.codex/agents/*.toml`, `.codex/config.toml`
-(limit dwóch wykonawców). Lokalny skill mechanik nauki:
-`.agents/skills/geokuna-learning-design/`.
+(limit dwóch wykonawców). Lokalne skille projektu:
+`.agents/skills/geokuna-learning-design/` (mechaniki nauki) oraz
+`.agents/skills/geokuna-release/` (wydania i wdrożenie PWA na `gh-pages`).
 
 - Dart MCP: `.codex/config.toml` wskazuje absolutne `bin/dart` z SDK powyżej
   (`dart` nie jest w PATH procesu). Na innej maszynie popraw dwie ścieżki SDK.

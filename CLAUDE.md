@@ -16,7 +16,8 @@ Testy i dokumentację utrzymuj zwięzłe: rozbudowuj istniejące `docs/*.md`, hi
 ## Kluczowe pliki
 - `lib/features/learning/memory.dart` — adapter FSRS (oceny, Easy/Hard, limit 60 dni), `recoveringSkills`
 - `lib/features/learning/session_repository.dart` — sesje i odpowiedzi, powtórki w serii, ręczny dobór
-- `lib/features/learning/daily_planner.dart` — `plan` Dziś (regular/extra/placement), drabinka, mylone pary, stałe serii
+- `lib/features/learning/auto_level.dart` — automatyczny poziom trudności per hasło (`Automatyczny`: 3 błędy w dół / 2 trafienia w górę)
+- `lib/features/learning/daily_planner.dart` — `plan` Dziś (regular/extra/placement), poziom automatyczny, mylone pary, stałe serii
 - `lib/features/learning/quiz_controller.dart` — otwarcie/odpowiedź/koniec serii; drogie widoki (plan, medale) odświeża dopiero na końcu serii
 - `lib/features/learning/achievements.dart` — zaliczenia i medale; `streaks.dart` — passa
 - `lib/app/theme.dart` — tokeny: role Material + `GeoColors` (nie wpisuj `Color(0x…)` w UI; mapy: `map_style.dart`)

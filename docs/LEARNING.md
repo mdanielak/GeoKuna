@@ -114,9 +114,13 @@ i ponowne kliknięcie tego samego kraju nie zużywają szansy.
 Feedback: błąd czerwony, rozwiązanie zielone, literówka żółta — zawsze z tekstem
 i ikoną, nie tylko kolorem.
 
-Podsumowanie serii: kuna mówi w dymku (duży tekst), pod nią lista pytań. Wiersz
-z błędem lub literówką rozwija się po dotknięciu i pokazuje, co wpisano,
-wybrano lub wskazano na mapie (np. „Wpisano: Makozia”).
+Podsumowanie serii: kuna mówi w dymku (duży tekst), pod nią lista pytań z prawą
+kolumną wyrównaną przy krawędzi (w wyprawie dziennej pytania mapowe mają prefiks
+kategorii, np. `mapa · od razu` albo `flaga na mapie · od razu`). Wiersze
+ćwiczeniowe (`powtórka`, `para`) mają subtelnie wyróżnione tło, plakietkę pod
+nazwą kraju i żółtą ikonę błędu zamiast czerwonego krzyżyka. Wiersz z błędem
+lub literówką rozwija się po dotknięciu i pokazuje, co wpisano, wybrano lub
+wskazano na mapie (np. „Wpisano: Makozia”).
 
 ## Dzisiejsza wyprawa
 
@@ -160,9 +164,12 @@ odpowiedzi nie są błędami); Wstecz zostawia serię do wznowienia.
 - **Do powtórki:** termin minął lub ostatnia odpowiedź była błędna.
 - **Za mało danych:** brak ocenionego przeglądu (wlicza się do mianownika).
 
-Plakietka na *Dziś* pokazuje liczbę krajów zaliczonych na mapie oraz licznik
-**W nauce** (kraje odpowiedziane na tym poziomie, które czekają jeszcze na
-drugą ocenę po ≥ 24 h), więc postęp widać już od pierwszego dnia.
+Plakietka na *Dziś* pod banerem (na całą jego szerokość, żeby nie zasłaniać
+ilustracji) pokazuje liczbę krajów zaliczonych na mapie, licznik **W nauce**
+(kraje odpowiedziane na tym poziomie, które czekają jeszcze na drugą ocenę
+po ≥ 24 h) oraz dwukolorowy pasek postępu. W prawym górnym rogu banera pigułka
+passy pozostaje widoczna od `0 dni` (stonowana przy zerze, wyróżniona od 1 dnia)
+i po dotknięciu otwiera postęp obszaru.
 
 Zaokrąglamy w dół, więc 100% wymaga kompletu. To stan treningu, nie
 prawdopodobieństwo zapamiętania.
@@ -246,11 +253,11 @@ wpływa na FSRS i nie zdradza odpowiedzi przyszłych pytań. Źródła: [CONTENT
 
 Ustawienia → Zresetuj naukę, z potwierdzeniem i ostrzeżeniem o nieodwracalności.
 
-- **Kontynent:** usuwa sesje, próby, karty, medale i passę tego kontynentu.
-  Wspólne kraje mają wspólne karty, więc ich pamięć czyści się także dla drugiego
-  regionu (passa drugiego regionu zostaje). Historia innego kontynentu nie
-  odtwarza usuniętej pamięci.
-- **Cała nauka:** usuwa wszystko powyżej i metadane importu.
+- **Kontynent:** usuwa sesje, próby, karty, medale, passę i wpisy `auto_levels`
+  tego kontynentu. Wspólne kraje mają wspólne karty, więc ich pamięć czyści
+  się także dla drugiego regionu (passa drugiego regionu zostaje). Historia
+  innego kontynentu nie odtwarza usuniętej pamięci.
+- **Cała nauka:** usuwa wszystko powyżej (`auto_levels` włącznie) i metadane importu.
 - Ustawienia (styl mapy, poziomy) zawsze zostają. Web i Android mają osobne bazy.
 - **Kopia zapasowa** (Ustawienia): „Zapisz kopię” zapisuje całą naukę i ustawienia
   do pliku JSON; „Wczytaj kopię” po potwierdzeniu zastępuje nią obecny stan.
@@ -260,7 +267,7 @@ Ustawienia → Zresetuj naukę, z potwierdzeniem i ostrzeżeniem o nieodwracalno
 
 - Styl mapy (globalny): nowoczesny atlas, papierowy atlas, rzeźba terenu (domyślny).
   Zmiana stylu zachowuje kadr i kolory odpowiedzi.
-- Poziom osobno dla każdego kontynentu: bardzo łatwy / łatwy / normalny.
+- Poziom osobno dla każdego kontynentu: Automatyczny (domyślny) / Bardzo łatwy / Łatwy / Normalny.
   Dotyczy nowych quizów mapy, stolic i flag; zaplanowane powtórki zachowują format.
 - W quizie mapy odpowiedź wybiera się wyłącznie na mapie; lista krajów jest
   narzędziem atlasu. Nie przywracamy przycisku „wybierz z listy”.

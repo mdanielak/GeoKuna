@@ -82,8 +82,9 @@ Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`
 
 ## Województwa i stany USA (0.6.0 mapa, 0.7.0 stolice i symbole)
 
-`Continent.poland` i `Continent.usa` — mapy „gdzie leży?” bez stolic i flag
-(etap 2). Generator: `build_subdivisions.py poland|usa`.
+`Continent.poland` i `Continent.usa` — mapy „gdzie leży?” (etap 1) oraz miasta
+wojewódzkie / stolice stanów, herby i flagi (etap 2). Generatory:
+`build_subdivisions.py poland|usa` oraz `build_subdivision_symbols.py poland|usa`.
 
 - **Geometria:** Natural Earth 1:10m admin-1 v5.1.2 (SHA-256 `22d0e3ad…`),
   ląd kontekstowy z NE 1:10m admin-0 (`239eec57…`), żeby granice się zgadzały.
@@ -100,6 +101,8 @@ Zachodnia) jest jedną neutralną, nieklikalną warstwą (`assets/maps/context/`
 - **Wstawki:** Alaska (skala 0,24) i Hawaje (1,47) przesunięte w Web Mercatorze
   do ramek w lewym dolnym rogu, z podpisem „inna skala”; wyspy NW Hawajów
   (na zachód od 161°W) pominięte. W stylu Rzeźba wstawki mają jasne wypełnienie.
+  W trybie quizu (`quizMode: true`) wstawki nie pokazują nazw stanów (bez
+  podpowiedzi) — nazwy widnieją tylko w Atlasie.
 - Znaczniki: Rhode Island i Delaware.
 - **Miasta wojewódzkie** (`build_subdivision_symbols.py`): art. 3 tej samej ustawy.
   Kujawsko-pomorskie (wojewoda — Bydgoszcz, sejmik — Toruń) i lubuskie (Gorzów

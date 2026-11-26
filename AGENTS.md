@@ -52,6 +52,7 @@ parametrów ze starszych adapterów lub przykładów.
 | Analiza / błędy uruchomionej aplikacji | `dart-flutter:dart-run-static-analysis`, odpowiednio `dart-fix-runtime-errors` | Luna/Terra. |
 | JSON, routing, lokalizacja, konflikty pakietów | Odpowiedni wąski skill oficjalnego `dart-flutter` | Właściciel zadania. |
 | Quizy, poziomy, podpowiedzi, feedback, dobór sesji i FSRS | `geokuna-learning-design` | Sol: mechanika; Luna: UI; Terra: testy. |
+| Wydanie, wersja i wdrożenie PWA na `gh-pages` | `geokuna-release` | Sol. |
 | Faktycznie potrzebna ilustracja / edycja bitmapy | `imagegen` | Właściciel zadania graficznego. |
 
 Skrócone nazwy testów/layoutu w wierszach Dart oznaczają prefiks `dart-flutter:`.

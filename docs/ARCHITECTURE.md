@@ -18,9 +18,12 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 
 Kolory: role Material z jednego ziarna (`GeoTheme.seed`) na papierowym tle;
 role spoza Material (odpowiedź dobra/zła/literówka, ciekawostka, ramka flagi,
-dymek kuny, passa, medale) tylko w `GeoColors`. Palety map są osobno w
-`map_style.dart`. Typografia: Roboto z SDK (offline); pogrubione są nagłówki
-z tematem pytania lub ekranu, pytania pomocnicze („Stolica?”) zostają zwykłe.
+dymek kuny, passa, medale) tylko w `GeoColors`. `GeoTheme.systemOverlayStyle`
+ustawia ciemne ikony paska statusu i dolnego paska nawigacji Androida na jasnym
+tle, a `regionAppBar` nakłada wzmocniony gradient z lewej oraz górny scrim pod
+pasek statusu. Palety map są osobno w `map_style.dart`. Typografia: Roboto z SDK (offline);
+pogrubione są nagłówki z tematem pytania lub ekranu, pytania pomocnicze
+(„Stolica?”) zostają zwykłe.
 
 Kopia postępu: jeden plik JSON (`format: geokuna-progress`, `version`, `schema`)
 ze wszystkimi tabelami; import sprawdza cały plik i zastępuje dane w jednej
@@ -85,9 +88,9 @@ Uwagi:
 - `finish(id)` jest idempotentne; nie ocenia niewysłanego tekstu; rozpoczęte
   błędne pytanie mapy zamyka jako błąd bez ponownej oceny FSRS.
 - Liczbowe ID kart FSRS: stolice/mapa i flagi mają rozłączne przestrzenie,
-  `mapEasy`/`mapVeryEasy` osobny zakres (`memory.dart`). Nowe kategorie
-  (np. Polska) wymagają nowego, trwałego przydziału ID — obecny parser zna
-  tylko trzy segmenty i bieżące formaty.
+  `mapEasy`/`mapVeryEasy` osobny zakres (`memory.dart`). 5-znakowe kody ISO 3166-2
+  (`PL-*`, `US-*`) dostają własny rozłączny zakres (`>= 10^13`, mieszczący się
+  w bezpiecznym zakresie `2^53` dla Web JS), bez zmiany istniejących ID państw.
 
 ## Migracje
 
@@ -103,6 +106,7 @@ Uwagi:
 | 6→7 | `activity_days`, `awarded_medals`; poziomy mapy `mapEasy`/`mapVeryEasy`, stary `map` = normalny |
 | 7→8 | indeksy historii (bez zmian danych) |
 | 8→9 | `streak_saves` (żetony Nieprzykunowanie); kopia z v8 wczytuje się bez tej tabeli |
+| 9→10 | `auto_levels` (poziom Automatyczny per hasło); kopia z v9 wczytuje się bez tej tabeli |
 
 `test/database_migration_test.dart` otwiera prawdziwe pliki schematu 1 i 2
 i sprawdza przejście do bieżącej wersji.
@@ -114,4 +118,7 @@ i sprawdza przejście do bieżącej wersji.
 Manifesty SHA-256 paczek są niezależne od wersji schematu. Komponenty bazy
 Web (`web/sqlite3.wasm`, `web/drift_worker.dart.js`) pochodzą z
 [wydania Drift 2.35.4](https://github.com/simolus3/drift/releases/tag/drift-2.35.4)
-i aktualizuje się je razem z Drift.
+i aktualizuje się je razem z Drift. `web/index.html` zawiera ponadto skrypt
+bezciasteczkowej analityki GoatCounter (`brodacz.goatcounter.com`, wyłącznie
+dla Web/PWA; `web/sw.js` ignoruje żądania do innych domen, a Android nie ma
+uprawnienia `INTERNET`).
