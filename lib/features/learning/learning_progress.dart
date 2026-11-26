@@ -23,6 +23,8 @@ class LearningProgressEntry {
     required this.reviewCount,
     required this.due,
     required this.lastReview,
+    this.qualified = false,
+    this.recoveryProgress,
   });
   final String id;
   final Country country;
@@ -32,6 +34,14 @@ class LearningProgressEntry {
   final int reviewCount;
   final DateTime? due;
   final DateTime? lastReview;
+
+  /// True once qualified for medals (2+ delayed applied hits without miss).
+  final bool qualified;
+
+  /// Consecutive graded hits since the latest miss (0–2) while recovering.
+  final int? recoveryProgress;
+
+  bool get isHard => recoveryProgress != null;
 
   String get skillKey => '$topic:$difficulty';
   Continent get _area => Continent.ofArea(country.id);
@@ -95,6 +105,8 @@ List<LearningProgressEntry> effectiveEntriesForLevel(
           reviewCount: best.reviewCount,
           due: best.due,
           lastReview: best.lastReview,
+          qualified: group.any((e) => e.qualified),
+          recoveryProgress: base.recoveryProgress,
         );
       })(),
   ];

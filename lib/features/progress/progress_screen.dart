@@ -7,11 +7,18 @@ import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../atlas/continent.dart';
 import '../learning/learning_progress.dart';
+import '../learning/memory.dart';
 
 class ProgressScreen extends ConsumerStatefulWidget {
-  const ProgressScreen({super.key, this.continent, this.initialCountry});
+  const ProgressScreen({
+    super.key,
+    this.continent,
+    this.initialCountry,
+    this.initialHardOnly = false,
+  });
   final Continent? continent;
   final String? initialCountry;
+  final bool initialHardOnly;
   @override
   ConsumerState<ProgressScreen> createState() => _ProgressScreenState();
 }
@@ -19,6 +26,7 @@ class ProgressScreen extends ConsumerStatefulWidget {
 class _ProgressScreenState extends ConsumerState<ProgressScreen> {
   late final _search = TextEditingController(text: widget.initialCountry);
   LearningProgressStatus? _status;
+  late bool _hardOnly = widget.initialHardOnly;
   String _skill = 'all';
 
   @override
@@ -33,6 +41,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
   void _clearFilters() => setState(() {
     _search.clear();
     _status = null;
+    _hardOnly = false;
     _skill = 'all';
   });
 
@@ -65,6 +74,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                 .where(
                   (e) =>
                       (_status == null || e.status == _status) &&
+                      (!_hardOnly || e.isHard) &&
                       (_skill == 'all' || e.skillKey == _skill) &&
                       _normalize(e.country.name)
                           .contains(_normalize(_search.text)),
@@ -75,6 +85,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
               groups.putIfAbsent(entry.country.id, () => []).add(entry);
             }
             final countries = groups.values.toList();
+            final hardCount = entries.where((e) => e.isHard).length;
             return Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 760),
@@ -83,87 +94,17 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   slivers: [
                     SliverPadding(
-                      padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                       sliver: SliverToBoxAdapter(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Każda umiejętność osobno',
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'Każdy poziom ma osobne powtórki — wybór A–D ćwiczy rozpoznawanie i nie zalicza samodzielnego pisania.',
-                            ),
-                            const SizedBox(height: 16),
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 8,
-                              children: [
-                                FilterChip(
-                                  label: const Text('Wszystkie'),
-                                  selected: _status == null,
-                                  showCheckmark: false,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.padded,
-                                  onSelected: (_) =>
-                                      setState(() => _status = null),
-                                ),
-                                for (final status
-                                    in LearningProgressStatus.values)
-                                  FilterChip(
-                                    label: Text(
-                                      '${status.label}: ${entries.where((e) => e.status == status).length}',
-                                    ),
-                                    selected: _status == status,
-                                    showCheckmark: false,
-                                    materialTapTargetSize:
-                                        MaterialTapTargetSize.padded,
-                                    onSelected: (selected) => setState(
-                                      () => _status = selected ? status : null,
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            InputDecorator(
-                              decoration: const InputDecoration(
-                                labelText: 'Umiejętność',
-                              ),
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton<String>(
-                                  value: _skill,
-                                  isExpanded: true,
-                                  items: [
-                                    const DropdownMenuItem(
-                                      value: 'all',
-                                      child: Text('Wszystkie'),
-                                    ),
-                                    for (final skill in <String, String>{
-                                      for (final entry in entries)
-                                        entry.skillKey: entry.skillLabel,
-                                    }.entries)
-                                      DropdownMenuItem(
-                                        value: skill.key,
-                                        child: Text(skill.value),
-                                      ),
-                                  ],
-                                  onChanged: (value) {
-                                    if (value != null) {
-                                      setState(() => _skill = value);
-                                    }
-                                  },
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
                             TextField(
                               controller: _search,
                               onChanged: (_) => setState(() {}),
                               decoration: InputDecoration(
-                                labelText:
-                                    'Szukaj ${continent.areaGenitive} w postępach',
+                                isDense: true,
+                                labelText: 'Szukaj ${continent.areaGenitive}',
                                 prefixIcon: const Icon(Icons.search),
                                 suffixIcon: _search.text.isEmpty
                                     ? null
@@ -175,9 +116,78 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                                       ),
                               ),
                             ),
-                            const SizedBox(height: 12),
-                            Text(
-                              'Dotknij nazwy, aby zobaczyć wszystkie poziomy i terminy powtórek.',
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                FilterChip(
+                                  label: const Text('Wszystkie'),
+                                  selected: _status == null && !_hardOnly,
+                                  showCheckmark: false,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.padded,
+                                  onSelected: (_) => setState(() {
+                                    _status = null;
+                                    _hardOnly = false;
+                                  }),
+                                ),
+                                for (final status
+                                    in LearningProgressStatus.values)
+                                  FilterChip(
+                                    label: Text(
+                                      '${status.label}: ${entries.where((e) => e.status == status).length}',
+                                    ),
+                                    selected: _status == status,
+                                    showCheckmark: false,
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.padded,
+                                    onSelected: (selected) => setState(() {
+                                      _status = selected ? status : null;
+                                      if (selected) _hardOnly = false;
+                                    }),
+                                  ),
+                                FilterChip(
+                                  label: Text('Trudne: $hardCount'),
+                                  selected: _hardOnly,
+                                  showCheckmark: false,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.padded,
+                                  onSelected: (selected) => setState(() {
+                                    _hardOnly = selected;
+                                    if (selected) _status = null;
+                                  }),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            DropdownButtonFormField<String>(
+                              key: ValueKey(_skill),
+                              initialValue: _skill,
+                              isExpanded: true,
+                              decoration: const InputDecoration(
+                                labelText: 'Umiejętność',
+                                isDense: true,
+                              ),
+                              items: [
+                                const DropdownMenuItem(
+                                  value: 'all',
+                                  child: Text('Wszystkie'),
+                                ),
+                                for (final skill in <String, String>{
+                                  for (final entry in entries)
+                                    entry.skillKey: entry.skillLabel,
+                                }.entries)
+                                  DropdownMenuItem(
+                                    value: skill.key,
+                                    child: Text(skill.value),
+                                  ),
+                              ],
+                              onChanged: (value) {
+                                if (value != null) {
+                                  setState(() => _skill = value);
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -187,7 +197,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
+                            horizontal: 16,
                             vertical: 8,
                           ),
                           child: Card.filled(
@@ -221,7 +231,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                         ),
                       ),
                     SliverPadding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
                       sliver: SliverList.builder(
                         itemCount: countries.length,
                         itemBuilder: (context, i) {
@@ -233,7 +243,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                               clipBehavior: Clip.antiAlias,
                               child: ExpansionTile(
                                 key: ValueKey(
-                                  '${skills.first.country.id}:$_status:$_skill:${_search.text}',
+                                  '${skills.first.country.id}:$_status:$_hardOnly:$_skill:${_search.text}',
                                 ),
                                 title: Text(
                                   skills.first.country.name,
@@ -249,7 +259,9 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> {
                                       .join(' · '),
                                 ),
                                 initiallyExpanded:
-                                    _search.text.isNotEmpty || _status != null,
+                                    _search.text.isNotEmpty ||
+                                    _status != null ||
+                                    _hardOnly,
                                 children: [
                                   for (final entry in skills)
                                     _SkillProgress(entry: entry),
@@ -282,23 +294,31 @@ class _SkillProgress extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => ListTile(
-    leading: Icon(switch (entry.status) {
-      LearningProgressStatus.review => Icons.replay,
-      LearningProgressStatus.practising => Icons.school_outlined,
-      LearningProgressStatus.insufficient => Icons.help_outline,
-    }),
-    title: Text(entry.skillLabel),
-    subtitle: Text(
-      [
-        entry.status.label,
-        if (entry.reviewCount == 0) 'Brak ocenianych odpowiedzi.',
-        if (entry.reviewCount > 0) 'Ocenione próby: ${entry.reviewCount}',
-        if (entry.lastReview != null)
-          'Ostatnia ocena: ${_date(context, entry.lastReview!)}',
-        if (entry.due != null) 'Termin: ${_date(context, entry.due!)}',
-      ].join('\n'),
-    ),
-    isThreeLine: false,
-  );
+  Widget build(BuildContext context) {
+    final icon =
+        entry.qualified && entry.status == LearningProgressStatus.practising
+        ? Icons.verified_outlined
+        : switch (entry.status) {
+            LearningProgressStatus.review => Icons.replay,
+            LearningProgressStatus.practising => Icons.school_outlined,
+            LearningProgressStatus.insufficient => Icons.help_outline,
+          };
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(entry.skillLabel),
+      subtitle: Text(
+        entry.reviewCount == 0
+            ? 'Jeszcze niećwiczone'
+            : [
+                '${entry.status.label}${entry.qualified ? ' · Zaliczono' : ''}',
+                if (entry.isHard)
+                  'Trudne: ${entry.recoveryProgress} z $recoveryTarget trafień z rzędu',
+                if (entry.due != null)
+                  'Następna powtórka: ${_date(context, entry.due!)}',
+                'Ocenione próby: ${entry.reviewCount}',
+              ].join('\n'),
+      ),
+      isThreeLine: false,
+    );
+  }
 }

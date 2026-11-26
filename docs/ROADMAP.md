@@ -127,14 +127,15 @@ zrzuty `/shots` trzech stylów; telefon: dotyk małych województw i wstawek.
 kontekstowy; nazwa w atlasie bez słowa „województwo”; wstawki w lewym dolnym rogu;
 jedna paczka ciekawostek zamiast osobnej.
 
-## Plan: poziom „Automatyczny” (projekt, wstrzymany 2026-11-16)
+## Plan: poziom „Automatyczny” (projekt, do wdrożenia jako domyślny w kolejnym kroku)
 
 Cel: trudność dopasowuje się do jednego hasła, nie do całego kontynentu — kto
 myli Gwatemalę, dostaje ją łatwiej, a reszta zostaje na normalnym. Zastępuje
 pierwszy szczebel drabinki (łatwiejszy krok po 2 błędach); jeden mechanizm, nie dwa.
 
 - **Gdzie:** czwarta opcja poziomu kontynentu, domyślna, gdy użytkownik nic nie
-  wybrał. Zapisane wybory (bardzo łatwy/łatwy/normalny) zostają i działają jak dziś.
+  wybrał (w obecnej wersji domyślnym poziomem jest nadal Normalny). Zapisane
+  wybory (bardzo łatwy/łatwy/normalny) zostają i działają jak dziś.
 - **Hasło** = kraj × kategoria (mapa, stolica, flaga → nazwa, flaga → mapa).
   Start: normalny.
 - **W dół:** 3 błędne odpowiedzi z rzędu na tym haśle → poziom niżej
@@ -168,7 +169,7 @@ się sposób nauki. Pierwszy szczebel działa (LEARNING.md → „Drabinka”). 
 |---|---|---|
 | 1 ✓ | 2 błędy od opanowania | łatwiejszy format jako ćwiczenie, potem właściwe pytanie |
 | 2 ✓ | mylona para (ten sam błędny kraj 2×) | pytanie o parę kolejno: „Słowacja” i „Słowenia”, z różnicą na mapie lub we flagach; w A–D drugi kraj pary zawsze wśród odpowiedzi |
-| 3 | 4+ błędy | karta przypomnienia przed pytaniem: kraj, sąsiedzi, ciekawostka; potem łatwiejszy krok i pytanie |
+| 3 ✗ | 4+ błędy (odrzucone) | karta przypomnienia przed pytaniem: kraj, sąsiedzi, ciekawostka — użytkownik nie chce tego szczebla |
 | 4 | opanowanie po drabince | krótsze odstępy przez pierwsze 2 powtórki (np. limit 7 dni), zanim FSRS wróci do pełnych odstępów |
 
 Rozstrzygnięte: szczebel 2 obejmuje mapę i flagi (stolice nie, bo wpisana stolica

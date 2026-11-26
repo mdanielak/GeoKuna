@@ -76,13 +76,25 @@ void main() {
         )).newRemainingToday,
         0,
       );
+      final allowed = catalog.countries.map((c) => c.id).toSet();
       while (!session.completed) {
-        expect(session.difficulty.name, 'write');
-        await eu.answerCapital(
-          session.row.id,
-          session.index,
-          session.capitalQuestion.fact.name,
-        );
+        if (session.isMapAt(session.index)) {
+          expect(session.difficultyNameAt(session.index), 'map');
+          await eu.guessMap(
+            session.row.id,
+            session.index,
+            session.targetId,
+            allowed,
+            expectedGuessIndex: 0,
+          );
+        } else {
+          expect(session.difficulty.name, 'write');
+          await eu.answerCapital(
+            session.row.id,
+            session.index,
+            session.capitalQuestion.fact.name,
+          );
+        }
         session = await eu.advance(session.row.id, session.index);
       }
       final af = SessionRepository(db, continent: Continent.africa);

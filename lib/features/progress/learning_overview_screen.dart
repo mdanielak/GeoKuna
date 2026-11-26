@@ -24,6 +24,8 @@ class KnowledgeSummary {
   int get unknown => entries
       .where((e) => e.status == LearningProgressStatus.insufficient)
       .length;
+  int get hard => entries.where((e) => e.isHard).length;
+  int get qualified => entries.where((e) => e.qualified).length;
   int get percent =>
       entries.isEmpty ? 0 : (ready * 100 / entries.length).floor();
 }
@@ -71,20 +73,8 @@ class LearningOverviewScreen extends ConsumerWidget {
           constraints: const BoxConstraints(maxWidth: 720),
           child: continent == null
               ? ListView(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
                   children: [
-                    Text(
-                      'Jak idzie nauka?',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Postęp dla aktywnego poziomu każdego obszaru (wyższy poziom zalicza też niższy). Karta jest na bieżąco po poprawnej odpowiedzi z przyszłym terminem powtórki.',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
                     for (final region in Continent.values)
                       Padding(
                         padding: const EdgeInsets.only(bottom: 12),
@@ -117,6 +107,7 @@ class LearningOverviewScreen extends ConsumerWidget {
                   .difficultyFor(region) ??
               LearningDifficulty.normal;
           final levelEntries = effectiveEntriesForLevel(entries, level);
+          final areaSummary = KnowledgeSummary(levelEntries);
           final groups = <String, List<LearningProgressEntry>>{};
           for (final entry in levelEntries) {
             groups.putIfAbsent(entry.country.id, () => []).add(entry);
@@ -124,6 +115,8 @@ class LearningOverviewScreen extends ConsumerWidget {
           final countries = groups.values.toList()
             ..sort((a, b) {
               final x = KnowledgeSummary(a), y = KnowledgeSummary(b);
+              final hard = y.hard.compareTo(x.hard);
+              if (hard != 0) return hard;
               final review = y.review.compareTo(x.review);
               if (review != 0) return review;
               final percentage = x.percent.compareTo(y.percent);
@@ -132,21 +125,41 @@ class LearningOverviewScreen extends ConsumerWidget {
                   : a.first.country.name.compareTo(b.first.country.name);
             });
           return ListView(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
             children: [
-              Text(
-                'Gdzie warto wrócić?',
-                style: Theme.of(context).textTheme.headlineSmall,
+              _RegionSummaryCard(
+                region: region,
+                level: level,
+                summary: areaSummary,
               ),
-              const SizedBox(height: 8),
-              const Text(
-                'Najpierw obszary z powtórkami, potem te z najmniejszą liczbą sprawdzonych umiejętności. Dotknij wiersza, aby zobaczyć szczegóły.',
-              ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               _medalsSection(ref, region),
               const SizedBox(height: 12),
               _StreakRewards(region: region),
               const SizedBox(height: 16),
+              Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 8,
+                runSpacing: 4,
+                children: [
+                  Text(
+                    '${region.label} (${countries.length})',
+                    style: Theme.of(context).textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                  TextButton(
+                    onPressed: () => context.push(
+                      Uri(
+                        path: '/progress',
+                        queryParameters: {'continent': region.name},
+                      ).toString(),
+                    ),
+                    child: const Text('Wszystkie umiejętności'),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
               Card.outlined(
                 margin: EdgeInsets.zero,
                 clipBehavior: Clip.antiAlias,
@@ -158,17 +171,25 @@ class LearningOverviewScreen extends ConsumerWidget {
                         builder: (context) {
                           final summary = KnowledgeSummary(country);
                           return ListTile(
-                            minTileHeight: 68,
+                            minTileHeight: 56,
                             title: Text(
-                              '${country.first.country.name} · ${summary.percent}%',
+                              country.first.country.name,
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            subtitle: Text(
-                              'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
+                            subtitle: Text(_countryStatus(summary)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '${summary.percent}%',
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                ),
+                                const SizedBox(width: 4),
+                                const Icon(Icons.chevron_right),
+                              ],
                             ),
-                            trailing: const Icon(Icons.chevron_right),
                             onTap: () {
                               context.push(
                                 Uri(
@@ -259,8 +280,81 @@ class LearningOverviewScreen extends ConsumerWidget {
       );
 }
 
-/// Look v2 region progress card with the region's miniature illustration,
-/// practice bar, medals and streak rewards.
+String _countryStatus(KnowledgeSummary summary) {
+  if (summary.hard > 0 && summary.review > 0) {
+    return 'Trudne · Do powtórki: ${summary.review}';
+  }
+  if (summary.hard > 0) {
+    return 'Trudne · Na bieżąco: ${summary.ready}/${summary.entries.length}';
+  }
+  if (summary.review > 0) return 'Do powtórki: ${summary.review}';
+  if (summary.entries.isNotEmpty && summary.ready == summary.entries.length) {
+    return 'Wszystko na bieżąco';
+  }
+  if (summary.ready > 0) {
+    return 'Na bieżąco: ${summary.ready}/${summary.entries.length}';
+  }
+  return 'Jeszcze niećwiczone';
+}
+
+class _RegionSummaryCard extends ConsumerWidget {
+  const _RegionSummaryCard({
+    required this.region,
+    required this.level,
+    required this.summary,
+  });
+
+  final Continent region;
+  final LearningDifficulty level;
+  final KnowledgeSummary summary;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final map = ref
+        .watch(continentAchievementsProvider(region))
+        .asData
+        ?.value
+        .where((a) => a.topic == 'map' && a.level == level)
+        .firstOrNull;
+    return Card.filled(
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            Chip(label: Text('Poziom: ${level.label}')),
+            if (map != null && map.totalCount > 0)
+              Chip(
+                label: Text(
+                  'Mapa: ${map.qualifiedCount}/${map.totalCount} zaliczonych',
+                ),
+              ),
+            Chip(label: Text('Na bieżąco: ${summary.percent}%')),
+            if (summary.review > 0)
+              Chip(label: Text('Do powtórki: ${summary.review}')),
+            if (summary.hard > 0)
+              ActionChip(
+                avatar: const Icon(Icons.warning_amber_rounded, size: 18),
+                label: Text('Trudne: ${summary.hard}'),
+                onPressed: () => context.push(
+                  Uri(
+                    path: '/progress',
+                    queryParameters: {'continent': region.name, 'hard': '1'},
+                  ).toString(),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Look v2 region progress card with miniature, dual progress bar (map
+/// qualified + practice on track), medals and streak summary.
 class _RegionOverviewCard extends ConsumerWidget {
   const _RegionOverviewCard({required this.region});
   final Continent region;
@@ -303,21 +397,41 @@ class _RegionOverviewCard extends ConsumerWidget {
             final summary = KnowledgeSummary(
               effectiveEntriesForLevel(entries, level),
             );
-            final streakRewardsEarned =
-                ref
-                    .watch(continentStreakProvider(region))
-                    .asData
-                    ?.value
-                    .earnedRewards
-                    .length ??
-                0;
+            final achievements = ref
+                .watch(continentAchievementsProvider(region))
+                .asData
+                ?.value;
+            final map = achievements
+                ?.where((a) => a.topic == 'map' && a.level == level)
+                .firstOrNull;
+            final earned = achievements?.fold<int>(
+              0,
+              (total, item) => total + item.earnedMedal,
+            );
+            final streak = ref
+                .watch(continentStreakProvider(region))
+                .asData
+                ?.value;
+            final streakRewardsEarned = streak?.earnedRewards.length ?? 0;
+            final practisingRatio = (summary.percent / 100).clamp(0.0, 1.0);
+            final qualifiedRatio = map != null && map.totalCount > 0
+                ? (map.qualifiedCount / map.totalCount).clamp(0.0, 1.0)
+                : 0.0;
+            final statusParts = [
+              if (map != null && map.totalCount > 0)
+                'Mapa: ${map.qualifiedCount}/${map.totalCount} zaliczonych',
+              'Na bieżąco ${summary.percent}%',
+              if (summary.review > 0) 'Do powtórki: ${summary.review}',
+              if (summary.hard > 0) 'Trudne: ${summary.hard}',
+            ];
+
             return Card.filled(
               margin: EdgeInsets.zero,
               clipBehavior: Clip.antiAlias,
               child: InkWell(
                 onTap: () => context.push('/learning/${region.name}'),
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(14),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -325,14 +439,14 @@ class _RegionOverviewCard extends ConsumerWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(14),
                           child: SizedBox(
-                            width: 60,
-                            height: 68,
+                            width: 56,
+                            height: 64,
                             child: Image(
                               image: ResizeImage(
                                 AssetImage(
                                   'assets/v2/banner_${region.artId}_1.webp',
                                 ),
-                                width: 180,
+                                width: 168,
                               ),
                               fit: BoxFit.cover,
                               alignment: const Alignment(0, -.25),
@@ -348,25 +462,70 @@ class _RegionOverviewCard extends ConsumerWidget {
                             Row(
                               children: [
                                 Expanded(
-                                  child: Text(
-                                    '${region.label} · na bieżąco ${summary.percent}%',
-                                    style: theme.textTheme.titleMedium
-                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  child: Wrap(
+                                    spacing: 8,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    children: [
+                                      Text(
+                                        region.label,
+                                        style: theme.textTheme.titleMedium
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                      ),
+                                      Text(
+                                        level.label,
+                                        style: theme.textTheme.labelSmall
+                                            ?.copyWith(
+                                              color: theme
+                                                  .colorScheme
+                                                  .onSurfaceVariant,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 const Icon(Icons.chevron_right, size: 22),
                               ],
                             ),
                             const SizedBox(height: 8),
-                            LinearProgressIndicator(
-                              value: summary.percent / 100,
-                              minHeight: 6,
+                            ClipRRect(
                               borderRadius: BorderRadius.circular(6),
+                              child: SizedBox(
+                                height: 6,
+                                child: Stack(
+                                  fit: StackFit.expand,
+                                  children: [
+                                    ColoredBox(
+                                      color: GeoTheme.border.withValues(
+                                        alpha: .55,
+                                      ),
+                                    ),
+                                    if (practisingRatio > 0)
+                                      FractionallySizedBox(
+                                        alignment: Alignment.centerLeft,
+                                        widthFactor: practisingRatio,
+                                        child: ColoredBox(
+                                          color: theme.colorScheme.primary
+                                              .withValues(alpha: .35),
+                                        ),
+                                      ),
+                                    if (qualifiedRatio > 0)
+                                      FractionallySizedBox(
+                                        alignment: Alignment.centerLeft,
+                                        widthFactor: qualifiedRatio,
+                                        child: ColoredBox(
+                                          color: theme.colorScheme.primary,
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Poziom: ${level.label} · ${summary.ready} / ${summary.entries.length} na bieżąco\n'
-                              'Do powtórki: ${summary.review} · Niesprawdzone: ${summary.unknown}',
+                              statusParts.join(' · '),
                               style: theme.textTheme.bodySmall,
                             ),
                             const SizedBox(height: 8),
@@ -375,50 +534,59 @@ class _RegionOverviewCard extends ConsumerWidget {
                               runSpacing: 4,
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.workspace_premium_outlined,
-                                      size: 16,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    ref
-                                        .watch(
-                                          continentAchievementsProvider(region),
-                                        )
-                                        .when(
-                                          loading: () => Text(
-                                            'Medale: …',
-                                            style: theme.textTheme.labelMedium,
-                                          ),
-                                          error: (_, _) => Text(
-                                            'Medale: błąd',
-                                            style: theme.textTheme.labelMedium,
-                                          ),
-                                          data: (items) => Text(
-                                            'Medale: ${items.fold<int>(0, (total, item) => total + item.earnedMedal)} z $maxMedalPoints',
-                                            style: theme.textTheme.labelMedium,
-                                          ),
+                                Semantics(
+                                  label: earned == null
+                                      ? 'Medale: ładowanie'
+                                      : 'Medale: $earned z $maxMedalPoints',
+                                  excludeSemantics: true,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.workspace_premium_outlined,
+                                        size: 16,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Flexible(
+                                        child: Text(
+                                          earned == null
+                                              ? '…'
+                                              : '$earned/$maxMedalPoints',
+                                          style: theme.textTheme.labelMedium,
                                         ),
-                                  ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.local_fire_department,
-                                      size: 16,
-                                      color: streakRewardsEarned > 0
-                                          ? colors.streak
-                                          : theme.colorScheme.onSurfaceVariant,
-                                    ),
-                                    const SizedBox(width: 3),
-                                    Text(
-                                      'Nagrody za passę: $streakRewardsEarned z ${streakRewards.length}',
-                                      style: theme.textTheme.labelMedium,
-                                    ),
-                                  ],
+                                Semantics(
+                                  label:
+                                      'Nagrody za passę: $streakRewardsEarned z ${streakRewards.length}'
+                                      '${(streak?.current ?? 0) > 0 ? ', aktualna passa ${daysLabel(streak!.current)}' : ''}',
+                                  excludeSemantics: true,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.local_fire_department,
+                                        size: 16,
+                                        color:
+                                            streakRewardsEarned > 0 ||
+                                                (streak?.current ?? 0) > 0
+                                            ? colors.streak
+                                            : theme
+                                                  .colorScheme
+                                                  .onSurfaceVariant,
+                                      ),
+                                      const SizedBox(width: 3),
+                                      Flexible(
+                                        child: Text(
+                                          '$streakRewardsEarned/${streakRewards.length}'
+                                          '${(streak?.current ?? 0) > 0 ? ' · ${daysLabel(streak!.current)}' : ''}',
+                                          style: theme.textTheme.labelMedium,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -435,7 +603,7 @@ class _RegionOverviewCard extends ConsumerWidget {
   }
 }
 
-/// Streak rewards of one continent: earned ones lit, the rest outlined.
+/// Streak rewards of one continent as a collapsible panel matching medals.
 class _StreakRewards extends ConsumerWidget {
   const _StreakRewards({required this.region});
   final Continent region;
@@ -449,22 +617,25 @@ class _StreakRewards extends ConsumerWidget {
     final colors = GeoColors.of(context);
     return Card.filled(
       margin: EdgeInsets.zero,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Nagrody za passę',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              '${earned.length} z ${streakRewards.length} · '
-              'rekord: ${daysLabel(streak?.best ?? 0)}',
-            ),
-            const SizedBox(height: 4),
-            Semantics(
+      clipBehavior: Clip.antiAlias,
+      child: ExpansionTile(
+        leading: Icon(
+          Icons.local_fire_department,
+          color: earned.isNotEmpty || (streak?.current ?? 0) > 0
+              ? colors.streak
+              : Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+        title: const Text('Passa i nagrody'),
+        subtitle: Text(
+          'Rekord: ${daysLabel(streak?.best ?? 0)} · '
+          'Nagrody: ${earned.length}/${streakRewards.length} · '
+          'Żetony: $tokens/$maxTokens',
+        ),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Semantics(
               label:
                   'Żetony Nieprzykunowanie: $tokens z $maxTokens. '
                   '${toNext == null ? 'Komplet.' : 'Następny za ${daysLabel(toNext)} passy.'}',
@@ -482,8 +653,11 @@ class _StreakRewards extends ConsumerWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
-            Wrap(
+          ),
+          const SizedBox(height: 12),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Wrap(
               spacing: 8,
               runSpacing: 8,
               children: [
@@ -510,8 +684,8 @@ class _StreakRewards extends ConsumerWidget {
                   ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

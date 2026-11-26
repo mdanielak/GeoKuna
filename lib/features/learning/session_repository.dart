@@ -5,6 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../core/database/database.dart';
+import 'achievements.dart';
 import 'capitals.dart';
 import 'flags.dart';
 import 'memory.dart';
@@ -654,6 +655,8 @@ class SessionRepository {
     for (final log in logs) {
       latest[log.skillId] = log;
     }
+    final recovering = analyzeRecovery(logs).recovering;
+    final qualified = qualifiedSkillIds(logs);
     final now = _clock().toUtc();
     return [
       for (final country in catalog.countries)
@@ -689,6 +692,8 @@ class SessionRepository {
               reviewCount: card?.reviewCount ?? 0,
               due: card?.due,
               lastReview: log?.reviewedAt,
+              qualified: qualified.contains(id),
+              recoveryProgress: recovering[id],
             );
           })(),
     ];

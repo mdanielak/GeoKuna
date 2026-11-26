@@ -48,11 +48,21 @@ void main() {
       'POL',
       'DEU',
     }, expectedGuessIndex: 0);
+    final afterMiss = await repo.learningProgress(catalog);
+    final deu = afterMiss.firstWhere((p) => p.id == 'map:DEU:map');
+    expect(deu.status, LearningProgressStatus.review);
+    expect(deu.isHard, isTrue);
+    expect(deu.recoveryProgress, 0);
+    await repo.finish(next.row.id);
+
+    // A second delayed applied hit on POL qualifies it for medals.
+    final pol2 = await repo.start(['POL']);
+    await repo.guessMap(pol2.row.id, 0, 'POL', {'POL'}, expectedGuessIndex: 0);
     expect(
       (await repo.learningProgress(catalog))
-          .firstWhere((p) => p.id == 'map:DEU:map')
-          .status,
-      LearningProgressStatus.review,
+          .firstWhere((p) => p.id == 'map:POL:map')
+          .qualified,
+      isTrue,
     );
   });
 }

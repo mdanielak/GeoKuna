@@ -77,8 +77,8 @@ class HowItWorksScreen extends StatelessWidget {
                   icon: Icons.verified_outlined,
                   title: 'Kiedy kraj jest zaliczony?',
                   paragraphs: [
-                    'W nauce — po pierwszej poprawnej odpowiedzi, gdy czekasz na kolejną powtórkę (jeśli od razu znasz odpowiedź na poziomie Normalnym, kolejna powtórka wypadnie za ok. 2 tygodnie).',
                     'Zaliczony — po 2 poprawnych pierwszych odpowiedziach w różne dni, oddalonych o co najmniej 24 godziny i bez błędu pomiędzy nimi. Ten licznik widać na ekranie Dziś i w medalach.',
+                    'W nauce — po pierwszej poprawnej odpowiedzi, gdy czekasz na kolejną powtórkę (jeśli od razu znasz odpowiedź na poziomie Normalnym, kolejna powtórka wypadnie za ok. 2 tygodnie).',
                     'Na bieżąco (w zakładce Moja nauka) — wszystkie umiejętności, na które odpowiedziano poprawnie i których termin powtórki jest w przyszłości. Gdy termin minie lub padnie błąd, trafiają do „Do powtórki”.',
                   ],
                 ),

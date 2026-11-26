@@ -62,6 +62,7 @@ GoRouter _createRouter() => GoRouter(
         return ProgressScreen(
           continent: continent,
           initialCountry: state.uri.queryParameters['country'],
+          initialHardOnly: state.uri.queryParameters['hard'] == '1',
         );
       },
     ),

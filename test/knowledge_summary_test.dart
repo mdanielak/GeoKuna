@@ -59,8 +59,10 @@ void main() {
       LearningProgressEntry skill(
         String topic,
         String difficulty,
-        LearningProgressStatus status,
-      ) => LearningProgressEntry(
+        LearningProgressStatus status, {
+        bool qualified = false,
+        int? recoveryProgress,
+      }) => LearningProgressEntry(
         id: '$topic:POL:$difficulty',
         country: pol,
         topic: topic,
@@ -69,14 +71,21 @@ void main() {
         reviewCount: status == LearningProgressStatus.insufficient ? 0 : 1,
         due: null,
         lastReview: null,
+        qualified: qualified,
+        recoveryProgress: recoveryProgress,
       );
 
       final all = [
         skill('map', 'mapVeryEasy', LearningProgressStatus.insufficient),
         skill('map', 'mapEasy', LearningProgressStatus.insufficient),
-        skill('map', 'map', LearningProgressStatus.practising),
+        skill('map', 'map', LearningProgressStatus.practising, qualified: true),
         skill('capitals', 'choice', LearningProgressStatus.insufficient),
-        skill('capitals', 'firstLetter', LearningProgressStatus.review),
+        skill(
+          'capitals',
+          'firstLetter',
+          LearningProgressStatus.review,
+          recoveryProgress: 1,
+        ),
         skill('capitals', 'write', LearningProgressStatus.insufficient),
       ];
 
@@ -86,9 +95,11 @@ void main() {
       expect(normal.entries, hasLength(2));
       expect(normal.ready, 1);
       expect(normal.unknown, 1);
+      expect(normal.qualified, 1);
+      expect(normal.hard, 0);
       expect(normal.percent, 50);
 
-      // Easy inherits practising from Normal on map, and keeps its own review on capitals.
+      // Easy inherits practising & qualified from Normal on map, and keeps its own review/hard on capitals.
       final easy = KnowledgeSummary(
         effectiveEntriesForLevel(all, LearningDifficulty.easy),
       );
@@ -96,6 +107,8 @@ void main() {
       expect(easy.ready, 1);
       expect(easy.review, 1);
       expect(easy.unknown, 0);
+      expect(easy.qualified, 1);
+      expect(easy.hard, 1);
     },
   );
 }
