@@ -72,7 +72,7 @@ final repositoryProvider = Provider<SessionRepository>(
             .asData
             ?.value
             .difficultyFor(ref.watch(selectedContinentProvider)) ??
-        LearningDifficulty.normal,
+        LearningDifficulty.auto,
   ),
 );
 final dashboardProvider = FutureProvider((ref) async {

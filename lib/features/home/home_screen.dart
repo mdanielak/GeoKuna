@@ -275,6 +275,7 @@ class _Expedition extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (expandBanner) Expanded(child: banner) else banner,
+        _MapBadge(continent: continent),
         if (placement && overview.plannedCount > 0)
           Align(
             child: TextButton(
@@ -385,22 +386,13 @@ class _Banner extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(top: 12, right: 12, child: _StreakBadge()),
           Positioned(
-            left: 14,
-            right: 14,
-            bottom: 14,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _MapBadge(continent: continent),
-                if (action != null) ...[
-                  const SizedBox(height: 10),
-                  SizedBox(width: double.infinity, child: action),
-                ],
-              ],
-            ),
+            top: 12,
+            right: 12,
+            child: _StreakBadge(continent: continent),
           ),
+          if (action != null)
+            Positioned(left: 14, right: 14, bottom: 14, child: action!),
         ],
       ),
     );
@@ -448,7 +440,9 @@ class _Pill extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Material(
     color: GeoTheme.paper.withValues(alpha: .92),
-    shape: const StadiumBorder(),
+    shape: StadiumBorder(
+      side: BorderSide(color: Colors.white.withValues(alpha: .75)),
+    ),
     clipBehavior: Clip.antiAlias,
     child: InkWell(
       onTap: onTap,
@@ -462,17 +456,20 @@ class _Pill extends StatelessWidget {
 
 /// „Passa nauki” on the banner: the flame and the day count.
 class _StreakBadge extends ConsumerWidget {
-  const _StreakBadge();
+  const _StreakBadge({required this.continent});
+  final Continent continent;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = GeoColors.of(context);
-    final text = Theme.of(context).textTheme.labelLarge
-        ?.copyWith(fontWeight: FontWeight.w800, color: GeoTheme.ink);
     final streak = ref.watch(streakProvider).asData?.value;
     final current = streak?.current ?? 0;
     final tokens = streak?.tokens ?? 0;
     final next = streak?.nextReward;
+    final text = Theme.of(context).textTheme.labelLarge?.copyWith(
+      fontWeight: current > 0 ? FontWeight.w800 : FontWeight.w700,
+      color: current > 0 ? GeoTheme.ink : GeoTheme.mutedInk,
+    );
     final state = current == 0
         ? 'Zacznij dziś i zdobądź pierwsze dni!'
         : streak!.practisedToday
@@ -486,10 +483,17 @@ class _StreakBadge extends ConsumerWidget {
           '${next == null ? '' : ' Nagroda za $next dni z rzędu: jeszcze ${daysLabel(streak!.daysToNextReward!)}.'}',
       excludeSemantics: true,
       child: _Pill(
+        onTap: () => context.push('/learning/${continent.name}'),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.local_fire_department, size: 20, color: colors.streak),
+            Icon(
+              current > 0
+                  ? Icons.local_fire_department
+                  : Icons.local_fire_department_outlined,
+              size: current > 0 ? 20 : 19,
+              color: current > 0 ? colors.streak : GeoTheme.mutedInk,
+            ),
             const SizedBox(width: 2),
             Text(daysLabel(current), style: text),
             if (tokens > 0) ...[
@@ -517,12 +521,12 @@ class _MapBadge extends ConsumerWidget {
             .asData
             ?.value
             .difficultyFor(continent) ??
-        LearningDifficulty.normal;
+        LearningDifficulty.auto;
     final map = ref
         .watch(achievementsProvider)
         .asData
         ?.value
-        .where((a) => a.topic == 'map' && a.level == level)
+        .where((a) => a.topic == 'map' && a.level == level.effectiveFixed)
         .firstOrNull;
     if (map == null || map.totalCount == 0) return const SizedBox.shrink();
     final next = [(50, 'brązowego'), (80, 'srebrnego'), (100, 'złotego')]
@@ -544,59 +548,96 @@ class _MapBadge extends ConsumerWidget {
           1.0,
         );
     final scheme = Theme.of(context).colorScheme;
-    return Semantics(
-      button: true,
-      label:
-          'Medale mapy: $label.'
-          '${map.learningCount > 0 ? ' W nauce: ${map.learningCount}.' : ''}'
-          ' ${next == null ? 'Złoty medal zdobyty.' : 'Do ${next.$2} medalu: jeszcze $missing.'}',
-      excludeSemantics: true,
-      child: _Pill(
-        onTap: () => context.push('/learning/${continent.name}'),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: Theme.of(context).textTheme.labelMedium
-                  ?.copyWith(fontWeight: FontWeight.w800, color: GeoTheme.ink),
-            ),
-            if (map.learningCount > 0)
-              Text(
-                'W nauce: ${map.learningCount}',
-                style: Theme.of(context).textTheme.labelSmall
-                    ?.copyWith(color: GeoTheme.mutedInk),
-              ),
-            const SizedBox(height: 4),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: SizedBox(
-                width: 132,
-                height: 5,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ColoredBox(color: GeoTheme.border.withValues(alpha: .7)),
-                    if (activeRatio > qualifiedRatio)
-                      FractionallySizedBox(
-                        alignment: Alignment.centerLeft,
-                        widthFactor: activeRatio,
-                        child: ColoredBox(
-                          color: scheme.primary.withValues(alpha: .35),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Semantics(
+        button: true,
+        label:
+            'Medale mapy: $label.'
+            '${map.learningCount > 0 ? ' W nauce: ${map.learningCount}.' : ''}'
+            ' ${next == null ? 'Złoty medal zdobyty.' : 'Do ${next.$2} medalu: jeszcze $missing.'}',
+        excludeSemantics: true,
+        child: Material(
+          color: GeoTheme.ivory,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+            side: const BorderSide(color: GeoTheme.border),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () => context.push('/learning/${continent.name}'),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Wrap(
+                          spacing: 8,
+                          runSpacing: 2,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                              label,
+                              style: Theme.of(context).textTheme.labelMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w800,
+                                    color: GeoTheme.ink,
+                                  ),
+                            ),
+                            if (map.learningCount > 0)
+                              Text(
+                                'W nauce: ${map.learningCount}',
+                                style: Theme.of(context).textTheme.labelSmall
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: GeoTheme.mutedInk,
+                                    ),
+                              ),
+                          ],
                         ),
                       ),
-                    if (qualifiedRatio > 0)
-                      FractionallySizedBox(
-                        alignment: Alignment.centerLeft,
-                        widthFactor: qualifiedRatio,
-                        child: ColoredBox(color: scheme.primary),
+                      const SizedBox(width: 4),
+                      const Icon(
+                        Icons.chevron_right,
+                        size: 18,
+                        color: GeoTheme.mutedInk,
                       ),
-                  ],
-                ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: SizedBox(
+                      height: 6,
+                      width: double.infinity,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          const ColoredBox(color: Color(0xFFE5DEC8)),
+                          if (activeRatio > qualifiedRatio)
+                            FractionallySizedBox(
+                              alignment: Alignment.centerLeft,
+                              widthFactor: activeRatio,
+                              child: const ColoredBox(color: Color(0xFF83BE5E)),
+                            ),
+                          if (qualifiedRatio > 0)
+                            FractionallySizedBox(
+                              alignment: Alignment.centerLeft,
+                              widthFactor: qualifiedRatio,
+                              child: ColoredBox(color: scheme.primary),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -771,7 +812,7 @@ class _LevelRow extends ConsumerWidget {
             .asData
             ?.value
             .difficultyFor(continent) ??
-        LearningDifficulty.normal;
+        LearningDifficulty.auto;
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 4),
       visualDensity: VisualDensity.compact,

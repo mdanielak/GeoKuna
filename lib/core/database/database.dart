@@ -126,6 +126,22 @@ class StreakSaves extends Table {
   Set<Column> get primaryKey => {continent, localDate};
 }
 
+/// Per-item difficulty state when an area uses the „Automatyczny” level:
+/// items start at normal, drop one step after 3 consecutive misses and climb
+/// back after 2 consecutive hits.
+class AutoLevels extends Table {
+  TextColumn get itemId => text()();
+  TextColumn get countryId => text()();
+  TextColumn get level => text()();
+  IntColumn get missStreak => integer().withDefault(const Constant(0))();
+  IntColumn get hitStreak => integer().withDefault(const Constant(0))();
+  BoolColumn get dueNow => boolean().withDefault(const Constant(false))();
+  TextColumn get lastTransition => text().nullable()();
+  DateTimeColumn get updatedAt => dateTime()();
+  @override
+  Set<Column> get primaryKey => {itemId};
+}
+
 @DriftDatabase(
   tables: [
     Sessions,
@@ -138,6 +154,7 @@ class StreakSaves extends Table {
     ActivityDays,
     AwardedMedals,
     StreakSaves,
+    AutoLevels,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -153,7 +170,7 @@ class AppDatabase extends _$AppDatabase {
         ),
       );
   @override
-  int get schemaVersion => 9;
+  int get schemaVersion => 10;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
@@ -201,6 +218,9 @@ class AppDatabase extends _$AppDatabase {
       }
       if (from < 9) {
         await m.createTable(streakSaves);
+      }
+      if (from < 10) {
+        await m.createTable(autoLevels);
       }
     },
     beforeOpen: (_) async {

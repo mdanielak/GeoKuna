@@ -186,3 +186,30 @@ Future<void> showAnswerRulesDialog(BuildContext context) => showDialog<void>(
     ],
   ),
 );
+
+/// Compact badge shown on questions temporarily served at an easier tier
+/// in Automatyczny mode. [countryName] must be omitted on flag questions.
+class AutoEasierChip extends StatelessWidget {
+  const AutoEasierChip({super.key, this.countryName});
+  final String? countryName;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final label = countryName == null ? 'Łatwiej' : 'Łatwiej: $countryName';
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      decoration: BoxDecoration(
+        color: scheme.secondaryContainer,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+          color: scheme.onSecondaryContainer,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}

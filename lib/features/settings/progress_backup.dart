@@ -51,6 +51,7 @@ class ProgressBackup {
         'activity_days': rows(await db.select(db.activityDays).get()),
         'awarded_medals': rows(await db.select(db.awardedMedals).get()),
         'streak_saves': rows(await db.select(db.streakSaves).get()),
+        'auto_levels': rows(await db.select(db.autoLevels).get()),
       },
     });
   }
@@ -98,6 +99,7 @@ class ProgressBackup {
         final days = parse('activity_days', ActivityDay.fromJson);
         final medals = parse('awarded_medals', AwardedMedal.fromJson);
         final saves = parse('streak_saves', StreakSave.fromJson, since: 9);
+        final autoLevels = parse('auto_levels', AutoLevel.fromJson, since: 10);
         await db.transaction(() async {
           // Children first: foreign keys point at sessions and cards.
           for (final table in <TableInfo<Table, Object?>>[
@@ -111,6 +113,7 @@ class ProgressBackup {
             db.activityDays,
             db.awardedMedals,
             db.streakSaves,
+            db.autoLevels,
           ]) {
             await db.delete(table).go();
           }
@@ -125,7 +128,8 @@ class ProgressBackup {
               ..insertAll(db.appPreferenceEntries, preferences)
               ..insertAll(db.activityDays, days)
               ..insertAll(db.awardedMedals, medals)
-              ..insertAll(db.streakSaves, saves);
+              ..insertAll(db.streakSaves, saves)
+              ..insertAll(db.autoLevels, autoLevels);
           });
         });
         return BackupSummary(answers: attempts.length, days: days.length);

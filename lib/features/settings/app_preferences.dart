@@ -16,12 +16,26 @@ enum MapAppearance {
 enum LearningDifficulty {
   veryEasy('Bardzo łatwy', 'Bliski kadr mapy · wybór A–D', 'choice'),
   easy('Łatwy', 'Lekkie przybliżenie mapy · pierwsza litera', 'firstLetter'),
-  normal('Normalny', 'Pełna mapa · samodzielne pisanie', 'write');
+  normal('Normalny', 'Pełna mapa · samodzielne pisanie', 'write'),
+  auto(
+    'Automatyczny',
+    'Start na normalnym · trudne hasła schodzą niżej',
+    'write',
+  );
 
   const LearningDifficulty(this.label, this.description, this.mode);
   final String label;
   final String description;
   final String mode;
+
+  /// Concrete skill tiers stored on cards and medals (excludes [auto]).
+  static const fixed = [veryEasy, easy, normal];
+
+  /// Order shown in level pickers: automatic first.
+  static const menuOrder = [auto, veryEasy, easy, normal];
+
+  bool get isAuto => this == auto;
+  LearningDifficulty get effectiveFixed => isAuto ? normal : this;
 }
 
 class AppPreferences {
@@ -32,7 +46,7 @@ class AppPreferences {
   final MapAppearance appearance;
   final Map<Continent, LearningDifficulty> difficulties;
   LearningDifficulty difficultyFor(Continent continent) =>
-      difficulties[continent] ?? LearningDifficulty.normal;
+      difficulties[continent] ?? LearningDifficulty.auto;
 }
 
 class AppPreferencesStore {
@@ -58,7 +72,7 @@ class AppPreferencesStore {
                     (v) => v.name == entries['difficulty_${continent.name}'],
                   )
                   .firstOrNull ??
-              LearningDifficulty.normal,
+              LearningDifficulty.auto,
       },
     );
   }

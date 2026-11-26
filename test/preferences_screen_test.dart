@@ -89,7 +89,7 @@ void main() {
     );
     expect(
       preferences.difficultyFor(Continent.africa),
-      LearningDifficulty.normal,
+      LearningDifficulty.auto,
     );
     expect(tester.takeException(), isNull);
   });

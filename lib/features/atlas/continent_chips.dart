@@ -80,7 +80,7 @@ class _ContinentChipsState extends ConsumerState<ContinentChips> {
       child: SingleChildScrollView(
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
-        clipBehavior: Clip.none,
+        clipBehavior: Clip.hardEdge,
         child: Row(
           children: [
             for (final option in Continent.values) ...[

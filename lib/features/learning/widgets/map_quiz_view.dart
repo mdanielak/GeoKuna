@@ -75,11 +75,24 @@ class MapQuizView extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            questionLabel,
-            style: textTheme.labelLarge?.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(
+                questionLabel,
+                style: textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+              ),
+              if (session.isAutoEasierAt(session.index))
+                AutoEasierChip(
+                  countryName: session.isFlagAt(session.index)
+                      ? null
+                      : catalog.country(session.targetId).name,
+                ),
+            ],
           ),
           const SizedBox(height: 6),
           LinearProgressIndicator(
@@ -314,20 +327,22 @@ class InsightNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final insight = session.insight;
-    if (insight == null || session.isPracticeAt(session.index)) {
-      return const SizedBox.shrink();
-    }
+    if (insight == null) return const SizedBox.shrink();
+    final practice = session.isPracticeAt(session.index);
     final lines = [
-      if (insight.recovery case final done?)
-        done >= recoveryTarget
-            ? '${catalog.continent.hardAreaMasteredLabel}: $done z $recoveryTarget trafień z rzędu.'
-            : '${catalog.continent.hardAreaLabel}: $done z $recoveryTarget trafień z rzędu.',
-      if (insight.confusedWithId case final other?)
-        'Ta para już się myliła: ${catalog.country(session.targetId).name} '
-            'i ${catalog.country(other).name}. Porównaj ich położenie.',
-      if (insight.confusedWithName case final otherName?)
-        'Ta para już się myliła: ${catalog.country(session.targetId).name} '
-            'i $otherName.',
+      ?insight.autoNotice,
+      if (!practice) ...[
+        if (insight.recovery case final done?)
+          done >= recoveryTarget
+              ? '${catalog.continent.hardAreaMasteredLabel}: $done z $recoveryTarget trafień z rzędu.'
+              : '${catalog.continent.hardAreaLabel}: $done z $recoveryTarget trafień z rzędu.',
+        if (insight.confusedWithId case final other?)
+          'Ta para już się myliła: ${catalog.country(session.targetId).name} '
+              'i ${catalog.country(other).name}. Porównaj ich położenie.',
+        if (insight.confusedWithName case final otherName?)
+          'Ta para już się myliła: ${catalog.country(session.targetId).name} '
+              'i $otherName.',
+      ],
     ];
     if (lines.isEmpty) return const SizedBox.shrink();
     return Padding(

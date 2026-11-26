@@ -56,14 +56,16 @@ nie gwarantuje 90% pamięci.
   **3 ocenione trafienia z rzędu** — rozłożone w czasie przez FSRS (seria,
   kolejna runda, kolejne dni). Kolejny błąd zeruje licznik. Trudne karty mają
   pierwszeństwo wśród zaległych; feedback pokazuje „Trudny kraj: 2 z 3”.
-- **Drabinka:** karta pomylona **2 razy** od ostatniego opanowania (3 trafienia
-  z rzędu) dostaje w serii dziennej najpierw **łatwiejszy krok** — wpisywanie i
-  pierwsza litera → wybór A–D, mapa normalna/łatwa → mapa z przybliżeniem
-  bardzo łatwego poziomu. Krok jest ćwiczeniem (`origin=scaffold`, bez oceny
-  FSRS, poza wynikiem, oznaczony „z podpowiedzią”), a właściwe pytanie wraca
-  kilka pozycji dalej i to ono jest oceniane. Najwyżej 2 kroki na serię; A–D i
-  mapa bardzo łatwa nie mają łatwiejszego formatu. Dalsze szczeble: ROADMAP.
-- **Mylona para (szczebel 2):** gdy ten sam kraj został **2 razy** podany zamiast
+- **Poziom „Automatyczny” (domyślny):** działa per hasło (`kategoria × kraj`),
+  zaczynając od poziomu normalnego. **3 błędy z rzędu** (pierwsze wskazanie
+  pytania, także w powtórce błędu w serii; bez ćwiczeń kontrastowych i kolejnych
+  prób na mapie) obniżają trudność o jeden poziom (`normalny → łatwy → bardzo
+  łatwy`) i od razu ustawiają łatwiejszą kartę do powtórki bez zużywania limitu
+  nowości. **2 trafienia z rzędu** podnoszą trudność z powrotem o jeden poziom
+  (najwyżej do normalnego). Każde pytanie ocenia swoją kartę FSRS, a na
+  ułatwionym pytaniu pojawia się etykieta „Łatwiej” (bez nazwy kraju przy fladze).
+  Zastąpił dawny łatwiejszy krok drabinki (`origin=scaffold`).
+- **Mylona para:** gdy ten sam kraj został **2 razy** podany zamiast
   celu (błędny kraj na mapie albo nazwa we fladze), zaraz po ocenianym pytaniu
   o cel pada to samo pytanie o drugi kraj pary, jako ćwiczenie „para do
   porównania” (`origin=contrast`). W A–D flag drugi kraj pary jest zawsze wśród
@@ -119,9 +121,10 @@ wybrano lub wskazano na mapie (np. „Wpisano: Makozia”).
 ## Dzisiejsza wyprawa
 
 - Na Dziś wybieramy kontynent; poziom pochodzi z ustawień kontynentu
-  (domyślnie i sugerowany: normalny). Wyprawa planuje karty tego poziomu.
-- Do 10 pytań: najpierw zaległe (trudne, potem według najniższej szansy
-  przypomnienia FSRS), potem **najwyżej 3 nowe karty na lokalny dzień, wspólnie
+  (domyślnie: Automatyczny). Wyprawa planuje aktywną kartę dla każdego hasła.
+- Do 10 pytań: najpierw zaległe (najpierw świeżo ułatwione w trybie
+  Automatycznym, potem trudne, potem według najniższej szansy przypomnienia
+  FSRS), potem **najwyżej 3 nowe karty na lokalny dzień, wspólnie
   dla wszystkich kontynentów i poziomów**, z rezerwacją rozpoczętych wypraw.
   Przy 10+ zaległościach seria ma 9 powtórek i 1 nową kartę, by nauka nie stanęła.
 - Seria nie jest dopychana: gdy niewiele jest do zrobienia, jest krótsza.
@@ -131,7 +134,7 @@ wybrano lub wskazano na mapie (np. „Wpisano: Makozia”).
   kontrola pewniaków i sposób na utrzymanie passy, gdy wszystko jest opanowane.
 - **Wstępny quiz:** główny przycisk Dziś przy pierwszej wizycie obszaru (żadna
   seria jeszcze nie ruszyła). Działa na aktywnym poziomie obszaru (domyślnie
-  normalnym): seria do 10 niewidzianych kart. Trafienia od razu dostają Easy
+  normalnym przy starcie w trybie Automatycznym): seria do 10 niewidzianych kart. Trafienia od razu dostają Easy
   i **nie zużywają limitu nowości**; zużywają go tylko błędy. Znawca może więc
   odkryć znany kontynent w jeden wieczór.
 - Kraj pojawia się w serii najwyżej raz, aby pytania nie podpowiadały odpowiedzi.

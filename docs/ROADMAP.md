@@ -127,15 +127,15 @@ zrzuty `/shots` trzech stylów; telefon: dotyk małych województw i wstawek.
 kontekstowy; nazwa w atlasie bez słowa „województwo”; wstawki w lewym dolnym rogu;
 jedna paczka ciekawostek zamiast osobnej.
 
-## Plan: poziom „Automatyczny” (projekt, do wdrożenia jako domyślny w kolejnym kroku)
+## Poziom „Automatyczny” (wdrożony jako domyślny)
 
 Cel: trudność dopasowuje się do jednego hasła, nie do całego kontynentu — kto
-myli Gwatemalę, dostaje ją łatwiej, a reszta zostaje na normalnym. Zastępuje
+myli Gwatemalę, dostaje ją łatwiej, a reszta zostaje na normalnym. Zastąpił
 pierwszy szczebel drabinki (łatwiejszy krok po 2 błędach); jeden mechanizm, nie dwa.
 
-- **Gdzie:** czwarta opcja poziomu kontynentu, domyślna, gdy użytkownik nic nie
-  wybrał (w obecnej wersji domyślnym poziomem jest nadal Normalny). Zapisane
-  wybory (bardzo łatwy/łatwy/normalny) zostają i działają jak dziś.
+- **Gdzie:** czwarta opcja poziomu kontynentu (`Automatyczny`), domyślna, gdy
+  użytkownik nic nie wybrał. Zapisane wybory (bardzo łatwy/łatwy/normalny)
+  zostają i działają bez zmian.
 - **Hasło** = kraj × kategoria (mapa, stolica, flaga → nazwa, flaga → mapa).
   Start: normalny.
 - **W dół:** 3 błędne odpowiedzi z rzędu na tym haśle → poziom niżej

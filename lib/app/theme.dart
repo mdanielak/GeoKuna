@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../features/atlas/continent.dart';
@@ -8,6 +9,15 @@ import '../features/atlas/continent.dart';
 /// (answer states, trivia, streak). Map palettes live in
 /// `map_style.dart`, because each map style has its own cartographic colours.
 abstract final class GeoTheme {
+  static const systemOverlayStyle = SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.light,
+    systemNavigationBarColor: paper,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    systemNavigationBarContrastEnforced: false,
+  );
+
   static const seed = Color(0xFF0B6B3A);
   static const paper = Color(0xFFFFF9E9);
   static const ivory = Color(0xFFFFFDF6);
@@ -55,6 +65,7 @@ abstract final class GeoTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: paper,
         surfaceTintColor: Colors.transparent,
+        systemOverlayStyle: systemOverlayStyle,
         centerTitle: false,
         iconTheme: const IconThemeData(color: ink),
         titleTextStyle: base.textTheme.titleLarge?.copyWith(
@@ -163,6 +174,7 @@ AppBar regionAppBar(
   List<Widget> actions = const [],
 }) => AppBar(
   toolbarHeight: 52,
+  systemOverlayStyle: GeoTheme.systemOverlayStyle,
   flexibleSpace: ExcludeSemantics(
     child: Stack(
       fit: StackFit.expand,
@@ -176,10 +188,24 @@ AppBar regionAppBar(
         DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              stops: const [.4, .85],
+              stops: const [0, .58, .92],
               colors: [
-                GeoTheme.paper.withValues(alpha: .85),
-                GeoTheme.paper.withValues(alpha: 0),
+                GeoTheme.paper.withValues(alpha: .96),
+                GeoTheme.paper.withValues(alpha: .88),
+                GeoTheme.paper.withValues(alpha: .15),
+              ],
+            ),
+          ),
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: const [0, .42],
+              colors: [
+                GeoTheme.paper.withValues(alpha: .7),
+                Colors.transparent,
               ],
             ),
           ),

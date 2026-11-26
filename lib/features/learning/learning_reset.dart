@@ -19,6 +19,7 @@ class LearningReset {
     await db.delete(db.sessions).go();
     await db.delete(db.memoryCards).go();
     await db.delete(db.memoryMeta).go();
+    await db.delete(db.autoLevels).go();
   });
 
   Future<void> continent(
@@ -55,6 +56,9 @@ class LearningReset {
     )..where((a) => a.sessionId.isIn(sessionIds))).go();
     await (db.delete(db.sessions)..where((s) => s.id.isIn(sessionIds))).go();
     await (db.delete(db.memoryCards)..where((c) => c.id.isIn(cardIds))).go();
+    await (db.delete(
+      db.autoLevels,
+    )..where((a) => a.countryId.isIn(countryIds))).go();
     // Other regions may retain historic attempts of shared countries.
     // They must not silently restore the reset memory on next startup.
     await db

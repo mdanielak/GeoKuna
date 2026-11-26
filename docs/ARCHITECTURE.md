@@ -11,7 +11,7 @@ z lokalną geometrią GeoJSON — bez kafelków i bez backendu.
 | `app/` | motyw, tokeny i wspólny nagłówek regionalny (`theme.dart`: `GeoTheme`, `GeoColors`, `regionAppBar`), routing (`app.dart`), providery (`providers.dart`) |
 | `core/database/` | schemat Drift, migracje; `database.g.dart` jest w repo |
 | `features/atlas/` | katalogi (`Catalog` i lekkie `CatalogMeta` bez GeoJSON) oraz parser GeoJSON (`catalog.dart`), `Continent`, `ContinentChips`, `CountryMap`, granice regionów (`region_bounds.dart`), style map, `QuizMapFrame` (kadr łatwych poziomów) |
-| `features/learning/` | sesje i zapis (`session_repository.dart`), model sesji z cache'owanym `questionData` (`learning_session.dart`), typy domenowe (`learning_types.dart`), plan Dziś z drabinką i parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu i wydzielone widoki (`widgets/`) |
+| `features/learning/` | sesje i zapis (`session_repository.dart`), model sesji z cache'owanym `questionData` (`learning_session.dart`), typy domenowe (`learning_types.dart`), poziom automatyczny per hasło (`auto_level.dart`), plan Dziś z parami (`daily_planner.dart`), logika ekranu quizu (`quiz_controller.dart`), adapter FSRS (`memory.dart`), stolice, flagi, ocena tekstu, medale (`achievements.dart`), passa i nagrody za passę (`streaks.dart`), reset, reakcje kuny, ciekawostki, ekran quizu i wydzielone widoki (`widgets/`) |
 | `features/home/` | Dziś, atlas (z przełącznikiem obszarów i wizytówką kraju) i ekran „Jak działa GeoKuna?” (`how_it_works_screen.dart`) |
 | `features/progress/` | Moja nauka (kontynent → kraje dla aktywnego poziomu z dziedziczeniem) i szczegóły umiejętności (`/progress?continent=...&country=...`) |
 | `features/settings/` | preferencje (`app_preferences.dart`), arkusz wyboru poziomu (`difficulty_sheet.dart`), kopia postępu (`progress_backup.dart`), ekran ustawień z resetem |
@@ -55,7 +55,7 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 - Relief to lokalne kafelki XYZ (`TileLayer` + `AssetTileProvider`, z2–6; Polska do z8, USA do z7; `reliefTileTemplate`) pod interaktywnymi poligonami; poza oknem kontynentu maska morza.
 - Papierowy atlas: `coastRings` (linie wody), `MapGraticule`, `PaperAtlasFrame`, `CompassRose` (lewy górny róg) — wszystko w `map_style.dart`, bez gestów.
 
-## Schemat SQLite (wersja 9)
+## Schemat SQLite (wersja 10)
 
 | Tabela | Klucz | Zawartość |
 |---|---|---|
@@ -63,9 +63,10 @@ i zakres repozytorium; ID krajów i kart są kanoniczne (bez prefiksu kontynentu
 | `attempts` | `(session_id, question_index)` | `country_id`, `answer`, `correct`, `typo_accepted`, `topic`, `difficulty`, `answered_at` |
 | `map_guesses` | `(session_id, question_index, guess_index)` | do 3 wyborów: `selected_country_id`, `correct`, `assisted`, `guessed_at` |
 | `memory_cards` | `id` = `topic:country:difficulty` | `state` (JSON FSRS lub null), `due` (UTC), `introduced_at`, `review_count` |
-| `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/`retry`/`scaffold`/`control`/`placement`/historyczne `assisted`, `recognition`), `review_log` |
+| `memory_reviews` | `(session_id, question_index)` | `skill_id`, `rating`, `reviewed_at`, `was_new`, `applied`, `origin` (`daily`/`manual`/`retry`/`autoDemoted`/`control`/`placement`/historyczne `scaffold`, `assisted`, `recognition`), `review_log` |
+| `auto_levels` | `item_id` (`kategoria:country`) | `country_id`, `level`, `miss_streak`, `hit_streak`, `due_now`, `last_transition`, `updated_at` |
 | `memory_meta` | `key` | m.in. znacznik jednorazowego importu historii |
-| `app_preference_entries` | `key` | `map_appearance`, `difficulty_<kontynent>`; nieznane wartości → relief/normal |
+| `app_preference_entries` | `key` | `map_appearance`, `difficulty_<kontynent>`; nieznane wartości → relief/auto |
 | `activity_days` | `(continent, local_date)` | `recorded_at` (UTC), `offset_minutes` |
 | `awarded_medals` | `(continent, topic, level, medal)` | `earned_at`, `catalog_version`; medal 1/2/3 = 50/80/100% |
 | `streak_saves` | `(continent, local_date)` | `kept` (żeton użyty / odmowa), `decided_at`; saldo żetonów liczone z dni nauki |

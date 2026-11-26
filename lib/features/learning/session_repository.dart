@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/database/database.dart';
 import 'achievements.dart';
+import 'auto_level.dart';
 import 'capitals.dart';
 import 'flags.dart';
 import 'memory.dart';
@@ -27,7 +28,6 @@ export 'daily_planner.dart'
         maxRetriesPerSeries,
         retryGapMin,
         retryGapMax,
-        maxScaffoldsPerSeries,
         confusionThreshold,
         maxContrastsPerSeries,
         extraNewPerRound,
@@ -124,13 +124,49 @@ class SessionRepository {
         confusedName = attempt.answer;
       }
     }
-    if (recovery == null && confused == null && confusedName == null) {
+    String? autoNotice;
+    if ((level.isAuto || session.isAutoAt(index)) &&
+        _origin(session, index) != ReviewOrigin.contrast.name &&
+        !(session.isMapAt(index) && session.assistedIndices.contains(index))) {
+      final answerTime =
+          (session.isMapAt(index) && session.currentMapGuesses.isNotEmpty
+                  ? session.currentMapGuesses.first.guessedAt
+                  : attempt.answeredAt)
+              .toUtc();
+      final itemId = autoItemId(
+        session.topicAt(index),
+        session.targetId,
+        session.difficultyNameAt(index),
+      );
+      final autoRow = await AutoLevelStore(db).find(itemId);
+      if (autoRow != null &&
+          autoRow.updatedAt.toUtc().isAtSameMomentAs(answerTime)) {
+        final rowLevel = AutoLevelStore.parseLevel(autoRow.level);
+        if (autoRow.lastTransition == AutoLevelEvent.demoted.name) {
+          autoNotice = 'Następnym razem łatwiej.';
+        } else if (autoRow.lastTransition == AutoLevelEvent.promoted.name) {
+          autoNotice = 'Wracasz do poziomu ${rowLevel.label}.';
+        } else if (autoRow.hitStreak == 1 &&
+            rowLevel != LearningDifficulty.normal) {
+          final nextLevel = rowLevel == LearningDifficulty.veryEasy
+              ? LearningDifficulty.easy
+              : LearningDifficulty.normal;
+          autoNotice =
+              'Jeszcze 1 trafienie — wrócisz do poziomu ${nextLevel.label}.';
+        }
+      }
+    }
+    if (recovery == null &&
+        confused == null &&
+        confusedName == null &&
+        autoNotice == null) {
       return null;
     }
     return QuestionInsight(
       recovery: recovery,
       confusedWithId: confused,
       confusedWithName: confusedName,
+      autoNotice: autoNotice,
     );
   }
 
@@ -471,6 +507,8 @@ class SessionRepository {
         ? (input.trim(), AnswerEvaluation(input.trim() == canonicalAnswer))
         : (input.trim(), evaluate(input.trim()));
     await _memory.importHistoryOnce();
+    final activityTime = _clock();
+    final answeredAt = activityTime.toUtc();
     await db
         .into(db.attempts)
         .insert(
@@ -481,17 +519,27 @@ class SessionRepository {
             answer: answer,
             correct: evaluation.correct,
             typoAccepted: Value(evaluation.typoAccepted),
-            answeredAt: _clock().toUtc(),
+            answeredAt: answeredAt,
             topic: Value(topic.name),
             difficulty: Value(difficultyName),
           ),
         );
     final answered = await byId(id);
     await _memory.record(
-      activityTime: _clock(),
+      activityTime: activityTime,
       answered.currentAttempt!,
       origin: _origin(session, index),
     );
+    if ((level.isAuto || session.isAutoAt(index)) &&
+        _origin(session, index) != ReviewOrigin.contrast.name) {
+      await AutoLevelStore(db).recordAnswer(
+        topic: topic.name,
+        countryId: session.targetId,
+        difficulty: difficultyName,
+        correct: evaluation.correct,
+        now: answeredAt,
+      );
+    }
     if (!evaluation.correct) await _queueRetry(session, index);
     return byId(id);
   });
@@ -519,7 +567,8 @@ class SessionRepository {
     if (!allowed.contains(selected)) throw ArgumentError('Nieznane państwo');
     if (guesses.any((g) => g.selectedCountryId == selected)) return session;
     await _memory.importHistoryOnce();
-    final now = _clock().toUtc();
+    final activityTime = _clock();
+    final now = activityTime.toUtc();
     final withHelp = assisted || guesses.any((g) => g.assisted);
     final correct = selected == session.targetId;
     await db
@@ -537,7 +586,7 @@ class SessionRepository {
         );
     if (guesses.isEmpty) {
       await _memory.record(
-        activityTime: _clock(),
+        activityTime: activityTime,
         Attempt(
           sessionId: id,
           questionIndex: index,
@@ -551,6 +600,17 @@ class SessionRepository {
         ),
         origin: _origin(session, index, assisted: withHelp),
       );
+      if (!withHelp &&
+          (level.isAuto || session.isAutoAt(index)) &&
+          _origin(session, index) != ReviewOrigin.contrast.name) {
+        await AutoLevelStore(db).recordAnswer(
+          topic: session.topicAt(index),
+          countryId: session.targetId,
+          difficulty: session.difficultyNameAt(index),
+          correct: correct,
+          now: now,
+        );
+      }
       if (!correct && !withHelp) await _queueRetry(session, index);
     }
     if (correct || guesses.length == 2) {
@@ -756,11 +816,12 @@ class SessionRepository {
             'difficulty': c.difficulty,
             'skill_id': c.id,
             'country_id': c.countryId,
+            if (level.isAuto) 'auto': true,
+            if (plan.easierCardIds.contains(c.id)) 'auto_easier': true,
             if (plan.origins[c.id] != null) 'origin': plan.origins[c.id],
           },
         )
         .toList();
-    addScaffolds(questions, plan.struggling);
     addContrasts(questions, await _planner.confusions(catalog, flags), flags);
     final id = const Uuid().v4();
     await db

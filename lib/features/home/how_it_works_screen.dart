@@ -87,7 +87,7 @@ class HowItWorksScreen extends StatelessWidget {
                   title: 'Błędy, trudne kraje i podpowiedzi',
                   paragraphs: [
                     'Błędne pytanie w Dzisiejszej wyprawie wraca po 3–5 innych pytaniach jako nieoceniana „powtórka błędu”.',
-                    'Trudny kraj potrzebuje 3 ocenionych trafień z rzędu rozłożonych w czasie. Jeśli pomylisz go 2 razy, dostaniesz najpierw łatwiejszy krok „z podpowiedzią”, a przy często mylonych parach — oba miejsca do porównania jedno po drugim.',
+                    'Trudny kraj potrzebuje 3 ocenionych trafień z rzędu rozłożonych w czasie. Na poziomie Automatycznym 3 błędy z rzędu w jednym haśle schodzą o poziom niżej, a 2 trafienia z rzędu pozwalają wrócić wyżej. Przy często mylonych parach oba miejsca pojawiają się jedno po drugim do porównania.',
                     'Na mapie masz do 3 prób (oceniane jest pierwsze wskazanie). Przy wpisywaniu akceptujemy jedną literówkę bez polskich znaków, a przycisk „Nie wiem, pomóż” pokazuje ćwiczenie A–D.',
                   ],
                 ),
@@ -95,7 +95,7 @@ class HowItWorksScreen extends StatelessWidget {
                   icon: Icons.workspace_premium_outlined,
                   title: 'Poziomy trudności i medale',
                   paragraphs: [
-                    'Każdy obszar ma osobny poziom: Bardzo łatwy (wybór A–D i bliski kadr), Łatwy (pierwsza litera i lekkie przybliżenie) oraz Normalny (samodzielne pisanie i pełna mapa).',
+                    'Każdy obszar ma osobny poziom: domyślny Automatyczny (start od Normalnego i zejście niżej tylko przy trudnych hasłach), Bardzo łatwy (wybór A–D i bliski kadr), Łatwy (pierwsza litera i lekkie przybliżenie) oraz Normalny (samodzielne pisanie i pełna mapa).',
                     'Poziomy mają osobne powtórki — rozpoznawanie A–D nie zalicza samodzielnego pisania. Wyższy poziom zalicza jednak niższy na pasku postępu i w medalach.',
                     'Brązowy, srebrny i złoty medal zdobywasz po zaliczeniu 50%, 80% i 100% katalogu obszaru w danej kategorii. Zdobyte medale zostają na stałe.',
                   ],

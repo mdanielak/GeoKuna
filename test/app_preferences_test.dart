@@ -8,7 +8,7 @@ import 'package:geokuna/features/learning/learning_reset.dart';
 import 'package:geokuna/features/settings/app_preferences.dart';
 
 void main() {
-  test('preferences default to relief and normal, persist independently and survive learning reset', () async {
+  test('preferences default to relief and auto, persist independently and survive learning reset', () async {
     final dir = await Directory.systemTemp.createTemp('geokuna_preferences_');
     addTearDown(() => dir.delete(recursive: true));
     final file = File('${dir.path}/db.sqlite');
@@ -17,7 +17,7 @@ void main() {
     final defaults = await store.load();
     expect(defaults.appearance, MapAppearance.relief);
     for (final continent in Continent.values) {
-      expect(defaults.difficultyFor(continent), LearningDifficulty.normal);
+      expect(defaults.difficultyFor(continent), LearningDifficulty.auto);
     }
     await store.setAppearance(MapAppearance.paper);
     await store.setDifficulty(Continent.europe, LearningDifficulty.veryEasy);
@@ -33,7 +33,7 @@ void main() {
         LearningDifficulty.veryEasy,
       );
       expect(restored.difficultyFor(Continent.africa), LearningDifficulty.easy);
-      expect(restored.difficultyFor(Continent.asia), LearningDifficulty.normal);
+      expect(restored.difficultyFor(Continent.asia), LearningDifficulty.auto);
       await LearningReset(db).all();
       await db
           .into(db.appPreferenceEntries)

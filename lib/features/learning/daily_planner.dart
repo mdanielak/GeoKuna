@@ -8,6 +8,7 @@ import '../atlas/catalog.dart';
 import '../atlas/continent.dart';
 import '../settings/app_preferences.dart';
 import 'achievements.dart';
+import 'auto_level.dart';
 import 'capitals.dart';
 import 'flags.dart';
 import 'learning_types.dart';
@@ -21,9 +22,6 @@ const maxRetriesPerSeries = 3;
 
 /// A repeat comes after this many other questions (3–5), never right away.
 const retryGapMin = 3, retryGapMax = 5;
-
-/// At most this many ladder steps per series, so it stays a review.
-const maxScaffoldsPerSeries = 2;
 
 /// A pair counts as confused after this many misses naming the same partner.
 const confusionThreshold = 2;
@@ -161,7 +159,9 @@ class DailyPlanner {
         index++
       ) {
         if (answeredElsewhere.contains('${session.id}:$index')) continue;
-        final skill = (questions[index] as Map<String, dynamic>)['skill_id'];
+        final question = questions[index] as Map<String, dynamic>;
+        if (question['origin'] == ReviewOrigin.autoDemoted.name) continue;
+        final skill = question['skill_id'];
         if (skill is String && freshIds.contains(skill)) reserved.add(skill);
       }
     }
@@ -192,9 +192,22 @@ class DailyPlanner {
             ))
             .get();
     final qualified = qualifiedSkillIds(appliedReviews);
-    final recovery = analyzeRecovery(appliedReviews);
-    final recovering = recovery.recovering;
-    final misses = recovery.missesSinceRecovery;
+    final recovering = analyzeRecovery(appliedReviews).recovering;
+    final autoLevels = level.isAuto
+        ? await AutoLevelStore(db).loadForCountries(known)
+        : const <String, AutoLevel>{};
+    LearningDifficulty activeLevelFor(MemoryCard card) {
+      if (!level.isAuto) return level;
+      final row =
+          autoLevels[autoItemId(card.topic, card.countryId, card.difficulty)];
+      return row == null
+          ? LearningDifficulty.normal
+          : AutoLevelStore.parseLevel(row.level);
+    }
+
+    bool isCardActive(MemoryCard card) =>
+        levelForDifficulty(card.difficulty) == activeLevelFor(card);
+
     final lastReviewed = <String, DateTime>{};
     for (final review in appliedReviews) {
       final last = lastReviewed[review.skillId];
@@ -202,9 +215,27 @@ class DailyPlanner {
         lastReviewed[review.skillId] = review.reviewedAt;
       }
     }
+    final cards = allCards
+        .where(
+          (c) =>
+              known.contains(c.countryId) &&
+              (c.topic != 'flags' || flags != null) &&
+              isCardActive(c),
+        )
+        .toList();
+    final demotedDueIds = {
+      for (final c in cards)
+        if (level.isAuto &&
+            (autoLevels[autoItemId(c.topic, c.countryId, c.difficulty)]
+                    ?.dueNow ??
+                false))
+          c.id,
+    };
     final scheduler = MemoryScheduler();
-    // Hard skills first, then the ones most likely to be forgotten.
-    double priority(MemoryCard card) => recovering.containsKey(card.id)
+    // Demoted cards first, then recovering hard skills, then weakest memory.
+    double priority(MemoryCard card) => demotedDueIds.contains(card.id)
+        ? -2
+        : recovering.containsKey(card.id)
         ? -1
         : scheduler.retrievability(card.state, now);
     bool coveredByStronger(MemoryCard card) {
@@ -212,8 +243,9 @@ class DailyPlanner {
           card.topic == 'flags' && mapDifficulties.contains(card.difficulty)
           ? 'flagMap'
           : card.topic;
-      return LearningDifficulty.values
-          .where((candidate) => candidate.index > level.index)
+      final cardLevel = levelForDifficulty(card.difficulty);
+      return LearningDifficulty.fixed
+          .where((candidate) => candidate.index > cardLevel.index)
           .any(
             (candidate) => qualified.contains(
               '${card.topic}:${card.countryId}:${difficultyForCategory(category, candidate)}',
@@ -221,27 +253,21 @@ class DailyPlanner {
           );
     }
 
-    final cards = allCards
-        .where(
-          (c) =>
-              known.contains(c.countryId) &&
-              (c.topic != 'flags' || flags != null) &&
-              levelForDifficulty(c.difficulty) == level,
-        )
-        .toList();
+    final epochUtc = DateTime.fromMillisecondsSinceEpoch(0, isUtc: true);
     final due =
         cards
             .where(
               (c) =>
-                  c.state != null &&
-                  c.due != null &&
-                  !c.due!.isAfter(now.toUtc()),
+                  demotedDueIds.contains(c.id) ||
+                  (c.state != null &&
+                      c.due != null &&
+                      !c.due!.isAfter(now.toUtc())),
             )
             .toList()
           ..sort((a, b) {
             final risk = priority(a).compareTo(priority(b));
             if (risk != 0) return risk;
-            final date = a.due!.compareTo(b.due!);
+            final date = (a.due ?? epochUtc).compareTo(b.due ?? epochUtc);
             return date == 0 ? a.id.compareTo(b.id) : date;
           });
     final fresh =
@@ -249,6 +275,7 @@ class DailyPlanner {
             .where(
               (c) =>
                   c.state == null &&
+                  !demotedDueIds.contains(c.id) &&
                   !reserved.contains(c.id) &&
                   !coveredByStronger(c),
             )
@@ -266,7 +293,11 @@ class DailyPlanner {
         if (countries.add(card.countryId)) {
           selected.add(card);
           added++;
-          if (origin != null) origins[card.id] = origin;
+          if (origin != null) {
+            origins[card.id] = origin;
+          } else if (demotedDueIds.contains(card.id)) {
+            origins[card.id] = ReviewOrigin.autoDemoted.name;
+          }
         }
       }
     }
@@ -311,12 +342,9 @@ class DailyPlanner {
             .map((c) => c.due!)
             .toList()
           ..sort();
-    // Stubborn due skills get an easier step first (see startDaily).
-    final struggling = {
+    final easierCardIds = {
       for (final card in selected)
-        if (card.state != null &&
-            (misses[card.id] ?? 0) >= scaffoldAfterMisses &&
-            scaffoldDifficulty(card.topic, card.difficulty) != null)
+        if (level.isAuto && activeLevelFor(card) != LearningDifficulty.normal)
           card.id,
     };
     return DailyPlan(
@@ -332,14 +360,14 @@ class DailyPlanner {
           .where(
             (c) =>
                 known.contains(c.countryId) &&
-                levelForDifficulty(c.difficulty) != level &&
+                !isCardActive(c) &&
                 c.state != null &&
                 c.due != null &&
                 !c.due!.isAfter(now.toUtc()),
           )
           .length,
       cards.where((c) => c.state != null).length,
-      struggling,
+      easierCardIds,
     );
   }
 
@@ -440,35 +468,7 @@ class DailyPlanner {
   }
 }
 
-/// Ladder: a stubborn skill is first asked in an easier format (A–D or a
-/// zoomed map) as unscored practice; its real question moves a few places
-/// later, so recall follows the reminder without being a copy of it.
-void addScaffolds(
-  List<Map<String, dynamic>> questions,
-  Set<String> struggling,
-) {
-  var added = 0;
-  for (final skill in struggling) {
-    if (added == maxScaffoldsPerSeries) break;
-    final at = questions.indexWhere((q) => q['skill_id'] == skill);
-    final others = questions.length - at - 1;
-    if (at < 0 || others < 2) continue;
-    final original = questions.removeAt(at);
-    final topic = original['topic'] as String;
-    final easier = scaffoldDifficulty(topic, original['difficulty'] as String)!;
-    questions.insert(at, {
-      ...original,
-      'difficulty': easier,
-      'skill_id': '$topic:${original['country_id']}:$easier',
-      'origin': 'scaffold',
-    });
-    final gap = others < retryGapMin ? others : retryGapMin;
-    questions.insert(at + 1 + gap, original);
-    added++;
-  }
-}
-
-/// Ladder step 2: right after a graded question about a confused country,
+/// Contrast step: right after a graded question about a confused country,
 /// its usual partner follows in the same format as practice, so the two
 /// are compared side by side. In A–D the partner is always an option.
 void addContrasts(
@@ -503,7 +503,6 @@ void addContrasts(
       final slot = options.indexWhere((o) => o != answer);
       if (slot >= 0) options[slot] = partnerName;
     }
-    if (question['origin'] == ReviewOrigin.scaffold.name) continue;
     final difficulty = question['difficulty'] as String;
     final Map<String, dynamic> contrastData;
     if (topic == 'flags') {
@@ -548,12 +547,12 @@ class DailyPlan {
     this.reservedNewElsewhere,
     this.otherDueCount,
     this.learnedCount,
-    this.struggling,
+    this.easierCardIds,
   );
   final List<MemoryCard> cards;
 
-  /// Selected skills missed [scaffoldAfterMisses]+ times since recovery.
-  final Set<String> struggling;
+  /// Selected cards temporarily served below Normalny in Automatyczny mode.
+  final Set<String> easierCardIds;
   final Map<String, String> origins;
   final int dueCount,
       newAvailable,

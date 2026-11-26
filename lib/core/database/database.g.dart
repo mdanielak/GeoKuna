@@ -4261,6 +4261,524 @@ class StreakSavesCompanion extends UpdateCompanion<StreakSave> {
   }
 }
 
+class $AutoLevelsTable extends AutoLevels
+    with TableInfo<$AutoLevelsTable, AutoLevel> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AutoLevelsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _itemIdMeta = const VerificationMeta('itemId');
+  @override
+  late final GeneratedColumn<String> itemId = GeneratedColumn<String>(
+    'item_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _countryIdMeta = const VerificationMeta(
+    'countryId',
+  );
+  @override
+  late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
+    'country_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _levelMeta = const VerificationMeta('level');
+  @override
+  late final GeneratedColumn<String> level = GeneratedColumn<String>(
+    'level',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _missStreakMeta = const VerificationMeta(
+    'missStreak',
+  );
+  @override
+  late final GeneratedColumn<int> missStreak = GeneratedColumn<int>(
+    'miss_streak',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _hitStreakMeta = const VerificationMeta(
+    'hitStreak',
+  );
+  @override
+  late final GeneratedColumn<int> hitStreak = GeneratedColumn<int>(
+    'hit_streak',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dueNowMeta = const VerificationMeta('dueNow');
+  @override
+  late final GeneratedColumn<bool> dueNow = GeneratedColumn<bool>(
+    'due_now',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("due_now" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _lastTransitionMeta = const VerificationMeta(
+    'lastTransition',
+  );
+  @override
+  late final GeneratedColumn<String> lastTransition = GeneratedColumn<String>(
+    'last_transition',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    itemId,
+    countryId,
+    level,
+    missStreak,
+    hitStreak,
+    dueNow,
+    lastTransition,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'auto_levels';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AutoLevel> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('item_id')) {
+      context.handle(
+        _itemIdMeta,
+        itemId.isAcceptableOrUnknown(data['item_id']!, _itemIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_itemIdMeta);
+    }
+    if (data.containsKey('country_id')) {
+      context.handle(
+        _countryIdMeta,
+        countryId.isAcceptableOrUnknown(data['country_id']!, _countryIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_countryIdMeta);
+    }
+    if (data.containsKey('level')) {
+      context.handle(
+        _levelMeta,
+        level.isAcceptableOrUnknown(data['level']!, _levelMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_levelMeta);
+    }
+    if (data.containsKey('miss_streak')) {
+      context.handle(
+        _missStreakMeta,
+        missStreak.isAcceptableOrUnknown(data['miss_streak']!, _missStreakMeta),
+      );
+    }
+    if (data.containsKey('hit_streak')) {
+      context.handle(
+        _hitStreakMeta,
+        hitStreak.isAcceptableOrUnknown(data['hit_streak']!, _hitStreakMeta),
+      );
+    }
+    if (data.containsKey('due_now')) {
+      context.handle(
+        _dueNowMeta,
+        dueNow.isAcceptableOrUnknown(data['due_now']!, _dueNowMeta),
+      );
+    }
+    if (data.containsKey('last_transition')) {
+      context.handle(
+        _lastTransitionMeta,
+        lastTransition.isAcceptableOrUnknown(
+          data['last_transition']!,
+          _lastTransitionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {itemId};
+  @override
+  AutoLevel map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AutoLevel(
+      itemId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}item_id'],
+      )!,
+      countryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}country_id'],
+      )!,
+      level: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}level'],
+      )!,
+      missStreak: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}miss_streak'],
+      )!,
+      hitStreak: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}hit_streak'],
+      )!,
+      dueNow: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}due_now'],
+      )!,
+      lastTransition: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_transition'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $AutoLevelsTable createAlias(String alias) {
+    return $AutoLevelsTable(attachedDatabase, alias);
+  }
+}
+
+class AutoLevel extends DataClass implements Insertable<AutoLevel> {
+  final String itemId;
+  final String countryId;
+  final String level;
+  final int missStreak;
+  final int hitStreak;
+  final bool dueNow;
+  final String? lastTransition;
+  final DateTime updatedAt;
+  const AutoLevel({
+    required this.itemId,
+    required this.countryId,
+    required this.level,
+    required this.missStreak,
+    required this.hitStreak,
+    required this.dueNow,
+    this.lastTransition,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['item_id'] = Variable<String>(itemId);
+    map['country_id'] = Variable<String>(countryId);
+    map['level'] = Variable<String>(level);
+    map['miss_streak'] = Variable<int>(missStreak);
+    map['hit_streak'] = Variable<int>(hitStreak);
+    map['due_now'] = Variable<bool>(dueNow);
+    if (!nullToAbsent || lastTransition != null) {
+      map['last_transition'] = Variable<String>(lastTransition);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  AutoLevelsCompanion toCompanion(bool nullToAbsent) {
+    return AutoLevelsCompanion(
+      itemId: Value(itemId),
+      countryId: Value(countryId),
+      level: Value(level),
+      missStreak: Value(missStreak),
+      hitStreak: Value(hitStreak),
+      dueNow: Value(dueNow),
+      lastTransition: lastTransition == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastTransition),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory AutoLevel.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AutoLevel(
+      itemId: serializer.fromJson<String>(json['itemId']),
+      countryId: serializer.fromJson<String>(json['countryId']),
+      level: serializer.fromJson<String>(json['level']),
+      missStreak: serializer.fromJson<int>(json['missStreak']),
+      hitStreak: serializer.fromJson<int>(json['hitStreak']),
+      dueNow: serializer.fromJson<bool>(json['dueNow']),
+      lastTransition: serializer.fromJson<String?>(json['lastTransition']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'itemId': serializer.toJson<String>(itemId),
+      'countryId': serializer.toJson<String>(countryId),
+      'level': serializer.toJson<String>(level),
+      'missStreak': serializer.toJson<int>(missStreak),
+      'hitStreak': serializer.toJson<int>(hitStreak),
+      'dueNow': serializer.toJson<bool>(dueNow),
+      'lastTransition': serializer.toJson<String?>(lastTransition),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  AutoLevel copyWith({
+    String? itemId,
+    String? countryId,
+    String? level,
+    int? missStreak,
+    int? hitStreak,
+    bool? dueNow,
+    Value<String?> lastTransition = const Value.absent(),
+    DateTime? updatedAt,
+  }) => AutoLevel(
+    itemId: itemId ?? this.itemId,
+    countryId: countryId ?? this.countryId,
+    level: level ?? this.level,
+    missStreak: missStreak ?? this.missStreak,
+    hitStreak: hitStreak ?? this.hitStreak,
+    dueNow: dueNow ?? this.dueNow,
+    lastTransition: lastTransition.present
+        ? lastTransition.value
+        : this.lastTransition,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  AutoLevel copyWithCompanion(AutoLevelsCompanion data) {
+    return AutoLevel(
+      itemId: data.itemId.present ? data.itemId.value : this.itemId,
+      countryId: data.countryId.present ? data.countryId.value : this.countryId,
+      level: data.level.present ? data.level.value : this.level,
+      missStreak: data.missStreak.present
+          ? data.missStreak.value
+          : this.missStreak,
+      hitStreak: data.hitStreak.present ? data.hitStreak.value : this.hitStreak,
+      dueNow: data.dueNow.present ? data.dueNow.value : this.dueNow,
+      lastTransition: data.lastTransition.present
+          ? data.lastTransition.value
+          : this.lastTransition,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AutoLevel(')
+          ..write('itemId: $itemId, ')
+          ..write('countryId: $countryId, ')
+          ..write('level: $level, ')
+          ..write('missStreak: $missStreak, ')
+          ..write('hitStreak: $hitStreak, ')
+          ..write('dueNow: $dueNow, ')
+          ..write('lastTransition: $lastTransition, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    itemId,
+    countryId,
+    level,
+    missStreak,
+    hitStreak,
+    dueNow,
+    lastTransition,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AutoLevel &&
+          other.itemId == this.itemId &&
+          other.countryId == this.countryId &&
+          other.level == this.level &&
+          other.missStreak == this.missStreak &&
+          other.hitStreak == this.hitStreak &&
+          other.dueNow == this.dueNow &&
+          other.lastTransition == this.lastTransition &&
+          other.updatedAt == this.updatedAt);
+}
+
+class AutoLevelsCompanion extends UpdateCompanion<AutoLevel> {
+  final Value<String> itemId;
+  final Value<String> countryId;
+  final Value<String> level;
+  final Value<int> missStreak;
+  final Value<int> hitStreak;
+  final Value<bool> dueNow;
+  final Value<String?> lastTransition;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const AutoLevelsCompanion({
+    this.itemId = const Value.absent(),
+    this.countryId = const Value.absent(),
+    this.level = const Value.absent(),
+    this.missStreak = const Value.absent(),
+    this.hitStreak = const Value.absent(),
+    this.dueNow = const Value.absent(),
+    this.lastTransition = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AutoLevelsCompanion.insert({
+    required String itemId,
+    required String countryId,
+    required String level,
+    this.missStreak = const Value.absent(),
+    this.hitStreak = const Value.absent(),
+    this.dueNow = const Value.absent(),
+    this.lastTransition = const Value.absent(),
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : itemId = Value(itemId),
+       countryId = Value(countryId),
+       level = Value(level),
+       updatedAt = Value(updatedAt);
+  static Insertable<AutoLevel> custom({
+    Expression<String>? itemId,
+    Expression<String>? countryId,
+    Expression<String>? level,
+    Expression<int>? missStreak,
+    Expression<int>? hitStreak,
+    Expression<bool>? dueNow,
+    Expression<String>? lastTransition,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (itemId != null) 'item_id': itemId,
+      if (countryId != null) 'country_id': countryId,
+      if (level != null) 'level': level,
+      if (missStreak != null) 'miss_streak': missStreak,
+      if (hitStreak != null) 'hit_streak': hitStreak,
+      if (dueNow != null) 'due_now': dueNow,
+      if (lastTransition != null) 'last_transition': lastTransition,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AutoLevelsCompanion copyWith({
+    Value<String>? itemId,
+    Value<String>? countryId,
+    Value<String>? level,
+    Value<int>? missStreak,
+    Value<int>? hitStreak,
+    Value<bool>? dueNow,
+    Value<String?>? lastTransition,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return AutoLevelsCompanion(
+      itemId: itemId ?? this.itemId,
+      countryId: countryId ?? this.countryId,
+      level: level ?? this.level,
+      missStreak: missStreak ?? this.missStreak,
+      hitStreak: hitStreak ?? this.hitStreak,
+      dueNow: dueNow ?? this.dueNow,
+      lastTransition: lastTransition ?? this.lastTransition,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (itemId.present) {
+      map['item_id'] = Variable<String>(itemId.value);
+    }
+    if (countryId.present) {
+      map['country_id'] = Variable<String>(countryId.value);
+    }
+    if (level.present) {
+      map['level'] = Variable<String>(level.value);
+    }
+    if (missStreak.present) {
+      map['miss_streak'] = Variable<int>(missStreak.value);
+    }
+    if (hitStreak.present) {
+      map['hit_streak'] = Variable<int>(hitStreak.value);
+    }
+    if (dueNow.present) {
+      map['due_now'] = Variable<bool>(dueNow.value);
+    }
+    if (lastTransition.present) {
+      map['last_transition'] = Variable<String>(lastTransition.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AutoLevelsCompanion(')
+          ..write('itemId: $itemId, ')
+          ..write('countryId: $countryId, ')
+          ..write('level: $level, ')
+          ..write('missStreak: $missStreak, ')
+          ..write('hitStreak: $hitStreak, ')
+          ..write('dueNow: $dueNow, ')
+          ..write('lastTransition: $lastTransition, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4275,6 +4793,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $ActivityDaysTable activityDays = $ActivityDaysTable(this);
   late final $AwardedMedalsTable awardedMedals = $AwardedMedalsTable(this);
   late final $StreakSavesTable streakSaves = $StreakSavesTable(this);
+  late final $AutoLevelsTable autoLevels = $AutoLevelsTable(this);
   late final Index sessionsOpen = Index(
     'sessions_open',
     'CREATE INDEX sessions_open ON sessions (topic, completed_at)',
@@ -4314,6 +4833,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     activityDays,
     awardedMedals,
     streakSaves,
+    autoLevels,
     sessionsOpen,
     attemptsCountry,
     memoryCardsCountry,
@@ -7457,6 +7977,271 @@ typedef $$StreakSavesTableProcessedTableManager =
       StreakSave,
       PrefetchHooks Function()
     >;
+typedef $$AutoLevelsTableCreateCompanionBuilder = AutoLevelsCompanion Function({
+  required String itemId,
+  required String countryId,
+  required String level,
+  Value<int> missStreak,
+  Value<int> hitStreak,
+  Value<bool> dueNow,
+  Value<String?> lastTransition,
+  required DateTime updatedAt,
+  Value<int> rowid,
+});
+typedef $$AutoLevelsTableUpdateCompanionBuilder = AutoLevelsCompanion Function({
+  Value<String> itemId,
+  Value<String> countryId,
+  Value<String> level,
+  Value<int> missStreak,
+  Value<int> hitStreak,
+  Value<bool> dueNow,
+  Value<String?> lastTransition,
+  Value<DateTime> updatedAt,
+  Value<int> rowid,
+});
+
+class $$AutoLevelsTableFilterComposer
+    extends Composer<_$AppDatabase, $AutoLevelsTable> {
+  $$AutoLevelsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get itemId => $composableBuilder(
+    column: $table.itemId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get countryId => $composableBuilder(
+    column: $table.countryId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get level => $composableBuilder(
+    column: $table.level,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get missStreak => $composableBuilder(
+    column: $table.missStreak,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get hitStreak => $composableBuilder(
+    column: $table.hitStreak,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dueNow => $composableBuilder(
+    column: $table.dueNow,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastTransition => $composableBuilder(
+    column: $table.lastTransition,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AutoLevelsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AutoLevelsTable> {
+  $$AutoLevelsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get itemId => $composableBuilder(
+    column: $table.itemId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get countryId => $composableBuilder(
+    column: $table.countryId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get level => $composableBuilder(
+    column: $table.level,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get missStreak => $composableBuilder(
+    column: $table.missStreak,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get hitStreak => $composableBuilder(
+    column: $table.hitStreak,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dueNow => $composableBuilder(
+    column: $table.dueNow,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastTransition => $composableBuilder(
+    column: $table.lastTransition,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AutoLevelsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AutoLevelsTable> {
+  $$AutoLevelsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get itemId =>
+      $composableBuilder(column: $table.itemId, builder: (column) => column);
+
+  GeneratedColumn<String> get countryId =>
+      $composableBuilder(column: $table.countryId, builder: (column) => column);
+
+  GeneratedColumn<String> get level =>
+      $composableBuilder(column: $table.level, builder: (column) => column);
+
+  GeneratedColumn<int> get missStreak => $composableBuilder(
+    column: $table.missStreak,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get hitStreak =>
+      $composableBuilder(column: $table.hitStreak, builder: (column) => column);
+
+  GeneratedColumn<bool> get dueNow =>
+      $composableBuilder(column: $table.dueNow, builder: (column) => column);
+
+  GeneratedColumn<String> get lastTransition => $composableBuilder(
+    column: $table.lastTransition,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$AutoLevelsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AutoLevelsTable,
+          AutoLevel,
+          $$AutoLevelsTableFilterComposer,
+          $$AutoLevelsTableOrderingComposer,
+          $$AutoLevelsTableAnnotationComposer,
+          $$AutoLevelsTableCreateCompanionBuilder,
+          $$AutoLevelsTableUpdateCompanionBuilder,
+          (
+            AutoLevel,
+            BaseReferences<_$AppDatabase, $AutoLevelsTable, AutoLevel>,
+          ),
+          AutoLevel,
+          PrefetchHooks Function()
+        > {
+  $$AutoLevelsTableTableManager(_$AppDatabase db, $AutoLevelsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AutoLevelsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AutoLevelsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AutoLevelsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> itemId = const Value.absent(),
+                Value<String> countryId = const Value.absent(),
+                Value<String> level = const Value.absent(),
+                Value<int> missStreak = const Value.absent(),
+                Value<int> hitStreak = const Value.absent(),
+                Value<bool> dueNow = const Value.absent(),
+                Value<String?> lastTransition = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AutoLevelsCompanion(
+                itemId: itemId,
+                countryId: countryId,
+                level: level,
+                missStreak: missStreak,
+                hitStreak: hitStreak,
+                dueNow: dueNow,
+                lastTransition: lastTransition,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String itemId,
+                required String countryId,
+                required String level,
+                Value<int> missStreak = const Value.absent(),
+                Value<int> hitStreak = const Value.absent(),
+                Value<bool> dueNow = const Value.absent(),
+                Value<String?> lastTransition = const Value.absent(),
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => AutoLevelsCompanion.insert(
+                itemId: itemId,
+                countryId: countryId,
+                level: level,
+                missStreak: missStreak,
+                hitStreak: hitStreak,
+                dueNow: dueNow,
+                lastTransition: lastTransition,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AutoLevelsTable, AutoLevel>(table),
+                  BaseReferences<_$AppDatabase, $AutoLevelsTable, AutoLevel>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AutoLevelsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AutoLevelsTable,
+      AutoLevel,
+      $$AutoLevelsTableFilterComposer,
+      $$AutoLevelsTableOrderingComposer,
+      $$AutoLevelsTableAnnotationComposer,
+      $$AutoLevelsTableCreateCompanionBuilder,
+      $$AutoLevelsTableUpdateCompanionBuilder,
+      (AutoLevel, BaseReferences<_$AppDatabase, $AutoLevelsTable, AutoLevel>),
+      AutoLevel,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -7481,4 +8266,6 @@ class $AppDatabaseManager {
       $$AwardedMedalsTableTableManager(_db, _db.awardedMedals);
   $$StreakSavesTableTableManager get streakSaves =>
       $$StreakSavesTableTableManager(_db, _db.streakSaves);
+  $$AutoLevelsTableTableManager get autoLevels =>
+      $$AutoLevelsTableTableManager(_db, _db.autoLevels);
 }

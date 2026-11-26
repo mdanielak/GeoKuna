@@ -105,7 +105,7 @@ class LearningOverviewScreen extends ConsumerWidget {
                   .asData
                   ?.value
                   .difficultyFor(region) ??
-              LearningDifficulty.normal;
+              LearningDifficulty.auto;
           final levelEntries = effectiveEntriesForLevel(entries, level);
           final areaSummary = KnowledgeSummary(levelEntries);
           final groups = <String, List<LearningProgressEntry>>{};
@@ -314,7 +314,7 @@ class _RegionSummaryCard extends ConsumerWidget {
         .watch(continentAchievementsProvider(region))
         .asData
         ?.value
-        .where((a) => a.topic == 'map' && a.level == level)
+        .where((a) => a.topic == 'map' && a.level == level.effectiveFixed)
         .firstOrNull;
     return Card.filled(
       margin: EdgeInsets.zero,
@@ -393,7 +393,7 @@ class _RegionOverviewCard extends ConsumerWidget {
                     .asData
                     ?.value
                     .difficultyFor(region) ??
-                LearningDifficulty.normal;
+                LearningDifficulty.auto;
             final summary = KnowledgeSummary(
               effectiveEntriesForLevel(entries, level),
             );
@@ -402,7 +402,9 @@ class _RegionOverviewCard extends ConsumerWidget {
                 .asData
                 ?.value;
             final map = achievements
-                ?.where((a) => a.topic == 'map' && a.level == level)
+                ?.where(
+                  (a) => a.topic == 'map' && a.level == level.effectiveFixed,
+                )
                 .firstOrNull;
             final earned = achievements?.fold<int>(
               0,

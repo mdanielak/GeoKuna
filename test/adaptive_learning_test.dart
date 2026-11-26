@@ -4,9 +4,11 @@ import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geokuna/core/database/database.dart';
 import 'package:geokuna/features/atlas/catalog.dart';
+import 'package:geokuna/features/learning/auto_level.dart';
 import 'package:geokuna/features/learning/capitals.dart';
 import 'package:geokuna/features/learning/daily_planner.dart';
 import 'package:geokuna/features/learning/flags.dart';
+import 'package:geokuna/features/learning/learning_types.dart';
 import 'package:geokuna/features/learning/memory.dart';
 import 'package:geokuna/features/learning/session_repository.dart';
 import 'package:geokuna/features/settings/app_preferences.dart';
@@ -161,56 +163,139 @@ void main() {
     expect(next.insight?.recovery, 1);
   });
 
-  test(
-    'ladder: a skill missed twice is first asked in an easier format',
-    () async {
-      final db = AppDatabase(NativeDatabase.memory());
-      addTearDown(db.close);
-      var now = DateTime(2026, 11, 1, 9);
-      final repo = SessionRepository(db, clock: () => now);
-      String? stubborn;
-      for (var day = 0; day < 14; day++) {
-        now = DateTime(2026, 11, 1 + day, 9);
-        var s = await repo.startDaily(catalog, capitals, flags: flags);
-        if (s == null) continue;
-        stubborn ??= s.skillIdAt(0);
-        final scaffold = List.generate(
-          s.countryIds.length,
-          (i) => i,
-        ).where((i) => s.isScaffoldAt(i)).firstOrNull;
-        if (scaffold != null) {
-          final real = List.generate(
-            s.countryIds.length,
-            (i) => i,
-          ).firstWhere((i) => s.skillIdAt(i) == stubborn && !s.isScaffoldAt(i));
-          expect(s.countryIds[scaffold], s.countryIds[real]);
-          expect(s.skillIdAt(scaffold), isNot(stubborn));
-          expect(
-            real - scaffold,
-            greaterThan(2),
-            reason: 'recall follows later',
-          );
-          await finishSeries(repo, s);
-          final step = await (db.select(
-            db.memoryReviews,
-          )..where((r) => r.questionIndex.equals(scaffold))).get();
-          expect(
-            step.where((r) => r.sessionId == s.row.id).single.applied,
-            isFalse,
-            reason: 'the easier step is practice, not a grade',
-          );
-          return;
+  test('automatyczny: 3 misses demote one item without blocking normal items or budget, 2 hits climb back', () async {
+    final db = AppDatabase(NativeDatabase.memory());
+    addTearDown(db.close);
+    var now = DateTime(2026, 11, 1, 9);
+    final repo = SessionRepository(
+      db,
+      level: LearningDifficulty.auto,
+      clock: () => now,
+    );
+    var s = (await repo.startDaily(catalog, capitals, flags: flags))!;
+    final targetCountry = s.targetId;
+    final targetTopic = s.topicAt(0);
+    final targetItem = autoItemId(
+      targetTopic,
+      targetCountry,
+      s.difficultyNameAt(0),
+    );
+
+    // Miss item 0 in day 1 round 1, then miss again when its retry appears or in extra rounds.
+    var misses = 0;
+    LearningSession? demotedAt;
+    while (!s.completed) {
+      final isTarget =
+          autoItemId(
+            s.topicAt(s.index),
+            s.targetId,
+            s.difficultyNameAt(s.index),
+          ) ==
+          targetItem;
+      s = await answer(repo, s, correct: !isTarget);
+      if (isTarget) {
+        misses++;
+        if (misses == autoDemoteAfterMisses) demotedAt = s;
+      }
+      s = await repo.advance(s.row.id, s.index);
+    }
+    while (misses < autoDemoteAfterMisses) {
+      now = now.add(const Duration(minutes: 10));
+      s = (await repo.startDaily(
+        catalog,
+        capitals,
+        flags: flags,
+        mode: DailyMode.extra,
+      ))!;
+      while (!s.completed) {
+        final isTarget =
+            autoItemId(
+              s.topicAt(s.index),
+              s.targetId,
+              s.difficultyNameAt(s.index),
+            ) ==
+            targetItem;
+        s = await answer(repo, s, correct: !isTarget);
+        if (isTarget) {
+          misses++;
+          if (misses == autoDemoteAfterMisses) demotedAt = s;
         }
-        await finishSeries(
-          repo,
-          s,
-          correct: (s) =>
-              s.skillIdAt(s.index) != stubborn || s.isRetryAt(s.index),
+        s = await repo.advance(s.row.id, s.index);
+      }
+    }
+    expect(demotedAt?.insight?.autoNotice, 'Następnym razem łatwiej.');
+    final row = (await AutoLevelStore(db).find(targetItem))!;
+    expect(row.level, LearningDifficulty.easy.name);
+    expect(row.dueNow, isTrue);
+
+    // Same day regular overview: demoted card is due right away without new-card budget.
+    final overview = await repo.memoryOverview(catalog, capitals, flags: flags);
+    expect(overview.newRemainingToday, 0);
+    expect(overview.plannedCount, greaterThanOrEqualTo(1));
+
+    now = now.add(const Duration(minutes: 10));
+    var next = (await repo.startDaily(catalog, capitals, flags: flags))!;
+    expect(
+      autoItemId(next.topicAt(0), next.targetId, next.difficultyNameAt(0)),
+      targetItem,
+    );
+    expect(next.isAutoEasierAt(0), isTrue);
+    expect(next.originAt(0), 'autoDemoted');
+    expect(
+      levelForDifficulty(next.difficultyNameAt(0)),
+      LearningDifficulty.easy,
+    );
+    // Other items without misses stay on normal.
+    for (var i = 1; i < next.countryIds.length; i++) {
+      if (autoItemId(
+            next.topicAt(i),
+            next.targetId,
+            next.difficultyNameAt(i),
+          ) !=
+          targetItem) {
+        expect(
+          levelForDifficulty(next.difficultyNameAt(i)),
+          LearningDifficulty.normal,
         );
       }
-      fail('no ladder step within two weeks');
-    },
-  );
+    }
+
+    next = await answer(repo, next, correct: true);
+    expect(
+      next.insight?.autoNotice,
+      'Jeszcze 1 trafienie — wrócisz do poziomu Normalny.',
+    );
+    next = await repo.advance(next.row.id, next.index);
+    await finishSeries(repo, next);
+
+    // Second consecutive hit on the next day climbs back to Normalny.
+    now = DateTime(2026, 11, 2, 9);
+    var day2 = (await repo.startDaily(
+      catalog,
+      capitals,
+      flags: flags,
+      mode: DailyMode.extra,
+    ))!;
+    final idx = List.generate(day2.countryIds.length, (i) => i).firstWhere(
+      (i) =>
+          autoItemId(
+            day2.topicAt(i),
+            day2.countryIds[i],
+            day2.difficultyNameAt(i),
+          ) ==
+          targetItem,
+    );
+    while (day2.index < idx) {
+      day2 = await answer(repo, day2, correct: true);
+      day2 = await repo.advance(day2.row.id, day2.index);
+    }
+    expect(day2.isAutoEasierAt(idx), isTrue);
+    day2 = await answer(repo, day2, correct: true);
+    expect(day2.insight?.autoNotice, 'Wracasz do poziomu Normalny.');
+    final promoted = (await AutoLevelStore(db).find(targetItem))!;
+    expect(promoted.level, LearningDifficulty.normal.name);
+    expect(promoted.dueNow, isFalse);
+  });
 
   test('ladder step 2: a confused pair is asked side by side', () async {
     final db = AppDatabase(NativeDatabase.memory());

@@ -5,9 +5,9 @@ import '../atlas/catalog.dart';
 import '../settings/app_preferences.dart';
 import 'learning_types.dart';
 
-/// Maximum medal points per area (categories × difficulty levels × 3 tiers).
+/// Maximum medal points per area (categories × concrete difficulty levels × 3 tiers).
 final maxMedalPoints =
-    AchievementCategory.all.length * LearningDifficulty.values.length * 3;
+    AchievementCategory.all.length * LearningDifficulty.fixed.length * 3;
 
 class CategoryAchievement {
   const CategoryAchievement({
@@ -66,7 +66,7 @@ class AchievementStore {
       reviews,
       onQualified: (skills, at) {
         for (final category in AchievementCategory.all) {
-          for (final level in LearningDifficulty.values) {
+          for (final level in LearningDifficulty.fixed) {
             final count = _effectiveCountries(
               skills,
               countryIds,
@@ -93,7 +93,7 @@ class AchievementStore {
     final result = <CategoryAchievement>[];
     for (final category in AchievementCategory.all) {
       final topic = category.name;
-      for (final level in LearningDifficulty.values) {
+      for (final level in LearningDifficulty.fixed) {
         final direct = _effectiveCountries(
           qualified,
           countryIds,
@@ -214,7 +214,7 @@ Set<String> _effectiveCountries(
   final storageTopic = topic == 'flagMap' ? 'flags' : topic;
   return {
     for (final country in countryIds)
-      if (LearningDifficulty.values
+      if (LearningDifficulty.fixed
           .where(
             (candidate) => directOnly
                 ? candidate == level

@@ -93,7 +93,7 @@ void main() {
     // No overview was opened before the later error.
     await review(countries.first.id, 2, 1);
     final achievements = await AchievementStore(db).refresh(catalog);
-    for (final level in LearningDifficulty.values) {
+    for (final level in LearningDifficulty.fixed) {
       final map = achievements.singleWhere(
         (a) => a.topic == 'map' && a.level == level,
       );

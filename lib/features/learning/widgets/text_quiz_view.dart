@@ -106,11 +106,27 @@ class _TextQuizViewState extends ConsumerState<TextQuizView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      widget.questionLabel,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text(
+                          widget.questionLabel,
+                          style: Theme.of(context).textTheme.labelLarge
+                              ?.copyWith(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurfaceVariant,
+                              ),
+                        ),
+                        if (session.isAutoEasierAt(session.index))
+                          AutoEasierChip(
+                            countryName: flag
+                                ? null
+                                : widget.catalog.country(session.targetId).name,
+                          ),
+                      ],
                     ),
                     const SizedBox(height: 6),
                     LinearProgressIndicator(

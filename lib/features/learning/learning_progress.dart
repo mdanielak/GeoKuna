@@ -72,10 +72,11 @@ List<LearningProgressEntry> effectiveEntriesForLevel(
   Iterable<LearningProgressEntry> entries,
   LearningDifficulty level,
 ) {
+  final target = level.effectiveFixed;
   final grouped = <(String, String), List<LearningProgressEntry>>{};
   for (final entry in entries) {
     final diff = SkillDifficulty.fromDb(entry.difficulty);
-    if (diff.level.index < level.index) continue;
+    if (diff.level.index < target.index) continue;
     final category = entry.topic == 'flags' && diff.isMap
         ? 'flagMap'
         : entry.topic;
@@ -90,7 +91,7 @@ List<LearningProgressEntry> effectiveEntriesForLevel(
     for (final group in grouped.values)
       (() {
         final base = group.firstWhere(
-          (e) => SkillDifficulty.fromDb(e.difficulty).level == level,
+          (e) => SkillDifficulty.fromDb(e.difficulty).level == target,
           orElse: () => group.first,
         );
         final best = group.reduce(

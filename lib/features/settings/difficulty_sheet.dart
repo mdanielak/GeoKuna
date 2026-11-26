@@ -35,7 +35,7 @@ Future<void> showDifficultySheet(
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
-            for (final level in LearningDifficulty.values)
+            for (final level in LearningDifficulty.menuOrder)
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 title: Text(level.label),

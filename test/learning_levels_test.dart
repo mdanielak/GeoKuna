@@ -55,7 +55,7 @@ void main() {
     () async {
       final db = AppDatabase(NativeDatabase.memory());
       addTearDown(db.close);
-      for (final level in LearningDifficulty.values) {
+      for (final level in LearningDifficulty.fixed) {
         final repo = SessionRepository(db, level: level);
         final session = await repo.start(['POL']);
         final expected = ['mapVeryEasy', 'mapEasy', 'map'][level.index];

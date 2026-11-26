@@ -525,7 +525,7 @@ class _DifficultyPreference extends StatelessWidget {
             decoration: const InputDecoration(labelText: 'Poziom quizów'),
             isExpanded: true,
             items: [
-              for (final difficulty in LearningDifficulty.values)
+              for (final difficulty in LearningDifficulty.menuOrder)
                 DropdownMenuItem(
                   value: difficulty,
                   child: Text(difficulty.label),

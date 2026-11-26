@@ -90,7 +90,15 @@ class LearningSession {
   bool isRetryAt(int i) =>
       isDaily && i < _questions.length && _questions[i]['retry'] == true;
 
-  /// An easier, unscored ladder step before a stubborn skill's real question.
+  /// An easier card triggered after repeated misses in Automatyczny mode.
+  bool isAutoAt(int i) =>
+      isDaily && i < _questions.length && _questions[i]['auto'] == true;
+
+  /// Whether this question uses an easier card temporarily in Automatyczny mode.
+  bool isAutoEasierAt(int i) =>
+      isDaily && i < _questions.length && _questions[i]['auto_easier'] == true;
+
+  /// Historical scaffold step kept only for reading old saved sessions.
   bool isScaffoldAt(int i) => originAt(i) == ReviewOrigin.scaffold.name;
 
   /// The country a stubborn skill keeps being confused with, asked right
@@ -102,7 +110,7 @@ class LearningSession {
       isRetryAt(i) || isScaffoldAt(i) || isContrastAt(i);
 
   /// Special origin stored in the daily snapshot (`control`, `placement`,
-  /// `scaffold`, `contrast`).
+  /// `autoDemoted`, `scaffold`, `contrast`).
   String? originAt(int i) => isDaily && i < _questions.length
       ? _questions[i]['origin'] as String?
       : null;
@@ -141,6 +149,7 @@ class QuestionInsight {
     this.recovery,
     this.confusedWithId,
     this.confusedWithName,
+    this.autoNotice,
   });
 
   /// Correct answers in a row since the last miss of a hard skill (1–3).
@@ -151,6 +160,9 @@ class QuestionInsight {
 
   /// A country name given by mistake for this target's flag before and again now.
   final String? confusedWithName;
+
+  /// Transition or progress message in Automatyczny difficulty mode.
+  final String? autoNotice;
 }
 
 class MemoryOverview {

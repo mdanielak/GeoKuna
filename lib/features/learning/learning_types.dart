@@ -26,16 +26,17 @@ enum AchievementCategory {
   };
 
   SkillDifficulty difficultyFor(LearningDifficulty level) => switch (this) {
-    AchievementCategory.map || AchievementCategory.flagMap => switch (level) {
+    AchievementCategory.map ||
+    AchievementCategory.flagMap => switch (level.effectiveFixed) {
       LearningDifficulty.veryEasy => SkillDifficulty.mapVeryEasy,
       LearningDifficulty.easy => SkillDifficulty.mapEasy,
-      LearningDifficulty.normal => SkillDifficulty.map,
+      _ => SkillDifficulty.map,
     },
     AchievementCategory.capitals ||
-    AchievementCategory.flags => switch (level) {
+    AchievementCategory.flags => switch (level.effectiveFixed) {
       LearningDifficulty.veryEasy => SkillDifficulty.choice,
       LearningDifficulty.easy => SkillDifficulty.firstLetter,
-      LearningDifficulty.normal => SkillDifficulty.write,
+      _ => SkillDifficulty.write,
     },
   };
 }
@@ -61,13 +62,6 @@ enum SkillDifficulty {
     firstLetter || mapEasy => LearningDifficulty.easy,
     write || map => LearningDifficulty.normal,
   };
-
-  /// Easier format used as the ladder step, or null when none is easier.
-  SkillDifficulty? scaffoldFor(QuizTopic topic) => switch ((topic, this)) {
-    (QuizTopic.capitals || QuizTopic.flags, write || firstLetter) => choice,
-    (QuizTopic.map || QuizTopic.flags, map || mapEasy) => mapVeryEasy,
-    _ => null,
-  };
 }
 
 /// Origin of a review stored in `memory_reviews.origin`.
@@ -80,7 +74,8 @@ enum ReviewOrigin {
   control,
   placement,
   assisted,
-  recognition;
+  recognition,
+  autoDemoted;
 
   static ReviewOrigin fromDb(String value) => values.byName(value);
 

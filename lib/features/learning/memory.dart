@@ -149,6 +149,7 @@ class MemoryStore {
         (fresh ||
             !attempt.correct ||
             parsedOrigin == ReviewOrigin.control ||
+            parsedOrigin == ReviewOrigin.autoDemoted ||
             !card.due!.isAfter(attempt.answeredAt));
     ScheduledMemory? result;
     if (applied) {
@@ -265,18 +266,9 @@ SkillRecoveryStats analyzeRecovery(Iterable<MemoryReview> reviews) {
 }
 
 /// Graded misses since a skill was last recovered ([recoveryTarget] correct
-/// in a row). Drives the ladder: a stubborn skill gets an easier step first.
+/// in a row).
 Map<String, int> missesSinceRecovery(Iterable<MemoryReview> reviews) =>
     analyzeRecovery(reviews).missesSinceRecovery;
-
-/// Misses after which a due skill is preceded by an easier, unscored step.
-const scaffoldAfterMisses = 2;
-
-/// The easier format used as the ladder step, or null when none is easier.
-String? scaffoldDifficulty(String topic, String difficulty) =>
-    SkillDifficulty.fromDb(difficulty)
-        .scaffoldFor(QuizTopic.fromDb(topic))
-        ?.name;
 
 /// Skills with a graded miss that are not yet recovered, mapped to the number
 /// of graded correct answers since that miss (0–2).

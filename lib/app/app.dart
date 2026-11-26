@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -166,14 +167,17 @@ class _GeoKunaAppState extends ConsumerState<GeoKunaApp>
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
-    title: 'GeoKuna',
-    debugShowCheckedModeBanner: false,
-    locale: const Locale('pl'),
-    supportedLocales: const [Locale('pl')],
-    localizationsDelegates: GlobalMaterialLocalizations.delegates,
-    theme: GeoTheme.light(),
-    routerConfig: _router,
+  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
+    value: GeoTheme.systemOverlayStyle,
+    child: MaterialApp.router(
+      title: 'GeoKuna',
+      debugShowCheckedModeBanner: false,
+      locale: const Locale('pl'),
+      supportedLocales: const [Locale('pl')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      theme: GeoTheme.light(),
+      routerConfig: _router,
+    ),
   );
 }
 

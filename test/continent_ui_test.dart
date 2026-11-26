@@ -117,15 +117,15 @@ void main() {
     );
     // The level row sits below training; its sheet lists all levels.
     await tester.scrollUntilVisible(
-      find.text('Poziom dla Azji: Normalny'),
+      find.text('Poziom dla Azji: Automatyczny'),
       200,
       scrollable: find.byType(Scrollable).first,
     );
-    await tester.ensureVisible(find.text('Poziom dla Azji: Normalny'));
+    await tester.ensureVisible(find.text('Poziom dla Azji: Automatyczny'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Poziom dla Azji: Normalny'));
+    await tester.tap(find.text('Poziom dla Azji: Automatyczny'));
     await tester.pumpAndSettle();
-    for (final level in ['Bardzo łatwy', 'Łatwy', 'Normalny']) {
+    for (final level in ['Automatyczny', 'Bardzo łatwy', 'Łatwy', 'Normalny']) {
       expect(find.text(level), findsOneWidget);
     }
     expect(tester.takeException(), isNull);

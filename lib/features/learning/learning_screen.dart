@@ -197,7 +197,7 @@ class _LearningScreenState extends ConsumerState<LearningScreen> {
         context,
         continent: continent,
         title: widget.daily
-            ? 'Dzisiejsza wyprawa po ${continent.journey}'
+            ? 'Wyprawa · ${continent.label}'
             : widget.flagDifficulty != null
             ? '${continent.symbolsLabel} ${continent.genitive}'
             : widget.capitalDifficulty == null

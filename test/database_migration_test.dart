@@ -64,8 +64,9 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          9,
+          10,
         );
+        expect(await db.select(db.autoLevels).get(), isEmpty);
         expect(
           await db
               .customSelect(
@@ -119,8 +120,9 @@ void main() {
           (await db.customSelect('PRAGMA user_version').getSingle()).read<int>(
             'user_version',
           ),
-          9,
+          10,
         );
+        expect(await db.select(db.autoLevels).get(), isEmpty);
         expect(
           await db
               .customSelect(

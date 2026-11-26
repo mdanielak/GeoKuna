@@ -100,7 +100,7 @@ class QuizSummaryView extends ConsumerWidget {
             if (retryCount > 0) ...[
               const SizedBox(height: 8),
               Text(
-                'Ćwiczenia w serii (powtórki, podpowiedzi, pary): $retryCount — nie liczą się do wyniku.',
+                'Ćwiczenia w serii (powtórki i pary): $retryCount — nie liczą się do wyniku.',
               ),
             ],
             if (session.assistedIndices.isNotEmpty) ...[
@@ -175,18 +175,19 @@ typedef _Result = ({
   String title,
   String detail,
   String? given,
+  String? practiceTag,
 });
 
 _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   final i = attempt.questionIndex;
   final typo = attempt.typoAccepted ? ', literówka' : '';
-  final retry = session.isRetryAt(i)
-      ? 'powtórka, '
+  final practiceTag = session.isRetryAt(i)
+      ? 'powtórka'
       : session.isScaffoldAt(i)
-      ? 'podpowiedź, '
+      ? 'podpowiedź'
       : session.isContrastAt(i)
-      ? 'para, '
-      : '';
+      ? 'para'
+      : null;
   String nameOf(String id) =>
       catalog.countries.any((c) => c.id == id) ? catalog.country(id).name : id;
   final verb = attempt.difficulty == 'choice' ? 'Wybrano' : 'Wpisano';
@@ -212,11 +213,16 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
     final guesses = session.mapGuesses
         .where((g) => g.questionIndex == i)
         .toList();
+    final mapPrefix = !session.isDaily
+        ? ''
+        : attempt.topic == 'flags'
+        ? '$symbolLower na mapie · '
+        : 'mapa · ';
     detail = !attempt.correct
-        ? 'nie odnaleziono'
+        ? '${mapPrefix}nie odnaleziono'
         : guesses.length > 1
-        ? 'za ${guesses.length}. razem'
-        : 'od razu';
+        ? '${mapPrefix}za ${guesses.length}. razem'
+        : '${mapPrefix}od razu';
     final wrong = [
       for (final g in guesses)
         if (g.selectedCountryId != attempt.countryId)
@@ -232,7 +238,7 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
   return (
     status: status,
     title: catalog.country(attempt.countryId).name,
-    detail: '$retry$detail',
+    detail: detail,
     // Only mistakes and typos open; a clean answer has nothing to add.
     given:
         !attempt.correct ||
@@ -240,6 +246,7 @@ _Result _resultRow(Catalog catalog, LearningSession session, Attempt attempt) {
             given?.startsWith('Wskazano') == true
         ? given
         : null,
+    practiceTag: practiceTag,
   );
 }
 
@@ -267,94 +274,144 @@ class _ResultListState extends State<_ResultList> {
         children: [
           for (final (index, row) in widget.rows.indexed) ...[
             if (index > 0) const Divider(height: 1),
-            InkWell(
-              onTap: row.given == null
-                  ? null
-                  : () => setState(
-                      () => _open.contains(index)
-                          ? _open.remove(index)
-                          : _open.add(index),
-                    ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 8,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        switch (row.status) {
-                          _ResultStatus.correct => Icon(
-                            Icons.check_circle,
-                            size: 20,
-                            color: colors.correct,
-                            semanticLabel: 'Dobrze',
-                          ),
-                          _ResultStatus.foundLater => Icon(
-                            Icons.info_outline,
-                            size: 20,
-                            color: colors.onTypoContainer,
-                            semanticLabel: 'Odnaleziono w kolejnej próbie — błąd w pierwszej',
-                          ),
-                          _ResultStatus.wrong => Icon(
-                            Icons.cancel,
-                            size: 20,
-                            color: colors.wrong,
-                            semanticLabel: 'Błąd',
-                          ),
-                        },
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            row.title,
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Flexible(
-                          child: Text(
-                            row.detail,
-                            textAlign: TextAlign.end,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurfaceVariant,
+            Material(
+              color: row.practiceTag != null
+                  ? GeoTheme.creamCard.withValues(alpha: .45)
+                  : Colors.transparent,
+              child: InkWell(
+                onTap: row.given == null
+                    ? null
+                    : () => setState(
+                        () => _open.contains(index)
+                            ? _open.remove(index)
+                            : _open.add(index),
+                      ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          if (row.practiceTag != null &&
+                              row.status == _ResultStatus.wrong)
+                            const Icon(
+                              Icons.replay_circle_filled,
+                              size: 20,
+                              color: Color(0xFFD08A00),
+                              semanticLabel: 'Ćwiczenie — błąd',
+                            )
+                          else
+                            switch (row.status) {
+                              _ResultStatus.correct => Icon(
+                                Icons.check_circle,
+                                size: 20,
+                                color: colors.correct,
+                                semanticLabel: 'Dobrze',
+                              ),
+                              _ResultStatus.foundLater => Icon(
+                                Icons.info_outline,
+                                size: 20,
+                                color: colors.onTypoContainer,
+                                semanticLabel: 'Odnaleziono w kolejnej próbie — błąd w pierwszej',
+                              ),
+                              _ResultStatus.wrong => Icon(
+                                Icons.cancel,
+                                size: 20,
+                                color: colors.wrong,
+                                semanticLabel: 'Błąd',
+                              ),
+                            },
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  row.title,
+                                  style: theme.textTheme.bodyLarge,
+                                ),
+                                if (row.practiceTag case final tag?)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 2),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 6,
+                                        vertical: 1,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: colors.typoContainer,
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      child: Text(
+                                        tag,
+                                        style: theme.textTheme.labelSmall
+                                            ?.copyWith(
+                                              color: colors.onTypoContainer,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
-                        ),
-                        if (row.given != null)
-                          Icon(
-                            _open.contains(index)
-                                ? Icons.expand_less
-                                : Icons.expand_more,
-                            size: 20,
-                            semanticLabel: _open.contains(index)
-                                ? 'Zwiń'
-                                : 'Pokaż odpowiedź',
-                          ),
-                      ],
-                    ),
-                    AnimatedSize(
-                      duration: MediaQuery.disableAnimationsOf(context)
-                          ? Duration.zero
-                          : const Duration(milliseconds: 180),
-                      alignment: Alignment.topCenter,
-                      child: _open.contains(index)
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 4),
-                              child: Text(
-                                row.given!,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: row.status == _ResultStatus.correct
-                                      ? theme.colorScheme.onSurfaceVariant
-                                      : colors.onWrongContainer,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                          const SizedBox(width: 12),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 165),
+                            child: Text(
+                              row.detail,
+                              textAlign: TextAlign.end,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: theme.colorScheme.onSurfaceVariant,
                               ),
-                            )
-                          : const SizedBox(width: double.infinity),
-                    ),
-                  ],
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          SizedBox(
+                            width: 20,
+                            child: row.given != null
+                                ? Icon(
+                                    _open.contains(index)
+                                        ? Icons.expand_less
+                                        : Icons.expand_more,
+                                    size: 20,
+                                    semanticLabel: _open.contains(index)
+                                        ? 'Zwiń'
+                                        : 'Pokaż odpowiedź',
+                                  )
+                                : null,
+                          ),
+                        ],
+                      ),
+                      AnimatedSize(
+                        duration: MediaQuery.disableAnimationsOf(context)
+                            ? Duration.zero
+                            : const Duration(milliseconds: 180),
+                        alignment: Alignment.topCenter,
+                        child: _open.contains(index)
+                            ? Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 30,
+                                  top: 4,
+                                ),
+                                child: Text(
+                                  row.given!,
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: row.status == _ResultStatus.correct
+                                        ? theme.colorScheme.onSurfaceVariant
+                                        : colors.onWrongContainer,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox(width: double.infinity),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
